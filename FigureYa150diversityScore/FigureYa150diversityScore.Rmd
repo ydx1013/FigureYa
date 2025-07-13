@@ -1,42 +1,44 @@
 ---
 title: "FigureYa150diversityScore"
-author: "小丫画图出品"
-date: "2019-11-24"
+author: "Zongcheng Li"
+reviewer: "Ying Ge, Junyi Shen"
+date: "2025-5-20"
 output: html_document
 ---
-欢迎关注“小丫画图”公众号，同名知识星球等你加入
-
-小丫微信: epigenomics  E-mail: figureya@126.com
-
-作者：Hazard
-
-小丫编辑校验
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ## 需求描述
+## Requirements description
 
 用R实现文中计算diversity score的算法。
+Use R to implement the algorithm for calculating diversity score in the article.
 
 ![](method.png)
 
 出自<https://www.sciencedirect.com/science/article/pii/S1535610819303757>
+From <https://www.sciencedirect.com/science/article/pii/S1535610819303757>
 
 顺便画出下图：
+By the way, draw the following figure:
 
 ![](example.png)
 
 Figure 3. Intratumoral Heterogeneity in Liver Cancer. (E) Diversity score of tumor samples according to the median value of diversity: Div-Low, below median value; Div-High, above median value. Data are presented as means ± SEM.
 
 ## 应用场景
+## Application scenario
 
 用单细胞DNA测序数据计算diversity score，用来评价肿瘤异质性。
+Use single-cell DNA sequencing data to calculate the diversity score to evaluate tumor heterogeneity.
 
 ## 环境设置
+## Environment settings
 
 使用国内镜像安装包
+Use domestic mirror installation package
 
 ```{r, eval = F}
 options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
@@ -45,17 +47,19 @@ install.packages('Seurat')
 ```
 
 加载包
+Load package
 
 ```{r}
 library(Seurat)
 library(magrittr)
 library(ggplot2)
 library(ggpubr)
-Sys.setenv(LANGUAGE = "en") #显示英文报错信息
-options(stringsAsFactors = FALSE) #禁止chr转成factor
+Sys.setenv(LANGUAGE = "en") #显示英文报错信息 #Display English error message
+options(stringsAsFactors = FALSE) #禁止chr转成factor #Disable chr conversion to factor
 ```
 
 根据文章方法描述，自定义计算diversity score的函数
+According to the method described in the article, customize the function to calculate the diversity score
 
 ```{r}
 calcDiversityScore <- function(eigenvectorSpace, 
@@ -82,10 +86,13 @@ calcDiversityScore <- function(eigenvectorSpace,
 ```
 
 ## 输入文件
+## Input file
 
 按照这个方式，下载和挖掘GEO上已发表的单细胞测序数据：
+Download and mine the single-cell sequencing data published on GEO in this way:
 
 1) 打开页面<https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE125449>，拖到底，在Supplementary file里，点击ftp，下载下面四个文件：
+1) Open the page <https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE125449>, scroll to the bottom, click ftp in Supplementary file, and download the following four files:
 
 - GSE125449_Set1_barcodes.tsv.gz   
 - GSE125449_Set1_genes.tsv.gz   
@@ -97,8 +104,10 @@ calcDiversityScore <- function(eigenvectorSpace,
 Set 1 contains scRNA-seq data of twelve samples, i.e., S16_P10_LCP18, S02_P01_LCP21, S10_P05_LCP23, S09_P04_LCP25, S08_P03_LCP26, S07_P02_LCP28, S11_P06_LCP29, S12_P07_LCP30, S20_P12_LCP35, S21_P13_LCP37, S15_P09_LCP38, and S19_P11_LCP39. 
 
 **!!! Important !!!**把这四个文件放到`./data/`文件夹里
+**!!! Important !!!**Put these four files in the `./data/` folder
 
 2) 解压缩，按以下规则重命名:   
+2) Unzip and rename as follows:
 
 - GSE125449_Set1_barcodes.tsv  ==> barcodes.tsv   
 - GSE125449_Set1_genes.tsv	   ==> genes.tsv   
@@ -117,6 +126,7 @@ Set 1 contains scRNA-seq data of twelve samples, i.e., S16_P10_LCP18, S02_P01_LC
 - C39 - S19_P11_LCP39. 
 
 > 担心你下载不顺利，小丫把这四个文件上传到微云，下载链接：<https://share.weiyun.com/54uouqH>，下载后解压缩是个文件夹`data`，放在跟`FigureYa150diversityScore.Rmd`文件同一级目录下。
+> Worried that you may not be able to download smoothly, Xiaoya uploaded these four files to Weiyun, download link: <https://share.weiyun.com/54uouqH>, after downloading and unzipping, there is a folder `data`, which is placed in the same directory as the `FigureYa150diversityScore.Rmd` file.
 
 ```{r}
 umi <- Read10X(data.dir = "data/")
@@ -139,6 +149,7 @@ tme <- CreateSeuratObject(counts = umi[, cellUsed],
                           meta.data = annot[cellUsed,],
                           min.cells = 3, min.features = 500)
 #可以暂时先保存一下
+#You can save it temporarily
 #save(tme, file = "tme.Rdata")
 ```
 
@@ -163,6 +174,7 @@ ElbowPlot(tme, ndims = 50, reduction = "pca")
 eigenvectorSpace <- tme@reductions$pca@cell.embeddings[,1:30] # top 20 PCs were used
 
 #用自定义函数calcDiversityScore计算diversity score
+# Use custom function calcDiversityScore to calculate diversity score
 diversityScores <- calcDiversityScore(eigenvectorSpace, tme@meta.data$Sample, removeOutiler = T)
 
 sampleUsed <- c(H23 = "S10_P05_LCP23", 
@@ -177,6 +189,7 @@ sampleUsed[match(names(diversityScores), sampleUsed)]
 diversityScores
 
 # 整理数据格式用于画图
+# Arrange data format for plotting
 ggData <- data.frame(score = diversityScores,
                      Group = ifelse(diversityScores > 12.3, "High", "Low"), 
                      ID = names(sampleUsed[match(names(diversityScores), sampleUsed)]),
@@ -184,10 +197,12 @@ ggData <- data.frame(score = diversityScores,
 ggData$Group <- factor(ggData$Group, levels = c("Low", "High"))
 table(ggData$Group, ggData$ID)
 #保存到文件
+#Save to file
 write.csv(ggData, "output_diversity_score.csv", quote = F)
 ```
 
 ## 开始画图
+## Start plotting
 
 ```{r plot, fig.width=2, fig.height=3}
 ggplot(ggData,
