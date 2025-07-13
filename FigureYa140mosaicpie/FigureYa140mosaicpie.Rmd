@@ -1,28 +1,25 @@
 ---
 title: "FigureYa140mosaicPie"
-author: "小丫画图出品"
-date: "2019-10-20"
+author: "Zongcheng Li"
+reviewer: "Ying Ge, Junyi Shen"
+date: "2025-5-20"
 output: html_document
 ---
-欢迎关注“小丫画图”公众号，同名知识星球等你加入
-
-小丫微信: epigenomics  E-mail: figureya@126.com
-
-作者：Hazard
-
-小丫编辑校验
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ## 需求描述
+## Requirement description
 
 输入TCGA数据，画出这种图。
+Input TCGA data and draw this kind of graph.
 
 ![](example.png)
 
 出自<https://www.cell.com/cancer-cell/pdfExtended/S1535-6108(18)30110-7>
+From <https://www.cell.com/cancer-cell/pdfExtended/S1535-6108(18)30110-7>
 
 Figure 2. Epigenetic Landscape of lncRNAs in Cancer(A) Percentages of significant EA (top panel) or ES (bottom panel) lncRNAs in 20 cancer types. Each pie chart indicates the percentage of each lncRNA epigenetic alteration in each cancer type. Purple indicates EA lncRNAs; green indicates ES lncRNAs
 
@@ -31,30 +28,44 @@ Figure 2. Epigenetic Landscape of lncRNAs in Cancer(A) Percentages of significan
 See also Figure S2 and Table S2.
 
 **图的解析**
+**Analysis of the graph**
 
 - 粉紫色是表观激活EA的lncRNA，绿色是表观抑制ES的lncRNA。
 - 纵坐标是表观状态变化频率最高的20个lncRNA，横坐标是癌症组织（A）和Cell line（D）。
 - 饼图展示每个lncRNA在每种癌症/cell line里发生表观状态变化的比例。
+- Pink and purple are lncRNAs that apparently activate EA, and green are lncRNAs that apparently inhibit ES.
+- The vertical axis is the 20 lncRNAs with the highest frequency of epigenetic changes, and the horizontal axis is cancer tissue (A) and Cell line (D).
+- The pie chart shows the proportion of epigenetic changes of each lncRNA in each cancer/cell line.
 
 其中A图还分成了High reliability和Intermediate reliability，文章提供了EA和ES信息，但没有提供High reliability和Intermediate reliability的分类信息。这里以文章提供的EA和ES信息作为输入数据，展示画法。
+The A graph is also divided into High reliability and Intermediate reliability. The article provides EA and ES information, but does not provide classification information for High reliability and Intermediate reliability. Here, the EA and ES information provided by the article is used as input data to show the drawing method.
 
 另外，还将展示从下载TCGA的DNA甲基化数据（用于定义激活/抑制）到画图。
+In addition, it will also show the process from downloading TCGA DNA methylation data (used to define activation/inhibition) to drawing.
 
 ## 应用场景
+## Application scenario
 
 用饼图展示百分比，再把饼图排成矩阵，就可以对应多组数据。
+Use pie charts to show percentages, and then arrange the pie charts into a matrix to correspond to multiple sets of data.
 
 ## 环境设置
+## Environment settings
 
 使用国内镜像安装包
+Use domestic mirror installation package
 
 ```{r}
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
-if(!require('cgdsr')) install.packages("cgdsr") # cdgsr package @ 
+setRepositories(ind=1:6)
+options(repos="http://cran.rstudio.com/")
+if(!require(devtools)) { install.packages("devtools") }
+library(devtools) 
+
+install_github("cBioPortal/cgdsr")
 ```
 
 加载包
+Loading Packages
 
 ```{r}
 library(readxl)
@@ -62,21 +73,23 @@ library(ggplot2)
 library(reshape2)
 library(cgdsr)
 
-Sys.setenv(LANGUAGE = "en") #显示英文报错信息
-options(stringsAsFactors = FALSE) #禁止chr转成factor
+Sys.setenv(LANGUAGE = "en") #显示英文报错信息 #Display English error message
+options(stringsAsFactors = FALSE) #禁止chr转成factor #Disable conversion of chr to factor
 ```
 
 自定义画图函数
+Custom drawing function
 
 ```{r plot, fig.width=12, fig.height=12}
 # 自定义颜色
+# Custom colors
 pink <- "#F814A7"
 green <- "#177835"
 mosaicplot <- function(ggData){
   ggplot(ggData) +
   geom_bar(mapping = aes(x = 1, y = value, fill = type), 
            stat = "identity") +
-  scale_fill_manual(values = c(pink, green), guide_legend(title = NULL)) + #如果你有更多分组，就继续添加颜色
+  scale_fill_manual(values = c(pink, green), guide = guide_legend(title = NULL)) + #如果你有更多分组，就继续添加颜色 # If you have more groups, keep adding colors
   scale_y_continuous(breaks = seq(0, 1, length.out = 9), limits = c(0,1)) +
   scale_x_continuous(breaks = c(0,0.5,1)) +
   facet_grid(gene ~ cancer) +
@@ -86,8 +99,8 @@ mosaicplot <- function(ggData){
         strip.text.x = element_text(angle = 90, size = 16, hjust = 0),
         strip.text.y = element_text(angle = 0, size = 16, hjust = 0.5),
         panel.grid.minor = element_blank(), 
-        panel.grid.major.x = element_line(size = 1),
-        panel.grid.major.y = element_line(size = 1.5),
+        panel.grid.major.x = element_line(linewidth = 1),
+        panel.grid.major.y = element_line(linewidth = 1.5),
         axis.text = element_blank(),
         axis.ticks = element_blank(),
         legend.position = "top")
@@ -95,27 +108,36 @@ mosaicplot <- function(ggData){
 ```
 
 ## 第一部分：用例文提供的数据画图
+## Part 1: Draw a graph using the data provided in the example text
 
 ### 输入文件的准备
+### Preparation of input file
 
 如果你的数据已经整理成easy_input.csv的格式，就可以跳过这步，直接进入“开始画图”。
+If your data has been organized into the format of easy_input.csv, you can skip this step and go directly to "Start drawing".
 
 输入文件1-s2.0-S1535610818301107-mmc3.xlsx，下载自：<https://www.sciencedirect.com/science/article/pii/S1535610818301107#mmc3>
+Input file 1-s2.0-S1535610818301107-mmc3.xlsx, downloaded from: <https://www.sciencedirect.com/science/article/pii/S1535610818301107#mmc3>
 
 第2列是Gene Name，第4列以后是每种癌症类型里的比例。第1、3列非必须。
+The second column is the Gene Name, and the fourth and subsequent columns are the proportions of each cancer type. The first and third columns are optional.
 
 把这两个文件整理成画图需要的格式ggData。
+Arrange these two files into the format ggData required for drawing.
 
 ```{r data}
 # 表观激活EA的lncRNA
+# lncRNA that apparently activates EA
 alteration_ea <- as.data.frame(readxl::read_excel(path = "1-s2.0-S1535610818301107-mmc3.xlsx", sheet = 1, skip = 3))
 head(alteration_ea)
 
 # 表观抑制ES的lncRNA
+# lncRNA that apparently inhibits ES
 alteration_es <- as.data.frame(readxl::read_excel(path = "1-s2.0-S1535610818301107-mmc3.xlsx", sheet = 2, skip = 3))
 head(alteration_es)
 
 #这里分两组EA和ES，如果有更多分组，就继续按这个格式往下继续添加
+#Here are two groups of EA and ES. If there are more groups, continue to add them in this format
 
 # EA
 lnc_ea <- unique(alteration_ea$`Gene Name`)
@@ -139,17 +161,21 @@ ggData_es$type <- "ES"
 ggData <- na.omit(rbind(ggData_ea, ggData_es)) # 合并EA和ES到ggData
 
 # 保存到文件，你可以直接把自己的数据按照这个格式整理好，就可以直接画图了
+# Save to file, you can directly organize your data according to this format, and then you can draw the graph directly
 write.csv(ggData, "easy_input.csv", row.names = F)
 ```
 
 ### 开始画图
+### Start drawing
 
 easy_input.csv，第一列基因名对应图中一行，第二列疾病名对应图中1列，第三列value对应pie的比例，第四列type对应图中分组。
+easy_input.csv, the first column of gene name corresponds to a row in the graph, the second column of disease name corresponds to 1 column in the graph, the third column of value corresponds to the proportion of pie, and the fourth column of type corresponds to the grouping in the graph.
 
 ```{r plot_2a, fig.width=12, fig.height=12}
 ggData <- read.csv("easy_input.csv")
 head(ggData)
 ggData$gene <- factor(ggData$gene, unique(ggData$gene)) #按输入文件中的基因顺序排序
+# Sort by gene order in input file
 str(ggData)
 
 mosaicplot(ggData)
@@ -157,12 +183,16 @@ ggsave("mosaicPie.pdf", width = 12, height = 12)
 ```
 
 ## 第二部分：用TCGA数据画图
+## Part 2: Drawing with TCGA data
 
 ### 下载输入数据
+### Download input data
 
 - cancergenes_list.txt，感兴趣的癌症基因列表。下载自：<http://ncg.kcl.ac.uk/cancer_genes.php#known>
+- cancergenes_list.txt, a list of cancer genes of interest. Download from: <http://ncg.kcl.ac.uk/cancer_genes.php#known>
 
 - TCGA数据用CGDS-R下载，CGDS-R的用法可参考这篇：<https://mp.weixin.qq.com/s/pqck8jMk-WIZ6EgkBIWQHA>，以methylation和mRNA expression为例
+- TCGA data are downloaded using CGDS-R. For the usage of CGDS-R, please refer to this article: <https://mp.weixin.qq.com/s/pqck8jMk-WIZ6EgkBIWQHA>, taking methylation and mRNA expression as examples
 
 ```r
 # genes of interest
@@ -181,7 +211,7 @@ hypoMat <- list()
 hyperMat <- list()
 exprMat <- list()
 
-for(mycancer in tolower(cancers)){ #超级慢，可以换成cancers[1:2]先跑前两种癌症
+for(mycancer in tolower(cancers)){ #超级慢，可以换成cancers[1:2]先跑前两种癌症 #Super slow, you can change to cancers[1:2] to run the first two cancers first
   mycancerstudy = paste0(mycancer, '_tcga')
   #cl = getCaseLists(mycgds,mycancerstudy)
   # case_list_id: gbm_tcga_cnaseq. Samples with mutation and CNA data (273 samples)
@@ -193,8 +223,8 @@ for(mycancer in tolower(cancers)){ #超级慢，可以换成cancers[1:2]先跑�
   mygeneticprofile1 <- paste0(mycancer, "_tcga_methylation_hm450")
   # Get data slices for a specified list of genes, genetic profile and case list
   hm450 <- getProfileData(mycgds, genes, mygeneticprofile1, mycaselist1)
-  hm450_hypo <- hm450 < 0.2 #定义hypo
-  hm450_hyper <- hm450 > 0.7 #定义pyper
+  hm450_hypo <- hm450 < 0.2 #定义hypo #define hypo 
+  hm450_hyper <- hm450 > 0.7 #定义pyper #define pyper 
   hypoMat[[mycancer]] <- colSums(hm450_hypo)/nrow(hm450)
   hyperMat[[mycancer]] <- colSums(hm450_hyper)/nrow(hm450)
   
@@ -214,6 +244,7 @@ head(hypoMat)
 ```
 
 ### 整理成画图所需的格式
+### Organize into the format required for drawing
 
 ```r
 getData_methylation <- function(hypoMat, hyperMat, exprMat, top_n = 20){
@@ -239,11 +270,14 @@ ggData <- getData_methylation(hypoMat, hyperMat, exprMat, top_n = 20)
 ```
 
 ### 开始画图
+### Start drawing
 
 ```r
 # DNA甲基化
+# DNA methylation
 mosaicplot(ggData$MH450)
 
+# mRNA expression
 # mRNA expression
 mosaicplot(ggData$Expr)
 ```
