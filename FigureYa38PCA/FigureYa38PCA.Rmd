@@ -143,13 +143,13 @@ Uncle Y enhanced ggord and put it in the R package `yyplot`, see this article fo
 library(ggplot2)
 library(plyr)
 library(ggord)
-#library(yyplot)
+library(yyplot)
 
 #有可能你的网络在安装yyplot时遇到困难，我把geom_ord_ellipse函数单独下载，通过本地进行加载。
 #调用yyplot包里的geom_ord_ellipse函数
 #It is possible that your network encountered difficulties when installing yyplot, so I downloaded the geom_ord_ellipse function separately and loaded it locally.
 #call the geom_ord_ellipse function in the yyplot package
-source('./geom_ord_ellipse.R') #该文件位于当前文件夹 the file is located in the current folder
+#source('./geom_ord_ellipse.R') #该文件位于当前文件夹 the file is located in the current folder
 
 #用ggord画基本PCA图
 #draw basic PCA graph with ggord
