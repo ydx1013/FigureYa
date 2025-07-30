@@ -1,16 +1,10 @@
 ---
 title: "FigureYa156enrichSimulation"
-author: "小丫画图出品"
-date: "2019-12-22"
+author: "Zongcheng Li"
+reviewer: "Ying Ge, Junyi Shen"
+date: "2025-5-20"
 output: html_document
 ---
-欢迎关注“小丫画图”公众号，同名知识星球等你加入
-
-小丫微信: epigenomics  E-mail: figureya@126.com
-
-作者：Hazard
-
-小丫编辑校验
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
