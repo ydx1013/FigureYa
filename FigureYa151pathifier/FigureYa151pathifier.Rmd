@@ -1,6 +1,6 @@
 ---
 title: "FigureYa151pathifier"
-author: "Zongcheng Li"
+author: "Xiaofan Lu"
 reviewer: "Ying Ge, Junyi Shen"
 date: "2025-5-20"
 output: html_document
