@@ -1,32 +1,30 @@
 ---
 title: "FigureYa166scCNV"
-author: "小丫画图出品"
-date: "2020-3-15"
+author: "Zongcheng Li"
+reviewer: "Ying Ge, Junyi Shen"
+date: "2025-5-20"
 output: html_document
 ---
-欢迎关注“小丫画图”公众号，回复“小白”，看小视频，实现点鼠标跑代码。
-
-小丫微信: epigenomics  E-mail: figureya@126.com
-
-作者：Hazard
-
-小丫编辑校验
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
 # 需求描述
+# Requirement Description
 
 单细胞CNV的计算和画图。
+Calculate and plot single-cell CNVs.
 
 ![](example1.png)
 
 Figure 1. Characterizing Intra-tumoral Expression Heterogeneity in HNSCC by Single-Cell RNA-Seq. (B) Heatmap shows large-scale CNVs for individual cells (rows) from a representative tumor (MEEI5), inferred based on the average expression of 100 genes surrounding each chromosomal position (columns). Red: amplifications; blue: deletions.
 
 出自<https://www.cell.com/cell/fulltext/S0092-8674(17)31270-9>
+From <https://www.cell.com/cell/fulltext/S0092-8674(17)31270-9>
 
 其他文章里类似的图：
+Similar pictures from other articles:
 
 ![](example2.png)
 
@@ -35,12 +33,16 @@ Fig. 1. Dissection of melanoma with single-cell RNA-seq. (B) Chromosomal landsca
 出自<https://science.sciencemag.org/content/352/6282/189>
 
 # 应用场景
+# Application Scenarios
 
 用单细胞RNA-seq数据计算CNV，对比展示多组之间的差异。
+Calculate CNVs using single-cell RNA-seq data and compare differences between multiple groups.
 
 # 环境设置
+# Environment Setup
 
 使用国内镜像安装包
+Using a domestic mirror to install the package
 
 ```{r}
 options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
@@ -48,6 +50,7 @@ options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 ```
 
 加载包
+Loading the package
 
 ```{r}
 library(org.Hs.eg.db)
@@ -55,11 +58,12 @@ library(magrittr)
 library(dplyr)
 library(caTools)
 library(pheatmap)
-Sys.setenv(LANGUAGE = "en") #显示英文报错信息
-options(stringsAsFactors = FALSE) #禁止chr转成factor
+Sys.setenv(LANGUAGE = "en") #显示英文报错信息 # Display English error messages
+options(stringsAsFactors = FALSE) #禁止chr转成factor # Disable conversion of chr to factor
 ```
 
 自定义函数
+Custom Function
 
 ```{r}
 minmax <- function(x, min, max ){
@@ -70,10 +74,13 @@ minmax <- function(x, min, max ){
 ```
 
 # 输入文件
+# Input file
 
 GSE103322_HNSCC_all_data.txt.gz，这里以原文的数据为例，其他单细胞RNA-seq数据与此类似，包含表达矩阵和样品分组等信息meta data。
+GSE103322_HNSCC_all_data.txt.gz. This example uses the original data. Other single-cell RNA-seq datasets are similar and include metadata such as expression matrix and sample grouping.
 
 Download GSE103322_HNSCC_all_data.txt.gz from <https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE103322>，已上传到微云，下载链接<https://share.weiyun.com/5gsuteR>
+Download GSE103322_HNSCC_all_data.txt.gz from <https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE103322>, uploaded to Weiyun, download link <https://share.weiyun.com/5gsuteR>
 
 ```{r}
 # read cell annotation information
@@ -254,6 +261,9 @@ final_cnv[initial_cnv < baseline_min - 0.2] <- (initial_cnv - baseline_min)[init
 
 用pheatmap画图
 
+# Start plotting
+
+Use pheatmap to plot
 ```{r fig.width=8, fig.height= 3}
 annodata$type <- factor(ifelse(annodata$`classified as non-cancer cells` == 1, 
                         "Non-malignant",
@@ -290,6 +300,10 @@ you can also sample randomly some of Non-malignant cells for display, just like 
 # 后期处理
 
 输出的PDF文件是矢量图。You may use Adobe Illustrator to prettify the heatmap plot after saving it into a pdf file.
+
+# Post-Processing
+
+The output PDF file is a vector image. You may use Adobe Illustrator to pretttify the heatmap plot after saving it to a PDF file.
 
 # Session Info
 
