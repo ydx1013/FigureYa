@@ -1,16 +1,10 @@
 ---
 title: "FigureYa167TumorIndex"
-author: "小丫画图出品"
-date: "2020-3-15"
+author: "Zongcheng Li"
+reviewer: "Ying Ge, Junyi Shen"
+date: "2025-5-20"
 output: html_document
 ---
-欢迎关注“小丫画图”公众号，回复“小白”，看小视频，实现点鼠标跑代码。
-
-小丫微信: epigenomics  E-mail: figureya@126.com
-
-作者：SRF
-
-小丫编辑校验
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -20,15 +14,20 @@ knitr::opts_chunk$set(message = FALSE)
 
 # 需求描述：
 作者通过不同肝癌发展模型的RNAseq和转录因子cluster计算出tumor index(`TI:-1~1`，正常~癌)。
+# Requirement:
+The author calculated the tumor index (TI: -1 to 1, normal to cancer) using RNAseq and transcription factor clusters from different liver cancer development models.
 
 要求：①输入建模动物肝癌模型RNAseq数据算出TI②外部验证数据算出TI，重复出下图。
+Requirements: ① Calculate the TI using RNAseq data from the animal liver cancer model. ② Calculate the TI using external validation data. Repeat the calculation to produce the following figure.
 
 ![](example.png)
 出自<http://www.pnas.org/cgi/pmidlookup?view=long&pmid=31843886>
+From <http://www.pnas.org/cgi/pmidlookup?view=long&pmid=31843886>
 
 Fig.5 TI values of human HCC and precancer patients with steatosis, fibrosis, or NASH. (A) A total of 193 adjacent nontumor liver samples and 240 liver tumor samples were from the GSE36376 dataset. (B) A total of 10 nontumor liver samples, 17 dysplastic liver samples, 13 cirrhotic liver samples, and 35 HCC samples in GSE6764. (C) Cirrhotic liver (n = 34) and HCC (n = 35) samples in GSE56140. (D) Liver samples for control (n = 14), obese (n = 27), steatosis (n = 14), and NASH (n = 18) patients in GSE48452. (E) A total of 72 fibrotic liver samples (fibrosis stages 0–1, n = 40; fibrosis stages 3–4, n = 32) in GSE49541. (F) Hepatitis B virus-related liver fibrosis samples (n = 124) in GSE84044. The pathological Scheuer score of each sample was evaluated, score 0 (n = 43), score 1 (n = 20), score 2 (n = 33), and score 3 and 4 (n = 28). (G) A total of 371 liver tumor samples in the TCGA dataset. Of these, 347 tumor samples had well-documented tumor stages (stage I, n = 171; stage II, n = 86; stage III and more advanced, n = 90).
 
 # 应用场景
+Application Scenarios
 
 1.利用此模型方法学训练自己多阶段/多点的RNAseq数据，或是应用到单细胞数据（如不同分化程度的T细胞）
 
@@ -38,9 +37,19 @@ Fig.5 TI values of human HCC and precancer patients with steatosis, fibrosis, or
 
 我们这里重新包装了代码，提供比较简便的使用方法。
 
+1. Use this model methodology to train your own multi-stage/multi-point RNAseq data, or apply it to single-cell data (e.g., T cells at different levels of differentiation).
+
+2. Validate data: e.g., differentiation between cancer and normal cells.
+
+The article already provides [code](https://github.com/wanyewang1/Index_model), but some users said they didn't know how to use it.
+
+We've repackaged the code here to provide a simpler way to use it.
+
 # 环境设置
+# Environment Setup
 
 加载包
+Loading Packages
 
 ```{r}
 library(GSA)
@@ -53,15 +62,18 @@ library(GEOquery)
 library(ggpubr)
 library(ggsci)
 
-Sys.setenv(LANGUAGE = "en") #显示英文报错信息
-options(stringsAsFactors = FALSE) #禁止chr转成factor
+Sys.setenv(LANGUAGE = "en") #显示英文报错信息 # Display English error messages
+options(stringsAsFactors = FALSE) #禁止chr转成factor # Disable conversion of chr values to factors
 ```
 
 # 训练模型
+# Training Model
 
 > 打开`model_training.R`文件查看详情，已添加必要的中文注释，可以用自己的数据来训练模型。
+> Open the `model_training.R` file for details. Necessary Chinese annotations have been added. You can train the model using your own data.
 
 这里概括一下训练模型的重要步骤：
+Here is a summary of the key steps in model training:
 
 - 1.WT adult liver and HCC的转录组数据用于训练模型。
 - 2.鉴定到61个显著改变的TFcluster。
@@ -69,6 +81,12 @@ options(stringsAsFactors = FALSE) #禁止chr转成factor
 - 4.计算每个样本的TF activity. 
 - 5.计算每个样本的tumor-promoting and -inhibiting strengths. 
 - 6.广义线性模型拟合，计算index
+- 1. Transcriptome data from WT adult liver and HCC were used to train the model.
+- 2. 61 significantly altered TFclusters were identified.
+- 3. Use a random forest to determine the contribution of downstream genes in the TFcluster to the outcome variable.
+- 4. Calculate TF activity for each sample.
+- 5. Calculate tumor-promoting and -inhibiting strengths for each sample.
+- 6. Fit a generalized linear model and calculate the index
 
 ```{r}
 # source("model_training.R")
@@ -78,15 +96,19 @@ source("Tumorindex.R")
 ```
 
 # 准备输入数据
+# Prepare input data
 
 data.csv文件太大，请从微云下载<https://share.weiyun.com/54ElVDG>
+The data.csv file is too large. Please download it from Weiyun <https://share.weiyun.com/54ElVDG>
 
 ```{r}
 #x_train_m为WT&HCC RNAseq，在计算样本的TF activity需要用到。
+#x_train_m represents the WT and HCC RNAseq sequences and is required to calculate the TF activity of the samples.
 train <-  read.csv('data.csv') %>% na.omit() %>% .[,c(1,14:16,26:28,32:34,38:40,44:46,59:61,65:67,71:73,89:91,56:58,86:88,96:100)]
 train$X <- toupper(as.character(train$X))
 y=c(rep(1,27),rep(2,11)) #1:WT 2:HCC
 #z_test_m为用户想要计算TI的RNAseq matrix, 第一列是genesymbol，不需要进行标准化。
+#z_test_m is the RNAseq matrix for which the user wants to calculate TI. The first column contains gene symbols and does not require normalization.
 test <- read.csv("data.csv") %>% na.omit()
 rownames(test)[1] <- "X"
 test$X <- toupper(as.character(test$X))
@@ -95,7 +117,7 @@ z_test_m <- Prepare_input(x_train_m = train, z_test_m = test)$z_test_m
 ```
 
 # 运行TI模型
-
+# Run TI model
 ```{r}
 #step3
 M_weight <- Prepare_M_weight(z_test_m = z_test_m, Readout = Readout)
@@ -115,8 +137,10 @@ Sample_index <- predict(fit, newx = TFcluster, s= c(0.1,0.05))
 ```
 
 # 画图
+# draw
 
 对应文章中的Figure 3E
+Corresponds to Figure 3E in the article
 
 Fig. 3. A tumorigenic index (TI) for quantitative evaluation of liver tumorigenesis. (E) The TI values were calculated from the tumor-promoting and tumor-inhibiting strengths of samples in the third layer.
 
@@ -138,6 +162,7 @@ Sample_index[, "group"] <- factor(Sample_index[, "group"], levels = c(Youth, WT,
 Sample_index[, "group_l"] <- group_l[Sample_index$group]
 
 #这里对同一group采用平均值的方法
+#Here we use the average method for the same group
 p.dat <- Sample_index %>% data.table::as.data.table() %>% group_by(., group) %>% summarize(mean0.05 = mean(s0.05))
 ggplot(p.dat, aes(x = group, y = mean0.05)) + 
   geom_bar(stat = "identity", width = 0.8, fill = "purple") +
@@ -147,14 +172,19 @@ ggplot(p.dat, aes(x = group, y = mean0.05)) +
 ```
 
 # 应用到自己的数据集
+# Apply to your own dataset
 
 这里我就重复Fig5B和5C好了，其余类似。
+I'll repeat the steps for Figs. 5B and 5C here; the rest are similar.
 
 GSE6764数据集：10 nontumor liver samples, 17 dysplastic liver samples, 13 cirrhotic liver samples, and 35 HCC samples
+GSE6764 dataset: 10 nontumor liver samples, 17 dysplastic liver samples, 13 cirrhotic liver samples, and 35 HCC samples
 
 GSE56140数据集：Cirrhotic liver (n = 34) and HCC (n = 35) samples 
+GSE56140 dataset: Cirrhotic liver (n = 34) and HCC (n = 35) samples
 
 准备数据集：表达矩阵和其临床分组数据，常规的GEO数据集用法，放在Prepare_GEO.R里。
+Prepare the dataset: expression matrix and clinical group data, following standard GEO dataset usage, in Prepare_GEO.R.
 
 ```{r, eval=FALSE}
 source("Prepare_GEO.R")
@@ -165,10 +195,12 @@ gse56140dat$X <- toupper(as.character(gse56140dat$X))
 datlist <- list(gse6764dat = gse6764dat, gse56140dat = gse56140dat)
 
 # 保存，便于下次使用
+# Save for future use
 save(datlist, gse56140pdata, gse6764pdata, file = "datlist.RData")
 ```
 
 ## 运行模型
+## Run the model
 
 ```{r}
 #train
@@ -199,6 +231,7 @@ names(indexlist) <- names(datlist)
 ```
 
 ## 画图
+#calculate index
 
 ```{r}
 plotdat1 <- merge(indexlist$gse6764dat, gse6764pdata[, c("geo_accession", "characteristics_ch1")],
@@ -240,7 +273,7 @@ p2 <- ggboxplot(plotdat2, x = "group", y = "s0.05", color = "group") +
   stat_compare_means(label = "p.signif", method = "t.test") +
   scale_color_aaas() + xlab("") + ylab("Index")
 
-# 组图
+# 组图 # Assembly diagram
 cowplot::plot_grid(plotlist = list(p1 = p1, p2 = p2), ncol = 2)
 
 ggsave("TumorIndex.pdf", width = 12, height = 8)
