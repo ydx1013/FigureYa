@@ -1,40 +1,41 @@
 ---
 title: "FigureYa183condSurv"
-author: "小丫画图出品"
-date: "2020-6-28"
+author: "Xiaofan Lu"
+reviewer: "Ying Ge, Junyi Shen"
+date: "2025-5-20"
 output: html_document
 ---
-欢迎关注“小丫画图”公众号，回复“小白”，看小视频，实现点鼠标跑代码。
-
-小丫微信: epigenomics  E-mail: figureya@126.com
-
-作者：大鱼海棠
-
-单位：中国药科大学国家天然药物重点实验室，生物统计与计算药学研究中心
-
-@ 西红柿、小丫编辑校验
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
 # 需求描述
 
+# Requirement
+
 想画条件生存曲线，conditional survival，R包condsurv能实现。
+To draw a conditional survival curve, the R package condsurv can achieve conditional survival.
 
 ![](example.png)
 
 出自<https://link.springer.com/article/10.1245/s10434-020-08235-w>
+fromhttps://link.springer.com/article/10.1245/s10434-020-08235-w
 
 FIG. 1 Kaplan–Meier estimates for conditional survival up to 8 years in 3082 patients given 0–5 years’ 1.00 survival after resection of pancreatic cancer
 
 # 应用场景
 
+# Application Scenarios
+
 绘制条件概率生存曲线，给出条件生存概率表。
+Draw the conditional probability survival curve and provide the conditional survival probability table.
 
 # 环境设置
 
+# Environment Setup
+
 使用国内镜像安装包
+Use the domestic mirror installation package
 
 ```{r}
 options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
@@ -44,19 +45,21 @@ options(warn = -1)
 ```
 
 加载包
+Loading package
 
 ```{r}
-#library(condsurv) # 本代码使用的函数为该函数包中gg_conditional_surv的修改版
+#library(condsurv) # 本代码使用的函数为该函数包中gg_conditional_surv的修改版 #The function used in this code is a modified version of gg_conditional_surv in the function package
 library(survival)
 library(tidyverse)
 library(survminer)
 library(ggpubr)
 library(patchwork)
-Sys.setenv(LANGUAGE = "en") #显示英文报错信息
-options(stringsAsFactors = FALSE) #禁止chr转成factor
+Sys.setenv(LANGUAGE = "en") #显示英文报错信息  # Display an English error message
+options(stringsAsFactors = FALSE) #禁止chr转成factor   # prohibit chr from being converted to factor
 ```
 
 自定义函数
+Custom function
 
 ```{r}
 conditional_surv_est <- function(basekm, t1, t2) {
@@ -133,14 +136,23 @@ plot_condsurv <- function (survdt = NULL,
                            legend.pos = "top") 
 {
   # survdat: 生存数据，至少包含两列，生存时间（futime，年为单位）和生存状态（fustat）
+  # survdat: Survival data, at least two columns, survival time (futime, in years) and survival status (fustat)
   # at：一个数值序列，表示条件生存时间中的附加时间，如在第三年存活的基础上额外存活at年的概率
+  # at: A numerical sequence representing additional time in conditional survival time, such as the probability of surviving for an extra at years on top of surviving in the third year
   # surv.cut：KM曲线在surv.cut处截断
+  # surv.cut: The KM curve cuts off at surv.cut
   # main：图像主题，默认无
+  # main: Image theme, none by default
   # xlab：图像x轴名称，默认以年为单位
+  # xlab: Image X-axis name, default in years
   # ylab：图像y轴名称，默认以25%为间隔
+  # ylab: Y-axis name of the image, with a default interval of 25%
   # curv.col：各条件生存曲线的颜色
+  # curv.col: The color of the survival curve for each condition
   # lwd：线条宽度
+  # lwd: Line width
   # legend.pos：图例位置，默认为顶部
+  # Legend.pos: legend location, default to top
   
   library(ggplot2)
   library(survival)
@@ -174,6 +186,7 @@ plot_condsurv <- function (survdt = NULL,
   condsurvdat$condtime <- paste0(condsurvdat$condtime," Year")
   
   # 第一幅条件生存概率曲线
+  # The first conditional survival probability curve
   if(is.null(surv.cut)) {
     condsurv_plot <- ggplot(condsurvdat, aes(x = timept, y = prob, color = condtime)) + 
                             scale_color_manual(values = mycol) + 
@@ -210,6 +223,7 @@ plot_condsurv <- function (survdt = NULL,
   }
   
   # 输出条件生存概率表
+  # Output the conditional survival probability table
   condsurvmat <- matrix("",
                         nrow = max.condsurv + 1,
                         ncol = floor(max(survdt$futime)) + 1,
@@ -231,7 +245,10 @@ plot_condsurv <- function (survdt = NULL,
 
 # 输入文件
 
+# Input File
+
 easy_input.csv，生存数据，至少包含两列，生存时间（futime，年为单位）和生存状态（fustat）。
+easy_input.csv, survival data, must contain at least two columns: survival time (futime, in years) and survival status (fustat).
 
 ```{r}
 dat <- read.csv("easy_input.csv",row.names = NULL,check.names = F,stringsAsFactors = F, header = T)
@@ -241,22 +258,31 @@ table(dat$fustat)
 
 # 分析画图
 
+# Analysis drawing
+
 原文上半部分是图，下半部分是表格。
+The upper part of the original text is a graph and the lower part is a table.
 
 这里都用画图的方式实现，让三部分结果对齐。当然你也可以像原文那样画成表格。
+Here, all are achieved through drawing diagrams to align the results of the three parts. Of course, you can also draw it as a table just like in the original text.
 
 ```{r}
 # 注意将生存时间转换为年
+# Note to convert the survival time to years
 dat$futime <- dat$futime/365
 
 # 设置最长希望观测的生存时间点（条件概率的最大生存时间，如5年）
+# Set the maximum desired survival time point for observation (the maximum survival time of conditional probability, such as 5 years)
 max.condsurv <- 5
 
 # 自定义颜色
+# Custom Colors
 mycol <- RColorBrewer::brewer.pal(n = max.condsurv + 1, name = 'Set2')
 
 # 第一幅
+# The First One
 # 调用函数画图，同时输出生存概率表
+# Call the function to draw a graph and output the survival probability table at the same time
 p1 <- plot_condsurv(survdt = dat,
                    at = 0:max.condsurv,
                    surv.cut = 6,
@@ -264,7 +290,9 @@ p1 <- plot_condsurv(survdt = dat,
                    legend.pos = "top")
 
 # 第二幅
+# The Second One
 # 把条件生存概率表画成图
+# Plot the conditional survival probability table as a graph
 myfit <- p1$basekm 
 cond <- p1$cond
 prob_times <- p1$prob_time
@@ -282,14 +310,17 @@ p2 <- ggplot(data = data, aes(x=years,y=con,label=label))+
         scale_color_gradientn(colours = mycol) #颜色跟第一幅图一致
 
 # 第三幅
+# The Third One
 n <- ggrisktable(myfit, break.time.by=1, data = dat)
 m <- n$data[(min(prob_times)+1):(max(prob_times)+1),]
 m$time <- as.factor(m$time)
 # 把风险表输出到文件
+# Output the risk table to a file
 risk <- t(data.frame(risk = m$n.risk))
 colnames(risk) <- m$time
 write.csv(risk, "number_at_risk.csv", quote = F)
 # 把风险表画成图
+# Draw the risk table as a graph
 p3 <- ggplot(data = m, aes(x=time, y=strata, label=n.risk)) +
   ggpubr::geom_exec(geom_text, data = m, size = 5, color = "black") +
   theme_classic() +
@@ -302,6 +333,7 @@ p3 <- ggplot(data = m, aes(x=time, y=strata, label=n.risk)) +
 ```
 
 合并图像并输出
+Merge the images and output them
 
 ```{r fig.width=8, fig.height=12}
 condsurv_plot <- p1$condsurvcurve + p2 + p3 + 
