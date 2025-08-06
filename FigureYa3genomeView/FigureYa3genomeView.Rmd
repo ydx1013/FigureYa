@@ -25,15 +25,11 @@ I want to display bigwig signal plots of ChIP-seq, DNase/ATAC-seq, or RNA-seq ne
 
 场景三：展示RNA-seq和ChIP-seq的信号，证实转录因子结合对基因转录的影响。
 
-在嘉因公众号回复“A7”查看详情。
-
 Scenario 1: Use DNase/ATAC-seq or ChIP-seq data of histone modifications such as H3K4me3, H3K4me1, and H3K27ac to confirm the locations of gene promoters and enhancers.
 
 Scenario 2: Show ChIP-seq data to confirm which transcription factors regulate my genes.
 
 Scenario 3: Show RNA-seq and ChIP-seq signals to confirm the effect of transcription factor binding on gene transcription.
-
-Reply "A7" on Jiayin official account to view details.
 
 ### 输入数据
 ### Input data
@@ -144,4 +140,5 @@ plotTracks(tracklist, from = startpoint, to = endpoint,
            collapseTranscripts = "longest")#同一个基因的多个transcript压缩成最长的一个 multiple transcripts of the same gene compress into the longest one
 dev.off()
 sessionInfo()
+
 ```
