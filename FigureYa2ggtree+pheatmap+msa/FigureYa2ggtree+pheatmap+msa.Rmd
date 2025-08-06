@@ -28,13 +28,9 @@ Another document to solve the grouping problem (by Uncle Y)
 ## 使用场景
 ## usage scenario
 
-在嘉因公众号回复“ggtree”查看详情。
-
 场景一：多组sample的RNA-seq数据画完heatmap，发现我感兴趣的基因家族所在的cluster当中，有一些功能未知的基因。这些功能未知基因是否也属于这个基因家族？做多序列比对看看，它们是否具有相似的结构区域。
 
 场景二：我鉴定出来一个新的转录因子，它有什么功能？序列相似预示着功能相似，做多序列比对，先找到序列相似的已知转录因子，再下载公共数据，查看它们的表达谱是否也是一致的。
-
-Reply to “ggtree” in Jiayin official account for details.
 
 Scenario 1: After drawing the heatmap of RNA-seq data from multiple samples, I found that there are some genes with unknown functions in the cluster of the gene family I am interested in. Do these genes with unknown functions also belong to this gene family? Perform multiple sequence comparison to see if they have similar structural regions.
 
@@ -132,3 +128,4 @@ pdf(file="ggtree.pdf")
 p2
 dev.off()
 ```
+
