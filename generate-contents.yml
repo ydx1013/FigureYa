@@ -2,17 +2,24 @@ name: Generate FigureYa Contents
 
 on:
   push:
-    branches: [main]
+    branches: [main, master]
   workflow_dispatch:
 
 jobs:
   build-contents:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout FigureYa repo
+      - name: Checkout main branch
         uses: actions/checkout@v4
         with:
-          fetch-depth: 1
+          ref: main
+          path: main_dir
+
+      - name: Checkout master branch
+        uses: actions/checkout@v4
+        with:
+          ref: master
+          path: master_dir
 
       - name: Set up Python
         uses: actions/setup-python@v5
