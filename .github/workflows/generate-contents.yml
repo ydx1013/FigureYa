@@ -9,6 +9,9 @@ jobs:
   build-contents:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository for scripts and workflows
+        uses: actions/checkout@v4
+
       - name: Checkout main branch
         uses: actions/checkout@v4
         with:
