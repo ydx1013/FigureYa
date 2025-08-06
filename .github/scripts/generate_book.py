@@ -1,48 +1,33 @@
 import os
-import re
 
-def sorted_folders_by_number(folder_list):
-    def folder_key(name):
-        m = re.search(r'(\d+)', name)
-        return int(m.group(1)) if m else float('inf')
-    return sorted(folder_list, key=folder_key)
-
-def collect_html_sections(base_dir, branch_name):
-    sections = []
-    toc = []
-    folders = [f for f in os.listdir(base_dir) if os.path.isdir(os.path.join(base_dir, f)) and not f.startswith('.')]
-    folders = sorted_folders_by_number(folders)
-    for folder in folders:
-        folder_path = os.path.join(base_dir, folder)
-        html_files = [f for f in sorted(os.listdir(folder_path)) if f.endswith('.html')]
-        if html_files:
-            chapter_id = f"{branch_name}_{folder.replace(' ', '_')}"
-            toc.append(f'<li><a href="#{chapter_id}">{branch_name}: {folder}</a></li>')
-            chapter_contents = []
-            for fname in html_files:
-                with open(os.path.join(folder_path, fname), encoding='utf-8') as f:
-                    chapter_contents.append(f.read())
-            sections.append(f"""
-<section id="{chapter_id}">
-  <h2>{branch_name}: {folder}</h2>
-  {''.join(chapter_contents)}
-</section>
-""")
-    return toc, sections
-
+root_dir = "."
 output_file = "FigureYa_contents.html"
+chapter_template = """
+<section id="{chapter_id}">
+  <h2>{chapter_title}</h2>
+  {chapter_content}
+</section>
+"""
+
 toc_entries = []
 chapters_html = []
 
-# main 分支内容在前
-main_toc, main_sections = collect_html_sections("main_dir", "main")
-toc_entries += main_toc
-chapters_html += main_sections
-
-# master 分支内容在后
-master_toc, master_sections = collect_html_sections("master_dir", "master")
-toc_entries += master_toc
-chapters_html += master_sections
+# 只遍历一级目录
+for folder in sorted(os.listdir(root_dir)):
+    if os.path.isdir(folder) and not folder.startswith('.'):
+        html_files = [f for f in sorted(os.listdir(folder)) if f.endswith('.html')]
+        if html_files:
+            chapter_id = folder.replace(' ', '_')
+            toc_entries.append(f'<li><a href="#{chapter_id}">{folder}</a></li>')
+            chapter_contents = []
+            for fname in html_files:
+                with open(os.path.join(folder, fname), encoding='utf-8') as f:
+                    chapter_contents.append(f.read())
+            chapters_html.append(chapter_template.format(
+                chapter_id=chapter_id,
+                chapter_title=folder,
+                chapter_content='\n'.join(chapter_contents)
+            ))
 
 html_output = f"""
 <!DOCTYPE html>
