@@ -26,6 +26,12 @@ jobs:
         with:
           python-version: '3.x'
 
+      - name: Debug: list files
+        run: |
+          pwd
+          ls -al
+          ls -al .github/scripts
+
       - name: Generate contents HTML
         run: |
           pip install beautifulsoup4
