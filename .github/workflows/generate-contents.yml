@@ -9,22 +9,11 @@ jobs:
   build-contents:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout main branch
         uses: actions/checkout@v4
         with:
           ref: main
-
-      - name: Checkout main branch to main_dir
-        uses: actions/checkout@v4
-        with:
-          ref: main
-          path: main_dir
-
-      - name: Checkout master branch to master_dir
-        uses: actions/checkout@v4
-        with:
-          ref: master
-          path: master_dir
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
