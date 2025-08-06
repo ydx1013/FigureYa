@@ -9,16 +9,18 @@ jobs:
   build-contents:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository for scripts and workflows
+      - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          ref: main
 
-      - name: Checkout main branch
+      - name: Checkout main branch to main_dir
         uses: actions/checkout@v4
         with:
           ref: main
           path: main_dir
 
-      - name: Checkout master branch
+      - name: Checkout master branch to master_dir
         uses: actions/checkout@v4
         with:
           ref: master
