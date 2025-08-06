@@ -9,9 +9,25 @@ jobs:
   build-contents:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout FigureYa repo
+      # 1. 先 checkout 仓库所有分支到 runner 主目录（确保 .github/scripts/ 目录存在）
+      - name: Checkout repository (all branches)
         uses: actions/checkout@v4
         with:
+          fetch-depth: 0
+
+      # 2. 分别 checkout main/master 到各自目录
+      - name: Checkout main branch to main_dir
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: main_dir
+          fetch-depth: 1
+
+      - name: Checkout master branch to master_dir
+        uses: actions/checkout@v4
+        with:
+          ref: master
+          path: master_dir
           fetch-depth: 1
 
       - name: Set up Python
