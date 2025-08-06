@@ -26,7 +26,7 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Debug: list files
+      - name: Debug list files
         run: |
           pwd
           ls -al
