@@ -40,11 +40,11 @@ jobs:
           pip install beautifulsoup4
           python .github/scripts/generate_book.py
 
-      - name: Checkout FigureYa-Contents repo
+      - name: Checkout FigureYa repo
         uses: actions/checkout@v4
         with:
-          repository: ying-ge/FigureYa-Contents
-          path: FigureYa-Contents
+          repository: ying-ge/FigureYa
+          path: FigureYa
           token: ${{ secrets.FIGUREYA_CONTENTS_TOKEN }}
 
       - name: Copy generated HTML
