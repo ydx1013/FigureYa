@@ -1,40 +1,41 @@
 ---
 title: "FigureYa187RMS"
-author: "小丫画图出品"
-date: "2020-7-26"
+author: "Xiaofan Lu"
+reviewer: "Ying Ge, Junyi Shen"
+date: "2025-5-20"
 output: html_document
 ---
-欢迎关注“小丫画图”公众号，回复“小白”，看小视频，实现点鼠标跑代码。
-
-小丫微信: epigenomics  E-mail: figureya@126.com
-
-作者：大鱼海棠
-
-单位：中国药科大学国家天然药物重点实验室，生物统计与计算药学研究中心
-
-小丫编辑校验
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
 # 需求描述
 
+# Requirement
+
 用c-index比较两个预后模型，并画出图A。
+Compare the two prognostic models using c-index and draw Figure A.
 
 ![](example.png)
 
 出自<https://onlinelibrary.wiley.com/doi/full/10.1111/cpr.12861>
+fromhttps://onlinelibrary.wiley.com/doi/full/10.1111/cpr.12861
 
 FIGURE 6 RMS curves for RPGI and the integrated PCPI scores are plotted for: A, the TCGA cohort, B, validation set 1 and C, validation set 2. Each point represents the RMS time of corresponding RPGI and PCPI scores. The RMS curves show a larger slope in all three data sets for PCPI, indicating superior estimation of survival with PCPI. C-indexes for RPGI and PCPI are also provided. P values represent the difference between the two models in terms of C-index.
 
 # 应用场景
 
+# Application Scenarios
+
 计算限制性生存时间，并比较不同因素的预后价值
+Calculate the restrictive survival time and compare the prognostic value of different factors
 
 # 环境设置
 
+# Environment Setup
+
 使用国内镜像安装包
+Use the domestic mirror installation package
 
 ```{r eval=FALSE}
 options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
@@ -44,19 +45,22 @@ install.packages("survRM2")
 ```
 
 加载包
+Loading package
 
 ```{r}
 library(survival)
 library(survcomp)
 library(survRM2)
-Sys.setenv(LANGUAGE = "en") #显示英文报错信息
-options(stringsAsFactors = FALSE) #禁止chr转成factor
+Sys.setenv(LANGUAGE = "en") #显示英文报错信息  # Display an English error message
+options(stringsAsFactors = FALSE) #禁止chr转成factor  # prohibit chr from being converted to factor
 ```
 
 自定义函数，计算、画图
+Custom functions, calculation, and drawing
 
 ```{r}
 # 自定义函数
+# Custom Functions
 rms2curve <- function(survdt = NULL, 
                       base.marker = NULL, 
                       modified.marker = NULL, 
@@ -67,13 +71,21 @@ rms2curve <- function(survdt = NULL,
                       height = 4.5) {
   
   # survdt：输入数据，必须包含生存时间和生存状态，且无缺失值
+  # survdt: Input data must include the survival time and survival status, and there must be no missing values
   # base.marker：数值向量，预先计算好的基础marker，样本顺序与survdt一致
+  # Base.Marker: Numerical vector, pre-calculated base marker, sample order consistent with survdt
   # modified.marker：数值向量，预先计算好的“综合”marker，样本顺序与survdt一致
+  # modified.marker: Numerical vector, pre-calculated "comprehensive" marker, sample order consistent with survdt
   # tau：限制时间点，一般为5年或10年，即60月或120月
+  # tau: The time limit is usually 5 or 10 years, that is, 60 months or 120 months
   # n.grid：横左边切割用，默认为100，做百分化处理
+  # n.grid: Used for horizontal left cutting, with a default value of 100, for 100% splitting processing
   # prefix：输出图片的前缀名
+  # prefix: The prefix name of the output image
   # width：输出图片宽度
+  # width: Output the width of the image
   # height：输出图片高度
+  # height: Output the height of the image
   
   cat("Please make sure the survival time (day|year) has been converted to survival time (month)!\n")
   surv.time <- survdt$OS.time
@@ -127,23 +139,31 @@ rms2curve <- function(survdt = NULL,
 
 # 输入文件
 
+# Input File
+
 easy_input.csv，包括一个baseline score。一般是预后模型如LASSO得到的基因得分（可参考FigurejYa31lasso的输出文件lasso_output.txt），以及其他额外变量，这些变量可能提高预后的预测性能。
+easy_input.csv, including a baseline score. Generally, it is the gene score obtained from prognostic models such as LASSO (refer to the output file lasso_output.txt of FigurejYa31lasso), as well as other additional variables, which may improve the predictive performance of prognosis.
 
 此处的输入数据来自原文，包括由多变量Cox + LASSO惩罚得到的riskscore（例文为RNA processing gene index，缩写为RPGI），以及两个临床变量（年龄、stage），还有time-to-event数据。
+The input data here are from the original text, including the riskscore obtained by multivariate Cox + LASSO penalty (the example text is RNA processing gene index, abbreviated as RPGI), as well as two clinical variables (age, stage), and time-to-event data.
 
 ```{r}
 dat <- read.csv("easy_input.csv", row.names = 1, header = T, check.names = F, stringsAsFactors = F)
-dat$OS.time <- dat$OS.time/30.5 #把日转为月
+dat$OS.time <- dat$OS.time/30.5 #把日转为月  # Convert days to months
 dat <- as.data.frame(na.omit(dat))
 head(dat)
 
 # 设置颜色
+# Set Colors
 jco <- c("#2874C5","#EABF00")
 ```
 
 # 多变量cox模型得到新的score
 
+# The multivariate cox model has obtained a new score
+
 例文为Processing-Clinical prognostic index (PCPI)
+Example text: Processing-Clinical prognostic index (PCPI)
 
 ```{r}
 tmp <- coxph(Surv(OS.time, OS) ~ Riskscore + Age + Stage, data = dat)
@@ -154,7 +174,10 @@ new.score <- as.numeric(apply(dat[,c("Riskscore","Age","Stage")], 1, function(x)
 
 # 开始画图
 
+# Start drawing
+
 用自定义的函数画图
+Draw graphs using custom functions
 
 ```{r}
 rms <- rms2curve(survdt = dat,
