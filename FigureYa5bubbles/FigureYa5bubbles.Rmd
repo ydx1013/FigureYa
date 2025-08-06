@@ -19,6 +19,8 @@ I want to imitate the bubble chart of Nature by Professor Xie Wei in 2016.
 
 出自<http://dx.doi.org/10.1038/nature18606>
 
+from<http://dx.doi.org/10.1038/nature18606>
+
 ## 使用场景
 ## usage scenario
 
@@ -28,15 +30,11 @@ I want to imitate the bubble chart of Nature by Professor Xie Wei in 2016.
 
 场景二、做基因功能富集分析时，展示富集的通路qvalue和基因数量或geneRatio。
 
-在嘉因公众号回复“泡泡”查看详情。
-
 Show both p-value and expression quantity simultaneously, for example:
 
 Scenario 1, showing the p-value of the motif and the expression of the corresponding transcription factor of the motif, one can see which transcription factor is enriched and highly expressed in which group, predicting that it plays a key regulatory role in the alteration of the cellular state (e.g., cell differentiation, metastasis, and stress).
 
 Scenario 2: When doing gene function enrichment analysis, display the q-value of the enriched pathway and the number of genes or geneRatio.
-
-Reply with "Paopao" on the Jiayin public account to view details.
 
 ## 输入数据
 ## Input data
@@ -268,4 +266,5 @@ Reply with "World Famous Paintings" on the Jiayin public account to see the colo
 ```{r}
 sessionInfo()
 ```
+
 
