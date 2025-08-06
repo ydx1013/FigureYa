@@ -44,6 +44,38 @@ jobs:
           python .github/scripts/generate_book.py
           ls -al FigureYa_contents.html || echo "FigureYa_contents.html not found"
 
+      - name: Set up Git user
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Commit generated file
+        run: |
+          git add FigureYa_contents.html
+          git commit -m "Auto generate FigureYa_contents.html [skip ci]" || echo "Nothing to commit"
+
+      - name: Push changes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git push origin HEAD:${GITHUB_REF#refs/heads/}
+
+      - name: Set up Git user
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Commit generated file
+        run: |
+          git add FigureYa_contents.html
+          git commit -m "Auto generate FigureYa_contents.html [skip ci]" || echo "Nothing to commit"
+
+      - name: Push changes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git push origin HEAD:${GITHUB_REF#refs/heads/}
+
       - name: Checkout FigureYa repo
         uses: actions/checkout@v4
         with:
