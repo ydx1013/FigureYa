@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # 1. 先 checkout 仓库所有分支到 runner 主目录（确保 .github/scripts/ 目录存在）
-      - name: Checkout repository (all branches)
+      - name: Checkout FigureYa (all branches)
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
@@ -44,44 +44,13 @@ jobs:
           python .github/scripts/generate_book.py
           ls -al FigureYa_contents.html || echo "FigureYa_contents.html not found"
 
-      - name: Set up Git user
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-
-      - name: Commit generated file
-        run: |
-          git add FigureYa_contents.html
-          git commit -m "Auto generate FigureYa_contents.html [skip ci]" || echo "Nothing to commit"
-
-      - name: Push changes
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          git push origin HEAD:${GITHUB_REF#refs/heads/}
-
-      - name: Set up Git user
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-
-      - name: Commit generated file
-        run: |
-          git add FigureYa_contents.html
-          git commit -m "Auto generate FigureYa_contents.html [skip ci]" || echo "Nothing to commit"
-
-      - name: Push changes
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          git push origin HEAD:${GITHUB_REF#refs/heads/}
-
-      - name: Checkout FigureYa repo
+      - name: Checkout FigureYa-Contents (目标仓库)
         uses: actions/checkout@v4
         with:
-          repository: ying-ge/FigureYa
-          path: FigureYa
+          repository: ying-ge/FigureYa-Contents
+          path: FigureYa-Contents
           token: ${{ secrets.FIGUREYA_CONTENTS_TOKEN }}
+          fetch-depth: 0
 
       - name: Copy generated HTML
         run: |
@@ -95,3 +64,5 @@ jobs:
           git add FigureYa_contents.html
           git commit -m "Auto-update: FigureYa contents generated"
           git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.FIGUREYA_CONTENTS_TOKEN }}
