@@ -1,4 +1,5 @@
 import os
+from bs4 import BeautifulSoup
 
 root_dir = "."
 output_file = "FigureYa_contents.html"
@@ -12,7 +13,6 @@ chapter_template = """
 toc_entries = []
 chapters_html = []
 
-# 只遍历一级目录
 for folder in sorted(os.listdir(root_dir)):
     if os.path.isdir(folder) and not folder.startswith('.'):
         html_files = [f for f in sorted(os.listdir(folder)) if f.endswith('.html')]
@@ -22,7 +22,12 @@ for folder in sorted(os.listdir(root_dir)):
             chapter_contents = []
             for fname in html_files:
                 with open(os.path.join(folder, fname), encoding='utf-8') as f:
-                    chapter_contents.append(f.read())
+                    raw_html = f.read()
+                    # 用BeautifulSoup处理，去除所有<img>标签
+                    soup = BeautifulSoup(raw_html, "html.parser")
+                    for img in soup.find_all("img"):
+                        img.decompose()
+                    chapter_contents.append(str(soup))
             chapters_html.append(chapter_template.format(
                 chapter_id=chapter_id,
                 chapter_title=folder,
