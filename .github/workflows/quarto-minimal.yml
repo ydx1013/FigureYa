@@ -17,21 +17,26 @@ jobs:
       - name: Create minimal quarto_book
         run: |
           mkdir -p quarto_book
-          echo 'project:
+          cat <<EOF > quarto_book/_quarto.yml
+project:
   type: book
 book:
   title: "Quarto Book Minimal Test"
   author: "Test Author"
-' > quarto_book/_quarto.yml
-          echo 'format: html
+EOF
+
+          cat <<EOF > quarto_book/_toc.yml
+format: html
 root: index.md
 chapters:
   - file: index.md
-' > quarto_book/_toc.yml
-          echo '# Home
+EOF
+
+          cat <<EOF > quarto_book/index.md
+# Home
 
 This is a minimal Quarto book homepage.
-' > quarto_book/index.md
+EOF
 
       - name: Build Quarto minimal test book
         run: |
