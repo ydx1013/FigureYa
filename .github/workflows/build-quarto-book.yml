@@ -23,6 +23,9 @@ jobs:
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
 
+      - name: Quarto version
+        run: quarto --version
+
       - name: Generate Quarto book sources
         run: python .github/scripts/generate_quarto_book.py
 
@@ -30,6 +33,13 @@ jobs:
         run: |
           if [ -f index.md ]; then cp index.md quarto_book/index.md; fi
           if [ -f index.qmd ]; then cp index.qmd quarto_book/index.qmd; fi
+
+      - name: Show index.md file type and contents
+        run: |
+          ls -l quarto_book/
+          file quarto_book/index.md
+          od -c quarto_book/index.md | head
+          head -10 quarto_book/index.md
 
       - name: Show book dir contents (debug)
         run: ls -lh quarto_book
