@@ -10,17 +10,12 @@ def get_numeric_key(filename):
     nums = re.findall(r'\d+', filename)
     return int(nums[0]) if nums else float('inf')
 
-def html_to_markdown_with_img(html_path):
+def html_to_quarto_section(html_path):
     with open(html_path, encoding='utf-8') as f:
         html = f.read()
-    # 保留所有图片和结构
     soup = BeautifulSoup(html, 'html.parser')
-    # 直接把body内容转成markdown（这里粗糙但实用）
     body = soup.body if soup.body else soup
-    # 保证图片和普通内容都保留
-    content = body.prettify()
-    # section标题用文件名
-    return content
+    return str(body)
 
 def collect_chapters(repo_dir, prefix):
     chapters = []
@@ -32,7 +27,7 @@ def collect_chapters(repo_dir, prefix):
             sections = []
             for fname in html_files:
                 section_title = os.path.splitext(fname)[0]
-                section_content = html_to_markdown_with_img(os.path.join(folder_path, fname))
+                section_content = html_to_quarto_section(os.path.join(folder_path, fname))
                 sections.append((section_title, section_content))
             if sections:
                 chapters.append({
@@ -43,7 +38,6 @@ def collect_chapters(repo_dir, prefix):
     return chapters
 
 def main():
-    # 清理临时和目标目录
     if os.path.exists(CLONE_BASE):
         shutil.rmtree(CLONE_BASE)
     if os.path.exists(BOOK_DIR):
@@ -58,7 +52,6 @@ def main():
         ], check=True)
         all_chapters += collect_chapters(branch_dir, branch)
 
-    # 去重（以chapter_id为唯一）
     seen = set()
     uniq_chapters = []
     for chap in all_chapters:
@@ -66,7 +59,6 @@ def main():
             uniq_chapters.append(chap)
             seen.add(chap['chapter_id'])
 
-    # 生成每章 qmd
     toc_entries = []
     for chap in uniq_chapters:
         qmd_name = f"{chap['chapter_id']}.qmd"
@@ -77,22 +69,27 @@ def main():
                 f.write(section_content + "\n\n")
         toc_entries.append({"file": qmd_name, "title": chap['title']})
 
-    # 生成 _toc.yml
     with open(os.path.join(BOOK_DIR, "_toc.yml"), "w", encoding="utf-8") as f:
         f.write("format: html\n")
-        f.write("root: index.qmd\n")
+        f.write("root: index.md\n")
         f.write("chapters:\n")
-        f.write("  - file: index.qmd\n")
+        f.write("  - file: index.md\n")
         for entry in toc_entries:
             f.write(f"  - file: {entry['file']}\n")
 
-    # 生成 _quarto.yml
     with open(os.path.join(BOOK_DIR, "_quarto.yml"), "w", encoding="utf-8") as f:
         f.write("project:\n  type: book\nbook:\n  title: \"FigureYa 电子书\"\n  author: \"@ying-ge\"\n  search: true\n")
 
-    # 生成 index.qmd
-    with open(os.path.join(BOOK_DIR, "index.qmd"), "w", encoding="utf-8") as f:
-        f.write("# FigureYa 电子书\n\n本电子书由 @ying-ge/FigureYa（main/master分支）自动生成，内容包括各章节及其HTML原文。\n")
+    src_index = None
+    for name in ["index.md", "index.qmd"]:
+        if os.path.exists(name):
+            src_index = name
+            break
+    if src_index:
+        shutil.copy(src_index, os.path.join(BOOK_DIR, src_index))
+    else:
+        with open(os.path.join(BOOK_DIR, "index.md"), "w", encoding="utf-8") as f:
+            f.write("# FigureYa 电子书\n\n本电子书由 @ying-ge/FigureYa (main/master分支) 自动生成。")
 
 if __name__ == "__main__":
     main()
