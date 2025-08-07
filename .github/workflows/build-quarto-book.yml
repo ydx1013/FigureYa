@@ -50,10 +50,10 @@ jobs:
       - name: Show _quarto.yml content
         run: cat quarto_book/_quarto.yml
   
-      - name: Build Quarto book
+      - name: Build Quarto book (with toctree)
         run: |
           cd quarto_book
-          quarto render
+          quarto render --toctree _toc.yml
 
       - name: Push to FigureYa-ebook gh-pages
         uses: peaceiris/actions-gh-pages@v4
