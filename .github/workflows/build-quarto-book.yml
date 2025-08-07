@@ -1,4 +1,4 @@
-name: Build Quarto Book
+name: Build and Sync Quarto Book to ebook repo
 
 on:
   workflow_dispatch:
@@ -6,10 +6,10 @@ on:
     - cron: '0 2 * * *'
 
 jobs:
-  build-book:
+  build-sync:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout ebook repo
+      - name: Checkout (FigureYa)
         uses: actions/checkout@v4
 
       - name: Set up Python
@@ -26,14 +26,15 @@ jobs:
       - name: Generate Quarto book sources
         run: python .github/scripts/generate_quarto_book.py
 
-      - name: Build book
+      - name: Build Quarto book
         run: |
           cd quarto_book
           quarto render
 
-      - name: Deploy to GitHub Pages
+      - name: Push to FigureYa-ebook gh-pages
         uses: peaceiris/actions-gh-pages@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./quarto_book/_book
+          external_repository: ying-ge/FigureYa-ebook
           publish_branch: gh-pages
+          github_token: ${{ secrets.FIGUREYA_CONTENTS_TOKEN }}
