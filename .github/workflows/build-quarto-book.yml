@@ -46,6 +46,9 @@ jobs:
 
       - name: Show _toc.yml (debug)
         run: cat quarto_book/_toc.yml
+
+      - name: Show _quarto.yml content
+        run: cat quarto_book/_quarto.yml
   
       - name: Build Quarto book
         run: |
