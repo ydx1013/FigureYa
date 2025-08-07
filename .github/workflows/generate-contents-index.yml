@@ -11,11 +11,10 @@ jobs:
     permissions:
       contents: write
     steps:
-      - name: Checkout main branch to main_dir
+      - name: Checkout main branch
         uses: actions/checkout@v4
         with:
           ref: main
-          path: main_dir
           fetch-depth: 0
 
       - name: Checkout master branch to master_dir
