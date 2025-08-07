@@ -1,0 +1,46 @@
+name: Generate Multi-Branch contents index
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+jobs:
+  build-contents-index:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout main branch to main_dir
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: main_dir
+          fetch-depth: 0
+
+      - name: Checkout master branch to master_dir
+        uses: actions/checkout@v4
+        with:
+          ref: master
+          path: master_dir
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Generate contents.html
+        run: |
+          python .github/scripts/generate_contents_index_multibranch.py
+
+      - name: Set up Git user
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Commit and push contents.html
+        run: |
+          git add contents.html
+          git commit -m "Auto-generate multi-branch contents.html [skip ci]" || echo "Nothing to commit"
+          git push origin HEAD:main
