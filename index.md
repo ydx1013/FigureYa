@@ -2,9 +2,6 @@
 AUTHOR: Ying Ge
 
 PUBLISHED: August 6, 2025
-
-The content of this book is automatically generated from the main and master branches of the [@ying-ge/FigureYa](https://github.com/ying-ge/FigureYa) repository, covering all of the FigureYas. Each FigureYa corresponds to a chapter, and if a FigureYa contains multiple HTML files, each HTML file is presented as a section within that chapter.
-
 ---
 
 ## Citation
