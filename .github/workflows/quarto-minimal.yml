@@ -24,14 +24,12 @@ book:
   title: "Quarto Book Minimal Test"
   author: "Test Author"
 EOF
-
           cat <<EOF > quarto_book/_toc.yml
 format: html
 root: index.md
 chapters:
   - file: index.md
 EOF
-
           cat <<EOF > quarto_book/index.md
 # Home
 
