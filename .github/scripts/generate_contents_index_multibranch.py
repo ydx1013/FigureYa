@@ -1,34 +1,26 @@
-import os
-import re
+import os, re
 
-def get_html_files(base_dir, branch_name):
+def get_html_files(base_path, branch_label):
     toc = []
-    branch_path = os.path.join(base_dir, branch_name)
-    if not os.path.isdir(branch_path):
-        return toc
-    for folder in sorted(os.listdir(branch_path)):
-        folder_path = os.path.join(branch_path, folder)
+    for folder in sorted(os.listdir(base_path)):
+        folder_path = os.path.join(base_path, folder)
         if os.path.isdir(folder_path) and not folder.startswith('.'):
             html_files = [f for f in os.listdir(folder_path) if f.endswith('.html')]
             if html_files:
-                # 提取文件名前的数字进行排序
                 def num_key(name):
                     m = re.match(r'(\d+)', name)
                     return int(m.group(1)) if m else 99999
                 html_files_sorted = sorted(html_files, key=num_key)
-                toc.append(f"<li><b>{branch_name}/{folder}</b><ul>")
+                toc.append(f"<li><b>{branch_label}/{folder}</b><ul>")
                 for fname in html_files_sorted:
-                    rel_path = f"{branch_name}/{folder}/{fname}"
+                    rel_path = os.path.relpath(os.path.join(folder_path, fname), ".")
                     toc.append(f'<li><a href="{rel_path}">{fname}</a></li>')
                 toc.append("</ul></li>")
     return toc
 
-branches = ["main_dir", "master_dir"]
-branch_names = ["main", "master"]
-
 toc_entries = []
-for branch_dir, branch_name in zip(branches, branch_names):
-    toc_entries.extend(get_html_files(".", branch_dir))
+toc_entries.extend(get_html_files(".", "main"))
+toc_entries.extend(get_html_files("master_dir", "master"))
 
 html_output = f"""
 <!DOCTYPE html>
@@ -51,5 +43,5 @@ html_output = f"""
 </html>
 """
 
-with open("contents.html", "w", encoding="utf-8") as f:
+with open("index.html", "w", encoding="utf-8") as f:
     f.write(html_output)
