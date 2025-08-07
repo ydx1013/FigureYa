@@ -1,4 +1,4 @@
-name: Generate Multi-Branch contents index
+name: Generate contents index for main & master
 
 on:
   push:
@@ -11,7 +11,7 @@ jobs:
     permissions:
       contents: write
     steps:
-      - name: Checkout main branch
+      - name: Checkout main branch to root (含脚本和main内容)
         uses: actions/checkout@v4
         with:
           ref: main
@@ -29,17 +29,21 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Generate contents.html
+      - name: Debug file tree
+        run: |
+          echo "根目录(main):"
+          ls -lR .
+          echo "master_dir:"
+          ls -lR master_dir
+
+      - name: Generate index.html
         run: |
           python .github/scripts/generate_contents_index_multibranch.py
 
-      - name: Set up Git user
+      - name: Commit and push index.html
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-
-      - name: Commit and push contents.html
-        run: |
-          git add contents.html
-          git commit -m "Auto-generate multi-branch contents.html [skip ci]" || echo "Nothing to commit"
+          git add index.html
+          git commit -m "Auto-generate index.html [skip ci]" || echo "Nothing to commit"
           git push origin HEAD:main
