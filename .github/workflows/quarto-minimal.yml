@@ -1,0 +1,39 @@
+name: Quarto Minimal Test
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-book:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+
+      - name: Create minimal quarto_book
+        run: |
+          mkdir -p quarto_book
+          echo 'project:
+  type: book
+book:
+  title: "Quarto Book Minimal Test"
+  author: "Test Author"
+' > quarto_book/_quarto.yml
+          echo 'format: html
+root: index.md
+chapters:
+  - file: index.md
+' > quarto_book/_toc.yml
+          echo '# Home
+
+This is a minimal Quarto book homepage.
+' > quarto_book/index.md
+
+      - name: Build Quarto minimal test book
+        run: |
+          cd quarto_book
+          quarto render
