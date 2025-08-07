@@ -73,7 +73,6 @@ def main():
         f.write("format: html\n")
         f.write("root: index.md\n")
         f.write("chapters:\n")
-        f.write("  - file: index.md\n")
         for entry in toc_entries:
             f.write(f"  - file: {entry['file']}\n")
 
