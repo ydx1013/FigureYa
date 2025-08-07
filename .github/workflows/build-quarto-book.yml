@@ -34,6 +34,9 @@ jobs:
       - name: Show book dir contents (debug)
         run: ls -lh quarto_book
 
+      - name: Show _toc.yml (debug)
+        run: cat quarto_book/_toc.yml
+  
       - name: Build Quarto book
         run: |
           cd quarto_book
