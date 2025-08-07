@@ -1,21 +1,27 @@
-import os, re
+import os
+import re
+
+def extract_number(s):
+    """提取字符串中第一个连续数字作为排序key，没有数字则返回极大值。"""
+    m = re.search(r'(\d+)', s)
+    return int(m.group(1)) if m else 999999
 
 def get_html_files(base_path, branch_label):
     toc = []
-    for folder in sorted(os.listdir(base_path)):
+    # 目录按数字排序
+    folders = [f for f in os.listdir(base_path) if os.path.isdir(os.path.join(base_path, f)) and not f.startswith('.')]
+    folders_sorted = sorted(folders, key=extract_number)
+    for folder in folders_sorted:
         folder_path = os.path.join(base_path, folder)
-        if os.path.isdir(folder_path) and not folder.startswith('.'):
-            html_files = [f for f in os.listdir(folder_path) if f.endswith('.html')]
-            if html_files:
-                def num_key(name):
-                    m = re.match(r'(\d+)', name)
-                    return int(m.group(1)) if m else 99999
-                html_files_sorted = sorted(html_files, key=num_key)
-                toc.append(f"<li><b>{branch_label}/{folder}</b><ul>")
-                for fname in html_files_sorted:
-                    rel_path = os.path.relpath(os.path.join(folder_path, fname), ".")
-                    toc.append(f'<li><a href="{rel_path}">{fname}</a></li>')
-                toc.append("</ul></li>")
+        # 文件也按数字排序
+        html_files = [f for f in os.listdir(folder_path) if f.endswith('.html')]
+        html_files_sorted = sorted(html_files, key=extract_number)
+        if html_files_sorted:
+            toc.append(f"<li><b>{branch_label}/{folder}</b><ul>")
+            for fname in html_files_sorted:
+                rel_path = os.path.relpath(os.path.join(folder_path, fname), ".")
+                toc.append(f'<li><a href="{rel_path}">{fname}</a></li>')
+            toc.append("</ul></li>")
     return toc
 
 toc_entries = []
