@@ -1,8 +1,5 @@
 # :book: FigureYa Contents
-Document featuring thumbnails and citation links:
-https://drive.google.com/file/d/1cO-3Tmz45sH60BkZsLSrT4_BOvfX-L9I/view?usp=drive_link
-
-FigureYa1-220 are in the main branch, FigureYa221-323 are in the master branch.
+https://ying-ge.github.io/FigureYa/
 
 # :file_folder: Structure of a FigureYa Directory
 Each `FigureYa` directory includes:
