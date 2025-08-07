@@ -80,16 +80,7 @@ def main():
     with open(os.path.join(BOOK_DIR, "_quarto.yml"), "w", encoding="utf-8") as f:
         f.write("project:\n  type: book\nbook:\n  title: \"FigureYa 电子书\"\n  author: \"@ying-ge\"\n  search: true\n")
 
-    src_index = None
-    for name in ["index.md", "index.qmd"]:
-        if os.path.exists(name):
-            src_index = name
-            break
-    if src_index:
-        shutil.copy(src_index, os.path.join(BOOK_DIR, src_index))
-    else:
-        with open(os.path.join(BOOK_DIR, "index.md"), "w", encoding="utf-8") as f:
-            f.write("# FigureYa 电子书\n\n本电子书由 @ying-ge/FigureYa (main/master分支) 自动生成。")
+    # index.md/ index.qmd 的处理交由 workflow 完成，这里无需再处理
 
 if __name__ == "__main__":
     main()
