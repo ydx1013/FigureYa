@@ -1,6 +1,29 @@
 import os
 from bs4 import BeautifulSoup
 
+def strip_outputs_and_images(raw_html):
+    soup = BeautifulSoup(raw_html, "html.parser")
+    # 删除所有图片
+    for img in soup.find_all("img"):
+        img.decompose()
+    # 删除 R Markdown 的输出（以 ## 开头的 <pre><code>）
+    for pre in soup.find_all("pre"):
+        code = pre.find("code")
+        if code and code.text.lstrip().startswith("##"):
+            pre.decompose()
+    # 删除 Jupyter Notebook 输出区
+    for div in soup.find_all("div", class_=lambda x: x and any("output" in c for c in x)):
+        div.decompose()
+    # 删除 Jupyter Notebook 输出的 <pre>，如果它们在 output_area 内
+    for pre in soup.find_all("pre"):
+        parent = pre.parent
+        while parent:
+            if parent.has_attr("class") and any("output" in c for c in parent["class"]):
+                pre.decompose()
+                break
+            parent = parent.parent
+    return str(soup)
+
 root_dir = "."
 output_file = "FigureYa_searchable.html"
 chapter_template = """
@@ -23,11 +46,9 @@ for folder in sorted(os.listdir(root_dir)):
             for fname in html_files:
                 with open(os.path.join(folder, fname), encoding='utf-8') as f:
                     raw_html = f.read()
-                    # 用BeautifulSoup处理，去除所有<img>标签
-                    soup = BeautifulSoup(raw_html, "html.parser")
-                    for img in soup.find_all("img"):
-                        img.decompose()
-                    chapter_contents.append(str(soup))
+                    # 调用strip_outputs_and_images处理每个章节
+                    cleaned_html = strip_outputs_and_images(raw_html)
+                    chapter_contents.append(cleaned_html)
             chapters_html.append(chapter_template.format(
                 chapter_id=chapter_id,
                 chapter_title=folder,
