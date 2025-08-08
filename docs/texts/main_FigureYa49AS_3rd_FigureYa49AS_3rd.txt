@@ -1,0 +1,111 @@
+FigureYa49 AS_3rd
+FigureYa49 AS_3rd
+小丫画图出品
+10/21/2018
+微信ID: epigenomics E-mail:
+epigenomics@rainbow-genome.com
+本代码作者：徐洲更
+https://www.jianshu.com/u/9ea40b5f607a
+小丫编辑校验
+需求描述
+现在最流行的三代测序里面必定要分析的可变剪切，用IGV获得sashimi图，定量地展示可变剪切情况。
+Sashimi
+出自：
+https://www.nature.com/articles/celldisc201731/
+图解：外显子上的比对以密度图的形式展示（图中红色部分）
+适用范围
+要求有三代全长转录组和二代转录组数据
+三代无参转录组展示基因的可变剪切
+Linux操作系统
+前期准备
+软件准备
+请确保运行系统是Linux，且软件都是通过bioconda进行安装或者在环境变量中，否则运行脚本时会出错
+HISAT2: 用于二代RNA-seq序列比对
+conda install -c bioconda hisat2
+GMAP: 用于比对三代全长转录本
+conda install -c bioconda gmap
+gffread: 用于GFF文件的格式转换
+conda install -c bioconda gffread
+软件安装部分涉及到conda的使用，请自行搜索教程学习，我在
+生信必修课之软件安装
+的06学会包管理工具安装一节也有详细的讲解。
+数据准备
+数据来源：
+https://www.nature.com/articles/celldisc201731/
+数据要求：
+一：FASTA格式的三代测序的全长唯一转录本模型(full-length UniTransModels)，类似于参考基因组，处理流程如下所示：
+处理流程
+UniTransModel
+Cogent分析见
+三代转录组系列：使用Cogent重建基因组编码区
+二：FASTA格式的转录亚型(isoform)。 使用GMAP/Minimap2将纠错后非冗余的转录本(也就是上面
+cd-hist-est
+处理后，Cogent处理前的的序列)回帖到UniTransModels，之后合并具有相同剪切位点(splicing junctions)，同一个UniTransModels下具有不同剪切位点的转录本就被认为是转录亚型(transcription isoforms)。
+冗余isofroms合并见
+Tutorial: Collapse redundant isoforms without genome
+三：二代测序数据，用于对不同剪切事件进行定量。二代数据由于内容过大，请按照如下方法下载
+mkdir raw-data
+prefetch -O raw-data ERR706814
+fasterq-dump -3 -O raw-data raw-data/ERR706814.sra
+注1：目前PacBio Iso-seq无法用于定量, 必须要用到二代数据才行.
+注2：关于
+prefetch
+和
+fasterq-dump
+的使用，请阅读
+都8102年了，还用fastq-dump，快换fasterq-dump吧
+和
+Fastq-dump: 一个神奇的软件
+数据处理
+请保证软件准备部分的软件都已经安装完毕，请拷贝“sashimi_prepare.sh”到你的数据集下，然后用
+chmod 755 sashimi_prepare.sh
+增加运行权限。
+对于测试数据集，运行如下命令
+./sashimi_prepare.sh leaf.UniTransModel.fa leaf.UniTransModel.isoforms.fa raw-data/ERR706814.sra_1.fastq raw-data/ERR706814.sra_2.fastq -t 100
+那么它就会在当前生成用于作图的文件
+sashimi.gtf
+sashimi_flt.bam
+具体使用方法：
+sashimi_prepare.sh -p sashimi -t 10 ref.fa isoform.fa read_1.fq read_2.fq
+    -t: threads #运行的线程数
+    -p: output prefix # 输出文件的前缀名
+ref.fa: 参考转录组
+isoform.fa: 转录亚型
+read_1.fq: Illumina Paired-end 1
+read_2.fq: Illumina Paired-end 2
+如果你想对脚本进行修改，那么你需要仔细阅读如下内容
+获取GTF文件
+首先建立参考转录组的索引
+gmap_build -D index -d leaf leaf.UniTransModel.fa
+然后将转录亚型回帖到参考转录组上，获取GFF3文件
+gmap -t 10 -D index -d leaf -f gff3_gene leaf.UniTransModel.isoforms.fa > leaf_gene.gff3
+将GFF3转成GTF格式
+gffread leaf_gene.gff3 -T -o leaf_gene_tmp.gtf
+sed -n '/exon/p' leaf_gene_tmp.gtf > leaf_gene.gtf 
+rm leaf_gene_tmp.gtf
+关于GMAP的用法，请阅读
+如何使用GMAP/GSNAP进行转录组序列比对
+构建BAM文件
+为了后续进行展示，需要将二代数据回帖到参考转录组上
+第一步：建立索引
+hisat2-build -p 20 leaf.UniTransModel.fa index/leaf.UniTransModel
+# -p 表示线程数
+第二步：比对回参考转录组
+hisat2 -x index/leaf.UniTransModel -1 raw-data/ERR706814.sra_1.fastq -2 raw-data/ERR706814.sra_2.fastq -p 100 | samtools sort -@ 50 > leaf_sort.bam &
+第三步：去除低质量的比对read
+samtools view -@ 10 -b -q 30 leaf_sort.bam > leaf_flt.bam
+IGV展示
+软件安装
+从
+IGV官网
+根据实际系统选择版本进行下载，解压后，Windows用户双击“igv.bat”运行。如果IGV无法正常运行，则需要安装JAVA运行环境，请到
+Java官方下载点
+选择Java SE 8u181或者 Java SE 10.0.2进行下载安装。
+操作视频
+见附件FigureYa49AS_3rd.mp4文件
+视频所用数据集链接: 链接：
+https://share.weiyun.com/5jzlQak
+密码：n6li5h
+用IGV导出的SVG文件是矢量图，可以用Illustrator等软件编辑。
+实际效果：
+IGV截图
