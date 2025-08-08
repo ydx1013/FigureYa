@@ -1344,6 +1344,12 @@
     "text": "texts/main_FigureYa220repeatedLasso_FigureYa220repeatedLasso.txt"
   },
   {
+    "id": "main_docs_index",
+    "title": "main/docs/index.html",
+    "html": "docs/index.html",
+    "text": "texts/main_docs_index.txt"
+  },
+  {
     "id": "master_FigureYa221tenFoldRF_FigureYa221tenFoldRF",
     "title": "master/FigureYa221tenFoldRF/FigureYa221tenFoldRF.html",
     "html": "master_dir/FigureYa221tenFoldRF/FigureYa221tenFoldRF.html",
