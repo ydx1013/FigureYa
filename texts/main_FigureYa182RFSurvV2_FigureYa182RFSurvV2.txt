@@ -1,81 +1,75 @@
 FigureYa182RFSurvV2
 FigureYa182RFSurvV2
-小丫画图出品
-2020-6-26
-欢迎关注“小丫画图”公众号，回复“小白”，看小视频，实现点鼠标跑代码。
-小丫微信: epigenomics E-mail:
-figureya@126.com
-作者：大鱼海棠
-单位：中国药科大学国家天然药物重点实验室，生物统计与计算药学研究中心
-小丫编辑校验
-需求描述
-根据随机生存森林分析进一步筛选并优化变量，从而达到降维的功能，完成Figure5的作图
-出自
+2025-5-20
+Author：Xiaofan Lu
+Reviewer: Ying Ge
+需求描述Requirements
+根据随机生存森林分析进一步筛选并优化变量，从而达到降维的功能，完成Figure5的作图Further filter and optimize variables based on random survival forest analysis to achieve dimensionality reduction and complete the plot of Figure 5.
+出自from
 https://www.frontiersin.org/articles/10.3389/fonc.2020.00595/full
 FIGURE 5 | (A) Error rate for the data as a function of the classification tree; (B) out-of-bag importance values for the predictors.
-应用场景
-使用随机森林对生存数据降维，根据变量重要性排序并筛选基因组成prognostic signature
-在“小丫画图”公众号回复“182”，看小伙伴对阈值设置等问题的讨论。
-环境设置
-使用国内镜像安装包
+应用场景Application Scenario
+使用随机森林对生存数据降维，根据变量重要性排序并筛选基因组成prognostic signature Use random forests to reduce the dimensionality of survival data, rank variables by importance, and filter for prognostic signatures of gene composition.
+环境设置Environment Setup
+使用国内镜像安装包Use a domestic mirror to install the package.
 options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
 options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 install.packages("survival")
 install.packages("randomForestSRC")
 
-# randomSurvivalForest包来源：https://cran.r-project.org/src/contrib/Archive/randomSurvivalForest/
+# randomSurvivalForest包来源：package source: https://cran.r-project.org/src/contrib/Archive/randomSurvivalForest/
 install.packages("randomSurvivalForest_3.6.4.tar.gz", repos = NULL, type="source")
-加载包
+加载包Load the package
 library(survival)
 library(randomForestSRC)
 library(randomSurvivalForest)
-Sys.setenv(LANGUAGE = "en") #显示英文报错信息
-options(stringsAsFactors = FALSE) #禁止chr转成factor
-自定义函数
-# 显示进程
+Sys.setenv(LANGUAGE = "en") #显示英文报错信息Display English error message
+options(stringsAsFactors = FALSE) #禁止chr转成factor，Disable conversion of chr to factor
+自定义函数Custom function
+# 显示进程Display progress
 display.progress = function (index, totalN, breakN=20) {
   if ( index %% ceiling(totalN/breakN)  ==0  ) {
     cat(paste(round(index*100/totalN), "% ", sep=""))
   }
 }  
 
-# 相对重要性（relative importance）；其实就是把重要性划分到0-1区间内
+# 相对重要性（relative importance）；其实就是把重要性划分到0-1区间内Relative importance: This essentially assigns importance to a range of 0-1.
 # range01 <- function(x){(x-min(x))/(max(x)-min(x))}
-输入文件
-easy_input_expr.csv，表达矩阵。
-easy_input_cli.csv，临床信息。这两个文件跟FigureYa128Prognostic的一样，可以对比感受一下筛选效果。
-# 加载数据（来自FigureYa128Prognostic）
+输入文件Input File
+easy_input_expr.csv，表达矩阵。expression matrix
+easy_input_cli.csv，临床信息。这两个文件跟FigureYa128Prognostic的一样，可以对比感受一下筛选效果。clinical information. These two files are the same as those in FigureYa128Prognostic, allowing you to compare and assess the effectiveness of the screening.
+# 加载数据（来自FigureYa128Prognostic） Load data (from FigureYa128Prognostic)
 exp <- read.csv("easy_input_expr.csv",header = T,row.names = 1,check.names = F,stringsAsFactors = F)
 cli <- read.csv("easy_input_cli.csv",header = T,row.names = 1,check.names = F,stringsAsFactors = F)
 
-# 提取既有表达数据又有临床数据的样本
+# 提取既有表达数据又有临床数据的样本Extract samples with both expression and clinical data
 com_sam <- intersect(colnames(exp),rownames(cli)) 
 exp <- exp[,com_sam]
 cli <- cli[com_sam,]
 
-# 去除无表达的基因并log变换
+# 去除无表达的基因并log变换Remove genes with no expression and log transform
 exp <- exp[rowSums(exp) > 0,]
 exp <- log2(exp + 1)
-单变量cox模型筛选预后基因
-理论上表达谱会优先进行一些筛选，如原文使用单变量cox模型筛选预后基因(P < 0.01)。
-这步运行时间稍长，我这里运行不到10min。
-# 过滤出与OS有关的基因
-cox.pcutoff <- 0.01 # 例文阈值设为0.01
+单变量cox模型筛选预后基因Univariate Cox model screening for prognostic genes
+理论上表达谱会优先进行一些筛选，如原文使用单变量cox模型筛选预后基因(P < 0.01)。In theory, expression profiles prioritize certain screening methods. For example, the original article used a univariate Cox model to screen for prognostic genes (P < 0.01).
+这步运行时间稍长，我这里运行不到10min。This step takes a bit longer to run; mine took less than 10 minutes.
+# 过滤出与OS有关的基因Filter out genes associated with OS
+cox.pcutoff <- 0.01 # 例文阈值设为0.01Example threshold set to 0.01
 Coxoutput.OS <- NULL
 for (i in 1:nrow(exp)) {
-  display.progress(index = i,totalN = nrow(exp)) # 显示进度
+  display.progress(index = i,totalN = nrow(exp)) # 显示进度Display progress
   
-  # 产生临时变量存储生存以及变量表达值
+  # 产生临时变量存储生存以及变量表达值Generate temporary variables to store survival and variable expression values
   tmp <- data.frame(gene = as.numeric(exp[i,]),
                     OS.time = cli[,"OS.time"],
                     OS = cli[,"OS"],
                     stringsAsFactors = F)
   
-  # 单变量cox比例风险模型
+  # 单变量cox比例风险模型Univariate Cox proportional hazards model
   cox <- coxph(Surv(OS.time, OS) ~ gene, data = tmp)
   coxSummary = summary(cox)
   
-  # 生成cox结果数据框，包括基因名，风险比，z值，waldtest p值，以及HR置信区间
+  # 生成cox结果数据框，包括基因名，风险比，z值，waldtest p值，以及HR置信区间Generate Cox result data frame, including gene name, hazard ratio, z-score, Waldtest p-value, and HR confidence interval
   Coxoutput.OS=rbind.data.frame(Coxoutput.OS,data.frame(gene=rownames(exp)[i],
                                                         HR=as.numeric(coxSummary$coefficients[,"exp(coef)"]),
                                                         z=as.numeric(coxSummary$coefficients[,"z"]),
@@ -87,9 +81,9 @@ for (i in 1:nrow(exp)) {
 }
 head(Coxoutput.OS)
 write.csv(Coxoutput.OS,"univariate cox regression for gene filtering.csv",row.names = F,quote = F)
-随机森林进一步降维
+随机森林进一步降维Random forest further reduces dimensionality
 gene.sel <- Coxoutput.OS[which(Coxoutput.OS$pvalue < cox.pcutoff),"gene"]
-tmp <- exp[gene.sel,]; rownames(tmp) <- gsub("-","_",rownames(tmp)) # 防止出现“-”导致程序报错
+tmp <- exp[gene.sel,]; rownames(tmp) <- gsub("-","_",rownames(tmp)) # 防止出现“-”导致程序报错# Prevent "-" from causing program errors
 dt.rf <- cbind.data.frame(cli,t(tmp))
 
 ntree <- 1000
@@ -97,13 +91,13 @@ surv.rf <- randomSurvivalForest::rsf(Surv(OS.time, OS) ~ .,
                                      data = dt.rf, 
                                      ntree = ntree,
                                      seed = 12345678)
-开始画图
-用包里自带的函数直接出图
+开始画图Start drawing
+用包里自带的函数直接出图Use the functions provided by the package to directly draw the graph
 pdf("error rate and importance derived from package.pdf",width = 12,height = 12)
 randomSurvivalForest::plot.error(surv.rf)
 dev.off()
-自定义画图
-# 图1. 错误率
+自定义画图Custom Plot
+# 图1. 错误率Figure 1. Error Rate
 err.rate <- surv.rf$err.rate
 pdf("error rate.pdf",width = 5,height = 5)
 par(bty = "o", mgp = c(1.5,.33,0), mar = c(3,4,1,2),las = 1, tcl = -.25)
@@ -116,23 +110,23 @@ plot(1:ntree,err.rate,
 mtext("Error Rate",side = 2,line = 2.5,las = 3)
 invisible(dev.off())
 
-# 图2. 重要性
-raw.imp <- surv.rf$importance; names(raw.imp) <- gsub("_","-",names(raw.imp)) # 将基因名的“_”还原为“-”
+# 图2. 重要性Figure 2. Importance
+raw.imp <- surv.rf$importance; names(raw.imp) <- gsub("_","-",names(raw.imp)) # 将基因名的“_”还原为“-”Restore "_" in gene names to "-"
 rel.imp <- raw.imp/max(abs(raw.imp)) # calculate relative importance
 
-# 输出重要性矩阵
+# 输出重要性矩阵Output importance matrix
 imp.res <- data.frame(gene = names(raw.imp),
                       raw.importance = raw.imp,
                       rel.importance = rel.imp,
                       stringsAsFactors = F)
 write.csv(imp.res[order(imp.res$rel.importance,decreasing = T),],"importance result.csv",row.names = F,quote = F)
 
-# 筛选后画图
-imp.cutoff <- 0.2 # 原文的重要性阈值为0.65
-rel.imp.sel <- rel.imp[rel.imp > imp.cutoff] # 取出大于阈值的变量
-rel.imp.sel <- sort(rel.imp.sel) # 根据重要性排序
-xrange <- range(pretty(range(rel.imp.sel))) # 根据重要性区间确定x轴范围
-yrange <- c(1,length(rel.imp.sel))  # 根据重要变量个数确定y轴范围
+# 筛选后画图Plot after filtering
+imp.cutoff <- 0.2 # 原文的重要性阈值为0.65The original text's importance threshold is 0.65
+rel.imp.sel <- rel.imp[rel.imp > imp.cutoff] # 取出大于阈值的变量Extract variables above the threshold
+rel.imp.sel <- sort(rel.imp.sel) # 根据重要性排序Sort by importance
+xrange <- range(pretty(range(rel.imp.sel))) # 根据重要性区间确定x轴范围Determine the x-axis range based on the importance interval
+yrange <- c(1,length(rel.imp.sel))  # 根据重要变量个数确定y轴范围Determine the y-axis range based on the number of important variables
 
 pdf("relative importance.pdf",width = 5,height = 5)
 par(bty = "o", mgp = c(1.5,.33,0), mar = c(3,6,1,2),las = 1, tcl = -.25)
@@ -143,12 +137,12 @@ plot(NULL,NULL,
      ylab = "",
      yaxt = "n",
      las = 1)
-axis(side = 2,at = 1:length(rel.imp.sel),names(rel.imp.sel)) # 补齐y轴
-for (i in 1:length(rel.imp.sel)) { # 循环添加线
+axis(side = 2,at = 1:length(rel.imp.sel),names(rel.imp.sel)) # 补齐y轴Fill the y-axis
+for (i in 1:length(rel.imp.sel)) { # 循环添加线Loop to add lines
   lines(c(xrange[1],rel.imp.sel[i]),
         c(i,i),
         lwd = 2.5,
-        col = "steelblue") # 颜色可修改
+        col = "steelblue") # 颜色可修改Color can be modified
 }
 invisible(dev.off())
 Session Info

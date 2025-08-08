@@ -1,67 +1,63 @@
 FigureYa176BlandAltman
 FigureYa176BlandAltman
-小丫画图出品
-2020-4-26
-欢迎关注“小丫画图”公众号，回复“小白”，看小视频，实现点鼠标跑代码。
-小丫微信: epigenomics E-mail:
-figureya@126.com
-作者：大鱼海棠
-单位：中国药科大学国家天然药物重点实验室，生物统计与计算药学研究中心
-小丫编辑校验
-需求描述
-作者用Bland-Altman的方法比较了自己建立的模型和传统的模型的一致性。网上找了下，好像没有可以重复这个的代码，求众筹。。
-出自
+2025-5-20
+Author: Xiaofan Lu
+Reviewer：Ying Ge
+需求描述Requirement
+作者用Bland-Altman的方法比较了自己建立的模型和传统的模型的一致性。网上找了下，好像没有可以重复这个的代码，求众筹。。Description
+The author uses the Bland-Altman method to compare the consistency of a self-developed model with traditional models. I've searched online but can't seem to find code that can replicate this. I'm looking for crowdfunding.
+出自from
 https://www.sciencedirect.com/science/article/pii/S2352396420300992
 Figure S1. Bland-Altman plots reveal consistency between the V-Net derived segmentation and the gold standard. The differences (y-axis) are plotted versus the average (x-axis) of two appraisers (i.e., the position of the plan-box in the testing set and gold standard) for pulmonary apex, basis, left and right boundary in Bland-Altman plot a) to d), respectively. Slopes are calculated by linear regression of differences on average and the corresponding statistical P values are provided for testing a constant difference based on a null hypothesis—the slope equals to 0. Critical difference is ‘two’ times standard deviation of differences, equals half the difference of lower and upper limit.
-应用场景
-Bland-Altman plot用于比较不同evaluation之间的agreement，并进行一致性(斜率)检验。
-环境设置
-使用国内镜像安装包
+应用场景Application Scenarios
+Bland-Altman plot用于比较不同evaluation之间的agreement，并进行一致性(斜率)检验。The Bland-Altman plot is used to compare agreement between different evaluations and perform a consistency (slope) test.
+环境设置Environment Setup
+使用国内镜像安装包Use a domestic mirror installation package
 options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
 options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 install.packages(c("BlandAltmanLeh", "MethComp", "smatr"))
-加载包
+加载包Load the package
 library(BlandAltmanLeh)
 library(MethComp)
 library(smatr)
 
-Sys.setenv(LANGUAGE = "en") #显示英文报错信息
-options(stringsAsFactors = FALSE) #禁止chr转成factor
-自定义函数绘制BAplot并做斜率检验
-BA.baseplot <- function(measurement1 = NULL, # 方法一的结果
-                        measurement2 = NULL, # 方法二的结果
-                        slope.methed = c("OLS","SMA","MA"), # 选择一种斜率检验方法，一般为OLS
-                        slope.test.value = 0, # 斜率检验值和0比较
-                        xlab = "Means", # BA图的横轴名
-                        ylab = "Differences", # BA图的纵轴名
-                        main = "", # BA图的主题
-                        point.color = NULL, # BA图离散点的颜色
-                        refline.color = NULL, # 参考线的颜色（金标准线）
-                        confline.color = NULL, # BA图置信区间的颜色
-                        fig.label = NULL, # 最终出图的名称
-                        width = 6, # 图像宽度
-                        height = 5) { # 图像高度
+Sys.setenv(LANGUAGE = "en") #显示英文报错信息#Display English error messages
+options(stringsAsFactors = FALSE) #禁止chr转成factor#Disable conversion of chr to factors
+自定义函数绘制BAplot并做斜率检验Custom function for drawing a BA plot and performing a slope test
+BA.baseplot <- function(measurement1 = NULL, # 方法一的结果# Results from method 1 
+                        measurement2 = NULL, # 方法二的结果# Results from method 2 
+                        slope.methed = c("OLS","SMA","MA"), # 选择一种斜率检验方法，一般为OLS Select a slope test method, typically OLS
+                        slope.test.value = 0, # 斜率检验值和0比较# Compare the slope test value to 0
+                        xlab = "Means", # BA图的横轴名# BA plot horizontal axis name
+                        ylab = "Differences", # BA图的纵轴名# BA plot vertical axis name
+                        main = "", # BA图的主题 BA plot theme
+                        point.color = NULL, # BA图离散点的颜色# BA plot discrete point color
+                        refline.color = NULL, # 参考线的颜色（金标准线）# BA plot reference line color (gold standard line)
+                        confline.color = NULL, # BA图置信区间的颜色# BA plot confidence interval color
+                        fig.label = NULL, # 最终出图的名称# Final plot name
+                        width = 6, # 图像宽度 # Image width
+                        height = 5) { # 图像高度# Image height
 
   if(length(measurement1) != length(measurement2)) {stop("The length of measurements must be the same!\n")}
   if(!is.element(slope.methed,c("OLS","SMA","MA"))) {stop("The method for slope test must be one of OLS, SMA, MA!\n")}
   
-  ba.stats <- bland.altman.stats(measurement1,measurement2) # 得到BA有关的统计量
+  ba.stats <- bland.altman.stats(measurement1,measurement2) # 得到BA有关的统计量# Get BA-related statistics
   
   meth <- ifelse(slope.methed == "OLS",0, 
                  ifelse(slope.methed == "SMA",1,2))
   
-  # 进行斜率检验
+  # 进行斜率检验# Perform a slope test
   slope <- slope.test(y = ba.stats$diffs,
                       x = ba.stats$means,
                       test.value = slope.test.value,
-                      method = meth) # 根据选择的斜率检验方法设置meth值
+                      method = meth) # 根据选择的斜率检验方法设置meth值# Set the meth value based on the selected slope test method
   
-  # 绘图
+  # 绘图plot
   pdf(paste0("BAplot_",fig.label,".pdf"), width = width, height = height)
   par(bty="o", mgp = c(2,0.5,0), mar = c(4.1,4.1,2.1,2.1), tcl=-.25, font.main=3, las=1)
   par(xpd=F)
   
-  # 设置坐标轴区间
+  # 设置坐标轴区间# Set axis limits
   if(range(ba.stats$diffs)[1] > ba.stats$lines[1]) {
     ylim1 <- ba.stats$lines[1] - ceiling(range(ba.stats$diffs)[2]-range(ba.stats$diffs)[1]/10)
   } else {ylim1 <- range(ba.stats$diffs)[1]}
@@ -70,7 +66,7 @@ BA.baseplot <- function(measurement1 = NULL, # 方法一的结果
     ylim2 <- ba.stats$lines[3] + ceiling(range(ba.stats$diffs)[2]-range(ba.stats$diffs)[1]/10)
   } else {ylim2 <- range(ba.stats$diffs)[2]}
   
-  # 设置空画布（第一次）
+  # 设置空画布（第一次）# Set a blank canvas (first time)
   plot(NULL, NULL,ylim = c(ylim1,ylim2),xlim = range(ba.stats$means),
        xlab = xlab,ylab = ylab,
        main = main,
@@ -80,22 +76,24 @@ BA.baseplot <- function(measurement1 = NULL, # 方法一的结果
   axis(side = 2,at = pretty(c(ylim1,ylim2)),labels = pretty(c(ylim1,ylim2)))
   axis(side = 1,at = pretty(ba.stats$means),labels = pretty(ba.stats$means))
   
-  rect(par("usr")[1],par("usr")[3],par("usr")[2],par("usr")[4],col = "#EAE9E9",border = F) # 填充背景色（此时画布外缘黑线被遮盖）
-  grid(col = "white", lty = 1, lwd = 1.5) # 添加网格
+  rect(par("usr")[1],par("usr")[3],par("usr")[2],par("usr")[4],col = "#EAE9E9",border = F) # 填充背景色（此时画布外缘黑线被遮盖）# Fill with background color (the black line at the outer edge of the canvas is now obscured)
+  grid(col = "white", lty = 1, lwd = 1.5) # 添加网格# Add a grid
   
-  # 添加非金标准的结果（散点）
+  # 添加非金标准的结果（散点）# Add non-gold standard results (scatter plots)
+
   points(ba.stats$means, 
          ba.stats$diffs, 
          col = ggplot2::alpha(point.color,0.8), 
          pch = 19)
   
-  # 添加置信区间
+  # 添加置信区间# Add confidence intervals
   abline(h = ba.stats$lines, 
          lty=c(2,4,2), 
          lwd=c(1.5,2,1.5),
          col=c(confline.color,refline.color,confline.color))
   
-  # 重新创建空画布（第二次）还原外侧线
+  # 重新创建空画布（第二次）还原外侧线# Recreate a blank canvas (second time) and restore the outer lines
+
   par(new = T, bty="o",xpd=F)
   plot(NULL, NULL,
        col = "white",
@@ -103,36 +101,37 @@ BA.baseplot <- function(measurement1 = NULL, # 方法一的结果
        xlab = "", ylab = "",
        xaxt = "n", yaxt = "n")
   
-  # 添加斜率检验结果
+  # 添加斜率检验结果# Add slope test results
+
   legend("topright",
          legend = paste0("Slope",ifelse(slope$b < 0.001," < 0.001",paste0(" = ",round(slope$b,3))),"\nP ",
                          ifelse(slope$p < 0.001," < 0.001",paste0(" = ",round(slope$p,3)))),
          border=NA,bty = "n", y.intersp=1,cex = 0.9)
   
-  # 关闭图像句柄
+  # 关闭图像句柄# Close the image handle
   invisible(dev.off())
 }
-输入文件
-easy_input.csv，第一列error，第二列为分组信息，这里是测试结果和金标准结果。
+输入文件Input file
+easy_input.csv，第一列error，第二列为分组信息，这里是测试结果和金标准结果。The first column contains errors, and the second column contains grouping information, including the test results and the gold standard results.
 dat <- read.table("easy_input.txt", sep = "\t", row.names = NULL, header = T, check.names = F, stringsAsFactors = F)
 head(dat)
 table(dat$dataset)
-分析并画图
-调用前面的自定义函数，检验和画图一步到位。
-# 测试结果
+分析并画图Analyze and Graph
+调用前面的自定义函数，检验和画图一步到位。Call the custom function above to perform both analysis and graphing in one step.
+# 测试结果# Test results
 test <- abs(dat[which(dat$dataset == "TEST"),"error"]) 
 
-# 金标准结果
+# 金标准结果# Gold standard results
 gt <- abs(dat[which(dat$dataset == "GT"),"error"]) 
 
-BA.baseplot(measurement1 = test, # 测试方法的结果
-            measurement2 = gt, # 金标准结果
-            slope.methed = "OLS", # 斜率方法选择OLS
-            xlab = "Means of Dice error in Left", # 添加x轴名
-            ylab = "Differences of Dice error in Left", # 添加y轴名
-            point.color = "#224A8D", # 散点颜色
-            refline.color = "#E53435", # 参考线颜色
-            confline.color = "grey30", # 置信线颜色
-            fig.label = "example") # 输出文件名
+BA.baseplot(measurement1 = test, # 测试方法的结果# Test method results
+            measurement2 = gt, # 金标准结果# Gold standard results
+            slope.methed = "OLS", # 斜率方法选择OLS# Select OLS for the slope method
+            xlab = "Means of Dice error in Left", # 添加x轴名# Add x-axis name
+            ylab = "Differences of Dice error in Left", # 添加y轴名 # Add y-axis name
+            point.color = "#224A8D", # 散点颜色# Scatter plot color
+            refline.color = "#E53435", # 参考线颜色# Reference line color
+            confline.color = "grey30", # 置信线颜色, # Confidence line color
+            fig.label = "example") # 输出文件名# Output file name
 Session Info
 sessionInfo()
