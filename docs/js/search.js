@@ -47,7 +47,7 @@ function doSearch() {
   if (!q) { resultsDiv.innerHTML = ""; return; }
   const terms = q.split(/\s+/);
   const results = fuse.search(q, { limit: 50 });
-  let html = `<p>共${results.length}条结果：</p>`;
+  let html = `<p>${results.length} result${results.length === 1 ? '' : 's'} found:</p>`;
   results.forEach(r => {
     let snippet = r.item.text;
     let idx = snippet.toLowerCase().indexOf(terms[0].toLowerCase());
