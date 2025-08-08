@@ -33,7 +33,7 @@ jobs:
         run: pip install beautifulsoup4
 
       - name: Generate index.html, chapters.json, texts/
-        run: python .github/scripts/generate_book.py
+        run: python .github/scripts/generate_searchable_index.py
 
       - name: Copy static files (js assets)
         run: |
