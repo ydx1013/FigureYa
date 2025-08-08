@@ -17,6 +17,7 @@ function loadAllChapters(callback) {
       chapters = list;
       let loaded = 0;
       chapterTexts = [];
+      if (!chapters.length) callback();
       chapters.forEach((chap, i) => {
         fetch(chap.text)
           .then(res => res.text())
@@ -24,8 +25,16 @@ function loadAllChapters(callback) {
             chapterTexts[i] = { ...chap, text };
             loaded++;
             if (loaded === chapters.length) callback();
+          })
+          .catch(() => {
+            chapterTexts[i] = { ...chap, text: "[Failed to load text]" };
+            loaded++;
+            if (loaded === chapters.length) callback();
           });
       });
+    })
+    .catch(() => {
+      document.getElementById("searchResults").innerHTML = "<p style='color:red'>Failed to load chapters.json</p>";
     });
 }
 
@@ -52,6 +61,7 @@ function doSearch() {
     let snippet = r.item.text;
     let idx = snippet.toLowerCase().indexOf(terms[0].toLowerCase());
     if (idx > 30) idx -= 30;
+    if (idx < 0) idx = 0;
     snippet = snippet.substr(idx, 120).replace(/\n/g, " ");
     snippet = highlight(snippet, terms);
     html += `<div class="result">
