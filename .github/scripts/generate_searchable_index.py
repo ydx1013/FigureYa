@@ -3,7 +3,7 @@ import re
 import json
 from bs4 import BeautifulSoup
 
-PUBLISH_DIR = "docs"
+PUBLISH_DIR = "."  # 输出到根目录
 
 def extract_number(s):
     m = re.search(r'(\d+)', s)
@@ -37,25 +37,23 @@ def get_html_files(base_path, branch_label, chapters_meta):
         html_files = [f for f in os.listdir(folder_path) if f.endswith('.html')]
         html_files_sorted = sorted(html_files, key=extract_number)
         if html_files_sorted:
-            toc.append(f"<li><b>{branch_label}/{folder}</b><ul>")
+            toc.append(f"<li><b>{folder}</b><ul>")
             for fname in html_files_sorted:
-                # path relative to docs
                 rel_path = os.path.relpath(os.path.join(folder_path, fname), PUBLISH_DIR)
                 chap_id = f"{branch_label}_{folder}_{fname}".replace(" ", "_").replace(".html", "")
                 toc.append(f'<li><a href="{rel_path}">{fname}</a></li>')
-                # generate plain text
                 with open(os.path.join(folder_path, fname), encoding='utf-8') as f:
                     raw_html = f.read()
                     text = strip_outputs_and_images(raw_html)
                 texts_dir = os.path.join(PUBLISH_DIR, "texts")
                 os.makedirs(texts_dir, exist_ok=True)
-                text_path = os.path.join("texts", f"{chap_id}.txt")  # relative to docs
+                text_path = os.path.join("texts", f"{chap_id}.txt")  # relative to root
                 abs_text_path = os.path.join(PUBLISH_DIR, text_path)
                 with open(abs_text_path, "w", encoding="utf-8") as tf:
                     tf.write(text)
                 chapters_meta.append({
                     "id": chap_id,
-                    "title": f"{branch_label}/{folder}/{fname}",
+                    "title": f"{folder}/{fname}",
                     "html": rel_path,
                     "text": text_path
                 })
@@ -65,13 +63,12 @@ def get_html_files(base_path, branch_label, chapters_meta):
 toc_entries = []
 chapters_meta = []
 toc_entries.extend(get_html_files(".", "main", chapters_meta))
-toc_entries.extend(get_html_files("master_dir", "master", chapters_meta))
 
-# Write chapters.json to docs
+# Write chapters.json to root
 with open(os.path.join(PUBLISH_DIR, "chapters.json"), "w", encoding="utf-8") as jf:
     json.dump(chapters_meta, jf, ensure_ascii=False, indent=2)
 
-# English index.html with search box and JS, write to docs
+# English index.html with search box and JS, write to root
 html_output = f"""
 <!DOCTYPE html>
 <html>
@@ -91,7 +88,7 @@ html_output = f"""
   </style>
 </head>
 <body>
-<h1>Contents Directory (main & master)</h1>
+<h1>Contents Directory (main)</h1>
 <input type="text" id="searchBox" placeholder="Enter keyword to search all chapters..." autocomplete="off" style="width:60%; font-size:1.1em;">
 <button onclick="doSearch()">Search</button>
 <button onclick="clearSearch()">Clear</button>
