@@ -1,8 +1,8 @@
-name: Generate searchable index for main & master
+name: Generate searchable index for main
 
 on:
   push:
-    branches: [main, master]
+    branches: [main]
   workflow_dispatch:
 
 jobs:
@@ -11,17 +11,10 @@ jobs:
     permissions:
       contents: write
     steps:
-      - name: Checkout main branch to root (with scripts and main content)
+      - name: Checkout main branch to root
         uses: actions/checkout@v4
         with:
           ref: main
-          fetch-depth: 0
-
-      - name: Checkout master branch to master_dir
-        uses: actions/checkout@v4
-        with:
-          ref: master
-          path: master_dir
           fetch-depth: 0
 
       - name: Set up Python
@@ -35,25 +28,10 @@ jobs:
       - name: Build searchable docs
         run: python .github/scripts/generate_searchable_index.py
 
-      - name: Copy only html files in main branch (root) to docs/ (preserving structure)
-        run: |
-          find FigureYa* -type d -exec mkdir -p docs/{} \;
-          find FigureYa* -type f -name "*.html" -exec cp --parents {} docs/ \;
-
-      - name: Copy only html files in master_dir to docs/master_dir (preserving structure)
-        run: |
-          find master_dir -type d -exec mkdir -p docs/{} \;
-          find master_dir -type f -name "*.html" -exec cp --parents {} docs/ \;
-
-      - name: Copy static files (js assets)
-        run: |
-          mkdir -p docs/js
-          cp -r js/* docs/js/
-
-      - name: Commit and push docs/
+      - name: Commit and push index/search files
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add docs/
+          git add index.html chapters.json texts/
           git commit -m "Auto-generate searchable docs [skip ci]" || echo "Nothing to commit"
           git push origin HEAD:main
