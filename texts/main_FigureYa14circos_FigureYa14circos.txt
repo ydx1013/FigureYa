@@ -1,0 +1,184 @@
+FigureYa14Circos
+FigureYa14Circos
+小丫画图出品
+2018-6-24
+欢迎关注“小丫画图”公众号，回复“小白”，看小视频，实现点鼠标跑代码。
+小丫微信: epigenomics E-mail:
+figureya@126.com
+配置文件的作者：Zhaodong Hao E-mail:
+haozd1992@163.com
+，他的更多作品看这里
+https://k.youshop10.com/6=sVQ75o
+Circos用法由小丫编译
+需求描述
+用Circos画出paper里的圆圈图，包括GC含量、gene密度、RPKM、SNP等。
+如果要画直的染色体，可参考FigureYa10chromosome
+https://k.youshop10.com/k5BQBSoI
+，
+更多画染色体的工具看这里：
+https://mp.weixin.qq.com/s/M-W277k-h6zFJT-8fqekmA
+应用场景
+场景一
+：展示基因组上多条染色体、单条染色体、或多个基因上的特征。
+场景二
+：展示不同细胞类型或人群的特征。
+特征包括但不限于
+：GC含量差异、基因密度差异、基因表达量、染色质开放程度、DNA甲基化、SNP等等。
+运行环境的准备
+1. 安装perl
+Circos是用perl写成的，在装有perl的任何操作系统上都可以运行。
+Mac和Linux系统自带perl；Windows系统需要到
+http://downloads.activestate.com/ActivePerl/releases/
+下载安装ActivePerl。
+注意
+：在终端（Terminal）运行Circos，不需要R。
+2. 安装Circos
+到
+http://circos.ca/software/download/circos/
+下载circos-0.69-6.tgz，解压缩到哪里就相当于安装到哪个文件夹了。
+3. 安装perl模块（module）
+先在终端（Terminal）输入下面的命令
+./bin/circos -modules
+运行结果像这样：
+ok
+：电脑上已经有了哪些模块
+missing
+：需要安装哪些模块
+然后在终端输入下面的命令，进入cpan
+sudo cpan
+用cpan安装missing的module，在
+>
+后面输入install +
+module的名字
+安装完，在键盘上按下
+q
++ 会车，就退出了cpan
+GD模块的安装方法
+先安装GD所需的模块，下载链接
+https://www.jb51.net/os/RedHat/1286.html
+然后安装GD：
+http://www.zxzyl.com/archives/712
+在终端运行以下命令，就安装好了gd：
+cd gd
+sudo ./install
+来到circos-0.69-6的目录下，在终端（Terminal）输入下面的命令，检查一下是不是都是
+ok
+了
+/bin/circos -modules
+4. 测试
+进入circos-0.69-6/example目录，用测试数据做正对照，看看能否跑出图
+cd circos-0.69-6/example
+../bin/circos -conf etc/circos.conf
+会产生circos.svg和circos.png两个文件。
+打开circos.png，欣赏Circos的强大。
+最短的时间画出自己的图
+现在你已经装好了系统，只要按照以下四步操作，就可以直接跳到“开始画图”部分，用自己的数据画出文档开头那样的图：
+去circos-0.69-6/data/karyotype目录找你需要的物种，记住文件名；
+把Mydata文件夹放到circos-0.69-6主目录下，然后把Mydata/etc/circos.conf文件中的
+karyotype.species.txt
+改成你需要的物种的文件名；
+打开circos-0.69-6/Mydata/etc/data/文件夹，挑你感兴趣的数据类型，看懂格式，用你自己的数据替换原有的数据。
+把circos-0.69-6/Mydata/etc/circos.conf文件中你不需要的数据对应的段落删掉。
+下面开始按部就班的讲解各个文件是干啥用的，懒人可跳过，直接进入“开始画图”。
+需要准备的文件
+需要三种文件：karyotype、配置文件和输入数据。
+karyotype
+circos-0.69-6/data/karyotype目录下已经有很多物种的karyotype文件。
+你也可以自己写karyotype文件，例如karyotype.species.txt，把它放到circos-0.69-6/data/karyotype目录下。
+chr - Chr1 CHR1 0 118073833 chr1
+chr - Chr2 CHR2 0 98364873 chr2
+chr - Chr3 CHR3 0 207093695 chr3
+chr - Chr4 CHR4 0 50051714 chr4
+chr - Chr5 CHR5 0 45443526 chr5
+chr - Chr6 CHR6 0 35772468 chr6
+chr - Chr7 CHR7 0 28624509 chr7
+chr - Chr8 CHR8 0 195669025 chr8
+chr - Chr9 CHR9 0 55551413 chr9
+配置文件
+配置文件，也就是画图的参数，保存在circos-0.69-6/Mydata/etc/下面的*.conf文件中，其中circos.conf是必需的。
+整个图里的信息，例如圈要画多大、颜色、哪里有连线、哪里画曲线、哪里画柱形图、以及调用哪个文件里的数据，全靠conf文件来告诉Circos。
+复杂的图参数也多，于是，就把参数分门别类的保存在多个配置文件中。在circos.conf文件里统一通过
+include + conf文件名
+来调用其余的conf文件，因此其余conf的文件名在circos.conf文件中都能找到。
+注意
+你会发现：有些include后面跟了当前文件夹里不存在的conf文件。
+<<include etc/image.conf>>
+<<include etc/colors_fonts_patterns.conf>>
+<<include etc/housekeeping.conf>>
+这些是保存在circos-0.69-6/etc下面的配置文件，是必须导入的。
+circos-0.69-6/etc下面的配置文件我们都不要改动。
+我们自己写的文件只保存在Mydata下面，随便你怎么改。
+读懂配置文件
+Circos网站的tutorial教程很好用，
+http://circos.ca/documentation/tutorials/quick_start/
+，下面三个例子让你用3分钟get到配置文件怎么看：
+例子一：QUICK START中的1.Hellow World
+点开看：
+http://circos.ca/documentation/tutorials/quick_start/hello_world/configuration
+CIRCOS.CONF负责告诉Circos，染色体要画多大（半径radius）、多粗（thickness）等等。
+只靠karyotype.human.txt和一个简单的配置文件CIRCOS.CONF，就画出了这样的一圈染色体：
+例子二：QUICK START中的2.Ticks And Lables
+点开看：
+http://circos.ca/documentation/tutorials/quick_start/ticks_and_labels/configuration
+在segment（此处是染色体）上添加刻度和lable（标签，此处是染色体名），写在3个配置文件里：CIRCOS.CONF、IDEOGRAM.CONF（染色体和标签）、TICKS.CONF（刻度）。就画出了这样的一圈带刻度和标签的染色体：
+例子三：菜谱中的CELL CYCLE — PART 1
+Circos网站给出了很多现成的菜谱，
+http://circos.ca/documentation/tutorials/recipes/
+Configuration里面都是搭配好的conf文件，复制粘贴到记事本里，保存成.conf为扩展名的文件。用户只要提供自己的数据（见后面的“输入数据”部分），就可以画出像菜谱中那样的图了。
+点开看
+http://circos.ca/documentation/tutorials/recipes/cell_cycle_part_1/configuration
+这个图复杂，配置文件也多：CIRCOS.CONF、IDEOGRAM.CONF、IDEOGRAM.LABEL.CONF、IDEOGRAM.POSITION.CONF、TICKS.CONF
+最实用的配置文件，自己paper里能用到
+本文档开头秀出的图就是用circos-0.69-6/Mydata/etc/文件夹里的三个conf画出的。
+可以用文本编辑器（例如Notepad++）查看、编辑。
+包括3个配置文件：
+ideogram.conf，染色体想画成什么样
+ticks.conf，染色体上的刻度和标签
+circos.conf，我的输入数据文件以及另外两个配置文件都挂在这个circos.conf文件里，因此，后面画图时，只需要告诉Circos，circos.conf在哪里。
+circos.conf的开头就定义好了这个圈里要画哪几种类型的图：
+show_links      = yes
+show_heatmaps   = yes
+show_lines      = yes
+show_histograms = yes
+然后告诉Circos，karyotype文件在哪里，用哪个。
+接下来就是各个输入数据在圈上要展示成什么样子的具体参数，重点看
+#
+后面的注释，标出了重要参数的解释。
+输入数据
+要在圈上展示的数据都保存到circos-0.69-6/Mydata/data文件夹下，想画几个圈就存几个文件。
+Mydata文件夹放在Circos主目录下，跟circos-0.69-6/Mydata/etc/文件夹里的三个conf、以及karyotype.species.txt文件是一套的。
+第一列是片段（segment）ID，此处是染色体；
+第二列和第三列是片段上的起止位置，此处是碱基的位置；
+第四列是信号值，例如GC含量、基因表达量RPKM等。
+Chr1    0   999999  39.07
+Chr1    1000000 1999999 36.13
+Chr1    2000000 2999999 38.18
+Chr1    3000000 3999999 39.49
+Chr1    4000000 4999999 37.42
+Chr1    5000000 5999999 36.98
+Chr1    6000000 6999999 38.2
+Chr1    7000000 7999999 38.65
+Chr1    8000000 8999999 39.18
+Chr1    9000000 9999999 37.54
+开始画图
+输入数据文件以及其他配置文件都挂在circos-0.69-6/Mydata/etc/circos.conf文件里，因此画图时，只需要告诉Circos，circos.conf在哪里。
+在终端里，进入Mydata目录，输入命令：
+../bin/circos -conf etc/circos.conf
+会在当前文件夹产生circos.svg和circos.png两个文件。
+circos.svg是矢量图，可以用illustrator或inkscape打开、编辑、保存成pdf等文件。
+Figure legend通用格式
+Figure 1 **(species name) genome overview.
+GC content (30.86-40.82 per Mb). (b) Pseudomolecules of **. (c) TEs
+content (42.38-75.59% per Mb for heatmap) and TEs number (128-3266 per
+Mb for line). (d) Gene content (0-41.23% per Mb for heatmap) and gene
+number (0-53 per Mb for line). (e) Average expression state (reads per
+kilobase of exon per million sequences mapped, RPKM) for RKAM_3
+(-0.19-2.48 per gene per Mb). (f) Average expression state for RKAM_2
+(-0.11-4.06 per gene per Mb). (g) Average expression state for RKAM_1
+(-0.08-4.22 per gene per Mb). (h) Heterozygous and homozygous SNPs
+identified by resequencing the sample_2. (i) Heterozygous and homozygous
+SNPs identified by resequencing the sample_1. (j) Synthetic blocks.
+画非染色体
+读懂了上面画染色体的配置文件和输入数据，就可以灵活运用Circos画各种各样的图了。
+无非是把karyotype和chromosome换成segment
+set和segment来理解，segment可以是染色体，也可以是基因、一种细胞系、一个人群。
