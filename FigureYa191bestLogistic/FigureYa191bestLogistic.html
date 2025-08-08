@@ -9,7 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="小丫画图出品" />
+<meta name="author" content="" />
 
 
 <title>FigureYa191bestLogistic</title>
@@ -363,42 +363,40 @@ summary {
 
 
 <h1 class="title toc-ignore">FigureYa191bestLogistic</h1>
-<h4 class="author">小丫画图出品</h4>
-<h4 class="date">2020-8-17</h4>
+<h4 class="author"></h4>
+<h4 class="date">2025-5-20</h4>
 
 </div>
 
 
-<p>欢迎关注“小丫画图”公众号，回复“小白”，看小视频，实现点鼠标跑代码。</p>
-<p>小丫微信: epigenomics E-mail: <a href="mailto:figureya@126.com" class="email">figureya@126.com</a></p>
-<p>作者：大鱼海棠</p>
-<p>单位：中国药科大学国家天然药物重点实验室，生物统计与计算药学研究中心</p>
-<p>小丫编辑校验</p>
-<div id="需求描述" class="section level1">
-<h1>需求描述</h1>
-<p>找最佳截断值，然后用截断值分组，生成分组后的数据。最好每一个变量带有一个标有最佳截断值的roc曲线。</p>
-<p>换句话说：y~x，这个x原本是连续变量，现在要换成分类变量，使得它在预测y的时候有最小的p值。</p>
+
+<p>Auhtor：Xiaofan Lu</p>
+<p>Reviewer：Ying Ge</p>
+<div id="需求描述" Requirement descriptionclass="section level1">
+<h1>需求描述Requirement description</h1>
+<p>找最佳截断值，然后用截断值分组，生成分组后的数据。最好每一个变量带有一个标有最佳截断值的roc曲线。Find the best cutoff value, then group with the cutoff value, and generate the grouped data. It is best that each variable has an roc curve marked with the optimal cutoff value.</p>
+<p>换句话说：y~x，这个x原本是连续变量，现在要换成分类变量，使得它在预测y的时候有最小的p值。In other words: y~x. This x was originally a continuous variable, but now it needs to be changed to a categorical variable so that it has the minimum p-value when predicting y.</p>
 </div>
-<div id="应用场景" class="section level1">
-<h1>应用场景</h1>
-<p>利用ROC寻找连续变量的最佳cutoff，并根据该cutoff划分两组做单变量逻辑回归</p>
+<div id="应用场景"Application scenarios class="section level1">
+<h1>应用场景Application scenarios</h1>
+<p>利用ROC寻找连续变量的最佳cutoff，并根据该cutoff划分两组做单变量逻辑回归ROC was used to find the best cutoff for continuous variables, and two groups were divided based on this cutoff for univariate logistic regression</p>
 </div>
-<div id="环境设置" class="section level1">
-<h1>环境设置</h1>
-<p>使用国内镜像安装包</p>
+<div id="环境设置"Environmental Settings class="section level1">
+<h1>环境设置Environmental Settings</h1>
+<p>使用国内镜像安装包Use the domestic mirror installation package</p>
 <pre class="r"><code>options(&quot;repos&quot;= c(CRAN=&quot;https://mirrors.tuna.tsinghua.edu.cn/CRAN/&quot;))
 options(BioC_mirror=&quot;http://mirrors.tuna.tsinghua.edu.cn/bioconductor/&quot;)
 install.packages(&quot;tdROC&quot;)</code></pre>
-<p>加载包</p>
-<pre class="r"><code>library(SimDesign) # 用于沉默逐步回归的信息
-library(tdROC) # 用于计算曲线下面积</code></pre>
+<p>加载包Loading package</p>
+<pre class="r"><code>library(SimDesign) # 用于沉默逐步回归的信息Information used for silent stepwise regression
+library(tdROC) # 用于计算曲线下面积Used for calculating the area under the curve</code></pre>
 <pre><code>## Loading required package: survival</code></pre>
-<pre class="r"><code>Sys.setenv(LANGUAGE = &quot;en&quot;) #显示英文报错信息
-options(stringsAsFactors = FALSE) #禁止chr转成factor</code></pre>
+<pre class="r"><code>Sys.setenv(LANGUAGE = &quot;en&quot;) #显示英文报错信息Display an English error message
+options(stringsAsFactors = FALSE) #禁止chr转成factor# Prohibit converting chr to factor</code></pre>
 </div>
-<div id="输入文件" class="section level1">
-<h1>输入文件</h1>
-<p>easy_input.csv，每行一个sample，第一列是sample ID，第二列为分组（响应变量），其后每列一个特征（自变量）。</p>
+<div id="输入文件"Input file class="section level1">
+<h1>输入文件Input file</h1>
+<p>easy_input.csv，每行一个sample，第一列是sample ID，第二列为分组（响应变量），其后每列一个特征（自变量）。easy_input.csv, each row contains a sample. The first column is the sample ID, the second column is the group (response variable), and each subsequent column contains a feature (independent variable).</p>
 <pre class="r"><code>dat &lt;- read.table(&quot;easy_input.txt&quot;,row.names = 1,sep = &quot;\t&quot;,header = T,check.names = F,stringsAsFactors = F)
 rownames(dat) &lt;- paste0(&quot;P&quot;,rownames(dat))
 colnames(dat)[2:10] &lt;- paste0(&quot;V&quot;,colnames(dat)[2:10]) 
@@ -407,20 +405,20 @@ dat[1:3, 1:3]</code></pre>
 ## P0        0 309  38
 ## P1        1 714   9
 ## P2        1 728 200</code></pre>
-<pre class="r"><code># 自定义颜色，可以继续添加
+<pre class="r"><code># 自定义颜色，可以继续添加Custom colors can be added further
 jco &lt;- c(&quot;#2874C5&quot;,&quot;#EABF00&quot;,&quot;#868686&quot;,&quot;#C6524A&quot;,&quot;#80A7DE&quot;)</code></pre>
 </div>
-<div id="循环运算单变量逻辑回归并画图" class="section level1">
-<h1>循环运算单变量逻辑回归并画图</h1>
-<pre class="r"><code>rname &lt;- &quot;Response&quot; #设置响应变量y的变量名
-vname &lt;- setdiff(colnames(dat), rname) # 设置自变量x的变量名
+<div id="循环运算单变量逻辑回归并画图"Perform loop operations on univariate logistic regression and draw graphs class="section level1">
+<h1>循环运算单变量逻辑回归并画图Perform loop operations on univariate logistic regression and draw graphs</h1>
+<pre class="r"><code>rname &lt;- &quot;Response&quot; #设置响应变量y的变量名Set the variable name of the response variable y
+vname &lt;- setdiff(colnames(dat), rname) # 设置自变量x的变量名Set the variable name of the response variable x
 
-#auc.cutoff &lt;- 0.6 # auc的阈值
+#auc.cutoff &lt;- 0.6 # auc的阈值The threshold of auc
 outTab &lt;- NULL
 new_dat &lt;- data.frame(r = dat[,rname],row.names = rownames(dat),stringsAsFactors = F); colnames(new_dat) &lt;- rname
 
 for (v in vname) {
-  # 计算ROC相关统计量
+  # 计算ROC相关统计量Calculate the relevant statistics of ROC
   TP.value &lt;- c()
   FP.value &lt;- c()
   FN.value &lt;- c()
@@ -429,7 +427,7 @@ for (v in vname) {
   FPR.value &lt;- c()
 
   subdat &lt;- as.data.frame(na.omit(dat[,c(rname,v)]))
-  value &lt;- sort(subdat[,v]) # ROC的滑动窗口
+  value &lt;- sort(subdat[,v]) # ROC的滑动窗口The sliding window of ROC
   for (pb in value) {
     tmp &lt;- subdat
     tmp$PredClass &lt;- ifelse(tmp[,v] &gt;= pb,1,0)
@@ -450,7 +448,7 @@ for (v in vname) {
   }
   ROC.point &lt;- data.frame(FPR = FPR.value, TPR = TPR.value)
   auc &lt;- round(calc.AUC(1-ROC.point$FPR,ROC.point$TPR),3)
-  if(auc &lt; 0.5) { # 如果AUC小于0.5，反向绘制ROC
+  if(auc &lt; 0.5) { # 如果AUC小于0.5，反向绘制ROC  If the AUC is less than 0.5, plot the ROC in reverse
     
     TP.value &lt;- c()
     FP.value &lt;- c()
@@ -481,14 +479,14 @@ for (v in vname) {
     auc &lt;- round(calc.AUC(1-ROC.point$FPR,ROC.point$TPR),3)
   }
   
-  # if(auc &lt; auc.cutoff) { # 如果AUC低于阈值则跳过该变量
+  # if(auc &lt; auc.cutoff) { # 如果AUC低于阈值则跳过该变量If the AUC is below the threshold, skip this variable
   # next()
   # } else{
     cat(paste0(&quot;Variable of &quot;,v,&quot; has an AUC of &quot;, auc,&quot;.\n&quot;))
-    youden &lt;- ROC.point$TPR - ROC.point$FPR # 计算Youden指数：sensitivity + specificity - 1
-    y.index &lt;- which.max(youden) # 找到Youden指数达到最大值时的索引
+    youden &lt;- ROC.point$TPR - ROC.point$FPR # 计算Youden指数：sensitivity + specificity - 1，Calculate the Youden index: sensitivity + specificity 1
+    y.index &lt;- which.max(youden) # 找到Youden指数达到最大值时的索引Find the index when the Youden index reaches its maximum value
     
-    # 绘制ROC曲线
+    # 绘制ROC曲线Draw the ROC curve
     pdf(paste0(&quot;roc for cutoff of &quot;,v,&quot;.pdf&quot;),width = 4,height = 4)
     par(bty=&quot;o&quot;, mgp = c(1.9,.33,0), mar=c(3.1,3.1,2.1,2.1)+.1, las=1, tcl=-.25)
     plot(ROC.point$FPR, ROC.point$TPR, 
@@ -498,20 +496,20 @@ for (v in vname) {
          main=&quot;&quot;, lwd=2, type=&quot;l&quot;, 
          xlim=c(0,1),ylim=c(0,1))
     lines(x=c(0,1),y=c(0,1),lwd=1.5,lty=2,col=&quot;grey60&quot;)
-    text(0,1,paste0(&quot;AUC = &quot;,auc),pos = 4,cex = 1.2) # 写出AUC
-    points(ROC.point$FPR[y.index], # 标记最优点
+    text(0,1,paste0(&quot;AUC = &quot;,auc),pos = 4,cex = 1.2) # 写出AUC，Write "AUC"
+    points(ROC.point$FPR[y.index], # 标记最优点Mark the best point
            ROC.point$TPR[y.index],
            col = jco[2],
            pch = 19,
            cex = 1.5)
     if(ROC.point$FPR[y.index] &lt; 0.5) {
-      text(ROC.point$FPR[y.index] + 0.02, # 写出最优点的变量阈值
+      text(ROC.point$FPR[y.index] + 0.02, # 写出最优点的变量阈值Write the optimal variable threshold
            ROC.point$TPR[y.index],
            labels = paste0(&quot;Best cutoff = &quot;,round(value[y.index],2)),
            pos = 4,
            cex = 1.2)
     } else {
-      text(ROC.point$FPR[y.index] - 0.02, # 写出最优点的变量阈值
+      text(ROC.point$FPR[y.index] - 0.02, # 写出最优点的变量阈值Write the optimal variable threshold
            ROC.point$TPR[y.index],
            labels = paste0(&quot;Best cutoff = &quot;,round(value[y.index],2)),
            pos = 2,
@@ -520,22 +518,22 @@ for (v in vname) {
     
     invisible(dev.off())
     
-    # 执行单变量逻辑回归
+    # 执行单变量逻辑回归Perform univariate logistic regression
     subdat$new_group &lt;- ifelse(subdat[,v] &gt;= value[y.index], 1,0)
-    f &lt;- as.formula(paste0(rname,&quot;~ new_group&quot;)) # 创建公式
+    f &lt;- as.formula(paste0(rname,&quot;~ new_group&quot;)) # 创建公式Create a formula
     t &lt;- subdat[,c(rname,&quot;new_group&quot;)]
     
-    # 单变量逻辑回归
+    # 单变量逻辑回归Univariate logistic regression
     l &lt;- glm(f, 
              data = t, 
              family = &quot;binomial&quot;, 
              control = list(maxit = 50), 
              na.action = na.exclude)
-    s &lt;- format(round(exp(cbind(&quot;OR&quot; = coef(l), confint.default(l, level = 0.95)))[2,],3),nsmall = 3) # 调整格式
+    s &lt;- format(round(exp(cbind(&quot;OR&quot; = coef(l), confint.default(l, level = 0.95)))[2,],3),nsmall = 3) # 调整格式Adjust the format
     s &lt;- paste0(s[1],&quot; (&quot;,s[2],&quot;-&quot;,s[3],&quot;)&quot;)
     p &lt;- format(round(summary(l)$coefficients[2,4],3),nsmall = 3)
     
-    # 生成表格
+    # 生成表格Generate a table
     outTab &lt;- rbind.data.frame(outTab,
                                data.frame(variable = v,
                                           auc = auc,
