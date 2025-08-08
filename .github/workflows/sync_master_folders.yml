@@ -6,6 +6,8 @@ on:
 jobs:
   check-and-copy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout master branch
         uses: actions/checkout@v4
