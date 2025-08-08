@@ -37,11 +37,11 @@ jobs:
 
       - name: Copy static files (js assets)
         run: |
-          mkdir -p dist/js dist/texts
-          cp chapters.json dist/
-          cp -r texts dist/
-          cp index.html dist/
-          cp -r js dist/
+          mkdir -p docs/js docs/texts
+          cp chapters.json docs/
+          cp -r texts docs/
+          cp index.html docs/
+          cp -r js docs/
 
       - name: Commit and push index.html and search data
         run: |
