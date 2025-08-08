@@ -1,6 +1,0 @@
-project:
-  type: book
-
-book:
-  title: "Quarto Book Minimal Test"
-  author: "Test Author"
