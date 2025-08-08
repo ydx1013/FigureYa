@@ -3,7 +3,6 @@ import re
 import json
 from bs4 import BeautifulSoup
 
-# 你发布目录（与 workflow 保持一致）：docs
 PUBLISH_DIR = "docs"
 
 def extract_number(s):
@@ -40,9 +39,8 @@ def get_html_files(base_path, branch_label, chapters_meta):
         if html_files_sorted:
             toc.append(f"<li><b>{branch_label}/{folder}</b><ul>")
             for fname in html_files_sorted:
-                # 计算以docs为根的相对路径
+                # 路径相对docs
                 rel_path = os.path.relpath(os.path.join(folder_path, fname), PUBLISH_DIR)
-                # 章节唯一 id
                 chap_id = f"{branch_label}_{folder}_{fname}".replace(" ", "_").replace(".html", "")
                 toc.append(f'<li><a href="{rel_path}">{fname}</a></li>')
                 # 生成文本摘要
@@ -95,12 +93,20 @@ html_output = f"""
 <body>
 <h1>目录 contents (main & master)</h1>
 <input type="text" id="searchBox" placeholder="输入关键词检索全文..." autocomplete="off" style="width:60%; font-size:1.1em;">
+<button onclick="doSearch()">开始检索</button>
 <button onclick="clearSearch()">清空</button>
 <div id="searchResults"></div>
 <hr>
 <ul>
   {''.join(toc_entries)}
 </ul>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {{
+    document.getElementById("searchBox").addEventListener("keydown", function(e){{
+      if (e.key === "Enter") doSearch();
+    }});
+  }});
+</script>
 </body>
 </html>
 """
