@@ -3,6 +3,9 @@ import re
 import json
 from bs4 import BeautifulSoup
 
+# 你发布目录（与 workflow 保持一致）：docs
+PUBLISH_DIR = "docs"
+
 def extract_number(s):
     m = re.search(r'(\d+)', s)
     return int(m.group(1)) if m else 999999
@@ -37,7 +40,8 @@ def get_html_files(base_path, branch_label, chapters_meta):
         if html_files_sorted:
             toc.append(f"<li><b>{branch_label}/{folder}</b><ul>")
             for fname in html_files_sorted:
-                rel_path = os.path.relpath(os.path.join(folder_path, fname), ".")
+                # 计算以docs为根的相对路径
+                rel_path = os.path.relpath(os.path.join(folder_path, fname), PUBLISH_DIR)
                 # 章节唯一 id
                 chap_id = f"{branch_label}_{folder}_{fname}".replace(" ", "_").replace(".html", "")
                 toc.append(f'<li><a href="{rel_path}">{fname}</a></li>')
@@ -45,9 +49,11 @@ def get_html_files(base_path, branch_label, chapters_meta):
                 with open(os.path.join(folder_path, fname), encoding='utf-8') as f:
                     raw_html = f.read()
                     text = strip_outputs_and_images(raw_html)
-                os.makedirs("texts", exist_ok=True)
-                text_path = os.path.join("texts", f"{chap_id}.txt")
-                with open(text_path, "w", encoding="utf-8") as tf:
+                texts_dir = os.path.join(PUBLISH_DIR, "texts")
+                os.makedirs(texts_dir, exist_ok=True)
+                text_path = os.path.join("texts", f"{chap_id}.txt")  # 相对docs
+                abs_text_path = os.path.join(PUBLISH_DIR, text_path)
+                with open(abs_text_path, "w", encoding="utf-8") as tf:
                     tf.write(text)
                 chapters_meta.append({
                     "id": chap_id,
@@ -63,11 +69,11 @@ chapters_meta = []
 toc_entries.extend(get_html_files(".", "main", chapters_meta))
 toc_entries.extend(get_html_files("master_dir", "master", chapters_meta))
 
-# 写 chapters.json
-with open("chapters.json", "w", encoding="utf-8") as jf:
+# 写 chapters.json 到docs
+with open(os.path.join(PUBLISH_DIR, "chapters.json"), "w", encoding="utf-8") as jf:
     json.dump(chapters_meta, jf, ensure_ascii=False, indent=2)
 
-# index.html with search box and JS
+# index.html with search box and JS，写到docs
 html_output = f"""
 <!DOCTYPE html>
 <html>
@@ -99,5 +105,5 @@ html_output = f"""
 </html>
 """
 
-with open("index.html", "w", encoding="utf-8") as f:
+with open(os.path.join(PUBLISH_DIR, "index.html"), "w", encoding="utf-8") as f:
     f.write(html_output)
