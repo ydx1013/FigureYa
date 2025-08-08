@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-contents-index:
+  build-searchable-index:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -32,21 +32,18 @@ jobs:
       - name: Install bs4
         run: pip install beautifulsoup4
 
-      - name: Generate index.html, chapters.json, texts/
+      - name: Build searchable docs
         run: python .github/scripts/generate_searchable_index.py
 
       - name: Copy static files (js assets)
         run: |
-          mkdir -p docs/js docs/texts
-          cp chapters.json docs/
-          cp -r texts docs/
-          cp index.html docs/
-          cp -r js docs/
+          mkdir -p docs/js
+          cp -r js/* docs/js/
 
-      - name: Commit and push index.html and search data
+      - name: Commit and push docs/
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add docs/index.html docs/chapters.json docs/texts docs/js
-          git commit -m "Auto-generate index.html with search [skip ci]" || echo "Nothing to commit"
+          git add docs/
+          git commit -m "Auto-generate searchable docs [skip ci]" || echo "Nothing to commit"
           git push origin HEAD:main
