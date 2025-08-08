@@ -11,7 +11,7 @@ jobs:
     permissions:
       contents: write
     steps:
-      - name: Checkout main branch to root (含脚本和main内容)
+      - name: Checkout main branch to root (with scripts and main content)
         uses: actions/checkout@v4
         with:
           ref: main
@@ -34,6 +34,12 @@ jobs:
 
       - name: Build searchable docs
         run: python .github/scripts/generate_searchable_index.py
+
+      - name: Copy main and master_dir HTML content to docs
+        run: |
+          mkdir -p docs/main docs/master_dir
+          cp -r main/* docs/main/ || true
+          cp -r master_dir/* docs/master_dir/ || true
 
       - name: Copy static files (js assets)
         run: |
