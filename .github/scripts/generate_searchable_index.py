@@ -39,17 +39,17 @@ def get_html_files(base_path, branch_label, chapters_meta):
         if html_files_sorted:
             toc.append(f"<li><b>{branch_label}/{folder}</b><ul>")
             for fname in html_files_sorted:
-                # 路径相对docs
+                # path relative to docs
                 rel_path = os.path.relpath(os.path.join(folder_path, fname), PUBLISH_DIR)
                 chap_id = f"{branch_label}_{folder}_{fname}".replace(" ", "_").replace(".html", "")
                 toc.append(f'<li><a href="{rel_path}">{fname}</a></li>')
-                # 生成文本摘要
+                # generate plain text
                 with open(os.path.join(folder_path, fname), encoding='utf-8') as f:
                     raw_html = f.read()
                     text = strip_outputs_and_images(raw_html)
                 texts_dir = os.path.join(PUBLISH_DIR, "texts")
                 os.makedirs(texts_dir, exist_ok=True)
-                text_path = os.path.join("texts", f"{chap_id}.txt")  # 相对docs
+                text_path = os.path.join("texts", f"{chap_id}.txt")  # relative to docs
                 abs_text_path = os.path.join(PUBLISH_DIR, text_path)
                 with open(abs_text_path, "w", encoding="utf-8") as tf:
                     tf.write(text)
@@ -67,17 +67,17 @@ chapters_meta = []
 toc_entries.extend(get_html_files(".", "main", chapters_meta))
 toc_entries.extend(get_html_files("master_dir", "master", chapters_meta))
 
-# 写 chapters.json 到docs
+# Write chapters.json to docs
 with open(os.path.join(PUBLISH_DIR, "chapters.json"), "w", encoding="utf-8") as jf:
     json.dump(chapters_meta, jf, ensure_ascii=False, indent=2)
 
-# index.html with search box and JS，写到docs
+# English index.html with search box and JS, write to docs
 html_output = f"""
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
-  <title>目录 contents</title>
+  <title>Contents Directory</title>
   <script src="js/fuse.min.js"></script>
   <script src="js/search.js" defer></script>
   <style>
@@ -91,10 +91,10 @@ html_output = f"""
   </style>
 </head>
 <body>
-<h1>目录 contents (main & master)</h1>
-<input type="text" id="searchBox" placeholder="输入关键词检索全文..." autocomplete="off" style="width:60%; font-size:1.1em;">
-<button onclick="doSearch()">开始检索</button>
-<button onclick="clearSearch()">清空</button>
+<h1>Contents Directory (main & master)</h1>
+<input type="text" id="searchBox" placeholder="Enter keyword to search all chapters..." autocomplete="off" style="width:60%; font-size:1.1em;">
+<button onclick="doSearch()">Search</button>
+<button onclick="clearSearch()">Clear</button>
 <div id="searchResults"></div>
 <hr>
 <ul>
