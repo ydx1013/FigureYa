@@ -35,10 +35,10 @@ jobs:
       - name: Build searchable docs
         run: python .github/scripts/generate_searchable_index.py
 
-      - name: Copy only html files in main to docs/main (preserving structure)
+      - name: Copy only html files in main branch (root) to docs/ (preserving structure)
         run: |
-          find main -type d -exec mkdir -p docs/{} \;
-          find main -type f -name "*.html" -exec cp --parents {} docs/ \;
+          find FigureYa* -type d -exec mkdir -p docs/{} \;
+          find FigureYa* -type f -name "*.html" -exec cp --parents {} docs/ \;
 
       - name: Copy only html files in master_dir to docs/master_dir (preserving structure)
         run: |
