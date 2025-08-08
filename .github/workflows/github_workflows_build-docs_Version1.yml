@@ -1,0 +1,40 @@
+name: Build FigureYa Searchable Docs
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build-docs:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies
+      run: pip install beautifulsoup4
+
+    - name: Generate chapters and texts
+      run: python split_chapters_and_texts.py
+
+    - name: Copy static files (js, index.html)
+      run: |
+        mkdir -p dist/js
+        cp -r js dist/
+        cp index.html dist/
+        cp -r chapters dist/
+        cp -r texts dist/
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v4
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./dist
