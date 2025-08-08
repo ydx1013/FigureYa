@@ -442,6 +442,8 @@ main/FigureYa219GMM
 FigureYa219GMM.html
 main/FigureYa220repeatedLasso
 FigureYa220repeatedLasso.html
+main/docs
+index.html
 master/FigureYa221tenFoldRF
 FigureYa221tenFoldRF.html
 master/FigureYa222PCAgene
