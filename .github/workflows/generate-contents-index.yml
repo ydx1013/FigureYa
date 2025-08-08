@@ -38,7 +38,7 @@ jobs:
 
       - name: Generate index.html
         run: |
-          python .github/scripts/generate_contents_index_multibranch.py
+          python .github/scripts/generate_contents_index.py
 
       - name: Commit and push index.html
         run: |
