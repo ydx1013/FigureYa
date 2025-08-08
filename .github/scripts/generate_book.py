@@ -2,7 +2,7 @@ import os
 from bs4 import BeautifulSoup
 
 root_dir = "."
-output_file = "FigureYa_contents.html"
+output_file = "FigureYa_searchable.html"
 chapter_template = """
 <section id="{chapter_id}">
   <h2>{chapter_title}</h2>
