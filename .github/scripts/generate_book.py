@@ -1,20 +1,22 @@
 import os
+import re
+import json
 from bs4 import BeautifulSoup
+
+def extract_number(s):
+    m = re.search(r'(\d+)', s)
+    return int(m.group(1)) if m else 999999
 
 def strip_outputs_and_images(raw_html):
     soup = BeautifulSoup(raw_html, "html.parser")
-    # 删除所有图片
     for img in soup.find_all("img"):
         img.decompose()
-    # 删除 R Markdown 的输出（以 ## 开头的 <pre><code>）
     for pre in soup.find_all("pre"):
         code = pre.find("code")
         if code and code.text.lstrip().startswith("##"):
             pre.decompose()
-    # 删除 Jupyter Notebook 输出区
     for div in soup.find_all("div", class_=lambda x: x and any("output" in c for c in x)):
         div.decompose()
-    # 删除 Jupyter Notebook 输出的 <pre>，如果它们在 output_area 内
     for pre in soup.find_all("pre"):
         parent = pre.parent
         while parent:
@@ -22,58 +24,80 @@ def strip_outputs_and_images(raw_html):
                 pre.decompose()
                 break
             parent = parent.parent
-    return str(soup)
+    return soup.get_text(separator="\n", strip=True)
 
-root_dir = "."
-output_file = "FigureYa_searchable.html"
-chapter_template = """
-<section id="{chapter_id}">
-  <h2>{chapter_title}</h2>
-  {chapter_content}
-</section>
-"""
+def get_html_files(base_path, branch_label, chapters_meta):
+    toc = []
+    folders = [f for f in os.listdir(base_path) if os.path.isdir(os.path.join(base_path, f)) and not f.startswith('.')]
+    folders_sorted = sorted(folders, key=extract_number)
+    for folder in folders_sorted:
+        folder_path = os.path.join(base_path, folder)
+        html_files = [f for f in os.listdir(folder_path) if f.endswith('.html')]
+        html_files_sorted = sorted(html_files, key=extract_number)
+        if html_files_sorted:
+            toc.append(f"<li><b>{branch_label}/{folder}</b><ul>")
+            for fname in html_files_sorted:
+                rel_path = os.path.relpath(os.path.join(folder_path, fname), ".")
+                # 章节唯一 id
+                chap_id = f"{branch_label}_{folder}_{fname}".replace(" ", "_").replace(".html", "")
+                toc.append(f'<li><a href="{rel_path}">{fname}</a></li>')
+                # 生成文本摘要
+                with open(os.path.join(folder_path, fname), encoding='utf-8') as f:
+                    raw_html = f.read()
+                    text = strip_outputs_and_images(raw_html)
+                os.makedirs("texts", exist_ok=True)
+                text_path = os.path.join("texts", f"{chap_id}.txt")
+                with open(text_path, "w", encoding="utf-8") as tf:
+                    tf.write(text)
+                chapters_meta.append({
+                    "id": chap_id,
+                    "title": f"{branch_label}/{folder}/{fname}",
+                    "html": rel_path,
+                    "text": text_path
+                })
+            toc.append("</ul></li>")
+    return toc
 
 toc_entries = []
-chapters_html = []
+chapters_meta = []
+toc_entries.extend(get_html_files(".", "main", chapters_meta))
+toc_entries.extend(get_html_files("master_dir", "master", chapters_meta))
 
-for folder in sorted(os.listdir(root_dir)):
-    if os.path.isdir(folder) and not folder.startswith('.'):
-        html_files = [f for f in sorted(os.listdir(folder)) if f.endswith('.html')]
-        if html_files:
-            chapter_id = folder.replace(' ', '_')
-            toc_entries.append(f'<li><a href="#{chapter_id}">{folder}</a></li>')
-            chapter_contents = []
-            for fname in html_files:
-                with open(os.path.join(folder, fname), encoding='utf-8') as f:
-                    raw_html = f.read()
-                    # 调用strip_outputs_and_images处理每个章节
-                    cleaned_html = strip_outputs_and_images(raw_html)
-                    chapter_contents.append(cleaned_html)
-            chapters_html.append(chapter_template.format(
-                chapter_id=chapter_id,
-                chapter_title=folder,
-                chapter_content='\n'.join(chapter_contents)
-            ))
+# 写 chapters.json
+with open("chapters.json", "w", encoding="utf-8") as jf:
+    json.dump(chapters_meta, jf, ensure_ascii=False, indent=2)
 
+# index.html with search box and JS
 html_output = f"""
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
-  <title>FigureYa contents</title>
+  <title>目录 contents</title>
+  <script src="js/fuse.min.js"></script>
+  <script src="js/search.js" defer></script>
+  <style>
+    body {{ font-family: Arial, sans-serif; }}
+    ul {{ list-style-type: none; }}
+    li > ul {{ margin-left: 2em; }}
+    #searchResults {{ margin-top: 2em; }}
+    .result {{ margin-bottom: 1em; }}
+    .result-title {{ font-weight: bold; }}
+    .highlight {{ background: yellow; }}
+  </style>
 </head>
 <body>
-<h1>FigureYa contents</h1>
-<nav>
-  <h2>目录</h2>
-  <ul>
-    {''.join(toc_entries)}
-  </ul>
-</nav>
-{''.join(chapters_html)}
+<h1>目录 contents (main & master)</h1>
+<input type="text" id="searchBox" placeholder="输入关键词检索全文..." autocomplete="off" style="width:60%; font-size:1.1em;">
+<button onclick="clearSearch()">清空</button>
+<div id="searchResults"></div>
+<hr>
+<ul>
+  {''.join(toc_entries)}
+</ul>
 </body>
 </html>
 """
 
-with open(output_file, "w", encoding='utf-8') as f:
+with open("index.html", "w", encoding="utf-8") as f:
     f.write(html_output)
