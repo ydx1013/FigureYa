@@ -1,7 +1,7 @@
-目录 contents
-目录 contents (main & master)
-开始检索
-清空
+Contents Directory
+Contents Directory (main & master)
+Search
+Clear
 main/FigureYa1survivalCurve_update
 FigureYa1survivalCurve_update.html
 main/FigureYa2ggtree+pheatmap+msa
