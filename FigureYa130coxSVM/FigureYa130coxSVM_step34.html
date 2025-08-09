@@ -13116,15 +13116,14 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="FigureYa130SVM_step34">FigureYa130SVM_step34<a class="anchor-link" href="#FigureYa130SVM_step34">&#182;</a></h3><p>小丫画图出品, 2019-9-15</p>
-<p>欢迎关注“小丫画图”公众号，同名知识星球等你加入</p>
-<p>小丫微信: epigenomics  E-mail: figureya@126.com</p>
-<p>作者：罗丹de情人，如有问题请联系 1870725648@qq.com</p>
-<p>小丫编辑校验</p>
-<h2 id="&#31532;&#19968;&#27493;&#21644;&#31532;&#20108;&#27493;">&#31532;&#19968;&#27493;&#21644;&#31532;&#20108;&#27493;<a class="anchor-link" href="#&#31532;&#19968;&#27493;&#21644;&#31532;&#20108;&#27493;">&#182;</a></h2><p>先打开FigureYa130coxSVM_step12.Rmd文件，运行第一步和第二步，生成的TCGA-LIHC-survival-relevant-DMP-matrix.csv文件作为本文档的输入文件，我把这个文件上传到微云，下载链接：<a href="https://share.weiyun.com/5GsDqAM">https://share.weiyun.com/5GsDqAM</a>。</p>
-<h2 id="&#29615;&#22659;&#35774;&#32622;">&#29615;&#22659;&#35774;&#32622;<a class="anchor-link" href="#&#29615;&#22659;&#35774;&#32622;">&#182;</a></h2><p>下载并安装Anaconda发行版，<a href="https://www.anaconda.com/distribution/#download-section">https://www.anaconda.com/distribution/#download-section</a></p>
-<p>里面已经包含了运行本文档所需的Python3、ipython、Jupyter notebook。</p>
-<p>在终端运行以下命令来安装所需要的包：</p>
+<h3 id="FigureYa130SVM_step34">FigureYa130SVM_step34<a class="anchor-link" href="#FigureYa130SVM_step34">&#182;</a></h3><p>小丫画图出品, 2025-5-20</p>
+
+<p>Author: Yufang Wang</p>
+<p>Reviewer: Ying Ge, Junyi Shen</p>
+<h2 id="&#31532;&#19968;&#27493;&#21644;&#31532;&#20108;&#27493;" >&#31532;&#19968;&#27493;&#21644;&#31532;&#20108;&#27493;<a class="anchor-link" href="#&#31532;&#19968;&#27493;&#21644;&#31532;&#20108;&#27493;">&#182;</a></h2><p>先打开FigureYa130coxSVM_step12.Rmd文件，运行第一步和第二步，生成的TCGA-LIHC-survival-relevant-DMP-matrix.csv文件作为本文档的输入文件，我把这个文件上传到微云，下载链接：<a href="https://share.weiyun.com/5GsDqAM">https://share.weiyun.com/5GsDqAM</a>。 Open the FigureYa130coxSVM_step12 first. RMD file, run the first and second steps, the generated TCGA-LIHC-survival-relevant-DMP-matrix.csv file as the input file of this document, I upload this file to Weiyun, download link: https://share.weiyun.com/5GsDqAM.</p>
+<h2 id="&#29615;&#22659;&#35774;&#32622;">&#29615;&#22659;&#35774;&#32622;<a class="anchor-link" href="#&#29615;&#22659;&#35774;&#32622;">&#182;</a></h2><p>下载并安装Anaconda发行版，<a href="https://www.anaconda.com/distribution/#download-section">https://www.anaconda.com/distribution/#download-section</a> Download and install the Anaconda distribution, https://www.anaconda.com/distribution/#download-section</p>
+<p>里面已经包含了运行本文档所需的Python3、ipython、Jupyter notebook。 It already contains the Python3, ipython, and Jupyter notebooks required to run this document.</p>
+<p>在终端运行以下命令来安装所需要的包： Run the following command in the terminal to install the required package:</p>
 <div class="highlight"><pre><span></span>pip install pandas
 pip install sklearn
 </pre></div>
@@ -13145,43 +13144,43 @@ pip install sklearn
 <span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="k">import</span> <span class="n">SVC</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
-<span class="c1">##生成映射字典</span>
+<span class="c1">##生成映射字典</span> Generate a mapping dictionary
 <span class="n">category_mapping</span><span class="o">=</span><span class="p">{</span>
     <span class="s1">&#39;High_risk&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span>
     <span class="s1">&#39;Inter_risk&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span>
     <span class="s1">&#39;Low_risk&#39;</span><span class="p">:</span><span class="mi">1</span>
 <span class="p">}</span>
 
-<span class="c1">##以dataframe形式读入数据</span>
+<span class="c1">##以dataframe形式读入数据</span> Read data as a dataframe
 <span class="n">differ_methyl_450_survival_df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;TCGA-LIHC-survival-relevant-DMP-matrix.csv&quot;</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">,</span><span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">differ_methyl_450_survival_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
 
-<span class="c1">##转换并获取X，y值</span>
+<span class="c1">##转换并获取X，y值</span> Convert and get the X,y values
 <span class="n">differ_methyl_450_survival</span><span class="o">=</span><span class="n">differ_methyl_450_survival_df</span><span class="o">.</span><span class="n">values</span>
 <span class="n">X</span><span class="o">=</span><span class="n">differ_methyl_450_survival</span><span class="p">[:,</span><span class="mi">3</span><span class="p">:]</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">differ_methyl_450_survival_df</span><span class="p">[</span><span class="s1">&#39;subtype&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">category_mapping</span><span class="p">)</span>
 <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int&#39;</span><span class="p">)</span>
 
 <span class="n">train_X</span><span class="p">,</span> <span class="n">test_X</span><span class="p">,</span> <span class="n">train_y</span><span class="p">,</span> <span class="n">test_y</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mi">1</span> <span class="o">/</span> <span class="mi">3</span><span class="p">,</span>
-                                                    <span class="n">random_state</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># 这里划分数据以1/3的来划分 训练集训练结果 测试集测试结果</span>
+                                                    <span class="n">random_state</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># 这里划分数据以1/3的来划分 训练集训练结果 测试集测试结果</span> Here, the data is divided into 1/3 of the training set training results and the test set test results
 
 
 <span class="n">params</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span><span class="mi">100</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;params: </span><span class="si">%s</span><span class="s2"> &quot;</span> <span class="o">%</span> <span class="n">params</span><span class="p">)</span>
 
-<span class="c1"># 下面这步运行时间长，耐心等待</span>
+<span class="c1"># 下面这步运行时间长，耐心等待</span> The following step takes a long time to run, so wait patiently
 <span class="n">test_scores</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">params</span><span class="p">:</span>
     <span class="n">estimator</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">)</span>
     <span class="n">selector</span> <span class="o">=</span> <span class="n">RFE</span><span class="p">(</span><span class="n">estimator</span><span class="p">,</span> <span class="n">n_features_to_select</span><span class="o">=</span><span class="n">param</span><span class="p">)</span>
-    <span class="c1">#这里没有使用KFold，直接使用cross_val_score的cv参数，代替KFold</span>
-    <span class="c1">##如果要使用KFold的话在这里写for循环</span>
+    <span class="c1">#这里没有使用KFold，直接使用cross_val_score的cv参数，代替KFold</span> KFold is not used here, just the cross_val_score cv parameter instead of KFold
+    <span class="c1">##如果要使用KFold的话在这里写for循环</span> If you want to use KFold, write a for loop here
     <span class="n">test_score</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">selector</span><span class="p">,</span> <span class="n">train_X</span><span class="p">,</span> <span class="n">train_y</span><span class="p">,</span><span class="n">cv</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;f1_macro&#39;</span><span class="p">)</span> <span class="c1">#cv：选择每次测试折数  accuracy：评价指标是准确度,可以省略使用默认值</span>
 
     <span class="nb">print</span><span class="p">(</span><span class="n">test_score</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
     <span class="n">test_scores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">test_score</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
 
-<span class="c1">##画出特征数量与f1_macro的值，寻找合适的特征数量范围</span>
+<span class="c1">##画出特征数量与f1_macro的值，寻找合适的特征数量范围</span> Draw the number of features and the values of the f1_macro to find a suitable range of feature numbers
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">test_scores</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Feature number&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Cross validation&quot;</span><span class="p">)</span>
@@ -13303,7 +13302,7 @@ params: [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 14
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>跑出来的部分数据</p>
+<p>跑出来的部分数据 Some of the data that came out</p>
 
 </div>
 </div>
@@ -13391,7 +13390,7 @@ params: [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 14
 <span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
 
-<span class="c1">##根据REF-SVM的值，进一步细化特征数目范围</span>
+<span class="c1">##根据REF-SVM的值，进一步细化特征数目范围</span> According to the value of REF-SVM, the range of the number of features is further refined
 <span class="n">params</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="mi">750</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;params: </span><span class="si">%s</span><span class="s2"> &quot;</span> <span class="o">%</span> <span class="n">params</span><span class="p">)</span>
 <span class="n">test_scores</span><span class="o">=</span><span class="p">[]</span>
