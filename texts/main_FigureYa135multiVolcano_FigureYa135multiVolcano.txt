@@ -1,69 +1,67 @@
 FigureYa135multiVolcano
 FigureYa135multiVolcano
 小丫画图出品
-2019-9-29
-欢迎关注“小丫画图”公众号，同名知识星球等你加入
-小丫微信: epigenomics E-mail:
-figureya@126.com
-作者：qliu
-小丫编辑校验
-需求描述
-从形式上复现文章里的这个复杂火山图。
-出自
+2025-5-20
+Author: Qian Liu
+Reviewer: Ying Ge, Junyi Shen
+需求描述 Description of requirements
+从形式上复现文章里的这个复杂火山图。 Reproduce this complex volcano diagram in the article in a formal way.
+出自 From
 https://onlinelibrary.wiley.com/doi/abs/10.1002/ijc.31765
 Figure 1. DMPs analysis in LSTs cases and controls. (b) Volcano plot of top DMPs and position of methylation probes in relation to the gene (IGR, intergenic region; TSS, transcription start site; UTR, untranslated region). The percentages of hypermethylated and hypomethylated DMPs are displayed on top. The proportions of different genomic features are shown on the right.
-图的解析：
-中央散点图横坐标是甲基化差异（foldchange），纵坐标是P value；
-右侧是位于各特征区域内的位点所在百分比，根据feature计算而来
-顶部是对位点的另一层分类信息hypo、hyper所在的百分比，根据散点图横坐标beta-value计算而来。
-应用场景
-同时展示多层信息，不仅限于例文中的甲基化位点。
-还可以换成差异表达基因，把横坐标deltabeta换成foldchange，feature换成基因分类即可。
-环境设置
-使用国内镜像安装包
+图的解析： Analysis of the figure:
+中央散点图横坐标是甲基化差异（foldchange），纵坐标是P value； The abscissa of the central scatter plot is the foldchange, and the ordinate is the P value.
+右侧是位于各特征区域内的位点所在百分比，根据feature计算而来 On the right is the percentage of loci located in each feature area, calculated based on the feature
+顶部是对位点的另一层分类信息hypo、hyper所在的百分比，根据散点图横坐标beta-value计算而来。 At the top is the percentage of hypo and hyper where the other layer of classification information is located, calculated according to the scatter plot abscissa beta-value.
+应用场景 Application scenarios
+同时展示多层信息，不仅限于例文中的甲基化位点。 Multiple layers of information are displayed at the same time, not limited to methylation sites in the example text.
+还可以换成差异表达基因，把横坐标deltabeta换成foldchange，feature换成基因分类即可。 You can also replace it with differentially expressed genes, replace the abscissa deltabeta with foldchange, and the feature with gene classification.
+环境设置 Environment settings
+使用国内镜像安装包 Use the domestic mirror installation package
 options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
 options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 # BiocManager::install("janitor")
-加载包
+加载包 Load the package
 library(magrittr)
 library(ggplot2)
 library(ggrepel)
 library(janitor)
 library(cowplot)
-Sys.setenv(LANGUAGE = "en") #显示英文报错信息
+Sys.setenv(LANGUAGE = "en") #显示英文报错信息 Displays the error message in English
 options(stringsAsFactors = FALSE) #禁止chr转成factor
-输入文件
-easy_input.csv，包含四列：
-第一列ID，用于在图中标出P value低的位点ID。
-第二列p value，用于画散点图。
+Prohibiting CHR from converting to factor
+输入文件 Enter the file
+easy_input.csv，包含四列： easy_input.csv, with four columns:
+第一列ID，用于在图中标出P value低的位点ID。 The first column ID is used to mark the locus ID with a low P value in the graph.
+第二列p value，用于画散点图。 The second column p value is used to draw scatter plots.
 第三列deltaBeta（foldchange），用于画散点图。另外，这里会用这列计算hypo和hypermethylated的百分比，用来画顶端百分比图。如果你不想用deltaBeta列来计算百分比，可以直接给出百分比，详见文档中“顶部百分比图
 p3
-的绘制”部分。
-第四列feature，用于画右侧柱状图。这里是位点所在的基因组位置特征，也可以换做其他特征，例如差异表达基因所在的通路、编码/非编码、原癌/抑癌等。
+的绘制”部分。 The third column deltaBeta (foldchange) is used to draw scatter plots. In addition, this column will be used to calculate the percentage of hypo and hypermethylated, which will be used to draw the top percentage plot. If you don't want to use the deltaBeta column to calculate the percentage, you can give the percentage directly, as detailed in the "Drawing the top percentage chart p3" section of the documentation.
+第四列feature，用于画右侧柱状图。这里是位点所在的基因组位置特征，也可以换做其他特征，例如差异表达基因所在的通路、编码/非编码、原癌/抑癌等。 The fourth column is used to draw the column chart on the right. Here are the genomic location features where the loci are located, which can also be replaced with other features, such as the pathway where differentially expressed genes are located, coding/non-coding, proto-cancer/tumor suppressor, etc.
 data <- read.csv("easy_input.csv", check.names=FALSE)
 row.names(data) <- data[, 1]
 colnames(data)[1] <- "Geneid"
 head(data)
-下面分别绘制散点图、顶部比例和右侧bar plot，最后组图。
+下面分别绘制散点图、顶部比例和右侧bar plot，最后组图。 The scatter plot, top scale, and bar plot on the right are drawn below, and finally the group plot.
 散点图
 p1
-的绘制
+的绘制 Plotting of scatter plot p1
 p1 <- ggplot(data, aes(deltaBeta, -log10(data$P.Value))) +
-  # 只给-log10(data$P.Value) > 60 的点写文字标签
+  # 只给-log10(data$P.Value) > 60 的点写文字标签 Only give -log10(data$P.Value) > 60 a crab text tag
   geom_text_repel(aes(deltaBeta, -log10(data$P.Value),
                       label = ifelse(-log10(data$P.Value) > 60, rownames(data), ""))) + 
   geom_point(aes(color = feature)) +
-  guides(colour = guide_legend(override.aes = list(size=5))) + # 修改 legeng size 大小
-  theme(legend.position = "none") + # 去掉图例
+  guides(colour = guide_legend(override.aes = list(size=5))) + # 修改 legeng size 大小 Modify the legeng size
+  theme(legend.position = "none") + # 去掉图例 Remove the legend
   labs(x = "Methylation difference (beta-value)",
-       y = bquote(~-log[10]~(italic("P-value")))) + #参考了FigureYa59Volcano
+       y = bquote(~-log[10]~(italic("P-value")))) + #参考了FigureYa59Volcano Reference to FigureYa59Volcano
   theme(axis.title.x = element_text(color="black", size = 14, face = "bold"),
         axis.title.y = element_text(color="black", size = 14, face = "bold"))
 
 p1
-# 原图带灰色背景和网格线
+# 原图带灰色背景和网格线 The original image has a gray background and grid lines
 
-# 如果想去除背景和网格线，就运行下面这段
+# 如果想去除背景和网格线，就运行下面这段 If you want to remove the background and grid lines, run the following section
 p1 <- p1 + theme_classic() +
   theme(#panel.background = element_rect(fill = NA),
         panel.border = element_rect(color = NA, fill = NA, size = 2),
@@ -77,18 +75,18 @@ p1 <- p1 + theme_classic() +
 p1
 散点图右侧面的柱子图
 p2
-的绘制
-# 获得 Percent 中计数列的 n 的最大值
+的绘制 Plotting of the column plot p2 on the right side of the scatter plot
+# 获得 Percent 中计数列的 n 的最大值 Gets the maximum value of n for the count column in Percent
 n_max = max(Percent$n)
 n_max
 顶部百分比图
 p3
-的绘制
+的绘制 Plotting of the top percentage chart p3
 首先计算
 Hyper
 和
 Hypo
-各占的比例，看图两者加起来是百分之一百，这里没有 0 ，就不考虑 0 了。
+各占的比例，看图两者加起来是百分之一百，这里没有 0 ，就不考虑 0 了。 First, calculate the proportion of Hyper and Hypo, see that the sum of the two is 100%, and if there is no 0 here, 0 will not be considered.
 因此定义
 > 0
 就为
@@ -101,15 +99,15 @@ Hypo
 Hyper
 所占百分比为 68.44 %, 得到
 Hypo
-所占百分比为 31.56 %
+所占百分比为 31.56 % Therefore, defining > 0 is Hyper, and < 0 is Hypo. The percentage of Hyper is 68.44%, and the percentage of Hypo is 31.56%
 percent_Hyper <- sum(data$deltaBeta < 0) / nrow(data)
 paste("Hyper was", round(percent_Hyper * 100, 2), "%" )
-# 如果你不想用deltaBeta列来计算百分比，可以用以下两行直接给出百分比：
+# 如果你不想用deltaBeta列来计算百分比，可以用以下两行直接给出百分比： If you don't want to use the deltaBeta column to calculate the percentage, you can give the percentage directly with the following two lines:
 #percent_Hypo <- "0.8"
 #percent_Hyper <- "0.2"
 
-### 手动给两个百分比的文字标签写个位置
-# 实际使用当中要根据自己的数据调整xmin和xmax
+### 手动给两个百分比的文字标签写个位置 Manually write a position for the two percentage text labels
+# 实际使用当中要根据自己的数据调整xmin和xmax In actual use, you need to adjust xmin and xmax according to your own data
 df1 <- data.frame(xmin = c(-350, 500, 1928, 4591),
                   xmax = c(500, 1928, 4591, 6500),
                   ymin = 00,
@@ -117,10 +115,10 @@ df1 <- data.frame(xmin = c(-350, 500, 1928, 4591),
                   class  = c("A","B","C","A"),
                   text = c(paste(round(percent_Hyper * 100, 2), "%" ),  "", "", paste(round(percent_Hypo * 100, 2), "%" )))
 df1
-组图
+组图 Pictures
 combined_plot <- insert_xaxis_grob(p1, p3, 
                                    position = "top",
-                                   height = grid::unit(0.4, "in") # 调节高度比
+                                   height = grid::unit(0.4, "in") # 调节高度比 Adjust the height ratio
 ) 
 
 combined_plot <- insert_yaxis_grob(combined_plot, p2, 
@@ -135,8 +133,8 @@ subtitle_theme_1 <- ggdraw() +
              hjust = 0, vjust = 1.01, size = 10,  fontface = "bold")
 
 p <- plot_grid(subtitle_theme_1, combined_plot, ncol = 1, 
-               rel_heights = c(0.1, 1)) #顶部百分比图和散点图的比例
+               rel_heights = c(0.1, 1)) #顶部百分比图和散点图的比例 The ratio of the top percentage chart and the scatter plot
 p
-# 保存到文件
+# 保存到文件 Save to file
 ggsave("multiVolcano.pdf")
 sessionInfo()

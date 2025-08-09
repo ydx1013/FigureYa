@@ -1,34 +1,31 @@
 FigureYa131CMap_update
 FigureYa131CMap_update
 小丫画图出品
-2021-10-26
-欢迎关注“小丫画图”公众号，同名知识星球等你加入
-微信ID: epigenomics E-mail:
-figureya@126.com
-作者：SRF
-小丫编辑校验
-需求描述
-药物分析，Connectivity map(CMap)分析鉴定能够靶向干性特征的潜在化合物/抑制剂，重复出下图
-出自
+2025-5-20
+Author: Rongfang Shen
+Reviewer: Ying Ge, Junyi Shen
+需求描述 Requirement Description
+药物分析，Connectivity map(CMap)分析鉴定能够靶向干性特征的潜在化合物/抑制剂，重复出下图 Drug analysis, Connectivity map (CMap) analysis identifies potential compounds/inhibitors capable of targeting dryness characteristics, repeating the figure below
+出自 From
 https://www.sciencedirect.com/science/article/pii/S0092867418303581?via%3Dihub#app2
 Figure 7. Correlation of cancer stemness with drug resistance – Connectivity map analysis (A) Heatmap showing enrichment score (positive in blue, negative in red) of each compound from the CMap for each cancer type. Compounds sorted from right to left by descending number of cancer type significantly enriched. (B) Heatmap showing each compound (perturbagen) from the CMap that share Mechanism of actions (rows). Sorted by descending number of compound with shared mechanism of actions. See also Figure S7 and Tables S3 and S4.
-应用场景
+应用场景 Application scenarios
 任何感兴趣的差异基因都可以用CMap分析得到可能的靶向药物，关于CMap的介绍和原理可以参考
 The Connectivity Map-揭示化合物，基因和疾病状态的功能联系
-.
+. Any differential gene of interest can be analyzed by CMap to obtain a possible targeted drug, and the introduction and principle of CMap can be described in The Connectivity Map - Revealing the functional connections between compounds, genes and disease states.
 CMap build 02
 包含~1,300小分子化合物处理的Affymetrix芯片数据，目前还可以使用但是已经不更新和维护了。考虑到新版的
 clue.io
-query只能上传最多150个上调和下调差异基因，而CMap build 02版本可以总共上传1000个基因（上调和下调基因总和不超过1000个基因）。
-作者在查询这个步骤依旧使用的是CMap build 02.
+query只能上传最多150个上调和下调差异基因，而CMap build 02版本可以总共上传1000个基因（上调和下调基因总和不超过1000个基因）。 CMap build 02 contains ~1,300 small molecule compound processing Affymetrix chip data, which is currently available but is no longer updated or maintained. Considering that the new version of clue.ioquery can only upload up to 150 up-regulated and down-regulated differential genes, CMap build 02 can upload a total of 1000 genes (the total up-regulated and down-regulated genes do not exceed 1000 genes).
+作者在查询这个步骤依旧使用的是CMap build 02. The author still uses CMap build 02 for this query step.
 而在分析mechanism of actions (MoA)和drug-target部分则选用的是
 CLUE
-，对感兴趣的小分子进行MoA药物作用机制分析，探索其共同的内在作用机制。
-环境设置
-使用国内镜像安装包
+，对感兴趣的小分子进行MoA药物作用机制分析，探索其共同的内在作用机制。In the analysis of mechanism of actions (MoA) and drug-target, CLUE was selected to analyze the mechanism of action of MoA drugs of interest and explore their common intrinsic mechanisms.
+环境设置 Environment settings
+使用国内镜像安装包 Use the domestic mirror installation package
 options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
 options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
-加载包
+加载包 Load the package
 library(xlsx)
 library(tidyverse)
 library(GEOquery)
@@ -37,14 +34,15 @@ library(circlize)
 library(ComplexHeatmap)
 
 options(java.parameters = "-Xmx8000m")
-Sys.setenv(LANGUAGE = "en") #显示英文报错信息
+Sys.setenv(LANGUAGE = "en") #显示英文报错信息 Displays the error message in English
 options(stringsAsFactors = FALSE) #禁止chr转成factor
-PART 1: 重复出文章Figure 7A
-生成CMap输入文件
+Prohibiting CHR from converting to factor
+PART 1: 重复出文章Figure 7A PART 1: Repeat Figure 7A
+生成CMap输入文件 Generate a CMap input file
 pandif_mRNAsi.xlsx，这里用的是TCGA泛癌数据根据mRNAsi指标高低求出的差异基因。出自例文附件Table S3
 https://ars.els-cdn.com/content/image/1-s2.0-S0092867418303581-mmc3.xlsx
-，你也可以用任何你感兴趣的差异基因作为输入。
-#CMap要求输入基因是GPL96 platform ID的形式
+，你也可以用任何你感兴趣的差异基因作为输入。 pandif_mRNAsi.xlsx, the TCGA pan-cancer data is used here to calculate the differential genes based on the level of mRNAsi indicators. From the example attachment Table S3https://ars.els-cdn.com/content/image/1-s2.0-S0092867418303581-mmc3.xlsx, you can also use any differential gene you are interested in as input.
+#CMap要求输入基因是GPL96 platform ID的形式 CMap requires that the input gene be in the form of a GPL96 platform ID
 GPL96 <- getGEO("GPL96", destdir = getwd())
 GPL96 <- Table(GPL96)[, c("ID", "Gene Symbol")]
 
@@ -55,7 +53,7 @@ pancancertype <- c("ACC", "BLCA", "BRCA", "CESC", "CHOL", "COAD", "DLBC", "ESCA"
                    "UCEC", "UCS", "UVM")
 diflist <- list()
 
-# 读取数据
+# 读取数据 Read data
 for (i in 1:pan_n){
   print(paste0("Load ", pancancertype[i], " differentially expressed gene data"))
   difdata <- openxlsx::read.xlsx("pandif_mRNAsi.xlsx", sheet = i, colNames = TRUE) %>% 
@@ -66,7 +64,7 @@ for (i in 1:pan_n){
 }
 names(diflist) <- pancancertype
 
-# 输出grp文件(one gene per line)
+# 输出grp文件(one gene per line) Output grp file (One gene per line)
 if (!file.exists("./grpfile")){
   dir.create("./grpfile")
 }
@@ -75,7 +73,7 @@ for (i in 1:pan_n){
   tmpdata <- diflist[[i]]
   tmp_updata <- tmpdata[tmpdata$logFC > 0, ]
   tmp_downdata <- tmpdata[tmpdata$logFC < 0, ]
-  # 选择差异最大的前500个基因
+  # 选择差异最大的前500个基因 The top 500 genes with the greatest differences were selected
   if (nrow(tmp_updata) > 500){
     top500up <- tmp_updata[, "ID"][1:500]
   } else {top500up <- tmp_updata[, "ID"]}
@@ -83,7 +81,7 @@ for (i in 1:pan_n){
   if (nrow(tmp_downdata) > 500){
     top500down <- rev(tmp_downdata[, "ID"])[1:500]
   } else {top500down <- rev(tmp_downdata[, "ID"])}
-  # 写成grp格式文件
+  # 写成grp格式文件 Written as a grp format file
   write.table(top500up, paste0("grpfile/", pancancertype[i], "_up500.grp"),
               row.names = F, sep = "\t", quote = F, col.names = F)
   write.table(top500down, paste0("grpfile/", pancancertype[i], "_down500.grp"),
@@ -92,36 +90,36 @@ for (i in 1:pan_n){
 CMap query
 需要用到CMap，具体操作方法见同一文件夹下的
 CMap query_update.docx
-文件，这里以ACC为例，获得ACC_CMap_result.xls。
+文件，这里以ACC为例，获得ACC_CMap_result.xls。 CMap is required, see the CMap query_update.docx file in the same folder, here is an example of ACC to get ACC_CMap_result.xls.
 把按照操作文档运行的结果ACC_CMap_result.xls跟文章提供附件结果做对比。Connectivity_Map_Output.xlsx出自例文附件Table S4，
 https://ars.els-cdn.com/content/image/1-s2.0-S0092867418303581-mmc4.xlsx
-。
-# 按操作文档得到的结果
+。 Compare the results of running according to the operation document ACC_CMap_result.xls with the results of providing attachments to the article. Connectivity_Map_Output.xlsx from Table S4 in the attachment of the example, https://ars.els-cdn.com/content/image/1-s2.0-S0092867418303581-mmc4.xlsx.
+# 按操作文档得到的结果 Results obtained by action document
 ACC_CMap_result <- xlsx::read.xlsx("ACC_CMap_result.xls", sheetIndex = 1, header = T)
 ACC_CMap_result$p <- as.numeric(ACC_CMap_result$p)
-# p < 0.05 筛选具有统计学意义的化合物
+# p < 0.05 筛选具有统计学意义的化合物 p < 0.05 screens for statistically significant compounds
 ACC_CMap_sig <- na.omit(ACC_CMap_result)
 ACC_CMap_sig <- ACC_CMap_sig[ACC_CMap_sig$p < 0.05, ]
 dim(ACC_CMap_sig)
-# 例文的结果
+# 例文的结果 Example Results
 ACC_CMap_paper <- openxlsx::read.xlsx("Connectivity_Map_Output.xlsx", sheet = 1, colNames = T) #读取sheet1 ACC
 dim(ACC_CMap_paper)
-# 两个结果的交集
+# 两个结果的交集 The intersection of two results
 camp_inter <- length(intersect(ACC_CMap_sig$cmap.name, ACC_CMap_paper$cmap.name)) 
 camp_inter
 paper_cmap <- ACC_CMap_result[ACC_CMap_result$cmap.name %in% ACC_CMap_paper$cmap.name, ]
 head(paper_cmap)
-虽然跟原文提供的结果不是完全一致。分析的原因可能是在处理输入差异基因这一步骤上，文章说在匹配gpl96探针数据FC排序之后去掉重复的ID。这一步骤我是多个探针匹配同一个基因只保留一个探针。还试过删除掉多个探针匹配一个基因的全部探针以及保留全部的unique探针。结果都不能达到完全一致。
-可以看到在140有85个交集，并且rank在前面的compound基本一致。
-因此差异应该是由于数据预处理问题，方法是没有问题的。
-画图
+虽然跟原文提供的结果不是完全一致。分析的原因可能是在处理输入差异基因这一步骤上，文章说在匹配gpl96探针数据FC排序之后去掉重复的ID。这一步骤我是多个探针匹配同一个基因只保留一个探针。还试过删除掉多个探针匹配一个基因的全部探针以及保留全部的unique探针。结果都不能达到完全一致。 Although the results provided by the original text are not exactly the same. The reason for the analysis may be the processing of input differential genes, and the article says that the duplicate IDs are removed after matching the FC sequence of gpl96 probe data. In this step, I match multiple probes and keep only one probe for the same gene. We have also tried removing multiple probes, matching all probes to a gene, and keeping all unique probes. The results are not completely consistent.
+可以看到在140有85个交集，并且rank在前面的compound基本一致。 You can see that there are 85 intersections at 140, and the rank of the compound in front of it is basically the same.
+因此差异应该是由于数据预处理问题，方法是没有问题的。 So the difference should be due to data preprocessing issues, and the method is fine.
+画图 Drawing
 按照操作文档
 CMap query_update.docx
-里的方法，对全部癌种执行完CMap query之后，整理好文件。
-这里就不重复这一过程了，我们直接拿文章的附件来画图。
+里的方法，对全部癌种执行完CMap query之后，整理好文件。 Follow the method in the CMap query_update.docx of the operation document, and organize the files after executing the CMap query for all cancer types.
+这里就不重复这一过程了，我们直接拿文章的附件来画图。 We won't repeat this process here, let's just draw the attachments of the article.
 Connectivity_Map_Output.xlsx: 全部癌种的Connectivity Map Output结果。出自例文附件Table S4，
 https://ars.els-cdn.com/content/image/1-s2.0-S0092867418303581-mmc4.xlsx
-。
+。 Connectivity_Map_Output.xlsx: Connectivity Map Output results for all cancer types. From Table S4, https://ars.els-cdn.com/content/image/1-s2.0-S0092867418303581-mmc4.xlsx.
 camp_outputlist <- list()
 for (i in 1:pan_n){
   camp_output_tmp <- openxlsx::read.xlsx("Connectivity_Map_Output.xlsx", sheet = i, colNames = T)
@@ -132,17 +130,17 @@ camp_output <- plyr::ldply(camp_outputlist, data.frame)
 colnames(camp_output)[1] <- "Cancer"
 str(camp_output)
 summary(camp_output$p)
-# 整理成complexheatmap的输入形式
+# 整理成complexheatmap的输入形式 Organized into complexheatmap input form
 oncoplotdata <- reshape2::dcast(camp_output[, c("Cancer", "cmap.name", "enrichment")], Cancer ~ cmap.name)
 rownames(oncoplotdata) <- oncoplotdata$Cancer
 oncoplotdata <- oncoplotdata[, -1]
 mean(apply(oncoplotdata, 1, function(x) sum(!is.na(x)))) #average of 74 compounds per tumor type
-#可以发现Figure4A enrichment score跟提供的数据是方向是完全相反的，我认为作者是为了更好地解释结果。enrichment score越高，代表这个药物引起的改变和stemness改变越相似，enrichment score越负，改变越相反，因而该种药物才有可能inhibit stemness-related tumorigenicity。在这里我就不对其进行改变，保留原始CMap output结果。
+#可以发现Figure4A enrichment score跟提供的数据是方向是完全相反的，我认为作者是为了更好地解释结果。enrichment score越高，代表这个药物引起的改变和stemness改变越相似，enrichment score越负，改变越相反，因而该种药物才有可能inhibit stemness-related tumorigenicity。在这里我就不对其进行改变，保留原始CMap output结果。 It can be found that the enrichment score of Figure4A is completely opposite to the data provided, and I think the author is trying to better explain the results. The higher the enrichment score, the more similar the changes caused by the drug are to the stemness changes, and the more negative the enrichment score, the more opposite the changes are, so that the drug may inhibit stemness-related tumorigenicity. I'm not going to change it here, keeping the original CMap output result.
 
 oncoplotdata[, "zardaverine"]
-# 作者画图的处理并没有进一步的说明，作者在文中只提到筛选p<0.05，并且展示在多于3个癌种都有富集的复合物。但看文章显示的结果应该有进行进一步的筛选。
+# 作者画图的处理并没有进一步的说明，作者在文中只提到筛选p<0.05，并且展示在多于3个癌种都有富集的复合物。但看文章显示的结果应该有进行进一步的筛选。 The author only mentioned that the screening p<0.05 was shown in more than 3 cancer types. However, the results shown in the article should be further screened.
 
-# 这里我们选取富集多于10个癌种的复合物进行展示。
+# 这里我们选取富集多于10个癌种的复合物进行展示。 Here we select complexes enriched with more than 10 cancer types for display.
 # compounds associated with stemness in at least 10 cancer types.
 oncoplotdata2 <- oncoplotdata[, apply(oncoplotdata, 2, function(x) sum(!is.na(x)) > 10)]
 # compounds ordered by number of significantly enriched
@@ -181,16 +179,16 @@ decorate_annotation("cancernumber", {
               unit(1, "npc") + unit(8, "mm"), just = "left",
               gp = gpar(fontsize = 12, col="black"))})
 dev.off()
-PART 2: 重复出文章Figure 7B
-MoA分析
-探讨感兴趣药物的作用机制，具体操作方法参考操作文档CMap_MoA.docx。
-moa_target_export.txt: 是从网站下载的全部MoA和target信息，只需要对感兴趣的药物进行筛选整理就可以得到文章的输入文件。
+PART 2: 重复出文章Figure 7B PART 2: Repeat the article Figure 7B
+MoA分析 MoA analysis
+探讨感兴趣药物的作用机制，具体操作方法参考操作文档CMap_MoA.docx。 To explore the mechanism of action of the drug of interest, please refer to the operation document CMap_MoA.docx for specific operation methods.
+moa_target_export.txt: 是从网站下载的全部MoA和target信息，只需要对感兴趣的药物进行筛选整理就可以得到文章的输入文件。 moa_target_export.txt: It is all the MoA and target information downloaded from the website, and you only need to filter and sort out the drugs of interest to get the input file of the article.
 MoAinput2 <- read.table("moa_target_export.txt", sep = "\t", header = T, )
-# 原文中提及74 compounds没有明确说明筛选方法，这里取前50个。
-# 实际运行时，自己先筛选一下感兴趣的compouds
+# 原文中提及74 compounds没有明确说明筛选方法，这里取前50个。 The original text mentions that 74 compounds do not clearly state the selection method, and the top 50 are selected here.
+# 实际运行时，自己先筛选一下感兴趣的compouds. When you actually run it, you can filter the compouds you are interested in first.
 MoAinput2 <- MoAinput2[1:50,]
 
-# 整理成oncoPrint需要的输入形式
+# 整理成oncoPrint需要的输入形式 Organize into the input form required by oncoPrint
 PerturbagenID <- MoAinput2$Name
 names(PerturbagenID) <- MoAinput2$ID
 MoAinput2$Type <- NULL
@@ -206,14 +204,14 @@ oncoprintinput[!is.na(oncoprintinput)] <- "inhibitor"
 oncoprintinput[is.na(oncoprintinput)] <- ""
 colnames(oncoprintinput) <- PerturbagenID[colnames(oncoprintinput)]
 oncoprintinput <- oncoprintinput[, order(colnames(oncoprintinput))]
-下面我们就用文章提供的附件重复原图：
+下面我们就用文章提供的附件重复原图： Below we will repeat the original picture with the attachment provided in the article:
 Connectivity_Map_Output.xlsx，出自例文附件Table S4里的TableS4B，
 https://ars.els-cdn.com/content/image/1-s2.0-S0092867418303581-mmc4.xlsx
-。表34是MoA结果，作为Figure 7B的输入结果。
+。表34是MoA结果，作为Figure 7B的输入结果。 Connectivity_Map_Output.xlsx, from Table S4B in Table S4 attached to the example, https://ars.els-cdn.com/content/image/1-s2.0-S0092867418303581-mmc4.xlsx. Table 34 shows the MoA results as input results for Figure 7B.
 MoAinput <- openxlsx::read.xlsx("Connectivity_Map_Output.xlsx", sheet = 34, colNames = T)
-#parthenolide药物在NFkB pathway inhibitor有2个，其Perturbagen.Id不同
+#parthenolide药物在NFkB pathway inhibitor有2个，其Perturbagen.Id不同 There are two parthenolide drugs in the NFkB pathway inhibitor, which differ in Perturbagen.Id
 MoAinput[MoAinput$MoA == "NFkB pathway inhibitor", ]
-# 整理成oncoPrint需要的输入形式
+# 整理成oncoPrint需要的输入形式 Organize into the input form required by oncoPrint
 PerturbagenID <- unlist(str_split(MoAinput$Name, ", "))
 names(PerturbagenID) <- unlist(str_split(MoAinput$Perturbagen.Id, ", ")) 
 MoAinput <- MoAinput[, c("MoA", "Perturbagen.Id")] %>% split(.$MoA) %>% lapply("[[", 2) %>% 
@@ -226,7 +224,7 @@ oncoprintinput[!is.na(oncoprintinput)] <- "inhibitor"
 oncoprintinput[is.na(oncoprintinput)] <- ""
 colnames(oncoprintinput) <- PerturbagenID[colnames(oncoprintinput)]
 oncoprintinput <- oncoprintinput[, order(colnames(oncoprintinput))]
-画图
+画图 Drawing
 alter_fun = list(
     background = function(x, y, w, h) 
         grid.rect(x, y, w*0.9, h*0.9, gp = gpar(fill = "white", col = "grey")),
