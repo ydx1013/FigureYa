@@ -102,7 +102,7 @@ function doSearch() {
   const resultsDiv = document.getElementById("searchResults");
   if (!q) { resultsDiv.innerHTML = ""; return; }
   const terms = q.split(/\s+/);
-  const results = fuse.search(q, { limit: 50 });
+  const results = fuse.search(q);
   let html = `<p>${results.length} result${results.length === 1 ? '' : 's'} found:</p>`;
   results.forEach(r => {
     let snippet = r.item.text;
