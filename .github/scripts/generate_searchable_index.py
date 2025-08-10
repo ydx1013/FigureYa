@@ -68,7 +68,7 @@ toc_entries.extend(get_html_files(".", "main", chapters_meta))
 with open(os.path.join(PUBLISH_DIR, "chapters.json"), "w", encoding="utf-8") as jf:
     json.dump(chapters_meta, jf, ensure_ascii=False, indent=2)
 
-# English index.html with search box and JS, write to root
+# English lite.html with search box and JS, write to root
 html_output = f"""
 <!DOCTYPE html>
 <html>
@@ -108,5 +108,5 @@ html_output = f"""
 </html>
 """
 
-with open(os.path.join(PUBLISH_DIR, "index.html"), "w", encoding="utf-8") as f:
+with open(os.path.join(PUBLISH_DIR, "lite.html"), "w", encoding="utf-8") as f:
     f.write(html_output)
