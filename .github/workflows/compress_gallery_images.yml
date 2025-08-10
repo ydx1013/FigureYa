@@ -9,6 +9,8 @@ on:
 jobs:
   compress-gallery:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -23,17 +25,27 @@ jobs:
       - name: Install ImageMagick
         run: sudo apt-get update && sudo apt-get install -y imagemagick
 
-      - name: Find and compress PNG images in gallery/
+      - name: Make output directory
+        run: mkdir -p gallery_compress
+
+      - name: Compress PNG images from gallery/ to gallery_compress/
         run: |
-          find gallery -name "*.png" | while read img; do
-            # Resize width to max 400px, keep aspect, set quality and strip metadata
-            convert "$img" -resize 400x400\> -strip -quality 85 "$img"
+          for img in gallery/*.png; do
+            fname=$(basename "$img")
+            convert "$img" -resize 400x400\> -strip -quality 85 "gallery_compress/$fname"
           done
+
+      - name: Show file sizes before and after
+        run: |
+          echo "Original sizes:"
+          du -h gallery/*.png | sort -h
+          echo "Compressed sizes:"
+          du -h gallery_compress/*.png | sort -h
 
       - name: Commit and push compressed images
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add gallery/*.png
-          git commit -m "Auto-compress gallery images [skip ci]" || echo "Nothing to commit"
+          git add gallery_compress/*.png
+          git commit -m "Auto-compress gallery images to gallery_compress/ [skip ci]" || echo "Nothing to commit"
           git push
