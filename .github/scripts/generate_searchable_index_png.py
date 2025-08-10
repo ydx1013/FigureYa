@@ -41,7 +41,7 @@ def get_html_files(base_path, branch_label, chapters_meta):
         html_files_sorted = sorted(html_files, key=extract_number)
         if html_files_sorted:
             gallery_base = extract_gallery_base(folder)
-            thumb_path = f"gallery/{gallery_base}.png" if gallery_base else None
+            thumb_path = f"gallery_compress/{gallery_base}.png" if gallery_base else None
             if thumb_path and not os.path.isfile(os.path.join(PUBLISH_DIR, thumb_path)):
                 thumb_path = None
             for fname in html_files_sorted:
