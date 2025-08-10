@@ -1,0 +1,39 @@
+name: Compress Gallery Images
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'gallery/**.png'
+
+jobs:
+  compress-gallery:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install ImageMagick
+        run: sudo apt-get update && sudo apt-get install -y imagemagick
+
+      - name: Find and compress PNG images in gallery/
+        run: |
+          find gallery -name "*.png" | while read img; do
+            # Resize width to max 400px, keep aspect, set quality and strip metadata
+            convert "$img" -resize 400x400\> -strip -quality 85 "$img"
+          done
+
+      - name: Commit and push compressed images
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add gallery/*.png
+          git commit -m "Auto-compress gallery images [skip ci]" || echo "Nothing to commit"
+          git push
