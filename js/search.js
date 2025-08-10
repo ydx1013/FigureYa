@@ -6,8 +6,55 @@ function highlight(text, terms) {
   return text.replace(re, '<span class="highlight">$1</span>');
 }
 
+function getGalleryBase(folder) {
+  // 提取 FigureYa数字 作为图像前缀
+  let m = folder.match(/(FigureYa\d+)/);
+  return m ? m[1] : null;
+}
+
 function renderToc() {
-  // 可选：动态渲染目录
+  let tocGrid = document.getElementById("tocGrid");
+  if (!tocGrid) {
+    // 若页面还用ul，可以自动替换成div#tocGrid
+    let ul = document.querySelector("ul");
+    if (ul) {
+      tocGrid = document.createElement("div");
+      tocGrid.id = "tocGrid";
+      tocGrid.className = "grid";
+      ul.parentNode.replaceChild(tocGrid, ul);
+    }
+  }
+  if (!tocGrid) return;
+
+  // 1. 按文件夹分组
+  let folderMap = {};
+  chapters.forEach(item => {
+    if (!folderMap[item.folder]) {
+      folderMap[item.folder] = { htmls: [], folder: item.folder };
+    }
+    folderMap[item.folder].htmls.push({ name: item.html.split("/").pop(), href: item.html });
+  });
+
+  // 2. 渲染
+  let html = '';
+  Object.values(folderMap).forEach(folder => {
+    // 提取编号，拼gallery路径
+    let galleryBase = getGalleryBase(folder.folder);
+    let thumb = galleryBase ? `gallery/${galleryBase}.png` : null;
+    html += `<div class="card">`;
+    // 图像
+    html += thumb ? `<img src="${thumb}" alt="${folder.folder}" loading="lazy">`
+                  : `<div style="width:100%;height:80px;background:#eee;border-radius:6px;margin-bottom:8px;"></div>`;
+    // 文件夹名
+    html += `<div class="card-title">${folder.folder}</div>`;
+    // html文件链接
+    html += `<div class="card-links">`;
+    folder.htmls.forEach(h =>
+      html += `<a href="${h.href}" target="_blank" style="display:inline-block;margin:0 3px 2px 0">${h.name}</a>`
+    );
+    html += `</div></div>`;
+  });
+  tocGrid.innerHTML = html;
 }
 
 function loadAllChapters(callback) {
@@ -78,9 +125,9 @@ function clearSearch() {
 }
 
 window.onload = function() {
-  renderToc();
   loadAllChapters(() => {
     buildIndex();
+    renderToc();
     document.getElementById("searchBox").addEventListener("input", doSearch);
   });
 };
