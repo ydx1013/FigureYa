@@ -1,53 +1,49 @@
 FigureYa171subgroupSurv
 FigureYa171subgroupSurv
-小丫画图出品
-2020-3-29
-欢迎关注“小丫画图”公众号，回复“小白”，看小视频，实现点鼠标跑代码。
-小丫微信: epigenomics E-mail:
-figureya@126.com
-作者：果子
-小丫编辑校验
-需求描述
-我们对亚组进行分析（比如说，risk signature在不同的年龄、性别、gleason评分等）的时候，区分高危和低危之后，画图把高危和低危的预测放到不同的年龄或肿瘤级别中，看看是否仍然有效。 目前只能通过手动来做，是否可以帮忙做一个续惯的流程。 输入survival信息，和不同的临床亚组。
-出自
+2025-5-20
+Author: Shipeng Guo
+Reviewer：Ying Ge、Junyi Shen
+需求描述Description of requirements
+我们对亚组进行分析（比如说，risk signature在不同的年龄、性别、gleason评分等）的时候，区分高危和低危之后，画图把高危和低危的预测放到不同的年龄或肿瘤级别中，看看是否仍然有效。 目前只能通过手动来做，是否可以帮忙做一个续惯的流程。 输入survival信息，和不同的临床亚组。When we analyzed subgroups (e.g., risk signatures at different ages, genders, Gleson scores, etc.), we distinguished between high and low risk, and then plotted the predictions for different ages or tumor levels to see if they were still valid. At present, it can only be done manually, can you help to make a process of continuation? Enter survival information, and different clinical subgroups.
+出自From
 https://www.onlinelibrary.wiley.com/doi/full/10.1002/cam4.1498
 Figure 7. Subgroup analyses revealed by Kaplan-Meier survival curve. (A) Stratified survival analyses based on the clinicopathological features age, clinical stage, histological stage, and neoplasm histological grade for the 7-miRNA-based OS classifier.
-应用场景
-本质上就是每次按条件筛选数据，然后做生存分析。
-你可能还想看这篇： 8秒完成2万个基因的生存分析，人人都可以！
+应用场景Application scenarios
+本质上就是每次按条件筛选数据，然后做生存分析。Essentially, it is to filter the data by conditions each time, and then do a survival analysis
+你可能还想看这篇： 8秒完成2万个基因的生存分析，人人都可以！You may also want to read this article: Complete the survival analysis of 20,000 genes in 8 seconds, everyone can do it!
 https://mp.weixin.qq.com/s/o4e1HzG4zPIQoGT6-7D0ug
-环境设置
-使用国内镜像安装包
+环境设置Environment settings
+使用国内镜像安装包Use the domestic mirror installation package
 options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
 options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
-加载包
+加载包Load the package
 library(survival)
 library(survminer)
-Sys.setenv(LANGUAGE = "en") #显示英文报错信息
-options(stringsAsFactors = FALSE) #禁止chr转成factor
-输入文件
-easy_input.csv，包含生存数据和临床亚组信息。
+Sys.setenv(LANGUAGE = "en") #显示英文报错信息Displays the error message in English
+options(stringsAsFactors = FALSE) #禁止chr转成factor  Prohibiting CHR from converting to factor
+输入文件Enter the file
+easy_input.csv，包含生存数据和临床亚组信息。Contains survival data and clinical subgroup information
 dd <- data.table::fread("easy_input.csv",data.table = F)
 dd[1:3,]
-以一个亚组为例
-以age>=60为例，提取数据、绘制生存曲线。
-批量操作
-本质上就是每次按条件筛选数据，然后做生存分析，重点是在筛选数据
-自定义函数
-给一个筛选标准，直接画图。
-支持单次操作
+以一个亚组为例Take a subgroup as an example
+以age>=60为例，提取数据、绘制生存曲线。Taking age>=60 as an example, extract data and draw a survival curve
+批量操作Batch operations
+本质上就是每次按条件筛选数据，然后做生存分析，重点是在筛选数据Essentially, it is to filter the data by conditions each time, and then do a survival analysis, focusing on screening the data
+自定义函数Custom functions
+给一个筛选标准，直接画图。Give a screening criterion and draw a picture directly.
+支持单次操作Support single operation
 mysurvplot <- function(cols=cols,filter=filter){
-  ## 过滤条件
+  ## 过滤条件Filter conditions
   index = dd[,cols]==filter
-  ## 按行过滤数据
+  ## 按行过滤数据Filter data by row
   rt = dd[index,]
-  ## 生存分析
+  ## 生存分析Survival analysis
   fit = survfit(Surv(futime, fustat) ~ Risk, data = rt)
-  ## 计算p值
+  ## 计算p值Calculate the p-value
   x = survdiff(Surv(futime, fustat) ~ Risk, data = rt)
   pValue=1-pchisq(x$chisq,df=1)
   pValue= round(pValue,3)
-  ## 作图
+  ## 作图Drawing
   p=ggsurvplot(fit,
              pval = pValue,
              palette = c(orange, blue),
@@ -55,13 +51,13 @@ mysurvplot <- function(cols=cols,filter=filter){
              xlab="Time in days")
   return(p)
 }
-函数用法
-# 举三个例子测试函数
+函数用法Function usage
+# 举三个例子测试函数Give three examples of test functions
 mysurvplot("age","<60")
 mysurvplot("gleason",">7")
 mysurvplot("stage","T1+T2")
-批量运行，把画图结果存为list
-# 为了方便批量操作，把筛选条件写成向量形式
+批量运行，把画图结果存为list Batch run to save the drawing results as a list
+# 为了方便批量操作，把筛选条件写成向量形式To facilitate batch operations, write the filter conditions in vector form
 cols <- c("age","age","gleason","gleason","psa","psa","stage","stage")
 filter <- c(">=60","<60","<=7",">7","<=10",">10","T1+T2","T3+T4")
 
@@ -69,6 +65,6 @@ p <- list()
 for ( i in 1:length(cols)) {
   p[[i]] = mysurvplot(cols[i],filter[i])
 }
-拼图
+拼图jigsaw puzzle
 Session Info
 sessionInfo()

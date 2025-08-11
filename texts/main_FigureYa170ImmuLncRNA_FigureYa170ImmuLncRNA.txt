@@ -1,32 +1,26 @@
 FigureYa170ImmuLncRNA
 FigureYa170ImmuLncRNA
-小丫画图出品
-2020-3-29
-欢迎关注“小丫画图”公众号，同名知识星球等你加入
-小丫微信: epigenomics E-mail:
-figureya@126.com
-作者：SRF 欢迎关注微信公众号
-IOBR
-，一个分享与总结免疫大数据研究前沿算法，学术研究和科研思路的微信公众号。
-小丫编辑校验
-需求描述
-能不能众筹这个算法的代码，希望在展示代码的时候能做一些讲解，讲的容易理解一些，原文写的有些看不懂。
-出自
+2025-5-20
+Author：Rongfang Shen
+Reviewer：Ying Ge、Junyi Shen
+需求描述Description of requirements
+能不能众筹这个算法的代码，希望在展示代码的时候能做一些讲解，讲的容易理解一些，原文写的有些看不懂。Can you crowdfund the code of this algorithm, I hope to do some explanation when showing the code, which is easier to understand, and the original text is a little incomprehensible.
+出自From
 https://www.nature.com/articles/s41467-020-14802-2
 Fig.1 Identification of immune-related lncRNAs across cancer types. d The number of immune-related lncRNAs identified in each cancer type. The top y-axis shows the number of lncRNAs and the bottom y-axis shows the proportion of lncRNAs. Source data are provided as a Source Data file.
-利用偏相关系数和GSEA算法鉴定免疫相关的lncRNA，作者提供了R包，算法的主要精华其实已经给我们了。接下来我们就一步步解析，看文章里method部分如何对应算法R code。
-应用场景
-对lncRNA做功能注释，也可以用于甲基化数据等。
-双坐标轴图通常用来对比展示数据之间的变化趋势相关关系：
-散点图 + 线性回归，展示3组数据的相关性，A vs. B 和 A vs. C，可参考FigureYa62twoAxis。
-柱形图 + 折线图，像本篇例文这样，一个是数量，另一个是比例。
-环境设置
-下载R包
+利用偏相关系数和GSEA算法鉴定免疫相关的lncRNA，作者提供了R包，算法的主要精华其实已经给我们了。接下来我们就一步步解析，看文章里method部分如何对应算法R code。Using partial correlation coefficient and GSEA algorithm to identify immune-related lncRNAs, the author provides R package, and the main essence of the algorithm has actually been given to us. Next, let's analyze step by step to see how the method part of the article corresponds to the algorithm R code.
+应用场景Application scenarios
+对lncRNA做功能注释，也可以用于甲基化数据等。Functional annotation of lncRNAs can also be used for methylation data, etc.
+双坐标轴图通常用来对比展示数据之间的变化趋势相关关系Bi-coordinate axis charts are often used to contrast and display the trend correlation between data：
+散点图 + 线性回归，展示3组数据的相关性，A vs. B 和 A vs. C，可参考FigureYa62twoAxis。Scatter plot linear regression shows the correlation of 3 sets of data, A vs. B and A vs. C, see FigureYa62twoAxis.
+柱形图 + 折线图，像本篇例文这样，一个是数量，另一个是比例。Column chart Line chart, like this example, one is the quantity and the other is the scale.
+环境设置Environment settings
+下载R包Download the R package
 ImmuLncRNA
-后本地安装
+后本地安装After local installation
 install.packages("ImmuLncRNA_0.1.0.tar.gz", repos = NULL, type = "source")
 install.packages("estimate")
-加载包
+加载包Load the package
 library(ComplexHeatmap)
 library(TCGAbiolinks)
 library(SummarizedExperiment)
@@ -35,9 +29,9 @@ library(tidyverse)
 library(fgsea)
 library(ggplot2)
 library(ImmuLncRNA)
-Sys.setenv(LANGUAGE = "en") #显示英文报错信息
-options(stringsAsFactors = FALSE) #禁止chr转成factor
-加载自定义函数，做标准化
+Sys.setenv(LANGUAGE = "en") #显示英文报错信息Displays the error message in English
+options(stringsAsFactors = FALSE) #禁止chr转成factor  Prohibiting CHR from converting to factor
+加载自定义函数，做标准化Load custom functions and standardize
 Adjust_mrna <- function(mrna){
   mRow30 <- which(apply(mrna,1,function(v){return((sum(v==0)/length(v))>=0.3)}))
   mRemv <- mRow30
@@ -62,13 +56,13 @@ Adjust_lncrna <- function(lncrna){
     lncRNA_exp_inter <- log2(lncRNA_out0+0.001)
     return(lncRNA_exp_inter)
 }
-输入文件的准备
-如果你只想画这种双坐标图，就把自己的数据整理成easy_input.csv的格式，直接跳到“开始画图”。
-数据下载
-中间文件已上传至微云
+输入文件的准备Preparation of input files
+如果你只想画这种双坐标图，就把自己的数据整理成easy_input.csv的格式，直接跳到“开始画图”。If you only want to draw this two-coordinate diagram, organize your data into a easy_input.csv format and jump directly to "Start Drawing".
+数据下载Data download
+中间文件已上传至微云The intermediate file has been uploaded to Weiyun
 https://share.weiyun.com/5zZiFrs
-以ACC为例，其余癌种同；下载数据后根据GENECODE的注释划分lncRNA表达矩阵和mRNA表达矩阵。数据处理为排除read数为0后进行Log转化。
-数据处理方法按照文章所示：
+以ACC为例，其余癌种同；下载数据后根据GENECODE的注释划分lncRNA表达矩阵和mRNA表达矩阵。数据处理为排除read数为0后进行Log转化。Taking ACC as an example, the rest of the cancers are the same; After downloading the data, the lncRNA expression matrix and mRNA expression matrix were divided according to the annotation of GENECODE. The data is processed to exclude the log conversion after the number of reads is 0
+数据处理方法按照文章所示The data processing method is as shown in the article：
 RNA-Seqbased gene expression profile data were obtained from the TCGA project via the R package
 “TCGAbiolinks”
 56. We downloaded the
@@ -76,24 +70,30 @@ fragments per kilobase of transcript per million
 mapped reads-based gene expression and the raw read count for 33 types of cancer. Based on the gene annotations in
 GENCODE
 , we divided the gene expression profiles into lncRNA and protein-coding gene expression for each cancer type. The lncRNAs were further classified into different subtypes based on the classification in GENCODE. In total, 19,663 coding genes and 15,513 lncRNAs were included. Next, we excluded the coding genes and lncRNAs with zero reads in all samples. The expression values of lncRNAs and protein-coding genes were logtransformed.
-下载表达矩阵
+下载表达矩阵Download the Expression Matrix
 query <- GDCquery(project = "TCGA-ACC",
                   data.category = "Transcriptome Profiling",
                   data.type = "Gene Expression Quantification", 
                   workflow.type = "HTSeq - FPKM", sample.type = c("Primary solid Tumor"))
 GDCdownload(query, method = "api", files.per.chunk = 10)
 acc <- GDCprepare(query)
-#保存到文件，便于以后重复使用
+#保存到文件，便于以后重复使用Save to files for easy reuse later
 save(acc, file = "acc.rda")
-提取protein coding RNA和lncRNA的gene_id和gene_name对应关系
+提取protein coding RNA和lncRNA的gene_id和gene_name对应关系The gene_id and gene_name correspondence of protein-coding-RNA and LNCRNA were extracted
 根据
 lncRNA的分类
-lncRNA分为以下几种
+lncRNA分为以下几种According to
+classification of lncRNAs
+lncRNAs are divided into the following types
 lncRNA的注释文件可以从
 genecode
 下载，全部rna的基因注释可以从
 这里
-下载。
+下载。The annotation file for lncRNAs can be downloaded from
+genecode,
+and the gene annotation of all RNAs can be downloaded from the gene annotation
+download here
+.
 # protein_coding RNA
 gtf_mrna_v22 <- rtracklayer::import('gencode.v27.annotation.gtf') %>% as.data.frame()
 gtf_mrna_v22 <- dplyr::select(gtf_mrna_v22,c("gene_id","gene_type", "gene_name")) %>% 
@@ -114,13 +114,13 @@ gtf_lnc_v22 <- read.table("gtflncRNA22.txt", header = T, sep = "\t")
 head(gtf_lnc_v22)
 
 # mRNA
-# 用于immune pathway的富集
+# 用于immune pathway的富集For enrichment of immune pathways
 acc_mrna <- acc.dat[rownames(acc.dat) %in% gtf_mrna_v22$gene_id, ]
 acc_mrna <- Adjust_mrna(acc_mrna)
 #write.table(acc_mrna, "acc_mrna.txt", sep = "\t")
 
 # mRNA
-# genesymbol作为rowname，用来做免疫纯度估计
+# genesymbol作为rowname，用来做免疫纯度估计genesymbol as a rowname for immune purity estimation
 acc_mrna2 <- merge(gtf_mrna_v22[, c("gene_id", "gene_name")], acc.dat, by.x = 1, by.y = 0) %>%
   .[, -1]
 acc_mrna2 <- aggregate(.~gene_name, acc_mrna2, max)
@@ -136,38 +136,41 @@ acc_lnc <- Adjust_lncrna(acc_lnc)
 acc_mrna[1:3, 1:3]
 acc_lnc[1:3, 1:3]
 #write.table(acc_lnc, "acc_lnc.txt", sep = "\t")
-ImmuLncRNA算法解析
+ImmuLncRNA算法解析Algorithm analysis
 注：这里代码都可以从R包
 ImmuLncRNA
-中得到。
+中得到。Note: Here the code can be obtained from the R package
+ImmuLncRNA
+Get.
 step1: estimate tumor purity
-“小丫画图群-纯画图”讨论记录：
-问：文章找跟免疫相关的lncRNA, 为什么要消掉肿瘤纯度这个因素呢？
-大鹏答：本质上你找差异基因，也是要考虑肿瘤纯度，这是很重要covariate 都要放在deseq里的model.matrix里 ，只是忽略了而已。你测的是bulk组织， 测的是各组分平均表达量，当然组分比例不同，平均表达值就不同。肿瘤组织你的取样就那一点，并不能实际反应肿瘤全貌，存在取样差异，还不一定是浸润差异。所以这里不过用partial pearson消除纯度的影响。我曾经矫正纯度或者利用Isopure分解的方法 和laser capture dissection肿瘤的样本比较过，还是得到更好的结果。个人觉得confounding factor重要的，还是要消除。
-至于差异基因，也有文章表明，考虑把肿瘤纯度加入，得到结果会更好。
-还有些类型的肿瘤本身就癌巢就很小，大量免疫浸润，例如anaplastic thyroid cancer，测起来本身就是纯度低啊，照样做测序、芯片。只是做基因组测序 想办法，提高肿瘤纯度了
-下面用estimate包计算肿瘤纯度
+问：文章找跟免疫相关的lncRNA, 为什么要消掉肿瘤纯度这个因素呢？Q: Why should the tumor purity factor be eliminated when the article looks for lncRNAs related to immunity?
+答：本质上你找差异基因，也是要考虑肿瘤纯度，这是很重要covariate 都要放在deseq里的model.matrix里 ，只是忽略了而已。你测的是bulk组织， 测的是各组分平均表达量，当然组分比例不同，平均表达值就不同。肿瘤组织你的取样就那一点，并不能实际反应肿瘤全貌，存在取样差异，还不一定是浸润差异。所以这里不过用partial pearson消除纯度的影响。我曾经矫正纯度或者利用Isopure分解的方法 和laser capture dissection肿瘤的样本比较过，还是得到更好的结果。个人觉得confounding factor重要的，还是要消除。A: Essentially, when you look for differential genes, you also need to consider the purity of the tumor, which is very important to put in the model.matrix in deseq, just ignore it. You measure the bulk tissue, and measure the average expression of each component, of course, the proportion of components is different, and the average expression value is different. Your sampling of tumor tissue is just that, and it does not actually reflect the whole picture of the tumor. So here we just use partial pearson to eliminate the effect of purity. I have corrected the purity or used the Isopure method to compare the sample with laser capture dissection tumor and still get better results. Personally, I think the confounding factor is important, but it should be eliminated.
+至于差异基因，也有文章表明，考虑把肿瘤纯度加入，得到结果会更好。As for differential genes, there are also articles that show that considering tumor purity will give better results.
+还有些类型的肿瘤本身就癌巢就很小，大量免疫浸润，例如anaplastic thyroid cancer，测起来本身就是纯度低啊，照样做测序、芯片。只是做基因组测序 想办法，提高肿瘤纯度了There are also some types of tumors that have very small cancer nests and a large amount of immune infiltration, such as anaplastic thyroid cancer, which is low in purity when measured, and still do sequencing and chipping. Just do genome sequencing to find a way to improve the purity of the tumor
+下面用estimate包计算肿瘤纯度The tumor purity is calculated using the estimate package
 library(estimate)
 
-# estimate包计算浸润水平
+# estimate包计算浸润水平estimate package calculates the level of infiltration
 filterCommonGenes("purityinput.txt", output.f="exp_deal.gct", id="GeneSymbol")
 estimateScore("exp_deal.gct", "estimate_score_all.gct", platform="illumina")
 est_score_all <- readLines("estimate_score_all.gct")
 est_scores <- unlist(strsplit(est_score_all[grep("ESTIMATEScore",est_score_all)],"\t")) %>% 
   .[3:length(.)] %>% as.numeric()
-#肿瘤纯度
+#肿瘤纯度Tumor purity
 Tumour_purity <- cos(0.6049872018+0.0001467884*est_scores)
 samples_name <- unlist(strsplit(est_score_all[grep("NAME",est_score_all)],"\t")) %>% 
   .[3:length(.)]
 names(Tumour_purity) <- samples_name %>% str_replace_all(., "\\.", "-")
-#去除一些不要用的中间变量
+#去除一些不要用的中间变量Remove some intermediate variables that you don't want to use
 rm(acc_mrna2, samples_name, est_score_all, est_scores)
 step2: pcc
-在矫正免疫浸润水平的基础上算lncRNA和mRNA的偏相关系数(pcc)，算出RS。
+在矫正免疫浸润水平的基础上算lncRNA和mRNA的偏相关系数(pcc)，算出RS。The partial correlation coefficient (pcc) of lncRNA and mRNA was calculated on the basis of correcting the level of immune infiltration, and RS was calculated
 了解偏相关系数点击
 这里
-fun_mtx_pcr即为偏相关系数的主要算法。
-#这一步非常耗费内存:生成的相关矩阵是行为lncRNA，列为mRNA的矩阵 
+fun_mtx_pcr即为偏相关系数的主要算法。Understanding the partial correlation coefficient Click
+here
+fun_mtx_pcr is the main algorithm of the partial correlation coefficient.
+#这一步非常耗费内存:生成的相关矩阵是行为lncRNA，列为mRNA的矩阵This step is very memory-intensive: the resulting correlation matrix is the behavioral lncRNA, which is listed as a matrix of mRNA 
 fun_mtx_pcr <- function(x,y,z){
     r12=cor(t(x),t(y))
     r13=cor(t(x),z)
@@ -184,19 +187,19 @@ fun_mtx_pcr <- function(x,y,z){
 }
 all(colnames(acc_lnc) == colnames(acc_mrna))
 all(colnames(acc_mrna) == names(Tumour_purity))
-n = ncol(acc_lnc) #样本数目
-gn = 1 #偏相关矫正的影响因素个数，这里只有肿瘤纯度一个。
+n = ncol(acc_lnc) #样本数目Number of samples
+gn = 1 #偏相关矫正的影响因素个数，这里只有肿瘤纯度一个。The number of influencing factors of partial correlation correction, here is only one tumor purity.
 pcor <- fun_mtx_pcr(acc_lnc,acc_mrna, Tumour_purity)
-#计算统计量和P值
+#计算统计量和P值Calculate statistics and P-values
 statistic <- pcor*sqrt((n-2-gn)/(1-pcor^2))
 p.value <- 2*pnorm(-abs(statistic))
 rownames(pcor) <- rownames(acc_lnc) ; rownames(p.value) <- rownames(acc_lnc)
 colnames(pcor) <- rownames(acc_mrna) ; colnames(p.value) <- rownames(acc_mrna)
-#计算RS: 也就是按照pvalue排序，根据正负相关赋予pvalue一个方向
+#计算RS: 也就是按照pvalue排序，根据正负相关赋予pvalue一个方向Calculate RS: That is, sort according to pvalue, and give pvalue a direction according to positive and negative correlations
 RS <- -log10(p.value)*sign(pcor)
 RS[1:5, 1:5]
 step3: fgsea
-接着采用fgsea对lncRNA做通路富集
+接着采用fgsea对lncRNA做通路富集Then, fgsea was used to enrich the lncRNA
 load("pathways.rda")
 k=0.995
 fgseaRes_all <- c()
@@ -223,20 +226,22 @@ for(i in 1:nrow(RS)){
     fgseaRes_all <- rbind(fgseaRes_all,fgseaRes_i)
 }
 
-#筛选符合标准的gsea结果
+#筛选符合标准的gsea结果Screening of GSEA results that meet the criteria
 sig_ind <- which(abs(fgseaRes_all$sigValue) >= k & fgseaRes_all$padj < 0.05)
 #即可求出lncRNA-pathway pairs
 sig_pairs <- fgseaRes_all[sig_ind,1:2] %>% as.data.frame()
-跟原文结果比较
-上述所有代码都在R包ImmuLncRNA中可以得到，一行代码搞定所有。
+跟原文结果比较Compare with the original results
+上述所有代码都在R包ImmuLncRNA中可以得到，一行代码搞定所有。All of the above codes are available in the R package ImmuLncRNA, and one line of code does it all.
 文章运行结果可以从其
 网页版界面
-中得到。
-我们下载画图所需的两个文件：Lnc_Pathways_Sig.txt & Lnc_Pathways_All.txt
-# 用R包ImmuLncRNA计算
+中得到。The article run results can be obtained from its
+web version interface
+.
+我们下载画图所需的两个文件We download the two files we need to draw：Lnc_Pathways_Sig.txt & Lnc_Pathways_All.txt
+# 用R包ImmuLncRNA计算Calculated with R-encapsulated ImmuLncRNA
 acc_pack <- immu.LncRNA(acc_mrna, acc_lnc, adjusted=TRUE, Tumor_purity, pathways, k = 0.995)
 
-# 比较
+# 比较compare
 pan_pairs <- read.table("Lnc_Pathways_Sig.txt", header = T, sep = "\t")
 pan_pairs <- pan_pairs[, c("cancer_type", "lncRNA_symbol")] %>% unique()
 write.table(pan_pairs, "pan_lnc_sig.txt", sep = "\t")
@@ -244,14 +249,14 @@ write.table(pan_pairs, "pan_lnc_sig.txt", sep = "\t")
 acc_lncrna <- unique(sig_pairs$lncRNA)
 acc_article <- pan_pairs[pan_pairs$cancer_type == "ACC", "lncRNA_symbol"] %>% unique()
 length(intersect(acc_lncrna, acc_article))
-分解每一步骤算出的结果和原文大部分是一样的，不一致应该是由于数据预处理上的问题，原文acc输入的lncRNA数目有6501个，我们处理后只有5616
-计算lncRNA proportion
-# 加载前面计算获得的免疫相关lncRNA数量，用于top y-axis
+分解每一步骤算出的结果和原文大部分是一样的，不一致应该是由于数据预处理上的问题，原文acc输入的lncRNA数目有6501个，我们处理后只有5616 The results calculated by decomposing each step are mostly the same as the original text, and the inconsistency should be due to data preprocessing problems, the number of lncRNAs input by the original acc is 6501, and we only 5616 after processing
+计算calculate lncRNA proportion
+# 加载前面计算获得的免疫相关lncRNA数量，用于top y-axis   Load the previously calculated number of immune-related lncRNAs obtained for top y-axis
 pan_pairs <- read.table("pan_lnc_sig.txt", header = T, sep = "\t")
 pdat <- table(pan_pairs$cancer_type) %>% as.data.frame()
 
-# 计算lncRNA proportion，用于bottom y-axis
-# 每个癌症中所有lncRNA的数目，看“跟原文结果比较”部分的文字描述，获得Lnc_Pathways_All.txt文件
+# 计算lncRNA proportion，用于bottom y-axis   Calculate lncRNA proportion for bottom y-axis
+# 每个癌症中所有lncRNA的数目，看“跟原文结果比较”部分的文字描述，获得Lnc_Pathways_All.txt文件The number of all lncRNAs in each cancer is documented by looking at the text description in the "Compare with Lnc_Pathways_All.txt original results" section
 # all <- data.table::fread("Lnc_Pathways_All.txt", select = c("cancer_type", "lncRNA_symbol")) %>%
 #                            unique()
 # write.table(all, "pan_lnc_all.txt", sep = "\t")
@@ -262,17 +267,17 @@ pdat <- merge(pdat, all, by = "Var1")
 colnames(pdat) <- c("Cancer_type", "Sig", "All")
 pdat$Prop <- pdat$Sig/pdat$All
 write.csv(pdat, "easy_input.csv", quote = F, row.names = F)
-开始画图
-画法参考了FigureYa62twoAxis中的方法一。
+开始画图Start drawing
+画法参考了FigureYa62twoAxis中的方法一。The drawing method refers to method 1 in FigureYa62twoAxis
 pdat <- read.csv("easy_input.csv")
 head(pdat)
-#按照原图的顺序排列纵坐标
+#按照原图的顺序排列纵坐标Arrange the ordinates in the order of the original diagram
 pdat$Cancer_type <- factor(pdat$Cancer_type, levels = c("BRCA", "CHOL", "LIHC", "PAAD", "BLCA", "KICH", "KIRC", "KIRP", "PRAD", "TGCT", "CESC", "OV", "UCEC", "UCS", "SKCM", "SARC", "DLBC", "LAML",
 "THYM", "GBM", "LGG", "UVM", "HNSC", "ACC", "PCPG", "THCA", "LUAD", "LUSC", "MESO", "ESCA", "STAD", "COAD", "READ"))
 
-#默认两个Y轴范围是一样的，然而实际数据Y1和Y2范围差距很大，因此需要用Y1和Y2的数值计算两个Y轴的比例
+#默认两个Y轴范围是一样的，然而实际数据Y1和Y2范围差距很大，因此需要用Y1和Y2的数值计算两个Y轴的比例By default, the two Y-axis ranges are the same, but the actual data Y1 and Y2 ranges are very different, so it is necessary to calculate the ratio of the two Y-axes with the values of Y1 and Y2
 (scaleFactor <- max(pdat$Sig)/ max(pdat$Prop))
-# 自定义配色方案
+# 自定义配色方案Custom color schemes
 library(scales)
 mycols <- c(brewer_pal(palette = "Reds")(3),
             brewer_pal(palette = "Blues")(9),
@@ -280,15 +285,15 @@ mycols <- c(brewer_pal(palette = "Reds")(3),
             brewer_pal(palette = "YlOrRd")(9),
             brewer_pal(palette = "OrRd")(3))
 mycols
-# 或者自己挨个设置颜色
-#mycols <- c("","") # ""里写颜色编码
+# 或者自己挨个设置颜色Or set the colors one by one
+#mycols <- c("","") # ""里写颜色编码Color coded
 
 p <- ggplot(pdat, aes(x=pdat$Cancer_type)) + 
-  # 画柱形图
+  # 画柱形图Draw a column diagram
   geom_bar(aes(y = pdat$Sig / scaleFactor , fill = pdat$Cancer_type), stat = "identity", size = 0.8, width = 0.7) +
-  scale_fill_manual(values = mycols) + #自定义bar的颜色
+  scale_fill_manual(values = mycols) + #自定义bar的颜色Customize the color of the bar
 
-  # 画折线图
+  # 画折线图Draw a line diagram
   geom_point(aes(y = pdat$Prop), shape = 21, fill = "white") +
   geom_line(aes(y = pdat$Prop, group = 1)) +
   
@@ -298,12 +303,12 @@ p <- ggplot(pdat, aes(x=pdat$Cancer_type)) +
                      sec.axis=sec_axis(trans = ~. * scaleFactor, 
                                        name = "Number of immune-related lncRNAs",
                                        breaks = c(1000, 2000, 3000, 4000, 5000, 6000)),
-                     expand = c(0, 0)) + #画右侧Y轴
+                     expand = c(0, 0)) + #画右侧Y轴Draw the right Y-axis
   labs(x="") + 
-  theme_bw() + #去除背景色
-  theme(panel.grid = element_blank()) + #去除网格线
-  theme(legend.position = "none") + #不画图例
-  coord_flip() #坐标轴互换，因此图中x轴对应纵坐标癌症名
+  theme_bw() + #去除背景色Remove background color
+  theme(panel.grid = element_blank()) + #去除网格线Remove grid lines
+  theme(legend.position = "none") + #不画图例I don't draw legends
+  coord_flip() #坐标轴互换，因此图中x轴对应纵坐标癌症名The coordinate axes are interchanged, so the x-axis in the figure corresponds to the ordinate cancer name
 p
 ggsave("ImmuLncRNA.pdf", width = 5, height = 8)
 sessionInfo()

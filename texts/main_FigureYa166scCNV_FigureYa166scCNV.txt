@@ -1,46 +1,42 @@
 FigureYa166scCNV
 FigureYa166scCNV
-小丫画图出品
-2020-3-15
-欢迎关注“小丫画图”公众号，回复“小白”，看小视频，实现点鼠标跑代码。
-小丫微信: epigenomics E-mail:
-figureya@126.com
-作者：Hazard
-小丫编辑校验
-需求描述
-单细胞CNV的计算和画图。
+Date：2025-5-20
+Author：Zongcheng Li
+Reviewer：Ying Ge、Junyi Shen
+需求描述Description of requirements
+单细胞CNV的计算和画图。Calculation and mapping of single-cell CNVs
 Figure 1. Characterizing Intra-tumoral Expression Heterogeneity in HNSCC by Single-Cell RNA-Seq. (B) Heatmap shows large-scale CNVs for individual cells (rows) from a representative tumor (MEEI5), inferred based on the average expression of 100 genes surrounding each chromosomal position (columns). Red: amplifications; blue: deletions.
-出自
+出自From
 https://www.cell.com/cell/fulltext/S0092-8674(17)31270-9
-其他文章里类似的图：
+其他文章里类似的图Similar pictures in other articles：
 Fig. 1. Dissection of melanoma with single-cell RNA-seq. (B) Chromosomal landscape of inferred large-scale CNVs allows us to distinguish malignant from nonmalignant cells. The Mel80 tumor is shown with individual cells (y axis) and chromosomal regions (x axis). Amplifications (red) or deletions (blue) were inferred by averaging expression over 100-gene stretches on the respective chromosomes.
-出自
+出自From
 https://science.sciencemag.org/content/352/6282/189
-应用场景
-用单细胞RNA-seq数据计算CNV，对比展示多组之间的差异。
-环境设置
-使用国内镜像安装包
+应用场景Application scenarios
+用单细胞RNA-seq数据计算CNV，对比展示多组之间的差异。CNV was calculated using single-cell RNA-seq data to compare and show differences between multiple groups
+环境设置Environment settings
+使用国内镜像安装包Use the domestic mirror installation package
 options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
 options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
-加载包
+加载包Load the package
 library(org.Hs.eg.db)
 library(magrittr)
 library(dplyr)
 library(caTools)
 library(pheatmap)
-Sys.setenv(LANGUAGE = "en") #显示英文报错信息
-options(stringsAsFactors = FALSE) #禁止chr转成factor
-自定义函数
+Sys.setenv(LANGUAGE = "en") #显示英文报错信息Displays the error message in English
+options(stringsAsFactors = FALSE) #禁止chr转成factor  Prohibiting CHR from converting to factor
+自定义函数Custom functions
 minmax <- function(x, min, max ){
   x[x > max] <- max
   x[x < min] <- min
   return(x)
 }
-输入文件
-GSE103322_HNSCC_all_data.txt.gz，这里以原文的数据为例，其他单细胞RNA-seq数据与此类似，包含表达矩阵和样品分组等信息meta data。
+输入文件Enter the file
+GSE103322_HNSCC_all_data.txt.gz，这里以原文的数据为例，其他单细胞RNA-seq数据与此类似，包含表达矩阵和样品分组等信息Here is an example of the original data, and other single-cell RNA-seq data are similar, including information such as expression matrix and sample grouping meta data。
 Download GSE103322_HNSCC_all_data.txt.gz from
 https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE103322
-，已上传到微云，下载链接
+，已上传到微云，下载链接It has been uploaded to Weiyun, download link
 https://share.weiyun.com/5gsuteR
 # read cell annotation information
 annodata <- as.data.frame(t(
@@ -178,8 +174,8 @@ final_cnv[initial_cnv < baseline_min - 0.2] <- (initial_cnv - baseline_min)[init
 
 # re-centering data across chromosome after smoothing
 # final_cnv <- sweep(final_cnv, 2, apply(final_cnv, 2, median), FUN = "-")
-开始画图
-用pheatmap画图
+开始画图Start drawing
+用pheatmap画图Draw with pheatmap
 annodata$type <- factor(ifelse(annodata$`classified as non-cancer cells` == 1, 
                         "Non-malignant",
                         ifelse(annodata$`classified  as cancer cell` == 1 & annodata$`Lymph node` == 0,
@@ -207,7 +203,7 @@ pheatmap(phData,
          show_colnames = F, show_rownames = F,
          filename = "scCNV.pdf")
 you can also sample randomly some of Non-malignant cells for display, just like the authors did.
-后期处理
-输出的PDF文件是矢量图。You may use Adobe Illustrator to prettify the heatmap plot after saving it into a pdf file.
+后期处理Post-processing
+输出的PDF文件是矢量图The output PDF file is a vector image。You may use Adobe Illustrator to prettify the heatmap plot after saving it into a pdf file.
 Session Info
 sessionInfo()

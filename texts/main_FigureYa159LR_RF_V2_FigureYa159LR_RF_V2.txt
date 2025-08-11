@@ -1,48 +1,43 @@
 FigureYa159LR_RFV2
 FigureYa159LR_RFV2
-小丫画图出品
-2020-2-7
-欢迎关注“小丫画图”公众号，回复“小白”，看小视频，实现点鼠标跑代码。
-小丫微信: epigenomics E-mail:
-figureya@126.com
-作者：大鱼海棠
-单位：Research Center of Biostatistics and Computational Pharmacy, China Pharmaceutical University
-小丫编辑校验
-需求描述
-虽然FigureYa65SVM里有lasso和SVM，还想试试RF和LR，而且用五折交叉验证画AUC也有点问题。
-出自
+Date:2025-5-20
+Author:Xiaofan Lu
+Reviewer:Ying Ge、Junyi Shen
+需求描述Description of requirements
+虽然FigureYa65SVM里有lasso和SVM，还想试试RF和LR，而且用五折交叉验证画AUC也有点问题。Although there are lasso and SVM in FigureYa65SVM, I still want to try RF and LR, and it is a bit problematic to draw AUC with 50% fold cross-validation.
+出自From
 https://www.nature.com/articles/ncomms4963
 Figure 3 | The predictive power of pseudogene expression in classification of UCEC subtypes. (a) The UCEC dataset (n 1⁄4 306) was split into training (n 1⁄4 223) and test (n 1⁄4 83) sets. (b) Schematic representation of feature selection and classifiers building through fivefold cross-validation within the training set. (c) The receiver operating characertistic curves of the three classifiers based on the cross-validation within the training set. (d) The receiver operating characertistic curve from applying the best-performing classifier (SVM) built from the whole training set to the test set.
-应用场景
-在LASSO降维的基础上，采用logistic regression或Random forest的方法，进行5-fold cross-validation评估LASSO selected feature的预测效能。
-环境设置
-使用国内镜像安装包
+应用场景Application scenarios
+在LASSO降维的基础上，采用logistic regression或Random forest的方法，进行5-fold cross-validation评估LASSO selected feature的预测效能。On the basis of LASSO dimensionality reduction, the method of logistic regression or random forest is used to evaluate the prediction performance of LASSO selected feature by 5-fold cross-validation.
+环境设置Environment settings
+使用国内镜像安装包Use the domestic mirror installation package
 options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
 options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
-加载包
-library(glmnet) # 做LASSO和LR
-library(randomForest) # 做RF
-library(pROC) # 绘制ROC
-Sys.setenv(LANGUAGE = "en") #显示英文报错信息
-options(stringsAsFactors = FALSE) #禁止chr转成factor
-输入文件
-easy_input.csv，带有分组信息的矩阵，这里用跟FigureYa65SVM同一个输入文件，数据预处理过程可参考FigureYa65SVM。
-可自行准备，至少包含以下信息：
-第一列：sample ID
-第二列：样本分组信息，最好为二分类变量
-第三列之后：表达矩阵
-# 加载输入数据
+加载包Load the package
+library(glmnet) # 做Do LASSO和and LR
+library(randomForest) # 做Do RF
+library(pROC) # 绘制Draw ROC
+Sys.setenv(LANGUAGE = "en") #显示英文报错信息Displays the error message in English
+options(stringsAsFactors = FALSE) #禁止chr转成factor  Prohibiting CHR from converting to factor
+输入文件Enter the file
+easy_input.csv，带有分组信息的矩阵，这里用跟FigureYa65SVM同一个输入文件，数据预处理过程可参考The matrix with group information is the same input file as FigureYa65SVM, and the data preprocessing process can be referenced FigureYa65SVM。
+可自行准备，至少包含以下信息： can be prepared by yourself and include at least the following information
+第一列First column：sample ID
+第二列：样本分组信息，最好为二分类变量The second column: sample grouping information, preferably binary variables
+第三列之后：表达矩阵After the third column: expression matrix
+# 加载输入数据Load the input data
 dat <- read.csv("easy_input.csv",row.names = 1,header = T,check.names = F,stringsAsFactors = F) 
-sam <- rownames(dat) # 取出样本名
-按例文的方法一步步实现
-包含四步：
-第一步：构建5-fold交叉验证的样本集
-第二步：LASSO回归在训练集里筛选变量
-第三步：利用LR在4折数据中构建预测模型，验证余下1折
-第四步：利用RF在4折数据中构建预测模型，验证余下1折
-# 1. 例文第一步：构建5-fold交叉验证的样本集
+sam <- rownames(dat) # 取出样本名Remove the sample name
+按例文的方法一步步实现Implement it step by step according to the example method
+包含四步It contains four steps：
+第一步：构建5-fold交叉验证的样本集Step 1: Build a sample set for 5-fold cross-validation
+第二步：LASSO回归在训练集里筛选变量Step 2: LASSO regression Filter the variables in the training set
+第三步：利用LR在4折数据中构建预测模型，验证余下1折Step 3: Use LR to build a prediction model in the 4-fold data and verify the remaining 1-fold
+第四步：利用RF在4折数据中构建预测模型，验证余下1折Step 4: Use RF to build a prediction model in the 4-fold data and verify the remaining 1-fold
+# 1. 例文第一步：构建5-fold交叉验证的样本集Example Step 1: Construct a sample set for 5-fold cross-validation
 
-# 自定义函数分割样本（无重复）
+# 自定义函数分割样本（无重复）Custom function segmentation sample (no duplicates)
 createFolds <- function(strat_id, k, seed = 123456) {
   set.seed(seed)
   if(k > length(strat_id)) {
@@ -63,25 +58,25 @@ createFolds <- function(strat_id, k, seed = 123456) {
   return(folds)
 }
 
-# 样本随机分为5-fold且不重复
-n.fold <- 5 # 交叉验证次数
-seed = 12345678 # 设置种子使得结果可重复
+# 样本随机分为5-fold且不重复The samples were randomly divided into 5-fold and did not repeat
+n.fold <- 5 # 交叉验证次数Number of cross-validations
+seed = 12345678 # 设置种子使得结果可重复Set the seeds so that the results are reproducible
 fold <- createFolds(sam,n.fold,seed = seed)
 
-test_pred_LR <- test_pred_RF <- NULL # 初始化结果数据框
+test_pred_LR <- test_pred_RF <- NULL # 初始化结果数据框Initialize the result data frame
 for (i in 1:n.fold) {
-  train_sam <- sam[-fold[[i]]] # 去除该折，即余下4折为训练集
-  test_sam <- setdiff(sam,train_sam) # 余下样本为测试集
+  train_sam <- sam[-fold[[i]]] # 去除该折，即余下4折为训练集Remove the fold, that is, the remaining 4% fold is the training set
+  test_sam <- setdiff(sam,train_sam) # 余下样本为测试集The remaining samples are test sets
   
-  # 训练集数据
+  # 训练集数据Training set data
   train_dat <- dat[train_sam,]
   train_dat$group <- ifelse(train_dat$group == "NR",0,1)
   
-  # 验证集数据
+  # 验证集数据Validate set data
   test_dat <- dat[test_sam,]
   test_dat$group <- ifelse(test_dat$group == "NR",0,1)
   
-  # 2. 例文第二步：LASSO回归在训练集里筛选变量
+  # 2. 例文第二步：LASSO回归在训练集里筛选变量Example Step 2: LASSO regression screens variables in the training set
   set.seed(seed)
   x <- as.matrix(train_dat[,setdiff(colnames(train_dat),"group")])
   y <- train_dat$group
@@ -89,36 +84,36 @@ for (i in 1:n.fold) {
                     nfold=10, #10-fold cross-validation
                     family = "binomial", type.measure = "class")
   myCoefs <- coef(cvfit, s="lambda.min")
-  lasso_fea <- rownames(coef(cvfit, s = 'lambda.min'))[coef(cvfit, s = 'lambda.min')[,1]!= 0] # 提出系数非0的变量
+  lasso_fea <- rownames(coef(cvfit, s = 'lambda.min'))[coef(cvfit, s = 'lambda.min')[,1]!= 0] # 提出系数非0的变量Variables with non-0 coefficients are proposed
   lasso_fea <- setdiff(lasso_fea,"(Intercept)")
 
-  # 3. 例文第三步：利用LR在4折数据中构建预测模型，验证余下1折
-  # 用lasso features构建LR预测模型
+  # 3. 例文第三步：利用LR在4折数据中构建预测模型，验证余下1折Example Step 3: Use LR to build a prediction model in the 4-fold data and verify the remaining 1-fold
+  # 用lasso features构建LR预测模型LR prediction model is constructed with lasso features
   
   cat("LR",i,"...\n")
   model_LR <- glm(group ~ ., 
                   data = train_dat[,c("group",lasso_fea)], 
                   family = "binomial")
   
-  # 基于LR算法预测验证集概率，并合并真实结果
+  # 基于LR算法预测验证集概率，并合并真实结果Based on the LR algorithm, the validation set probability is predicted, and the real results are combined
   test_pred_LR <- rbind.data.frame(test_pred_LR,
                                    data.frame(prob = predict(model_LR, newdata = test_dat,type="response"),
                                               group = test_dat$group,
                                               stringsAsFactors = F),
                                    stringsAsFactors = F)
        
-  # 4. 例文第四步：利用RF在4折数据中构建预测模型，验证余下1折
-  # 用lasso features构建RF预测模型
+  # 4. 例文第四步：利用RF在4折数据中构建预测模型，验证余下1折例文第四步：利用RF在4折数据中构建预测模型，验证余下1折Draw a smooth curve Example Step 4: Use RF to build a prediction model in the 4-fold data and verify the remaining 1-fold Example Step 4: Use RF to build a prediction model in the 4-fold data and verify the remaining 1-fold
+  # 用lasso features构建RF预测模型Build an RF prediction model with lasso features
   cat("RF",i,"...\n")
   model_RF <- randomForest(group ~ ., 
                            data = train_dat[,c("group",lasso_fea)],
-                           ntree = 1000, # 树的数目，例文为1000
-                           nPerm = 50, # 扰动次数，一般为50
+                           ntree = 1000, # 树的数目，例文为1000 The number of trees, for example, is 1000
+                           nPerm = 50, # 扰动次数，一般为50 The number of disturbances is generally 50
                            mtry = floor(sqrt(ncol(train_dat)-1)), 
                            proximity = T,
                            importance = T)
   
-  # 基于RF算法预测验证集概率，并合并真实结果
+  # 基于RF算法预测验证集概率，并合并真实结果Based on the RF algorithm, the validation set probability is predicted, and the real results are merged
   test_pred_RF <- rbind.data.frame(test_pred_RF,
                                    data.frame(prob = predict(model_RF, newdata = test_dat,type="response"),
                                               group = test_dat$group,
@@ -126,25 +121,25 @@ for (i in 1:n.fold) {
                                    stringsAsFactors = F)  
   cat("\n")
 }
-开始画图
-绘制ROC，对比LR和RF。
+开始画图Start drawing
+绘制ROC，对比LR和RF。Draw ROC and compare LR and RF
 jco <- c("#2874C5","#EABF00")
 
 pdf("LR_RF.pdf")
 LR.roc <- plot.roc(test_pred_LR$group,test_pred_LR$prob,ylim=c(0,1),xlim=c(1,0),
-                   smooth=F, #绘制平滑曲线
+                   smooth=F, #绘制平滑曲线Draw smooth curves
                    ci=TRUE, 
                    main="",
-                   col=jco[1],#线的颜色
-                   lwd=2, #线的粗细
+                   col=jco[1],#线的颜色The color of the line
+                   lwd=2, #线的粗细The thickness of the line
                    legacy.axes=T,
                    print.auc = F)
 RF.roc <- plot.roc(test_pred_RF$group,test_pred_RF$prob,ylim=c(0,1),xlim=c(1,0),
-                   smooth=F, #绘制平滑曲线
+                   smooth=F, #绘制平滑曲线Draw smooth curves
                    ci=TRUE, 
                    main="",
-                   col=jco[2],#线的颜色
-                   lwd=2, #线的粗细
+                   col=jco[2],#线的颜色The color of the line
+                   lwd=2, #线的粗细The thickness of the line
                    legacy.axes=T,
                    print.auc = F,
                    add = T)

@@ -1,30 +1,26 @@
 FigureYa161stemness
 FigureYa161stemness
-小丫画图出品
-2020-2-16
-欢迎关注“小丫画图”公众号，回复“小白”，看小视频，实现点鼠标跑代码。
-小丫微信: epigenomics E-mail:
-figureya@126.com
-作者：Byron
-小丫编辑校验
-需求描述
-用GEO数据计算mRNAsi、mDNAsi，画图。
-出自
+Date：2025-5-20
+Author：Yi Xiong
+Reviewer：Ying Ge、Junyi Shen
+需求描述Description of requirements
+用GEO数据计算mRNAsi、mDNAsi，画图。mRNAsi and mDNAsi were calculated using GEO data and plotted.
+出自From
 https://febs.onlinelibrary.wiley.com/doi/abs/10.1002/1878-0261.12557
 Fig. 1. Clinical and molecular features associated with the mRNA expression-based stemness index (mRNAsi) and the mDNAsi in MB. (A) An overview of the association between known clinical and molecular features (histology, subgroup, gender, and metastatic status) and mRNAsi in MB. Columns represent samples sorted by mRNAsi from low to high (top row). Rows represent known clinical and molecular features. (B) An overview of the association between known clinical and molecular features (histology, subgroup, gender, and metastatic status) and mDNAsi in MB. Columns represent samples sorted by mDNAsi from low to high (top row). Rows represent known clinical and molecular features.
 The work flow to generate the stemness indices (mRNAsi and mDNAsi) is available on
 https://bioinformaticsfmrp.github.io/PanCanStem_Web/
 . 或
 http://tcgabiolinks.fmrp.usp.br/PanCanStem/
-应用场景
-用于计算肿瘤基因表达以及DNA甲基化的干性指数，跟临床信息一起展示。
-另外，Fig. 6的分析画图可参考FigureYa131CMap。其余可参考文章作者分享的代码：
+应用场景Application scenarios
+用于计算肿瘤基因表达以及DNA甲基化的干性指数，跟临床信息一起展示。It is used to calculate the dryness index of tumor gene expression and DNA methylation, and is displayed together with clinical information
+另外，Fig. 6的分析画图可参考FigureYa131CMap。其余可参考文章作者分享的代码In addition, the analysis drawing in Fig. 6 can be found in FigureYa131CMap. For the rest, you can refer to the code shared by the author of the article：
 https://github.com/richie2019/MBpanel
-环境设置
-使用国内镜像安装包
+环境设置Environment settings
+使用国内镜像安装包Use the domestic mirror installation package
 options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
 options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
-加载包
+加载包Load the package
 library(GEOquery)
 library(dplyr)
 library(limma)
@@ -34,21 +30,21 @@ library(clusterProfiler)
 library(tibble)
 library(ggplot2)
 library(cowplot)
-Sys.setenv(LANGUAGE = "en") #显示英文报错信息
-options(stringsAsFactors = FALSE) #禁止chr转成factor
-用到的两个文件：pcbc-stemsig.tsv和pcbc-stemsig.p219.Rda，来自
+Sys.setenv(LANGUAGE = "en") #显示英文报错信息Displays the error message in English
+options(stringsAsFactors = FALSE) #禁止chr转成factor   Prohibiting CHR from converting to factor
+用到的两个文件The two files used：pcbc-stemsig.tsv和pcbc-stemsig.p219.Rda，来自From
 https://www.cell.com/cell/fulltext/S0092-8674(18)30358-1
-，跑自己的数据就用这个作为输入跑就行了。
+，跑自己的数据就用这个作为输入跑就行了。Just use this as input to run your own data
 mRNAsi
-输入文件
-需要表达数据和临床信息作为输入：
-GSE85217_family.soft.gz，表达数据。Download required data and read data. We directly download files from
+输入文件Enter the file
+需要表达数据和临床信息作为输入Expression data and clinical information are required as inputs：
+GSE85217_family.soft.gz，表达数据Express data。Download required data and read data. We directly download files from
 https://ftp.ncbi.nlm.nih.gov/geo/series/GSE85nnn/GSE85217/soft/GSE85217_family.soft.gz
-easyinput_clinicaldata.csv，临床信息。
-GSE文件已上传到微云，下载链接：
+easyinput_clinicaldata.csv，临床信息Clinical information。
+GSE文件已上传到微云，下载链接GSE文件已上传到微云，下载链接GSE file has been uploaded to Microcloud, download link GSE file has been uploaded to Microcloud, download link：
 https://share.weiyun.com/5X52f08
 gse <- getGEO(filename='GSE85217_family.soft.gz')
-数据预处理
+数据预处理Data preprocessing
 names(GSMList(gse))[1:5] # sample names
 # we have only one platform
 
@@ -127,11 +123,11 @@ input$Gender <- factor(input$Gender,levels = c("F","M","Unknown"))
 input$MetStatus <- factor(input$MetStatus,levels = c("Metastatic","Non-metastatic","Unknown"))
 input$index <- 1:nrow(input)
 
-# 画图
+# 画图Drawing
 darkred   <- "#F2042C"
 blue      <- "#0A0745"
 lightgrey <- "#dcddde"
-# 自定义主题
+# 自定义主题Custom themes
 My_Theme1 <- theme_bw() + 
   theme(panel.grid =element_blank()) + 
   theme(panel.border = element_rect(size = 1)) + 
@@ -156,35 +152,35 @@ p1 <- ggplot(input, aes(index, mRNAsi))+
   geom_bar(stat="identity",col = blue)+
   My_Theme1 +
   labs(y = "mRNAsi") +
-  scale_x_continuous(expand = c(0,0)) #不留空
+  scale_x_continuous(expand = c(0,0)) #不留空There is no space
 
 p2 <- ggplot(input,aes(index,1))+
   geom_tile(aes(fill = Histology))+
   My_Theme2+
   labs(y = "Histology")+
   scale_fill_manual(values = c("#74C065","#B096C2","#FAA96C","#EFF882","#6D6466")) +
-  scale_x_continuous(expand = c(0,0)) #不留空
+  scale_x_continuous(expand = c(0,0)) #不留空There is no space
 
 p3 <- ggplot(input,aes(index,1))+
   geom_tile(aes(fill = Subgroup))+
   My_Theme2+
   labs(y = "Subgroup")+
   scale_fill_manual(values = c("#84CBA8","#F2FA9C","#B1A5C8","#FA5E5C")) +
-  scale_x_continuous(expand = c(0,0)) #不留空
+  scale_x_continuous(expand = c(0,0)) #不留空There is no space
 
 p4 <- ggplot(input,aes(index,1))+
   geom_tile(aes(fill = Gender))+
   My_Theme2+
   labs(y = "Gender")+
   scale_fill_manual(values=c("#E00F0A","#3D6197","#6D6466")) +
-  scale_x_continuous(expand = c(0,0)) #不留空  
+  scale_x_continuous(expand = c(0,0)) #不留空  There is no space
 
 p5 <- ggplot(input,aes(index,1))+
   geom_tile(aes(fill = MetStatus))+
   My_Theme2 +
   labs(y = "MetStatus")+
   scale_fill_manual(values=c("#64B685","#FC6D4C","#6D6466")) +
-  scale_x_continuous(expand = c(0,0)) #不留空
+  scale_x_continuous(expand = c(0,0)) #不留空There is no space
 
 legend_a <- get_legend(p2+theme(legend.position = "bottom"))
 legend_b <- get_legend(p3+theme(legend.position = "bottom"))
@@ -197,8 +193,8 @@ p <- plot_grid(p1,p2,p3,p4,p5,
 p
 save_plot("mRNAsi.pdf", p,base_width = 10,base_height = 8)
 mDNAsi
-输入文件
-GSE文件已上传到微云，下载链接：
+输入文件Enter the file
+GSE文件已上传到微云，下载链接The GSE file has been uploaded to Microcloud, download link：
 https://share.weiyun.com/5X52f08
 exprSet <- data.table::fread("GSE85212_Methylation_763samples_SubtypeStudy_TaylorLab_beta_values.txt.gz")
 exprSet[1:5,1:5]
@@ -223,7 +219,7 @@ ss <- data.frame(Sample.ID = rownames(ss), mDNAsi = ss$mDNAsi)
 input <- clic %>% left_join(ss, by = c("Sample.ID"))
 input <- input[order(input$mDNAsi),]
 save(input,file = "DNAinput.Rdata")
-画图
+画图Drawing
 load(file = "DNAinput.Rdata")
 
 input <- as.matrix(input)
@@ -236,7 +232,7 @@ input$Gender <- factor(input$Gender,levels = c("F","M","Unknown"))
 input$MetStatus <- factor(input$MetStatus,levels = c(" 1"," 0","Unknown"),labels = c("Metastatic","Non−metastatic","Unknown"))
 input$index <- 1:nrow(input)
 
-# 画图
+# 画图Drawing
 darkred   <- "#F2042C"
 blue      <- "#0A0745"
 lightgrey <- "#dcddde"
@@ -265,32 +261,32 @@ p1 <- ggplot(input,aes(index,mDNAsi))+
   geom_bar(stat="identity",col = blue)+
   My_Theme1+
   labs(y = "mDNAsi")+
-  scale_x_continuous(expand = c(0,0)) #不留空
+  scale_x_continuous(expand = c(0,0)) #不留空There is no space
 
 p2 <- ggplot(input,aes(index,1))+
   geom_tile(aes(fill = Histology))+
   My_Theme2+
   labs(y = "Histology")+
   scale_fill_manual(values=c("#74C065","#B096C2","#FAA96C","#EFF882","#6D6466"))+
-  scale_x_continuous(expand = c(0,0)) #不留空
+  scale_x_continuous(expand = c(0,0)) #不留空There is no space
 
 p3 <- ggplot(input,aes(index,1))+
   geom_tile(aes(fill = Subgroup))+
   My_Theme2+labs(y = "Subgroup")+
   scale_fill_manual(values=c("#84CBA8","#F2FA9C","#B1A5C8","#FA5E5C"))+
-  scale_x_continuous(expand = c(0,0)) #不留空
+  scale_x_continuous(expand = c(0,0)) #不留空There is no space
 
 p4 <- ggplot(input,aes(index,1))+
   geom_tile(aes(fill = Gender))+
   My_Theme2+labs(y = "Gender")+
   scale_fill_manual(values=c("#E00F0A","#3D6197","#6D6466")) +
-  scale_x_continuous(expand = c(0,0)) #不留空 
+  scale_x_continuous(expand = c(0,0)) #不留空 There is no space
 
 p5 <- ggplot(input,aes(index,1))+
   geom_tile(aes(fill = MetStatus))+
   My_Theme2+labs(y = "MetStatus")+
   scale_fill_manual(values=c("#64B685","#FC6D4C","#6D6466")) +
-  scale_x_continuous(expand = c(0,0)) #不留空
+  scale_x_continuous(expand = c(0,0)) #不留空There is no space
 
 legend_a <- get_legend(p2+theme(legend.position = "bottom"))
 legend_b <- get_legend(p3+theme(legend.position = "bottom"))
