@@ -1,0 +1,52 @@
+name: Compress Changed FigureYa Folder
+
+on:
+  push:
+    paths:
+      - '@ying-ge/FigureYa/FigureYa*/**'
+  workflow_dispatch:
+
+jobs:
+  compress-changed-folder:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Create compressed folder if not exists
+        run: mkdir -p '@ying-ge/FigureYa/compressed'
+
+      - name: Find changed FigureYa folders
+        id: changed
+        run: |
+          echo "CHANGED_DIRS<<EOF" >> $GITHUB_ENV
+          git diff --name-only ${{ github.event.before }} ${{ github.sha }} | \
+            grep '^@ying-ge/FigureYa/FigureYa[^/]\+/' | \
+            sed -E 's#^(@ying-ge/FigureYa/FigureYa[^/]+).*#\1#' | \
+            sort | uniq >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+
+      - name: Zip changed FigureYa folders
+        run: |
+          cd '@ying-ge/FigureYa'
+          for dir in $CHANGED_DIRS; do
+            if [ -d "$(basename $dir)" ]; then
+              zipname="compressed/$(basename $dir).zip"
+              zip -r "$zipname" "$(basename $dir)"
+            fi
+          done
+
+      - name: Show compressed files
+        run: ls -lh '@ying-ge/FigureYa/compressed'
+
+      - name: Commit and push zip files
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add '@ying-ge/FigureYa/compressed/*.zip'
+          git commit -m "Auto-compress changed FigureYa folders [skip ci]" || echo "Nothing to commit"
+          git push
