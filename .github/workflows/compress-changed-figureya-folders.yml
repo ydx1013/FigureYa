@@ -23,11 +23,14 @@ jobs:
       - name: Find changed FigureYa folders
         id: changed
         run: |
-          echo "CHANGED_DIRS<<EOF" >> $GITHUB_ENV
-          git diff --name-only ${{ github.event.before }} ${{ github.sha }} | \
+          # 获取所有变更的 FigureYa 文件夹（仅顶层文件夹名）
+          CHANGED_DIRS=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | \
             grep '^@ying-ge/FigureYa/FigureYa[^/]\+/' | \
             sed -E 's#^(@ying-ge/FigureYa/FigureYa[^/]+).*#\1#' | \
-            sort | uniq >> $GITHUB_ENV
+            sort | uniq)
+          echo "$CHANGED_DIRS"
+          echo "CHANGED_DIRS<<EOF" >> $GITHUB_ENV
+          echo "$CHANGED_DIRS" >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
 
       - name: Zip changed FigureYa folders
@@ -47,6 +50,6 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add '@ying-ge/FigureYa/compressed/*.zip'
+          git add '@ying-ge/FigureYa/compressed/*.zip' || true
           git commit -m "Auto-compress changed FigureYa folders [skip ci]" || echo "Nothing to commit"
-          git push
+          git push || echo "Nothing to push"
