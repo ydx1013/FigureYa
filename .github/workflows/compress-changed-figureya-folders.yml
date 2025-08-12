@@ -17,32 +17,25 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Create compressed folder if not exists
-        run: mkdir -p '@ying-ge/FigureYa/compressed'
-
       - name: Zip all folders under @ying-ge/FigureYa
         run: |
-          base_dir="@ying-ge/FigureYa"
-          output_dir="$base_dir/compressed"
-          for dir in "$base_dir"/*/; do
+          cd "@ying-ge/FigureYa"
+          mkdir -p compressed
+          for dir in */ ; do
             foldername=$(basename "$dir")
-            # 跳过 compressed 子目录自身
             if [ "$foldername" = "compressed" ]; then
               continue
             fi
-            # 只处理目录
             if [ -d "$dir" ]; then
-              zipfile="$output_dir/$foldername.zip"
+              zipfile="compressed/${foldername}.zip"
               echo "Compressing $dir -> $zipfile"
               rm -f "$zipfile"
-              cd "$base_dir"
-              zip -r -q "compressed/$foldername.zip" "$foldername"
-              cd - > /dev/null
+              zip -r -q "$zipfile" "$foldername"
             fi
           done
 
       - name: Show compressed files
-        run: ls -lh '@ying-ge/FigureYa/compressed'
+        run: ls -lh @ying-ge/FigureYa/compressed
 
       - name: Commit and push zip files
         run: |
