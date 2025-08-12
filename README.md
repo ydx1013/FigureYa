@@ -13,7 +13,7 @@ Alternatively, you can download the corresponding zip package for offline use (s
 All FigureYa folders are compressed as individual zip files for convenient downloading.  
 To download a specific FigureYa folder:
 
-1. Navigate to the [`@ying-ge/FigureYa/compressed`](./@ying-ge/FigureYa/compressed) directory in this repository on GitHub.
+1. Navigate to the [`@ying-ge/FigureYa/compressed`](https://github.com/ying-ge/FigureYa/tree/main/compressed) directory in this repository on GitHub.
 2. Find the zip file with the name corresponding to the folder you want (e.g., `FigureYa123.zip`).
 3. Click on the zip file to open its details page.
 4. Click the **Download** or **Raw** button to download the zip file to your computer.
