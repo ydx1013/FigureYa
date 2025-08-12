@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  compress-changed-folder:
+  compress-figureya-folders:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -20,26 +20,30 @@ jobs:
       - name: Create compressed folder if not exists
         run: mkdir -p '@ying-ge/FigureYa/compressed'
 
-      - name: Find changed FigureYa folders
-        id: changed
+      - name: Decide which FigureYa folders to compress
+        id: decide
         run: |
-          # 获取所有变更的 FigureYa 文件夹（仅顶层文件夹名）
-          CHANGED_DIRS=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | \
-            grep '^@ying-ge/FigureYa/FigureYa[^/]\+/' | \
-            sed -E 's#^(@ying-ge/FigureYa/FigureYa[^/]+).*#\1#' | \
-            sort | uniq)
-          echo "$CHANGED_DIRS"
-          echo "CHANGED_DIRS<<EOF" >> $GITHUB_ENV
-          echo "$CHANGED_DIRS" >> $GITHUB_ENV
-          echo "EOF" >> $GITHUB_ENV
+          # 如果 compressed 目录为空，则为首次运行，需要全量压缩
+          if [ -z "$(ls -A '@ying-ge/FigureYa/compressed')" ]; then
+            echo "首次运行，压缩全部 FigureYa 文件夹"
+            FOLDERS=$(find '@ying-ge/FigureYa' -maxdepth 1 -type d -name 'FigureYa*' -printf '%f\n')
+          else
+            echo "非首次运行，仅压缩变更的 FigureYa 文件夹"
+            FOLDERS=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | \
+              grep '^@ying-ge/FigureYa/FigureYa[^/]\+/' | \
+              sed -E 's#^@ying-ge/FigureYa/(FigureYa[^/]+).*#\1#' | \
+              sort | uniq)
+          fi
+          echo "FOLDERS=$FOLDERS" >> $GITHUB_ENV
 
-      - name: Zip changed FigureYa folders
+      - name: Zip selected FigureYa folders
         run: |
           cd '@ying-ge/FigureYa'
-          for dir in $CHANGED_DIRS; do
-            if [ -d "$(basename $dir)" ]; then
-              zipname="compressed/$(basename $dir).zip"
-              zip -r "$zipname" "$(basename $dir)"
+          for dir in $FOLDERS; do
+            if [ -d "$dir" ]; then
+              zipfile="compressed/${dir}.zip"
+              echo "Compressing $dir -> $zipfile"
+              zip -r -q "$zipfile" "$dir"
             fi
           done
 
@@ -51,5 +55,5 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add '@ying-ge/FigureYa/compressed/*.zip' || true
-          git commit -m "Auto-compress changed FigureYa folders [skip ci]" || echo "Nothing to commit"
+          git commit -m "Auto-compress FigureYa folders [skip ci]" || echo "Nothing to commit"
           git push || echo "Nothing to push"
