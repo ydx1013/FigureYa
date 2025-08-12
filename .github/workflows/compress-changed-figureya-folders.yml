@@ -1,4 +1,4 @@
-name: Compress All Folders
+name: Compress Updated Folders
 
 on:
   push:
@@ -7,31 +7,37 @@ on:
   workflow_dispatch:
 
 jobs:
-  compress-all-folders:
+  compress-updated-folders:
     runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Create compressed folder if not exists
         run: mkdir -p compressed
 
-      - name: Zip all top-level folders
+      - name: Find updated top-level folders
+        id: updates
         run: |
-          for dir in */ ; do
-            foldername=$(basename "$dir")
-            # 跳过 .git 和 compressed 本身
-            if [ "$foldername" = "compressed" ] || [ "$foldername" = ".git" ]; then
+          # 获取本次提交中变动的一级目录
+          UPDATED_DIRS=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | awk -F/ '{print $1}' | sort | uniq)
+          echo "UPDATED_DIRS=${UPDATED_DIRS}" >> $GITHUB_ENV
+
+      - name: Zip updated top-level folders
+        run: |
+          for foldername in $UPDATED_DIRS; do
+            # 跳过特殊文件夹
+            if [ "$foldername" = "compressed" ] || [ "$foldername" = ".git" ] || [ ! -d "$foldername" ]; then
               continue
             fi
-            if [ -d "$dir" ]; then
-              zipfile="compressed/${foldername}.zip"
-              echo "Compressing $dir -> $zipfile"
-              rm -f "$zipfile"
-              zip -r -q "$zipfile" "$foldername"
-            fi
+            zipfile="compressed/${foldername}.zip"
+            echo "Compressing $foldername -> $zipfile"
+            rm -f "$zipfile"
+            zip -r -q "$zipfile" "$foldername"
           done
 
       - name: Show compressed files
@@ -42,5 +48,5 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add compressed/*.zip || true
-          git commit -m "Auto-compress all folders [skip ci]" || echo "Nothing to commit"
+          git commit -m "Auto-compress updated folders [skip ci]" || echo "Nothing to commit"
           git push || echo "Nothing to push"
