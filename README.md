@@ -1,5 +1,24 @@
 # :book: FigureYa Contents
-https://ying-ge.github.io/FigureYa/
+Explore the full contents and browse online at:  
+[https://ying-ge.github.io/FigureYa/](https://ying-ge.github.io/FigureYa/)
+
+On this webpage, you can see thumbnails and HTML links for each FigureYa folder.  
+Click any HTML link to open and browse the content directly in your browser.  
+Each FigureYa folder may contain one or more HTML files, all accessible and viewable online.
+
+If you want the input or output files, you can browse them online by navigating to the `@ying-ge/FigureYa/` directory and opening the folders starting with `FigureYa`.  
+Alternatively, you can download the corresponding zip package for offline use (see the next section for zip file details).
+
+# 📦 Downloading Individual FigureYa Folders
+All FigureYa folders are compressed as individual zip files for convenient downloading.  
+To download a specific FigureYa folder:
+
+1. Navigate to the [`@ying-ge/FigureYa/compressed`](./@ying-ge/FigureYa/compressed) directory in this repository on GitHub.
+2. Find the zip file with the name corresponding to the folder you want (e.g., `FigureYa123.zip`).
+3. Click on the zip file to open its details page.
+4. Click the **Download** or **Raw** button to download the zip file to your computer.
+
+You can then extract the contents of the zip file locally.
 
 # :file_folder: Structure of a FigureYa Directory
 Each `FigureYa` directory includes:
