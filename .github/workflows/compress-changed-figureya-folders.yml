@@ -1,9 +1,9 @@
-name: Compress All FigureYa Folders
+name: Compress All Folders
 
 on:
   push:
     paths:
-      - '@ying-ge/FigureYa/**'
+      - '**'
   workflow_dispatch:
 
 jobs:
@@ -14,16 +14,16 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
-      - name: Zip all folders under @ying-ge/FigureYa
+      - name: Create compressed folder if not exists
+        run: mkdir -p compressed
+
+      - name: Zip all top-level folders
         run: |
-          cd "@ying-ge/FigureYa"
-          mkdir -p compressed
           for dir in */ ; do
             foldername=$(basename "$dir")
-            if [ "$foldername" = "compressed" ]; then
+            # 跳过 .git 和 compressed 本身
+            if [ "$foldername" = "compressed" ] || [ "$foldername" = ".git" ]; then
               continue
             fi
             if [ -d "$dir" ]; then
@@ -35,12 +35,12 @@ jobs:
           done
 
       - name: Show compressed files
-        run: ls -lh @ying-ge/FigureYa/compressed
+        run: ls -lh compressed
 
       - name: Commit and push zip files
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add '@ying-ge/FigureYa/compressed/*.zip' || true
-          git commit -m "Auto-compress all FigureYa folders [skip ci]" || echo "Nothing to commit"
+          git add compressed/*.zip || true
+          git commit -m "Auto-compress all folders [skip ci]" || echo "Nothing to commit"
           git push || echo "Nothing to push"
