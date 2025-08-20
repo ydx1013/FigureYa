@@ -1,27 +1,46 @@
-# :book: FigureYa Contents
-Explore the full contents and browse online at:  
-[https://ying-ge.github.io/FigureYa/](https://ying-ge.github.io/FigureYa/)
+# FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency
 
-On this webpage, you can see thumbnails and HTML links for each FigureYa folder.  
-Click any HTML link to open and browse the content directly in your browser.  
-Each FigureYa folder may contain one or more HTML files, all accessible and viewable online.
+This repository provides the complete set of input files, analysis code, and results from the FigureYa manuscript.
 
-If you want to see the input or output files, you can browse them online by navigating to the [`github.com/ying-ge/FigureYa/`](https://github.com/ying-ge/FigureYa/) directory and opening the folders starting with `FigureYa`.  
-Alternatively, you can download the individual FigureYa zip package for offline use (see the next section for zip file details).
+## 🔎 Interactive Results Browser
 
-# 📦 Downloading Individual FigureYa Folders
-All FigureYa folders are compressed as individual zip files for convenient downloading.  
-To download a specific FigureYa folder:
+All generated reports are hosted on a dedicated webpage, featuring a powerful full-text search.
 
-1. Navigate to the [`github.com/ying-ge/FigureYa/compressed`](https://github.com/ying-ge/FigureYa/tree/main/compressed) directory in this repository on GitHub.
-2. Find the zip file with the name corresponding to the folder you want (e.g., `FigureYa123mutVSexpr.zip`).
-3. Click on the zip file to open its details page.
-4. Click the **Download** or **Raw** button to download the zip file to your computer.
+**[https://ying-ge.github.io/FigureYa/](https://ying-ge.github.io/FigureYa/)**
 
-You can then extract the contents of the zip file locally.
+**Note:** The initial page load may be slow depending on your network. Please allow a few seconds for the content to appear.
 
-# :file_folder: Structure of a FigureYa Directory
-Each `FigureYa` directory includes:
+### Using the Search
+The primary feature is the **search box** at the top of the page. You can use it to perform a full-text search across all HTML reports. The search results will display:
+*   A snippet of **context** showing where your keyword appears.
+*   A direct **link** to the specific FigureYa report containing the term.
+
+This allows you to quickly pinpoint relevant information (e.g., a specific function name, R package, analysis title, or figure) across all FigureYa files.
+
+### Manual Browsing
+Alternatively, you can manually browse the reports by clicking on the thumbnails and HTML links for each FigureYa folder listed on the page.
+
+---
+
+## 📦 Getting the Code and Data
+
+You have two options for accessing the files.
+
+### 1. Download for Offline Use
+All FigureYa folders are compressed as individual zip files for convenient downloading. To download a specific folder:
+
+1.  Navigate to the [`/compressed`](https://github.com/ying-ge/FigureYa/tree/main/compressed) directory.
+2.  Find the zip file with the name corresponding to the folder you want (e.g., `FigureYa123mutVSexpr.zip`).
+3.  Click on the zip file, then click the **Download** button.
+
+### 2. Browse Online on GitHub
+If you want to view the raw input or output files directly, you can browse them in the file browser at the top of this repository's main page.
+
+---
+
+## :file_folder: Structure of a FigureYa Directory
+Each `FigureYa` directory follows a consistent structure:
+
 1. **Core Files**
    - `*.Rmd`: R Markdown script (main analysis/plotting code)  
    - `*.html`: The knitted report generated from the R Markdown file.  
@@ -44,5 +63,7 @@ FigureYa59volcanoV2/
 └── example.png                      # Style reference for plots
 ```  
 
-# :+1: Citation
-This manuscript is under review. Citation information will be updated upon acceptance.
+## ✍️ Citation
+This manuscript is accepted by iMetaMed. [https://doi.org/10.1002/imm3.70005](https://doi.org/10.1002/imm3.70005)
+
+Citation information will be updated later.
