@@ -155,15 +155,8 @@ html_output = """
     <h2>Get the Code and Data</h2>
     <p>All input files, analysis code (Rmd), and results are publicly available in the <a href="https://github.com/ying-ge/FigureYa/" target="_blank">main GitHub repository</a>. You can browse the files online or download them for offline use.</p>
     <h2>Citation</h2>
-    <p>If you use this work, please cite our paper to be published in <i>iMetaMed</i> (2025):</p>
-    <pre style="background-color: #eee; padding: 1em; border-radius: 4px; white-space: pre-wrap; word-break: break-all;"><code>@article{Ge2025FigureYa,
-  author  = {Ge, Ying and others},
-  title   = {{FigureYa: a figure-driven data analysis platform that integrates data, code, and figures}},
-  journal = {iMetaMed},
-  year    = {2025},
-  doi     = {10.1002/imm3.70005},
-  url     = {https://doi.org/10.1002/imm3.70005}
-}</code></pre>
+    <p>This manuscript has been accepted by <i>iMetaMed</i>: <a href="https://doi.org/10.1002/imm3.70005" target="_blank">https://doi.org/10.1002/imm3.70005</a></p>
+    <p>Full citation information will be updated upon final publication.</p>
 </div>
 <hr>
 
