@@ -1,28 +1,25 @@
 ---
 title: "FigureYa241scRNA_NMI"
-author: "小丫画图出品"
-date: "2021-8-13"
+author: "Jianing Gao"
+reviewer: "Ying Ge, Junyi Shen"
+date: "2025-5-20"
 output: html_document
 ---
-欢迎关注“小丫画图”公众号，回复“小白”，看小视频，实现点鼠标跑代码。
-
-小丫微信: epigenomics  E-mail: figureya@126.com
-
-作者：Jarning，他的更多作品看这里<https://k.koudai.com/BXEtOldY>
-
-小丫编辑校验
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
 # 需求描述
+#Description of requirements
 
 求用R实现图1E或者文章中别的Transcriptional homogeneity (NMI)图
+Please use R to implement Figure 1E or other Transcriptional homogeneity (NMI) diagrams in the article.
 
 ![](example.png)
 
 出自<https://linkinghub.elsevier.com/retrieve/pii/S1535610820303160>
+From <https://linkinghub.elsevier.com/retrieve/pii/S1535610820303160>
 
 Figure1. Increased Transcriptional Heterogeneity in Mouse LUAD Evolution Is Reproducible across Individual Tumors and Mice, but Cannot Fully Be Explained by Gene Copy Number Variation
 
@@ -31,21 +28,30 @@ Figure1. Increased Transcriptional Heterogeneity in Mouse LUAD Evolution Is Repr
 ![](method.png)
 
 # 应用场景
+# Application Scenario
 
 利用单细胞数据评估同一(时间点)肿瘤样本的转录异质性
+Using Single-Cell Data to Assess Transcriptional Heterogeneity in Tumor Samples at the Same Time Point
 
 问题描述：同一个样本有若干个细胞，注意我们测的转录组是单细胞水平的，但是要评估是样本的转录组异质性。因此一个简单的想法是：
+Problem: The same sample contains multiple cells. Note that the transcriptome we measure is at the single-cell level, but we want to assess the transcriptome heterogeneity of the sample. Therefore, a simple approach is:
 
 - a)如果一个样本中的所有细胞，其距离的方差越大，则样本转录组异质性越高。据此，任何和方差关联的指标，其实都可以用来评估样本的转录组异质性。当然还有其它的指标，比如，
 - b)我们可以评估样本内的cluster的多样性，同一样本的cluster越多样，该样本转录异质性越高，这个多样性可以用信息熵来计算。
+- a) The greater the variance of the distances between all cells in a sample, the higher the sample's transcriptome heterogeneity. Therefore, any metric related to variance can be used to assess sample transcriptome heterogeneity. Of course, there are other metrics, such as
+- b) We can assess the diversity of clusters within a sample. The more diverse the clusters within a sample, the higher the sample's transcriptional heterogeneity. This diversity can be calculated using information entropy.
 
 - 本文作者则采取了互信息(可以理解为两个细胞转录组的相似性)来评估。对每一个样本的细胞进行不放回抽样(100 cells)，然后利用normalized mutual information (NMI)来衡量每对细胞之间的相似性。作者对每个样本进行100次抽样，每次抽样的NMI的中值作为该样本在此次抽样下的transcriptional homogeneity(转录同质性)。最后，作者采用了经验P值来进行显著性分析。
+- The authors of this paper use mutual information (which can be understood as the similarity between two cell transcriptomes) for this assessment. Each sample was subsampled without replacement (100 cells), and the normalized mutual information (NMI) was used to measure the similarity between each pair of cells. The authors performed 100 subsamples for each sample, and the median NMI for each subsample was used as the transcriptional homogeneity for that sample. Finally, the authors used empirical P values ​​for significance analysis.
 
 例文的Figure 2D和G，利用cNMF提取expression programs，并通过整合其它已发表的数据，利用Gene set analysis来推断expression programs的生物学意义。做法可参考FigureYa226scRNA_cNMF<https://k.koudai.com/T9Zd8Fu9>
+In Figures 2D and 2G of the example paper, expression programs were extracted using cNMF. Gene set analysis was then used to infer the biological significance of these expression programs by integrating with other published data. For instructions, see FigureYa226scRNA_cNMF <https://k.koudai.com/T9Zd8Fu9>
 
 # 环境设置
+# Environment Setup
 
 使用国内镜像安装包
+Using a domestic image installation package
 
 ```{r}
 options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
@@ -54,20 +60,24 @@ options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
 ```
 
 加载包
+Load the package
 
 ```{r}
 library(Seurat)
 library(rhdf5)
 library(tidyverse)
-Sys.setenv(LANGUAGE = "en") #显示英文报错信息
-options(stringsAsFactors = FALSE) #禁止chr转成factor
-```
+Sys.setenv(LANGUAGE = "en") #显示英文报错信息 #Display English error messages
+options(stringsAsFactors = FALSE) #禁止chr转成factor #Disable conversion of chr to factor
+``` 
 
 # 0. 导入数据
+# 0. Import data
 
 输入数据的微云链接：<https://share.weiyun.com/GqYbpeGV>
+Weiyun link for input data: <https://share.weiyun.com/GqYbpeGV>
 
 ## 0.1 cell meta信息
+## 0.1 Cell metadata
 
 ```{r}
 genes <- read.csv("data/GSE154989_mmLungPlate_fQC_geneTable.csv")
@@ -133,15 +143,17 @@ DimPlot(seu, group.by = "clusterK12", reduction = "phate")
 
 
 # 1. 选择基因集合(特征选择)
+# 1. Selecting Gene Sets (Feature Selection)
 
-> 选择不同cluster中的特征基因 <br>
+> 选择不同cluster中的特征基因 Selecting Feature Genes in Different Clusters <br>
 Using <br>
 1) 100 differentially expressed genes per each of 12 subtype clusters and  <br>
 2) top 100 NMF genes per each of 11 NMF programs <br>
 
 ## 1.1 cluster特异表达基因
+## 1.1 Cluster-Specifically Expressed Genes
 
-> 这里直接采用作者的计算结果
+> 这里直接采用作者的计算结果 We use the author's calculation results directly here.
 
 ```{r}
 dat <- readxl::read_excel("data/supp/tableS1.xlsx", sheet = "Summary")
@@ -151,9 +163,10 @@ length(de.genes)
 ```
 
 ## 1.2 NMF中的特征基因
+## 1.2 Feature Genes in NMF
 
-> 这里也直接采用作者的计算结果
-
+> 这里也直接采用作者的计算结果 We also use the author's calculation results directly here.
+ 
 ```{r}
 dat <- readxl::read_excel("data/supp/tableS2.xlsx", sheet = "Top weighted NMF topic markers")
 head(dat)
@@ -171,18 +184,18 @@ length(comb.genes)
 ```
 
 
-# 2. 单细胞转录组离散化
+# 2. 单细胞转录组离散化 Single cell transcriptome discretization
 
 > We discretized expression per gene into 10 bins.
 
-分箱算法: <br>
+分箱算法: Binning algorithm <br>
 1) 等长分箱(equal width intervals) <br>
 2) 等频分箱(equal frequency intervals) <br>
-3) 聚类分箱 <br>
-4) 卡方分箱 <br>
-5) 决策树分箱 <br>
+3) 聚类分箱 Cluster binning <br>
+4) 卡方分箱 Chi-square binning <br>
+5) 决策树分箱 Decision tree binning <br>
 
-> 这里尚不清楚作者采用了何种分箱算法，我们默认其采用的是`等长分箱`
+> 这里尚不清楚作者采用了何种分箱算法，我们默认其采用的是`等长分箱` It's unclear what binning algorithm the author used, but we assume it uses equal width binning.
 
 ```{r, fig.width=5, fig.height=5}
 row.idx <- rownames(seu[["RNA"]]@data) %in% comb.genes
@@ -198,11 +211,13 @@ dat[1:5,1:5]
 disc.expr[1:5,1:5]
 
 # 查看分箱结果
+# View binning results
 plot(dat[,1], col=disc.expr[,1])
 ```
 
 
 # 3. 抽样 & 计算NMI
+# 3. Sampling & Calculating NMI
 
 > In order to account for differences in the number of cells across samples, we subsampled 100 cells from each time-point (or mouse) 100 times and calculated the median NMI across each within-timepoint sampled pair.
 
@@ -213,16 +228,18 @@ table(cell.meta$timesimple)
 ```
 
 ## 3.1 计算NMI (demo)
+## 3.1 Calculate NMI (demo)
 
-互信息(MI)
+互信息(MI) Mutual Information (MI)
 $$ I(X;Y)=\sum_x\sum_yp(x,y)log(\frac{p(x,y)}{p(x)p(y)}) $$
 信息熵
 $$ H(X)=\sum_xp(x)log(p(x)) $$
 
-正则化的互信息(NMI)
+正则化的互信息(NMI) Normalized Mutual Information (NMI)
 $$ NMI(X,Y)=\frac{I(X;Y)}{\sqrt{H(X)H(Y)}} $$
 
 这里我们以一对细胞示例NMI的计算
+Here, we use a pair of cells as an example to calculate NMI.
 
 ```{r}
 require(entropy)
@@ -231,6 +248,7 @@ x <- disc.expr[, 1] # discretized transcriptional profile of cell 1
 y <- disc.expr[, 2] # discretized transcriptional profile of cell 2
 
 ## 计算p(x), p(y)以及p(x,y)
+## Calculate p(x), p(y) and p(x,y)
 px <- table(x) %>% freqs.empirical()
 py <- table(y) %>% freqs.empirical()
 # joint distribusion
@@ -240,10 +258,12 @@ pxy <- cbind(x, y) %>% as.data.frame() %>% table %>% freqs.empirical()
 # colSums(pxy) - py # all zeros
 
 ## 信息熵
+## Information entropy
 Hx <- entropy.empirical(px, unit = "log2")
 Hy <- entropy.empirical(py, unit = "log2")
 
 ## 互信息
+## Mutual information
 mi <- mi.empirical(pxy)
 
 nmi <- mi/sqrt(Hx*Hy)
@@ -252,10 +272,12 @@ nmi
 ```
 
 ## 3.2 抽样计算NMI
+## 3.2 Calculating NMI by Sampling
 
 > In order to account for differences in the number of cells across samples, we subsampled 100 cells from each time-point (or mouse) 100 times and calculated the median NMI across each within-timepoint sampled pair. 
 
 这里是一个例子，用来计算同一(时间点)肿瘤样本抽样的100个细胞所有cell pairs的NMI的中值
+Here is an example of calculating the median NMI for all cell pairs of 100 cells sampled from the same tumor sample (at the same time point).
 
 ```{r}
 cells <- rownames(subset(cell.meta, timesimple == "01_T_early_ND"))
@@ -286,6 +308,7 @@ pbapply::pbsapply(cell.pairs, function(xx) {
 ```
 
 将上述计算过程写成函数
+Write the above calculation process as a function
 
 ```{r}
 #' @title Calculating median NMI for a given cells.
@@ -316,19 +339,21 @@ sample.nmi(X = disc.expr, cells = cells, sample.on.cell.pairs = T)
 ```
 
 100次抽样计算
+100 sampling calculations
 
 1次抽样计算(100 cells)大约需要30s，100次抽样计算大约需要50min。这个计算时间成本太高 <br>
-两种解决方案： <br>
-1) 对cell pairs也进行抽样，降低计算时间 <br>
-令sample.nmi()中的sample.on.cell.pairs=TRUE <br>
-2) 并行计算 <br>
+两种解决方案：One sampling calculation (100 cells) takes about 30 seconds, and 100 sampling calculations take about 50 minutes. This computational cost is too high. <br>
+1) 对cell pairs也进行抽样，降低计算时间 1) Sample cell pairs to reduce computational time <br>
+令sample.nmi()中的sample.on.cell.pairs=TRUE Set sample.on.cell.pairs=TRUE in sample.nmi(). <br>
+2) 并行计算 Parallel computation. <br>
 
 ### 方案一：抽样
+### Solution 1: Sampling
 
 #### whole lung: multiple tumors
 ```{r}
-n.cells = 100    # 每次抽样的样本(细胞)数
-n.sampling = 100 # 抽样次数
+n.cells = 100    # 每次抽样的样本(细胞)数 # Number of samples (cells) sampled each time
+n.sampling = 100 # 抽样次数 # Number of sampling times
 
 cell.meta <- FetchData(seu, c("sampleID", "mouseID", "timesimple"))
 
@@ -356,7 +381,7 @@ saveRDS(dat.nmi, "dat.nmi.rds")
 #### single tumors
 ```{r}
 table(cell.meta$mouseID)[table(cell.meta$mouseID) > 100]
-# 选择细胞数大于100的样本
+# 选择细胞数大于100的样本 # Select samples with > 100 cells
 mouseIDs <- c("KP_20w_ND_m4", "KP_20w_ND_m5", "KP_20w_ND_m6", "KP_30w_ND_m1_T1", "KP_30w_ND_m1_T2", "KP_30w_ND_m1_T4", "KP_30w_ND_m2_T1", "KP_30w_ND_m2_T2", "KP_30w_ND_m3_T1", "KP_30w_ND_m3_T7", "KP_30w_ND_m3_T9")
 
 dat.nmi.2 <- lapply(mouseIDs, function(xx) {
@@ -395,8 +420,8 @@ dat.nmi <- readRDS("dat.nmi.rds")
 dat.nmi.2 <- readRDS("dat.nmi.2.rds")
 data.use <- rbind(dat.nmi, dat.nmi.2)
 
-segment.y <- 0.18 # 横线的位置
-text.y <- 0.183 # 文字的位置
+segment.y <- 0.18 # 横线的位置 # The position of the horizontal line
+text.y <- 0.183 # 文字的位置 # The position of the text
 
 data.use %>% 
   ggplot(aes(stages, nmi)) + 
@@ -410,15 +435,17 @@ data.use %>%
 ```
 
 ### 方案二：并行计算
+### Solution 2: Parallel computing
 
 并行计算需要`doParallel`包
+Parallel computing requires `doParallel` package
 
 ```{r}
 require(doParallel)
 
 ## ==== do parallel start ====
 ## apply for 20 workers
-cl <- makeCluster(20) # 设定CPU数量
+cl <- makeCluster(20) # 设定CPU数量 # Set the number of CPUs
 registerDoParallel(cl)
 ```
 
@@ -426,8 +453,8 @@ registerDoParallel(cl)
 #### whole lung: multiple tumors
 
 ```{r}
-n.cells = 100    # 每次抽样的样本(细胞)数
-n.sampling = 100 # 抽样次数
+n.cells = 100    # 每次抽样的样本(细胞)数 # Number of samples (cells) sampled each time
+n.sampling = 100 # 抽样次数 # Number of sampling times
 
 cell.meta <- FetchData(seu, c("sampleID", "mouseID", "timesimple"))
 
@@ -493,8 +520,8 @@ dat.nmi <- readRDS("dat.nmi.parallel.rds")
 dat.nmi.2 <- readRDS("dat.nmi.2.parallel.rds")
 data.use <- rbind(dat.nmi, dat.nmi.2)
 
-segment.y <- 0.17 # 横线的位置
-text.y <- 0.172 # 文字的位置
+segment.y <- 0.17 # 横线的位置 # Position of horizontal line
+text.y <- 0.172 # 文字的位置 # text position
 
 data.use %>% 
   ggplot(aes(stages, nmi)) + 
@@ -509,6 +536,7 @@ data.use %>%
 
 
 # 4. 计算统计显著性
+# 4. Calculate statistical significance
 
 > To estimate a p-value for the difference in NMI value between two groups we compare the number of sub-samples from in A group vs all those in another B group and report 
 
@@ -542,9 +570,9 @@ sapply(compare, function(xx) {
 ```{r, eval=TRUE}
 require(ggsignif)
 
-segment.y <- 0.19 # 横线的位置
-text.y <- 0.2 # 文字的位置
-p.y <- sapply(compare, function(xx) quantile(subset(data.use, stages %in% xx)$nmi, 0.99)) + 0.005 # P值的位置
+segment.y <- 0.19 # 横线的位置  # Position of horizontal line
+text.y <- 0.2 # 文字的位置 # Position of text
+p.y <- sapply(compare, function(xx) quantile(subset(data.use, stages %in% xx)$nmi, 0.99)) + 0.005 # P值的位置 # Position of P value
 
 data.use %>% 
   filter(stages %in% stages.use) %>% 
