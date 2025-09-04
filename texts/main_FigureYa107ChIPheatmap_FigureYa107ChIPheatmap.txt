@@ -1,13 +1,11 @@
 FigureYa107ChIPheatmap
 FigureYa107ChIPheatmap
 ¶
-小丫画图出品, 2019-6-21
-欢迎关注“小丫画图”公众号，同名知识星球等你加入
-小丫微信: epigenomics  E-mail: figureya@126.com
-作者：赵龙，中科院遗传所在读博士
-擅长：ChIP-seq，MNase-seq，ATAC-seq，HiC，ChIA-PET，GWAS分析，R语言。
-兴趣：单细胞RNA-seq，ATAC-seq，机器学习相关。
-小丫编辑校验
+title: "FigureYa107ChIPheatmap"
+author: "Long Zhao, Taojun Ye"
+reviewer: "Ying Ge"
+date: "2025-5-20"
+output: html_document
 需求描述
 ¶
 复现这个图，左侧按ChIP-seq聚类，右侧ATAC-seq行的排序跟左侧对应一致。
@@ -15,12 +13,28 @@ FigureYa107ChIPheatmap
 http://genesdev.cshlp.org/content/32/2/96.long
 对这篇文章的解读：
 https://mp.weixin.qq.com/s/zmf0GMdGZqNxseFZKHooOw
+Requirement description
+¶
+Reproduce this image, cluster the left side according to ChIP seq, and the sorting of the ATAC seq rows on the right side corresponds to the left side.
+! [] (example. png)
+from:<
+http://genesdev.cshlp.org/content/32/2/96.long
+>
+Interpretation of this article:<
+https://mp.weixin.qq.com/s/zmf0GMdGZqNxseFZKHooOw
+>
 应用场景
 ¶
 不仅限于按ChIP-seq的顺序排ATAC-seq，还可以自己组合各种factor的ChIP-seq，进而发现规律。
 例如：在转录因子结合位点，染色质开放程度是怎样的？组蛋白修饰的分布是怎样的？
 场景一：手上有多组ChIP-seq/ATAC-seq数据，按一种数据的聚类来排序，从其他数据的分布中发现规律。
 场景二：自己只测了一两个样品的ChIP-seq/ATAC-seq，只画一条多难看，可以再找些公共数据，按这个画法，能深挖出更多规律。
+Application scenarios
+¶
+Not limited to arranging ATAC seq in the order of ChIP seq, one can also combine ChIP seq of various factors to discover patterns.
+For example, what is the degree of chromatin opening at transcription factor binding sites? What is the distribution of histone modifications?
+Scenario 1: There are multiple sets of ChIP seq/ATAC seq data in hand, sorted by clustering one type of data, and patterns are discovered from the distribution of other data.
+Scenario 2: I only tested the ChIP seq/ATAC seq of one or two samples, and drawing only one line is not very good. You can find some public data and use this drawing method to dig out more patterns.
 环境设置
 ¶
 下载并安装Anaconda发行版，
@@ -29,12 +43,39 @@ https://www.anaconda.com/distribution/#download-section
 用法参考这篇：
 https://mp.weixin.qq.com/s/G-CQhNEJBmMRuDe2kxND_w
 通过conda安装deeptools：
-In [33]:
+Environment settings
+¶
+Download and install the Anaconda distribution,
+https://www.anaconda.com/distribution/#download
+-section
+Open the FigureYa107ChIPheatmap.ipynb document with Jupyter notebook
+Refer to this article for usage:
+<
+https://mp.weixin.qq.com/s/G-CQhNEJBmMRuDe2kxND_w
+>
+Install Deeptools through conda:
+In [ ]:
+import
+sys
+print
+(
+sys
+.
+executable
+)
+In [ ]:
 !
-conda install -c bioconda deeptools
+conda
+install
+-c
+bioconda
+deeptools
 输入数据的准备
 ¶
 如果你的ChIP-seq/ATAC-seq数据已经保存为bw文件，并且有相应的peak.bed文件，就可以跳过这步，直接进入“开始画图”。
+Preparation of input data
+¶
+If your ChIP seq/ATAC seq data has already been saved as a bw file and there is a corresponding peak.bed file, you can skip this step and directly enter "Start Drawing".
 数据下载
 ¶
 测序数据在发表文章时，作者会把数据上传到GEO/SRA数据库，GEO里除了原始的fastq文件外，往往还会提供bigwig（bw）文件、或bedGraph文件，以及peak.bed文件等等。
@@ -43,6 +84,13 @@ conda install -c bioconda deeptools
 例文的数据链接：
 https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE107242
 ，点击Download中的(custom)，选择以下文件下载：
+Data Download
+¶
+When publishing sequencing data, authors will upload the data to the GEO/SRA database. In addition to the original fastq file, GEO often provides bigwig (bw) files, bedGraph files, peak.bed files, and so on.
+**Which data is more reliable? **Recommend selecting data from articles with high impact factors, and refer to Figure Ya104 GEOmining for a quick way to query high scoring data.
+Data link for example text:<
+https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE107242
+>Click on (custom) in Download and select the following file to download:
 GSM2863128_N06_0.RPKM_nor.bw
 GSM2863129_NO6_24.RPKM_nor.bw
 GSM2863130_NO6_72.RPKM_nor.bw
@@ -56,37 +104,55 @@ GSM2863149_EBF1_NO14_cd19pos_mm9.bedGraph.gz
 例文给出的ChIP-seq数据是bedgraph格式，需要转换成bigwig文件。用的是UCSC的bedGraphToBigWig，用法参考这里的Example 3：
 http://genome.ucsc.edu/goldenPath/help/bigWig.html
 下载工具：bedGraphToBigWig，根据自己的系统选择合适的版本
-In [34]:
+Convert bedgraph to bigwig file
+¶
+The ChIP seq data provided in the example text is in bedgraph format and needs to be converted into a bigwig file. I am using UCSC's bedGraphToBigWig, refer to Example 3 for usage here:<
+http://genome.ucsc.edu/goldenPath/help/bigWig.html
+>
+Download tool: bedGraphToBigWig, choose the appropriate version according to your own system
+In [ ]:
 #我用wget下载，你也可以复制粘贴地址，直接从浏览器下载
+#I downloaded it using wget, but you can also copy and paste the address and download it directly from the browser
 !
-wget http://hgdownload.soe.ucsc.edu/admin/exe/linux.x86_64/bedGraphToBigWig
+wget
+http://hgdownload.soe.ucsc.edu/admin/exe/linux.x86_64/bedGraphToBigWig
 !
-wget http://hgdownload.soe.ucsc.edu/admin/exe/macOSX.x86_64/bedGraphToBigWig
+wget
+http://hgdownload.soe.ucsc.edu/admin/exe/macOSX.x86_64/bedGraphToBigWig
 !
 chmod
 775
 bedGraphToBigWig
 有可能需要添加环境变量
 下载mm9的染色体长度的文件
-In [35]:
+It may be necessary to add environment variables
+Download the file of chromosome length for mm9
+In [ ]:
 !
-wget http://hgdownload.cse.ucsc.edu/goldenPath/mm9/bigZips/mm9.chrom.sizes
+/opt/homebrew/bin/wget
+http://hgdownload.cse.ucsc.edu/goldenPath/mm9/bigZips/mm9.chrom.sizes
 现在就可以把ChIP-seq的bedGraph文件转成bw了：
-In [36]:
+Now you can convert the ChIP seq bedGraph file to bw:
+In [ ]:
 !
 for
-file in *.bedGraph
+file
+in
+*.bedGraph.peak.bed
 ;
 do
-sort -k1,1 -k2,2n
+sort
+-k1,1
+-k2,2n
 $file
 >
 $file
 .sorted.bedGraph
 ;
-bedGraphToBigWig
+./bedGraphToBigWig
 $file
-.sorted.bedGraph mm9.chrom.sizes
+.sorted.bedGraph
+mm9.chrom.sizes
 $file
 .bw
 ;
@@ -99,10 +165,20 @@ done
 ¶
 可以跳过这步，直接用我跑好的allpeak.bed文件
 文章没有提供每个样品的peak文件，找peak不是这里的重点，就不从mapping开始跑了。仅从文章提供的EBF1 ChIP-seq的bedgraph文件开始做，定义较高的位置为peak，作为示例文件。有点粗糙，但足够用于展示需求描述所需解决的问题。
-In [37]:
+Get peak.bed
+¶
+You can skip this step and directly use the allpeak.bed file that I have run
+The article did not provide a peak file for each sample, so finding the peak is not the focus here, so we won't start with mapping. Starting from the bedgraph file of EBF1 ChIP seq provided in the article, define the higher position as peak as an example file. A bit rough, but sufficient to demonstrate the problem that needs to be solved in the requirement description.
+In [ ]:
+# 筛选所有GSM编号的EBF1相关bedGraph文件中信号值大于80的区域，输出为peak.bed格式
+# 语法说明：$4表示第四列数据(通常是信号值)，$file.peak.bed是输出文件名
+# Filter regions with signal value >80 from all GSM EBF1-related bedGraph files, output as peak.bed format
+# Syntax explanation: $4 refers to the fourth column (usually signal value), $file.peak.bed is the output filename
 !
 for
-file in GSM*_EBF1_*.bedGraph
+file
+in
+GSM*_EBF1_*.bedGraph
 ;
 do
 awk
@@ -113,23 +189,56 @@ $file
 .peak.bed
 ;
 done
-# 通过conda安装bedtools
+# 通过bioconda渠道安装bedtools工具集(用于基因组区间操作)
+# 注意：需要提前配置好conda环境和bioconda渠道
+# Install bedtools toolkit via bioconda channel (for genomic interval operations)
+# Note: Conda environment and bioconda channel need to be configured in advance
 !
-conda install -c bioconda bedtools
-#合并和排序
+conda
+install
+-c
+bioconda
+bedtools
+# 合并所有peak.bed文件并进行坐标排序，然后使用bedtools合并重叠区间
+# 排序参数说明：-k1.1V按染色体名称排序，-k2,2n和-k3,3n按起始和终止坐标数值排序
+# Merge all peak.bed files, sort by genomic coordinates, and merge overlapping intervals using bedtools
+# Sorting parameters: -k1.1V sorts by chromosome name, -k2,2n and -k3,3n sort by start and end coordinates numerically
 !
-cat *.peak.bed
+cat
+*.peak.bed
 |
-sort -k1.1V -k2,2n -k3,3n
+sort
+-k1.1V
+-k2,2n
+-k3,3n
 |
-bedtools merge -i - > allpeak.bed
+bedtools
+merge
+-i
+-
+>
+allpeak.bed
 附：
 正常的做法是用MACS2从每个样本的bam文件里call出peak.bed，例如：
-macs2 callpeak -c Input.bam -t treatment.bam -q
+**Attachment: * * The normal practice is to use MACS2 to call peak.bed from the BAM file of each sample, for example:
+macs2
+callpeak
+-c
+Input.bam
+-t
+treatment.bam
+-q
 0
-.05 -f BAM -g mm -n treatment
+.05
+-f
+BAM
+-g
+mm
+-n
+treatment
 2
-> treatment.macs2.log
+>
+treatment.macs2.log
 开始画图-左侧ChIP-seq
 ¶
 每次运行computeMatrix大概需要10分钟，具体用法参见
@@ -145,48 +254,165 @@ https://deeptools.readthedocs.io/en/develop/content/tools/plotHeatmap.html?highl
 --zMax 150 ： colorbar的最大值，对应的还有最小值--zMin
 这里有一个关键是--outFileSortedRegions这个参数。
 这里输出的bed文件就是我们heatmap对应的文件。主要用于绘制后面ATAC的heatmap与之对应。
-In [38]:
-#计算矩阵
+Start drawing - ChIP seq on the left
+¶
+It takes about 10 minutes to run computeMatrix each time. For specific usage, please refer to<
+https://deeptools.readthedocs.io/en/develop/content/tools/computeMatrix.html?highlight=computeMatrix
+>Here are the main parameter descriptions of computeMatrix:
+--ReferencePoint center: center alignment
+-B 3000- a 3000: Front to back distance
+-R xx.bed: bed file
+-S Input.bw 24_SBF1.bw 72_SBF1.bw prob_SBF1.bw: prepared bigwig file
+For the specific usage of plotHeatmap, please refer to<
+https://deeptools.readthedocs.io/en/develop/content/tools/plotHeatmap.html?highlight=plotHeatmap
+>Main parameter description:
+--ZMax 150: The maximum value of colorbar corresponds to the minimum value - zMin
+There is a key parameter here - outFileSortedRegions.
+The bed file output here is the file corresponding to our heatmap. Mainly used to draw the heatmap corresponding to ATAC in the future.
+In [ ]:
+# 使用deepTools的computeMatrix工具计算峰区域(center点)上下游3kb范围内的信号矩阵
+# 参数说明：
+# --referencePoint center：以峰中心为参考点
+# -b 3000 -a 3000：参考点上下游各扩展3000bp
+# --missingDataAsZero：将缺失数据视为0
+# --skipZeros：跳过全零区域提高计算效率
+# -p 40：使用40个线程并行计算
+# -R：输入的参考区域文件(allpeak.bed)
+# -S：输入的信号值文件(多个bigWig格式)
+# -o：输出的矩阵文件名(nom.gz)
+# Calculate signal matrix for 3kb regions around peak centers using deepTools' computeMatrix
+# Parameter explanation:
+# --referencePoint center: Use peak center as reference point
+# -b 3000 -a 3000: Extend 3000bp upstream and downstream from reference point
+# --missingDataAsZero: Treat missing data as 0
+# --skipZeros: Skip regions with all zeros to improve efficiency
+# -p 40: Use 40 threads for parallel computation
+# -R: Input reference regions file (allpeak.bed)
+# -S: Input signal files (multiple bigWig format)
+# -o: Output matrix file (nom.gz)
 !
-computeMatrix reference-point --referencePoint center -b
+computeMatrix
+reference-point
+--referencePoint
+center
+-b
 3000
 -a
 3000
---missingDataAsZero --skipZeros -p
+--missingDataAsZero
+--skipZeros
+-p
 40
--R allpeak.bed -S GSM2863142_Input_NO14_24_mm9.bedGraph.bw GSM2863147_EBF1_NO14_24_mm9.bedGraph.bw GSM2863148_EBF1_NO14_72_mm9.bedGraph.bw GSM2863149_EBF1_NO14_cd19pos_mm9.bedGraph.bw -o nom.gz
-#画图，并输出bed文件，用于画右侧ATAC-seq
+-R
+allpeak.bed
+-S
+GSM2863142_Input_NO14_24_mm9.bedGraph.bw
+GSM2863147_EBF1_NO14_24_mm9.bedGraph.bw
+GSM2863148_EBF1_NO14_72_mm9.bedGraph.bw
+GSM2863149_EBF1_NO14_cd19pos_mm9.bedGraph.bw
+-o
+nom.gz
+# 使用plotHeatmap工具基于计算的矩阵绘制热图，并输出聚类后的区域文件
+# 参数说明：
+# -m：输入的矩阵文件(nom.gz)
+# -out：输出的热图文件名(ChIP-pre.pdf)
+# --zMax 150：颜色映射的最大值设为150
+# --kmeans 5：使用k-means算法将区域聚为5类
+# --outFileSortedRegions：输出聚类排序后的区域文件
+# --samplesLabel：为每个样本指定标签
+# Generate heatmap from computed matrix using plotHeatmap, and output clustered regions
+# Parameter explanation:
+# -m: Input matrix file (nom.gz)
+# -out: Output heatmap file (ChIP-pre.pdf)
+# --zMax 150: Set maximum value for color scale to 150
+# --kmeans 5: Cluster regions into 5 groups using k-means algorithm
+# --outFileSortedRegions: Output file for sorted/clustered regions
+# --samplesLabel: Assign labels to each sample
 !
-plotHeatmap -m nom.gz -out ChIP-pre.pdf --zMax
+plotHeatmap
+-m
+nom.gz
+-out
+ChIP-pre.pdf
+--zMax
 150
 --kmeans
 5
---outFileSortedRegions Heatmap1sortedRegions.bed --samplesLabel 0hrs 24hrs 72hrs pro-B
+--outFileSortedRegions
+Heatmap1sortedRegions.bed
+--samplesLabel
+0hrs
+24hrs
+72hrs
+pro-B
 生成的图在ChIP-pre.pdf里，位于当前文件夹。可以看出最上面两个cluster里的信号不像peak，这是上面找peak的方式粗糙导致的，正常自己的peak文件中应该不会存在这种情况。我们把这些异常的peak删掉就好了：
-In [43]:
-#删除第一个和第二个cluster对应的peak
+The generated image is in ChIP pre. pdf, located in the current folder. It can be seen that the signals in the top two clusters are not like peaks, which is caused by the rough way of finding peaks above. Normally, this situation should not exist in one's own peak file. We just need to delete these abnormal peaks:
+In [ ]:
+# 从热图聚类结果中筛选出不属于cluster_1和cluster_2的peak区域
+# 语法说明：
+# grep -v：反向筛选，排除匹配的行
+# 首先排除cluster_1，然后在剩余结果中排除cluster_2
+# 最终结果输出到allpeak2.bed，用于后续分析
+# Filter out peaks belonging to cluster_1 and cluster_2 from the heatmap clustering results
+# Syntax explanation:
+# grep -v: Inverse filtering, exclude lines that match the pattern
+# First exclude cluster_1, then exclude cluster_2 from the remaining results
+# The final result is output to allpeak2.bed for subsequent analysis
 !
-grep -v cluster_1 Heatmap1sortedRegions.bed
+grep
+-v
+cluster_1
+Heatmap1sortedRegions.bed
 |
-grep -v cluster_2 > allpeak2.bed
+grep
+-v
+cluster_2
+>
+allpeak2.bed
 然后再运行一次
-In [44]:
+Then run it again
+In [ ]:
 #计算矩阵
 !
-computeMatrix reference-point --referencePoint center -b
+computeMatrix
+reference-point
+--referencePoint
+center
+-b
 3000
 -a
 3000
---missingDataAsZero --skipZeros -p
+--missingDataAsZero
+--skipZeros
+-p
 40
--R allpeak2.bed -S GSM2863142_Input_NO14_24_mm9.bedGraph.bw GSM2863147_EBF1_NO14_24_mm9.bedGraph.bw GSM2863148_EBF1_NO14_72_mm9.bedGraph.bw GSM2863149_EBF1_NO14_cd19pos_mm9.bedGraph.bw -o nom.gz
+-R
+allpeak2.bed
+-S
+GSM2863142_Input_NO14_24_mm9.bedGraph.bw
+GSM2863147_EBF1_NO14_24_mm9.bedGraph.bw
+GSM2863148_EBF1_NO14_72_mm9.bedGraph.bw
+GSM2863149_EBF1_NO14_cd19pos_mm9.bedGraph.bw
+-o
+nom.gz
 #画图，并输出bed文件，用于画右侧ATAC-seq
 !
-plotHeatmap -m nom.gz -out ChIP.pdf --zMax
+plotHeatmap
+-m
+nom.gz
+-out
+ChIP.pdf
+--zMax
 150
 --kmeans
 5
---outFileSortedRegions Heatmap1sortedRegions.bed --samplesLabel 0hrs 24hrs 72hrs pro-B
+--outFileSortedRegions
+Heatmap1sortedRegions.bed
+--samplesLabel
+0hrs
+24hrs
+72hrs
+pro-B
 #如果不想画average profile，就加上参数：--whatToShow "heatmap and colorbar"
 生成的图在ChIP.pdf里，位于当前文件夹。
 ChIP.pdf蓝色最大值已经超过100，原文只有16，这与生成bigwig文件时bamCoverage --normalizeUsing RPKM或其他标准化方法（CPM, BPM, RPGC）有很大关系。同时还跟这一步用bin的大小有关。
@@ -194,6 +420,11 @@ ChIP.pdf蓝色最大值已经超过100，原文只有16，这与生成bigwig文�
 原文没有提供bw文件，我们通过bedgraph转过来，这个bin就有点大，所以数值就偏大。
 看后面ATAC-seq的大小跟文章就很一致，因为用的是文章提供的bigwig文件。
 具体分析自己的数据时，左右两侧数据从头开始用同样的标准和参数处理就可以了。
+The generated image is located in ChIP.pdf, in the current folder.
+The maximum blue value of ChIP.pdf has exceeded 100, while the original text only has 16, which is closely related to the normalization using RPKM or other standardization methods (CPM, BPM, RPGC) when generating bigwig files. It is also related to the size of the bin used in this step.
+I think the main reason here is the size of the bin. --The larger the binSize, the greater this value. So I estimate that the bin used in the original drawing was relatively small.
+The original text did not provide a BW file. We converted it through the bedgraph, and this bin is a bit large, so the value is biased towards a larger value.
+The size of ATAC seq is consistent with the article, as it uses the bigwig file provided in the article. When analyzing one's own data specifically, the data on both sides can be processed from scratch using the same standards and parameters.
 开始画图-右侧ATAC-seq
 ¶
 computeMatrix里用到的-R为上面画ChIP-seq的图时输出的bed文件，里面是有顺序的。
@@ -202,29 +433,102 @@ plotHeatmap的主要参数：
 --colorMap 'Greens'：颜色，deeptools还有很多颜色可以选，具体参考help。
 --whatToShow ：这个是展示heatmap还是带有profile的heatmap还是其他。可以参考help。
 --samplesLabel： 标签的label
-In [45]:
-#计算矩阵
+Start drawing - ATAC seq on the right
+¶
+The - R used in computeMatrix is the bed file output when drawing the ChIP seq graph above, which is in order.
+The main parameters of plotHeatmap are:
+--SortRegions keep: This parameter is crucial to ensure consistency with the order of ChIP seq.
+--ColorMap 'Greens': There are many colors to choose from in deeptools, please refer to help for details.
+--WhatsApp Show: Is this showing a heatmap or a heatmap with a profile, or something else. You can refer to help.
+--SamplesLabel: label of the label
+In [ ]:
+# 使用deepTools的computeMatrix工具计算热图聚类区域(center点)上下游3kb范围内的信号矩阵
+# 参数说明：
+# --referencePoint center：以区域中心为参考点
+# -b 3000 -a 3000：参考点上下游各扩展3000bp
+# --missingDataAsZero：将缺失数据视为0
+# --skipZeros：跳过全零区域提高计算效率
+# -p 40：使用40个线程并行计算
+# -R：输入的参考区域文件(Heatmap1sortedRegions.bed)
+# -S：输入的信号值文件(多个bigWig格式)
+# -o：输出的矩阵文件名(nom2.gz)
+# Calculate signal matrix for 3kb regions around centers of clustered regions using deepTools' computeMatrix
+# Parameter explanation:
+# --referencePoint center: Use region center as reference point
+# -b 3000 -a 3000: Extend 3000bp upstream and downstream from reference point
+# --missingDataAsZero: Treat missing data as 0
+# --skipZeros: Skip regions with all zeros to improve efficiency
+# -p 40: Use 40 threads for parallel computation
+# -R: Input reference regions file (Heatmap1sortedRegions.bed)
+# -S: Input signal files (multiple bigWig format)
+# -o: Output matrix file (nom2.gz)
 !
-computeMatrix reference-point --referencePoint center -b
+computeMatrix
+reference-point
+--referencePoint
+center
+-b
 3000
 -a
 3000
---missingDataAsZero --skipZeros -p
+--missingDataAsZero
+--skipZeros
+-p
 40
--R Heatmap1sortedRegions.bed -S  GSM2863128_N06_0.RPKM_nor.bw GSM2863129_NO6_24.RPKM_nor.bw GSM2863130_NO6_72.RPKM_nor.bw GSM2863131_NO6_cd19pos.RPKM_nor.bw -o nom2.gz
-#画图
+-R
+Heatmap1sortedRegions.bed
+-S
+GSM2863128_N06_0.RPKM_nor.bw
+GSM2863129_NO6_24.RPKM_nor.bw
+GSM2863130_NO6_72.RPKM_nor.bw
+GSM2863131_NO6_cd19pos.RPKM_nor.bw
+-o
+nom2.gz
+# 使用plotHeatmap工具基于计算的矩阵绘制热图
+# 参数说明：
+# -m：输入的矩阵文件(nom2.gz)
+# -out：输出的热图文件名(ATAC.pdf)
+# --sortRegions keep：保持输入文件的区域顺序(不重新排序)
+# --zMax 15：颜色映射的最大值设为15
+# --colorMap 'Greens'：使用绿色系的颜色映射
+# --samplesLabel：为每个样本指定标签
+# --whatToShow "heatmap and colorbar"：只显示热图和颜色条(不显示平均曲线)
+# Generate heatmap from computed matrix using plotHeatmap
+# Parameter explanation:
+# -m: Input matrix file (nom2.gz)
+# -out: Output heatmap file (ATAC.pdf)
+# --sortRegions keep: Maintain input region order (do not re-sort)
+# --zMax 15: Set maximum value for color scale to 15
+# --colorMap 'Greens': Use green color palette
+# --samplesLabel: Assign labels to each sample
+# --whatToShow "heatmap and colorbar": Show only heatmap and colorbar (no average profile)
 !
-plotHeatmap -m nom2.gz -out ATAC.pdf --sortRegions keep --zMax
+plotHeatmap
+-m
+nom2.gz
+-out
+ATAC.pdf
+--sortRegions
+keep
+--zMax
 15
 --colorMap
 'Greens'
---samplesLabel 0hrs 24hrs 72hrs pro-B
-#如果不想画average profile，就加上参数：--whatToShow "heatmap and colorbar"
+--samplesLabel
+0hrs
+24hrs
+72hrs
+pro-B
+# If you don't want to show the average profile, add the parameter: --whatToShow "heatmap and colorbar"
 生成的图在ATAC.pdf里，位于当前文件夹
+The generated image is located in the current folder of ATAC.gdf
 后期处理
 ¶
 输出的pdf文件都是矢量图，可以在Illustrator等编辑器里打开，编辑图形、文字、组图。
-In [1]:
+Post processing
+¶
+The output PDF files are all vector graphics that can be opened in editors such as Illustrator to edit graphics, text, and group images.
+In [ ]:
 import
 IPython
 print
@@ -234,5 +538,9 @@ IPython
 sys_info
 ())
 !
-jupyter nbconvert --to html FigureYa107ChIPheatmap.ipynb
+jupyter
+nbconvert
+--to
+html
+FigureYa107ChIPheatmap.ipynb
 In [ ]:
