@@ -744,10 +744,7 @@ targetGeneExp$bcr_patient_barcode &lt;- str_replace_all(rownames(targetGeneExp),
 </div>
 <div id="提取目标癌症的临床信息" class="section level2">
 <h2>提取目标癌症的临床信息</h2>
-<p>Cell paper整理过的生存数据，在嘉因公众号回复“xena”查看详情。</p>
 <p>##Extract clinical information of target cancer</p>
-<p>The survival data sorted out by Cell Paper can be checked by replying
-“xena” on the official account of Jiayin.</p>
 <pre class="r"><code># 读取临床信息数据（包含生存分析相关指标）
 # Read clinical information data (including survival analysis metrics)
 clinical &lt;- read.delim(&quot;Survival_SupplementalTable_S1_20171025_xena_sp&quot;, header = T)
