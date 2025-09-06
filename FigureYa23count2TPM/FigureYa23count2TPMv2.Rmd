@@ -25,13 +25,9 @@ Convert RNA-seq read count to TPM.
 
 注：TPM的计算方式最好是直接从原始的FASTQ文件进行获取，例如Samlon, Sailfish 或 kallisto, 或者先用FASTQ比对得到BAM，然后用RESM估计TPM.
 
-在嘉因公众号回复“TPM”，查看TPM、FPKM、read count的优缺点。
-
 If you only have access to RNA-seq read counts and want to convert them to TPM. 
 
 Note: The best way to calculate TPM is directly from the original FASTQ files using tools like Salmon, Sailfish, or kallisto, or by first aligning the FASTQ to obtain BAM files and then using RESM to estimate TPM. 
-
-Reply with "TPM" on the Jiayin official account to learn about the advantages and disadvantages of TPM, FPKM, and read count.
 
 ## 计算基因长度
 ## Calculate gene length
@@ -535,3 +531,4 @@ BiocInstaller::biocLite()
 ```{r}
 sessionInfo()
 ```
+
