@@ -14,11 +14,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 用R代码画出paper里的Lollipop，棒棒糖🍭。
 
-在嘉因公众号回复“棒棒糖”，查看代码来历
-
 Draw the Lollipop in the paper using R code, lollipop 🍭.
-
-Reply to "Lollipop" on the Jiayin official account to view the source of the code.
 
 ![](example.png)
 
@@ -286,4 +282,5 @@ dev.off()
 
 ```{r}
 sessionInfo()
+
 ```
