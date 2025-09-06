@@ -386,11 +386,7 @@ targetGeneExp$bcr_patient_barcode <- str_replace_all(rownames(targetGeneExp),"[.
 
 ## 提取目标癌症的临床信息
 
-Cell paper整理过的生存数据，在嘉因公众号回复“xena”查看详情。
-
 ##Extract clinical information of target cancer
-
-The survival data sorted out by Cell Paper can be checked by replying "xena" on the official account of Jiayin.
 
 ```{r}
 # 读取临床信息数据（包含生存分析相关指标）
