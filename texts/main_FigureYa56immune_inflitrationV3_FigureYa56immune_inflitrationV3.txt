@@ -317,10 +317,7 @@ head(targetGeneExp)
 # Replace dots with hyphens in sample IDs to match TCGA standard format
 targetGeneExp$bcr_patient_barcode <- str_replace_all(rownames(targetGeneExp),"[.]","-")
 提取目标癌症的临床信息
-Cell paper整理过的生存数据，在嘉因公众号回复“xena”查看详情。
 ##Extract clinical information of target cancer
-The survival data sorted out by Cell Paper can be checked by replying
-“xena” on the official account of Jiayin.
 # 读取临床信息数据（包含生存分析相关指标）
 # Read clinical information data (including survival analysis metrics)
 clinical <- read.delim("Survival_SupplementalTable_S1_20171025_xena_sp", header = T)

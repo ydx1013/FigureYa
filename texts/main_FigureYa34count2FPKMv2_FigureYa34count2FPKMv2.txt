@@ -10,13 +10,10 @@ RNA-seq read count converted to FPKM.
 application scenario
 只能拿到RNA-seq数据的read count，想转换成FPKM。
 注：FPKM的计算方式最好是直接从原始的FASTQ文件开始计算
-在嘉因公众号回复“TPM”，查看TPM、FPKM、read count的优缺点。
 You can only get the read count of the RNA-seq data and want to
 convert to FPKM.
 Note: The best calculation method of FPKM is to start directly from
 the original FASTQ file.
-Reply “TPM” on Jiayin’s official account to check the advantages and
-disadvantages of TPM, FPKM and read count.
 计算基因长度
 Calculate gene length
 这步比较耗时。建议：

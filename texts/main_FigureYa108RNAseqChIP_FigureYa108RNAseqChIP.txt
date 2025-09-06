@@ -1,13 +1,11 @@
 FigureYa108RNAseqChIP
 FigureYa108RNAseqChIP
 ¶
-小丫画图出品, 2019-6-21
-欢迎关注“小丫画图”公众号，同名知识星球等你加入
-小丫微信: epigenomics  E-mail: figureya@126.com
-作者：赵龙，中科院遗传所在读博士
-擅长：ChIP-seq，MNase-seq，ATAC-seq，HiC，ChIA-PET，GWAS分析，R语言。
-兴趣：单细胞RNA-seq，ATAC-seq，机器学习相关。
-小丫编辑校验
+title: "FigureYa108RNAseqChIP"
+author: "Long Zhao, Taojun Ye"
+reviewer: "Ying Ge"
+date: "2025-5-20"
+output: html_document
 需求描述
 ¶
 已知RNA-seq表达谱聚类的顺序，按这个顺序排列，画出基因启动子区的ChIP-seq信号。
@@ -15,10 +13,23 @@ FigureYa108RNAseqChIP
 http://genesdev.cshlp.org/content/32/2/96.long
 对这篇文章的解读：
 https://mp.weixin.qq.com/s/zmf0GMdGZqNxseFZKHooOw
+Requirement description
+¶
+Given the clustering order of RNA seq expression profiles, arrange them in this order and draw the ChIP seq signal of the gene promoter region.
+From:<
+http://genesdev.cshlp.org/content/32/2/96.long
+>
+Interpretation of this article:<
+https://mp.weixin.qq.com/s/zmf0GMdGZqNxseFZKHooOw
+>
 应用场景
 ¶
 不仅限于按RNA-seq的聚类顺序排ChIP-seq，还可以按其他分组来排ATAC-seq或ChIP-seq，进而发现规律。
 如果自己只测了RNA-seq数据，还可以找些ChIP-seq/ATAC-seq的公共数据来丰富文章内容，按这个画法，能深挖出更多规律。
+Application scenarios
+¶
+Not limited to sorting ChIP seq according to the clustering order of RNA seq, ATAC seq or ChIP seq can also be sorted according to other groups to discover patterns.
+If you only test RNA seq data, you can also find some public ChIP seq/ATAC seq data to enrich the content of the article. Using this method, you can dig out more patterns.
 环境设置
 ¶
 下载并安装Anaconda发行版，
@@ -27,9 +38,24 @@ https://www.anaconda.com/distribution/#download-section
 用法参考这篇：
 https://mp.weixin.qq.com/s/G-CQhNEJBmMRuDe2kxND_w
 通过conda安装deeptools：
-In [5]:
+Environment settings
+¶
+Download and install the Anaconda distribution,
+https://www.anaconda.com/distribution/#download
+-section
+Open the FigureYa107ChIPheatmap.ipynb document with Jupyter notebook
+Refer to this article for usage:
+<
+https://mp.weixin.qq.com/s/G-CQhNEJBmMRuDe2kxND_w
+>
+Install Deeptools through conda:
+In [ ]:
 !
-conda install -c bioconda deeptools
+conda
+install
+-c
+bioconda
+deeptools
 输入数据的准备
 ¶
 需要准备以下文件：
@@ -38,6 +64,14 @@ peak.bed，每个bw对应的peak，前第三列代表peak的位置，第四列�
 join.txt，分组信息，此处按基因表达模式分类，根据例文的TABLE S1整理而成。第一列为原文中的cluster，还可以是其他有意义的分类；第二列为基因ID，无所谓什么ID，只要唯一就行。
 gene.bed，每个基因在染色体上的位置，根据例文的TABLE S1整理而成。前三列为基因染色体位置，第四列是cluster，第五列是基因名。
 bw文件跟FigureYa107ChIPheatmap的输入相同。如果你的ChIP-seq数据已经保存为bw文件，并且有相应的peak.bed文件，就可以跳过这步，直接进入“把peak注释到基因上”。
+Preparation of input data
+¶
+The following documents need to be prepared:
+bw， Here, taking ChIP seq from the example text as an example, it can also be ATAC seq, DNase seq, MNase seq, and so on
+peak.bed， The peak corresponding to each BW, with the first third column representing the position of the peak and the fourth column representing the length of the peak.
+join.txt， Grouping information, classified by gene expression patterns here, organized according to Table S1 in the example text. The first column is the cluster in the original text, which can also be other meaningful classifications; The second column is the gene ID, it doesn't matter what ID it is, as long as it is unique.
+gene.bed， The position of each gene on the chromosome is organized according to Table S1 in the example text. The first three columns represent the chromosomal positions of genes, the fourth column represents clusters, and the fifth column represents gene names.
+The bw file has the same input as FigureYa107ChIPheatmap. If your ChIP seq data has already been saved as a bw file and there is a corresponding peak.bed file, you can skip this step and directly enter "Annotate Peaks to Genes".
 数据下载
 ¶
 测序数据在发表文章时，作者会把数据上传到GEO/SRA数据库，GEO里除了原始的fastq文件外，往往还会提供bigwig（bw）文件、或bedGraph文件，以及peak.bed文件等等。
@@ -46,6 +80,13 @@ bw文件跟FigureYa107ChIPheatmap的输入相同。如果你的ChIP-seq数据已
 例文的数据链接：
 https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE107242
 ，点击Download中的(custom)，选择以下文件下载：
+Data Download
+¶
+When publishing sequencing data, authors will upload the data to the GEO/SRA database. In addition to the original fastq file, GEO often provides bigwig (bw) files, bedGraph files, peak.bed files, and so on.
+**Which data is more reliable? **Recommend selecting data from articles with high impact factors, and refer to Figure Ya104 GEOmining for a quick way to query high scoring data.
+Data link for example text:<
+https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE107242
+>Click on (custom) in Download and select the following file to download:
 GSM2863142_Input_NO14_24_mm9.bedGraph.gz
 GSM2863147_EBF1_NO14_24_mm9.bedGraph.gz
 GSM2863148_EBF1_NO14_72_mm9.bedGraph.gz
@@ -55,29 +96,46 @@ GSM2863149_EBF1_NO14_cd19pos_mm9.bedGraph.gz
 原文给出的是bedgraph文件，需要转换成bigwig文件。用的是UCSC的bedGraphToBigWig，用法参考这里的Example 3：
 http://genome.ucsc.edu/goldenPath/help/bigWig.html
 下载工具：bedGraphToBigWig，根据自己的系统选择合适的版本
-In [6]:
+Convert bedgraph to bigwig file
+¶
+The original text provides a bedgraph file, which needs to be converted into a bigwig file. I am using UCSC's bedGraphToBigWig, refer to Example 3 for usage here:<
+http://genome.ucsc.edu/goldenPath/help/bigWig.html
+>
+Download tool: bedGraphToBigWig, choose the appropriate version according to your own system
+In [ ]:
 #我用wget下载，你也可以复制粘贴地址，直接从浏览器下载
+#I downloaded it using wget, but you can also copy and paste the address and download it directly from the browser
 !
-wget http://hgdownload.soe.ucsc.edu/admin/exe/linux.x86_64/bedGraphToBigWig
+wget
+http://hgdownload.soe.ucsc.edu/admin/exe/linux.x86_64/bedGraphToBigWig
 !
-wget http://hgdownload.soe.ucsc.edu/admin/exe/macOSX.x86_64/bedGraphToBigWig
+wget
+http://hgdownload.soe.ucsc.edu/admin/exe/macOSX.x86_64/bedGraphToBigWig
 !
 chmod
 775
 bedGraphToBigWig
 有可能需要添加环境变量
 下载mm9的染色体长度的文件
-In [7]:
+It may be necessary to add environment variables
+Download the file of chromosome length for mm9
+In [ ]:
 !
-wget http://hgdownload.cse.ucsc.edu/goldenPath/mm9/bigZips/mm9.chrom.sizes
+wget
+http://hgdownload.cse.ucsc.edu/goldenPath/mm9/bigZips/mm9.chrom.sizes
 现在就可以把ChIP-seq的bedGraph文件转成bw了：
-In [8]:
+Now you can convert the ChIP seq bedGraph file to bw:
+In [ ]:
 !
 for
-file in *.bedGraph
+file
+in
+*.bedGraph
 ;
 do
-sort -k1,1 -k2,2n
+sort
+-k1,1
+-k2,2n
 $file
 >
 $file
@@ -85,7 +143,8 @@ $file
 ;
 bedGraphToBigWig
 $file
-.sorted.bedGraph mm9.chrom.sizes
+.sorted.bedGraph
+mm9.chrom.sizes
 $file
 .bw
 ;
@@ -98,10 +157,16 @@ done
 ¶
 可以跳过这步，直接用我跑好的peak.bed文件
 文章没有提供每个样品的peak文件，找peak不是这里的重点，就不从头跑了。仅从文章提供的bedgraph文件开始做，定义EBF1 ChIP-seq较高的位置为peak，作为示例文件。有点粗糙，但足够用于展示需求描述所需解决的问题。
-In [26]:
+Get peak.bed
+¶
+You can skip this step and directly use the peak.bed file that I have run
+The article did not provide a peak file for each sample, so finding the peak is not the focus here, so we won't start from scratch. Starting from the bedgraph file provided in the article, define the higher position of EBF1 ChIP seq as peak as an example file. A bit rough, but sufficient to demonstrate the problem that needs to be solved in the requirement description.
+In [ ]:
 !
 for
-file in GSM*_EBF1_*.bedGraph
+file
+in
+GSM*_EBF1_*.bedGraph
 ;
 do
 awk
@@ -111,9 +176,15 @@ OFS
 "\t"
 $file
 |
-sort -k1,1V -k2,2n -k3,3n
+sort
+-k1,1V
+-k2,2n
+-k3,3n
 |
-bedtools merge -i -
+bedtools
+merge
+-i
+-
 |
 awk
 '{print $1,$2,$3,$3-$2}'
@@ -133,31 +204,60 @@ $file
 done
 附：
 正常的做法是用MACS从每个样本的bam文件里call出peak.bed，例如：
-macs2 callpeak -c Input.bam -t treatment.bam -q
+**Attachment: * * The normal practice is to use MACS to call peak.bed from the BAM file of each sample, for example:
+macs2
+callpeak
+-c
+Input.bam
+-t
+treatment.bam
+-q
 0
-.05 -f BAM -g mm -n treatment
+.05
+-f
+BAM
+-g
+mm
+-n
+treatment
 2
-> treatment.macs2.log
+>
+treatment.macs2.log
 把peak注释到基因上
 ¶
-In [5]:
+Annotate peak onto genes
+¶
+In [ ]:
 # 通过conda安装bedtools
+#Installing Bedtools through Conda
 !
-conda install -c bioconda bedtools
+conda
+install
+-c
+bioconda
+bedtools
 !
 for
-file in GSM*_EBF1_*.bedGraph.peak.bed
+file
+in
+GSM*_EBF1_*.bedGraph.peak.bed
 ;
 do
-windowBed -a gene.bed -b
+windowBed
+-a
+gene.bed
+-b
 $file
 -w
 3000
 -sm
 |
-sort -k9,9nr
+sort
+-k9,9nr
 |
-sort -k5,5n -u
+sort
+-k5,5n
+-u
 |
 awk
 '{print $6,$7,$8,$4,$5}'
@@ -175,94 +275,188 @@ sort -k9,9nr 24_gene.bed |sort -k5,5n -u ：这一步是对找到的peak进行�
 awk '{print $6,$7,$8,$4,$5}' OFS="\t" ：这一步是输出peak的位置。
 由于个人习惯，所以添加的管道“|”较多，练习时可以拆分出来，一步生成一个中间文件，这样就可以查看每一步骤的作用。
 输出文件的前三列为目的peak的位置，第四列为该peak靶基因的cluster，第五列为靶基因的基因名。
-In [24]:
+Explanation of the above command:
+WindowBed - a gene.bed - b 24-EBF1. bed-w 3000 sm: This step is used to find the peak upstream and downstream 3K of the target gene.
+Sort-k9,9nr 24_gene.bed | sort-k5,5n-u: This step is to sort the found peaks and retain the longest peak length for each gene peak.
+Awk '{print $6, $7, $8, $4, $5}' OFS="\ t": This step is to output the position of the peak.
+Due to personal habits, there are many pipelines' | 'added. During practice, they can be separated to generate an intermediate file in one step, so that the purpose of each step can be viewed.
+The first three columns of the output file are the location of the target peak, the fourth column is the cluster of the target gene for that peak, and the fifth column is the gene name of the target gene.
+In [ ]:
 !
-head GSM2863149_EBF1_NO14_cd19pos_mm9.bedGraph.peak.bed.gene.bed
+head
+GSM2863149_EBF1_NO14_cd19pos_mm9.bedGraph.peak.bed.gene.bed
 In [ ]:
 ## 把三个样品的peak merge到一起，并且保证每个基因只有一个peak保留下来
+##Merge the peaks of the three samples together and ensure that only one peak is retained for each gene
 !
-cat GSM*_EBF1_*.bedGraph.peak.bed.gene.bed
+cat
+GSM*_EBF1_*.bedGraph.peak.bed.gene.bed
 |
-sort -k1,1V -k2,2n -k3,3n
+sort
+-k1,1V
+-k2,2n
+-k3,3n
 |
-bedtools merge -i - -c
+bedtools
+merge
+-i
+-
+-c
 5
--o collapse
+-o
+collapse
 |
-awk -F
+awk
+-F
 ","
 '{print $1}'
 OFS
 =
 "\t"
 |
-sort -k4,4n -u > all.unique.bed
+sort
+-k4,4n
+-u
+>
+all.unique.bed
 对上面这行命令的说明：
 cat 24.bed 72.bed prob.bed | sort -k1,1V -k2,2n -k3,3n：把三个样品的peak cat起来并排序（因为bedtools要输入sorted bed）。
 bedtools merge -i - -c 5 -o collapse ：把三个样品的peak merge到一起（-c 5 -o collapse，输出基因名）
 awk -F "," '{print $1}' OFS="\t" |  sort -k4,4n -u ：输出基因唯一的peak，并按照基因名排序。
 输出文件的前三列为基因的蛋白结合位点，第四列为基因名。
-In [23]:
+Explanation of the above command:
+Cat 24. bed 72. bed prob.bed | sort-k1,1V - k2,2n - k3,3n: Cat the peaks of the three samples and sort them (because bedtools needs to input sorted bed).
+Bedtools merge - i -- c 5- o collapse: Merge the peaks of three samples together (- c 5- o collapse, output gene name)
+Awk-F "," {print $1} 'OFS="\ t" | sort k4,4n-u: Output the unique peak of the gene and sort it by gene name.
+The first three columns of the output file are the protein binding sites of the gene, and the fourth column is the gene name.
+In [ ]:
 !
-head all.unique.bed
+head
+all.unique.bed
 准备deeptools 输入bed文件
 ¶
-In [27]:
+Prepare Deeptools to input the bed file
+¶
+In [ ]:
 !
 awk
 '{print $1,$2,$3,$4,".",".",".",".",".",".",".",".","."}'
 OFS
 =
 "\t"
-all.unique.bed > all.new.bed
+all.unique.bed
+>
+all.new.bed
 !
-computeMatrix reference-point --referencePoint center -b
+computeMatrix
+reference-point
+--referencePoint
+center
+-b
 3000
 -a
 3000
---missingDataAsZero  --skipZeros -p
+--missingDataAsZero
+--skipZeros
+-p
 40
--R all.new.bed -S GSM2863142_Input_NO14_24_mm9.bedGraph.bw GSM2863147_EBF1_NO14_24_mm9.bedGraph.bw GSM2863148_EBF1_NO14_72_mm9.bedGraph.bw GSM2863149_EBF1_NO14_cd19pos_mm9.bedGraph.bw -o nom.gz
+-R
+all.new.bed
+-S
+GSM2863142_Input_NO14_24_mm9.bedGraph.bw
+GSM2863147_EBF1_NO14_24_mm9.bedGraph.bw
+GSM2863148_EBF1_NO14_72_mm9.bedGraph.bw
+GSM2863149_EBF1_NO14_cd19pos_mm9.bedGraph.bw
+-o
+nom.gz
 !
-plotHeatmap -m nom.gz -out heatmap-pre.pdf --kmeans
+plotHeatmap
+-m
+nom.gz
+-out
+heatmap-pre.pdf
+--kmeans
 5
---outFileSortedRegions Heatmap1sortedRegions.bed
+--outFileSortedRegions
+Heatmap1sortedRegions.bed
 忽略输出的heatmap-pre.pdf。我们要的是输出的Heatmap1sortedRegions.bed文件。
-In [9]:
+Ignore the output heatmap-pre.gdf. What we need is the output Heatmap1sortedRegions.bed file.
+In [ ]:
 !
-head Heatmap1sortedRegions.bed
+head
+Heatmap1sortedRegions.bed
 把Heatmap1sortedRegions.bed文件中的deepTools_group一列替换成例文中基因的cluster，即D1,D2,D3,D4。
 这里用R的merge函数完成替换，把命令写进R脚本mergeInR.R文件里，位于当前文件夹。
 当然你可也可通过linux自带的函数join来实现（join对文件顺序要求比较高，而且容易有bug）。
-In [13]:
+Replace the deepTools_group column in the Heatmap1sortedRegions.bed file with the gene clusters in the example text, namely D1, D2, D3, D4.
+Here, use R's merge function to complete the replacement, write the command into the R script merge in R.R file, located in the current folder.
+Of course, you can also implement it through the Linux built-in function 'join' (which requires high file order and is prone to bugs).
+In [ ]:
 !
-head mergeInR.R
-In [28]:
+head
+mergeInR.R
+In [ ]:
 # 运行上面的R脚本
+#Run the R script above
 !
-R CMD BATCH mergeInR.R
+R
+CMD
+BATCH
+mergeInR.R
 最后把Heatmap1sortedRegions.bed的第一行粘上去。
-In [29]:
+Finally, paste the first line of Heatmap1sortedRegions.bed.
+In [ ]:
 !
-head -1 Heatmap1sortedRegions.bed
+head
+-1
+Heatmap1sortedRegions.bed
 |
-cat - xx.bed > yy.bed
+cat
+-
+xx.bed
+>
+yy.bed
 开始画图
 ¶
 按join.txt里的基因的分类（已经保存在yy.bed文件中）给ChIP-seq信号分类，每类内部再聚类。
 具体参数的调整看这里：
 https://deeptools.readthedocs.io/en/develop/content/tools/plotHeatmap.html?highlight=plotHeatmap
-In [30]:
+Start drawing
+¶
+Classify ChIP seq signals according to the gene classification in join.txt (already saved in the yy.bed file), and then cluster within each category.
+Specific parameter adjustments can be found here:<
+https://deeptools.readthedocs.io/en/develop/content/tools/plotHeatmap.html?highlight=plotHeatmap
+>
+In [ ]:
 !
-computeMatrix reference-point --referencePoint center -b
+computeMatrix
+reference-point
+--referencePoint
+center
+-b
 3000
 -a
 3000
---missingDataAsZero  --skipZeros -p
+--missingDataAsZero
+--skipZeros
+-p
 40
--R yy.bed -S GSM2863142_Input_NO14_24_mm9.bedGraph.bw GSM2863147_EBF1_NO14_24_mm9.bedGraph.bw GSM2863148_EBF1_NO14_72_mm9.bedGraph.bw GSM2863149_EBF1_NO14_cd19pos_mm9.bedGraph.bw -o nom.gz
+-R
+yy.bed
+-S
+GSM2863142_Input_NO14_24_mm9.bedGraph.bw
+GSM2863147_EBF1_NO14_24_mm9.bedGraph.bw
+GSM2863148_EBF1_NO14_72_mm9.bedGraph.bw
+GSM2863149_EBF1_NO14_cd19pos_mm9.bedGraph.bw
+-o
+nom.gz
 !
-plotHeatmap -m nom.gz -out heatmap.pdf --heatmapWidth
+plotHeatmap
+-m
+nom.gz
+-out
+heatmap.pdf
+--heatmapWidth
 4
 --heatmapHeight
 10
@@ -270,11 +464,18 @@ plotHeatmap -m nom.gz -out heatmap.pdf --heatmapWidth
 "heatmap and colorbar"
 --zMax
 100
---samplesLabel 0hrs 24hrs 72hrs pro-B
+--samplesLabel
+0hrs
+24hrs
+72hrs
+pro-B
 #如果想画average profile，就删掉：--whatToShow "heatmap and colorbar"
 #如果想保留基因在gene.bed文件中的顺序，就加上：--sortRegions keep
+#If you want to draw an average profile, delete: -- whatoShow "heatmap and colorbar"
+# If you want to preserve the order of genes in the gene.bed file, add: -- sortRegions keep
 生成的图在heatmap.pdf文件里，是矢量图，可以用Illustrator等软件编辑图形、文字等。
-In [1]:
+The generated image is in the heatmap.ddf file and is a vector image that can be edited with software such as Illustrator for graphics, text, etc.
+In [ ]:
 import
 IPython
 print
@@ -284,5 +485,9 @@ IPython
 sys_info
 ())
 !
-jupyter nbconvert --to html FigureYa108RNAseqChIP.ipynb
+jupyter
+nbconvert
+--to
+html
+FigureYa108RNAseqChIP.ipynb
 In [ ]:
