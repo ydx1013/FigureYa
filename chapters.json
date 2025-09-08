@@ -232,14 +232,6 @@
     "thumb": "gallery_compress/FigureYa28.webp"
   },
   {
-    "id": "main_FigureYa29map_FigureYa29map",
-    "title": "FigureYa29map/FigureYa29map.html",
-    "html": "FigureYa29map/FigureYa29map.html",
-    "text": "texts/main_FigureYa29map_FigureYa29map.txt",
-    "folder": "FigureYa29map",
-    "thumb": "gallery_compress/FigureYa29.webp"
-  },
-  {
     "id": "main_FigureYa30nomogram_update_FigureYa30nomogram_update",
     "title": "FigureYa30nomogram_update/FigureYa30nomogram_update.html",
     "html": "FigureYa30nomogram_update/FigureYa30nomogram_update.html",
@@ -390,14 +382,6 @@
     "text": "texts/main_FigureYa49AS_3rd_FigureYa49AS_3rd.txt",
     "folder": "FigureYa49AS_3rd",
     "thumb": "gallery_compress/FigureYa49.webp"
-  },
-  {
-    "id": "main_FigureYa50ChinaMap_FigureYa50ChinaMap",
-    "title": "FigureYa50ChinaMap/FigureYa50ChinaMap.html",
-    "html": "FigureYa50ChinaMap/FigureYa50ChinaMap.html",
-    "text": "texts/main_FigureYa50ChinaMap_FigureYa50ChinaMap.txt",
-    "folder": "FigureYa50ChinaMap",
-    "thumb": "gallery_compress/FigureYa50.webp"
   },
   {
     "id": "main_FigureYa51TMB_update_FigureYa51TMB_update",
