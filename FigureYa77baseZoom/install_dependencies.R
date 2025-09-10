@@ -50,7 +50,7 @@ cat("===========================================\n")
 
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("black", "forestgreen", "navy", "red")
+cran_packages <- c("forestgreen")
 
 for (pkg in cran_packages) {
   install_cran_package(pkg)

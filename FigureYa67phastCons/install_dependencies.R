@@ -50,7 +50,7 @@ cat("===========================================\n")
 
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("all_dsDMR.bed", "black", "fish.phastCons8way.bw", "gray", "indianred3", "non_exon_dsDMR.bed", "random.bed")
+cran_packages <- c("all_dsDMR.bed", "fish.phastCons8way.bw", "indianred3", "non_exon_dsDMR.bed", "random.bed")
 
 for (pkg in cran_packages) {
   install_cran_package(pkg)

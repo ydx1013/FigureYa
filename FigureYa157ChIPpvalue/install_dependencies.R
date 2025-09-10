@@ -50,7 +50,7 @@ cat("===========================================\n")
 
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("GSM2113508_SHEP21_0HR_POL2_CHIP_RX.chiprx.scaled.bedgraph.bw", "GSM2113512_SHEP21_24HR_POL2_CHIP_RX.chiprx.scaled.bedgraph.bw", "GSM2113516_SHEP21_2HR_POL2_CHIP_RX.chiprx.scaled.bedgraph.bw", "black", "navy", "red", "refGene_hg19_TSS.bed")
+cran_packages <- c("GSM2113508_SHEP21_0HR_POL2_CHIP_RX.chiprx.scaled.bedgraph.bw", "GSM2113512_SHEP21_24HR_POL2_CHIP_RX.chiprx.scaled.bedgraph.bw", "GSM2113516_SHEP21_2HR_POL2_CHIP_RX.chiprx.scaled.bedgraph.bw", "refGene_hg19_TSS.bed")
 
 for (pkg in cran_packages) {
   install_cran_package(pkg)
