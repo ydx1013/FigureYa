@@ -42,8 +42,9 @@ If you want to view the raw input or output files directly, you can browse them 
 Each `FigureYa` directory follows a consistent structure:
 
 1. **Core Files**
-   - `*.Rmd`: R Markdown script (main analysis/plotting code)  
-   - `*.html`: The knitted report generated from the R Markdown file.  
+   - `*.Rmd`: The R Markdown script, containing the main analysis and plotting code.
+   - `*.html`: The knitted report generated from the R Markdown file.
+   - `install_dependencies.R`: A script automatically run by the .Rmd file to set up the required environment.
 2. **Input Files**  
    - `easy_input_*`: Primary data/parameters (e.g., `easy_input_data.csv`)  
    - `example.png`: Reference image specifying plot requirements (style/layout)  
@@ -55,6 +56,7 @@ Each `FigureYa` directory follows a consistent structure:
 ```plaintext
 FigureYa59volcanoV2/
 ├── FigureYa59volcanoV2.Rmd          # Main analysis script
+├── install_dependencies.R           # Automatic dependency installer
 ├── FigureYa59volcanoV2.html         # HTML report
 ├── easy_input_limma.csv             # Input data
 ├── easy_input_selected.csv          # Input data
