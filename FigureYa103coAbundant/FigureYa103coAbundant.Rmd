@@ -7,6 +7,12 @@ output: html_document
 ---
 
 
+# Academic Citation
+If you use this code in your work or research, we kindly request that you cite our publication:
+
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
+
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 # 设置knitr代码块的全局选项 / Set global options for knitr code chunks
@@ -66,6 +72,7 @@ BiocManager::install("WGCNA") #MAC系统，可能需要手动下载WGCNA后本�
 library packages
 
 ```{r}
+source("install_dependencies.R")
 # 加载WGCNA包，用于加权基因共表达网络分析
 # Load the WGCNA package for weighted gene co-expression network analysis
 library(WGCNA)

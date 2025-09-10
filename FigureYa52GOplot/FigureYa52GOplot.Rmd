@@ -6,6 +6,12 @@ date: "2025-05-20"
 output: html_document
 ---
 
+# Academic Citation
+If you use this code in your work or research, we kindly request that you cite our publication:
+
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
+
+
 ```{r setup, include=FALSE}
 # 使用knitr包设置全局代码块选项
 # Set global chunk options using knitr package
@@ -74,6 +80,7 @@ install.packages('GOplot')
 Load the required packages
 
 ```{r}
+source("install_dependencies.R")
 # 加载用于功能富集分析的包 | Load packages for functional enrichment analysis
 library(clusterProfiler)
 # 加载用于生物信息学注释资源的包 | Load package for bioinformatics annotation resources

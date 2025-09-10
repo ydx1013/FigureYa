@@ -4,6 +4,12 @@ author: "Yi Xiong, Zhougeng Xu, Ying Ge; Ying Ge, Yijing Chen"
 date: "2025-5-20"
 output: html_document
 ---
+# Academic Citation
+If you use this code in your work or research, we kindly request that you cite our publication:
+
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
+
+
 
 ## 需求描述
 ## requirement description
@@ -60,6 +66,7 @@ install.packages("RColorBrewer")
 Load the required packages
 
 ```{r}
+source("install_dependencies.R")
 library(stringr)
 library(dplyr)
 library(ggplot2)
