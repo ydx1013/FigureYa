@@ -50,7 +50,7 @@ cat("===========================================\n")
 
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("BRAF", "EGFR", "Frame_Shift_Del", "Frame_Shift_Ins", "Gender", "In_Frame_Del", "In_Frame_Ins", "KRAS", "Missense_Mutation", "Nonsense_Mutation", "Nonstop_Mutation", "Polyps", "RColorBrewer", "Splice_Site", "TP53", "Translation_Start_Site", "data.table", "dplyr", "pheatmap", "readr", "stringr")
+cran_packages <- c("RColorBrewer", "data.table", "dplyr", "pheatmap", "readr", "stringr")
 
 for (pkg in cran_packages) {
   install_cran_package(pkg)
@@ -58,7 +58,7 @@ for (pkg in cran_packages) {
 
 # Installing Bioconductor packages
 cat("\nInstalling Bioconductor packages...\n")
-bioc_packages <- c("ComplexHeatmap", "GSVA", "GenomicRanges", "GetoptLong", "SummarizedExperiment", "TCGAbiolinks", "circlize", "clusterProfiler", "maftools", "matrixStats", "org.Hs.eg.db", "rtracklayer")
+bioc_packages <- c("ComplexHeatmap", "GenomicRanges", "GetoptLong", "SummarizedExperiment", "TCGAbiolinks", "circlize", "clusterProfiler", "maftools", "matrixStats", "org.Hs.eg.db", "rtracklayer")
 
 for (pkg in bioc_packages) {
   install_bioc_package(pkg)

@@ -50,7 +50,7 @@ cat("===========================================\n")
 
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("A_A", "A_C", "A_G", "A_T", "BSgenome.Hsapiens.UCSC.hg19", "C_A", "C_C", "C_G", "C_T", "G_A", "G_C", "G_G", "G_T", "T_A", "T_C", "T_G", "T_T", "VariantAnnotation", "rgl")
+cran_packages <- c("BSgenome.Hsapiens.UCSC.hg19", "VariantAnnotation", "rgl")
 
 for (pkg in cran_packages) {
   install_cran_package(pkg)

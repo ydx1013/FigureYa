@@ -56,14 +56,6 @@ for (pkg in cran_packages) {
   install_cran_package(pkg)
 }
 
-# Installing Bioconductor packages
-cat("\nInstalling Bioconductor packages...\n")
-bioc_packages <- c("GSVA")
-
-for (pkg in bioc_packages) {
-  install_bioc_package(pkg)
-}
-
 cat("\n===========================================\n")
 cat("Package installation completed!\n")
 cat("You can now run your R scripts in this directory.\n")

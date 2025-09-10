@@ -50,7 +50,7 @@ cat("===========================================\n")
 
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("ACC", "BLCA", "BRCA", "Brain", "Breast", "CESC", "CHOL", "COAD", "Colon", "DLBC", "ESCA", "Eye", "GBM", "HNSC", "KICH", "KIRC", "KIRP", "Kidney", "LAML", "LGG", "LIHC", "LUAD", "LUSC", "Liver", "Lung", "MESO", "OV", "Ovary", "PAAD", "PCPG", "PRAD", "Prostate", "READ", "SARC", "SKCM", "STAD", "Skin", "Stomach", "TGCT", "THCA", "THYM", "Thyroid", "UCEC", "UCS", "UVM", "Uterus")
+cran_packages <- c("Brain", "Breast", "Colon", "Eye", "Kidney", "Liver", "Lung", "Ovary", "Prostate", "Skin", "Stomach", "Thyroid", "Uterus")
 
 for (pkg in cran_packages) {
   install_cran_package(pkg)

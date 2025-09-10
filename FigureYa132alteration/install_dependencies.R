@@ -50,7 +50,7 @@ cat("===========================================\n")
 
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("ABL1", "ACC", "ALK", "ARAF", "BLCA", "BRAF", "BRCA_Basal", "BRCA_Her2", "BRCA_LumA", "BRCA_LumB", "BRCA_Normal", "CBL", "CESC_AdenoCarcinoma", "CESC_SquamousCarcinoma", "CHOL", "COAD_CIN", "COAD_GS", "COAD_MSI", "COAD_POLE", "DLBC", "EGFR", "ERBB2", "ERBB3", "ERBB4", "ERRFI1", "ESCA_CIN", "ESCA_ESCC", "FGFR1", "FGFR2", "FGFR3", "FGFR4", "FLT3", "GBM_IDHwt", "HRAS", "IGF1R", "JAK2", "KICH", "KIRC", "KIRP", "KIT", "KRAS", "LAML", "LGG_IDHwt", "LIHC", "LUAD", "LUSC", "MAP2K1", "MAP2K2", "MAPK1", "MESO", "MET", "NF1", "NRAS", "NTRK1", "NTRK2", "NTRK3", "OV", "PAAD", "PCPG", "PDGFRA", "PRAD", "PTPN11", "RAC1", "RAF1", "RASA1", "READ_CIN", "READ_GS", "RET", "ROS1", "SARC_DDLPS", "SARC_LMS", "SARC_Other", "SKCM", "SOS1", "STAD_CIN", "STAD_EBV", "STAD_GS", "STAD_MSI", "STAD_POLE", "TGCT_seminoma", "THCA", "THYM", "Total", "UCEC_CN_HIGH", "UCEC_CN_LOW", "UCEC_MSI", "UCEC_POLE", "UCS", "UVM", "ggplot2", "reshape2")
+cran_packages <- c("BRCA_Basal", "BRCA_Her2", "BRCA_LumA", "BRCA_LumB", "BRCA_Normal", "CESC_AdenoCarcinoma", "CESC_SquamousCarcinoma", "GBM_IDHwt", "LGG_IDHwt", "SARC_Other", "TGCT_seminoma", "Total", "ggplot2", "reshape2")
 
 for (pkg in cran_packages) {
   install_cran_package(pkg)

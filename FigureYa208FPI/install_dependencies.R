@@ -50,18 +50,10 @@ cat("===========================================\n")
 
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("ACSL4", "ALOX15", "BLCA", "BRCA", "CESC", "CHOL", "COAD", "COQ10A", "COQ10B", "ESCA", "FDFT1", "GBM", "GPX4", "HMGCR", "HNSC", "KICH", "KIRC", "KIRP", "LIHC", "LPCAT3", "LUAD", "LUSC", "NCOA4", "NFE2L2", "NOX1", "NOX3", "NOX4", "NOX5", "PAAD", "PRAD", "READ", "SLC3A2", "SLC7A11", "STAD", "THCA", "UCEC", "data.table", "ggplot2", "green", "yellow")
+cran_packages <- c("data.table", "ggplot2", "green", "yellow")
 
 for (pkg in cran_packages) {
   install_cran_package(pkg)
-}
-
-# Installing Bioconductor packages
-cat("\nInstalling Bioconductor packages...\n")
-bioc_packages <- c("GSVA")
-
-for (pkg in bioc_packages) {
-  install_bioc_package(pkg)
 }
 
 cat("\n===========================================\n")

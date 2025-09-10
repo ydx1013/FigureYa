@@ -6,7 +6,7 @@ This repository now contains automatically generated `install_dependencies.R` sc
 
 - **Scanned all subdirectories** containing .Rmd files (323 .Rmd files found across 314 directories)
 - **Extracted R package dependencies** from all `library()` and `require()` calls in R code blocks
-- **Generated 304 install_dependencies.R scripts** - one for each directory containing .Rmd files with identifiable package dependencies
+- **Generated 303 install_dependencies.R scripts** - one for each directory containing .Rmd files with identifiable package dependencies
 
 ## Features of the generated scripts
 
@@ -64,6 +64,16 @@ The script automatically identifies common Bioconductor packages including:
 - TCGAbiolinks, maftools
 - clusterProfiler, fgsea, GSVA
 - And many more...
+
+## Quality assurance
+
+The generated scripts have been automatically cleaned to:
+- Remove gene names, mutation types, and other biological data artifacts
+- Filter out obvious non-package identifiers
+- Preserve valid R package names with complex naming patterns
+- Remove scripts with no valid package dependencies
+
+This ensures that only legitimate R packages are included in the installation scripts.
 
 ## Notes
 

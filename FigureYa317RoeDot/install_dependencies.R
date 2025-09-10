@@ -58,7 +58,7 @@ for (pkg in cran_packages) {
 
 # Installing Bioconductor packages
 cat("\nInstalling Bioconductor packages...\n")
-bioc_packages <- c("GEOquery", "GSVA")
+bioc_packages <- c("GEOquery")
 
 for (pkg in bioc_packages) {
   install_bioc_package(pkg)

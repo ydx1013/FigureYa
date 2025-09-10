@@ -50,7 +50,7 @@ cat("===========================================\n")
 
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("Matrix", "WGCNA", "dynamicTreeCut", "openxlsx", "stringr")
+cran_packages <- c("Matrix", "dynamicTreeCut", "openxlsx", "stringr")
 
 for (pkg in cran_packages) {
   install_cran_package(pkg)

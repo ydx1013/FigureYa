@@ -50,7 +50,7 @@ cat("===========================================\n")
 
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("B.cells.memory", "B.cells.naive", "CD247", "CD274", "CTLA4", "Dendritic.cells.activated", "Dendritic.cells.resting", "Eosinophils", "Fibroblasts", "Macrophages.M0", "Macrophages.M1", "Macrophages.M2", "Mast.cells.activated", "Mast.cells.resting", "Monocytes", "NK.cells.activated", "NK.cells.resting", "Neutrophils", "PDCD1", "PDCD1LG2", "Plasma.cells", "R.utils", "T.cells.CD4.memory.activated", "T.cells.CD4.memory.resting", "T.cells.CD4.naive", "T.cells.CD8", "T.cells.follicular.helper", "T.cells.gamma.delta", "T.cells.regulatory..Tregs.", "TLR9", "TNFRSF4", "TNFRSF9", "cg12069309", "cg20425130", "cg20792833", "cg21554552", "cg23642747", "data.table", "estimate", "gplots", "utils", "viridis")
+cran_packages <- c("B.cells.memory", "B.cells.naive", "Dendritic.cells.activated", "Dendritic.cells.resting", "Eosinophils", "Fibroblasts", "Macrophages.M0", "Macrophages.M1", "Macrophages.M2", "Mast.cells.activated", "Mast.cells.resting", "Monocytes", "NK.cells.activated", "NK.cells.resting", "Neutrophils", "Plasma.cells", "R.utils", "T.cells.CD4.memory.activated", "T.cells.CD4.memory.resting", "T.cells.CD4.naive", "T.cells.CD8", "T.cells.follicular.helper", "T.cells.gamma.delta", "T.cells.regulatory..Tregs.", "cg12069309", "cg20425130", "cg20792833", "cg21554552", "cg23642747", "data.table", "estimate", "gplots", "utils", "viridis")
 
 for (pkg in cran_packages) {
   install_cran_package(pkg)
@@ -58,7 +58,7 @@ for (pkg in cran_packages) {
 
 # Installing Bioconductor packages
 cat("\nInstalling Bioconductor packages...\n")
-bioc_packages <- c("Biobase", "ComplexHeatmap", "GSVA", "circlize")
+bioc_packages <- c("Biobase", "ComplexHeatmap", "circlize")
 
 for (pkg in bioc_packages) {
   install_bioc_package(pkg)

@@ -50,7 +50,7 @@ cat("===========================================\n")
 
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("EPIC", "IOBR", "caret", "devtools", "e1071", "estimate", "ggplot2", "ggpubr", "glmnet", "limSolve", "patchwork", "ppcor", "pracma", "preprocessCore", "showtext", "survival", "survminer", "sva", "tibble", "tidyHeatmap", "timeROC")
+cran_packages <- c("caret", "devtools", "e1071", "estimate", "ggplot2", "ggpubr", "glmnet", "limSolve", "patchwork", "ppcor", "pracma", "preprocessCore", "showtext", "survival", "survminer", "sva", "tibble", "tidyHeatmap", "timeROC")
 
 for (pkg in cran_packages) {
   install_cran_package(pkg)
@@ -58,7 +58,7 @@ for (pkg in cran_packages) {
 
 # Installing Bioconductor packages
 cat("\nInstalling Bioconductor packages...\n")
-bioc_packages <- c("BiocManager", "DESeq2", "GSVA", "biomaRt", "limma")
+bioc_packages <- c("BiocManager", "DESeq2", "biomaRt", "limma")
 
 for (pkg in bioc_packages) {
   install_bioc_package(pkg)

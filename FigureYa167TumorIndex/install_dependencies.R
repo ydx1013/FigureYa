@@ -50,7 +50,7 @@ cat("===========================================\n")
 
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("GSA", "X12M_DKO", "X12M_DKO_HCC", "X12M_PKO", "X12M_PKO_HCA", "X12M_SKO", "X12M_WT", "X16M_PKO_HCA", "X16M_PKO_HCC", "X16M_WT", "X1M_DKO", "X1M_PKO", "X1M_SKO", "X1M_WT", "X2M_DKO", "X2M_PKO", "X2M_SKO", "X2M_WT", "X3M_PKO", "X3M_WT", "X4M_PKO", "X4M_WT", "X5M_PKO", "X5M_WT", "X7M_DKO", "X7M_DKO_HCC", "X7M_PKO", "X7M_PKO_HCA", "X7M_SKO", "X7M_WT", "X9M_PKO", "X9M_WT", "Youth", "ggplot2", "ggpubr", "ggsci", "glmnet", "preprocessCore", "randomForest", "tidyverse")
+cran_packages <- c("Youth", "ggplot2", "ggpubr", "ggsci", "glmnet", "preprocessCore", "randomForest", "tidyverse")
 
 for (pkg in cran_packages) {
   install_cran_package(pkg)

@@ -50,7 +50,7 @@ cat("===========================================\n")
 
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("HCP", "ICP", "LCP", "darkgreen", "darkorange", "mm9_HCP_tss.bed", "mm9_ICP_tss.bed", "mm9_LCP_tss.bed", "navy")
+cran_packages <- c("darkgreen", "darkorange", "mm9_HCP_tss.bed", "mm9_ICP_tss.bed", "mm9_LCP_tss.bed", "navy")
 
 for (pkg in cran_packages) {
   install_cran_package(pkg)

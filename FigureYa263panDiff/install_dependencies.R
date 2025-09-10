@@ -50,7 +50,7 @@ cat("===========================================\n")
 
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("ACSL4", "ALOX15", "ATP5G3", "BLCA", "BRCA", "CARS", "CDKN1A", "CESC", "CHOL", "CISD1", "COAD", "CS", "DPP4", "EMC2", "ESCA", "FANCD2", "FDFT1", "GBM", "GLS2", "GPX4", "HNSC", "HSPA5", "HSPB1", "KICH", "KIRC", "KIRP", "LIHC", "LPCAT3", "LUAD", "LUSC", "MT1G", "NCOA4", "NFE2L2", "PAAD", "PRAD", "READ", "RPL8", "SAT1", "SLC1A5", "SLC7A11", "STAD", "TFRC", "THCA", "TTC35", "UCEC", "data.table", "ggplot2", "ggpubr", "randomcoloR")
+cran_packages <- c("data.table", "ggplot2", "ggpubr", "randomcoloR")
 
 for (pkg in cran_packages) {
   install_cran_package(pkg)
@@ -58,7 +58,7 @@ for (pkg in cran_packages) {
 
 # Installing Bioconductor packages
 cat("\nInstalling Bioconductor packages...\n")
-bioc_packages <- c("ComplexHeatmap", "GSVA", "clusterProfiler", "impute")
+bioc_packages <- c("ComplexHeatmap", "clusterProfiler", "impute")
 
 for (pkg in bioc_packages) {
   install_bioc_package(pkg)
