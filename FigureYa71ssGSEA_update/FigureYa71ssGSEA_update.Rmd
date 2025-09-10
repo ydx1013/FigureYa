@@ -6,6 +6,12 @@ date: "2025-5-20"
 output: html_document
 ---
 
+# Academic Citation
+If you use this code in your work or research, we kindly request that you cite our publication:
+
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
+
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 # 设置knitr代码块的全局选项 / Set global options for knitr code chunks
@@ -67,6 +73,7 @@ install.packages("circlize")
 library packages
 
 ```{r}
+source("install_dependencies.R")
 # 加载生物信息学分析所需的R包 / Load R packages for bioinformatics analysis
 library(GSVA)          # 基因集变异分析 / Gene Set Variation Analysis
 library(org.Hs.eg.db)

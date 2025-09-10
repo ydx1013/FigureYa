@@ -5,6 +5,12 @@ date: "2025-5-20"
 output: html_document
 ---
 
+# Academic Citation
+If you use this code in your work or research, we kindly request that you cite our publication:
+
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
+
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 # 设置knitr代码块的全局选项 / Set global options for knitr code chunks
@@ -71,6 +77,7 @@ BiocManager::install("ggtree", version = "3.8")
 library packages
 
 ```{r}
+source("install_dependencies.R")
 # 中文注释：加载plyr包，用于数据处理和操作
 # English Comment: Load the plyr package for data manipulation and processing
 library(plyr)

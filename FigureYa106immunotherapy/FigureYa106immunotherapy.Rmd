@@ -7,6 +7,12 @@ output: html_document
 ---
 
 
+# Academic Citation
+If you use this code in your work or research, we kindly request that you cite our publication:
+
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
+
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 # 使用knitr包设置全局代码块选项
@@ -54,6 +60,7 @@ Submap algorithm website https://cloud.genepattern.org/gp
 ##Environment settings
 
 ```{r}
+source("install_dependencies.R")
 # 加载pheatmap包，用于绘制热图 | Load the pheatmap package for drawing heatmaps
 library(pheatmap)
 

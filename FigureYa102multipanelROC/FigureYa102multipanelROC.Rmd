@@ -6,6 +6,12 @@ date: "2025-5-20"
 output: html_document
 ---
 
+# Academic Citation
+If you use this code in your work or research, we kindly request that you cite our publication:
+
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
+
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 # 设置knitr代码块的全局选项 / Set global options for knitr code chunks
@@ -48,6 +54,7 @@ If you need to calculate and plot the ROC of a single biomarker, please refer to
 ##Environment settings
 
 ```{r}
+source("install_dependencies.R")
 # 加载pROC包，用于ROC曲线分析和计算
 # Load the pROC package for ROC curve analysis and calculation
 library(pROC)
