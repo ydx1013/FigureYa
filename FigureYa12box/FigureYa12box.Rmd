@@ -15,9 +15,6 @@ Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for 
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-require(ggplot2)
-require(tidyr)
-require(cowplot)
 ```
 
 ## 需求描述
@@ -66,6 +63,10 @@ It includes stage1, stage2, and stage3, with 10 samples each. Stage is indicated
 
 ```{r}
 source("install_dependencies.R")
+require(ggplot2)
+require(tidyr)
+require(cowplot)
+
 d <- read.csv("easy_input_expr.csv", row.names=1)
 dim(d)
 head(d)
