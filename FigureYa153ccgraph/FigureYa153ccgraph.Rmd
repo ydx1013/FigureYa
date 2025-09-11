@@ -10,10 +10,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
-
-```
-
 # 需求描述
 # Requirement Description
 
@@ -48,7 +44,7 @@ Disadvantages: The input data format is very complex. Targeted settings are requ
 **如何用R实现**
 **How to Implement This in R**
 
-小丫发现[tidytuesday](https://github.com/rfordatascience/tidytuesday)2019-11-12的图跟原图很像，代码<https://github.com/spren9er/tidytuesday/blob/master/tidytuesday_201946_cran_packages.r>，输入数据<https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-11-12/loc_cran_packages.csv>。
+[tidytuesday](https://github.com/rfordatascience/tidytuesday)2019-11-12的图跟原图很像，代码<https://github.com/spren9er/tidytuesday/blob/master/tidytuesday_201946_cran_packages.r>，输入数据<https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-11-12/loc_cran_packages.csv>。
 I found that the 2019-11-12 graph from [tidytuesday](https://github.com/rfordatascience/tidytuesday) is very similar to the original. The code is <https://github.com/spren9er/tidytuesday/blob/master/tidytuesday_201946_cran_packages.r>, and the input data is <https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-11-12/loc_cran_packages.csv>.
 
 参考这套代码，用 `ggraph` 来画这个图。为此，花了几天时间仔细研究了`ggraph`包，写下了一篇长文：[一文读懂 ggraph
@@ -116,9 +112,9 @@ gsym.fc <- read.table("easy_input_rnk.txt", header = T)
 dim(gsym.fc)
 head(gsym.fc)
 
-#把gene symbol转换为ENTREZ ID
+# 把gene symbol转换为ENTREZ ID
 # Convert gene symbols to ENTREZ IDs
-#此处物种是人，其他物种的ID转换方法，请参考FigureYa52GOplot
+# 此处物种是人，其他物种的ID转换方法，请参考FigureYa52GOplot
 # The species here is human. For ID conversion methods for other species, please refer to FigureYa52GOplot
 gsym.id <- bitr(gsym.fc$SYMBOL, fromType = "SYMBOL", toType = "ENTREZID", OrgDb = "org.Hs.eg.db")
 
@@ -140,29 +136,29 @@ names(id.fc) <- gsym.fc.id.sorted$ENTREZID
 kk <- gseKEGG(id.fc, organism = "hsa")
 dim(kk)
 
-#把ENTREZ ID转为gene symbol，便于查看通路里的基因
+# 把ENTREZ ID转为gene symbol，便于查看通路里的基因
 # Convert the ENTREZ ID to a gene symbol to facilitate viewing genes within the pathway
 kk.gsym <- setReadable(kk, 'org.Hs.eg.db', #物种
                     'ENTREZID')
 
-#可以用kk.gsym作为输入，用clusterProfiler画图
+# 可以用kk.gsym作为输入，用clusterProfiler画图
 # Use kk.gsym as input to plot with clusterProfiler
-#用法看这里https://yulab-smu.github.io/clusterProfiler-book/chapter12.html
+# 用法看这里https://yulab-smu.github.io/clusterProfiler-book/chapter12.html
 # See here for usage: https://yulab-smu.github.io/clusterProfiler-book/chapter12.html
-# Gsym.fc.l <- gsym.fc$logFC
+# gsym.fc.l <- gsym.fc$logFC
 # Names(gsym.fc.l) <- gsym.fc$SYMBOL
 # Cnetplot(sortkk, foldChange = gsym.fc.l, circular = TRUE)
 
-#按照enrichment score从高到低排序，取前5（up）和后5（down）
+# 按照enrichment score从高到低排序，取前5（up）和后5（down）
 # Sort by enrichment score, taking the top 5 (up) and bottom 5 (down)
 # Sortkk <- kk.gsym[order(kk.gsym@result$enrichmentScore, decreasing = T),][c(1:5, (nrow(kk.gsym)-5):nrow(kk.gsym)),]
-#这里提取感兴趣的3个通路，数量太多拥挤的话不好看基因名
+# 这里提取感兴趣的3个通路，数量太多拥挤的话不好看基因名
 # Extract the three pathways of interest here. Too many gene names will make the gene names look cluttered.
 sortkk <- kk.gsym[kk.gsym@result$Description %like% "DNA" | 
                     kk.gsym@result$Description %like% "cycle" | 
                     kk.gsym@result$Description %like% "p53",]
 
-#把富集分析结果整理为GOplot所需的格式
+# 把富集分析结果整理为GOplot所需的格式
 # Format the enrichment analysis results into the format required by GOplot
 go <- data.frame(Category = "KEGG",
                  ID = sortkk$ID,
@@ -170,21 +166,21 @@ go <- data.frame(Category = "KEGG",
                  Genes = gsub("/", ", ", sortkk$core_enrichment), 
                  adj_pval = sortkk$p.adjust)
 
-#基因变化倍数
+# 基因变化倍数
 # Fold change of genes
 genelist <- data.frame(ID = gsym.fc.id$SYMBOL, logFC = gsym.fc.id$logFC)
 
-#把富集分析和倍数整合在一起
+# 把富集分析和倍数整合在一起
 # Integrate the enrichment analysis and fold change
 circ <- circle_dat(go, genelist)
 head(circ)
-#可以用circ作为输入，用GOplot画图
+# 可以用circ作为输入，用GOplot画图
 # Use circ as input to plot with GOplot
-#用法看这里https://wencke.github.io/
+# 用法看这里https://wencke.github.io/
 # See here for usage: https://wencke.github.io/
 # GOCircle(circ)
 
-#保存到文件
+# 保存到文件
 # Save to file
 write.csv(circ[,c(3,5,6)],"very_easy_input.csv", quote = F, row.names = F)
 ```
