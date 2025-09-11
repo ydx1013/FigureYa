@@ -8,7 +8,6 @@ on:
 jobs:
   test-render:
     runs-on: ubuntu-latest
-    # 关键点1：授予工作流向仓库写入内容的权限
     permissions:
       contents: write
     
@@ -21,10 +20,14 @@ jobs:
         with:
           r-version: '4.2'
 
-      - name: 3. Install core R dependencies
+      # 新增步骤：安装最新版的 Pandoc
+      - name: 3. Set up Pandoc
+        uses: r-lib/actions/setup-pandoc@v2
+
+      - name: 4. Install core R dependencies
         run: Rscript -e 'install.packages(c("rmarkdown", "knitr"))'
 
-      - name: 4. Find and Render the first 3 Rmd files
+      - name: 5. Find and Render the first 3 Rmd files
         run: |
           echo "RMD Render Summary (First 3 Files)" > summary.txt
           echo "======================================" >> summary.txt
@@ -42,20 +45,17 @@ jobs:
             echo ""
           done
 
-      - name: 5. Upload Render Summary
-        # 我们仍然保留这个报告，方便调试
+      - name: 6. Upload Render Summary
         uses: actions/upload-artifact@v4
         with:
           name: render-summary-report-first-3
           path: summary.txt
 
-      - name: 6. Commit and Push Rendered Files
-        # 关键点2：将生成的文件提交回仓库
+      - name: 7. Commit and Push Rendered Files
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git add .
-          # 检查是否有文件被修改或新增，如果有，才执行提交
           if ! git diff --staged --quiet; then
             git commit -m "docs: Auto-render Rmd output files by GitHub Actions"
             git push
