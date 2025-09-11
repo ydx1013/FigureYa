@@ -13,7 +13,6 @@ Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for 
 
 
 ```{r setup, include=FALSE}
-source("install_dependencies.R")
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
@@ -46,18 +45,11 @@ For the analysis plots in Figure 6, please refer to FigureYa131CMap. For other c
 # 环境设置
 # Environment Setup
 
-使用国内镜像安装包
-Use a domestic mirror to install the package
-
-```{r}
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
-```
-
 加载包
 Loading the package
 
 ```{r}
+source("install_dependencies.R")
 library(GEOquery)
 library(dplyr)
 library(limma)
@@ -302,7 +294,7 @@ p
 save_plot("mRNAsi.pdf", p,base_width = 10,base_height = 8)
 ```
 
-# MDNAsi
+# mDNAsi
 
 ## 输入文件
 ## Input File
@@ -367,7 +359,7 @@ input$Gender <- factor(input$Gender,levels = c("F","M","Unknown"))
 input$MetStatus <- factor(input$MetStatus,levels = c(" 1"," 0","Unknown"),labels = c("Metastatic","Non−metastatic","Unknown"))
 input$index <- 1:nrow(input)
 
-# 画图 # Draw
+# 画图 Draw
 darkred   <- "#F2042C"
 blue      <- "#0A0745"
 lightgrey <- "#dcddde"
