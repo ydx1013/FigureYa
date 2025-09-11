@@ -175,7 +175,7 @@ cat samples.conf | while read line; do all=($line);SRR=${all[0]};study=${all[1]}
 ```
 
 ## washu brower 展示bigwig文件
-## washu browser displays bigwig files
+## Washu browser displays bigwig files
 
 用[washu epigenome browser](https://epigenomegateway.wustl.edu/browser/)查看bigwig文件。这里截图出来，确实能够重复出原文的趋势。
 Use [washu epigenome browser](https://epigenomegateway.wustl.edu/browser/) to view bigwig files. The screenshots shown here do indeed reproduce the trends in the original article.
@@ -187,14 +187,14 @@ washu is also the visualization method used in most articles and can output SVG 
 
 ![](washu2.png)
 
-## call peak
+## Call peak
 
 ```bash
 for i in *.bam; do x=${i/.bam/}; echo "macs2 callpeak --nomodel -t $i -q 0.01 -f BAM -g mm --keep-dup all --llocal 10000 -n $x 2> $x.macs2.log"; done > command.macs2.sh
 sh command.macs2.sh
 ```
 
-## intersect and merge peak file
+## Intersect and merge peak file
 
 有多次生物学重复，下面是不同生物学重复之间peak overlap的处理方法：
 There are multiple biological replicates. Here's how to handle peak overlap between replicates:

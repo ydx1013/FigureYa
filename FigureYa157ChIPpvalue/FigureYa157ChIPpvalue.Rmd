@@ -182,7 +182,7 @@ ttest
 ttest$p.value
 ```
 
-# capture signal
+# Capture signal
 
 提取信号画图的方法跟FigureYa44profile一样，这里以TSS为例画图，供参考。
 The method for extracting the signal and plotting it is the same as FigureYa44profile. Here, we use TSS as an example for reference.

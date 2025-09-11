@@ -17,7 +17,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ## 需求描述
-## requirement description
+## Requirement description
 
 想模仿出2016年XieWei老师那篇Nature的泡泡图。
 I want to imitate the bubble chart of Nature by Professor Xie Wei in 2016.
@@ -29,7 +29,7 @@ I want to imitate the bubble chart of Nature by Professor Xie Wei in 2016.
 from<http://dx.doi.org/10.1038/nature18606>
 
 ## 使用场景
-## usage scenario
+## Usage scenario
 
 同时展示pvalue和表达量，例如：
 
