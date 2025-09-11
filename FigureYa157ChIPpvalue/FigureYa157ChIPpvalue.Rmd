@@ -10,8 +10,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
-
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -49,7 +47,6 @@ Used to determine whether there is a global change in genome-wide binding. Appli
 Select the download link based on your operating system.
 
 ```{r, eval = FALSE}
-source("install_dependencies.R")
 ## macOSX
 download.file("http://hgdownload.soe.ucsc.edu/admin/exe/macOSX.x86_64/bigWigSummary", "bigWigSummary")
 download.file("http://hgdownload.soe.ucsc.edu/admin/exe/macOSX.x86_64/bigWigInfo", "bigWigInfo")
@@ -75,6 +72,7 @@ Load custom functions
 # load signal capture methods
 source("./corelib.R")
 
+source("install_dependencies.R")
 Sys.setenv(LANGUAGE = "en") #显示英文报错信息 # Display English error messages
 options(stringsAsFactors = FALSE) #禁止chr转成factor # Disable conversion of chr to factors
 ```
