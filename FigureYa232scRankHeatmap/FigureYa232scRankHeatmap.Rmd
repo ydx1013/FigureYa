@@ -1,7 +1,7 @@
 ---
 title: "FigureYa232scRankHeatmap"
 author: "Zongcheng Li"
-reviewers: "Ying Ge,Hui Huang"
+reviewers: "Ying Ge, Hui Huang"
 date: "2025-5-20"
 output: html_document
 ---
@@ -9,7 +9,6 @@ output: html_document
 If you use this code in your work or research, we kindly request that you cite our publication:
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
-
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -242,7 +241,7 @@ The following code is from 'FigureYa206scHeatmap' and outputs 'sc.seurat.Rdata',
 
 ![](download.png)
 
-#```{r download, eval=FALSE}
+```{r download, eval=FALSE}
 download.file("https://www.ncbi.nlm.nih.gov/geo/download/?acc=GSE130664&format=file&file=GSE130664%5Fmerge%5FUMI%5Fcount%2Etxt%2Egz", 
               destfile = "GSE130664_merge_UMI_count.txt.gz")
 ```
@@ -253,7 +252,7 @@ download.file("https://www.ncbi.nlm.nih.gov/geo/download/?acc=GSE130664&format=f
 
 ## Read data
 
-#```{r preprocessing, eval=FALSE}
+```{r preprocessing, eval=FALSE}
 umi <- read.table(file = gzfile("GSE130664_merge_UMI_count.txt.gz"), header = T, row.names = 1, sep = "\t")
 qc <- readxl::read_excel("1-s2.0-S0092867420300568-mmc1.xlsx", sheet = 2)
 meta <- readxl::read_excel("1-s2.0-S0092867420300568-mmc1.xlsx", 3) %>% 
@@ -266,7 +265,7 @@ meta <- readxl::read_excel("1-s2.0-S0092867420300568-mmc1.xlsx", 3) %>%
 See Methods:  
 QUANTIFICATION AND STATISTICAL ANALYSIS -> Single-Cell RNA-Seq Data Processing
 
-#```{r, eval=FALSE}
+```{r, eval=FALSE}
 # QC of Cells
 cells <- qc %>% 
   filter(`Mapping rate` >= 0.2 &
@@ -317,7 +316,7 @@ save(sc, cluster_colors, file = "sc.seurat.Rdata")
 
 The following code is from 'FigureYa222PCAgene', which gets the cluster.
 
-#```{r eval=FALSE}
+```{r eval=FALSE}
 library(magrittr)
 
 sc_oo_mnn <- batchelor::mnnCorrect(# mmnCorrect is no longer in scran 
