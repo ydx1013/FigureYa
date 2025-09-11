@@ -12,7 +12,6 @@ Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for 
 
 
 ```{r setup, include=FALSE}
-source("install_dependencies.R")
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
@@ -65,6 +64,7 @@ Each ID is shown as a color
 ### Input data
 
 ```{r}
+source("install_dependencies.R")
 df<-read.csv("easy_input1.csv")
 head(df)
 

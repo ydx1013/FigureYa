@@ -13,7 +13,6 @@ Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for 
 
 
 ```{r setup, include=FALSE}
-source("install_dependencies.R")
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
@@ -74,6 +73,7 @@ BiocManager::install(c("minfi","ChAMPdata","Illumina450ProbeVariants.db","sva",
 Load required packages
 
 ```{r}
+source("install_dependencies.R")
 library(tidyverse)
 library(ChAMP)
 library(minfi)

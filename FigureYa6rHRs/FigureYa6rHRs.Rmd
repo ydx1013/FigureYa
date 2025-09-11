@@ -12,7 +12,6 @@ Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for 
 
 
 ```{r setup, include=FALSE}
-source("install_dependencies.R")
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
@@ -58,6 +57,7 @@ Clinical data, including categorization, sample size, hazard ratio, and confiden
 The data file for testing is easy_input.csv, and the corresponding column names for classification, sample size, hazard ratio, and confidence intervals (upper and lower limits) are Variable, Count, Point.Estimate, Low, and High, respectively.
 
 ```{r,message=FALSE,warning=FALSE}
+source("install_dependencies.R")
 #install.packages("forestplot")
 library("forestplot")
 

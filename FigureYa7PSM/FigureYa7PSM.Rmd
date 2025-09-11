@@ -12,7 +12,6 @@ Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for 
 
 
 ```{r setup, include=FALSE}
-source("install_dependencies.R")
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
@@ -69,6 +68,7 @@ If you have your own data, save it in easy_input.txt format, you can skip the â€
 Create a dataframe called df.patients, I would like it to contain age and gender data for 250 patients, all of which should be between 30-78 years old and 70% of which are set to be male.
 
 ```{r}
+source("install_dependencies.R")
 #install.packages("wakefield")
 library(wakefield)
 set.seed(1234)

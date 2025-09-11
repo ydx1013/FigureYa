@@ -13,7 +13,6 @@ Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for 
 
 
 ```{r setup, include=FALSE}
-source("install_dependencies.R")
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
@@ -39,6 +38,7 @@ D, Gene ontologies of cell-specific differentially expressed genes. The heat map
 使用国内镜像安装包 Install packages using domestic mirrors
 
 ```{r eval=FALSE}
+source("install_dependencies.R")
 options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
 options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
 install.packages("Seurat")

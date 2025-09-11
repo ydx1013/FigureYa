@@ -12,7 +12,6 @@ Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for 
 
 
 ```{r setup, include=FALSE}
-source("install_dependencies.R")
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
@@ -37,6 +36,7 @@ pip install python-libmagic
 加载R包
 
 ```{r}
+source("install_dependencies.R")
 library(Seurat)
 library(tidyverse)
 library(ComplexHeatmap)

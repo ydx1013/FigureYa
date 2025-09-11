@@ -13,7 +13,6 @@ Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for 
 
 
 ```{r setup, include=FALSE}
-source("install_dependencies.R")
 knitr::opts_chunk$set(echo = TRUE)
 # 设置knitr的全局代码块选项 / Set global chunk options for knitr
 ```
@@ -80,6 +79,7 @@ install.packages("Seurat")
 
 library pacakges
 ```{r}
+source("install_dependencies.R")
 # 加载Seurat包 - 用于单细胞RNA测序数据分析
 # Load the Seurat package - for single-cell RNA sequencing data analysis
 library(Seurat)

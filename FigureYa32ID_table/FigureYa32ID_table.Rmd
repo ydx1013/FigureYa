@@ -14,7 +14,6 @@ Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for 
 
 
 ```{r setup, include=FALSE}
-source("install_dependencies.R")
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
@@ -79,6 +78,7 @@ Two types of files are needed:
 One gene per row, one sample per column
 
 ```{r}
+source("install_dependencies.R")
 exprSet<-read.table("not_easy_input_expr.txt",as.is = T)
 exprSet[1:3,1:5]
 ```

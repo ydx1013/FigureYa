@@ -13,7 +13,6 @@ Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for 
 
 
 ```{r setup, include = FALSE}
-source("install_dependencies.R")
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
@@ -50,6 +49,7 @@ Used to determine whether there is a global change in genome-wide binding. Appli
 Select the download link based on your operating system.
 
 ```{r, eval = FALSE}
+source("install_dependencies.R")
 ## macOSX
 download.file("http://hgdownload.soe.ucsc.edu/admin/exe/macOSX.x86_64/bigWigSummary", "bigWigSummary")
 download.file("http://hgdownload.soe.ucsc.edu/admin/exe/macOSX.x86_64/bigWigInfo", "bigWigInfo")

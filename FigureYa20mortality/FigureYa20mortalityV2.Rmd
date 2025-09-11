@@ -14,7 +14,6 @@ Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for 
 
 
 ```{r setup, include=FALSE}
-source("install_dependencies.R")
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
@@ -50,6 +49,7 @@ It can also be used to demonstrate the relationship between metastasis rate and 
 ## Input data and processing
 
 ```{r,message=FALSE,warning=FALSE}
+source("install_dependencies.R")
 x = read.csv("easy_input.csv")
 head(x)
 ## 第一列Survival里的1为死亡事件，其它当一类处理，你可以按照实现的标记灵活处理一下。

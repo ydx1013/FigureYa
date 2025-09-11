@@ -12,7 +12,6 @@ Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for 
 
 
 ```{r setup, include=FALSE}
-source("install_dependencies.R")
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
@@ -50,6 +49,7 @@ Analyze the explanatory power of different groups or environmental factors on sa
 Three input files:
 
 ```{r}
+source("install_dependencies.R")
 #肠道微生物数据，每行为一种肠道微生物，每一列为一个样本
 #gut microbiota data, each row represents a type of gut microbe, and each column represents a sample
 mydata <- read.table("easy_input_meta.txt",head=T,sep = "\t",row.names = 1)

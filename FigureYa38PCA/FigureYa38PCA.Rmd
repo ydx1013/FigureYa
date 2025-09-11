@@ -14,7 +14,6 @@ Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for 
 
 
 ```{r setup, include=FALSE}
-source("install_dependencies.R")
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
@@ -88,6 +87,7 @@ The input data here is the expression of 5 genes "GATA3", "PTEN", "XBP1", "ESR1"
 Data source: using the R package `RTCGA.mRNA` extracts TCGA data. See also the data download methods in FigureYa18, 21 (clinical information) and FigureYa22, 23, 34 (expression matrix).
 
 ```{r}
+source("install_dependencies.R")
 expr_df <- read.csv(file='easy_input_expr.csv',row.names = 1, 
                     header = TRUE, sep=",", stringsAsFactors = FALSE)
 meta_df <- read.csv(file='easy_input_meta.csv', row.names = 1,

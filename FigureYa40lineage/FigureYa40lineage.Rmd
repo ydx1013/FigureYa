@@ -14,7 +14,6 @@ Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for 
 
 
 ```{r setup, include=FALSE}
-source("install_dependencies.R")
 # 使用knitr包设置全局代码块选项
 # Set global chunk options using knitr package
 knitr::opts_chunk$set(echo = TRUE)
@@ -67,6 +66,7 @@ CRAN image backup
 -Lanzhou University:< https://mirror.lzu.edu.cn/CRAN/ >
 
 ```{r, message=FALSE, warning=FALSE}
+source("install_dependencies.R")
 #source("https://bioconductor.org/biocLite.R")  # 加载Bioconductor包管理器 | Load Bioconductor package manager
 #options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))  # 设置CRAN镜像为清华源 | Set CRAN mirror to Tsinghua source
 #options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")  # 设置Bioconductor镜像为中科大源 | Set Bioconductor mirror to USTC source
