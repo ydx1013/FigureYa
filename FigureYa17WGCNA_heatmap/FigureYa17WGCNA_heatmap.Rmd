@@ -12,7 +12,6 @@ Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for 
 
 
 ```{r setup, include=FALSE}
-source("install_dependencies.R")
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
@@ -52,6 +51,7 @@ WGCNA has already divided genes into modules according to co-expression characte
 If your data has been saved in a format like `easy_input.csv`, you can skip this step and go directly to "Start drawing".
 
 ```{r}
+source("install_dependencies.R")
 fnames<-Sys.glob("*.csv")
 fnames
 ```

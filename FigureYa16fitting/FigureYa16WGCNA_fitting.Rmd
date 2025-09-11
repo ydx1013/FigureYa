@@ -12,7 +12,6 @@ Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for 
 
 
 ```{r setup, include=FALSE}
-source("install_dependencies.R")
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
@@ -63,6 +62,7 @@ The data in the example paper is a time series, and the author extracted the 30 
 In this input data set, there are 5 samples for each cell, pretending to be 5 time points in 4 replications, and taking the average of the top 30 genes in the 4 replications.
 
 ```{r}
+source("install_dependencies.R")
 specmod<-read.csv("pink.csv",row.names = 1)[1:30,]
 t<-data.frame(tp=1:5,tpm_mean = log2(c(mean(as.matrix(specmod[,1:4])),mean(as.matrix(specmod[,5:8])),mean(as.matrix(specmod[,9:12])),mean(as.matrix(specmod[,13:16])),mean(as.matrix(specmod[,17:20])))))
 head(t)

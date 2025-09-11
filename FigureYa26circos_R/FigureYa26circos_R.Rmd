@@ -12,7 +12,6 @@ Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for 
 
 
 ```{r setup, include=FALSE}
-source("install_dependencies.R")
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
@@ -80,6 +79,7 @@ Three files are needed:
 If you want to highlight a gene or a link, find the corresponding line in the input file and change the color or height.
 
 ```{r}
+source("install_dependencies.R")
 #组ID、组的起止位置
 #Group ID, start and end positions of the group
 GeneID <- read.table("Gene_ID.txt", header = TRUE, sep = "\t")

@@ -12,7 +12,6 @@ Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for 
 
 
 ```{r setup, include=FALSE}
-source("install_dependencies.R")
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
@@ -81,6 +80,7 @@ The input data needs to be formatted.
 ## 输入数据的格式化
 ## Formatting input data
 ```{r,message=FALSE,warning=FALSE}
+source("install_dependencies.R")
 ##读入knownResults.txt中的记录
 ## Read the records in knownResults.txt
 library(data.table)

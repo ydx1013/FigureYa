@@ -13,7 +13,6 @@ Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for 
 
 
 ```{r setup, include=FALSE}
-source("install_dependencies.R")
 # 使用knitr包设置全局代码块选项
 # Set global chunk options using knitr package
 knitr::opts_chunk$set(echo = TRUE)
@@ -54,6 +53,7 @@ If you need to compare the signal characteristics of different samples in a cert
 Modify common parameters that need to be adjusted here
 
 ```{r}
+source("install_dependencies.R")
 
 # 需要`corelib.R`文件里的函数提取bw文件里的信号
 # Requires functions from `corelib.R` to extract signals from bigWig files

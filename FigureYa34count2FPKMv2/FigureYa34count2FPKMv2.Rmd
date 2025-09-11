@@ -12,7 +12,6 @@ Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for 
 
 
 ```{r setup, include=FALSE}
-source("install_dependencies.R")
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
@@ -172,6 +171,7 @@ write.csv(expMatrix, "TCGA_FPKM.csv", quote=F, row.names=T)
 One gene per row, one sample per column
 
 ```{r}
+source("install_dependencies.R")
 expMatrix <- read.csv("easy_input.csv",
                         row.names = 1, header = TRUE, as.is = T)
 #查看前三个基因的read count

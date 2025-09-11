@@ -12,7 +12,6 @@ Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for 
 
 
 ```{r setup, include=FALSE}
-source("install_dependencies.R")
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
@@ -48,6 +47,7 @@ easy_input.csv, including chromosome name, SNP number, position on the chromosom
 Type and gene are not required, if the gene name can be provided, it should be written in the gene column; if different shapes are used to display different classes of SNPs, the type will be written in type.
 
 ```{r,message=FALSE}
+source("install_dependencies.R")
 library(dplyr)
 
 gwas <- read.csv("easy_input.csv", as.is = T)

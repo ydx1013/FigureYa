@@ -12,7 +12,6 @@ Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for 
 
 
 ```{r setup, include=FALSE}
-source("install_dependencies.R")
 knitr::opts_chunk$set(echo = TRUE,
                       tidy=TRUE,
                       dev = "svglite",
@@ -56,6 +55,7 @@ You can also use your own data to draw such a heat map with local secondary labe
 Use the domestic mirror installation package
 
 ```{r message=FALSE, warning=FALSE}
+source("install_dependencies.R")
 options(BioC_mirror="https://mirrors.tuna.tsinghua.edu.cn/bioconductor")
 options(repos=structure(c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))) 
 if (!require("pacman")) install.packages("pacman")

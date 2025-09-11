@@ -12,7 +12,6 @@ Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for 
 
 
 ```{r setup, include=FALSE}
-source("install_dependencies.R")
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
@@ -51,6 +50,7 @@ Scenario 2: I have identified a new transcription factor, what is its function? 
 Adding the same color to the samples of the same group shows that the samples of the two groups are clustered into two categories, indicating that these genes can be used to distinguish between the two groups
 
 ```{r,fig.height=3}
+source("install_dependencies.R")
 #install.packages("pheatmap")
 require(pheatmap)
 df<-read.table("easy_input.txt",header = T, row.names = 1,as.is = 1)

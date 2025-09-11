@@ -13,7 +13,6 @@ Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for 
 
 
 ```{r setup, include=FALSE}
-source("install_dependencies.R")
 knitr::opts_chunk$set(echo = TRUE)
 # 设置knitr的全局代码块选项 / Set global chunk options for knitr
 ```
@@ -75,6 +74,7 @@ Here, the samples are classified into two categories based on the immune cell ma
 - easy_input_expr.csv, gene expression matrix, columns are samples, rows are genes. Rows can also be transcripts or even clinical information.
 
 ```{r}
+source("install_dependencies.R")
 # 免疫细胞的数据加载与预处理
 # Loading and preprocessing of immune cell data
 
