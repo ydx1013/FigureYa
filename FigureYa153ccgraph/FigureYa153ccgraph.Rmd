@@ -117,17 +117,17 @@ dim(gsym.fc)
 head(gsym.fc)
 
 #把gene symbol转换为ENTREZ ID
-#Convert gene symbols to ENTREZ IDs
+# Convert gene symbols to ENTREZ IDs
 #此处物种是人，其他物种的ID转换方法，请参考FigureYa52GOplot
-#The species here is human. For ID conversion methods for other species, please refer to FigureYa52GOplot
+# The species here is human. For ID conversion methods for other species, please refer to FigureYa52GOplot
 gsym.id <- bitr(gsym.fc$SYMBOL, fromType = "SYMBOL", toType = "ENTREZID", OrgDb = "org.Hs.eg.db")
 
 #让基因名、ENTREZID、foldchange对应起来
-#Align gene name, ENTREZ ID, and foldchange
+# Align gene name, ENTREZ ID, and foldchange
 gsym.fc.id <- merge(gsym.fc, gsym.id, by="SYMBOL", all=F)
 
 #按照foldchange排序
-#Sort by foldchange
+# Sort by foldchange
 gsym.fc.id.sorted <- gsym.fc.id[order(gsym.fc.id$logFC, decreasing = T),]
 
 #获得ENTREZID、foldchange列表，做为GSEA的输入
@@ -149,13 +149,13 @@ kk.gsym <- setReadable(kk, 'org.Hs.eg.db', #物种
 # Use kk.gsym as input to plot with clusterProfiler
 #用法看这里https://yulab-smu.github.io/clusterProfiler-book/chapter12.html
 # See here for usage: https://yulab-smu.github.io/clusterProfiler-book/chapter12.html
-#gsym.fc.l <- gsym.fc$logFC
-#names(gsym.fc.l) <- gsym.fc$SYMBOL
-#cnetplot(sortkk, foldChange = gsym.fc.l, circular = TRUE)
+# Gsym.fc.l <- gsym.fc$logFC
+# Names(gsym.fc.l) <- gsym.fc$SYMBOL
+# Cnetplot(sortkk, foldChange = gsym.fc.l, circular = TRUE)
 
 #按照enrichment score从高到低排序，取前5（up）和后5（down）
 # Sort by enrichment score, taking the top 5 (up) and bottom 5 (down)
-#sortkk <- kk.gsym[order(kk.gsym@result$enrichmentScore, decreasing = T),][c(1:5, (nrow(kk.gsym)-5):nrow(kk.gsym)),]
+# Sortkk <- kk.gsym[order(kk.gsym@result$enrichmentScore, decreasing = T),][c(1:5, (nrow(kk.gsym)-5):nrow(kk.gsym)),]
 #这里提取感兴趣的3个通路，数量太多拥挤的话不好看基因名
 # Extract the three pathways of interest here. Too many gene names will make the gene names look cluttered.
 sortkk <- kk.gsym[kk.gsym@result$Description %like% "DNA" | 
@@ -163,7 +163,7 @@ sortkk <- kk.gsym[kk.gsym@result$Description %like% "DNA" |
                     kk.gsym@result$Description %like% "p53",]
 
 #把富集分析结果整理为GOplot所需的格式
-#Format the enrichment analysis results into the format required by GOplot
+# Format the enrichment analysis results into the format required by GOplot
 go <- data.frame(Category = "KEGG",
                  ID = sortkk$ID,
                  Term = sortkk$Description, 
@@ -171,21 +171,21 @@ go <- data.frame(Category = "KEGG",
                  adj_pval = sortkk$p.adjust)
 
 #基因变化倍数
-#Fold change of genes
+# Fold change of genes
 genelist <- data.frame(ID = gsym.fc.id$SYMBOL, logFC = gsym.fc.id$logFC)
 
 #把富集分析和倍数整合在一起
-#Integrate the enrichment analysis and fold change
+# Integrate the enrichment analysis and fold change
 circ <- circle_dat(go, genelist)
 head(circ)
 #可以用circ作为输入，用GOplot画图
-#Use circ as input to plot with GOplot
+# Use circ as input to plot with GOplot
 #用法看这里https://wencke.github.io/
-#See here for usage: https://wencke.github.io/
-#GOCircle(circ)
+# See here for usage: https://wencke.github.io/
+# GOCircle(circ)
 
 #保存到文件
-#Save to file
+# Save to file
 write.csv(circ[,c(3,5,6)],"very_easy_input.csv", quote = F, row.names = F)
 ```
 
@@ -277,14 +277,14 @@ gc <- ggraph(graph, layout = 'dendrogram', circular = TRUE) +
   theme(legend.position = "none") + #不画图例 # Do not draw the legend.
   
   # 点和边的配色
-  # Coloring of points and edges.
+# Coloring of points and edges.
   # 如果要改变边的配色，需要同时给边和点变色，否则会对应不上
-  # If you want to change the edge color, you need to change both the edge and the points at the same time; otherwise, the   colors will not match.
+# If you want to change the edge color, you need to change both the edge and the points at the same time; otherwise, the colors will not match.
   scale_edge_color_brewer(palette = "Set1") + #用?scale_color_brewer查看更多配色方案 # Use ?scale_color_brewer to view more color schemes
   scale_color_brewer(palette = "Set1") +
   
   # 添加周围注释文字，此处是基因名gene
-  # Add surrounding annotation text, here is the gene name
+# Add surrounding annotation text, here is the gene name
   geom_node_text(
     aes(
       x = 1.048 * x, #控制字跟点的距离 # Control distance between the word and the dot
@@ -297,7 +297,7 @@ gc <- ggraph(graph, layout = 'dendrogram', circular = TRUE) +
     size = 6, hjust = 'outward') +
   
   # 添加内环文字，此处是通路名term
-  # Add inner ring text, here is the pathway name 
+# Add inner ring text, here is the pathway name
   geom_node_text(
     aes(label=node.short_name,
         filter = !leaf & (node.level != "all"),
@@ -333,7 +333,7 @@ gc1 <- ggraph(graph, layout = 'dendrogram', circular = TRUE) +
   #画点 # Draw the points
   geom_node_point(aes(size = node.size,
                       filter=node.level!="all"), 
-                  #alpha = 1/3,
+# Alpha = 1/3,
                   color = "#61C3ED") + #统一为淡蓝色 # Unify the color to light blue
   scale_size(range = c(0.5,80)) + #做均一化处理，让点的大小介于range之间 # Normalize the points so that the size is between the range
   theme(legend.position = "none") + #不画图例 # Do not draw the legend
@@ -428,7 +428,7 @@ ggraph(graph_micro,layout = "dendrogram",circular=T) +
   scale_color_brewer(palette = "Set1") +
 
   # 添加周围注释文字，此处是基因名gene
-  # Add surrounding annotation text, here is the gene name
+# Add surrounding annotation text, here is the gene name
   geom_node_text(
     aes(
       x = 1.058 * x, #控制字跟点的距离 # Distance between the control word and the point
@@ -441,7 +441,7 @@ ggraph(graph_micro,layout = "dendrogram",circular=T) +
     size = 1, hjust = 'outward') +
   
   # 添加内环文字，此处是通路名term
-  # Add inner ring text, here is the pathway name
+# Add inner ring text, here is the pathway name
   geom_node_text(
     aes(label=node.short_name,
         filter = !leaf & (node.level == "phylum"),

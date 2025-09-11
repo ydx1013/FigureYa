@@ -159,7 +159,7 @@ data <- cbind(human, mouse)
 ```
 
 # 2) 数据重构，使之方便应用线性混合模型
-#2) Data reconstruction to facilitate the application of linear hybrid models
+# 2) Data reconstruction to facilitate the application of linear hybrid models
 
 ```{r}
 data <- data %>% 

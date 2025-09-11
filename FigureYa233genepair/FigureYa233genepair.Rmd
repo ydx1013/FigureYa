@@ -52,7 +52,7 @@ The **red and green** human shapes represent the samples are determined as **wit
 ...due to experimental batch effects and platform differences, the **score-based signatures** tend to produce spurious risk classification in independent samples measured by different laboratories and are infeasible in clinical application...
 ...we found prognostic signatures derived using the **relative genes (miRNAs) expression rankings** within samples, rather than the absolute expression values, are robust in **independent datasets from different laboratories and platforms**.
 
-# Application Scenarios 
+# Application Scenarios
 【Ask a question】 DESeq and other methods detect differentially expressed genes (DEGs) in **sub-groups of cancer samples**, considering the **high heterogeneity** of lncRNA expression among patients, **none have been used in detecting DE lncRNAs in individual patients**. 
 
 【Hypothesis】The authors' previous work found that the relative expression rankings of genes (miRNAs) tend to be **highly stable in specific normal** human tissues but **widely disturbed in the corresponding cancer** tissues, and the reversal relationship of rank between genes (miRNAs) expression level can be used to identify DE genes (miRNAs) in individual patient. This time, we will look at DE lncRNAs in individual patients in the same way
