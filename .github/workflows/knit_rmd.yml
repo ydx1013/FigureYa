@@ -1,5 +1,5 @@
 # 工作流名称
-name: Test Render First 3 Rmd Files
+name: Knit all Rmd Files
 
 # 触发条件：可以手动触发
 on:
@@ -38,7 +38,7 @@ jobs:
           echo "======================================" >> summary.txt
           echo "" >> summary.txt
 
-          find . -type f -name "*.Rmd" | head -n 3 | while read rmd_file; do
+          find . -type f -name "*.Rmd" | while read rmd_file; do
             echo "--- Processing: $rmd_file ---"
             
             if Rscript -e "rmarkdown::render('$rmd_file')"; then
