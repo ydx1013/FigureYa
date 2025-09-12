@@ -2,7 +2,7 @@
 title: "FigureYa105GDSC"
 author: "Xiaofan Lu, Taojun Ye"
 reviewer: "Ying Ge"
-date: "2025-5-20"
+date: "2025-9-12"
 output: html_document
 ---
 
@@ -11,20 +11,19 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 # 使用knitr包设置全局代码块选项
 # Set global chunk options using knitr package
 ```
 
-## 需求描述
+# 需求描述
 
 利用pRRophetic算法，根据GDSC<www.cancerrxgene.org/>细胞系表达谱和TCGA基因表达谱构建岭回归模型预测药物IC50（使用原文数据，复现原图）
 
 提示：pRRophetic的示例可参考：https://github.com/paulgeeleher/pRRophetic/blob/master/vignetteOutline.pdf
 
-## Requirement description
+# Requirement description
 
 Using the pRRophetic algorithm, a ridge regression model was constructed based on the expression profiles of GDSC<www.cancerrxgene. org/>cell lines and TCGA gene expression profiles to predict drug IC50 (using the original data and reproducing the original image)
 
@@ -42,29 +41,21 @@ Lu X, Jiang L, Zhang L, et al. Immune Signature-Based Subtypes of Cervical Squam
 **Note: * * Due to the inclusion of original data, if it involves the use of annotation file subtypes and other related data, please cite:
 Lu X, Jiang L, Zhang L, et al. Immune Signature-Based Subtypes of Cervical Squamous Cell Carcinoma Tightly Associated with Human Papillomavirus Type 16 Expression, Molecular Features, and Clinical Outcome[J]. Neoplasia, 2019, 21(6): 591-601.
 
-## 应用场景
+# 应用场景
 
 预测病人对药物的IC50，画box plot图对比不同分组。
 
 还可以通过批量计算，筛选出组间差异显著的药物。
 
-## Application scenarios
+# Application scenarios
 
 Predict the IC50 of the patient for the drug and draw a box plot to compare different groups.
 
 It is also possible to screen drugs with significant differences between groups through batch calculations.
 
-## 环境设置
+# 环境设置
 
-
-## Environment settings
-
-Use domestic image installation package
-
-```r
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
-BiocManager::install(c("car", "ridge", "preprocessCore", "genefilter", "sva"))
-```
+# Environment settings
 
 GDSC数据库里的内容可以用R包pRRophetic来访问和计算。
 
@@ -104,7 +95,7 @@ Sys.setenv(LANGUAGE = "en")
 options(stringsAsFactors = FALSE) 
 ```
 
-## 输入文件
+# 输入文件
 
 需要三个文件：表达数据、分组信息和药物名字，前两个文件的sample ID必须一致。
 
@@ -116,7 +107,7 @@ drug.txt，要计算和画图的药物的名字，药物名必须存在与GDSC�
 
 getCGPinfo函数内部是2016版药物的名字，共251种；GDSC数据库的网站上2019版的药物名字有266种：<https://www.cancerrxgene.org/translation/Drug#t-all>；然而pRRopheticPredict函数的drug参数the name of the drug for which you would like to predict sensitivity, one of...，其中的药物名字只有138个，下面就对这138种药物进行计算和画图。把pRRopheticPredict函数的drug参数中的药物整理后保存在drug.txt文件中。
 
-## Input file
+# Input file
 
 Three files are required: expression data, grouping information, and drug names. The sample IDs of the first two files must be consistent.
 
@@ -162,9 +153,9 @@ GCP.drug <- GCP.drug$V1
 GCP.drug <- GCP.drug[1:12]
 ```
 
-## 药物敏感性预测和画图
+# 药物敏感性预测和画图
 
-## Drug sensitivity prediction and plotting
+# Drug sensitivity prediction and plotting
 
 ```{r}
 # 自定义足够多的box颜色，颜色数量至少等于分组数量
@@ -251,9 +242,9 @@ ggsave("boxplot of predicted IC50_multiple.pdf", width = 12, height = 6)
 
 ![](boxplot of predicted IC50_multiple.pdf)
 
-## 检验组间差异
+# 检验组间差异
 
-## Test group differences
+# Test group differences
 
 ```{r}
 # 初始化向量存储每种药物的Wilcoxon检验p值（中文注释）
@@ -304,6 +295,8 @@ write.table(p, "output_pvalue.txt", quote = F, sep = "\t")
 打开output_pvalue.txt文件，从中挑选合适的药物，把名字写在"drug.txt"文件里，就可以只对这些药物计算和画图了。
 
 Open the output _pvalue. txt file, select the appropriate medication from it, write the name in the "drug. txt" file, and you can calculate and draw only for these medications.
+
+# Session Info
 
 ```{r}
 sessionInfo()
