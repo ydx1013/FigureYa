@@ -47,14 +47,51 @@ install_bioc_package <- function(package_name) {
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
+# 安装 Seurat 相关依赖
+seurat_deps <- c("httr", "plotly", "png", "reticulate")
+cat("\nInstalling Seurat dependency packages...\n")
+for (pkg in seurat_deps) {
+  install_cran_package(pkg)
+}
+
+# 安装 DealGPL570 的特定历史版本（通过 CRAN Archive URL）
+deal_pkg_url <- "https://cran.r-project.org/src/contrib/Archive/DealGPL570/DealGPL570_0.0.1.tar.gz"
+deal_pkg_name <- "DealGPL570"
+if (!is_package_installed(deal_pkg_name)) {
+  cat("Installing archived DealGPL570 version 0.0.1 from CRAN Archive...\n")
+  tryCatch({
+    install.packages(deal_pkg_url, repos = NULL, type = "source")
+    cat("Successfully installed DealGPL570_0.0.1\n")
+  }, error = function(e) {
+    cat("Failed to install DealGPL570_0.0.1:", e$message, "\n")
+  })
+} else {
+  cat("Package already installed:", deal_pkg_name, "\n")
+}
+
+# 系统依赖提醒（如在 Linux 环境，需提前手动安装）
+cat("\nNOTE: If you encounter errors for packages like 'systemfonts', 'curl', or 'xml2',\n")
+cat("please ensure you have installed the necessary system libraries.\n")
+cat("For Ubuntu/Debian, run this in shell BEFORE using this script:\n")
+cat("  sudo apt-get update\n")
+cat("  sudo apt-get install libfontconfig1-dev libcurl4-openssl-dev libxml2-dev libssl-dev\n\n")
 
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("Down_Highly", "Down_Lowly", "Mono", "Platelet", "RColorBrewer", "Seurat", "Up_Highly", "Up_Lowly", "dplyr", "ggplot2", "ggrepel", "magrittr", "patchwork", "reshape2")
+cran_packages <- c(
+  "Down_Highly", "Down_Lowly", "Mono", "Platelet", "RColorBrewer", "Seurat",
+  "Up_Highly", "Up_Lowly", "dplyr", "ggplot2", "ggrepel", "magrittr", "patchwork", "reshape2"
+)
 
 for (pkg in cran_packages) {
   install_cran_package(pkg)
 }
+
+# 如有 Bioconductor 包需求可在此处补充
+# bioc_packages <- c("Rhtslib", "maftools")
+# for (pkg in bioc_packages) {
+#   install_bioc_package(pkg)
+# }
 
 cat("\n===========================================\n")
 cat("Package installation completed!\n")
