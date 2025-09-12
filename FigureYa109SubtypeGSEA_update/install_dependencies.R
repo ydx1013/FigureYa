@@ -58,7 +58,7 @@ for (pkg in cran_packages) {
 
 # Installing Bioconductor packages
 cat("\nInstalling Bioconductor packages...\n")
-bioc_packages <- c("clusterProfiler")
+bioc_packages <- c("clusterProfiler", "GSVA")
 
 for (pkg in bioc_packages) {
   install_bioc_package(pkg)

@@ -52,6 +52,14 @@ cat("===========================================\n")
 cat("\nInstalling CRAN packages...\n")
 cran_packages <- c("SimDesign", "cowplot", "data.table", "ggplot2", "ggpubr", "tidyr")
 
+
+# Installing Bioconductor packages
+cat("\nInstalling Bioconductor packages...\n")
+bioc_packages <- c("GSVA")
+
+for (pkg in bioc_packages) {
+  install_bioc_package(pkg)
+}
 for (pkg in cran_packages) {
   install_cran_package(pkg)
 }
