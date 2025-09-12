@@ -11,7 +11,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 # 设置knitr代码块的全局选项 / Set global options for knitr code chunks
@@ -45,20 +44,11 @@ Taking skin melanoma (TCGA-SKCM) as an example, supervised hierarchical clusteri
 
 ## 环境设置
 
-
 ## Environment settings
-
-Use domestic image installation package
 
 ```{r}
 source("install_dependencies.R")
 
-# 设置Bioconductor包安装源为中国科学技术大学镜像（Set Bioconductor mirror to USTC mirror）
-```
-
-
-
-```{r}
 # 加载ClassDiscovery包，用于聚类分析和生物信息学数据分析（Load the ClassDiscovery package for clustering analysis and bioinformatics data analysis）
 library(ClassDiscovery)
 # 加载survival包，用于生存分析（Load the survival package for survival analysis）
@@ -362,6 +352,8 @@ ggsave("testing_data.pdf")
 ```
 
 ![](testing_data.pdf)
+
+## Session Info
 
 ```{r}
 sessionInfo()
