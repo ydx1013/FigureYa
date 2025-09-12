@@ -75,7 +75,6 @@ Displaying hierarchical structures. For example:
 # 环境设置
 # Environment Setup
 
-Loading the R package
 
 ```{r}
 source("install_dependencies.R")

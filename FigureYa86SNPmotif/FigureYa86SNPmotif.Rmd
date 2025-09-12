@@ -68,11 +68,8 @@ source("install_dependencies.R")
 ```
 
 ```{r eval=FALSE}
-# 设置R包安装源为清华大学镜像（中文注释）
-# Set R package installation source to Tsinghua University mirror (English comment)
 
 # 设置Bioconductor包镜像为清华大学镜像（中文注释）
-# Set Bioconductor package mirror to Tsinghua University mirror (English comment)
 
 # 检查是否安装了BiocManager包，如果没有则安装（中文注释）
 # Check if BiocManager package is installed, install if not (English comment)
