@@ -2,7 +2,7 @@
 title: "FigureYa154immuneSubtypes"
 author: "Yufang Wang"
 reviewer: "Ying Ge, Junyi Shen"
-date: "2025-5-20"
+date: "2025-9-12"
 output: html_document
 ---
 
@@ -10,7 +10,6 @@ output: html_document
 If you use this code in your work or research, we kindly request that you cite our publication:
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
-
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -49,13 +48,9 @@ Classify samples based on immune infiltration quantification results.
 ## 环境设置
 ## Environment Setup
 
-使用国内镜像安装包
-Using a domestic mirror to install the package
-
-```{r, eval=FALSE}
+```{r}
 source("install_dependencies.R")
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
+
 library(devtools)
 install_github("Gibbsdavidl/ImmuneSubtypeClassifier")
 ```
