@@ -52,8 +52,11 @@ Classify samples based on immune infiltration quantification results.
 使用国内镜像安装包
 Using a domestic mirror to install the package
 
-```{r, eval=FALSE}
+```{r}
 source("install_dependencies.R")
+```
+
+```{r, eval=FALSE}
 options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
 options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 library(devtools)

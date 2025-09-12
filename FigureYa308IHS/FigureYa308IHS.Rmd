@@ -80,8 +80,11 @@ For more heterogeneity figures, see here<https://k.youshop10.com/S-utnyI7>
 
 Install packages using domestic mirror
 
-```{r eval=FALSE}
+```{r}
 source("install_dependencies.R")
+```
+
+```{r eval=FALSE}
 options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
 options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
 install.packages("optparse")
