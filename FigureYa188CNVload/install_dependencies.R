@@ -47,6 +47,25 @@ install_bioc_package <- function(package_name) {
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
+# 系统依赖提醒（如在 Linux 环境，需提前手动安装）
+cat("\nNOTE: If you encounter errors for packages like 'xml2', 'curl', 'png', 'systemfonts',\n")
+cat("please ensure you have installed the necessary system libraries.\n")
+cat("For Ubuntu/Debian, run this in shell BEFORE using this script:\n")
+cat("  sudo apt-get update\n")
+cat("  sudo apt-get install libxml2-dev libcurl4-openssl-dev libssl-dev libpng-dev libfontconfig1-dev\n\n")
+
+# Bioconductor核心依赖（针对DESeq2等高通量数据分析包）
+cat("\nInstalling Bioconductor core packages for genomics...\n")
+bioc_packages <- c(
+  "GenomeInfoDb",
+  "GenomicRanges",
+  "SummarizedExperiment",
+  "DESeq2"
+)
+
+for (pkg in bioc_packages) {
+  install_bioc_package(pkg)
+}
 
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
