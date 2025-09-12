@@ -6,12 +6,10 @@ date: "2025-5-20"
 output: html_document
 ---
 
-
 # Academic Citation
 If you use this code in your work or research, we kindly request that you cite our publication:
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
-
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -46,19 +44,7 @@ Can be used to mine DNA methylation data of TCGA.
 
 ## 环境设置
 
-
 ## Environment settings
-
-Use domestic image installation package
-
-```r
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
-BiocManager::install("ChAMP")
-```
-
-加载包
-
-library packages
 
 ```{r}
 source("install_dependencies.R")
