@@ -2,7 +2,7 @@
 title: "FigureYa112venn"
 author: "Yuhui Li, Taojun Ye"
 reviewer: "Ying Ge"
-date: "2025-5-20"
+date: "2025-9-12"
 output: html_document
 ---
 
@@ -10,7 +10,6 @@ output: html_document
 If you use this code in your work or research, we kindly request that you cite our publication:
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
-
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -41,24 +40,11 @@ Display 4 groups of elements (such as differentially expressed genes) with overl
 
 ## 环境设置
 
-
 ## Environment settings
-
-Use domestic image installation package
 
 ```{r}
 source("install_dependencies.R")
-# 设置CRAN镜像为清华大学镜像源（Set CRAN mirror to Tsinghua University mirror source）
 
-# 设置Bioconductor镜像为中国科学技术大学镜像源（Set Bioconductor mirror to University of Science and Technology of China mirror source）
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
-```
-
-加载包
-
-library packages
-
-```{r}
 # 加载Venn图绘制包（Load package for drawing Venn diagrams）
 library(VennDiagram)
 # 加载彩色Venn图绘制包（Load package for colorful Venn diagrams）
@@ -330,6 +316,8 @@ The output PDF is a vector image, which can be opened with software such as Illu
 * [colorfulVennPlot]( https://github.com/BITS-VIB/venn-tools )   
 *[ColorfulVennPlot Source Code]（ https://github.com/cran/colorfulVennPlot/tree/master/R )   
 *[Convert numbers to binary]（ https://stackoverflow.com/questions/12088080/how-to-convert-integer-number-into-binary-vector )   
+
+# Session Info
 
 ```{r}
 sessionInfo()
