@@ -1,7 +1,7 @@
 ---
 title: "FigureYa10chromosomeV2_update"
 author: "Zhaodong Hao; Ying Ge, Yijing Chen"
-date: "2025-5-20"
+date: "2025-9-12"
 output: html_document
 ---
 
@@ -20,7 +20,7 @@ Use R code to draw the straight chromosome distribution map in paper
 
 出自<https://academic.oup.com/brain/article/138/3/616/333368>
 
-from<https://academic.oup.com/brain/article/138/3/616/333368>
+From<https://academic.oup.com/brain/article/138/3/616/333368>
 
 # 应用场景
 # Application scenario
@@ -45,7 +45,7 @@ Hao Z, Lv D, Ge Y, Shi J, Weijers D, Yu G, Chen J. 2020. RIdeogram: drawing SVG 
 # Environment setting
 
 ```{r}
-#install.packages("RIdeogram")
+source("install_dependencies.R")
 library(RIdeogram)
 Sys.setenv(LANGUAGE = "en") #显示英文报错信息 display English error messages
 options(stringsAsFactors = FALSE) #禁止chr转成factor prohibit the conversion of chr to factor
