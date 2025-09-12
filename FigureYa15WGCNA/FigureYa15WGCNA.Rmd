@@ -4,8 +4,10 @@ author: "Saisai Tian; Ying Ge, Yijing Chen"
 date: "2025-5-20"
 output: html_document
 ---
+# Academic Citation
+If you use this code in your work or research, we kindly request that you cite our publication:
 
-[<img src="http://p3gnrt3qv.bkt.clouddn.com/bolg/180622/9h1c1i77J2.png?imageslim" width="100px"/>](http://p3gnrt3qv.bkt.clouddn.com/bolg/180622/9h1c1i77J2.png?imageslim)
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -38,14 +40,8 @@ It is used to study which genes determine differences in phenotypes, for example
 # 环境设置
 # Environment setting
 
-使用国内镜像安装包
-
-use the domestic mirror installation package
-
 ```{r}
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
-
+source("install_dependencies.R")
 ```
 
 加载包
