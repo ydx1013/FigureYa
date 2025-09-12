@@ -10,7 +10,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 # 设置knitr的全局代码块选项 / Set global chunk options for knitr
@@ -58,28 +57,13 @@ MotifbreakR can also be used in conjunction with other tools, with a series of r
 
 # 环境设置
 
-
 # Environment settings
-
-Use domestic image installation package
 
 ```{r}
 source("install_dependencies.R")
 ```
 
 ```{r eval=FALSE}
-
-# 设置Bioconductor包镜像为清华大学镜像（中文注释）
-
-# 检查是否安装了BiocManager包，如果没有则安装（中文注释）
-# Check if BiocManager package is installed, install if not (English comment)
-if (!requireNamespace("BiocManager", quietly = TRUE))
-    install.packages("BiocManager")
-
-# 使用BiocManager安装motifbreakR包（中文注释）
-# Install the motifbreakR package using BiocManager (English comment)
-BiocManager::install("motifbreakR")
-
 # 如果你只提供rs ID，就需要安装这个包（中文注释）
 # If you only provide rs IDs, you need to install this package (English comment)
 # SNP locations and alleles for Homo sapiens extracted from NCBI dbSNP Build 151. The source data files used for this package were created by NCBI between February 16-22, 2018, and contain SNPs mapped to reference genome GRCh38.p7
@@ -97,12 +81,9 @@ BiocManager::install("BSgenome.Hsapiens.UCSC.hg19")
 
 你的电脑可能需要安装GhostScript，参考<https://github.com/Simon-Coetzee/motifBreakR>里的Prepairing to install
 
-
 Other species to< http://www.bioconductor.org/packages/3.8/data/annotation >Search for the name of the corresponding package.
 
 Your computer may need to install GhostScript, refer to< https://github.com/Simon-Coetzee/motifBreakR >Preparing to install in
-
-Library Package
 
 ```{r}
 # 加载motifbreakR包 - 用于分析SNP对转录因子结合位点的影响（中文注释）
@@ -275,6 +256,8 @@ plotMB(results = result1, rsid = "rs1927914",
 # Post processing
 
 Add the Altscore Refscore for each transcription factor to the graph based on the last column score in the output. csv
+
+# Session Info
 
 ```{r}
 sessionInfo()
