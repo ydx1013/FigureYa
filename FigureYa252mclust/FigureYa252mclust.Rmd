@@ -1,15 +1,14 @@
 ---
 title: "FigureYa252mclust"
 author: "Zongcheng Li"
-reviewers: "Ying Ge,Hui Huang"
-date: "2025-5-20"
+reviewers: "Ying Ge, Hui Huang"
+date: "2025-9-12"
 output: html_document
 ---
 # Academic Citation
 If you use this code in your work or research, we kindly request that you cite our publication:
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
-
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -44,26 +43,10 @@ For more time series data results, see FigureYa16fitting, FigureYa94STEMbox, and
 
 # 环境设置
 
-使用国内镜像安装包
-
 # Environment settings
-
-Use the domestic mirror installation package
 
 ```{r}
 source("install_dependencies.R")
-```
-
-```{r eval=FALSE}
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
-install.packages("ggnewscale")
-```
-
-加载包
-load packages
-
-```{r}
 library(tidyverse)
 library(magrittr)
 library(mclust)
@@ -79,7 +62,7 @@ options(stringsAsFactors = FALSE) #禁止chr转成factor # chr is not allowed to
 
 # Input file obtained
 
-If your data has been organized into easy_input.csv format, you can skip this step and go straight to "McLust".
+If your data has been organized into easy_input.csv format, you can skip this step and go straight to "mcLust".
 
 Download the GSE121236_RAW.tar archive from the GEO database of NCBI and <https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE121236>
 
@@ -109,7 +92,7 @@ colnames(tpm) <- samples
 #write.csv(tpm, "easy_input.csv", quote = F)
 ```
 
-# Mclust
+# mclust
 
 original text：To examine temporal changes in gene expression, proteincoding genes detected at **≥ 1 TPM in at least one embryonic stage** of the Smart-seq2 time series were subjected to model-based clustering by Mclust [(Scrucca et al. 2016), see “Materials and methods”]. Mclust classifies points according to a set of **Gaussian mixture models** and chooses the optimal model parameters to maximize the Bayesian information criterion (BIC). The mean TPM of 18,600 genes were **converted to z-scores**, and based on analysis with Mclust, the **optimal cluster number was 24** (Online Fig. S5).
 

@@ -2,14 +2,13 @@
 title: "FigureYa188CNVload"
 author: "Rongfang Shen"
 reviewer: "Ying Ge, Junyi Shen"
-date: "2025-5-20"
+date: "2025-9-12"
 output: html_document
 ---
 # Academic Citation
 If you use this code in your work or research, we kindly request that you cite our publication:
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
-
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -45,14 +44,8 @@ Shen R, Li P, Li B, Zhang B, Feng L, Cheng S. Identification of Distinct Immune 
 
 # Environment Setup
 
-使用国内镜像安装包
-Use the domestic mirror installation package
-
 ```{r}
 source("install_dependencies.R")
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
-
 ```
 
 加载包

@@ -50,7 +50,10 @@ cat("===========================================\n")
 
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("DealGPL570", "dplyr", "stringr", "survival", "sva", "tibble", "tidyverse")
+cran_packages <- c("dplyr", "stringr", "survival", "sva", "tibble", "tidyverse")
+
+# DealGPL570 package version 2.0 will report errors during operation, so I installed version 1.0
+install.packages("https://cran.r-project.org/src/contrib/Archive/DealGPL570/DealGPL570_0.0.1.tar.gz", repos = NULL, type = "source")
 
 for (pkg in cran_packages) {
   install_cran_package(pkg)

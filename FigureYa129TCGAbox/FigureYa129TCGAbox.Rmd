@@ -2,7 +2,7 @@
 title: "FigureYa129TCGAbox"
 author: "Yin Li, Taojun Ye"
 reviewer: "Ying Ge"
-date: "2025-5-20"
+date: "2025-9-12"
 output: html_document
 ---
 
@@ -11,10 +11,8 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-# 设置knitr代码块的全局选项 / Set global options for knitr code chunks
 ```
 
 ## 需求描述
@@ -29,7 +27,7 @@ Draw this graph using TCGA data to compare the expression level of a certain gen
 
 出自<https://www.tandfonline.com/doi/full/10.1080/2162402X.2016.1196310>
 
-from<https://www.tandfonline.com/doi/full/10.1080/2162402X.2016.1196310>
+From<https://www.tandfonline.com/doi/full/10.1080/2162402X.2016.1196310>
 
 Figure 2. PD-L1 expression in molecular subtypes (A, B)
 
@@ -57,15 +55,8 @@ You can even write it as a loop and draw multiple genes in batches to see which 
 
 ## Environment settings
 
-Use domestic image installation package
-
 ```{r}
 source("install_dependencies.R")
-# 设置CRAN镜像为清华大学镜像源（Set CRAN mirror to Tsinghua University mirror source）
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-
-# 设置Bioconductor镜像为中国科学技术大学镜像源（Set Bioconductor mirror to USTC mirror source）
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 ```
 
 加载包
