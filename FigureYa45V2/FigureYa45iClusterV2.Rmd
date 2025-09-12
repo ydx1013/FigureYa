@@ -124,7 +124,6 @@ CRAN image backup
 
 ```{r, message=FALSE, warning=FALSE}
 source("install_dependencies.R")
-#options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 # R版本大于3.5.0时的安装方法
 # Installation method for R version > 3.5.0
 if (!requireNamespace("BiocManager"))

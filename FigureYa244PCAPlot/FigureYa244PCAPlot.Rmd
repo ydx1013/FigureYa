@@ -55,7 +55,6 @@ devtools::install_github("cmartin/ggConvexHull")
 install.packages("ggrepel")
 ```
 
-加载包
 load packages
 
 ```{r}

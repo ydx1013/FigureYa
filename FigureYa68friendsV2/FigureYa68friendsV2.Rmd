@@ -93,9 +93,7 @@ BiocManager::install("GOSemSim")
 install.packages("ggplot2")
 ```
 
-加载包
 
-library packages
 
 ```{r}
 # 加载必要的R包 / Load required R packages

@@ -49,11 +49,9 @@ Use the signature found by TCGA data and then use other data sets for verificati
 
 
 ```r
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 install.packages(c("dendsort", "squash"))
 ```
 
-加载包
 Load package
 
 ```{r}

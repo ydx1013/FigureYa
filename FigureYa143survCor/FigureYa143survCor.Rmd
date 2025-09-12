@@ -49,10 +49,8 @@ If you only want to calculate and display the correlation and draw a similar gra
 
 ```{r}
 source("install_dependencies.R")
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 ```
 
-加载包
 Loading Packages
 
 ```{r}

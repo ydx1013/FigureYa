@@ -54,7 +54,6 @@ We've repackaged the code here to provide a simpler way to use it.
 # 环境设置
 # Environment Setup
 
-加载包
 Loading Packages
 
 ```{r}

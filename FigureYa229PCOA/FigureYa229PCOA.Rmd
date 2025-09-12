@@ -75,7 +75,6 @@ install.packages("ape")
 install.packages("usedist")
 ```
 
-加载包
 load packages
 
 ```{r}

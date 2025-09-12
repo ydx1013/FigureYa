@@ -46,11 +46,9 @@ Use single-cell DNA sequencing data to calculate the diversity score to evaluate
 
 ```{r, eval = F}
 source("install_dependencies.R")
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 install.packages('Seurat')
 ```
 
-加载包
 Load package
 
 ```{r}

@@ -50,7 +50,6 @@ source("install_dependencies.R")
 install.packages("SimDesign")
 ```
 
-加载包
 Loading package
 
 ```{r}

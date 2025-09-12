@@ -50,9 +50,7 @@ Identify tumor immune infiltration related lncRNAs from expression data.
 source("install_dependencies.R")
 ```
 
-加载包
 
-library packages
 
 ```{r}
 # 加载DealGPL570包，用于处理GPL570平台的表达谱数据（Load the DealGPL570 package to process expression profile data from the GPL570 platform）

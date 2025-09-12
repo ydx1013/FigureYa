@@ -100,7 +100,6 @@ BiocManager::install("BSgenome.Hsapiens.UCSC.hg19")
 
 你的电脑可能需要安装GhostScript，参考<https://github.com/Simon-Coetzee/motifBreakR>里的Prepairing to install
 
-加载包
 
 Other species to< http://www.bioconductor.org/packages/3.8/data/annotation >Search for the name of the corresponding package.
 

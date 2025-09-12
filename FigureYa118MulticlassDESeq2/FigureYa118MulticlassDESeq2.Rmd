@@ -53,13 +53,10 @@ For the case where the read count expression matrix is used as input, if your da
 Use domestic image installation package
 
 ```r
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 BiocManager::install("DESeq2")
 ```
 
-加载包
 
-library packages
 
 ```{r}
 source("install_dependencies.R")

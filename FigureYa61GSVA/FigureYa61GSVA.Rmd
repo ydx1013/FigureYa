@@ -40,7 +40,6 @@ knitr::opts_chunk$set(echo = TRUE)
 ### 安装包
 
 ```r
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 install.packages("msigdbr")
 ```
 

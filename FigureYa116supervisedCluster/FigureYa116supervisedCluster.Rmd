@@ -55,12 +55,9 @@ source("install_dependencies.R")
 # 设置R包安装源为清华大学镜像（Set CRAN mirror to Tsinghua University mirror）
 
 # 设置Bioconductor包安装源为中国科学技术大学镜像（Set Bioconductor mirror to USTC mirror）
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 ```
 
-加载包
 
-library packages
 
 ```{r}
 # 加载ClassDiscovery包，用于聚类分析和生物信息学数据分析（Load the ClassDiscovery package for clustering analysis and bioinformatics data analysis）

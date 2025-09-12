@@ -49,7 +49,6 @@ At the same time, samples can be grouped based on the gene expression profile of
 
 ```{r warning=FALSE}
 source("install_dependencies.R")
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 
 # 安装并加载包
 # Install and load packages

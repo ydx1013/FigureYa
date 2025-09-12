@@ -54,7 +54,6 @@ install.packages("magick")
 install.packages("cmprsk")
 ```
 
-加载包
 
 load package
 

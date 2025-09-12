@@ -54,7 +54,6 @@ library(devtools)
 install_github("Gibbsdavidl/ImmuneSubtypeClassifier")
 ```
 
-加载包
 Loading the package
 
 ```{r}

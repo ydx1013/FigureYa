@@ -91,7 +91,6 @@ devtools::install_github("IOBR/IOBR")
 install.packages("IOBR-master.tar.gz", repos = NULL, type = "source")
 ```
 
-加载包
 load packages
 
 ```{r}

@@ -100,7 +100,6 @@ Load the pheatmap function in the new ComplexHeatmap package
 source("pheatmap_translate.R") # 来自github版ComplexHeatmap # From github version of ComplexHeatmap
 ```
 
-加载包
 load package
 
 ```{r}

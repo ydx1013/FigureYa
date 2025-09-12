@@ -66,7 +66,6 @@ source("install_dependencies.R")
 install.packages("tidyjson")
 ```
 
-加载包
 load packages
 
 ```{r}

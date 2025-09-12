@@ -67,9 +67,7 @@ Installation of decorstructsigs: Download from GitHub< https://github.com/raeros
 tar -czvf deconstructSigs.tar.gz deconstructSigs-master
 ```
 
-加载包
 
-library packages
 
 ```{r}
 source("install_dependencies.R")

@@ -89,7 +89,6 @@ devtools::install_github('cole-trapnell-lab/leidenbase')
 devtools::install_github('cole-trapnell-lab/monocle3')
 ```
 
-加载包
 Loading package
 
 ```{r, eval=FALSE}

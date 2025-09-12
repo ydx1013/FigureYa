@@ -98,7 +98,6 @@ install.packages("ifnb.SeuratData_3.1.0.tar.gz", repos = NULL, type = "source")
 devtools::install_github('immunogenomics/presto')
 ```
 
-加载包
 
 Load Package
 

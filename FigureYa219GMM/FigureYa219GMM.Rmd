@@ -55,7 +55,6 @@ BiocManager::install("miRBaseConverter")
 BiocManager::install("SimDesign")
 ```
 
-加载包
 load packages
 
 ```{r}

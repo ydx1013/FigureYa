@@ -45,7 +45,6 @@ source("install_dependencies.R")
 install.packages("tdROC")
 ```
 
-加载包
 Loading package
 
 ```{r}

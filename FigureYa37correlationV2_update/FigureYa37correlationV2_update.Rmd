@@ -55,13 +55,11 @@ use the domestic mirror installation package
 
 ```{r}
 source("install_dependencies.R")
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 #安装circlize包
 #install the circlize package
 #install.packages("circlize")
 ```
 
-加载包
 
 load package
 

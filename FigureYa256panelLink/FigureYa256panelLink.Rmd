@@ -55,7 +55,6 @@ install.packages("remotes")
 remotes::install_github("zzwch/crosslink", build = FALSE)
 ```
 
-加载包
 
 ```{r}
 library(magrittr)

@@ -62,7 +62,6 @@ Enrichment analysis yields too many similar GO terms, which need to be merged an
 Use domestic image installation package
 
 ```r
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 
 if (!requireNamespace("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
@@ -70,9 +69,7 @@ BiocManager::install("GOSemSim", version = "3.8")
 BiocManager::install("ggtree", version = "3.8")
 ```
 
-加载包
 
-library packages
 
 ```{r}
 source("install_dependencies.R")

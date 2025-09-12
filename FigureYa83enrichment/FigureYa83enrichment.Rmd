@@ -85,13 +85,10 @@ $ATAC-seq_peak
 Installation of packages using domestic mirrors
 
 ```r
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 install.packages("rentrez")
 ```
 
-加载包
 
-library packages
 
 ```{r}
 source("install_dependencies.R")

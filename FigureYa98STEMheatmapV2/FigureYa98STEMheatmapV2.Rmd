@@ -75,9 +75,7 @@ source("install_dependencies.R")
 install.packages("readxl")
 ```
 
-加载包
 
-library packages
 
 ```{r}
 # 加载readxl包，用于读取Excel文件（Load the readxl package for reading Excel files）

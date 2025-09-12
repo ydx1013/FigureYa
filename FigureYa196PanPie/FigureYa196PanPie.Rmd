@@ -59,7 +59,6 @@ source("install_dependencies.R")
 install.packages(c("dplyr", "ggplot2"))
 ```
 
-加载包
 load package
 
 ```{r}

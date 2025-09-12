@@ -49,7 +49,6 @@ If you want to simultaneously demonstrate the correlation between two genes and 
 
 ## 环境设置
 
-加载包
 
 ## Environment settings
 

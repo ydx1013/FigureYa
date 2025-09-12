@@ -47,13 +47,10 @@ Clinical subgroup analysis.
 Use domestic image installation package
 
 ```r
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 install.packages("forestplot")
 ```
 
-加载包
 
-library packages
 
 ```{r}
 source("install_dependencies.R")

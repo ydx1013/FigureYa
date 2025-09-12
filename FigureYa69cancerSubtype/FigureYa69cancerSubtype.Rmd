@@ -56,7 +56,6 @@ CancerSubtypes contains 5 computational methods for molecular typing identificat
 Installing packages with domestic mirrors
 
 ```r
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 if (!requireNamespace("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
 install.packages("iCluster_2.1.0.tar.gz", repos = NULL, type = "source")
@@ -64,9 +63,7 @@ BiocManager::install("CancerSubtypes", version = "3.20")
 
 ```
 
-加载包
 
-library packages
 
 ```{r}
 source("install_dependencies.R")

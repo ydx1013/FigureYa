@@ -70,10 +70,8 @@ Taking the TF-GO-target gene interaction as an example, the transcriptome finds 
 
 ```{r}
 source("install_dependencies.R")
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 ```
 
-加载包
 Load package
 
 ```{r}

@@ -53,7 +53,6 @@ source("install_dependencies.R")
 BiocManager::install("pathifier")
 ```
 
-加载包
 Loading the package
 
 ```{r}

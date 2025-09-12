@@ -105,7 +105,6 @@ BiocManager::install("AUCell")
 BiocManager::install("GEOquery")
 ```
 
-加载包
 
 load package
 

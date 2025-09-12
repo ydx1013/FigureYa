@@ -47,7 +47,6 @@ source("install_dependencies.R")
 ```
 
 ```{r, eval=FALSE}
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 BiocManager::install("MutationalPatterns")
 BiocManager::install("BSgenome")
 BiocManager::install("BSgenome.Hsapiens.UCSC.hg38")
@@ -55,7 +54,6 @@ install.packages("tidyverse")
 install.packages("haven")
 ```
 
-加载包
 Load package
 
 ```{r}

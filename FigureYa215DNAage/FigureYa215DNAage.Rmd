@@ -79,7 +79,6 @@ source("install_dependencies.R")
 BiocManager::install("ChAMP")
 ```
 
-加载包
 
 load package
 

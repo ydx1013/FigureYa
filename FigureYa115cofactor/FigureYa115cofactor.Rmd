@@ -100,13 +100,11 @@ conda install -c bioconda intervene
 install packages
 
 ```r
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 install.packages("corrplot")
 ```
 
 加载R包
 
-library packages
 
 ```{r}
 source("install_dependencies.R")

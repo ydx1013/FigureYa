@@ -48,7 +48,6 @@ Scenario 2: Compare the mutation sites of different cancers/subtypes.
 
 ```r
 #use the domestic mirror installation package
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 install.packages("BiocManager")
 library(BiocManager)
 install("trackViewer")

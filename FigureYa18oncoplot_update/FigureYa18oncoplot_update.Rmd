@@ -64,12 +64,10 @@ source("install_dependencies.R")
 ```
 
 ```{r, eval=FALSE}
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 BiocManager::install("TCGAbiolinks")
 BiocManager::install("maftools")
 ```
 
-加载包
 
 load package
 

@@ -50,7 +50,6 @@ BiocManager::install("survcomp")
 install.packages("survRM2")
 ```
 
-加载包
 Loading package
 
 ```{r}

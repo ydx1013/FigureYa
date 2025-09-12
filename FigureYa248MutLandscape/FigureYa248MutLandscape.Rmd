@@ -74,7 +74,6 @@ Many of the pictures in the article have been crowdfunded, such as:
 source("install_dependencies.R")
 ```
 
-加载包
 load packages
 
 ```{r}

@@ -91,7 +91,6 @@ source("install_dependencies.R")
 
 ```
 
-加载包
 load packages
 
 ```{r}

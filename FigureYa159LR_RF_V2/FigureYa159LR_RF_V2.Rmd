@@ -41,10 +41,8 @@ On the basis of LASSO dimensionality reduction, logistic regression or Random fo
 
 ```{r}
 source("install_dependencies.R")
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 ```
 
-加载包
 Load the package
 
 ```{r}

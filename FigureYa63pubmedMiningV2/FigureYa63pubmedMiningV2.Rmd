@@ -59,7 +59,6 @@ It contains three modules that are relatively independent and can be run separat
 use the domestic mirror installation package
 
 ```r
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 BiocManager::install("rentrez")
 BiocManager::install("pubmed.mineR")
 install.packages("jiebaR")
@@ -68,7 +67,6 @@ install.packages("DT")
 install.packages("htmlwidgets")
 ```
 
-加载包
 
 load package
 

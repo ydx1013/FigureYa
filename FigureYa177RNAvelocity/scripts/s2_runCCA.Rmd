@@ -21,7 +21,6 @@ oldpath <- .libPaths()[1]
 newpath <- "/home/biostacs/R/backup/env_31723062"
 ```
 
-加载包
 ```{r, eval=TRUE}
 library(Seurat, lib.loc = newpath)
 packageVersion("Seurat")

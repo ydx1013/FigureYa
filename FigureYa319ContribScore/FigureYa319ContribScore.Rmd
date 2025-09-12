@@ -59,7 +59,6 @@ install.packages("Seurat")
 BiocManager::install("SingleR")
 ```
 
-加载包
 
 ```{r}
 library(Seurat)

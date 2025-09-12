@@ -45,7 +45,6 @@ Demonstrate overall gene expression trends between the two groups.
 ```{r}
 source("install_dependencies.R")
 #use the domestic mirror installation package
-#options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 
 library(ggplot2)
 library(ggrepel)

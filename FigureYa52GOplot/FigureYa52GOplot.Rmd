@@ -63,7 +63,6 @@ In addition to being proficient in GO enrichment analysis, clusterProfiler can a
 Install the required packages
 
 ```r
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 
 if (!requireNamespace("BiocManager", quietly = TRUE))
     install.packages("BiocManager")

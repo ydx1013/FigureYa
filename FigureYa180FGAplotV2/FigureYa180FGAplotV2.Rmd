@@ -61,11 +61,9 @@ source("install_dependencies.R")
 ```
 
 ```{r, eval=FALSE}
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 install.packages(c("stringr", "magrittr", "ggplot2","patchwork","Rmisc","Cairo"))
 ```
 
-加载包
 Loading package
 
 ```{r}

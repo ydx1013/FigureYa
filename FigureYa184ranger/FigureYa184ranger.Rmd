@@ -46,13 +46,11 @@ source("install_dependencies.R")
 ```
 
 ```{r eval=FALSE}
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 install.packages("ranger")
 install.packages("randomForest")
 install.packages("survival")
 ```
 
-加载包
 Loading package
 
 ```{r}

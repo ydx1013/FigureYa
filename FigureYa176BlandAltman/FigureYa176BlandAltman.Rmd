@@ -46,11 +46,9 @@ source("install_dependencies.R")
 ```
 
 ```{r, eval=FALSE}
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 install.packages(c("BlandAltmanLeh", "MethComp", "smatr"))
 ```
 
-加载包
 Loading package
 
 ```{r}

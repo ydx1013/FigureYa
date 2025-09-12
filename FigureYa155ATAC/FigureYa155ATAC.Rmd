@@ -69,12 +69,10 @@ source("install_dependencies.R")
 ```
 
 ```{r, eval=FALSE}
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 BiocManager::install("DESeq2")
 BiocManager::install("ChIPseeker")
 ```
 
-加载包
 Load package
 
 ```{r}

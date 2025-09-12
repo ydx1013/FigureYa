@@ -83,7 +83,6 @@ BiocManager::install("ComplexHeatmap")
 BiocManager::install("pheatmap")
 ```
 
-加载包
 load packages
 
 ```{r}

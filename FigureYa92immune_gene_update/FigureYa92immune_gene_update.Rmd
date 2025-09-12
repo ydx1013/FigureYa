@@ -79,7 +79,6 @@ source("install_dependencies.R")
 ```
 
 ```{r eval=FALSE}
-# 设置CRAN镜像为清华大学镜像源，提高包下载速度（Set CRAN mirror to Tsinghua University source for faster package downloads）
 
 # 设置Bioconductor镜像为清华大学镜像源，用于生物信息学相关包的下载（Set Bioconductor mirror to Tsinghua University source for bioinformatics package downloads）
 
@@ -87,9 +86,7 @@ source("install_dependencies.R")
 install.packages("ggstatsplot")
 ```
 
-加载包
 
-library packages
 
 ```{r}
 # 加载数据可视化和统计分析相关的包  
