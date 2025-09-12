@@ -71,8 +71,11 @@ conda install -c bioconda bioconductor-cicero -y
 cicero直接安装github版。不用conda安装，是因为conda的cicero不是最新版本，在处理10X cell ranger的数据没问题，但是在处理稀疏矩阵的时候有问题。
 Install the github version of cicero directly. Not using conda for installation is because conda's cicero is not the latest version. It works fine with the data of 10X cell ranger, but has problems when dealing with sparse matrices.
 
-```{r, eval=FALSE}
+```{r}
 source("install_dependencies.R")
+```
+
+```{r, eval=FALSE}
 BiocManager::install(c("Gviz", "GenomicRanges", "rtracklayer"))
 #install.packages("devtools")
 devtools::install_github("cole-trapnell-lab/cicero-release", ref = "monocle3")

@@ -47,7 +47,6 @@ For more time series data results, see FigureYa16fitting, FigureYa94STEMbox, and
 
 ```{r}
 source("install_dependencies.R")
-
 library(tidyverse)
 library(magrittr)
 library(mclust)

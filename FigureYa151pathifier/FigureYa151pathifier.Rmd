@@ -46,8 +46,11 @@ Alternatively, the R package GSVA can also perform similar functions. For usage,
 使用国内镜像安装包
 Using a Chinese mirror to install the package
 
-```{r, eval=FALSE}
+```{r}
 source("install_dependencies.R")
+```
+
+```{r, eval=FALSE}
 options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
 options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
 BiocManager::install("pathifier")

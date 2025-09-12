@@ -64,8 +64,11 @@ Install required software:
 安装R包
 Install R packages
 
-```{r, eval=FALSE}
+```{r}
 source("install_dependencies.R")
+```
+
+```{r, eval=FALSE}
 options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
 options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 BiocManager::install("DESeq2")

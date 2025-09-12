@@ -47,8 +47,6 @@ Identify tumor immune infiltration related lncRNAs from expression data.
 
 # Environment settings
 
-Use domestic image installation package
-
 ```{r}
 source("install_dependencies.R")
 ```

@@ -82,7 +82,6 @@ We will cover two scenarios to help you successfully complete the analysis:
 
 ```{r}
 source("install_dependencies.R")
-
 devtools::install_github('xuranw/MuSiC')
 ```
 

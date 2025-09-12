@@ -48,8 +48,11 @@ Show how to use the monocle2 package in single-cell data to predict cell develop
 
 Using domestic mirrors for package installation.
 
-```{r eval=FALSE}
+```{r}
 source("install_dependencies.R")
+```
+
+```{r eval=FALSE}
 options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
 options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
 BiocManager::install("monocle")

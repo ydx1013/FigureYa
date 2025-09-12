@@ -50,7 +50,6 @@ Classify samples based on immune infiltration quantification results.
 
 ```{r}
 source("install_dependencies.R")
-
 library(devtools)
 install_github("Gibbsdavidl/ImmuneSubtypeClassifier")
 ```

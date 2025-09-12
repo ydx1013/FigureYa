@@ -54,8 +54,11 @@ Arrange the order of each node based on the biological significance of your own 
 使用国内镜像安装包
 Use the domestic mirror installation package
 
-```{r, eval=FALSE}
+```{r}
 source("install_dependencies.R")
+```
+
+```{r, eval=FALSE}
 options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
 options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 devtools::install_github("zzwch/crosslinks") 
