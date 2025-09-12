@@ -78,7 +78,6 @@ source("install_dependencies.R")
 
 ```{r eval=FALSE}
 
-# 设置Bioconductor镜像为清华大学镜像源，加速生物信息学相关包的下载
 # Set Bioconductor mirror to Tsinghua University mirror source to speed up downloads of bioinformatics-related packages
 
 # 使用BiocManager安装ChAMP包，用于DNA甲基化数据分析

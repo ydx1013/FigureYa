@@ -73,7 +73,6 @@ Use domestic image installation package
 source("install_dependencies.R")
 # Set CRAN mirror to Tsinghua University mirror (improve R package download speed)
 
-# 设置Bioconductor镜像为清华大学镜像源（用于生物信息学相关R包）
 # Set Bioconductor mirror to Tsinghua University mirror (for bioinformatics-related R packages)
 
 ```

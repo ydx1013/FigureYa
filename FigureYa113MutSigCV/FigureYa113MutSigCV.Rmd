@@ -89,7 +89,6 @@ Step 2: Copy the 'MutSigCV. m' file to the current folder to use.
 source("install_dependencies.R")
 #BiocManager::install("ComplexHeatmap")
 
-# 加载R包 | Load R packages
 library(tidyverse)      # 数据处理和可视化工具集 | Data processing and visualization toolkit
 library(magrittr)       # 提供管道操作符 %>% | Provides pipe operator %>%
 library(readxl)         # 读取Excel文件 | Read Excel files

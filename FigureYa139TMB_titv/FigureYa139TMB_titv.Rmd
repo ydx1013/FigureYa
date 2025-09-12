@@ -69,7 +69,6 @@ You can also customize the grouping, such as comparing different subtypes of the
 BiocManager::install("maftools")
 ```
 
-Loading Packages
 
 ```{r}
 source("install_dependencies.R")

@@ -69,7 +69,6 @@ library(devtools)
 install_github("cBioPortal/cgdsr")
 ```
 
-Loading Packages
 
 ```{r}
 library(readxl)

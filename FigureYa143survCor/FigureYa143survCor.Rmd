@@ -51,7 +51,6 @@ If you only want to calculate and display the correlation and draw a similar gra
 source("install_dependencies.R")
 ```
 
-Loading Packages
 
 ```{r}
 library(TCGAbiolinks) # Download data

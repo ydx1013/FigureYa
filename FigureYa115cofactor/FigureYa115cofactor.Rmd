@@ -103,7 +103,6 @@ install packages
 install.packages("corrplot")
 ```
 
-加载R包
 
 
 ```{r}
