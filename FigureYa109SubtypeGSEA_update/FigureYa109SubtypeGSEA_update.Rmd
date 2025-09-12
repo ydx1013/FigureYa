@@ -2,7 +2,7 @@
 title: "FigureYa109subtypeGSEA_update"
 author: "Xiaofan Lu, Taojun Ye"
 reviewer: "Ying Ge"
-date: "2025-5-20"
+date: "2025-9-12"
 output: html_document
 ---
 
@@ -10,7 +10,6 @@ output: html_document
 If you use this code in your work or research, we kindly request that you cite our publication:
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
-
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -43,32 +42,11 @@ Multiple sets of enrichment analysis results can be compared and displayed toget
 
 # 环境设置
 
-
 # Environment settings
-
-Use domestic image installation package
 
 ```{r}
 source("install_dependencies.R")
-```
 
-```{r eval=FALSE}
-# 设置CRAN镜像为清华大学镜像源（Set CRAN mirror to Tsinghua University mirror source）
-
-# 设置Bioconductor镜像为清华大学镜像源（Set Bioconductor mirror to Tsinghua University mirror source）
-
-# 安装clusterProfiler包：用于基因富集分析和可视化（Install the clusterProfiler package: for gene enrichment analysis and visualization）
-BiocManager::install("clusterProfiler")
-
-# 安装GSVA包：用于基因集变异分析（Install the GSVA package: for gene set variation analysis）
-BiocManager::install("GSVA")
-```
-
-加载包
-
-library packages
-
-```{r}
 # 加载clusterProfiler包：用于基因富集分析和可视化（Load the clusterProfiler package: for gene enrichment analysis and visualization）
 library(clusterProfiler) 
 
