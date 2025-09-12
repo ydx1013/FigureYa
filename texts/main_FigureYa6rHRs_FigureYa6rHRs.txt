@@ -2,8 +2,15 @@ FigureYa6rHRs
 FigureYa6rHRs
 Dekang Lv; Ying Ge, Yijing Chen
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
-requirement description
+Requirement description
 临床的亚组分析，我想用R做出文章里的样子。
 这里只从形式上复现，如果需要计算过程，请参考FigureYa90subgroup。
 Clinical subgroup analysis, I’d like to use R to make what it looks
@@ -15,7 +22,7 @@ https://ascopubs.org/doi/full/10.1200/JCO.2017.75.6155?url_ver=Z39.88-2003&rfr_i
 from
 https://ascopubs.org/doi/full/10.1200/JCO.2017.75.6155?url_ver=Z39.88-2003&rfr_id=ori%3Arid%3Acrossref.org&rfr_dat=cr_pub%3Dpubmed
 使用场景
-usage scenario
+Usage scenario
 场景一：临床的亚组分析。例如，能从参与临床试验的那么多人当中发现EGFR抑制剂唯独对亚洲非吸烟女性有效。
 场景二：meta分析，是经典的meta分析的图。
 Scenario 1: Clinical subgroup analysis. For example, it was
@@ -34,6 +41,7 @@ The data file for testing is easy_input.csv, and the corresponding
 column names for classification, sample size, hazard ratio, and
 confidence intervals (upper and lower limits) are Variable, Count,
 Point.Estimate, Low, and High, respectively.
+source("install_dependencies.R")
 #install.packages("forestplot")
 library("forestplot")
 

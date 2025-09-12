@@ -2,8 +2,15 @@ FigureYa7 PSM
 FigureYa7 PSM
 Ying Ge; Yijing Chen
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
-requirement description
+Requirement description
 主要目的是在病例组数据集和对照组数据集里面进行快速的1:1匹配。要求性别相同，年龄不超过两岁。虽然不是作图的。但估计群里好多临床的人肯定也特别想用的。如果CASE1和CONTROL1匹配后，那么就算CASE3和CONTROL1也可以匹配，但是也不能匹配了。
 实质上，需求者是想做倾向得分匹配。倾向得分匹配（PSM）是一种用来评估处置效应的统计方法。广义说来，它将样本根据其特性分类，而不同类样本间的差异就可以看作处置效应的无偏估计。因此，PSM不仅仅是随机试验的一种替代方法，它也是流行病研究中进行样本比较的重要方法之一。
 有R包已经把各种情况考虑进去，帮助我们轻松的完成倾向得分匹配。
@@ -25,7 +32,7 @@ research.
 R packages have already accounted for various scenarios, making it
 easy for us to perform propensity score matching.
 使用场景
-usage scenario
+Usage scenario
 与健康相关的生活质量（HRQOL）被认为是癌症治疗的重要结果之一。对癌症患者而言，最常用的HRQOL测度是通过欧洲癌症研究与治疗中心的调查问卷计算得出的。EORTC
 QLD-C30是一个由30个项目组成，包括5个功能量表，9个症状量表和一个全球生活质量量表的的问卷。所有量表都会给出一个0-100之间的得分。症状量表得分越高代表被调查人生活压力越大，其余两个量表得分越高代表生活质量越高。
 然而，如果没有任何参照，直接对数据进行解释是很困难的。幸运的是，EORTC
@@ -71,6 +78,7 @@ Generate a patient population
 Create a dataframe called df.patients, I would like it to contain age
 and gender data for 250 patients, all of which should be between 30-78
 years old and 70% of which are set to be male.
+source("install_dependencies.R")
 #install.packages("wakefield")
 library(wakefield)
 set.seed(1234)

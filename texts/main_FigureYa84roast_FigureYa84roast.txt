@@ -2,13 +2,20 @@ FigureYa84roast
 FigureYa84roast
 Ying Ge, Taojun Ye
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
 我要用自己的gene set做富集分析，像paper里那样用ROAST-barcode
 plot的方法来实现。
 扩展阅读：
 “小丫画图群”对富集分析的讨论记录：
 https://mp.weixin.qq.com/s/O1xd5l5h33fXUWOvX3UBGw
-##Requirement description
+Requirement description
 I want to use my own gene set for enrichment analysis, using the
 ROAST barcode plot method as described in the paper.
 **Extended reading: * * Discussion record on enrichment analysis in
@@ -57,7 +64,7 @@ roast和barcode分别用来做什么？
 简单讲就是：用roast来判断上/下调基因是否显著富集目标基因集，用barcode
 plot来展示上/下调基因在目标基因集中的分布。roast检验一个gene
 set，mroast做multiple roast tests。原文：
-##Application scenarios
+Application scenarios
 What are roar and barcode used for respectively?
 Simply put, it is to use roar to determine whether
 upregulated/downregulated genes significantly enrich the target gene
@@ -80,16 +87,18 @@ matrices, perform differential expression analysis on all genes using
 limma without screening for differentially expressed genes.
 环境设置
 使用国内镜像安装包
-##Environment settings
+Environment settings
 Use domestic image installation package
 options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
 options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 install.packages("statmod")
 加载包
 library packages
+source("install_dependencies.R")
 # 加载limma包，用于基因表达数据分析和差异表达分析
 # Load the limma package for gene expression data analysis and differential expression analysis
 library(limma)
+
 # 设置系统环境变量，使R显示英文报错信息
 # Set the system environment variable to display error messages in English
 Sys.setenv(LANGUAGE = "en") 
@@ -106,7 +115,7 @@ set/signature就可以。
 easy_input_count.csv，基因表达矩阵，已经过均一化等预处理
 easy_input_sample.txt，样品分组信息
 用后两个文件做差异表达分析
-##Input file
+Input file
 Three types of input files are required:
 -EasyInput_Set1.csv and EasyInput_Set2.csv, one or two. The gene
 set/signature that interests oneself, such as a certain pathway, a
@@ -156,7 +165,7 @@ set用来画图。
 **Off topic: * * If you are interested in more, you can also write it
 as a loop and select the gene set with smaller p-value for drawing.
 开始画图
-##Start drawing
+Start drawing
 # 读取表达矩阵数据，第一列作为行名（通常为基因ID）
 # Read expression matrix data, using the first column as row names (usually gene IDs)
 expr <- read.csv("easy_input_expr.csv", row.names = 1)
@@ -200,7 +209,7 @@ microarray为例：
 http://genomicsclass.github.io/book/pages/gene_set_analysis_in_R.html
 limma包里的更多富集分析方法：
 http://web.mit.edu/~r/current/arch/i386_linux26/lib/R/library/limma/html/10GeneSetTests.html
-##Tips
+Tips
 My friend is relatively unfamiliar with Rosta enrichment analysis.
 Attached are relevant materials:
 For example, RNA seq:<

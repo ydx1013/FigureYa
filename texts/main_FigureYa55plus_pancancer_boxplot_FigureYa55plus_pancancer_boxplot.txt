@@ -2,8 +2,15 @@ FigureYa55plus_pancancer_boxplot
 FigureYa55plus_pancancer_boxplot
 Chris Lou, Yijing Chen
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
-requirement description
+Requirement description
 小伙伴问：感谢小丫带我们打开xena魔盒，有一个问题，FigureYa55pancancer_violin的图能不能画成box
 plot？
 小丫答：可参考FigureYa12box的画法，能让R水平上一个台阶。
@@ -21,7 +28,8 @@ be seamless.
 A: Yes. Thanks to Chris Lou for helping to update and share two
 versions of the solution: ggpubr version and pure ggplot2 version
 环境设置
-environment setting
+Environment setting
+source("install_dependencies.R")
 Sys.setenv(LANGUAGE = "en") #显示英文报错信息 display English error messages
 options(stringsAsFactors = FALSE) #禁止chr转成factor prohibit the conversion of chr to factor
 输入文件

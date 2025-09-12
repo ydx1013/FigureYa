@@ -2,13 +2,20 @@ FigureYa24 ROC
 FigureYa24 ROC
 yeoli; Ying Ge, Yijing Chen
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
-requirement description
+Requirement description
 用R画出ROC曲线（receiver operating characteristic curve）。
 Draw the ROC curve in R（receiver operating characteristic
 curve）
 应用场景
-application scenario
+Application scenario
 在分类任务中，直观展示敏感性和特异性连续变量的综合指标。
 场景一：比较多个biomarker或临床参数的诊断表现
 场景二：比较多个算法的分类效果
@@ -23,6 +30,7 @@ Input data
 包含至少两列，第一列是分组，此处第二列至第五列是miRNA的表达量。
 It contains at least two columns, the first column is the group, and
 here the second to fifth columns are the miRNA expression.
+source("install_dependencies.R")
 df <- read.table("easy_input.txt",head=T,sep="\t",check.names = F)
 head(df)
 开始画图

@@ -2,11 +2,18 @@ FigureYa117multilinearDE
 FigureYa117multilinearDE
 Xiaofan Lu, Taojun Ye
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
 去除RNAseq表达量混杂因素，混杂因素包括年龄、性别、人种、批次等。
 方法在文章method部分的Differential expression analyses里面描述。
 结果图可以放两个热图进行比较
-##Requirement description
+Requirement description
 Remove confounding factors such as age, gender, race, batch, etc.
 that affect RNAseq expression levels. The method is described in the
 differential expression analyses section of the article. The result
@@ -38,7 +45,7 @@ may be more stable.
 that remove batch effects while retaining group differences may lead to
 exaggerated confidence in downstream analyses，
 https://t.zsxq.com/3j2beI6
-##Application scenarios
+Application scenarios
 Used for differential expression analysis. Large scale sequencing
 data is often mixed with various covariates, which affect differential
 gene screening. There are two common strategies:
@@ -54,8 +61,9 @@ https://t.zsxq.com/3j2beI6
 >
 环境设置
 使用国内镜像安装包
-##Environment settings
+Environment settings
 Use domestic image installation package
+source("install_dependencies.R")
 # 设置R包安装源为清华大学镜像（Set R package repository to Tsinghua University mirror）
 # 这将加速R包的下载过程（This will speed up the download process of R packages）
 options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
@@ -163,7 +171,7 @@ multilinearDE <- function(emat = NULL, sinfo = NULL, res.var = NULL, cov.var = N
 输入文件
 easy_input_expr.txt，表达矩阵。
 easy_input_info.txt，样品信息，包含亚型、年龄、性别。
-##Input file
+Input file
 easy_input_expr.txt， Expression matrix.
 easy_input_info.txt， Sample information, including subtype, age, and
 gender.
@@ -190,7 +198,7 @@ sinfo$class <- ifelse(sinfo$`TCGA Subtype` == "immune",1,0)
 # 仅保留有完整样本信息的样本对应的表达数据（Keep only samples with complete information）
 emat <- expr[,rownames(sinfo)]
 多变量逻辑回归确定显著转录本
-##Multivariate logistic regression to determine significant
+Multivariate logistic regression to determine significant
 transcripts
 # 创建年龄的二次项作为额外协变量（Create age squared as an additional covariate）
 # 用于捕捉年龄与基因表达之间的非线性关系（To capture potential nonlinear effects of age）
@@ -215,7 +223,7 @@ write.table(outTab,
             quote = F)
 开始画图
 通过绘制热图查看分型效果
-##Start drawing
+Start drawing
 View the typing effect by drawing a heat map
 # 筛选差异表达基因（Select differentially expressed genes）
 # 筛选标准：FDR < 0.05 且 绝对log2FC > 2（Criteria: FDR < 0.05 and absolute log2 fold change > 2）

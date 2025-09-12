@@ -2,6 +2,13 @@ FigureYa227boxdensity
 FigureYa227boxdensity
 Xiaofan Lu
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
 用高逼格的方式展示两组之间对于索拉菲尼药物治疗敏感性的差异。。也是出自上次那个药物敏感的文章。。
 Requirement Description
@@ -38,6 +45,7 @@ and scatter plot.
 使用国内镜像安装包
 Environment settings
 Use the domestic mirror installation package
+source("install_dependencies.R")
 options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
 options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
 加载包 load packages

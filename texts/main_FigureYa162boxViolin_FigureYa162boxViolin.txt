@@ -10,7 +10,7 @@ Framework for Enhancing Biomedical Data Interpretation and Research
 Efficiency. iMetaMed.
 https://doi.org/10.1002/imm3.70005
 需求描述
-#Description of requirements
+Description of requirements
 绘制两组数据关于某一连续变量的箱型 + 小提琴图 Draw box + violin plots
 of two sets of data on a continuous variable
 出自
@@ -42,6 +42,7 @@ https://mp.weixin.qq.com/s/kd-WbPXPrg6K2RFNydK-mQ
 环境设置
 Environment Setup
 使用国内镜像安装包 Use a domestic mirror to install the package
+source("install_dependencies.R")
 options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
 options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 加载包 Load the package

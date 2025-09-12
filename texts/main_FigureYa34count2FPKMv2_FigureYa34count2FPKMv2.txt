@@ -2,12 +2,19 @@ FigureYa34 count2FPKMv2
 FigureYa34 count2FPKMv2
 Ying Ge, Yuan Tang; Yijing Chen
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
-requirement description
+Requirement description
 RNA-seq read count转换成FPKM。
 RNA-seq read count converted to FPKM.
 应用场景
-application scenario
+Application scenario
 只能拿到RNA-seq数据的read count，想转换成FPKM。
 注：FPKM的计算方式最好是直接从原始的FASTQ文件开始计算
 You can only get the read count of the RNA-seq data and want to
@@ -73,7 +80,7 @@ and
 FigureYa23 count2TPM
 .
 先下载read count，用于转换成FPKM
-download read count first, and use it to convert to FPKM
+Download read count first, and use it to convert to FPKM
 library(TCGAbiolinks)
 expquery <- GDCquery(project = "TCGA-LIHC", 
                 data.category = "Transcriptome Profiling",
@@ -121,13 +128,14 @@ write.csv(expMatrix, "TCGA_FPKM.csv", quote=F, row.names=T)
 Input data
 每行一个基因，每列一个sample
 One gene per row, one sample per column
+source("install_dependencies.R")
 expMatrix <- read.csv("easy_input.csv",
                         row.names = 1, header = TRUE, as.is = T)
 #查看前三个基因的read count
 #view the read count of the first three genes
 expMatrix[1:3,]
 read count转FPKM
-read count to FPKM
+Read count to FPKM
 首先要保证表达矩阵的行名和存放基因长度向量的名字一致,
 这一步非常重要。
 It is very important to make sure that the names of the rows of the

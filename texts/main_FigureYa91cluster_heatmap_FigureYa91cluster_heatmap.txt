@@ -2,11 +2,18 @@ FigureY91cluster_heatmap
 FigureY91cluster_heatmap
 Xiaofan Lu, Taojun Ye
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
 把cluster画到heatmap的顶部，相当于用颜色代替分类的树形结构。
 导出聚类后的样本顺序。
 让热图中的样本按照文件中的顺序排序。
-##Requirement description
+Requirement description
 Draw the cluster to the top of the heatmap, which is equivalent
 to using colors instead of a hierarchical structure for
 classification.
@@ -21,7 +28,7 @@ https://www.aging-us.com/article/101829/text
 为基因表达量、量化的免疫浸润等指标做聚类，突出展示分成2类、3类（也可以更多类）的效果。
 导出聚类后的样本顺序，用于后续分析，例如在cluster之间做生存分析。
 让热图中的样本按照文件中的顺序排序，例如让样本按照亚型、表型排序。
-##Application scenarios
+Application scenarios
 Cluster indicators such as gene expression levels and quantified
 immune infiltration, highlighting the effects of dividing into 2 or 3
 categories (or more categories).
@@ -31,13 +38,14 @@ Sort the samples in the heatmap in the order specified in the
 file, such as by subtype or phenotype.
 环境设置
 使用国内镜像安装包
-##Environment settings
+Environment settings
 Use domestic image installation package
 options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
 options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 install.packages("ClassDiscovery")
 加载包
 library packages
+source("install_dependencies.R")
 # 加载用于外部聚类分析的R包
 # Load the R package for external clustering analysis
 library(ClassDiscovery)
@@ -56,7 +64,7 @@ Sys.setenv(LANGUAGE = "en")
 # Disable automatic conversion of strings to factors
 options(stringsAsFactors = FALSE)
 输入文件
-##Input file
+Input file
 # 从CSV文件读取表达矩阵数据，设置第一列为行名，禁用列名检查和字符串转因子
 # Read expression matrix data from a CSV file, set the first column as row names, disable column name checking and string-to-factor conversion
 mat <- read.csv("easy_input_expr.csv", row.names = 1, check.names = F, stringsAsFactors = F)
@@ -76,7 +84,7 @@ head(annCol)
 annCol[is.na(annCol) | annCol == ""] <- "N/A"
 开始画图
 配置注释的颜色列表
-##Start drawing
+Start drawing
 Configure the color list for annotations
 # 创建一个空列表用于存储注释列的配色方案，这些配色将显示在热图上方
 # Create an empty list to store color schemes for annotation columns, which will be displayed above the heatmap

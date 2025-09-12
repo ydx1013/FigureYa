@@ -2,8 +2,15 @@ FigureYa13GSEA_JavaV2_update
 FigureYa13GSEA_JavaV2_update
 Guangchuang Yu; Ying Ge, Yijing Chen
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
-requirement description
+Requirement description
 已经用
 Java版GSEA
 做出了GSEA分析结果，想自己画图。
@@ -33,7 +40,7 @@ https://thorax.bmj.com/content/69/1/14
 from
 https://thorax.bmj.com/content/69/1/14
 应用场景
-application scenario
+Application scenario
 以Java版GSEA的输出结果作为输入，DIY结果图，把多个通路画到一张图里。
 如果你用clusterProfiler做的GSEA分析，想要DIY结果图，把多个通路画到一张图，或者把同一通路的多组对比画在一张图上，请用FigureYa60GSEA_clusterprofiler。
 Using the output of the Java version of GSEA as input, do-it-yourself
@@ -43,9 +50,10 @@ result plots, plot multiple pathways to a single plot, or plot multiple
 comparisons of the same pathway to a single plot, use
 FigureYa60GSEA_clusterprofiler.
 环境设置
-environment setting
+Environment setting
 使用国内镜像安装包
 use the domestic mirror installation package
+source("install_dependencies.R")
 options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
 options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 加载包
@@ -57,7 +65,7 @@ library(gridExtra)
 library(grid)
 library(cowplot)
 输入数据的准备
-preparation of input data
+Preparation of input data
 Java版GSEA的输出文件夹中有每个通路的Excel文件，把你感兴趣的通路的Excel文件复制到当前文件夹。
 读取xls文件，合并
 Output folder of GSEA for Java has an Excel file for each pathway,

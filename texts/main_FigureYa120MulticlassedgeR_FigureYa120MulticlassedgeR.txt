@@ -2,9 +2,16 @@ FigureYa120MulticlassedgeR
 FigureYa120MulticlassedgeR
 Xiaofan Lu, Taojun Ye
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
 用edgeR实现多组差异分析。能用来替换FigureYa109SubtypeGSEA中的配对差异表达过程（亚型数目>=3），并跟它无缝对接。
-##Requirement description
+Requirement description
 Implement multi group difference analysis using EdgeR. Can be used to
 replace the paired differential expression process (subtype
 number>=3) in FigureYa109SubtypeGSEA and seamlessly integrate with
@@ -20,7 +27,7 @@ https://bioconductor.org/packages/release/bioc/vignettes/edgeR/inst/doc/edgeRUse
 RNA-Seq of pathogen inoculated arabidopsis with batch effects
 这里针对read
 count表达矩阵作为输入的情况，还可以用FigureYa118MulticlassDESeq2。如果你的数据是FPKM/RPKM或芯片数据，请参考FigureYa119Multiclasslimma。
-##Application scenarios
+Application scenarios
 Based on Figure Ya109 subtype GSEA, analyze the differentially
 expressed genes between each group and other samples, and identify
 subtype specific enriched pathways;
@@ -38,7 +45,7 @@ FigureYa118MulticlassDESeq2 can also be used. If your data is FPKM/RPKM
 or chip data, please refer to FigureYa119 Multiclasslimma.
 环境设置
 使用国内镜像安装包
-##Environment settings
+Environment settings
 Use domestic image installation package
 options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
 options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
@@ -53,6 +60,7 @@ options(stringsAsFactors = FALSE) #禁止chr转成factor
 Customize the function to compare the differences between each group
 and other samples separately. If there are more groups, simply add them
 according to the pattern.
+source("install_dependencies.R")
 # 创建需要配对比较的列表 [Create a list for pairwise comparisons]
 # 参数：group - 样本分组信息，命名向量，格式为样本名=分组名 [Parameter: group - Sample grouping information, named vector with format sample_name=group_name]
 createList <- function(group=NULL) {
@@ -161,7 +169,7 @@ twoclassedgeR <- function(res.path=NULL, countsTable=NULL, prefix=NULL, complist
   options(warn=0)  # 恢复默认警告级别 [Restore default warning level]
 }
 输入文件
-##Input file
+Input file
 # 读取read count表达矩阵 [Read read count expression matrix]
 # 参数说明：
 # "easy_input_counts.txt" - 输入文件路径 [Input file path]
@@ -183,7 +191,7 @@ n.sub.label  # 打印亚型名称 [Print subtype names]
 n.sub <- length(table(subt$TCGA_Subtype))
 n.sub  # 打印亚型个数 [Print number of subtypes]
 开始分析
-##Start analyzing
+Start analyzing
 在当前文件夹会生成3个文件，可以作为FigureYa116supervisedCluster的输入：
 SKCM_edgeR_test_result.immune_vs_Others.txt
 SKCM_edgeR_test_result.keratin_vs_Others.txt

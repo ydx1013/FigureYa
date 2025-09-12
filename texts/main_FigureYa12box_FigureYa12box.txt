@@ -2,8 +2,15 @@ FigureYa12 box
 FigureYa12 box
 Guangchuang Yu; Ying Ge, Yijing Chen
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
-requirement description
+Requirement description
 用R代码画出paper里的图
 Drawing plots in paper with R code
 图1
@@ -15,7 +22,7 @@ https://www.frontiersin.org/articles/10.3389/fphys.2018.00399/full
 from
 https://www.frontiersin.org/articles/10.3389/fphys.2018.00399/full
 使用场景
-usage scenario
+Usage scenario
 用boxplot展示基因表达量分布，同时计算p value。
 Use a boxplot to show the distribution of gene expression and
 calculate the p-value.
@@ -33,6 +40,10 @@ It includes stage1, stage2, and stage3, with 10 samples each. Stage
 is indicated by
 _number
 following the sample name.
+source("install_dependencies.R")
+require(ggplot2)
+require(tidyr)
+require(cowplot)
 d <- read.csv("easy_input_expr.csv", row.names=1)
 dim(d)
 head(d)

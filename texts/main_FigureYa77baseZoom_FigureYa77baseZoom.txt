@@ -2,9 +2,16 @@ FigureYa77baseZoom
 FigureYa77baseZoom
 Haitao Wang, Taojun Ye
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
 用base plot画出C图这种zoom in效果的图。
-##Requirement description
+Requirement description
 Use a base plot to draw a C chart with zoom in effect.
 出自
 https://www.sciencedirect.com/science/article/pii/S0092867415011952
@@ -14,7 +21,7 @@ https://www.sciencedirect.com/science/article/pii/S0092867415011952
 有时会遇到这样的问题：点的分布很不均匀，堆在一起的点很难标label。
 解决办法：画整体的同时画局部，就能看清堆在一起的点了，写label也很清晰。
 示例图用于展示多个基因在两组中各变异类型所占的百分比，用颜色表示变异类型，泡泡大小表示pvalue，泡泡所在的位置偏左上说明在IDC中占比高于ILC，反之亦然。该图不仅限于基因。
-##Application scenarios
+Application scenarios
 Sometimes we encounter such problems: the distribution of points is
 very uneven, and it is difficult to label the points stacked
 together.
@@ -27,7 +34,8 @@ and bubble sizes indicating p-value. The position of the bubble towards
 the upper left indicates a higher proportion in IDC than in ILC, and
 vice versa. This map is not limited to genes.
 环境设置
-##Environment settings
+Environment settings
+source("install_dependencies.R")
 # 设置系统环境变量，将语言设置为英文，确保R的报错信息以英文形式显示
 # Set system environment variable to display R error messages in English
 Sys.setenv(LANGUAGE = "en") 
@@ -43,7 +51,7 @@ easy_input.csv，提供分组、个数及总数（用于计算百分比）、pva
 最后一列是pvalue。
 示例数据整理自例文的Table 1. Recurrently Mutated Genes in Breast
 Cancer，这里只用了mutation，没加CNV，因此泡泡的位置跟原图有出入。
-##Input file
+Input file
 easy_input.csv， Provide grouping, number, and total (for calculating
 percentages) pvalue：
 -The first column is the gene name; -The second column is grouping;
@@ -63,14 +71,14 @@ dat2 <- read.csv("easy_input.csv")
 # View the basic structure and content of the data, showing the number of rows, columns, and the first few lines of the dataset
 head(dat2)
 把各列数据整理成画图所需的格式
-##Organize the data in each column into the format required for
+Organize the data in each column into the format required for
 drawing
 开始画图
 Zoom in的效果，也就是画一个整体，再画一个局部。
-##Start drawing
+Start drawing
 The effect of Zoom in is to draw a whole and then a part.
 画局部
-###Draw a partial picture###
+Draw a partial picture
 # 设置图形布局，一行两列，并调整边距为底部留出图例空间
 # Set graphics layout to 1 row and 2 columns, adjust margins to leave space for legends at the bottom
 par(mfrow=c(1,2),mar = par()$mar + c(3,0,0,3)) 

@@ -2,6 +2,13 @@ FigureYa196PanPie
 FigureYa196PanPie
 Xiaofan Lu
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
 把分组的数据直接用扇形图来展示不同临床预后分期的分布差异，看起来很漂亮。
 Requirement Description
@@ -34,6 +41,7 @@ https://k.koudai.com/Wi1xos9X
 Environment Configuration
 Use domestic mirrors for package installation to accelerate downloads
 and bypass international network restrictions.
+source("install_dependencies.R")
 options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
 options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
 install.packages(c("dplyr", "ggplot2"))
@@ -43,7 +51,7 @@ library(ggplot2)
 Sys.setenv(LANGUAGE = "en") #显示英文报错信息 # error messages are displayed in English
 options(stringsAsFactors = FALSE) #禁止chr转成factor # It is forbidden to convert chr into factor
 输入文件
-input files
+Input files
 easy_input.txt
 第一列sample
 ID，每行一个sample，扇形大小对应每一类sample的数量；
@@ -80,7 +88,7 @@ for (i in vname) {
   pie.low[[i]] <- pie.dat[which(pie.dat$Var1 == "Low"),]
 }
 开始画图
-start plotting
+Start plotting
 用base
 plot画图，如果你要查看某部分代码的效果，请从plot所在的行到当前位置一起，整段运行。
 f you want to preview the output of a specific code segment, run the

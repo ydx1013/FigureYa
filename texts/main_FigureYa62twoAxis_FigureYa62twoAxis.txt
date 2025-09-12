@@ -2,8 +2,15 @@ FigureYa62twoAxis
 FigureYa62twoAxis
 Xiaojian Liu; Ying Ge, Yijing Chen
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
-requirement description
+Requirement description
 复现文中的线性回归，画出双坐标轴的图
 Reproduce the linear regression in the text and draw a dual-axis
 graph.
@@ -12,7 +19,7 @@ https://onlinelibrary.wiley.com/doi/full/10.1111/cas.13744
 from
 https://onlinelibrary.wiley.com/doi/full/10.1111/cas.13744
 应用场景
-application scenario
+Application scenario
 同时计算和展示3组数据的相关性，A vs. B 和 A vs. C。
 例如例文中同时展示B7-H3表达跟mir-29a的相关性，以及跟甲基化的相关性。由此看出：In
 IDH‐wild grade II gliomas, B7‐H3 expression seemed to be downregulated
@@ -26,7 +33,7 @@ it can be seen: In IDH‐wild grade II gliomas, B7‐H3 expression seemed to
 be downregulated by both methylation on cg10586317 and microRNA‐29a,
 rationalizing the paradox in grade II gliomas with wild‐type IDH.
 环境设置
-environment setting
+Environment setting
 使用国内镜像安装包
 use the domestic mirror installation package
 options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
@@ -34,6 +41,7 @@ options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 install.packages("ggplot2")
 加载包
 load package
+source("install_dependencies.R")
 library(ggplot2)
 library(gtable) #方法二要用到 Method 2 is to be used
 library(grid) #方法二要用到 Method 2 is to be used
@@ -41,7 +49,7 @@ library(grid) #方法二要用到 Method 2 is to be used
 Sys.setenv(LANGUAGE = "en") #显示英文报错信息 display English error messages
 options(stringsAsFactors = FALSE) #禁止chr转成factor prohibit the conversion of chr to factor
 参数设置
-parameter setting
+Parameter setting
 输入文件
 Input file
 包含三列：对应X轴和两个Y轴
@@ -195,7 +203,7 @@ g2 <- ggplot_gtable(ggplot_build(p2))
 head(g1$layout)
 head(g2$layout)
 重新画图
-redraw the picture
+Redraw the picture
 提示：
 选择从grid.newpage()到任意一个grid.draw(g)之间的部分一起运行，就会看到这部分代码的画图效果。
 Hint:

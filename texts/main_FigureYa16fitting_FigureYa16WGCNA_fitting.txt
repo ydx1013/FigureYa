@@ -2,8 +2,15 @@ FigureYa16 WGCNA_fitting
 FigureYa16 WGCNA_fitting
 Ying Ge; Yijing Chen
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
-requirement description
+Requirement description
 WGCNA得到模块以后，用模块包含的基因表达量做拟合曲线。
 After WGCNA gets the module, a fitting curve is made with the
 expression of the genes contained in the module.
@@ -12,7 +19,7 @@ http://www.pnas.org/content/112/43/13360
 from
 http://www.pnas.org/content/112/43/13360
 使用场景
-usage scenario
+Usage scenario
 本质是用一条趋势线代表多个点或线的变化趋势，多用于时间序列数据。
 场景一：WGCNA得到的模块内的基因的变化趋势
 场景二：聚类分析得到的cluster内的基因的变化趋势
@@ -39,11 +46,12 @@ Draw one module at a time
 In this input data set, there are 5 samples for each cell, pretending
 to be 5 time points in 4 replications, and taking the average of the top
 30 genes in the 4 replications.
+source("install_dependencies.R")
 specmod<-read.csv("pink.csv",row.names = 1)[1:30,]
 t<-data.frame(tp=1:5,tpm_mean = log2(c(mean(as.matrix(specmod[,1:4])),mean(as.matrix(specmod[,5:8])),mean(as.matrix(specmod[,9:12])),mean(as.matrix(specmod[,13:16])),mean(as.matrix(specmod[,17:20])))))
 head(t)
 画图
-draw plots
+Draw plots
 library(ggplot2)
 ggplot(t,aes(x = tp,y = tpm_mean)) +
   geom_smooth(color="black") + #拟合曲线的颜色 color of the fitted curve
@@ -81,7 +89,7 @@ df$module<-unlist(strsplit(result$.id,split = ".csv"))
 row.names(df)<-df$X
 df1<-df[2:22]
 画图
-draw plots
+Draw plots
 library(ggplot2)
 plist=list()
 tag = 0

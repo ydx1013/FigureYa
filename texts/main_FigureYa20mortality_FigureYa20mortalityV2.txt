@@ -2,8 +2,15 @@ FigureYa20 mortality
 FigureYa20 mortality
 Guangchuang Yu; Ying Ge, Yijing Chen
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
-requirement description
+Requirement description
 用R代码画出paper里的图。
 Use R code to draw the plot in paper.
 出自
@@ -11,7 +18,7 @@ http://ascopubs.org/doi/abs/10.1200/JCO.2010.29.5907?url_ver=Z39.88-2003&rfr_id=
 from
 http://ascopubs.org/doi/abs/10.1200/JCO.2010.29.5907?url_ver=Z39.88-2003&rfr_id=ori:rid:crossref.org&rfr_dat=cr_pub%3dpubmed
 使用场景
-usage scenario
+Usage scenario
 根据肿瘤大小分组，以存活时间作为输入，计算死亡率。
 展示死亡率与肿瘤大小的关系。
 还可以用来展示转移率与肿瘤大小的关系。
@@ -22,6 +29,7 @@ It can also be used to demonstrate the relationship between
 metastasis rate and tumor size.
 输入数据及处理
 Input data and processing
+source("install_dependencies.R")
 x = read.csv("easy_input.csv")
 head(x)
 开始画图

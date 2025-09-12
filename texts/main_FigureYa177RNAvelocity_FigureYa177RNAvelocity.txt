@@ -1,30 +1,54 @@
 FigureYa177RNAvelocity
 FigureYa177RNAvelocity
+Jianing Gao
 2025-5-20
-Author：Jianing Gao
-Reviewer：Ying Ge
-需求描述Requirement Description
-使用velotyto对单细胞数据进行RNA velocity分析Use VeloTyto to perform RNA velocity analysis on single-cell data
-出自from
+需求描述
+Requirement
+使用velotyto对单细胞数据进行RNA velocity分析 RNA velocity analysis of
+single-cell data was performed using velotyto
+出自
 https://doi.org/10.1172/jci.insight.131092
-Figure 3. Transcriptional activity in aging cardiac fibroblasts. (D) Transcriptional activity was estimated by measuring the ratio between unspliced and spliced mRNAs. This so-called RNA velocity is represented by high-dimensional vectors;
-the longer the arrow in the plot, the higher the transcriptional activity
-as seen in the extremities of states h, j, and l plot containing mostly old cells.
-应用场景Application Scenarios
-RNA velocity（RNA速率），即RNA丰度的时间导数，可以通过区分标准单细胞RNA测序中未剪接和剪接的mRNA来预测估计。研究人员认为RNA速率是一个矢量，能预测未来几小时的单细胞状态。RNA速率将极大地帮助研究人员分析发育谱系和细胞动力学。RNA velocity, the temporal derivative of RNA abundance, can be estimated by distinguishing unspliced from spliced mRNA in standard single-cell RNA sequencing. Researchers believe that RNA velocity is a vector that can predict the state of a single cell several hours into the future. RNA velocity will greatly aid researchers in analyzing developmental lineages and cellular dynamics.
-可以从fastq开始运行，也可以从matrix开始运行。You can run this analysis from either fastq or matrix.
-下载原始数据Download Raw Data
-原始数据在此Raw data is available here.
+fromhttps://doi.org/10.1172/jci.insight.131092
+Figure 3. Transcriptional activity in aging cardiac fibroblasts. (D)
+Transcriptional activity was estimated by measuring the ratio between
+unspliced and spliced mRNAs. This so-called RNA velocity is represented
+by high-dimensional vectors;
+the longer the arrow in the plot,
+the higher the transcriptional activity
+as seen in the
+extremities of states h, j, and l plot containing mostly old cells.
+应用场景
+Application Scenarios
+RNA
+velocity（RNA速率），即RNA丰度的时间导数，可以通过区分标准单细胞RNA测序中未剪接和剪接的mRNA来预测估计。研究人员认为RNA速率是一个矢量，能预测未来几小时的单细胞状态。RNA速率将极大地帮助研究人员分析发育谱系和细胞动力学。
+RNA velocity, the time derivative of RNA abundance, can be predicted and
+estimated by distinguishing between unspliced and spliced mrnas in
+standard single-cell RNA sequencing. Researchers believe that the RNA
+rate is a vector that can predict the state of a single cell in the
+coming hours. The RNA rate will greatly assist researchers in analyzing
+developmental lineages and cell dynamics.
+可以从fastq开始运行，也可以从matrix开始运行。 It can start running
+from fastq or from matrix.
+下载原始数据
+Download the original data
+原始数据在此
+in
+the original data
 直接运行script文件夹下的
 01-download.sh
-下载数据。Download the data by running 01-download.sh in the script folder.
-环境设置Environment Setup
-见See
+下载数据。 Run
+‘01-download.sh’ directly in the script folder to download the data.
+环境设置
+Environment Setup
+见
 scripts/s0_createEnv.Rmd
-文章的环境配置如下The environment configuration for this article is as follows.
+See
+‘scripts/s0_createEnv.Rmd’
+文章的环境配置如下 The environment configuration of the article is as
+follows
 软件Software
-版本Versions
-本教程的版本This tutorial's version
+版本Version
+本教程的版本The version of this tutorial
 Seurat
 2.2.0
 2.2.0
@@ -37,32 +61,60 @@ velocyto.R
 cellranger
 2.1.0
 3.1.0
-安装和配置cellrangerInstall and Configure Cellranger
-cellranger安装Cellranger Installation
+安装和配置cellranger
+Install and configure cellranger
+cellranger安装
+Cellranger Installation
 参考
 10X官方文档
-，直接下载最新版安装。Refer to the official 10X documentation and download the latest version directly for installation.
+，直接下载最新版安装。
+Reference [10] official document x (
+https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/installation
+),
+Download the latest version directly and install it.
 Make reference
-cellranger官网有做好的mm10的reference，但是作者没有直接采用。The Cellranger website has a reference for mm10, but the author did not use it directly.
-Reads were aligned to GRCm38 reference genome, and gene annotation was extracted from gencode vM12. Intronic mapped reads were assumed to be part of pre-mRNAs; therefore, they were also assigned to the respective gene. Because Cell Ranger counts only those reads that map to exons, we created a
+cellranger官网有做好的mm10的reference，但是作者没有直接采用。 The
+cellranger official website has a reference for the well-made mm10, but
+the author did not directly adopt it.
+Reads were aligned to GRCm38 reference genome, and gene annotation
+was extracted from gencode vM12. Intronic mapped reads were assumed to
+be part of pre-mRNAs; therefore, they were also assigned to the
+respective gene. Because Cell Ranger counts only those reads that map to
+exons, we created a
 modifed gene transfer format file
-, which
-denotes each gene transcript locus as 1 exon and rebuilt a Cell Ranger reference (cellranger mkref).
-This step was necessary because of a high number of pre-mRNA in nuclei.
-作者采用的是基因组序列The authors used the genomic sequence
+,
+which
+denotes each gene transcript locus as 1 exon and rebuilt a
+Cell Ranger reference (cellranger mkref).
+This step was
+necessary because of a high number of pre-mRNA in nuclei.
+作者采用的是基因组序列
 GRCm38
-，基因注释是 gencode vM12 for gene annotation.
+，基因注释是
+gencode
+vM12
+The author USES a genome sequence GRCm38, Gene annotation is
 gencode vM12
-本文采用的是single-nucleus sequencing，为了将intron区域的counts也计入表达，作者重新制作了基因GFT文件。将整个转录本作为1个exon来看待。This paper employed single-nucleus sequencing. To include counts of intron regions in the expression data, the authors recreated the gene GTF files. The entire transcript was treated as a single exon.
-关于这一点，10X官方网站上是这样说的：The 10X official website states this:
-To be considered for transcriptome alignment, genes must have annotations with feature type ‘exon’ (column 3) in the GTF file.
-下面是gencode vM12的前8列，我们需要把所有transcript都提取出来，然后改成exonBelow are the first eight columns of gencode vM12. We need to extract all transcripts and convert them to exons.
+本文采用的是single-nucleus
+sequencing，为了将intron区域的counts也计入表达，作者重新制作了基因GFT文件。将整个转录本作为1个exon来看待。
+In this paper, single-nucleus sequencing was adopted. To include the
+counts in the intron region in the expression as well, the authors
+remade the gene GFT file. View the entire transcript as one exon.
+关于这一点，10X官方网站上是这样说的： Regarding this point, the 10X
+official website states as follows:
+To be considered for transcriptome alignment, genes must have
+annotations with feature type ‘exon’ (column 3) in the GTF file.
+下面是gencode
+vM12的前8列，我们需要把所有transcript都提取出来，然后改成exon The
+following are the first 8 columns of gencode vM12. We need to extract
+all the transcripts and then change them to exon
 chr1    HAVANA  gene    3073253 3074322 .   +   .
 chr1    HAVANA  transcript  3073253 3074322 .   +   .
 chr1    HAVANA  exon    3073253 3074322 .   +   .
 chr1    ENSEMBL gene    3102016 3102125 .   +   .
 chr1    ENSEMBL transcript  3102016 3102125 .   +   .
-用一个简单的python脚本解决这个问题。Solve this problem with a simple python script.
+用一个简单的python脚本解决这个问题。 Solve this problem with a simple
+python script.
 with open("gencode.vM12.annotation.gtf") as fi:
     with open("gencode.vM12.transcripts.gtf", "w") as fo:
         for line in fi:
@@ -74,14 +126,17 @@ with open("gencode.vM12.annotation.gtf") as fi:
                 fo.write("\t".join(line_list)+"\n")
             else:
                 pass
-下面来build index Let’s build index
+下面来build index Now let’s build the index
 cellranger mkref --genome="gencode_vM12" \
                  --fasta=GRCm38.p5.genome.fa \
                  --genes=gencode.vM12.transcripts.gtf \
                  --nthreads 8
-这一步大概需要32GB内存。设定为8个threads，大约需要1小时。This step requires approximately 32GB of memory. Using 8 threads, it takes about an hour.
-Indexing a typical human 3Gb FASTA file often takes up to 8 core hours and requires 32 GB of memory.
-这一步的结果如下The results of this step are as follows
+这一步大概需要32GB内存。设定为8个threads，大约需要1小时。 This step
+requires approximately 32GB of memory. Set it to 8 threads, it will take
+approximately 1 hour.
+Indexing a typical human 3Gb FASTA file often takes up to 8 core
+hours and requires 32 GB of memory.
+这一步的结果如下 The result of this step is as follows
 .
 ├── gencode_vM12
 │   ├── fasta
@@ -108,16 +163,23 @@ Indexing a typical human 3Gb FASTA file often takes up to 8 core hours and requi
 │       ├── sjdbList.fromGTF.out.tab
 │       ├── sjdbList.out.tab
 │       └── transcriptInfo.tab
-安装velocyto.py  Installing velocyto.py
-利用Anaconda进行虚拟环境和包管理Using Anaconda for virtual environments and package management
-下载reference文件Download the reference file
-genes.gtf，利用gencode vM12版本(见上一步Make reference)  genes.gtf, using the gencode vM12 version (see the previous step, Make reference)
+安装velocyto.py
+Install velocyto.py
+利用Anaconda进行虚拟环境和包管理 Manage virtual environments and
+packages using Anaconda
+下载reference文件 Download the reference file
+genes.gtf，利用gencode vM12版本(见上一步Make reference) genes.gtf,
+using gencode vM12 version (see Make reference in the previous
+step)
 mm10_rmsk.gtf
-安装相关R包Install related R packages
-详见See
+安装相关R包
+Install the relevant R packages
+详见
 s0_createEnv.Rmd
-velocyto.R
-在Rstudio中进行安装Install in RStudio
+For details, see
+‘s0_createEnv.Rmd’
+Velocyto.R
+在Rstudio中进行安装 Install it in Rstudio
 if (!requireNamespace("devtools", quietly = TRUE))
     install.packages("devtools")
 
@@ -130,13 +192,14 @@ Seurat
 devtools::install_version(package = 'Seurat', version = package_version('2.2.0'))
 Monocle2
 BiocManager::install("monocle")
-上游分析Upstream analysis
-cellranger count
+上游分析
+Upstream Analysis
+Cellranger count
 input
 : fastq
 output
 : bam/gene expression matrix (mtx)
-这是这个项目的文件树This is the file tree for this project
+这是这个项目的文件树 This is the file tree of this project
 .
 ├── data
 │   ├── fastq
@@ -161,7 +224,8 @@ output
     ├── E-MTAB-7869.sdrf.txt
     ├── fastq.txt
     └── run_parallel.py
-fastq文件夹的组织形式如下The fastq folder is organized as follows
+fastq文件夹的组织形式如下 The organization form of the fastq folder
+is as follows
 fastq/
 ├── O1
 │   ├── O1_Sample_SaS_CB_002_S4_L006_I1_001.fastq.gz
@@ -271,27 +335,33 @@ fastq/
     ├── Y3_SaS_CB_004_S8_L006_I1_001.fastq.gz
     ├── Y3_SaS_CB_004_S8_L006_R1_001.fastq.gz
     └── Y3_SaS_CB_004_S8_L006_R2_001.fastq.gz
-关于cellranger fastq文件的命名规则：Cellranger fastq file naming convention:
+关于cellranger fastq文件的命名规则： Regarding the naming rules for
+cellranger fastq files:
 [Sample Name] [Sample Index] [Lane ID] [Read Type]
-举个例子：For example:
+举个例子： For example:
 Y3_SaS_CB_004_S5_L006_R1_001.fastq.gz
 Sample Name = Y3_SaS_CB_004
 Sample Index = S5
 Lane ID = L006
 Read Type = R1
-以此样本为例，cellranger count的命令如下：Taking this sample as an example, the cellranger count command is as follows:
-# 在data/文件夹下# In the data/ folder
+以此样本为例，cellranger count的命令如下： Take this sample as an
+example. The command for cellranger count is as follows:
+# 在data/文件夹下
+# Under the data/ folder
 cellranger count --id=young3 \
 --transcriptome=../ref/gencode_vM12 \
 --fastqs=fastq/Y3/ \
---sample=Y3_SaS_CB_004 \ # 注意这里必须是fastq文件的SampleName前缀名，cellranger会将带有这一前缀的文件看做同一个样本# Note that this must be the SampleName prefix of the fastq file; cellranger will treat files with this prefix as the same sample.
---localcores=16 \ # 指派16个核 # Assign 16 cores
+--sample=Y3_SaS_CB_004 \ # 注意这里必须是fastq文件的SampleName前缀名，cellranger会将带有这一前缀的文件看做同一个样本  # Note that this must be the SampleName prefix of the fastq file. 
+--localcores=16 \ # 指派16个核   # assigns 16 cores
 --expect-cells=10000 \ 
---localmem=64 # 指派64G内存# Assign 64GB of memory
-直接运行此脚本批量执行cellranger count命令Run this script to batch execute cellranger count commands.
-# 在script下运行此命令# Run this command in the script file
+--localmem=64 # 指派64G内存  # assigns 64G of memory
+直接运行此脚本批量执行cellranger count命令 Run this script directly
+to batch execute the cellranger count command
+# 在script下运行此命令
+# Run this command in script
 bash 02-count.sh
-这一步我们会得到6个样本的基因表达矩阵This step will generate the gene expression matrix for the six samples.
+这一步我们会得到6个样本的基因表达矩阵 In this step, we will obtain
+the gene expression matrices of six samples
 .
 ├── data
 │   ├── fastq
@@ -313,21 +383,31 @@ bash 02-count.sh
     ├── E-MTAB-7869.sdrf.txt
     ├── fastq.txt
     └── run_parallel.py
-velocyto.py run10x
+Velocyto.py run10x
 input
 : bam, gene.gtf, rmsk.gtf
 output
-: spliced and unspliced expression matrix (loom)
-这一步需要大约64G内存。This step requires approximately 64GB of memory.
+: spliced and unspliced expression matrix
+(loom)
+这一步需要大约64G内存。 This step requires approximately 64GB of
+memory.
 velocyto run10x -m ../ref/mm10_rmsk.gtf old1 ../ref/gencode.vM12.annotation.gtf
-直接执行script下的脚本，计算所有的样本。Directly execute the script under `script` to calculate all samples.
+直接执行script下的脚本，计算所有的样本。 Directly execute the script
+under “Script” to calculate all the samples.
 bash 03-velocyto.sh
-下游分析Downstream Analysis
+下游分析
+Downstream analysis
 首先执行script目录下的
 04-prepare_files.sh
-脚本，准备数据集。First, execute the `04-prepare_files.sh` script in the `script` directory to prepare the dataset.
+脚本，准备数据集。
+First, execute the ‘04-prepare_files.sh’ script in the script directory
+to prepare the dataset.
 bash 04-prepare_files.sh
-在data目录下面会多出matrix和loom两个文件夹，这两个文件夹分别放了cellranger的UMI counts matrix以及velocyto.py的spliced and unspliced matrix  Two folders, `matrix` and `loom`, will appear under the `data` directory. These folders contain the UMI count matrix from `cellranger` and the split and unspliced matrices from `velocyto.py`, respectively.
+在data目录下面会多出matrix和loom两个文件夹，这两个文件夹分别放了cellranger的UMI
+counts matrix以及velocyto.py的spliced and unspliced matrix Under the
+data directory, there will be two additional folders, matrix and loom.
+These two folders respectively hold the UMI counts matrix of cellranger
+and the spliced and unspliced matrix of velocyto.py
 data
 ├── loom
 │   ├── old1.loom
@@ -343,30 +423,58 @@ data
 │   ├── young1
 │   ├── young2
 │   └── young3
-data文件夹和ref文件夹已上传至微云The data and ref folders have been uploaded to Weiyun:
+data文件夹和ref文件夹已上传至微云
 https://share.weiyun.com/5ohZLOk
-数据预处理Data Preprocessing
-见See
+Data folder and ref
+folder has been uploaded to the tiny cloud <
+https://share.weiyun.com/5ohZLOk
+>
+数据预处理
+Data preprocessing
+见
 scripts/s1_prepare.Rmd
-去除批次效应Batch Effect Removal
-见See
+See
+‘scripts/s1_prepare.Rmd’
+去除批次效应
+Eliminate batch effect
+见
 scripts/s2_runCCA.Rmd
-降维聚类Dimensionality Reduction Clustering
-见See
+See ‘scripts/s2_runCCA.Rmd’
+降维聚类
+Dimensionality reduction clustering
+见
 scripts/s3_tsne_clustering.Rmd
-细胞类型鉴定Cell Type Identification
-见See
+See
+‘scripts/s3_tsne_clustering.Rmd’
+细胞类型鉴定
+Cell Type identification
+见
 scripts/s4_annotateCellType.Rmd
-差异基因分析Differential Gene Analysis
-见See
+See
+‘scripts/s4_annotateCellType.Rmd’
+差异基因分析
+Differential Gene Analysis
+见
 scripts/s5_DEG.Rmd
-轨迹分析Trajectory Analysis
-见See
+See ‘scripts/s5_DEG.Rmd’
+轨迹分析
+Trajectory Analysis
+见
 scripts/s6_trajectory.Rmd
-RNA动力学分析RNA Dynamics Analysis
-见See
+See ‘scripts/
+s6_trajector.rmd’
+RNA动力学分析
+RNA Kinetics Analysis
+见
 scripts/s7_RNAVelocity.Rmd
-结论Conclusion
-结果图跟文章有些出入，分析原因可能是细胞的数量、特征基因的选择差异导致的，不过文章的结论是成立的。The results and figures differ slightly from those in the article. This may be due to differences in cell number and the selection of signature genes. However, the conclusions in the article are valid.
+See
+‘scripts/s7_RNAVelocity.Rmd’
+结论
+Conclusion
+结果图跟文章有些出入，分析原因可能是细胞的数量、特征基因的选择差异导致的，不过文章的结论是成立的。
+The result graph differs somewhat from the article. The analysis
+suggests that the reasons might be due to differences in the number of
+cells and the selection of characteristic genes. However, the conclusion
+of the article holds true.
 Session Info
 sessionInfo()

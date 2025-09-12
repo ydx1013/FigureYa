@@ -2,8 +2,15 @@ FigureYa26 circos_R
 FigureYa26 circos_R
 Zhaodong Hao; Ying Ge, Yijing Chen
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
-requirement description
+Requirement description
 用R代码画出paper里的图。
 Use R code to draw the plot in paper.
 图2
@@ -34,7 +41,7 @@ https://academic.oup.com/brain/article-lookup/doi/10.1093/brain/awx233
 from
 https://academic.oup.com/brain/article-lookup/doi/10.1093/brain/awx233
 应用场景
-application scenario
+Application scenario
 如果展示A-B-C之间的关系，用sankey图就够了，见FigureYa25sankey。
 如果还要展示A-C的关系，直线排列的sankey图就不适合了。
 本图用圆圈和连线展示多个亚组之间的关系，包括且不限于基因、基因片段、亚型。
@@ -70,6 +77,7 @@ a Gene;
 Links.txt, links between Subgroups.
 If you want to highlight a gene or a link, find the corresponding
 line in the input file and change the color or height.
+source("install_dependencies.R")
 #组ID、组的起止位置
 #Group ID, start and end positions of the group
 GeneID <- read.table("Gene_ID.txt", header = TRUE, sep = "\t")

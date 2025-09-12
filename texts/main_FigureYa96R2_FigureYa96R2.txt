@@ -2,6 +2,13 @@ FigureYa96R2
 FigureYa96R2
 Shipeng Guo, Taojun Ye
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
 FigureYa92immune_gene只是1个基因跟免疫浸润的关系。我想要展示两个基因表达跟免疫浸润高/低的关系。
 左右两侧纵坐标分别展示两个基因的表达量；横坐标按其中一个基因排序，两种颜色展示高/低免疫浸润，可以用FigureYa71ssGSEA热图中对高/低免疫浸润的结果作为输入。
@@ -49,6 +56,7 @@ information, mutation information, etc.
 easy_input_expr.csv, gene expression matrix, columns are samples,
 rows are genes. Rows can also be transcripts or even clinical
 information.
+source("install_dependencies.R")
 # 免疫细胞的数据加载与预处理
 # Loading and preprocessing of immune cell data
 

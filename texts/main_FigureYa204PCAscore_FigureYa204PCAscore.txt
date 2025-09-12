@@ -2,6 +2,13 @@ FigureYa204PCAscore
 FigureYa204PCAscore
 Xiaofan Lu
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
 想众筹下这个文章的建模方法，不同于常规的lasso,
 cox回归系数与基因表达量的乘积，这篇文章采用Boruta降维，联合主成分分析第一主成分构建
@@ -29,6 +36,7 @@ calculated by PCA.
 使用国内镜像安装包
 Environment settings
 Use the domestic mirror installation package
+source("install_dependencies.R")
 options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
 options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
 install.packages('Boruta')

@@ -2,8 +2,15 @@ FigureYa39bar
 FigureYa39bar
 Ying Ge; Yijing Chen
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
-requirement description
+Requirement description
 图一：不同的癌症用不同的颜色展示
 Figure 1: Different cancers shown in different colors
 出自
@@ -23,7 +30,7 @@ https://www.nature.com/articles/s41591-018-0096-5
 The input data for the original article is the GSVA score; this code
 only mimics the form and does not include GSVA analysis.
 应用场景
-application scenario
+Application scenario
 场景一：各肿瘤某一指标的比较，例如图一的肿瘤缓解率。
 场景二：GSVA结果展示，类似于图二。
 Scenario 1: Comparison of a certain index across tumors, such as
@@ -35,6 +42,7 @@ Scenario 1
 Each ID is shown as a color
 输入数据
 Input data
+source("install_dependencies.R")
 df<-read.csv("easy_input1.csv")
 head(df)
 #按照score排序

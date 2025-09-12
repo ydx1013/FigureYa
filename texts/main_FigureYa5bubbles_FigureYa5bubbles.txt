@@ -2,14 +2,23 @@ FigureYa5 bubbles
 FigureYa5 bubbles
 Dekang Lv; Ying Ge, Yijing Chen
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
-requirement description
+Requirement description
 想模仿出2016年XieWei老师那篇Nature的泡泡图。 I want to imitate the
 bubble chart of Nature by Professor Xie Wei in 2016.
 出自
 http://dx.doi.org/10.1038/nature18606
+from
+http://dx.doi.org/10.1038/nature18606
 使用场景
-usage scenario
+Usage scenario
 同时展示pvalue和表达量，例如：
 场景一、展示motif的pvalue和motif对应的转录因子的表达量，就能看出哪个转录因子在哪个group里富集且表达量高，预示着它对细胞状态的改变（例如细胞分化、转移、应激）起关键调控作用。
 场景二、做基因功能富集分析时，展示富集的通路qvalue和基因数量或geneRatio。
@@ -52,6 +61,7 @@ gunzip GSE66582_stage_FPKM.txt.gz
 The input data needs to be formatted.
 输入数据的格式化
 Formatting input data
+source("install_dependencies.R")
 开始画图
 Start drawing
 你可以把自己的数据整理成easy_input.txt这样的格式，就可以跳过上面调整格式的步骤。

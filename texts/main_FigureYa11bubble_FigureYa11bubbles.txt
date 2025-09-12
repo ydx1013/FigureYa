@@ -2,24 +2,32 @@ FigureYa11bubbles
 FigureYa11bubbles
 Ying Ge; Yijing Chen
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
-requirement description
+Requirement description
 用R代码画出paper里的基因功能富集分析泡泡图，按对角线排列很好看
 热图用代码9解决，本代码解决泡泡图
 Use R code to draw the gene function enrichment analysis bubble map
 from the paper, it looks good arranged diagonally
 Heat maps are solved with code 9, this code solves bubble maps
 使用场景
-usage scenario
+Usage scenario
 场景一：展示基因功能富集分析的结果
 场景二：多维度的数据信息展示
 Scenario 1: Present the results of gene function enrichment
 analysis
 Scenario 2: Multi-dimensional data information display
 环境设置
-environment setting
+Environment setting
 使用国内镜像安装包
 use the domestic mirror installation package
+source("install_dependencies.R")
 options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
 options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 加载包

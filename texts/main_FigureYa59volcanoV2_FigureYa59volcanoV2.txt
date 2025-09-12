@@ -2,8 +2,15 @@ FigureYa59volcano V2
 FigureYa59volcano V2
 Haitao Wang; Ying Ge, Yijing Chen
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
-requirement description
+Requirement description
 画出像paper里这样美的火山图。
 关注“小丫画图”公众号（微信ID：FigureYa），回复“火山”，查看火山图在paper里的高级用法。
 Draw a beautiful volcano plot like this one in the paper.
@@ -14,12 +21,13 @@ https://www.nature.com/articles/s41467-018-06944-1
 from
 https://www.nature.com/articles/s41467-018-06944-1
 应用场景
-application scenario
+Application scenario
 展示两组之间总体的基因表达变化趋势。
 Demonstrate overall gene expression trends between the two
 groups.
 环境设置
-environment setting
+Environment setting
+source("install_dependencies.R")
 #使用国内镜像安装包
 #use the domestic mirror installation package
 #options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
@@ -65,7 +73,7 @@ x$gsym <- x$label
 selectgenes <- merge(selectedGeneID, x, by = "gsym")
 head(selectgenes)
 参数设置
-parameter setting
+Parameter setting
 点的颜色和虚线的位置都由下面的阈值决定，
 根据具体需求调整
 。

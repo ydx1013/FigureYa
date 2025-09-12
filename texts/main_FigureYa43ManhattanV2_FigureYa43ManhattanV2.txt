@@ -2,8 +2,15 @@ FigureYa43ManhattanV2
 FigureYa43ManhattanV2
 Zhaodong Hao; Ying Ge, Yijing Chen
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
-requirement description
+Requirement description
 画出paper里的曼哈顿图，文字标签好看些。
 Draw a picture of Manhattan from the paper, the text labels look
 better.
@@ -12,7 +19,7 @@ https://www.nature.com/articles/s41588-018-0045-8
 from
 https://www.nature.com/articles/s41588-018-0045-8
 应用场景
-application scenario
+Application scenario
 展示每条染色体上的SNP分布，通常作为外显子组测序文章里的第一个图。
 Show the distribution of SNP on each chromosome, usually presented as
 the first figure in an exon sequencing article.
@@ -25,6 +32,7 @@ the chromosome (which base), pvalue, type, gene name.
 Type and gene are not required, if the gene name can be provided, it
 should be written in the gene column; if different shapes are used to
 display different classes of SNPs, the type will be written in type.
+source("install_dependencies.R")
 library(dplyr)
 
 gwas <- read.csv("easy_input.csv", as.is = T)
@@ -55,7 +63,7 @@ chrom$chrx <- c(0,cumsum(as.numeric(chrom$chr_len))[-nrow(chrom)])
 chrx <- data.frame(chr = chrom$chr, chrx = chrom$chrx)
 chrx$chr <- factor(chrx$chr,levels=c(1:18,"X","Y"))#给染色体排序 order chromosomes
 计算每个SNP的坐标
-calculate the coordinates of each SNP
+Calculate the coordinates of each SNP
 #计算每条染色体在x轴上的坐标
 #calculate the coordinates of each chromosome on the x-axis
 gwas <- left_join(gwas, chrx, by=c("chr"="chr")) %>%
@@ -66,7 +74,7 @@ gwas <- left_join(gwas, chrx, by=c("chr"="chr")) %>%
 #take -log10(P-value) as the y-axis coordinate
 gwas$SNPy <- -log10(gwas$P_value)
 用阈值分类
-classify by threshold
+Classify by threshold
 #设置阈值
 #set threshold
 logPcutoff <- 4

@@ -4,13 +4,13 @@ Haitao Wang, Taojun Ye
 2025-5-20
 需求描述
 用base plot画美美的火山图
-##Requirement description
+Requirement description
 Create a beautiful volcano map using a base plot
 应用场景
 同时展示多个特征，同时展示P value、ajust P
 value、分组、size、score等。
 例如基因的火山图
-##Application scenarios
+Application scenarios
 Display multiple features simultaneously, including P value, ajust P
 value, grouping, size, score, etc.
 For example, a volcano map of genes
@@ -29,7 +29,7 @@ If you want to use ggplot2 to draw a volcanic map, please refer to
 Figure Ya59Volcano and reply “Volcano” on the “Xiaoya Painting” official
 account for details.
 环境设置
-##Environment settings
+Environment settings
 # 中文注释：设置R运行环境显示英文错误信息（便于国际交流或搜索解决方案）
 # English Comment: Set R environment to display error messages in English (for international communication or troubleshooting)
 Sys.setenv(LANGUAGE = "en") 
@@ -40,7 +40,7 @@ options(stringsAsFactors = FALSE)
 输入文件
 第一列是gene名，后面包含列5列特征值。
 可以换成其他值，例如富集分析结果。
-##Input file
+Input file
 The first column is the gene name, followed by 5 columns of feature
 values.
 It can be replaced with other values, such as enrichment analysis
@@ -62,7 +62,7 @@ dim(dat)
 Organize the columns of data into the format needed to draw the
 graphs
 开始画图
-##Start drawing
+Start drawing
 # 中文注释：创建PDF输出文件（宽度7英寸，高度6英寸）
 # English Comment: Create PDF output file (7 inches wide, 6 inches tall)
 pdf("base_volcano.pdf", 7, 6)
