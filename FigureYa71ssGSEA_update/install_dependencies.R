@@ -58,7 +58,7 @@ for (pkg in cran_packages) {
 
 # Installing Bioconductor packages
 cat("\nInstalling Bioconductor packages...\n")
-bioc_packages <- c("ComplexHeatmap", "GenomicRanges", "GetoptLong", "SummarizedExperiment", "TCGAbiolinks", "circlize", "clusterProfiler", "maftools", "matrixStats", "org.Hs.eg.db", "rtracklayer")
+bioc_packages <- c("ComplexHeatmap", "GenomicRanges", "GetoptLong", "GSVA", "SummarizedExperiment", "TCGAbiolinks", "circlize", "clusterProfiler", "maftools", "matrixStats", "org.Hs.eg.db", "rtracklayer")
 
 for (pkg in bioc_packages) {
   install_bioc_package(pkg)
