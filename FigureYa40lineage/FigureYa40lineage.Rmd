@@ -6,12 +6,10 @@ date: "2025-5-20"
 output: html_document
 ---
 
-
 # Academic Citation
 If you use this code in your work or research, we kindly request that you cite our publication:
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
-
 
 ```{r setup, include=FALSE}
 # 使用knitr包设置全局代码块选项
@@ -45,29 +43,14 @@ Cell lineage analysis is mainly used for single-cell sequencing data, displaying
 
 细胞谱系分析目前用到的包主要是[Monocle2](https://bioconductor.org/packages/release/bioc/html/monocle.html)
 
-
-
-CRAN镜像备选
-
-- 国科大: <https://mirrors.ustc.edu.cn/CRAN/>
-- 同济大学: <https://mirrors.tongji.edu.cn/CRAN/>
-- 兰州大学: <https://mirror.lzu.edu.cn/CRAN/>
-
 ## Software installation
 
 The packages currently used for cell lineage analysis are mainly [Monocle2]（ https://bioconductor.org/packages/release/bioc/html/monocle.html )
 
 `Monocle needs to be installed through biocLite. If the speed is slow, remove the # from the # options (...) code below, and a domestic image will be used  
 
-CRAN image backup
-
--University of Science and Technology of China:< https://mirrors.ustc.edu.cn/CRAN/ >
--Tongji University:< https://mirrors.tongji.edu.cn/CRAN/ >
--Lanzhou University:< https://mirror.lzu.edu.cn/CRAN/ >
-
 ```{r, message=FALSE, warning=FALSE}
 source("install_dependencies.R")
-#source("https://bioconductor.org/biocLite.R")  # 加载Bioconductor包管理器 | Load Bioconductor package manager
 
 # 检查并安装monocle包：用于单细胞RNA-seq数据分析的轨迹推断工具 | Check and install monocle package: Trajectory inference tool for single-cell RNA-seq data analysis
 if ( ! require(monocle)) BiocInstaller::biocLite("monocle")
@@ -551,6 +534,8 @@ p2
 # width/height: 图形宽度和高度（英寸） | Plot width and height (inches)
 ggsave("monocle_majorCluster.pdf", width = 5, height = 5)
 ```
+
+## Session Info
 
 ```{r}
 sessionInfo()
