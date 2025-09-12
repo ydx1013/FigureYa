@@ -69,11 +69,9 @@ Sys.getenv("PATH") #再次检查
 Installation of packages using domestic mirrors
 
 ```r
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 install.packages("Seurat")
 ```
 
-加载包
 
 library pacakges
 ```{r}

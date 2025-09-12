@@ -44,7 +44,6 @@ It is used to study which genes determine differences in phenotypes, for example
 source("install_dependencies.R")
 ```
 
-加载包
 
 load package
 

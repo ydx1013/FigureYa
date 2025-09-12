@@ -47,13 +47,10 @@ Draw timeROC curves for different fitting models.
 Use domestic image installation package
 
 ```r
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 install.packages("timeROC")
 ```
 
-加载包
 
-library packages
 
 ```{r}
 source("install_dependencies.R")

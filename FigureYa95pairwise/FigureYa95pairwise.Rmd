@@ -51,16 +51,13 @@ Multidimensional correlation studies, e.g., to infer the extent to which somatic
 Installation of packages using domestic mirrors
 
 ```r
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 if (!requireNamespace("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
 BiocManager::install("GSVA")
 install.packages("ClassDiscovery")
 ```
 
-加载包
 
-library packages
 
 ```{r}
 source("install_dependencies.R")

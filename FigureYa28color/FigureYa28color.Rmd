@@ -62,7 +62,6 @@ Use the `rPlotter` package recommended by Uncle Y <https://mp.weixin.qq.com/s/Zr
 
 ```r
 #use the domestic mirror installation package
-#options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 
 install.packages(c("ggplot2", "stringr", "reshape2", "dichromat"))
 install("EBImage")

@@ -32,7 +32,6 @@ Applicable to chip data in the GEO database.
 ## 环境设置
 ## Environment setting
 
-加载包
 
 load package
 

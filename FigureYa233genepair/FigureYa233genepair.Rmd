@@ -82,7 +82,6 @@ install.packages("matlab")
 install.packages("EnvStats")
 ```
 
-加载包
 load packages
 
 ```{r}

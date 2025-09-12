@@ -48,7 +48,6 @@ Shen R, Li P, Li B, Zhang B, Feng L, Cheng S. Identification of Distinct Immune 
 source("install_dependencies.R")
 ```
 
-加载包
 Loading package
 
 ```{r}

@@ -41,10 +41,8 @@ This process explores whether the distribution of microenvironment-related signa
 
 ```{r}
 source("install_dependencies.R")
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 ```
 
-加载包
 Load package
 
 ```{r}

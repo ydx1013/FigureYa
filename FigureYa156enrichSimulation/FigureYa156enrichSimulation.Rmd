@@ -47,11 +47,9 @@ This method can help determine whether an observed event is a low-probability ev
 
 ```{r}
 source("install_dependencies.R")
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 if(!require('cgdsr')) install.packages("cgdsr") # cdgsr package @ http://www.cbioportal.org/rmatlab
 ```
 
-加载包
 Load the package
 
 ```{r}

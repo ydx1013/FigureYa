@@ -49,10 +49,8 @@ Show risk score and expression at the same time
 
 ```{r}
 source("install_dependencies.R")
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 ```
 
-加载包
 Load package
 
 ```{r}

@@ -73,7 +73,6 @@ BiocManager::install("ComparisonSurv")
 install.packages(c("ComparisonSurv", "ggpubr", "survminer", "survRM2"))
 ```
 
-加载包
 load packages
 
 ```{r}

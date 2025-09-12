@@ -49,7 +49,6 @@ source("install_dependencies.R")
 ```
 
 ```{r, eval=FALSE}
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 install.packages("survival")
 install.packages("randomForestSRC")
 
@@ -57,7 +56,6 @@ install.packages("randomForestSRC")
 install.packages("randomSurvivalForest_3.6.4.tar.gz", repos = NULL, type="source")
 ```
 
-加载包
 Loading package
 
 ```{r}

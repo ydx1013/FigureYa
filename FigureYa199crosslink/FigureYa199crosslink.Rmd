@@ -75,7 +75,6 @@ devtools::install_github("zzwch/crosslinks")
 install.packages("crosslinks-master.tar.gz", repos = NULL, type = "source")
 ```
 
-加载包
 load package
 
 ```{r}

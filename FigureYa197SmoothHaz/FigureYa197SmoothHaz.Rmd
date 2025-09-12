@@ -88,7 +88,6 @@ install.packages(c("rvg", "flextable", "rgl", "stargazer"))
 install.packages("export_0.2.2.tar.gz", repos = NULL, type = "source")
 ```
 
-加载包
 load package
 
 ```{r}

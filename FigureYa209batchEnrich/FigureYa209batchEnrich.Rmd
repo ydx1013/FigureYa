@@ -76,7 +76,6 @@ install.packages("shadowtext")
 install.packages("ggstance")
 ```
 
-加载包
 load packages
 
 ```{r}

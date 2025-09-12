@@ -72,9 +72,7 @@ install.packages("Cairo")
 # Install the extrafont package (for using system fonts in R graphics, solving font issues like Chinese display)
 ```
 
-加载包
 
-library packages
 
 ```{r}
 # 加载数据读取包（提供更高效的read_csv等函数）

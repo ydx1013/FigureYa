@@ -53,13 +53,10 @@ Please refer to the "Theoretical References" folder in the document for specific
 Use domestic image installation package
 
 ```r
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 install.packages("smoothHR")
 ```
 
-加载包
 
-library packages
 
 ```{r}
 source("install_dependencies.R")

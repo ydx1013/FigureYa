@@ -63,7 +63,6 @@ GDSC数据库里的内容可以用R包pRRophetic来访问和计算。
 # 上述链接的R包有误，有问题，如要用pRRophetic包请用果子公众号更新维护版本<https://github.com/ixxmu/mp_duty/issues/2691>
 # The R package of the above link is incorrect. If you want to use the pRRophic package, please update the maintenance version with the fruit official account< https://github.com/ixxmu/mp_duty/issues/2691 >
 
-加载包
 
 The content in the GDSC database can be accessed and calculated using the R package pRRophetic.
 

@@ -46,7 +46,6 @@ According to the isoforms obtained by Figure201ClusterCorrelation and the ICI si
 source("install_dependencies.R")
 install.packages('Boruta')
 ```
-加载包
 load package
 
 ```{r}

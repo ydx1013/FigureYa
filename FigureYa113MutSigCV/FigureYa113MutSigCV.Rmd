@@ -87,7 +87,6 @@ Step 2: Copy the 'MutSigCV. m' file to the current folder to use.
 
 ```{r}
 source("install_dependencies.R")
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 #BiocManager::install("ComplexHeatmap")
 
 # 加载R包 | Load R packages

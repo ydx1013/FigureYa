@@ -68,7 +68,6 @@ install.packages("uwot")
 install.packages("ggbeeswarm")
 ```
 
-加载包
 
 load package
 

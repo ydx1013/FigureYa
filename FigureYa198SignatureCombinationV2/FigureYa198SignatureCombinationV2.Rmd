@@ -54,7 +54,6 @@ source("install_dependencies.R")
 install.packages("randomForestSRC")
 ```
 
-加载包
 load package
  
 ```{r}

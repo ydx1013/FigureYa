@@ -61,7 +61,6 @@ source("install_dependencies.R")
 install.packages("estimate", repos="http://r-forge.r-project.org", dependencies=TRUE)
 ```
 
-加载包
 
 ```{r}
 library(sva)

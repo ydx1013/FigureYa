@@ -47,11 +47,9 @@ You may also want to read this article: Complete survival analysis of 20,000 gen
 
 ```{r}
 source("install_dependencies.R")
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 
 ```
 
-加载包
 Load the package
 
 ```{r}

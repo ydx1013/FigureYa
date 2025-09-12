@@ -58,9 +58,7 @@ You can even write it as a loop and draw multiple genes in batches to see which 
 source("install_dependencies.R")
 ```
 
-加载包
 
-library packages
 
 ```{r}
 # 加载tidyverse包：用于数据处理和可视化（Load tidyverse package: for data processing and visualization）

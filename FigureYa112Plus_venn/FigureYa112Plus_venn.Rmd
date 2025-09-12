@@ -85,9 +85,7 @@ devtools::install_github("gaospecial/ggVennDiagram")
 install.packages("export")
 ```
 
-加载包
 
-library packages
 
 ```{r}
 # 加载stringr包 - 提供字符串处理函数

@@ -53,7 +53,6 @@ install.packages("pec")
 install.packages("riskRegression")
 ```
 
-加载包
 Loading package
 
 ```{r}

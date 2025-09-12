@@ -69,9 +69,7 @@ Install Seurat package
 install.packages('Seurat')
 ```
 
-加载包
 
-library packages
 
 ```{r}
 source("install_dependencies.R")

@@ -65,7 +65,6 @@ devtools::install_github("wu-yc/scMetabolism")
 BiocManager::install("clusterProfiler")
 ```
 
-加载包
 
 ```{r}
 library(Seurat)

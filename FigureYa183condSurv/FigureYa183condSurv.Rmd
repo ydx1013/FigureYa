@@ -43,12 +43,10 @@ Draw the conditional probability survival curve and provide the conditional surv
 
 ```{r}
 source("install_dependencies.R")
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 options(warn = -1)
 
 ```
 
-加载包
 Loading package
 
 ```{r}

@@ -61,7 +61,6 @@ source("install_dependencies.R")
 # Use Chinese mirror to accelerate CRAN package downloads (commented out)
 
 # Use Chinese mirror for Bioconductor packages (commented out)
-# options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 
 # 安装Cairo图形设备包 (注释状态)
 # Install Cairo graphics device package (commented out)

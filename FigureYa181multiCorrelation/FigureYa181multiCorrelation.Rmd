@@ -55,11 +55,9 @@ Sometimes we need to show the correlation between two variables of multiple sets
 
 ```{r}
 source("install_dependencies.R")
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 
 ```
 
-加载包
 Loading package
 
 ```{r}

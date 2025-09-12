@@ -47,10 +47,8 @@ Or simultaneously display the expression level (activation) and DNA methylation 
 
 ```{r}
 source("install_dependencies.R")
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 ```
 
-加载包
 Load package
 
 ```{r}

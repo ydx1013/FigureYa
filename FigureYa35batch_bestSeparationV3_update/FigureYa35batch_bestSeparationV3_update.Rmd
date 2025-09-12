@@ -71,7 +71,6 @@ install.packages("survminer")
 install.packages("KMsurv")
 ```
 
-加载包
 
 load package
 

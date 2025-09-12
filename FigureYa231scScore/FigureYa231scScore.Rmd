@@ -71,7 +71,6 @@ You need to compare and contrast the presentation from various angles to find th
 source("install_dependencies.R")
 ```
 
-加载包
 
 ```{r}
 library(tidyverse)

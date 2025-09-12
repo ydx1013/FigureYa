@@ -53,7 +53,6 @@ Step 4: Use FW-SVM to further select feature numbers
 
 
 ```r
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 #' @ChAMP所依赖的包巨多，请耐心等待安装
 # ChAMP depends on many packages. Please be patient during installation.
 if (!requireNamespace("BiocManager", quietly = TRUE))
@@ -67,7 +66,6 @@ BiocManager::install(c("minfi","ChAMPdata","Illumina450ProbeVariants.db","sva",
                        "IlluminaHumanMethylationEPICmanifest","FEM","matrixStats","missMethyl","combinat"))
 ```
 
-加载包
 Load required packages
 
 ```{r}

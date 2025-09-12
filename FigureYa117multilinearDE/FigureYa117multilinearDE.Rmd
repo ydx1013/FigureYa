@@ -75,12 +75,9 @@ source("install_dependencies.R")
 
 # 设置Bioconductor镜像为中国科学技术大学镜像（Set Bioconductor mirror to USTC mirror）
 # 这将加速Bioconductor包的下载过程（This will speed up the download process of Bioconductor packages）
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 ```
 
-加载包
 
-library packages
 
 ```{r}
 # 加载glmnet包，用于正则化线性模型，如LASSO和弹性网络（Load the glmnet package for regularized linear models such as LASSO and Elastic-Net）

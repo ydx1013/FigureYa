@@ -53,14 +53,11 @@ Using FigureYa116supervisedCluster, analyze the differentially expressed genes b
 Use domestic image installation package
 
 ```r
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 BiocManager::install("affy")
 BiocManager::install("affyPLM")
 ```
 
-加载包
 
-library packages
 
 ```{r}
 source("install_dependencies.R")

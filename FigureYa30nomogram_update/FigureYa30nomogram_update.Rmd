@@ -65,7 +65,6 @@ source("install_dependencies.R")
 install.packages(c("rms", "nomogramEx", "regplot", "vioplot", "sm", "beanplot"))
 ```
 
-加载包
 
 load package
 

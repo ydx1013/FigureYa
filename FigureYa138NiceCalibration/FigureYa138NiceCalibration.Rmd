@@ -62,12 +62,10 @@ Discrimination (discrimination) and Calibration (consistency/calibration) are tw
 
 
 ```r
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 # https://github.com/psolymos/ResourceSelection
 install.packages("ResourceSelection")
 ```
 
-加载包
 Loading Packages
 
 ```{r}

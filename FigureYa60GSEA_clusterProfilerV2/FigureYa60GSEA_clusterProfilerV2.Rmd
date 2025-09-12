@@ -59,7 +59,6 @@ If you want to use Java version of GSEA to do enrichment analysis and DIY result
 ```{r}
 source("install_dependencies.R")
 #use the domestic mirror installation package
-#options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 #BiocManager::install("clusterProfiler", version = "3.8")
 
 library(clusterProfiler)

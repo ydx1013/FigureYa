@@ -66,11 +66,9 @@ You can also customize the grouping, such as comparing different subtypes of the
 
 
 ```r
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 BiocManager::install("maftools")
 ```
 
-加载包
 Loading Packages
 
 ```{r}

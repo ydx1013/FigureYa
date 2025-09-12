@@ -78,16 +78,13 @@ The principle is as follows:< https://david.ncifcrf.gov/helps/linear_search.html
 Use domestic image installation package
 
 ```r
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 
 if (!requireNamespace("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
 BiocManager::install("ggtree", version = "3.8")
 ```
 
-加载包
 
-library packages
 
 ```{r}
 source("install_dependencies.R")

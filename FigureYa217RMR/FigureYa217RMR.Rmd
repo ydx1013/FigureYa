@@ -53,7 +53,6 @@ source("install_dependencies.R")
 install.packages("mRMRe")
 ```
 
-加载包
 
 load package
 

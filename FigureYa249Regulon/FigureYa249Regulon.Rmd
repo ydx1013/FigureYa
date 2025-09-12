@@ -90,7 +90,6 @@ source("install_dependencies.R")
 BiocManager::install("RTN")
 ```
 
-加载包
 load packages
 
 ```{r}

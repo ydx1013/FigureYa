@@ -42,10 +42,8 @@ Using a Chinese mirror to install the package
 
 ```{r}
 source("install_dependencies.R")
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 ```
 
-加载包
 Loading the package
 
 ```{r}
