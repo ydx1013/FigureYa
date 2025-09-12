@@ -2,7 +2,7 @@
 title: "FigureYa52 GOplot"
 author: "Ying Ge, Guangchuang Yu, Taojun Ye"
 reviewer: "Ying Ge"
-date: "2025-05-20"
+date: "2025-09-12"
 output: html_document
 ---
 
@@ -10,7 +10,6 @@ output: html_document
 If you use this code in your work or research, we kindly request that you cite our publication:
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
-
 
 ```{r setup, include=FALSE}
 # 使用knitr包设置全局代码块选项
@@ -59,22 +58,6 @@ In addition to being proficient in GO enrichment analysis, clusterProfiler can a
 安装需要的包
 
 ## Environment settings
-
-Install the required packages
-
-```r
-
-if (!requireNamespace("BiocManager", quietly = TRUE))
-    install.packages("BiocManager")
-BiocManager::install("clusterProfiler", version = "3.8")
-BiocManager::install("org.Mm.eg.db", version = "3.8")
-
-install.packages('GOplot')
-```
-
-加载需要用到的包
-
-Load the required packages
 
 ```{r}
 source("install_dependencies.R")
@@ -500,6 +483,8 @@ GOCluster(circ.gsym, go$Term[1:n],              # 使用前n个富集的GO term 
 # 将聚类图保存为PDF文件 | Save cluster diagram to PDF file
 ggsave("GOCluster.pdf", width = 12, height = 14)
 ```
+
+## Session Info
 
 ```{r}
 sessionInfo()
