@@ -9,8 +9,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
-
 ## 需求描述
 ## Requirement description
 
@@ -41,26 +39,6 @@ Applicable to:
 
 ## 环境设置
 ## Environment setting
-
-安装需要用到的包
-
-Install the required packages
-
-```r
-#use the domestic mirror installation package
-if (!requireNamespace("BiocManager", quietly = TRUE))
-    install.packages("BiocManager")
-BiocManager::install("TCGAbiolinks", version = "3.8")
-
-install.packages("stringr")
-install.packages("dplyr")
-install.packages("ggplot2")
-install.packages("RColorBrewer")
-```
-
-加载需要用到的包
-
-Load the required packages
 
 ```{r}
 source("install_dependencies.R")
@@ -361,6 +339,8 @@ p + geom_split_violin(data = tcga_gtex_MESO,
 
 ggsave(paste0(targetGene, "expression.pdf"),width = 20, height = 6)
 ```
+
+## Session Info
 
 ```{r}
 sessionInfo()
