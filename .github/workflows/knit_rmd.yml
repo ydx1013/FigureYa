@@ -29,7 +29,7 @@ jobs:
       - name: 5. Install core R dependencies
         run: Rscript -e 'install.packages(c("rmarkdown", "knitr"))'
 
-      - name: 6. Find and Render all Rmd files
+      - name: 6. Find and Render all Rmd files (quiet)
         run: |
           set -e
           echo "RMD Render Summary (All Files)" > summary.txt
@@ -37,14 +37,14 @@ jobs:
           echo "" >> summary.txt
 
           find . -type f -name "*.Rmd" | while read rmd_file; do
-            echo "--- Processing: $rmd_file ---"
-            
-            if Rscript -e "rmarkdown::render('$rmd_file')"; then
-              echo "[SUCCESS] - $rmd_file" >> summary.txt
+            echo "========== START: $rmd_file =========="
+            if Rscript -e "rmarkdown::render('$rmd_file', quiet=TRUE)" > rmd_render.log 2>&1; then
+              echo "[SUCCESS] - $rmd_file" | tee -a summary.txt
             else
-              echo "[FAILED] - $rmd_file" >> summary.txt
+              echo "[FAILED] - $rmd_file" | tee -a summary.txt
+              tail -n 20 rmd_render.log  # 显示最后20行错误日志，便于定位失败原因
             fi
-            echo "--- Finished: $rmd_file ---"
+            echo "=========== END: $rmd_file ==========="
             echo ""
           done
 
