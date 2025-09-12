@@ -47,11 +47,15 @@ install_bioc_package <- function(package_name) {
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
+cat("\nInstalling important CRAN dependency packages first...\n")
+cran_dep_packages <- c("curl", "httr", "png", "xml2", "rvest", "httr2")
+for (pkg in cran_dep_packages) {
+  install_cran_package(pkg)
+}
 
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
 cran_packages <- c("corrplot", "devtools", "dplyr", "ggplot2", "reshape2")
-
 for (pkg in cran_packages) {
   install_cran_package(pkg)
 }
@@ -59,7 +63,6 @@ for (pkg in cran_packages) {
 # Installing Bioconductor packages
 cat("\nInstalling Bioconductor packages...\n")
 bioc_packages <- c("ConsensusClusterPlus")
-
 for (pkg in bioc_packages) {
   install_bioc_package(pkg)
 }
