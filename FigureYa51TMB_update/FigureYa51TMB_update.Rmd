@@ -46,7 +46,6 @@ In the next step, it is also possible to do survival analysis by grouping with h
 # 环境设置
 # Environment setting
 
-加载R包
 
 Load R package
 

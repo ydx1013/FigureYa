@@ -75,7 +75,6 @@ Displaying hierarchical structures. For example:
 # 环境设置
 # Environment Setup
 
-加载R包
 Loading the R package
 
 ```{r}

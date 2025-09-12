@@ -52,7 +52,6 @@ Refer to the author published this Nature CellPhoneDB Protocol < https://doi.org
 
 # Environment Setup
 
-加载R包
 Load the R package
 
 ```{r}

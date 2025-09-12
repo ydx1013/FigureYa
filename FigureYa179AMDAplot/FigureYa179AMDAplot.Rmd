@@ -61,7 +61,6 @@ if (!require("S4Vectors")) BiocManager::install("S4Vectors")
 if (!require("BiocParallel")) BiocManager::install("BiocParallel")
 ```
 
-加载R包
 Load the R package
 
 ```{r message=FALSE, warning=FALSE}

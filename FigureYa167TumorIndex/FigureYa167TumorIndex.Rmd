@@ -54,7 +54,6 @@ We've repackaged the code here to provide a simpler way to use it.
 # 环境设置
 # Environment Setup
 
-Loading Packages
 
 ```{r}
 source("install_dependencies.R")
