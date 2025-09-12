@@ -47,6 +47,13 @@ install_bioc_package <- function(package_name) {
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
+cat("\nInstalling important CRAN dependency packages first...\n")
+cran_dep_packages <- c(
+  "curl", "httr", "httr2", "png", "xml2", "rvest"
+)
+for (pkg in cran_dep_packages) {
+  install_cran_package(pkg)
+}
 
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
