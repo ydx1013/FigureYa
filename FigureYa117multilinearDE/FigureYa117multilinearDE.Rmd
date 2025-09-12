@@ -70,8 +70,6 @@ Use domestic image installation package
 
 ```{r}
 source("install_dependencies.R")
-# 设置R包安装源为清华大学镜像（Set R package repository to Tsinghua University mirror）
-# 这将加速R包的下载过程（This will speed up the download process of R packages）
 
 ```
 

@@ -52,7 +52,6 @@ Use domestic image installation package
 
 ```{r}
 source("install_dependencies.R")
-# 设置R包安装源为清华大学镜像（Set CRAN mirror to Tsinghua University mirror）
 
 # 设置Bioconductor包安装源为中国科学技术大学镜像（Set Bioconductor mirror to USTC mirror）
 ```

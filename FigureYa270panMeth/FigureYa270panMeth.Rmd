@@ -78,7 +78,6 @@ source("install_dependencies.R")
 
 ```{r eval=FALSE}
 
-# Set Bioconductor mirror to Tsinghua University mirror source to speed up downloads of bioinformatics-related packages
 
 # 使用BiocManager安装ChAMP包，用于DNA甲基化数据分析
 # Install the ChAMP package using BiocManager for DNA methylation data analysis
