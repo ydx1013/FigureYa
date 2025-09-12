@@ -68,7 +68,6 @@ For more pan-cancer visualizations, check here<https://k.koudai.com/Wi1xos9X>
 # 环境设置
 # Environment Setup
 
-使用国内镜像安装包。
 
 Using domestic mirrors for package installation.
 
@@ -77,8 +76,6 @@ source("install_dependencies.R")
 ```
 
 ```{r eval=FALSE}
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
 install.packages(c("data.table", "knitr"))
 ```
 

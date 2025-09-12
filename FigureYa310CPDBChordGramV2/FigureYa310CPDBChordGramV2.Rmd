@@ -61,7 +61,6 @@ ggplot2 to generate a bubble plot (reference: FigureYa178receptorLigand <https:/
 # 环境设置
 # Environment Setup
 
-使用国内镜像安装包。
 
 Using domestic mirrors for package installation.
 
@@ -70,8 +69,6 @@ source("install_dependencies.R")
 ```
 
 ```{r eval=FALSE}
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
 devtools::install_github("zktuong/ktplots")
 ```
 

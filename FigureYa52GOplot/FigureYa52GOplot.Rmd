@@ -63,8 +63,6 @@ In addition to being proficient in GO enrichment analysis, clusterProfiler can a
 Install the required packages
 
 ```r
-#使用国内镜像安装包
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
 options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 
 if (!requireNamespace("BiocManager", quietly = TRUE))

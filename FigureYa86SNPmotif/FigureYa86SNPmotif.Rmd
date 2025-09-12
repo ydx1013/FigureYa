@@ -58,7 +58,6 @@ MotifbreakR can also be used in conjunction with other tools, with a series of r
 
 # 环境设置
 
-使用国内镜像安装包
 
 # Environment settings
 
@@ -71,11 +70,9 @@ source("install_dependencies.R")
 ```{r eval=FALSE}
 # 设置R包安装源为清华大学镜像（中文注释）
 # Set R package installation source to Tsinghua University mirror (English comment)
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
 
 # 设置Bioconductor包镜像为清华大学镜像（中文注释）
 # Set Bioconductor package mirror to Tsinghua University mirror (English comment)
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
 
 # 检查是否安装了BiocManager包，如果没有则安装（中文注释）
 # Check if BiocManager package is installed, install if not (English comment)

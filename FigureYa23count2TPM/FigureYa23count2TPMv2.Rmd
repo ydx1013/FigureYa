@@ -514,7 +514,6 @@ Download <https://bioconductor.org/biocLite.R> locally and open it, add the foll
 optionsoptions(BioC_mirror="https://mirrors.ustc.edu.cn/bioc/")
 #bioconductor
 
-options("repos" = c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/",
 	CRANextra = "http://www.stats.ox.ac.uk/pub/RWin"))
 #cran
 ```

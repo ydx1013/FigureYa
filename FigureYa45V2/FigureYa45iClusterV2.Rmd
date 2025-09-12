@@ -102,7 +102,7 @@ One method is to cluster different data types separately and then manually merge
 
 ### 安装iClusterPlus
 
-`iClusterPlus`需要通过`biocLite`安装，如果速度慢，将下面代码`#options(...)`中的`#`去掉，则会使用国内镜像. 
+
 
 CRAN镜像备选
 
@@ -124,7 +124,6 @@ CRAN image backup
 
 ```{r, message=FALSE, warning=FALSE}
 source("install_dependencies.R")
-#options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
 #options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 # R版本大于3.5.0时的安装方法
 # Installation method for R version > 3.5.0

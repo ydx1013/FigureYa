@@ -54,7 +54,6 @@ Consistently, the relative expression levels of **genes known to be essential fo
 # 环境设置
 # Environment setting
 
-使用国内镜像安装包
 
 use the domestic mirror installation package
 
@@ -63,8 +62,6 @@ source("install_dependencies.R")
 ```
 
 ```{r eval=FALSE}
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
 install.packages("leiden")
 install.packages("spatstat")
 install.packages("uwot")
