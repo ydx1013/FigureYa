@@ -42,20 +42,9 @@ Scenario 2: Multi-dimensional data information display
 # 环境设置
 # Environment setting
 
-
-use the domestic mirror installation package
-
 ```{r}
 source("install_dependencies.R")
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 
-```
-
-加载包
-
-load package
-
-```{r}
 library(ggplot2)
 
 Sys.setenv(LANGUAGE = "en") #显示英文报错信息 display English error messages
