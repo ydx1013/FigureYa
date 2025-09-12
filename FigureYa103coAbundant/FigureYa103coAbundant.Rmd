@@ -48,14 +48,12 @@ Calculate and display the correlation between the co expression modules identifi
 
 ## 环境设置
 
-使用国内镜像安装包
 
 ## Environment settings
 
 Use domestic image installation package
 
 ```r
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
 options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 if (!requireNamespace("BiocManager", quietly = TRUE))
     install.packages("BiocManager")

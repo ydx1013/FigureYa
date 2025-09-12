@@ -47,7 +47,6 @@ On the right side, use a pie chart to show the correlation between each pathway 
 
 ## 环境设置
 
-使用国内镜像安装包
 
 ## Environment settings
 
@@ -56,7 +55,6 @@ Use domestic image installation package
 ```{r}
 source("install_dependencies.R")
 # 设置CRAN镜像为清华大学镜像站（Set CRAN mirror to Tsinghua University mirror site）
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
 
 # 设置Bioconductor镜像为中国科学技术大学镜像站（Set Bioconductor mirror to USTC mirror site）
 options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")

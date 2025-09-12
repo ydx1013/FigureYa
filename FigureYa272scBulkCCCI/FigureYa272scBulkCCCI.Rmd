@@ -78,7 +78,6 @@ After downloading and extracting the package, you can view its contents:
 # 环境设置
 # Environment Setup
 
-使用国内镜像安装包。
 
 Using domestic mirrors for package installation.
 
@@ -87,8 +86,6 @@ source("install_dependencies.R")
 ```
 
 ```{r eval=FALSE}
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
 install.packages("ggthemes")
 
 # 下载后本地安装

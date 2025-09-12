@@ -43,7 +43,6 @@ Identify tumor immune infiltration related lncRNAs from expression data.
 
 # 环境设置
 
-使用国内镜像安装包
 
 # Environment settings
 

@@ -133,7 +133,6 @@ In addition, the FigureYa we have crowdfunded can realize several of the images 
 # 环境设置
 # Requirements Description
 
-使用国内镜像安装包。
 
 Using domestic mirrors for package installation.
 
@@ -142,8 +141,6 @@ source("install_dependencies.R")
 ```
 
 ```{r eval=FALSE}
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
 BiocManager::install("randomForest")
 ```
 

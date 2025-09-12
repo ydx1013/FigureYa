@@ -90,10 +90,6 @@ install.packages("ComplexHeatmap-master.tar.gz", repos = NULL, type = "source")
 Method 2: If you have difficulty installing the GitHub version, you can install the Bioconductor version and then load the latest function (Xiaoya's personal test is effective)
 
 ```{r eval=FALSE}
-#使用国内镜像安装包
-# Use the domestic mirror installation package
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
 BiocManager::install("ComplexHeatmap")
 ```
 

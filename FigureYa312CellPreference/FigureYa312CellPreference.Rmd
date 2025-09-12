@@ -81,7 +81,6 @@ For more single-cell analysis visualization tools from FigureYa: <https://k.yous
 # 环境设置
 # Requirements Description
 
-使用国内镜像安装包。
 
 Using domestic mirrors for package installation.
 
@@ -90,8 +89,6 @@ source("install_dependencies.R")
 ```
 
 ```{r eval=FALSE}
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
 install.packages("epitools")
 ```
 

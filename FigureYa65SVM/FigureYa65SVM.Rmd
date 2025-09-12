@@ -49,7 +49,6 @@ It is mainly used to filter the feature variables to construct the best classifi
 
 ```{r, message=FALSE}
 source("install_dependencies.R")
-#options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
 #options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 #install.packages("glmnet") 
 #if (!requireNamespace("BiocManager", quietly = TRUE))

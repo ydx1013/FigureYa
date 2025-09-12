@@ -59,7 +59,7 @@ Answer: lasso heavily relies on seeds when allowed, as you need cross validation
 
 ## 环境设置
 
-### 使用国内镜像安装和加载包
+
 
 ## Environment settings
 
@@ -69,7 +69,6 @@ Answer: lasso heavily relies on seeds when allowed, as you need cross validation
 source("install_dependencies.R")
 # 设置CRAN镜像为清华大学镜像源
 # Set CRAN mirror to Tsinghua University mirror source
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
 
 # 设置Bioconductor镜像为中国科学技术大学镜像源
 # Set Bioconductor mirror to University of Science and Technology of China mirror source

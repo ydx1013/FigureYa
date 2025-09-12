@@ -65,12 +65,10 @@ Sys.getenv("PATH"="/anaconda3/bin/") #如果不在的话，需要将其加入环
 Sys.getenv("PATH") #再次检查
 ```
 
-使用国内镜像安装包
 
 Installation of packages using domestic mirrors
 
 ```r
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
 options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 install.packages("Seurat")
 ```
