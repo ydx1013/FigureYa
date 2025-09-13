@@ -50,7 +50,7 @@ cat("===========================================\n")
 
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("dplyr", "fmsb", "ggplot2", "openxlsx")
+cran_packages <- c("dplyr", "ggplot2", "openxlsx")
 
 for (pkg in cran_packages) {
   install_cran_package(pkg)
@@ -58,7 +58,7 @@ for (pkg in cran_packages) {
 
 # Installing Bioconductor packages
 cat("\nInstalling Bioconductor packages...\n")
-bioc_packages <- c("fgsea", "GSVA", "org.Hs.eg.db")
+bioc_packages <- c("fgsea", "fmsb", "GSVA", "org.Hs.eg.db")
 
 for (pkg in bioc_packages) {
   install_bioc_package(pkg)
