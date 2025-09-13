@@ -48,14 +48,6 @@ cat("Starting R package installation...\n")
 cat("===========================================\n")
 
 
-# Installing CRAN packages
-cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("SKCM_deseq2_test_result.immune_vs_Others.txt", "SKCM_deseq2_test_result.keratin_vs_Others.txt")
-
-for (pkg in cran_packages) {
-  install_cran_package(pkg)
-}
-
 # Installing Bioconductor packages
 cat("\nInstalling Bioconductor packages...\n")
 bioc_packages <- c("DESeq2")

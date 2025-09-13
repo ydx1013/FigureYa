@@ -49,7 +49,7 @@ cat("===========================================\n")
 
 # Installing core CRAN dependencies first
 cat("\nInstalling core CRAN dependencies...\n")
-core_cran_packages <- c("httr", "shadowtext", "scatterpie")
+core_cran_packages <- c("ggstance", "httr", "msigdbr", "scatterpie", "shadowtext")
 
 for (pkg in core_cran_packages) {
   install_cran_package(pkg)

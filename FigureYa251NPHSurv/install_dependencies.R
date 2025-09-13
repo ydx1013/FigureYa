@@ -57,10 +57,18 @@ for (pkg in survminer_deps) {
 
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("ComparisonSurv", "ggplot2", "ggpubr", "survRM2", "survminer")
+cran_packages <- c("ggplot2", "ggpubr", "survminer")
 
 for (pkg in cran_packages) {
   install_cran_package(pkg)
+}
+
+# Installing Bioconductor packages
+cat("\nInstalling Bioconductor packages...\n")
+bioc_packages <- c("ComparisonSurv", "survRM2")
+
+for (pkg in bioc_packages) {
+  install_bioc_package(pkg)
 }
 
 cat("\n===========================================\n")
