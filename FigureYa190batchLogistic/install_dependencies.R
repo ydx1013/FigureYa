@@ -47,6 +47,20 @@ install_bioc_package <- function(package_name) {
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
+# System dependency note for systemfonts and textshaping
+cat("\nNOTE: ragg/officer packages require system libraries.\n")
+cat("For Ubuntu/Debian, run this in shell BEFORE using this script:\n")
+cat("  sudo apt-get update\n")
+cat("  sudo apt-get install libharfbuzz-dev libfribidi-dev libfreetype6-dev libpng-dev libtiff5-dev libjpeg-dev\n\n")
+
+# Installing dependencies with specific order
+cat("\nInstalling text rendering dependencies...\n")
+text_deps <- c("systemfonts", "textshaping", "ragg")
+
+for (pkg in text_deps) {
+  install_cran_package(pkg)
+}
+
 
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")

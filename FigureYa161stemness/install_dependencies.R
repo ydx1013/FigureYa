@@ -48,20 +48,20 @@ cat("Starting R package installation...\n")
 cat("===========================================\n")
 
 
-# Installing CRAN packages
-cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("RColorBrewer", "cowplot", "dplyr", "ggplot2", "tibble")
-
-for (pkg in cran_packages) {
-  install_cran_package(pkg)
-}
-
 # Installing Bioconductor packages
 cat("\nInstalling Bioconductor packages...\n")
-bioc_packages <- c("ComplexHeatmap", "GEOquery", "clusterProfiler", "limma")
+bioc_packages <- c("ComplexHeatmap", "GEOquery", "clusterProfiler", "limma", "DOSE", "enrichplot", "GO.db", "GOSemSim", "AnnotationDbi")
 
 for (pkg in bioc_packages) {
   install_bioc_package(pkg)
+}
+
+# Installing CRAN packages that depend on Bioconductor
+cat("\nInstalling CRAN packages...\n")
+cran_packages <- c("RColorBrewer", "cowplot", "dplyr", "ggplot2", "tibble", "scatterpie", "httr")
+
+for (pkg in cran_packages) {
+  install_cran_package(pkg)
 }
 
 cat("\n===========================================\n")

@@ -47,9 +47,17 @@ install_bioc_package <- function(package_name) {
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
+# Installing core CRAN dependencies first
+cat("\nInstalling core CRAN dependencies...\n")
+cran_core_packages <- c("curl", "httr", "rvest")
+
+for (pkg in cran_core_packages) {
+  install_cran_package(pkg)
+}
+
 # Installing core Bioconductor dependencies first
 cat("\nInstalling core Bioconductor dependencies...\n")
-bioc_core_packages <- c("AnnotationDbi", "httr2", "BiocFileCache", "curl", "KEGGREST")
+bioc_core_packages <- c("AnnotationDbi", "BiocFileCache", "GenomicRanges", "SummarizedExperiment")
 
 for (pkg in bioc_core_packages) {
   install_bioc_package(pkg)
