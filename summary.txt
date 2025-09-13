@@ -1,9 +1,0 @@
-RMD Render Summary (Test Run)
-======================================
-
-[FAILED] - ./FigureYa293machineLearning/FigureYa293machineLearning.Rmd
-[FAILED] - ./FigureYa271panMethExpr/FigureYa271panMethExpr.Rmd
-[FAILED] - ./FigureYa71ssGSEA_update/FigureYa71ssGSEA_update.Rmd
-[FAILED] - ./FigureYa103coAbundant/FigureYa103coAbundant.Rmd
-[FAILED] - ./FigureYa15WGCNA/FigureYa15WGCNA.Rmd
-[SUCCESS] - ./FigureYa205immunophenoscore_update/FigureYa205immunophenoscore_update.Rmd
