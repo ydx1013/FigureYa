@@ -47,6 +47,21 @@ install_bioc_package <- function(package_name) {
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
+# Installing TCGAbiolinks core dependencies first
+cat("\nInstalling TCGAbiolinks dependencies...\n")
+tcga_core_packages <- c("AnnotationDbi", "httr2", "BiocFileCache", "curl")
+
+for (pkg in tcga_core_packages) {
+  install_bioc_package(pkg)
+}
+
+# Installing CRAN dependencies for TCGAbiolinks
+tcga_cran_deps <- c("rvest", "httr")
+
+for (pkg in tcga_cran_deps) {
+  install_cran_package(pkg)
+}
+
 
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")

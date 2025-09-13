@@ -47,6 +47,14 @@ install_bioc_package <- function(package_name) {
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
+# Installing Seurat dependencies first
+cat("\nInstalling Seurat dependencies...\n")
+seurat_deps <- c("httr", "plotly", "png", "reticulate", "mixtools")
+
+for (pkg in seurat_deps) {
+  install_cran_package(pkg)
+}
+
 
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
