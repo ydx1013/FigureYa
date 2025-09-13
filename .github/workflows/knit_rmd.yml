@@ -57,12 +57,24 @@ jobs:
               cd - > /dev/null
             fi
             
-            # Render the Rmd file
-            if Rscript -e "rmarkdown::render('$rmd_file', quiet=TRUE)" > rmd_render.log 2>&1; then
-              echo "[SUCCESS] - $rmd_file" | tee -a summary.txt
+            # Check for common missing data files before rendering
+            missing_files=""
+            if grep -q "easy_input" "$rmd_file" 2>/dev/null; then
+              if [ ! -f "$rmd_dir/easy_input.csv" ] && [ ! -f "$rmd_dir/easy_input.txt" ] && [ ! -f "$rmd_dir/easy_input_expr.txt" ]; then
+                missing_files="$missing_files easy_input files"
+              fi
+            fi
+            
+            if [ -n "$missing_files" ]; then
+              echo "[SKIPPED] - $rmd_file (Missing data files:$missing_files)" | tee -a summary.txt
             else
-              echo "[FAILED] - $rmd_file" | tee -a summary.txt
-              tail -n 20 rmd_render.log  # 显示最后20行错误日志，便于定位失败原因
+              # Render the Rmd file
+              if Rscript -e "rmarkdown::render('$rmd_file', quiet=TRUE)" > rmd_render.log 2>&1; then
+                echo "[SUCCESS] - $rmd_file" | tee -a summary.txt
+              else
+                echo "[FAILED] - $rmd_file" | tee -a summary.txt
+                tail -n 20 rmd_render.log  # 显示最后20行错误日志，便于定位失败原因
+              fi
             fi
             echo "=========== END: $rmd_file ==========="
             echo ""
