@@ -58,7 +58,7 @@ for (pkg in core_packages) {
 
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("BSgenome.Hsapiens.UCSC.hg19", "deconstructSigs", "forcats", "magrittr", "readxl", "stringr", "tidyverse")
+cran_packages <- c("deconstructSigs", "forcats", "magrittr", "readxl", "stringr", "tidyverse")
 
 for (pkg in cran_packages) {
   install_cran_package(pkg)
@@ -66,7 +66,7 @@ for (pkg in cran_packages) {
 
 # Installing Bioconductor packages
 cat("\nInstalling Bioconductor packages...\n")
-bioc_packages <- c("NMF")
+bioc_packages <- c("BSgenome.Hsapiens.UCSC.hg19", "NMF")
 
 for (pkg in bioc_packages) {
   install_bioc_package(pkg)

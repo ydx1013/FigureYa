@@ -44,16 +44,43 @@ install_bioc_package <- function(package_name) {
   }
 }
 
+# Function to install GitHub packages
+install_github_package <- function(repo) {
+  package_name <- basename(repo)
+  if (!is_package_installed(package_name)) {
+    cat("Installing GitHub package:", repo, "\n")
+    tryCatch({
+      if (!is_package_installed("devtools")) {
+        install.packages("devtools")
+      }
+      devtools::install_github(repo)
+      cat("Successfully installed:", package_name, "\n")
+    }, error = function(e) {
+      cat("Failed to install", package_name, ":", e$message, "\n")
+    })
+  } else {
+    cat("Package already installed:", package_name, "\n")
+  }
+}
+
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
 
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("crosslinks", "ggplot2", "devtools")
+cran_packages <- c("ggplot2", "devtools")
 
 for (pkg in cran_packages) {
   install_cran_package(pkg)
+}
+
+# Installing GitHub packages
+cat("\nInstalling GitHub packages...\n")
+github_packages <- c("zzwch/crosslinks")
+
+for (repo in github_packages) {
+  install_github_package(repo)
 }
 
 cat("\n===========================================\n")
