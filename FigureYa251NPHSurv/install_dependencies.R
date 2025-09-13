@@ -47,6 +47,13 @@ install_bioc_package <- function(package_name) {
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
+# Installing survminer dependencies first
+cat("\nInstalling survminer dependencies...\n")
+survminer_deps <- c("gridtext", "ggtext")
+
+for (pkg in survminer_deps) {
+  install_cran_package(pkg)
+}
 
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")

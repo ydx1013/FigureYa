@@ -47,6 +47,21 @@ install_bioc_package <- function(package_name) {
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
+# Installing core CRAN dependencies first
+cat("\nInstalling core CRAN dependencies...\n")
+core_cran_packages <- c("httr", "shadowtext", "scatterpie")
+
+for (pkg in core_cran_packages) {
+  install_cran_package(pkg)
+}
+
+# Installing core Bioconductor dependencies
+cat("\nInstalling core Bioconductor dependencies...\n")
+bioc_core_packages <- c("AnnotationDbi", "GO.db", "GOSemSim")
+
+for (pkg in bioc_core_packages) {
+  install_bioc_package(pkg)
+}
 
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")

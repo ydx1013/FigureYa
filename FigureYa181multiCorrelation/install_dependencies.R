@@ -47,6 +47,13 @@ install_bioc_package <- function(package_name) {
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
+# Installing core dependencies first
+cat("\nInstalling core dependencies...\n")
+core_packages <- c("curl", "httr", "gargle", "googledrive", "googlesheets4", "ragg", "rvest")
+
+for (pkg in core_packages) {
+  install_cran_package(pkg)
+}
 
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
@@ -55,6 +62,10 @@ cran_packages <- c("ggplot2", "tidyverse")
 for (pkg in cran_packages) {
   install_cran_package(pkg)
 }
+
+cat("\n===========================================\n")
+cat("Package installation completed!\n")
+cat("You can now run your R scripts in this directory.\n")
 
 cat("\n===========================================\n")
 cat("Package installation completed!\n")
