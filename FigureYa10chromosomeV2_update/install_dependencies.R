@@ -49,6 +49,20 @@ install_bioc_package <- function(package_name) {
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
+# System dependency note for RIdeogram
+cat("\nNOTE: RIdeogram requires system libraries.\n")
+cat("For Ubuntu/Debian, run this in shell BEFORE using this script:\n")
+cat("  sudo apt-get update\n")
+cat("  sudo apt-get install libpng-dev libjpeg-dev librsvg2-dev\n\n")
+
+# Installing RIdeogram dependencies first
+cat("\nInstalling RIdeogram dependencies...\n")
+rideogram_deps <- c("png", "jpeg", "rsvg", "grImport2")
+
+for (pkg in rideogram_deps) {
+  install_cran_package(pkg)
+}
+
 
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")

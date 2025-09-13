@@ -47,6 +47,12 @@ install_bioc_package <- function(package_name) {
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
+# System dependency note for Cairo
+cat("\nNOTE: Cairo package requires system libraries.\n")
+cat("For Ubuntu/Debian, run this in shell BEFORE using this script:\n")
+cat("  sudo apt-get update\n")
+cat("  sudo apt-get install libcairo2-dev libxt-dev\n\n")
+
 
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")

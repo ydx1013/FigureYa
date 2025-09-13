@@ -48,7 +48,7 @@ cat("Starting R package installation...\n")
 cat("===========================================\n")
 
 # 安装 Seurat 相关依赖
-seurat_deps <- c("httr", "plotly", "png", "reticulate")
+seurat_deps <- c("httr", "plotly", "png", "reticulate", "mixtools")
 cat("\nInstalling Seurat dependency packages...\n")
 for (pkg in seurat_deps) {
   install_cran_package(pkg)
@@ -79,8 +79,8 @@ cat("  sudo apt-get install libfontconfig1-dev libcurl4-openssl-dev libxml2-dev 
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
 cran_packages <- c(
-  "Down_Highly", "Down_Lowly", "Mono", "Platelet", "RColorBrewer", "Seurat",
-  "Up_Highly", "Up_Lowly", "dplyr", "ggplot2", "ggrepel", "magrittr", "patchwork", "reshape2"
+  "RColorBrewer", "Seurat",
+  "dplyr", "ggplot2", "ggrepel", "magrittr", "patchwork", "reshape2"
 )
 
 for (pkg in cran_packages) {

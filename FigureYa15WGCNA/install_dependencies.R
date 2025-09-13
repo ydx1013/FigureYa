@@ -29,6 +29,14 @@ install_cran_package <- function(package_name) {
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
+# Installing WGCNA dependencies first
+cat("\nInstalling WGCNA dependencies...\n")
+wgcna_bioc_deps <- c("GO.db", "AnnotationDbi")
+
+for (pkg in wgcna_bioc_deps) {
+  install_bioc_package(pkg)
+}
+
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
 cran_packages <- c("WGCNA")

@@ -47,6 +47,20 @@ install_bioc_package <- function(package_name) {
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
+# System dependency note for png/jpeg
+cat("\nNOTE: ComplexHeatmap requires system libraries.\n")
+cat("For Ubuntu/Debian, run this in shell BEFORE using this script:\n")
+cat("  sudo apt-get update\n")
+cat("  sudo apt-get install libpng-dev libjpeg-dev\n\n")
+
+# Installing ComplexHeatmap dependencies first
+cat("\nInstalling ComplexHeatmap dependencies...\n")
+heatmap_deps <- c("png", "jpeg")
+
+for (pkg in heatmap_deps) {
+  install_cran_package(pkg)
+}
+
 
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")

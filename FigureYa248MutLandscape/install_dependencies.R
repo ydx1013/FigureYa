@@ -47,16 +47,17 @@ install_bioc_package <- function(package_name) {
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
-# 安装 ComplexHeatmap 的依赖 png
-cat("\nInstalling ComplexHeatmap dependency package 'png'...\n")
+# 安装 ComplexHeatmap 的依赖 png 和 jpeg
+cat("\nInstalling ComplexHeatmap dependency packages 'png' and 'jpeg'...\n")
 install_cran_package("png")
+install_cran_package("jpeg")
 
 # 系统依赖提醒（如在 Linux 环境，需提前手动安装）
 cat("\nNOTE: If you encounter errors for packages like 'png', 'systemfonts', 'curl', or 'xml2',\n")
 cat("please ensure you have installed the necessary system libraries.\n")
 cat("For Ubuntu/Debian, run this in shell BEFORE using this script:\n")
 cat("  sudo apt-get update\n")
-cat("  sudo apt-get install libpng-dev libfontconfig1-dev libcurl4-openssl-dev libxml2-dev libssl-dev\n\n")
+cat("  sudo apt-get install libpng-dev libjpeg-dev libfontconfig1-dev libcurl4-openssl-dev libxml2-dev libssl-dev\n\n")
 
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")

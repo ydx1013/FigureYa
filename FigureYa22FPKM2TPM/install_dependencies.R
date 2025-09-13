@@ -47,10 +47,18 @@ install_bioc_package <- function(package_name) {
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
+# Installing core Bioconductor dependencies first
+cat("\nInstalling core Bioconductor dependencies...\n")
+bioc_core_packages <- c("AnnotationDbi", "httr2", "BiocFileCache", "curl", "KEGGREST")
+
+for (pkg in bioc_core_packages) {
+  install_bioc_package(pkg)
+}
+
 
 # Installing Bioconductor packages
 cat("\nInstalling Bioconductor packages...\n")
-bioc_packages <- c("TCGAbiolinks")
+bioc_packages <- c("TCGAbiolinks", "biomaRt")
 
 for (pkg in bioc_packages) {
   install_bioc_package(pkg)
