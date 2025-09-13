@@ -47,13 +47,23 @@ install_bioc_package <- function(package_name) {
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
+# System dependency note for ggrastr/plotting
+cat("\nNOTE: Seurat and related packages require system libraries.\n")
+cat("For Ubuntu/Debian, run this in shell BEFORE using this script:\n")
+cat("  sudo apt-get update\n")
+cat("  sudo apt-get install libpng-dev libjpeg-dev\n\n")
+
 # Installing Seurat dependencies first
 cat("\nInstalling Seurat dependencies...\n")
-seurat_deps <- c("httr", "plotly", "png", "reticulate", "mixtools")
+seurat_deps <- c("httr", "plotly", "png", "reticulate", "ggrastr")
 
 for (pkg in seurat_deps) {
   install_cran_package(pkg)
 }
+
+# Installing mixtools separately (has issues)
+cat("\nInstalling mixtools...\n")
+install_cran_package("mixtools")
 
 
 # Installing CRAN packages
