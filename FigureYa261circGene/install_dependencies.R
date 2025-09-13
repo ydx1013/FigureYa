@@ -58,7 +58,7 @@ for (pkg in bioc_core_packages) {
 
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("RCircos", "magrittr", "tidyverse")
+cran_packages <- c("magrittr", "tidyverse")
 
 for (pkg in cran_packages) {
   install_cran_package(pkg)
@@ -66,7 +66,7 @@ for (pkg in cran_packages) {
 
 # Installing Bioconductor packages
 cat("\nInstalling Bioconductor packages...\n")
-bioc_packages <- c("TCGAbiolinks", "rtracklayer", "biomaRt")
+bioc_packages <- c("RCircos", "TCGAbiolinks", "biomaRt", "rtracklayer")
 
 for (pkg in bioc_packages) {
   install_bioc_package(pkg)

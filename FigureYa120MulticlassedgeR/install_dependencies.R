@@ -48,14 +48,6 @@ cat("Starting R package installation...\n")
 cat("===========================================\n")
 
 
-# Installing CRAN packages
-cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("SKCM_edgeR_test_result.immune_vs_Others.txt", "SKCM_edgeR_test_result.keratin_vs_Others.txt")
-
-for (pkg in cran_packages) {
-  install_cran_package(pkg)
-}
-
 cat("\n===========================================\n")
 cat("Package installation completed!\n")
 cat("You can now run your R scripts in this directory.\n")
