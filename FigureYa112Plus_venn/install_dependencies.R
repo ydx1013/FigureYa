@@ -50,10 +50,27 @@ cat("===========================================\n")
 
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("export", "ggVennDiagram", "ggplot2", "openxlsx", "stringr")
+cran_packages <- c("export", "ggplot2", "openxlsx", "stringr", "devtools")
 
 for (pkg in cran_packages) {
   install_cran_package(pkg)
+}
+
+# Installing GitHub packages
+cat("\nInstalling GitHub packages...\n")
+if (!is_package_installed("ggVennDiagram")) {
+  cat("Installing ggVennDiagram from GitHub...\n")
+  tryCatch({
+    if (!is_package_installed("devtools")) {
+      install.packages("devtools")
+    }
+    devtools::install_github("gaospecial/ggVennDiagram")
+    cat("Successfully installed ggVennDiagram from GitHub\n")
+  }, error = function(e) {
+    cat("Failed to install ggVennDiagram from GitHub:", e$message, "\n")
+  })
+} else {
+  cat("Package already installed: ggVennDiagram\n")
 }
 
 cat("\n===========================================\n")

@@ -64,7 +64,7 @@ for (pkg in heatmap_deps) {
 
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("BART", "CoxBoost", "RColorBrewer", "compareC", "devtools", "dplyr", "gbm", "ggbreak", "ggplot2", "ggsci", "glmnet", "miscTools", "mixOmics", "plsRcox", "randomForestSRC", "rlang", "superpc", "survcomp", "survival", "survivalsvm", "tibble", "tidyr")
+cran_packages <- c("BART", "RColorBrewer", "compareC", "devtools", "dplyr", "gbm", "ggbreak", "ggplot2", "ggsci", "glmnet", "miscTools", "plsRcox", "randomForestSRC", "rlang", "superpc", "survival", "survivalsvm", "tibble", "tidyr")
 
 for (pkg in cran_packages) {
   install_cran_package(pkg)
@@ -72,10 +72,27 @@ for (pkg in cran_packages) {
 
 # Installing Bioconductor packages
 cat("\nInstalling Bioconductor packages...\n")
-bioc_packages <- c("ComplexHeatmap", "circlize")
+bioc_packages <- c("ComplexHeatmap", "circlize", "mixOmics", "survcomp")
 
 for (pkg in bioc_packages) {
   install_bioc_package(pkg)
+}
+
+# Installing GitHub packages
+cat("\nInstalling GitHub packages...\n")
+if (!is_package_installed("CoxBoost")) {
+  cat("Installing CoxBoost from GitHub...\n")
+  tryCatch({
+    if (!is_package_installed("devtools")) {
+      install.packages("devtools")
+    }
+    devtools::install_github("binderh/CoxBoost")
+    cat("Successfully installed CoxBoost from GitHub\n")
+  }, error = function(e) {
+    cat("Failed to install CoxBoost from GitHub:", e$message, "\n")
+  })
+} else {
+  cat("Package already installed: CoxBoost\n")
 }
 
 cat("\n===========================================\n")

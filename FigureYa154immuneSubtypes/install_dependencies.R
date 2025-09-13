@@ -67,6 +67,23 @@ for (pkg in bioc_packages) {
   install_bioc_package(pkg)
 }
 
+# Installing GitHub packages
+cat("\nInstalling GitHub packages...\n")
+if (!is_package_installed("ImmuneSubtypeClassifier")) {
+  cat("Installing ImmuneSubtypeClassifier from GitHub...\n")
+  tryCatch({
+    if (!is_package_installed("devtools")) {
+      install.packages("devtools")
+    }
+    devtools::install_github("Gibbsdavidl/ImmuneSubtypeClassifier")
+    cat("Successfully installed ImmuneSubtypeClassifier from GitHub\n")
+  }, error = function(e) {
+    cat("Failed to install ImmuneSubtypeClassifier from GitHub:", e$message, "\n")
+  })
+} else {
+  cat("Package already installed: ImmuneSubtypeClassifier\n")
+}
+
 cat("\n===========================================\n")
 cat("Package installation completed!\n")
 cat("You can now run your R scripts in this directory.\n")
