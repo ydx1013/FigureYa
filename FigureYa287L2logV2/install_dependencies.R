@@ -26,28 +26,21 @@ install_cran_package <- function(package_name) {
   }
 }
 
-# Function to install InformationValue (special handling)
-install_information_value <- function() {
-  if (!is_package_installed("InformationValue")) {
-    cat("Installing InformationValue...\n")
+# Function to install Bioconductor packages
+install_bioc_package <- function(package_name) {
+  if (!is_package_installed(package_name)) {
+    cat("Installing Bioconductor package:", package_name, "\n")
     tryCatch({
-      # Method 1: Try CRAN installation
-      install.packages("InformationValue", dependencies = TRUE)
-      cat("Successfully installed: InformationValue\n")
+      if (!is_package_installed("BiocManager")) {
+        install.packages("BiocManager")
+      }
+      BiocManager::install(package_name, update = FALSE, ask = FALSE)
+      cat("Successfully installed:", package_name, "\n")
     }, error = function(e) {
-      cat("Warning: Failed to install InformationValue from CRAN: ", e$message, "\n")
-      
-      # Method 2: Try archived version
-      tryCatch({
-        install.packages("https://cran.r-project.org/src/contrib/Archive/InformationValue/InformationValue_1.2.3.tar.gz", 
-                        repos = NULL, type = "source")
-        cat("Successfully installed: InformationValue (archived version)\n")
-      }, error = function(e2) {
-        cat("Error: All installation methods failed for InformationValue: ", e2$message, "\n")
-      })
+      cat("Warning: Failed to install Bioconductor package '", package_name, "': ", e$message, "\n")
     })
   } else {
-    cat("Package already installed: InformationValue\n")
+    cat("Package already installed:", package_name, "\n")
   }
 }
 
@@ -56,24 +49,19 @@ cat("===========================================\n")
 
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
-# Removed invalid package names: "and", "mean_auc", "mean_roc", "mean_sensity", "mean_specificity"
-# These appear to be functions, not packages
+# Removed invalid package names and InformationValue
 cran_packages <- c("ggplot2", "glmnet", "pROC", "rms", "sampling")
 
 for (pkg in cran_packages) {
   install_cran_package(pkg)
 }
 
-# Special installation for InformationValue
-cat("\nInstalling InformationValue (special package)...\n")
-install_information_value()
-
 cat("\n===========================================\n")
 cat("Package installation completed!\n")
 
 # Check if all required packages are installed
 cat("\nChecking installed packages:\n")
-all_packages <- c(cran_packages, "InformationValue")
+all_packages <- cran_packages
 for (pkg in all_packages) {
   if (is_package_installed(pkg)) {
     cat("✓", pkg, "is installed\n")
@@ -82,13 +70,6 @@ for (pkg in all_packages) {
   }
 }
 
-# Note about the removed "packages"
-cat("\nNote: The following were not installed as they are not valid R package names:\n")
-cat("- 'and' (this is a logical operator, not a package)\n")
-cat("- 'mean_auc' (this appears to be a function, not a package)\n")
-cat("- 'mean_roc' (this appears to be a function, not a package)\n")
-cat("- 'mean_sensity' (this appears to be a function, not a package)\n")
-cat("- 'mean_specificity' (this appears to be a function, not a package)\n")
-cat("These are likely functions defined within the R script itself.\n")
-
+cat("\nNote: InformationValue package is NOT needed.\n")
+cat("The misClassError() function can be replaced with: mean(pred_result != actual_values)\n")
 cat("You can now run your R scripts in this directory.\n")
