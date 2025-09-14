@@ -18,7 +18,7 @@ jobs:
       - name: 2. Install system dependencies and Git LFS
         run: |
           sudo apt-get update
-          sudo apt-get install -y git-lfs libgfortran5 liblapack-dev libblas-dev \
+          sudo apt-get install -y git-lfs libmagick++-dev libgfortran5 liblapack-dev libblas-dev \
             libpng-dev libjpeg-dev librsvg2-dev libcairo2-dev \
             libxml2-dev libcurl4-openssl-dev libssl-dev \
             libfontconfig1-dev libharfbuzz-dev libfribidi-dev \
