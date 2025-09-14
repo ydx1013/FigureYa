@@ -53,12 +53,30 @@ install_bioc_packages <- function(packages) {
   }
 }
 
+# Function to install packages from GitHub
+install_github_package <- function(repo) {
+  pkg_name <- strsplit(repo, "/")[[1]][2]  # Extract package name from "user/repo"
+  
+  if (!is_package_installed(pkg_name)) {
+    cat("Installing GitHub package:", repo, "\n")
+    tryCatch({
+      if (!is_package_installed("remotes")) {
+        install.packages("remotes")
+      }
+      remotes::install_github(repo)
+      cat("Successfully installed from GitHub:", pkg_name, "\n")
+    }, error = function(e) {
+      stop("Failed to install GitHub package ", repo, ": ", e$message)
+    })
+  } else {
+    cat("GitHub package already installed:", pkg_name, "\n")
+  }
+}
+
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
 # --- Step 1: Install Bioconductor Packages FIRST ---
-# deconstructSigs depends on BSgenome, which is a Bioconductor package.
-# We must install these dependencies before installing deconstructSigs itself.
 cat("\nInstalling Bioconductor packages...\n")
 bioc_packages <- c(
   "BSgenome", # Dependency for deconstructSigs and BSgenome.Hsapiens.UCSC.hg19
@@ -67,17 +85,34 @@ bioc_packages <- c(
 )
 install_bioc_packages(bioc_packages)
 
-
 # --- Step 2: Install CRAN Packages ---
-# Now that Bioconductor dependencies are met, we can install the rest.
 cat("\nInstalling CRAN packages...\n")
 cran_packages <- c(
   "curl", "httr", "gargle", "googledrive", "googlesheets4", "ragg", "rvest",
-  "deconstructSigs", 
   "forcats", "magrittr", "readxl", "stringr", "tidyverse"
 )
 install_cran_packages(cran_packages)
 
+# --- Step 3: Install GitHub Packages ---
+cat("\nInstalling GitHub packages...\n")
+github_packages <- c(
+  "raerose01/deconstructSigs"  # deconstructSigs is only available on GitHub
+)
+for (repo in github_packages) {
+  install_github_package(repo)
+}
+
+# --- Step 4: 验证安装 ---
+cat("\nVerifying package installation...\n")
+all_packages <- c(bioc_packages, cran_packages, "deconstructSigs")
+
+for (pkg in all_packages) {
+  if (is_package_installed(pkg)) {
+    cat("✓", pkg, "is installed\n")
+  } else {
+    cat("✗", pkg, "FAILED to install\n")
+  }
+}
 
 cat("\n===========================================\n")
 cat("Package installation completed!\n")
