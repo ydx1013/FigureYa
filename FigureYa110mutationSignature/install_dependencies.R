@@ -4,73 +4,80 @@
 
 # Set up mirrors for better download performance
 options("repos" = c(CRAN = "https://cloud.r-project.org/"))
-options(BioC_mirror = "https://bioconductor.org/")
 
 # Function to check if a package is installed
 is_package_installed <- function(package_name) {
   return(package_name %in% rownames(installed.packages()))
 }
 
-# Function to install CRAN packages
-install_cran_package <- function(package_name) {
-  if (!is_package_installed(package_name)) {
-    cat("Installing CRAN package:", package_name, "\n")
+# Function to install CRAN packages (vectorized)
+install_cran_packages <- function(packages) {
+  # Filter out already installed packages
+  packages_to_install <- packages[!sapply(packages, is_package_installed)]
+  if (length(packages_to_install) == 0) {
+    cat("All required CRAN packages are already installed.\n")
+    return()
+  }
+  
+  for (pkg in packages_to_install) {
+    cat("Installing CRAN package:", pkg, "\n")
     tryCatch({
-      install.packages(package_name, dependencies = TRUE)
-      cat("Successfully installed:", package_name, "\n")
+      install.packages(pkg, dependencies = TRUE)
+      cat("Successfully installed:", pkg, "\n")
     }, error = function(e) {
-      cat("Failed to install", package_name, ":", e$message, "\n")
+      stop("Failed to install CRAN package ", pkg, ": ", e$message)
     })
-  } else {
-    cat("Package already installed:", package_name, "\n")
   }
 }
 
-# Function to install Bioconductor packages
-install_bioc_package <- function(package_name) {
-  if (!is_package_installed(package_name)) {
-    cat("Installing Bioconductor package:", package_name, "\n")
+# Function to install Bioconductor packages (vectorized)
+install_bioc_packages <- function(packages) {
+  # Check for BiocManager and install if not present
+  if (!is_package_installed("BiocManager")) {
+    install.packages("BiocManager")
+  }
+  
+  # Filter out already installed packages
+  packages_to_install <- packages[!sapply(packages, is_package_installed)]
+  
+  if (length(packages_to_install) > 0) {
+    cat("Installing Bioconductor package(s):", paste(packages_to_install, collapse=", "), "\n")
     tryCatch({
-      if (!is_package_installed("BiocManager")) {
-        install.packages("BiocManager")
-      }
-      BiocManager::install(package_name, update = FALSE, ask = FALSE)
-      cat("Successfully installed:", package_name, "\n")
+      BiocManager::install(packages_to_install, update = FALSE, ask = FALSE)
+      cat("Successfully submitted for installation:", paste(packages_to_install, collapse=", "), "\n")
     }, error = function(e) {
-      cat("Failed to install", package_name, ":", e$message, "\n")
+      stop("Failed to install Bioconductor packages: ", e$message)
     })
   } else {
-    cat("Package already installed:", package_name, "\n")
+    cat("All required Bioconductor packages are already installed.\n")
   }
 }
 
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
-# Installing core CRAN dependencies first
-cat("\nInstalling core CRAN dependencies...\n")
-core_packages <- c("curl", "httr", "gargle", "googledrive", "googlesheets4", "ragg", "rvest")
-
-for (pkg in core_packages) {
-  install_cran_package(pkg)
-}
-
-
-# Installing CRAN packages
-cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("deconstructSigs", "forcats", "magrittr", "readxl", "stringr", "tidyverse")
-
-for (pkg in cran_packages) {
-  install_cran_package(pkg)
-}
-
-# Installing Bioconductor packages
+# --- Step 1: Install Bioconductor Packages FIRST ---
+# deconstructSigs depends on BSgenome, which is a Bioconductor package.
+# We must install these dependencies before installing deconstructSigs itself.
 cat("\nInstalling Bioconductor packages...\n")
-bioc_packages <- c("BSgenome.Hsapiens.UCSC.hg19", "NMF")
+bioc_packages <- c(
+  "BSgenome", # Dependency for deconstructSigs and BSgenome.Hsapiens.UCSC.hg19
+  "BSgenome.Hsapiens.UCSC.hg19",
+  "NMF"
+)
+install_bioc_packages(bioc_packages)
 
-for (pkg in bioc_packages) {
-  install_bioc_package(pkg)
-}
+
+# --- Step 2: Install CRAN Packages ---
+# Now that Bioconductor dependencies are met, we can install the rest.
+cat("\nInstalling CRAN packages...\n")
+cran_packages <- c(
+  "curl", "httr", "gargle", "googledrive", "googlesheets4", "ragg", "rvest",
+  "deconstructSigs", 
+  "forcats", "magrittr", "readxl", "stringr", "tidyverse"
+)
+install_cran_packages(cran_packages)
+
 
 cat("\n===========================================\n")
 cat("Package installation completed!\n")
