@@ -16,7 +16,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -24,9 +23,9 @@ knitr::opts_chunk$set(echo = TRUE)
 # 需求描述
 # Demand description
 
-小丫老师您好，我发现FigureYa131cMAP最近好像用不了了，有篇最近的文章好像也能用类似cmap的方法来进行药物预测，但这篇没有没有提供代码，请问能众筹一下吗，也可以替代一下FigureYa131cMAP。
+有篇最近的文章可以替代一下FigureYa131cMAP，好像能用类似cmap的方法来进行药物预测，但这篇没有没有提供代码，。
 
-Hello, Teacher Xiaoya. I noticed that FigureYa131cMAP seems to be unavailable recently. I came across a recent article that also uses a CMAP-like method for drug prediction, but the authors didn’t provide the code. Would it be possible to crowdsource a solution? This could also serve as an alternative to FigureYa131cMAP.
+I came across a recent article that also uses a CMAP-like method for drug prediction, but the authors didn’t provide the code. This could also serve as an alternative to FigureYa131cMAP.
 
 ![](figure1.png)
 
@@ -64,27 +63,9 @@ If you use the methods described in the following demonstration, please cite the
 # 环境设置
 # Environment Setup
 
-
-Using domestic mirrors for package installation.
-
 ```{r}
 source("install_dependencies.R")
-```
 
-```{r eval=FALSE}
-BiocManager::install("PharmacoGx")
-BiocManager::install("CoreGx", force = TRUE)
-install.packages("shinyjs")
-install.packages("shinydashboard")
-install.packages("magicaxis")
-install.packages("lsa")
-install.packages("relations")
-```
-
-# 加载包
-# Loading packages
-
-```{r}
 library(PharmacoGx)
 library(parallel)
 library(dplyr)
@@ -265,11 +246,8 @@ ggplot(xsum, aes(number,score))+
 ggsave("CMAP_XSum.pdf", width = 5, height = 7)
 ```
 
-# 会话信息
 # Session Info
 
 ```{r}
-# 显示会话信息
-# Show session information
 sessionInfo()
 ```
