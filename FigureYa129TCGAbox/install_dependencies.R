@@ -1,5 +1,4 @@
 #!/usr/bin/env Rscript
-# Auto-generated R dependency installation script
 # This script installs all required R packages for this project
 
 # Set up mirrors for better download performance
@@ -12,84 +11,64 @@ is_package_installed <- function(package_name) {
 }
 
 # Function to install CRAN packages
-install_cran_package <- function(package_name) {
-  if (!is_package_installed(package_name)) {
-    cat("Installing CRAN package:", package_name, "\n")
+install_cran_packages <- function(packages) {
+  packages_to_install <- packages[!sapply(packages, is_package_installed)]
+  if (length(packages_to_install) == 0) {
+    cat("All required CRAN packages are already installed.\n")
+    return()
+  }
+  for (pkg in packages_to_install) {
+    cat("Installing CRAN package:", pkg, "\n")
     tryCatch({
-      install.packages(package_name, dependencies = TRUE)
-      cat("Successfully installed:", package_name, "\n")
+      install.packages(pkg, dependencies = TRUE)
+      cat("Successfully installed:", pkg, "\n")
     }, error = function(e) {
-      cat("Failed to install", package_name, ":", e$message, "\n")
+      stop("Failed to install CRAN package ", pkg, ": ", e$message)
     })
-  } else {
-    cat("Package already installed:", package_name, "\n")
   }
 }
 
-# Function to install Bioconductor packages
-install_bioc_package <- function(package_name) {
-  if (!is_package_installed(package_name)) {
-    cat("Installing Bioconductor package:", package_name, "\n")
-    tryCatch({
-      if (!is_package_installed("BiocManager")) {
-        install.packages("BiocManager")
-      }
-      BiocManager::install(package_name, update = FALSE, ask = FALSE)
-      cat("Successfully installed:", package_name, "\n")
-    }, error = function(e) {
-      cat("Failed to install", package_name, ":", e$message, "\n")
-    })
-  } else {
-    cat("Package already installed:", package_name, "\n")
-  }
-}
-
+# --- Main Installation Logic ---
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
-# Installing core CRAN dependencies first
-cat("\nInstalling core CRAN dependencies...\n")
-core_packages <- c("curl", "httr", "gargle", "googledrive", "googlesheets4", "ragg", "rvest")
+# 1. Install core CRAN packages, including 'remotes' for versioned install
+cat("\nInstalling core CRAN packages...\n")
+cran_packages <- c(
+  "remotes", "data.table", "ggplot2", "ggpubr", 
+  "ggsignif", "gtools", "tidyverse"
+)
+install_cran_packages(cran_packages)
 
-for (pkg in core_packages) {
-  install_cran_package(pkg)
+
+# 2. Install a specific, older version of GEOquery from Bioconductor
+# This is required for the archived 'DealGPL570' package to work.
+cat("\nInstalling a compatible version of GEOquery...\n")
+if (!is_package_installed("GEOquery") || packageVersion("GEOquery") > "2.55") {
+  cat("Installing GEOquery v2.54.1 for compatibility...\n")
+  # First, ensure BiocManager is available
+  if (!is_package_installed("BiocManager")) { install.packages("BiocManager") }
+  remotes::install_version("GEOquery", version = "2.54.1")
+} else {
+  cat("A compatible version of GEOquery is already installed.\n")
 }
 
-# ---- 补充部分开始 ----
 
-# 先安装 DealGPL570 的特定历史版本（通过URL）
+# 3. Install the archived 'DealGPL570' package from URL
+cat("\nInstalling archived DealGPL570 package...\n")
 deal_pkg_url <- "https://cran.r-project.org/src/contrib/Archive/DealGPL570/DealGPL570_0.0.1.tar.gz"
 deal_pkg_name <- "DealGPL570"
-
 if (!is_package_installed(deal_pkg_name)) {
-  cat("Installing archived DealGPL570 version 0.0.1 from CRAN Archive...\n")
+  cat("Installing DealGPL570 version 0.0.1 from CRAN Archive...\n")
   tryCatch({
     install.packages(deal_pkg_url, repos = NULL, type = "source")
     cat("Successfully installed DealGPL570_0.0.1\n")
   }, error = function(e) {
-    cat("Failed to install DealGPL570_0.0.1:", e$message, "\n")
+    stop("Failed to install DealGPL570_0.0.1: ", e$message)
   })
 } else {
   cat("Package already installed:", deal_pkg_name, "\n")
 }
 
-# 安装系统依赖提醒（仅显示，实际需手工操作）
-cat("\nNOTE: If you encounter errors for packages like 'systemfonts' or 'curl',\n")
-cat("please ensure you have installed the necessary system libraries.\n")
-cat("For Ubuntu/Debian, run this in shell BEFORE using this script:\n")
-cat("  sudo apt-get update\n")
-cat("  sudo apt-get install libfontconfig1-dev libcurl4-openssl-dev libxml2-dev libssl-dev\n\n")
-
-# ---- 补充部分结束 ----
-
-# Installing CRAN packages
-cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("data.table", "ggplot2", "ggpubr", "ggsignif", "gtools", "tidyverse")
-
-for (pkg in cran_packages) {
-  install_cran_package(pkg)
-}
-
 cat("\n===========================================\n")
 cat("Package installation completed!\n")
-cat("You can now run your R scripts in this directory.\n")
