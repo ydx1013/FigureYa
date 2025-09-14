@@ -67,7 +67,6 @@ Implements nested cross-validation, Holm-Bonferroni correction, and L2-regulariz
 source("install_dependencies.R")
 
 library(rms)
-library(InformationValue)
 library(pROC)
 library(ggplot2)
 library(glmnet)
@@ -204,7 +203,7 @@ logis_straCV<-function(li,data,nfolds,formula){
       }
       probs<-apply(matrix(Score,ncol = 1),MARGIN = 1,FUN = logis_cal)
       pred_result<-ifelse(probs>0.5,1,0)
-      misclasserror<-misClassError(data[,("outcome")],probs)
+      misclasserror <- mean(pred_result != data[,("outcome")])
       miserror<-c(miserror,misclasserror)
     }
   }
