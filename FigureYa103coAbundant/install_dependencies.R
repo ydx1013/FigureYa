@@ -27,23 +27,26 @@ install_cran_package <- function(package_name) {
   }
 }
 
-# Function to install Bioconductor packages
-install_bioc_package <- function(package_name) {
-  if (!is_package_installed(package_name)) {
-    cat("Installing Bioconductor package(s):", paste(package_name, collapse=", "), "\n")
+# Function to install Bioconductor packages (修复版)
+install_bioc_packages <- function(package_names) {  # 改为复数
+  # 找出未安装的包
+  missing_packages <- package_names[!sapply(package_names, is_package_installed)]
+  
+  if (length(missing_packages) > 0) {
+    cat("Installing Bioconductor package(s):", paste(missing_packages, collapse=", "), "\n")
     tryCatch({
       if (!is_package_installed("BiocManager")) {
         install.packages("BiocManager")
       }
-      BiocManager::install(package_name, update = FALSE, ask = FALSE)
-      cat("Successfully submitted for installation:", paste(package_name, collapse=", "), "\n")
+      BiocManager::install(missing_packages, update = FALSE, ask = FALSE)
+      cat("Successfully installed:", paste(missing_packages, collapse=", "), "\n")
     }, error = function(e) {
       cat("Failed to install Bioconductor packages:", e$message, "\n")
       # Stop execution if a critical package fails
       stop("Halting due to failed installation.")
     })
   } else {
-    cat("Package already installed:", package_name, "\n")
+    cat("All Bioconductor packages already installed:", paste(package_names, collapse=", "), "\n")
   }
 }
 
@@ -51,8 +54,6 @@ cat("Starting R package installation...\n")
 cat("===========================================\n")
 
 # --- Step 1: Install Bioconductor Packages FIRST ---
-# These are either from Bioconductor directly or are dependencies for CRAN packages.
-# This is the most important step to fix the error.
 cat("\nInstalling Bioconductor packages...\n")
 bioc_packages <- c(
   "ClassDiscovery", # From a previous error
@@ -61,11 +62,12 @@ bioc_packages <- c(
   "GO.db",          # WGCNA dependency
   "AnnotationDbi"   # WGCNA dependency
 )
-install_bioc_package(bioc_packages)
+install_bioc_packages(bioc_packages)  # 改为调用修复后的函数
 
+# 等待Bioconductor包安装完成
+Sys.sleep(5)
 
 # --- Step 2: Install CRAN Packages ---
-# These packages can now be installed because their Bioconductor dependencies are met.
 cat("\nInstalling CRAN packages...\n")
 cran_packages <- c(
   "WGCNA", 
@@ -75,6 +77,18 @@ cran_packages <- c(
 
 for (pkg in cran_packages) {
   install_cran_package(pkg)
+}
+
+# --- Step 3: 验证安装 ---
+cat("\nVerifying package installation...\n")
+all_packages <- c(bioc_packages, cran_packages)
+
+for (pkg in all_packages) {
+  if (is_package_installed(pkg)) {
+    cat("✓", pkg, "is installed\n")
+  } else {
+    cat("✗", pkg, "FAILED to install\n")
+  }
 }
 
 cat("\n===========================================\n")
