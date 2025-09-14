@@ -11,7 +11,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 # 设置knitr代码块的全局选项 / Set global options for knitr code chunks
@@ -47,7 +46,6 @@ On the right side, use a pie chart to show the correlation between each pathway 
 
 ## 环境设置
 
-
 ## Environment settings
 
 Use domestic image installation package
@@ -55,11 +53,6 @@ Use domestic image installation package
 ```{r}
 source("install_dependencies.R")
 
-```
-
-
-
-```{r}
 # 加载clusterProfiler包，用于基因富集分析和功能注释（Load the clusterProfiler package for gene enrichment analysis and functional annotation）
 library(clusterProfiler)
 # 加载org.Hs.eg.db包，包含人类基因注释信息（Load the org.Hs.eg.db package containing human gene annotation information）
@@ -81,7 +74,6 @@ Sys.setenv(LANGUAGE = "en")
 # 禁止字符串自动转换为因子类型，避免意外的数据类型转换（Disable automatic conversion of strings to factors to avoid unexpected data type changes）
 options(stringsAsFactors = FALSE) 
 ```
-
 
 ## 输入文件
 
