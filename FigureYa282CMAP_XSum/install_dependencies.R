@@ -19,7 +19,7 @@ install_cran_package <- function(package_name) {
       install.packages(package_name, dependencies = TRUE)
       cat("Successfully installed:", package_name, "\n")
     }, error = function(e) {
-      cat("Failed to install", package_name, ":", e$message, "\n")
+      cat("Warning: Failed to install CRAN package '", package_name, "': ", e$message, "\n")
     })
   } else {
     cat("Package already installed:", package_name, "\n")
@@ -37,7 +37,7 @@ install_bioc_package <- function(package_name) {
       BiocManager::install(package_name, update = FALSE, ask = FALSE)
       cat("Successfully installed:", package_name, "\n")
     }, error = function(e) {
-      cat("Failed to install", package_name, ":", e$message, "\n")
+      cat("Warning: Failed to install Bioconductor package '", package_name, "': ", e$message, "\n")
     })
   } else {
     cat("Package already installed:", package_name, "\n")
@@ -47,10 +47,17 @@ install_bioc_package <- function(package_name) {
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
+# First install BiocManager if not already installed
+if (!is_package_installed("BiocManager")) {
+  cat("Installing BiocManager...\n")
+  install.packages("BiocManager")
+}
 
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("CoreGx", "PharmacoGx", "dplyr", "ggplot2", "ggrepel", "ggthemes", "gridExtra", "lsa", "magicaxis", "parallel", "relations", "shinydashboard", "shinyjs", "stringr", "tibble", "tidyverse")
+cran_packages <- c("dplyr", "ggplot2", "ggrepel", "ggthemes", "gridExtra", 
+                  "lsa", "magicaxis", "parallel", "relations", "shinydashboard", 
+                  "shinyjs", "stringr", "tibble", "tidyverse")
 
 for (pkg in cran_packages) {
   install_cran_package(pkg)
@@ -58,7 +65,8 @@ for (pkg in cran_packages) {
 
 # Installing Bioconductor packages
 cat("\nInstalling Bioconductor packages...\n")
-bioc_packages <- c("clusterProfiler")
+# PharmacoGx and CoreGx are Bioconductor packages, not CRAN
+bioc_packages <- c("PharmacoGx", "CoreGx", "clusterProfiler")
 
 for (pkg in bioc_packages) {
   install_bioc_package(pkg)
@@ -66,4 +74,21 @@ for (pkg in bioc_packages) {
 
 cat("\n===========================================\n")
 cat("Package installation completed!\n")
+
+# Check if all required packages are installed
+cat("\nChecking installed packages:\n")
+all_packages <- c(cran_packages, bioc_packages)
+for (pkg in all_packages) {
+  if (is_package_installed(pkg)) {
+    cat("✓", pkg, "is installed\n")
+  } else {
+    cat("✗", pkg, "is NOT installed\n")
+  }
+}
+
 cat("You can now run your R scripts in this directory.\n")
+
+# Additional note for PharmacoGx dependencies
+cat("\nNote: PharmacoGx may require additional system dependencies:\n")
+cat("On Ubuntu/Debian: sudo apt-get install libcurl4-openssl-dev libssl-dev libxml2-dev\n")
+cat("On CentOS/RHEL: sudo yum install libcurl-devel openssl-devel libxml2-devel\n")
