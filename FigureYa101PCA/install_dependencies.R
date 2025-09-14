@@ -4,7 +4,7 @@
 
 # Set up mirrors for better download performance
 options("repos" = c(CRAN = "https://cloud.r-project.org/"))
-options(BioC_mirror = "https://bioconductor.org/")
+# Note: BiocManager::install handles its own mirrors, so the BioC_mirror option is often not needed.
 
 # Function to check if a package is installed
 is_package_installed <- function(package_name) {
@@ -34,7 +34,8 @@ install_bioc_package <- function(package_name) {
       if (!is_package_installed("BiocManager")) {
         install.packages("BiocManager")
       }
-      BiocManager::install(package_name, update = FALSE, ask = FALSE)
+      # Also install Biobase as it's a key dependency
+      BiocManager::install(c("Biobase", package_name), update = FALSE, ask = FALSE)
       cat("Successfully installed:", package_name, "\n")
     }, error = function(e) {
       cat("Failed to install", package_name, ":", e$message, "\n")
@@ -50,11 +51,20 @@ cat("===========================================\n")
 
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("ClassDiscovery", "stringr")
+cran_packages <- c("stringr") # "ClassDiscovery" was removed from here
 
 for (pkg in cran_packages) {
   install_cran_package(pkg)
 }
+
+# Installing Bioconductor packages
+cat("\nInstalling Bioconductor packages...\n")
+bioc_packages <- c("ClassDiscovery") # "ClassDiscovery" is now correctly listed here
+
+for (pkg in bioc_packages) {
+  install_bioc_package(pkg)
+}
+
 
 cat("\n===========================================\n")
 cat("Package installation completed!\n")
