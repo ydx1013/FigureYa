@@ -56,6 +56,7 @@ library(survival)
 # 加载survminer包，用于可视化生存分析结果（Load the survminer package for visualizing survival analysis results）
 library(survminer)
 # 加载pheatmap包，用于绘制热图（Load the pheatmap package for creating heatmaps）
+library(pheatmap)
 
 # 设置系统环境语言为英文，以便显示英文报错信息（Set system environment language to English to display error messages in English）
 Sys.setenv(LANGUAGE = "en") 
