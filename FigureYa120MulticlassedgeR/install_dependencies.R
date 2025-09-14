@@ -19,7 +19,7 @@ install_cran_package <- function(package_name) {
       install.packages(package_name, dependencies = TRUE)
       cat("Successfully installed:", package_name, "\n")
     }, error = function(e) {
-      cat("Failed to install", package_name, ":", e$message, "\n")
+      stop("Failed to install ", package_name, ": ", e$message)
     })
   } else {
     cat("Package already installed:", package_name, "\n")
@@ -37,7 +37,7 @@ install_bioc_package <- function(package_name) {
       BiocManager::install(package_name, update = FALSE, ask = FALSE)
       cat("Successfully installed:", package_name, "\n")
     }, error = function(e) {
-      cat("Failed to install", package_name, ":", e$message, "\n")
+      stop("Failed to install ", package_name, ": ", e$message)
     })
   } else {
     cat("Package already installed:", package_name, "\n")
@@ -47,6 +47,23 @@ install_bioc_package <- function(package_name) {
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
+# --- Step 1: Install Bioconductor Packages ---
+# 'edgeR' is a Bioconductor package.
+cat("\nInstalling Bioconductor packages...\n")
+bioc_packages <- c("edgeR")
+
+for (pkg in bioc_packages) {
+  install_bioc_package(pkg)
+}
+
+# --- Step 2: Install CRAN Packages ---
+# Add common packages for plotting and data manipulation.
+cat("\nInstalling CRAN packages...\n")
+cran_packages <- c("pheatmap", "RColorBrewer", "gplots")
+
+for (pkg in cran_packages) {
+  install_cran_package(pkg)
+}
 
 cat("\n===========================================\n")
 cat("Package installation completed!\n")
