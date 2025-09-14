@@ -19,7 +19,7 @@ install_cran_package <- function(package_name) {
       install.packages(package_name, dependencies = TRUE)
       cat("Successfully installed:", package_name, "\n")
     }, error = function(e) {
-      cat("Failed to install", package_name, ":", e$message, "\n")
+      stop("Failed to install ", package_name, ": ", e$message)
     })
   } else {
     cat("Package already installed:", package_name, "\n")
@@ -37,7 +37,7 @@ install_bioc_package <- function(package_name) {
       BiocManager::install(package_name, update = FALSE, ask = FALSE)
       cat("Successfully installed:", package_name, "\n")
     }, error = function(e) {
-      cat("Failed to install", package_name, ":", e$message, "\n")
+      stop("Failed to install ", package_name, ": ", e$message)
     })
   } else {
     cat("Package already installed:", package_name, "\n")
@@ -50,7 +50,8 @@ cat("===========================================\n")
 
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("RColorBrewer", "pheatmap")
+# Added 'magick', the root cause of the dependency failure.
+cran_packages <- c("RColorBrewer", "pheatmap", "magick")
 
 for (pkg in cran_packages) {
   install_cran_package(pkg)
