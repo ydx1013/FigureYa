@@ -11,7 +11,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 # 设置knitr代码块的全局选项 / Set global options for knitr code chunks
@@ -101,6 +100,7 @@ source("install_dependencies.R")
 library(openxlsx)
 # 加载用于芯片数据处理的包
 # Load the package for microarray data processing
+library(GEOquery)
 library(affy) 
 # 加载用于芯片数据处理的包（GCRMA算法）
 # Load the package for microarray data processing (GCRMA algorithm)
@@ -154,11 +154,22 @@ The following is the chip data processing process, mainly using the affy and gcr
 
 The following step requires a relatively long running time. I will save the running result gset in a file for easy retrieval when running again
 
-```r
-celFiles <- dir("GSE58831_RAW",full.names=T)  #读取文件夹下面文件
-affyBatch <- read.affybatch(filenames = celFiles)  #Read CEL files into an Affybatch
-gset <- gcrma(affyBatch)  #converts an AffyBatch into an ExpressionSet
-save(gset, file = "gset.RData")
+```{r}
+if (!file.exists("gset.RData")) {
+  cat("gset.RData not found. Downloading from GEO...\n")
+  
+  gset_list <- getGEO('GSE58831', destdir = ".", getGPL = FALSE)
+  
+  if (length(gset_list) > 0) {
+    gset <- gset_list[[1]]
+    save(gset, file = "gset.RData")
+    cat("Downloaded and saved gset.RData successfully.\n")
+  } else {
+    stop("Failed to download or parse data from GEO for GSE58831.")
+  }
+} else {
+  cat("Found existing gset.RData. Skipping download.\n")
+}
 ```
 
 ```{r}
