@@ -19,7 +19,7 @@ install_cran_package <- function(package_name) {
       install.packages(package_name, dependencies = TRUE)
       cat("Successfully installed:", package_name, "\n")
     }, error = function(e) {
-      cat("Failed to install", package_name, ":", e$message, "\n")
+      stop("Failed to install ", package_name, ": ", e$message)
     })
   } else {
     cat("Package already installed:", package_name, "\n")
@@ -37,7 +37,7 @@ install_bioc_package <- function(package_name) {
       BiocManager::install(package_name, update = FALSE, ask = FALSE)
       cat("Successfully installed:", package_name, "\n")
     }, error = function(e) {
-      cat("Failed to install", package_name, ":", e$message, "\n")
+      stop("Failed to install ", package_name, ": ", e$message)
     })
   } else {
     cat("Package already installed:", package_name, "\n")
@@ -50,7 +50,9 @@ cat("===========================================\n")
 
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("plyr", "tidyverse", "xlsx")
+# Moved ComplexHeatmap and circlize from Bioconductor to CRAN list.
+# xlsx and its dependencies (rJava, xlsxjars) are all on CRAN.
+cran_packages <- c("plyr", "tidyverse", "xlsx", "ComplexHeatmap", "circlize")
 
 for (pkg in cran_packages) {
   install_cran_package(pkg)
@@ -58,7 +60,7 @@ for (pkg in cran_packages) {
 
 # Installing Bioconductor packages
 cat("\nInstalling Bioconductor packages...\n")
-bioc_packages <- c("ComplexHeatmap", "GEOquery", "circlize")
+bioc_packages <- c("GEOquery")
 
 for (pkg in bioc_packages) {
   install_bioc_package(pkg)
