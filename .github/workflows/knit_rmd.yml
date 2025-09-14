@@ -14,7 +14,6 @@ jobs:
         uses: actions/checkout@v4
         with:
           lfs: true
-        continue-on-error: true
 
       - name: 2. Install system dependencies
         run: |
@@ -39,13 +38,19 @@ jobs:
       - name: 6. Identify LFS directories & Prepare Batch
         id: batch_prep
         run: |
-          git lfs ls-files -n | xargs -n 1 dirname | sort -u > .lfs_dirs.txt || echo "No LFS files found."
+          # Build LFS dir list safely; handle empty output and ensure file exists
+          git lfs ls-files -n | sed '/^[[:space:]]*$/d' | xargs -r -n1 dirname | sort -u > .lfs_dirs.txt || true
+          touch .lfs_dirs.txt
           echo "LFS directories identified:"
-          cat .lfs_dirs.txt
+          if [ -s .lfs_dirs.txt ]; then cat .lfs_dirs.txt; else echo "(none)"; fi
 
           BATCH_SIZE=50
           STATE_FILE=".rmd_batch_state"
-          CURRENT_BATCH=$(cat "$STATE_FILE" || echo "1")
+          if [ -f "$STATE_FILE" ]; then
+            CURRENT_BATCH=$(cat "$STATE_FILE" 2>/dev/null)
+          else
+            CURRENT_BATCH=1
+          fi
           echo "Running batch number: $CURRENT_BATCH"
 
           find . -type f -name "*.Rmd" | sort > .all_rmd_files.txt
@@ -54,20 +59,28 @@ jobs:
 
           echo "Total .Rmd files: $TOTAL_FILES, Total batches: $TOTAL_BATCHES"
 
-          if [ "$CURRENT_BATCH" -gt "$TOTAL_BATCHES" ] && [ "$TOTAL_BATCHES" -gt 0 ]; then
-            echo "All batches completed. Resetting to batch 1."
-            CURRENT_BATCH=1
+          # If no files, still prepare outputs so downstream steps don't fail
+          if [ "$TOTAL_FILES" -eq 0 ]; then
+            : > .current_batch_files.txt
+            echo "current_batch=$CURRENT_BATCH" >> $GITHUB_OUTPUT
+            echo "total_batches=$TOTAL_BATCHES" >> $GITHUB_OUTPUT
+            echo "job_failed=false" >> $GITHUB_OUTPUT
+          else
+            if [ "$CURRENT_BATCH" -gt "$TOTAL_BATCHES" ] && [ "$TOTAL_BATCHES" -gt 0 ]; then
+              echo "All batches completed. Resetting to batch 1."
+              CURRENT_BATCH=1
+            fi
+
+            START_LINE=$(( (CURRENT_BATCH - 1) * BATCH_SIZE + 1 ))
+            END_LINE=$(( CURRENT_BATCH * BATCH_SIZE ))
+
+            echo "Processing files from line $START_LINE to $END_LINE..."
+            sed -n "${START_LINE},${END_LINE}p" .all_rmd_files.txt > .current_batch_files.txt
+
+            echo "current_batch=$CURRENT_BATCH" >> $GITHUB_OUTPUT
+            echo "total_batches=$TOTAL_BATCHES" >> $GITHUB_OUTPUT
+            echo "job_failed=false" >> $GITHUB_OUTPUT
           fi
-
-          START_LINE=$(( (CURRENT_BATCH - 1) * BATCH_SIZE + 1 ))
-          END_LINE=$(( CURRENT_BATCH * BATCH_SIZE ))
-
-          echo "Processing files from line $START_LINE to $END_LINE..."
-          sed -n "${START_LINE},${END_LINE}p" .all_rmd_files.txt > .current_batch_files.txt
-
-          echo "current_batch=$CURRENT_BATCH" >> $GITHUB_OUTPUT
-          echo "total_batches=$TOTAL_BATCHES" >> $GITHUB_OUTPUT
-          echo "job_failed=false" >> $GITHUB_OUTPUT
 
       - name: 7. Render Rmd files in Current Batch (Error Tolerant)
         id: render_step
@@ -80,6 +93,7 @@ jobs:
           echo "" >> summary.txt
 
           while IFS= read -r rmd_file; do
+            [ -z "$rmd_file" ] && continue
             echo "========== START: $rmd_file =========="
             rmd_dir=$(dirname "$rmd_file")
 
@@ -108,6 +122,8 @@ jobs:
           # If any file failed, we set an output for the workflow
           if [ "$ANY_FILE_FAILED" = true ]; then
             echo "job_failed=true" >> $GITHUB_OUTPUT
+          else
+            echo "job_failed=false" >> $GITHUB_OUTPUT
           fi
         continue-on-error: true # Ensures this step never stops the workflow
 
@@ -123,7 +139,7 @@ jobs:
           TOTAL_BATCHES=${{ steps.batch_prep.outputs.total_batches }}
           
           NEXT_BATCH=$((CURRENT_BATCH + 1))
-          if [ "$NEXT_BATCH" -gt "$TOTAL_BATCHES" ]; then
+          if [ "$TOTAL_BATCHES" -gt 0 ] && [ "$NEXT_BATCH" -gt "$TOTAL_BATCHES" ]; then
             NEXT_BATCH=1
           fi
           echo "Next batch to run will be: $NEXT_BATCH"
@@ -132,8 +148,9 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           
+          # Only commit the state file (and summary for reference)
           git add .rmd_batch_state
-          git add .
+          if [ -f summary.txt ]; then git add summary.txt; fi
           
           if ! git diff --staged --quiet; then
             git commit -m "docs: Auto-render Rmd batch ${{ steps.batch_prep.outputs.current_batch }}"
