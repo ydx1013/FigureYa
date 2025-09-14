@@ -1,16 +1,20 @@
 ---
 title: "FigureYa304MAGIC"
-author: "小丫画图出品"
-date: "2023-2-10"
+params:
+  author: "Jianing Gao; Yasi Zhang"  
+  reviewer: "Ying Ge"
+  date: "2025-05-20"
 output: html_document
 ---
-欢迎关注“小丫画图”公众号，回复“小白”，看小视频，实现点鼠标跑代码。
 
-小丫微信: epigenomics  E-mail: figureya@126.com
+**Author(s)**: `r params$author`  
+**Reviewer(s)**: `r params$reviewer`  
+**Date**: `r params$date` 
 
-作者：Jarning，他的更多作品看这里<https://k.koudai.com/BXEtOldY>
+# Academic Citation
+If you use this code in your work or research, we kindly request that you cite our publication:
 
-小丫编辑校验
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -36,24 +40,8 @@ MAGIC特别有利于找时序变化基因、度量基因间的关系。发表MAG
 
 # 环境设置
 
-使用国内镜像安装包
-
-```{r eval=FALSE}
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
-BiocManager::install("biomaRt")
-install.packages("arrow") # for store large matrix, data.frame or data.table
-
-# 
-install.packages("reticulate")
-reticulate::install_miniconda() # if no conda env in your PC or server
-reticulate::py_install("magic-impute") # this will install py packages: `magic` and `scprep`
-install.packages("Rmagic") # R interface for magic package
-```
-
-加载包
-
 ```{r}
+source("install_dependencies.R")
 library(biomaRt)
 library(Seurat)
 library(tidyverse)
