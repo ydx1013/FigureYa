@@ -10,19 +10,20 @@ jobs:
       contents: write
     
     steps:
-      - name: 1. Check out repository
+      - name: 1. Check out repository (LFS disabled)
         uses: actions/checkout@v4
         with:
-          lfs: true
+          lfs: false # Changed to false to avoid LFS fetch errors
 
-      - name: 2. Install system dependencies
+      - name: 2. Install system dependencies and Git LFS
         run: |
           sudo apt-get update
-          sudo apt-get install -y libgfortran5 liblapack-dev libblas-dev \
+          sudo apt-get install -y git-lfs libgfortran5 liblapack-dev libblas-dev \
             libpng-dev libjpeg-dev librsvg2-dev libcairo2-dev \
             libxml2-dev libcurl4-openssl-dev libssl-dev \
             libfontconfig1-dev libharfbuzz-dev libfribidi-dev \
             libfreetype6-dev libtiff5-dev
+          git lfs install
 
       - name: 3. Set up R
         uses: r-lib/actions/setup-r@v2
