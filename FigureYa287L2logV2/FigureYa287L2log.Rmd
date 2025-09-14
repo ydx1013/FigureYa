@@ -16,7 +16,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -64,24 +63,9 @@ Implements nested cross-validation, Holm-Bonferroni correction, and L2-regulariz
 # 环境设置
 # Environment Setup
 
-
-Install packages using domestic mirror
-
 ```{r}
 source("install_dependencies.R")
-```
 
-```{r eval=FALSE}
-install.packages("sampling")
-install.packages("InformationValue")
-install.packages("pROC")
-install.packages("glmnet")
-```
-
-# 加载包
-# Load packages
-
-```{r}
 library(rms)
 library(InformationValue)
 library(pROC)
@@ -827,11 +811,8 @@ write.table(as.matrix(model$coef_lambda.min),
             file = "L2-regularized classifiers using lambda.min.txt",sep = "\t", row.names = T, col.names = NA, quote = F)
 ```
 
-# 会话信息
 # Session Info
 
 ```{r}
-# 显示会话信息
-# Show session information
 sessionInfo()
 ```
