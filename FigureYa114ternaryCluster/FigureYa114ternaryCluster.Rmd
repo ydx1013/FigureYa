@@ -11,7 +11,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 # 设置knitr代码块的全局选项 / Set global options for knitr code chunks
@@ -47,28 +46,8 @@ At the same time, samples can be grouped based on the gene expression profile of
 
 ## Environment settings
 
-```{r warning=FALSE}
+```{r}
 source("install_dependencies.R")
-
-# 安装并加载包
-# Install and load packages
-Packages <- c("pheatmap","gplots") # CRAN的包 | Packages from CRAN
-for(pk in Packages){
-  # 检查包是否已安装，未安装则安装
-  # Check if the package is installed, install if not
-  if(!require(pk,character.only = T,quietly = T)) install.packages(pk)
-  # 加载包并抑制加载信息
-  # Load the package and suppress loading messages
-  suppressMessages(library(pk,character.only = T))
-}
-
-# 安装并加载Bioconductor源的GSVA包
-# Install and load GSVA package from Bioconductor
-if(!require("GSVA",character.only = T,quietly = T)){
-  if(!require("BiocManager",character.only = T, quietly = TRUE)) install.packages("BiocManager")
-  BiocManager::install("GSVA") # Bioconductor的包 | Package from Bioconductor
-} 
-suppressMessages(library("GSVA",character.only = T))
 
 # 设置英文报错信息
 # Set error messages to English
