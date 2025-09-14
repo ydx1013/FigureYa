@@ -48,7 +48,7 @@ At the same time, samples can be grouped based on the gene expression profile of
 
 ```{r}
 source("install_dependencies.R")
-
+library(GSVA)
 # 设置英文报错信息
 # Set error messages to English
 Sys.setenv(LANGUAGE = "en") 
