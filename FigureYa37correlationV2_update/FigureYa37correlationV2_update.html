@@ -404,7 +404,6 @@ please refer to the “condensed strategy” at the end of this article: <a href
 </div>
 <div id="environment-setting" class="section level1">
 <h1>Environment setting</h1>
-<p>使用国内镜像安装包</p>
 <p>use the domestic mirror installation package</p>
 <pre class="r"><code>source(&quot;install_dependencies.R&quot;)</code></pre>
 <pre><code>## Starting R package installation...
@@ -420,12 +419,9 @@ please refer to the “condensed strategy” at the end of this article: <a href
 ## ===========================================
 ## Package installation completed!
 ## You can now run your R scripts in this directory.</code></pre>
-<pre class="r"><code>options(&quot;repos&quot;= c(CRAN=&quot;https://mirrors.tuna.tsinghua.edu.cn/CRAN/&quot;))
-options(BioC_mirror=&quot;http://mirrors.ustc.edu.cn/bioc/&quot;)
-#安装circlize包
+<pre class="r"><code>#安装circlize包
 #install the circlize package
 #install.packages(&quot;circlize&quot;)</code></pre>
-<p>加载包</p>
 <p>load package</p>
 <pre class="r"><code>library(circlize)</code></pre>
 <pre><code>## ========================================
@@ -721,7 +717,7 @@ genecor_circleplot(Links)</code></pre>
 ## [25] RColorBrewer_1.1-3  pkgconfig_2.0.3     farver_2.1.2       
 ## [28] digest_0.6.37       R6_2.6.1            tidyselect_1.2.1   
 ## [31] dichromat_2.0-0.1   pillar_1.11.0       shape_1.4.6.1      
-## [34] magrittr_2.0.3      bslib_0.9.0         tools_4.5.1        
+## [34] magrittr_2.0.4      bslib_0.9.0         tools_4.5.1        
 ## [37] gtable_0.3.6        ggplot2_4.0.0       cachem_1.1.0</code></pre>
 </div>
 

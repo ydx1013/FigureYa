@@ -356,11 +356,18 @@ display: none;
 </div>
 
 
+<div id="academic-citation" class="section level1">
+<h1>Academic Citation</h1>
+<p>If you use this code in your work or research, we kindly request that
+you cite our publication:</p>
+<p>Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed. <a href="https://doi.org/10.1002/imm3.70005" class="uri">https://doi.org/10.1002/imm3.70005</a></p>
 <div id="需求描述" class="section level2">
 <h2>需求描述</h2>
 </div>
 <div id="requirement-description" class="section level2">
-<h2>requirement description</h2>
+<h2>Requirement description</h2>
 <p>从GEO下载芯片数据，从基因表达矩阵分别提取lncRNA、mRNA、miRNA的表达矩阵</p>
 <p>这套代码使用三个相对独立的模块来解决上述需求，可根据自己的实际需要，灵活使用这三个模块：</p>
 <p>【模块一】从GEO下载microarray数据，不包括测序数据。</p>
@@ -402,7 +409,7 @@ actually hybridization signals of miRNA precursors.</p>
 <h2>应用场景</h2>
 </div>
 <div id="application-scenario" class="section level2">
-<h2>application scenario</h2>
+<h2>Application scenario</h2>
 <p>场景一：想计算lncRNA、miRNA、mRNA间的相关性，用来找miRNA、lncRNA的靶基因，或者用功能已知的mRNA推测lncRNA的功能，首先就要获得lncRNA、miRNA跟mRNA的表达矩阵。需要从GEO下载芯片数据，就从【模块一】开始；以TCGA表达矩阵作为输入（FigureYa22、23、34的输出文件），就从【模块二】开始。</p>
 <p>场景二：打算做RNA-seq，正在设计实验，不知道该做哪种处理、选什么时间点。那就先看看别人的实验设计获得的数据效果如何，用【模块一】下载GEO的芯片数据。</p>
 <p>场景三：TCGA里感兴趣的癌症类型样本量太少或没有，或者想拿多个来源的数据验证，就用【模块一】下载GEO的芯片数据。</p>
@@ -436,17 +443,26 @@ and run the code.</p>
 <h2>环境设置</h2>
 </div>
 <div id="environment-setting" class="section level2">
-<h2>environment setting</h2>
-<p>使用国内镜像安装包</p>
-<p>Use the domestic mirror installation package</p>
-<pre class="r"><code>#使用国内镜像安装包
-#use the domestic mirror installation package
-#options(&quot;repos&quot;= c(CRAN=&quot;https://mirrors.tuna.tsinghua.edu.cn/CRAN/&quot;))
-#options(BioC_mirror=&quot;http://mirrors.ustc.edu.cn/bioc/&quot;)
+<h2>Environment setting</h2>
+<pre class="r"><code>#use the domestic mirror installation package
 BiocManager::install(&quot;GEOquery&quot;)
 BiocManager::install(&quot;biomaRt&quot;)</code></pre>
-<p>加载包</p>
 <p>load package</p>
+<pre class="r"><code>source(&quot;install_dependencies.R&quot;)</code></pre>
+<pre><code>## Starting R package installation...
+## ===========================================
+## 
+## Installing CRAN packages...
+## Package already installed: dplyr 
+## 
+## Installing Bioconductor packages...
+## Package already installed: Biobase 
+## Package already installed: GEOquery 
+## Package already installed: biomaRt 
+## 
+## ===========================================
+## Package installation completed!
+## You can now run your R scripts in this directory.</code></pre>
 <pre class="r"><code>library(Biobase)</code></pre>
 <pre><code>## Loading required package: BiocGenerics</code></pre>
 <pre><code>## Loading required package: generics</code></pre>
@@ -740,7 +756,7 @@ if (nrow(exprdf_uniq) != nrow(feature_info)){
 }</code></pre>
 <pre><code>## [1] &quot;AA06&quot;  &quot;AAED1&quot; &quot;AARS&quot;  &quot;ACPP&quot;  &quot;ACPT&quot;  &quot;ACRC&quot;</code></pre>
 <pre class="r"><code>length(unique(feature_info$hgnc_symbol))</code></pre>
-<pre><code>## [1] 17913</code></pre>
+<pre><code>## [1] 17896</code></pre>
 <pre class="r"><code>#有些gene symbol对应多个ensembl id，因此会有多个biotype，例如
 #some gene symbols correspond to multiple ensembl ids, resulting in multiple biotypes, for example
 feature_info[feature_info$hgnc_symbol == &quot;ARHGEF26-AS1&quot;,]</code></pre>
@@ -769,10 +785,10 @@ unique(feature_info$gene_biotype)</code></pre>
 ##  [7] &quot;unprocessed_pseudogene&quot;             &quot;TEC&quot;                               
 ##  [9] &quot;IG_C_gene&quot;                          &quot;IG_V_gene&quot;                         
 ## [11] &quot;IG_V_pseudogene&quot;                    &quot;IG_J_gene&quot;                         
-## [13] &quot;miRNA&quot;                              &quot;snRNA&quot;                             
-## [15] &quot;ribozyme&quot;                           &quot;scaRNA&quot;                            
-## [17] &quot;snoRNA&quot;                             &quot;TR_C_gene&quot;                         
-## [19] &quot;TR_V_gene&quot;                          &quot;unitary_pseudogene&quot;</code></pre>
+## [13] &quot;miRNA&quot;                              &quot;unitary_pseudogene&quot;                
+## [15] &quot;snRNA&quot;                              &quot;ribozyme&quot;                          
+## [17] &quot;scaRNA&quot;                             &quot;snoRNA&quot;                            
+## [19] &quot;TR_C_gene&quot;                          &quot;TR_V_gene&quot;</code></pre>
 <pre class="r"><code>#此处定义protein_coding作为mRNA
 #protein_coding is defined here as the mRNA
 mRNA &lt;-&quot;protein_coding&quot;
@@ -788,11 +804,11 @@ miRNA &lt;-&quot;miRNA&quot;
 mRNA.list&lt;-feature_info[grepl(mRNA, feature_info$gene_biotype),]
 write.table(mRNA.list,&quot;mRNA.list.txt&quot;,quote = F,row.names = F, col.names = F)
 nrow(mRNA.list)</code></pre>
-<pre><code>## [1] 16304</code></pre>
+<pre><code>## [1] 16290</code></pre>
 <pre class="r"><code>lncRNA.list&lt;-feature_info[grepl(lncRNA, feature_info$gene_biotype),]
 write.table(lncRNA.list,&quot;lncRNA.list.txt&quot;,quote = F,row.names = F, col.names = F)
 nrow(lncRNA.list)</code></pre>
-<pre><code>## [1] 1294</code></pre>
+<pre><code>## [1] 1291</code></pre>
 <pre class="r"><code>miRNA.list&lt;-feature_info[grepl(miRNA, feature_info$gene_biotype),]
 write.table(miRNA.list,&quot;miRNA.list.txt&quot;,quote = F,row.names = F, col.names = F)
 nrow(miRNA.list)</code></pre>
@@ -884,22 +900,22 @@ head(miRNA_expr)</code></pre>
 ## MIR194-2   6.684587  6.441358  6.337924  6.858509
 ## MIR205     4.862115  4.490957  4.927482  4.865352</code></pre>
 <pre class="r"><code>sessionInfo()</code></pre>
-<pre><code>## R version 4.5.0 (2025-04-11 ucrt)
-## Platform: x86_64-w64-mingw32/x64
-## Running under: Windows 11 x64 (build 22631)
+<pre><code>## R version 4.5.1 (2025-06-13)
+## Platform: x86_64-pc-linux-gnu
+## Running under: Ubuntu 24.04.3 LTS
 ## 
 ## Matrix products: default
-##   LAPACK version 3.12.1
+## BLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3 
+## LAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.26.so;  LAPACK version 3.12.0
 ## 
 ## locale:
-## [1] LC_COLLATE=Chinese (Simplified)_China.utf8 
-## [2] LC_CTYPE=Chinese (Simplified)_China.utf8   
-## [3] LC_MONETARY=Chinese (Simplified)_China.utf8
-## [4] LC_NUMERIC=C                               
-## [5] LC_TIME=Chinese (Simplified)_China.utf8    
+##  [1] LC_CTYPE=C.UTF-8       LC_NUMERIC=C           LC_TIME=C.UTF-8       
+##  [4] LC_COLLATE=C.UTF-8     LC_MONETARY=C.UTF-8    LC_MESSAGES=C.UTF-8   
+##  [7] LC_PAPER=C.UTF-8       LC_NAME=C              LC_ADDRESS=C          
+## [10] LC_TELEPHONE=C         LC_MEASUREMENT=C.UTF-8 LC_IDENTIFICATION=C   
 ## 
-## time zone: Asia/Shanghai
-## tzcode source: internal
+## time zone: UTC
+## tzcode source: system (glibc)
 ## 
 ## attached base packages:
 ## [1] stats     graphics  grDevices utils     datasets  methods   base     
@@ -909,33 +925,33 @@ head(miRNA_expr)</code></pre>
 ## [4] Biobase_2.68.0      BiocGenerics_0.54.0 generics_0.1.4     
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] KEGGREST_1.48.0             SummarizedExperiment_1.38.1
-##  [3] httr2_1.1.2                 xfun_0.52                  
+##  [1] KEGGREST_1.48.1             SummarizedExperiment_1.38.1
+##  [3] httr2_1.2.1                 xfun_0.53                  
 ##  [5] bslib_0.9.0                 lattice_0.22-7             
 ##  [7] tzdb_0.5.0                  vctrs_0.6.5                
-##  [9] tools_4.5.0                 curl_6.2.2                 
-## [11] stats4_4.5.0                tibble_3.2.1               
-## [13] AnnotationDbi_1.70.0        RSQLite_2.3.11             
+##  [9] tools_4.5.1                 curl_7.0.0                 
+## [11] stats4_4.5.1                tibble_3.3.0               
+## [13] AnnotationDbi_1.70.0        RSQLite_2.4.3              
 ## [15] blob_1.2.4                  R.oo_1.27.1                
 ## [17] pkgconfig_2.0.3             Matrix_1.7-3               
-## [19] data.table_1.17.2           dbplyr_2.5.0               
-## [21] rentrez_1.2.3               S4Vectors_0.46.0           
+## [19] data.table_1.17.8           dbplyr_2.5.1               
+## [21] rentrez_1.2.4               S4Vectors_0.46.0           
 ## [23] lifecycle_1.0.4             GenomeInfoDbData_1.2.14    
-## [25] stringr_1.5.1               compiler_4.5.0             
+## [25] stringr_1.5.2               compiler_4.5.1             
 ## [27] progress_1.2.3              Biostrings_2.76.0          
-## [29] statmod_1.5.0               GenomeInfoDb_1.44.0        
+## [29] statmod_1.5.0               GenomeInfoDb_1.44.2        
 ## [31] htmltools_0.5.8.1           sass_0.4.10                
-## [33] yaml_2.3.10                 pillar_1.10.2              
+## [33] yaml_2.3.10                 pillar_1.11.0              
 ## [35] crayon_1.5.3                jquerylib_0.1.4            
 ## [37] tidyr_1.3.1                 R.utils_2.13.0             
 ## [39] DelayedArray_0.34.1         cachem_1.1.0               
-## [41] limma_3.64.1                abind_1.4-8                
+## [41] limma_3.64.3                abind_1.4-8                
 ## [43] tidyselect_1.2.1            digest_0.6.37              
-## [45] stringi_1.8.7               purrr_1.0.4                
-## [47] fastmap_1.2.0               grid_4.5.0                 
-## [49] cli_3.6.5                   SparseArray_1.8.0          
-## [51] magrittr_2.0.3              S4Arrays_1.8.0             
-## [53] XML_3.99-0.18               withr_3.0.2                
+## [45] stringi_1.8.7               purrr_1.1.0                
+## [47] fastmap_1.2.0               grid_4.5.1                 
+## [49] cli_3.6.5                   SparseArray_1.8.1          
+## [51] magrittr_2.0.4              S4Arrays_1.8.1             
+## [53] XML_3.99-0.19               withr_3.0.2                
 ## [55] readr_2.1.5                 filelock_1.0.3             
 ## [57] rappdirs_0.3.3              prettyunits_1.2.0          
 ## [59] UCSC.utils_1.4.0            bit64_4.6.0-1              
@@ -943,13 +959,14 @@ head(miRNA_expr)</code></pre>
 ## [63] httr_1.4.7                  matrixStats_1.5.0          
 ## [65] bit_4.6.0                   R.methodsS3_1.8.2          
 ## [67] png_0.1-8                   hms_1.1.3                  
-## [69] memoise_2.0.1               evaluate_1.0.3             
+## [69] memoise_2.0.1               evaluate_1.0.5             
 ## [71] knitr_1.50                  GenomicRanges_1.60.0       
-## [73] IRanges_2.42.0              BiocFileCache_2.16.0       
+## [73] IRanges_2.42.0              BiocFileCache_2.16.2       
 ## [75] rlang_1.1.6                 glue_1.8.0                 
-## [77] DBI_1.2.3                   xml2_1.3.8                 
-## [79] rstudioapi_0.17.1           jsonlite_2.0.0             
-## [81] R6_2.6.1                    MatrixGenerics_1.20.0</code></pre>
+## [77] DBI_1.2.3                   xml2_1.4.0                 
+## [79] jsonlite_2.0.0              R6_2.6.1                   
+## [81] MatrixGenerics_1.20.0</code></pre>
+</div>
 </div>
 </div>
 
