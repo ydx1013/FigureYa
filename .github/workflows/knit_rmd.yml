@@ -13,7 +13,7 @@ jobs:
       - name: 1. Check out repository (LFS disabled)
         uses: actions/checkout@v4
         with:
-          lfs: false # Changed to false to avoid LFS fetch errors
+          lfs: false # 保持 LFS 禁用，按你的要求
 
       - name: 2. Install system dependencies and Git LFS
         run: |
@@ -30,13 +30,25 @@ jobs:
         with:
           r-version: 'latest'
       
-      - name: 4. Set up Pandoc
+      # 新增：为 rJava 包安装和配置 Java 环境
+      - name: 4. Set up Java for rJava
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '11' # 一个稳定且广泛兼容的 Java 版本
+
+      - name: 5. Configure R for Java
+        run: sudo R CMD javareconf
+      
+      - name: 6. Set up Pandoc
         uses: r-lib/actions/setup-pandoc@v2
 
-      - name: 5. Install core R dependencies
-        run: Rscript -e 'install.packages(c("rmarkdown", "knitr"))'
+      # 修改：在核心依赖中加入 remotes 包，以支持特定版本的安装
+      - name: 7. Install core R dependencies
+        run: Rscript -e 'install.packages(c("rmarkdown", "knitr", "remotes"))'
 
-      - name: 6. Identify LFS directories & Prepare Batch
+      # 保留：你原来的 LFS 目录识别和批处理准备逻辑
+      - name: 8. Identify LFS directories & Prepare Batch
         id: batch_prep
         run: |
           # Build LFS dir list safely; handle empty output and ensure file exists
@@ -60,12 +72,8 @@ jobs:
 
           echo "Total .Rmd files: $TOTAL_FILES, Total batches: $TOTAL_BATCHES"
 
-          # If no files, still prepare outputs so downstream steps don't fail
           if [ "$TOTAL_FILES" -eq 0 ]; then
             : > .current_batch_files.txt
-            echo "current_batch=$CURRENT_BATCH" >> $GITHUB_OUTPUT
-            echo "total_batches=$TOTAL_BATCHES" >> $GITHUB_OUTPUT
-            echo "job_failed=false" >> $GITHUB_OUTPUT
           else
             if [ "$CURRENT_BATCH" -gt "$TOTAL_BATCHES" ] && [ "$TOTAL_BATCHES" -gt 0 ]; then
               echo "All batches completed. Resetting to batch 1."
@@ -77,18 +85,17 @@ jobs:
 
             echo "Processing files from line $START_LINE to $END_LINE..."
             sed -n "${START_LINE},${END_LINE}p" .all_rmd_files.txt > .current_batch_files.txt
-
-            echo "current_batch=$CURRENT_BATCH" >> $GITHUB_OUTPUT
-            echo "total_batches=$TOTAL_BATCHES" >> $GITHUB_OUTPUT
-            echo "job_failed=false" >> $GITHUB_OUTPUT
           fi
 
-      - name: 7. Render Rmd files in Current Batch (Error Tolerant)
+          echo "current_batch=$CURRENT_BATCH" >> $GITHUB_OUTPUT
+          echo "total_batches=$TOTAL_BATCHES" >> $GITHUB_OUTPUT
+          echo "job_failed=false" >> $GITHUB_OUTPUT
+
+      # 保留：你原来的渲染逻辑，包含跳过 LFS 目录的功能
+      - name: 9. Render Rmd files in Current Batch (Error Tolerant)
         id: render_step
         run: |
-          # We will track if any file fails
           ANY_FILE_FAILED=false
-
           echo "RMD Render Summary (Batch ${{ steps.batch_prep.outputs.current_batch }}/${{ steps.batch_prep.outputs.total_batches }})" > summary.txt
           echo "======================================" >> summary.txt
           echo "" >> summary.txt
@@ -101,12 +108,10 @@ jobs:
             if grep -qxF "$rmd_dir" .lfs_dirs.txt; then
               echo "[SKIPPED-LFS] - $rmd_file (In LFS directory)" | tee -a summary.txt
             else
-              # Try to install dependencies, but don't stop if it fails
               if [ -f "$rmd_dir/install_dependencies.R" ]; then
                 (cd "$rmd_dir" && Rscript install_dependencies.R > install.log 2>&1 || echo "WARNING: Dependency installation failed for $rmd_file.")
               fi
               
-              # Render the Rmd file and check for failure
               if Rscript -e "rmarkdown::render('$rmd_file', quiet=TRUE)" > rmd_render.log 2>&1; then
                 echo "[SUCCESS] - $rmd_file" | tee -a summary.txt
               else
@@ -120,21 +125,16 @@ jobs:
             echo "=========== END: $rmd_file ==========="; echo ""
           done < .current_batch_files.txt
 
-          # If any file failed, we set an output for the workflow
-          if [ "$ANY_FILE_FAILED" = true ]; then
-            echo "job_failed=true" >> $GITHUB_OUTPUT
-          else
-            echo "job_failed=false" >> $GITHUB_OUTPUT
-          fi
-        continue-on-error: true # Ensures this step never stops the workflow
+          echo "job_failed=$ANY_FILE_FAILED" >> $GITHUB_OUTPUT
+        continue-on-error: true
 
-      - name: 8. Upload Render Summary
+      - name: 10. Upload Render Summary
         uses: actions/upload-artifact@v4
         with:
           name: render-summary-batch-${{ steps.batch_prep.outputs.current_batch }}
           path: summary.txt
 
-      - name: 9. Update Batch State and Commit Files
+      - name: 11. Update Batch State and Commit Files
         run: |
           CURRENT_BATCH=${{ steps.batch_prep.outputs.current_batch }}
           TOTAL_BATCHES=${{ steps.batch_prep.outputs.total_batches }}
@@ -149,7 +149,6 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           
-          # Only commit the state file (and summary for reference)
           git add .rmd_batch_state
           if [ -f summary.txt ]; then git add summary.txt; fi
           
@@ -160,8 +159,8 @@ jobs:
             echo "No new files or changes to commit."
           fi
 
-      - name: 10. Report Final Status
-        if: always() # This step runs even if previous steps failed
+      - name: 12. Report Final Status
+        if: always()
         run: |
           if [ "${{ steps.render_step.outputs.job_failed }}" = "true" ]; then
             echo "::warning ::One or more Rmd files failed to render in this batch. Check the 'render-summary' artifact for details."
