@@ -1,10 +1,10 @@
-name: Knit all Rmd Files
+name: Knit Rmd Files in Batches (Robust)
 
 on:
   workflow_dispatch:
 
 jobs:
-  test-render:
+  test-render-batch:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -12,6 +12,9 @@ jobs:
     steps:
       - name: 1. Check out repository
         uses: actions/checkout@v4
+        with:
+          lfs: true
+        continue-on-error: true
 
       - name: 2. Install system dependencies
         run: |
@@ -33,66 +36,117 @@ jobs:
       - name: 5. Install core R dependencies
         run: Rscript -e 'install.packages(c("rmarkdown", "knitr"))'
 
-      - name: 6. Find and Render all Rmd files (quiet)
+      - name: 6. Identify LFS directories & Prepare Batch
+        id: batch_prep
         run: |
-          set -e
-          echo "RMD Render Summary (All Files)" > summary.txt
+          git lfs ls-files -n | xargs -n 1 dirname | sort -u > .lfs_dirs.txt || echo "No LFS files found."
+          echo "LFS directories identified:"
+          cat .lfs_dirs.txt
+
+          BATCH_SIZE=50
+          STATE_FILE=".rmd_batch_state"
+          CURRENT_BATCH=$(cat "$STATE_FILE" || echo "1")
+          echo "Running batch number: $CURRENT_BATCH"
+
+          find . -type f -name "*.Rmd" | sort > .all_rmd_files.txt
+          TOTAL_FILES=$(wc -l < .all_rmd_files.txt)
+          TOTAL_BATCHES=$(( (TOTAL_FILES + BATCH_SIZE - 1) / BATCH_SIZE ))
+
+          echo "Total .Rmd files: $TOTAL_FILES, Total batches: $TOTAL_BATCHES"
+
+          if [ "$CURRENT_BATCH" -gt "$TOTAL_BATCHES" ] && [ "$TOTAL_BATCHES" -gt 0 ]; then
+            echo "All batches completed. Resetting to batch 1."
+            CURRENT_BATCH=1
+          fi
+
+          START_LINE=$(( (CURRENT_BATCH - 1) * BATCH_SIZE + 1 ))
+          END_LINE=$(( CURRENT_BATCH * BATCH_SIZE ))
+
+          echo "Processing files from line $START_LINE to $END_LINE..."
+          sed -n "${START_LINE},${END_LINE}p" .all_rmd_files.txt > .current_batch_files.txt
+
+          echo "current_batch=$CURRENT_BATCH" >> $GITHUB_OUTPUT
+          echo "total_batches=$TOTAL_BATCHES" >> $GITHUB_OUTPUT
+          echo "job_failed=false" >> $GITHUB_OUTPUT
+
+      - name: 7. Render Rmd files in Current Batch (Error Tolerant)
+        id: render_step
+        run: |
+          # We will track if any file fails
+          ANY_FILE_FAILED=false
+
+          echo "RMD Render Summary (Batch ${{ steps.batch_prep.outputs.current_batch }}/${{ steps.batch_prep.outputs.total_batches }})" > summary.txt
           echo "======================================" >> summary.txt
           echo "" >> summary.txt
 
-          find . -type f -name "*.Rmd" | while read rmd_file; do
+          while IFS= read -r rmd_file; do
             echo "========== START: $rmd_file =========="
-            
-            # Get directory of the Rmd file
             rmd_dir=$(dirname "$rmd_file")
-            
-            # Install dependencies if install_dependencies.R exists
-            if [ -f "$rmd_dir/install_dependencies.R" ]; then
-              echo "Installing dependencies for $rmd_file..."
-              cd "$rmd_dir"
-              if ! Rscript install_dependencies.R > install.log 2>&1; then
-                echo "WARNING: Failed to install some dependencies for $rmd_file"
-                tail -n 10 install.log
-              fi
-              cd - > /dev/null
-            fi
-            
-            # Check for common missing data files before rendering
-            missing_files=""
-            if grep -q "easy_input" "$rmd_file" 2>/dev/null; then
-              if [ ! -f "$rmd_dir/easy_input.csv" ] && [ ! -f "$rmd_dir/easy_input.txt" ] && [ ! -f "$rmd_dir/easy_input_expr.txt" ]; then
-                missing_files="$missing_files easy_input files"
-              fi
-            fi
-            
-            if [ -n "$missing_files" ]; then
-              echo "[SKIPPED] - $rmd_file (Missing data files:$missing_files)" | tee -a summary.txt
+
+            if grep -qxF "$rmd_dir" .lfs_dirs.txt; then
+              echo "[SKIPPED-LFS] - $rmd_file (In LFS directory)" | tee -a summary.txt
             else
-              # Render the Rmd file
+              # Try to install dependencies, but don't stop if it fails
+              if [ -f "$rmd_dir/install_dependencies.R" ]; then
+                (cd "$rmd_dir" && Rscript install_dependencies.R > install.log 2>&1 || echo "WARNING: Dependency installation failed for $rmd_file.")
+              fi
+              
+              # Render the Rmd file and check for failure
               if Rscript -e "rmarkdown::render('$rmd_file', quiet=TRUE)" > rmd_render.log 2>&1; then
                 echo "[SUCCESS] - $rmd_file" | tee -a summary.txt
               else
+                ANY_FILE_FAILED=true
                 echo "[FAILED] - $rmd_file" | tee -a summary.txt
-                tail -n 20 rmd_render.log  # 显示最后20行错误日志，便于定位失败原因
+                echo "--- Error Log for $rmd_file ---" | tee -a summary.txt
+                tail -n 20 rmd_render.log | tee -a summary.txt
+                echo "-----------------------------------" | tee -a summary.txt
               fi
             fi
-            echo "=========== END: $rmd_file ==========="
-            echo ""
-          done
+            echo "=========== END: $rmd_file ==========="; echo ""
+          done < .current_batch_files.txt
 
-      - name: 7. Upload Render Summary
+          # If any file failed, we set an output for the workflow
+          if [ "$ANY_FILE_FAILED" = true ]; then
+            echo "job_failed=true" >> $GITHUB_OUTPUT
+          fi
+        continue-on-error: true # Ensures this step never stops the workflow
+
+      - name: 8. Upload Render Summary
         uses: actions/upload-artifact@v4
         with:
-          name: render-summary-report-all
+          name: render-summary-batch-${{ steps.batch_prep.outputs.current_batch }}
           path: summary.txt
 
-      - name: 8. Commit and Push Rendered Files
+      - name: 9. Update Batch State and Commit Files
         run: |
+          CURRENT_BATCH=${{ steps.batch_prep.outputs.current_batch }}
+          TOTAL_BATCHES=${{ steps.batch_prep.outputs.total_batches }}
+          
+          NEXT_BATCH=$((CURRENT_BATCH + 1))
+          if [ "$NEXT_BATCH" -gt "$TOTAL_BATCHES" ]; then
+            NEXT_BATCH=1
+          fi
+          echo "Next batch to run will be: $NEXT_BATCH"
+          echo $NEXT_BATCH > .rmd_batch_state
+
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          
+          git add .rmd_batch_state
           git add .
+          
           if ! git diff --staged --quiet; then
-            git commit -m "docs: Auto-render Rmd output files by GitHub Actions"
-            git push
+            git commit -m "docs: Auto-render Rmd batch ${{ steps.batch_prep.outputs.current_batch }}"
+            git push || echo "Push failed, possibly due to incomplete checkout."
           else
-            echo "No changes to commit."
+            echo "No new files or changes to commit."
+          fi
+
+      - name: 10. Report Final Status
+        if: always() # This step runs even if previous steps failed
+        run: |
+          if [ "${{ steps.render_step.outputs.job_failed }}" = "true" ]; then
+            echo "::warning ::One or more Rmd files failed to render in this batch. Check the 'render-summary' artifact for details."
+          else
+            echo "All Rmd files in this batch were processed successfully (or skipped as intended)."
+          fi
