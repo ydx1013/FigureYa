@@ -11,7 +11,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -60,16 +59,10 @@ Discrimination (discrimination) and Calibration (consistency/calibration) are tw
 ## 环境设置
 ## Environment settings
 
-
-```r
-# https://github.com/psolymos/ResourceSelection
-install.packages("ResourceSelection")
-```
-
-
 ```{r}
 source("install_dependencies.R")
 library(rms)
+library(scales)
 library(ResourceSelection)
 
 Sys.setenv(LANGUAGE = "en") #显示英文报错信息 #Display English error message
@@ -154,6 +147,8 @@ invisible(dev.off())
 ```
 
 ![](calibration_for full model.pdf)
+
+# Session Info
 
 ```{r}
 sessionInfo()
