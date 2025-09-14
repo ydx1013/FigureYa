@@ -19,7 +19,7 @@ install_cran_package <- function(package_name) {
       install.packages(package_name, dependencies = TRUE)
       cat("Successfully installed:", package_name, "\n")
     }, error = function(e) {
-      cat("Failed to install", package_name, ":", e$message, "\n")
+      cat("Warning: Failed to install CRAN package '", package_name, "': ", e$message, "\n")
     })
   } else {
     cat("Package already installed:", package_name, "\n")
@@ -37,20 +37,53 @@ install_bioc_package <- function(package_name) {
       BiocManager::install(package_name, update = FALSE, ask = FALSE)
       cat("Successfully installed:", package_name, "\n")
     }, error = function(e) {
-      cat("Failed to install", package_name, ":", e$message, "\n")
+      cat("Warning: Failed to install Bioconductor package '", package_name, "': ", e$message, "\n")
     })
   } else {
     cat("Package already installed:", package_name, "\n")
   }
 }
 
+# Function to install MCPcounter (special case)
+install_mcpcounter <- function() {
+  if (!is_package_installed("MCPcounter")) {
+    cat("Installing MCPcounter (special installation)...\n")
+    tryCatch({
+      # Method 1: Install from GitHub
+      if (!is_package_installed("remotes")) {
+        install.packages("remotes")
+      }
+      remotes::install_github("ebecht/MCPcounter", ref = "master", subdir = "Source")
+      cat("Successfully installed: MCPcounter\n")
+    }, error = function(e) {
+      cat("Warning: Failed to install MCPcounter from GitHub: ", e$message, "\n")
+      
+      # Method 2: Alternative installation
+      tryCatch({
+        install.packages("https://github.com/ebecht/MCPcounter/raw/master/Source/MCPcounter_1.2.0.tar.gz", 
+                        repos = NULL, type = "source")
+        cat("Successfully installed: MCPcounter (alternative method)\n")
+      }, error = function(e2) {
+        cat("Error: All installation methods failed for MCPcounter: ", e2$message, "\n")
+      })
+    })
+  } else {
+    cat("Package already installed: MCPcounter\n")
+  }
+}
+
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
+# First install BiocManager if not already installed
+if (!is_package_installed("BiocManager")) {
+  cat("Installing BiocManager...\n")
+  install.packages("BiocManager")
+}
 
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("ClassDiscovery", "MCPcounter", "RColorBrewer", "devtools", "gplots")
+cran_packages <- c("ClassDiscovery", "RColorBrewer", "devtools", "gplots", "remotes")
 
 for (pkg in cran_packages) {
   install_cran_package(pkg)
@@ -64,6 +97,22 @@ for (pkg in bioc_packages) {
   install_bioc_package(pkg)
 }
 
+# Special installation for MCPcounter
+cat("\nInstalling MCPcounter (special package)...\n")
+install_mcpcounter()
+
 cat("\n===========================================\n")
 cat("Package installation completed!\n")
+
+# Check if all required packages are installed
+cat("\nChecking installed packages:\n")
+all_packages <- c(cran_packages, bioc_packages, "MCPcounter")
+for (pkg in all_packages) {
+  if (is_package_installed(pkg)) {
+    cat("✓", pkg, "is installed\n")
+  } else {
+    cat("✗", pkg, "is NOT installed\n")
+  }
+}
+
 cat("You can now run your R scripts in this directory.\n")
