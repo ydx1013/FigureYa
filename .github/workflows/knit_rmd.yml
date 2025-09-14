@@ -57,7 +57,7 @@ jobs:
           echo "LFS directories identified:"
           if [ -s .lfs_dirs.txt ]; then cat .lfs_dirs.txt; else echo "(none)"; fi
 
-          BATCH_SIZE=50
+          BATCH_SIZE=10
           STATE_FILE=".rmd_batch_state"
           if [ -f "$STATE_FILE" ]; then
             CURRENT_BATCH=$(cat "$STATE_FILE" 2>/dev/null)
@@ -153,14 +153,17 @@ jobs:
           fi
           echo "Next batch to run will be: $NEXT_BATCH"
           echo $NEXT_BATCH > .rmd_batch_state
-
+      
+          # 添加所有生成的HTML文件
+          find . -name "*.html" -not -path "./.git/*" | xargs git add 2>/dev/null || true
+          
           git add .rmd_batch_state
           if [ -f summary.txt ]; then git add summary.txt; fi
           
           if ! git diff --staged --quiet; then
             git commit -m "docs: Auto-render Rmd batch ${{ steps.batch_prep.outputs.current_batch }}"
             
-            # 尝试推送，如果失败则进行强制推送（在 rebase 后是安全的）
+            # 尝试推送，如果失败则进行强制推送
             echo "Pushing changes to remote..."
             if ! git push origin main; then
               echo "Push failed, attempting force push after rebase..."
