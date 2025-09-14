@@ -49,12 +49,6 @@ cat("===========================================\n")
 
 
 # Installing CRAN packages
-cat("\nInstalling CRAN packages...\n")
-
-
-for (pkg in cran_packages) {
-  install_cran_package(pkg)
-}
 
 # Installing Bioconductor packages
 cat("\nInstalling Bioconductor packages...\n")
