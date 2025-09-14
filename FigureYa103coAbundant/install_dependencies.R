@@ -4,7 +4,6 @@
 
 # Set up mirrors for better download performance
 options("repos" = c(CRAN = "https://cloud.r-project.org/"))
-options(BioC_mirror = "https://bioconductor.org/")
 
 # Function to check if a package is installed
 is_package_installed <- function(package_name) {
@@ -20,6 +19,8 @@ install_cran_package <- function(package_name) {
       cat("Successfully installed:", package_name, "\n")
     }, error = function(e) {
       cat("Failed to install", package_name, ":", e$message, "\n")
+      # Stop execution if a critical package fails
+      stop("Halting due to failed installation.")
     })
   } else {
     cat("Package already installed:", package_name, "\n")
@@ -29,15 +30,17 @@ install_cran_package <- function(package_name) {
 # Function to install Bioconductor packages
 install_bioc_package <- function(package_name) {
   if (!is_package_installed(package_name)) {
-    cat("Installing Bioconductor package:", package_name, "\n")
+    cat("Installing Bioconductor package(s):", paste(package_name, collapse=", "), "\n")
     tryCatch({
       if (!is_package_installed("BiocManager")) {
         install.packages("BiocManager")
       }
       BiocManager::install(package_name, update = FALSE, ask = FALSE)
-      cat("Successfully installed:", package_name, "\n")
+      cat("Successfully submitted for installation:", paste(package_name, collapse=", "), "\n")
     }, error = function(e) {
-      cat("Failed to install", package_name, ":", e$message, "\n")
+      cat("Failed to install Bioconductor packages:", e$message, "\n")
+      # Stop execution if a critical package fails
+      stop("Halting due to failed installation.")
     })
   } else {
     cat("Package already installed:", package_name, "\n")
@@ -47,10 +50,28 @@ install_bioc_package <- function(package_name) {
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
+# --- Step 1: Install Bioconductor Packages FIRST ---
+# These are either from Bioconductor directly or are dependencies for CRAN packages.
+# This is the most important step to fix the error.
+cat("\nInstalling Bioconductor packages...\n")
+bioc_packages <- c(
+  "ClassDiscovery", # From a previous error
+  "impute",         # WGCNA dependency
+  "preprocessCore", # WGCNA dependency
+  "GO.db",          # WGCNA dependency
+  "AnnotationDbi"   # WGCNA dependency
+)
+install_bioc_package(bioc_packages)
 
-# Installing CRAN packages
+
+# --- Step 2: Install CRAN Packages ---
+# These packages can now be installed because their Bioconductor dependencies are met.
 cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("ClassDiscovery", "WGCNA", "gplots", "pheatmap")
+cran_packages <- c(
+  "WGCNA", 
+  "gplots", 
+  "pheatmap"
+)
 
 for (pkg in cran_packages) {
   install_cran_package(pkg)
