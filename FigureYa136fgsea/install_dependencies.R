@@ -19,7 +19,8 @@ install_cran_package <- function(package_name) {
       install.packages(package_name, dependencies = TRUE)
       cat("Successfully installed:", package_name, "\n")
     }, error = function(e) {
-      cat("Failed to install", package_name, ":", e$message, "\n")
+      # Stop execution on failure for clearer error reporting
+      stop("Failed to install CRAN package '", package_name, "': ", e$message)
     })
   } else {
     cat("Package already installed:", package_name, "\n")
@@ -37,7 +38,8 @@ install_bioc_package <- function(package_name) {
       BiocManager::install(package_name, update = FALSE, ask = FALSE)
       cat("Successfully installed:", package_name, "\n")
     }, error = function(e) {
-      cat("Failed to install", package_name, ":", e$message, "\n")
+      # Stop execution on failure
+      stop("Failed to install Bioconductor package '", package_name, "': ", e$message)
     })
   } else {
     cat("Package already installed:", package_name, "\n")
