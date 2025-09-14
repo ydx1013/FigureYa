@@ -19,28 +19,64 @@ install_cran_package <- function(package_name) {
       install.packages(package_name, dependencies = TRUE)
       cat("Successfully installed:", package_name, "\n")
     }, error = function(e) {
-      # Stop execution on failure for clearer error reporting
-      stop("Failed to install CRAN package '", package_name, "': ", e$message)
+      cat("Warning: Failed to install CRAN package '", package_name, "': ", e$message, "\n")
     })
   } else {
     cat("Package already installed:", package_name, "\n")
   }
 }
 
+# Function to install packages from GitHub
+install_github_package <- function(repo) {
+  pkg_name <- basename(repo)
+  if (!is_package_installed(pkg_name)) {
+    cat("Installing GitHub package:", repo, "\n")
+    tryCatch({
+      if (!is_package_installed("remotes")) {
+        install.packages("remotes")
+      }
+      remotes::install_github(repo)
+      cat("Successfully installed:", pkg_name, "\n")
+    }, error = function(e) {
+      cat("Warning: Failed to install GitHub package '", repo, "': ", e$message, "\n")
+    })
+  } else {
+    cat("Package already installed:", pkg_name, "\n")
+  }
+}
+
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
-
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
-# 'cgdsr' is now on CRAN.
-# Added 'remotes' as it was used in the Rmd. 'devtools' is too heavy.
-cran_packages <- c("cgdsr", "remotes", "ggplot2", "readxl", "reshape2")
+cran_packages <- c("remotes", "ggplot2", "readxl", "reshape2")
 
 for (pkg in cran_packages) {
   install_cran_package(pkg)
 }
 
+# Installing GitHub packages
+cat("\nInstalling GitHub packages...\n")
+# cgdsr is available on GitHub, not on CRAN
+github_packages <- c("cBioPortal/cgdsr")
+
+for (pkg in github_packages) {
+  install_github_package(pkg)
+}
+
 cat("\n===========================================\n")
 cat("Package installation completed!\n")
+
+# Check if all required packages are installed
+cat("\nChecking installed packages:\n")
+all_packages <- c(cran_packages, basename(github_packages))
+for (pkg in all_packages) {
+  if (is_package_installed(pkg)) {
+    cat("✓", pkg, "is installed\n")
+  } else {
+    cat("✗", pkg, "is NOT installed\n")
+  }
+}
+
 cat("You can now run your R scripts in this directory.\n")
