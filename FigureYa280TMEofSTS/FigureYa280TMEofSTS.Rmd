@@ -16,7 +16,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -52,23 +51,9 @@ We previously conducted a crowdfunding project (FigureYa56immune_infiltration), 
 # 环境设置
 # Environment Setup
 
-
-Using domestic mirrors for package installation.
-
 ```{r}
 source("install_dependencies.R")
-```
 
-```{r eval=FALSE}
-install.packages("devtools")
-library(devtools)
-install_github("ebecht/MCPcounter",ref="master", subdir="Source")
-```
-
-# 加载包
-# Loading packages
-
-```{r}
 library(MCPcounter)
 library(GSVA)
 library(ComplexHeatmap)
@@ -398,7 +383,6 @@ draw(hm1 %v% hm2 %v% hm3,
 invisible(dev.off())
 ```
 
-# 会话信息
 # Session Info
 
 ```{r}
