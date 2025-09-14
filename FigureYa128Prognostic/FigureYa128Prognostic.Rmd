@@ -11,7 +11,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 # 设置knitr代码块的全局选项 / Set global options for knitr code chunks
@@ -59,39 +58,10 @@ Answer: lasso heavily relies on seeds when allowed, as you need cross validation
 
 ## 环境设置
 
-
-
 ## Environment settings
-
-### Install and load packages using domestic images
 
 ```{r}
 source("install_dependencies.R")
-
-
-# 检查并加载/安装survival包 - 用于生存分析
-# Check and load/install survival package - for survival analysis
-if(!require(survival)){ 
-  install.packages("survival")
-} else {library(survival)}  
-
-# 检查并加载/安装glmnet包 - 用于正则化广义线性模型
-# Check and load/install glmnet package - for regularized generalized linear models
-if(!require(glmnet)){ 
-  install.packages("glmnet")
-} else {library(glmnet)}  
-
-# 检查并加载/安装pbapply包 - 用于并行计算和进度条显示
-# Check and load/install pbapply package - for parallel computation and progress bar display
-if(!require(pbapply)){ 
-  install.packages("pbapply")
-} else {library(pbapply)}  
-
-# 检查并加载/安装survivalROC包 - 用于生存分析中的ROC曲线
-# Check and load/install survivalROC package - for ROC curves in survival analysis
-if(!require(survivalROC)){ 
-  install.packages("survivalROC")
-} else {library(survivalROC)}
 
 # 设置环境语言为英文，确保报错信息为英文
 # Set environment language to English to ensure error messages are in English
@@ -171,8 +141,6 @@ If your file has already been organized into the formats of easy_input-expr.csv 
 
 需要表达矩阵和带followup的临床数据。
 
-**下面这两个文件太大，我上传到微云上了，下载链接：<https://share.weiyun.com/5t3fKeL>**
-
 - COAD_TPM.txt，表达矩阵，这里用的是COAD的TPM。从XENA pan-cancer表达数据中提取某种癌症的TPM的方法可参考FigureYa56Immune_inflitration；或者直接下载某个癌症的表达矩阵，方法可参考FigureYa23count2TPM、FigureYa34count2FPKMv2。
 
 - clinical_PANCAN_patient_with_followup.tsv，带followup的临床信息，从这个页面下载<https://gdc.cancer.gov/about-data/publications/PanCanStemness-2018>，下载地址：<https://api.gdc.cancer.gov/data/0fc78496-818b-4896-bd83-52db1f533c5c>
@@ -180,8 +148,6 @@ If your file has already been organized into the formats of easy_input-expr.csv 
 ### Download of input files
 
 Need to express matrix and clinical data with followup.
-
-**The following two files are too large, I uploaded them to Weiyun, download link:< https://share.weiyun.com/5t3fKeL >**
 
 - COAD_TPM.txt， The expression matrix used here is COAD's TPM. The method for extracting TPM of a certain cancer from XENA pan cancer expression data can refer to FigureYa56Immune_infliction; Alternatively, you can directly download the expression matrix of a certain cancer using the methods shown in FigureYa23count2TPM and FigureYa34count2FPKMv2.
 
