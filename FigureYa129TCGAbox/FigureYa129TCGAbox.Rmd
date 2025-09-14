@@ -51,16 +51,11 @@ You can even write it as a loop and draw multiple genes in batches to see which 
 
 ## 环境设置
 
-
 ## Environment settings
 
 ```{r}
 source("install_dependencies.R")
-```
 
-
-
-```{r}
 # 加载tidyverse包：用于数据处理和可视化（Load tidyverse package: for data processing and visualization）
 library(tidyverse)
 # 加载ggplot2包：用于创建优雅的图形（Load ggplot2 package: for creating elegant graphics）
@@ -83,8 +78,6 @@ options(stringsAsFactors = FALSE)
 
 ## 输入文件的下载：
 
-下面4个文件我上传到微云上了，下载地址：<https://share.weiyun.com/5F4J859>，你可以选择从微云下载，或者用下面的下载地址分别下载，一样的。
-
 从xena<https://xenabrowser.net/datapages/>下载感兴趣的癌症的表达数据和临床信息。此处以例文数据为例：
 
 先进入LGG + GBM的基因表达和临床资料所在页面，TCGA lower grade glioma and glioblastoma (GBMLGG) (14 datasets)：<https://xenabrowser.net/datapages/?cohort=TCGA%20lower%20grade%20glioma%20and%20glioblastoma%20(GBMLGG)&removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443>：
@@ -100,8 +93,6 @@ options(stringsAsFactors = FALSE)
 - phenotype，Phenotypes (n=530) TCGA hub，下载地址：<https://tcga.xenahubs.net/download/TCGA.LGG.sampleMap/LGG_clinicalMatrix.gz>
 
 ## Download the input file:
-
-I have uploaded the following 4 files to Weiyun, download link:< https://share.weiyun.com/5F4J859 >You can choose to download from Weiyun or use the download addresses below to download separately, the same way.
 
 From Xena< https://xenabrowser.net/datapages/ >Download the expression data and clinical information of the cancer of interest. Here is an example of sample data:
 
