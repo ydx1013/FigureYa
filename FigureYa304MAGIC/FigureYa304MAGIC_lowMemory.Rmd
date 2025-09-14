@@ -39,11 +39,11 @@ R CMD INSTALL .
 pip install python-libmagic
 ```
 
-加载R包
-
 ```{r}
 source("install_dependencies.R")
 
+# 加载 Seurat 和 SeuratDisk 用于数据转换
+library(SeuratDisk)
 library(Seurat)
 library(tidyverse)
 library(ComplexHeatmap)
@@ -54,23 +54,35 @@ options(stringsAsFactors = FALSE) #禁止chr转成factor
 
 # 输入文件
 
-SCLC_epithelial_cells.rds，Seurat对象。作者已将例文的数据上传至<https://data.humantumoratlas.org/>，点击链接下载<https://cellxgene.cziscience.com/collections/62e8f058-9c37-48bc-9200-e767f318a8ec>，然后保存至data文件夹。
-
-![](download1.png)
-
-![](download2.png)
-
-
-1. 将ENSEMBL GENE ID转换为GENE NAME
-
-2. 读取Seurat对象，将基因表达矩阵转存为arrow-feather格式，作为MAGIC的输入
+作者已将例文的数据上传至<https://data.humantumoratlas.org/>。
 
 ```{r}
-seu <- readRDS("data/SCLC_epithelial_cells.rds")
-dir.create("tmp.data2")
+# 1. 下载 H5AD 文件
+h5ad_url <- "https://datasets.cellxgene.cziscience.com/79f80e59-97e7-4f95-b1e9-9767a24b85b0.h5ad"
+h5ad_file <- "SCLC_epithelial_cells.h5ad"
+
+# 检查文件是否已下载，如果未下载则执行下载
+if (!file.exists(h5ad_file)) {
+  download.file(h5ad_url, destfile = h5ad_file, mode = "wb")
+}
+
+# 2. 将 .h5ad 转换为 .h5seurat 格式
+h5seurat_file <- "SCLC_epithelial_cells.h5seurat"
+Convert(h5ad_file, dest = h5seurat_file, overwrite = TRUE)
+
+# 3. 将 .h5seurat 文件加载为 Seurat 对象
+seu <- LoadH5Seurat(h5seurat_file)
+
+# 查看加载后的 Seurat 对象
+print(seu)
+
+# 创建临时目录并保存元数据 (与原流程保持一致)
+dir.create("tmp.data", showWarnings = FALSE)
+saveRDS(seu@meta.data, "tmp.data/SCLC_epithelial_cells.cellmeta.rds")
+head(readRDS("tmp.data/SCLC_epithelial_cells.cellmeta.rds"))
 ```
 
-```{r eval=FALSE}
+```{r}
 ensembl <- useEnsembl(biomart = "ENSEMBL_MART_ENSEMBL", version = 98)
 hg38.ens <- useDataset(dataset = "hsapiens_gene_ensembl", mart = ensembl, verbose = 98)
 
