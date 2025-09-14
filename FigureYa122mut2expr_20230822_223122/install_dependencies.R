@@ -19,7 +19,7 @@ install_cran_package <- function(package_name) {
       install.packages(package_name, dependencies = TRUE)
       cat("Successfully installed:", package_name, "\n")
     }, error = function(e) {
-      cat("Failed to install", package_name, ":", e$message, "\n")
+      stop("Failed to install ", package_name, ": ", e$message)
     })
   } else {
     cat("Package already installed:", package_name, "\n")
@@ -37,7 +37,7 @@ install_bioc_package <- function(package_name) {
       BiocManager::install(package_name, update = FALSE, ask = FALSE)
       cat("Successfully installed:", package_name, "\n")
     }, error = function(e) {
-      cat("Failed to install", package_name, ":", e$message, "\n")
+      stop("Failed to install ", package_name, ": ", e$message)
     })
   } else {
     cat("Package already installed:", package_name, "\n")
@@ -50,7 +50,8 @@ cat("===========================================\n")
 
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("RColorBrewer", "Set1", "cowplot", "gcrma", "ggplot2", "openxlsx", "scales")
+# Removed "Set1" as it is a palette name, not a package.
+cran_packages <- c("RColorBrewer", "cowplot", "ggplot2", "openxlsx", "scales")
 
 for (pkg in cran_packages) {
   install_cran_package(pkg)
@@ -58,7 +59,9 @@ for (pkg in cran_packages) {
 
 # Installing Bioconductor packages
 cat("\nInstalling Bioconductor packages...\n")
-bioc_packages <- c("affy", "hgu133plus2.db", "limma", "org.Hs.eg.db")
+# Added "GEOquery" to download data from GEO.
+# Moved "gcrma" from CRAN to Bioconductor list as it belongs here.
+bioc_packages <- c("GEOquery", "affy", "gcrma", "hgu133plus2.db", "limma", "org.Hs.eg.db")
 
 for (pkg in bioc_packages) {
   install_bioc_package(pkg)
