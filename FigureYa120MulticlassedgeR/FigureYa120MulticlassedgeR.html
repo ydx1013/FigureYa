@@ -403,51 +403,32 @@ or chip data, please refer to FigureYa119 Multiclasslimma.</p>
 </div>
 <div id="环境设置" class="section level2">
 <h2>环境设置</h2>
-<p>使用国内镜像安装包</p>
 </div>
 <div id="environment-settings" class="section level2">
 <h2>Environment settings</h2>
-<p>Use domestic image installation package</p>
-<pre class="r"><code>options(&quot;repos&quot;= c(CRAN=&quot;https://mirrors.tuna.tsinghua.edu.cn/CRAN/&quot;))
-options(BioC_mirror=&quot;http://mirrors.ustc.edu.cn/bioc/&quot;)
-BiocManager::install(&quot;edgeR&quot;)</code></pre>
-<p>加载包</p>
-<p>library packages</p>
-<pre class="r"><code>library(edgeR)
-
-Sys.setenv(LANGUAGE = &quot;en&quot;) #显示英文报错信息
+<pre class="r"><code>source(&quot;install_dependencies.R&quot;)</code></pre>
+<pre><code>## Starting R package installation...
+## ===========================================
+## 
+## Installing Bioconductor packages...
+## Package already installed: edgeR 
+## 
+## Installing CRAN packages...
+## Package already installed: pheatmap 
+## Package already installed: RColorBrewer 
+## Package already installed: gplots 
+## 
+## ===========================================
+## Package installation completed!
+## You can now run your R scripts in this directory.</code></pre>
+<pre class="r"><code>library(edgeR)</code></pre>
+<pre><code>## Loading required package: limma</code></pre>
+<pre class="r"><code>Sys.setenv(LANGUAGE = &quot;en&quot;) #显示英文报错信息
 options(stringsAsFactors = FALSE) #禁止chr转成factor</code></pre>
 <p>自定义函数，分别比较每一组跟其他样品之间的差异，如果有更多组，按规律补充进去即可。</p>
 <p>Customize the function to compare the differences between each group
 and other samples separately. If there are more groups, simply add them
 according to the pattern.</p>
-<pre class="r"><code>source(&quot;install_dependencies.R&quot;)</code></pre>
-<pre><code>## Starting R package installation...
-## ===========================================
-## 
-## Installing CRAN packages...
-## Installing CRAN package: SKCM_edgeR_test_result.immune_vs_Others.txt</code></pre>
-<pre><code>## Installing package into &#39;/home/runner/work/_temp/Library&#39;
-## (as &#39;lib&#39; is unspecified)</code></pre>
-<pre><code>## Warning: package &#39;SKCM_edgeR_test_result.immune_vs_Others.txt&#39; is not available for this version of R
-## 
-## A version of this package for your version of R might be available elsewhere,
-## see the ideas at
-## https://cran.r-project.org/doc/manuals/r-patched/R-admin.html#Installing-packages</code></pre>
-<pre><code>## Successfully installed: SKCM_edgeR_test_result.immune_vs_Others.txt 
-## Installing CRAN package: SKCM_edgeR_test_result.keratin_vs_Others.txt</code></pre>
-<pre><code>## Installing package into &#39;/home/runner/work/_temp/Library&#39;
-## (as &#39;lib&#39; is unspecified)</code></pre>
-<pre><code>## Warning: package &#39;SKCM_edgeR_test_result.keratin_vs_Others.txt&#39; is not available for this version of R
-## 
-## A version of this package for your version of R might be available elsewhere,
-## see the ideas at
-## https://cran.r-project.org/doc/manuals/r-patched/R-admin.html#Installing-packages</code></pre>
-<pre><code>## Successfully installed: SKCM_edgeR_test_result.keratin_vs_Others.txt 
-## 
-## ===========================================
-## Package installation completed!
-## You can now run your R scripts in this directory.</code></pre>
 <pre class="r"><code># 创建需要配对比较的列表 [Create a list for pairwise comparisons]
 # 参数：group - 样本分组信息，命名向量，格式为样本名=分组名 [Parameter: group - Sample grouping information, named vector with format sample_name=group_name]
 createList &lt;- function(group=NULL) {
@@ -708,12 +689,16 @@ for (i in 1:n.sub) {  # n.sub是之前计算的亚型数量 [n.sub is the number
 ## attached base packages:
 ## [1] stats     graphics  grDevices utils     datasets  methods   base     
 ## 
+## other attached packages:
+## [1] edgeR_4.6.3  limma_3.64.3
+## 
 ## loaded via a namespace (and not attached):
 ##  [1] digest_0.6.37     R6_2.6.1          fastmap_1.2.0     xfun_0.53        
-##  [5] cachem_1.1.0      knitr_1.50        htmltools_0.5.8.1 rmarkdown_2.29   
-##  [9] lifecycle_1.0.4   cli_3.6.5         sass_0.4.10       jquerylib_0.1.4  
-## [13] compiler_4.5.1    tools_4.5.1       evaluate_1.0.5    bslib_0.9.0      
-## [17] yaml_2.3.10       rlang_1.1.6       jsonlite_2.0.0</code></pre>
+##  [5] lattice_0.22-7    cachem_1.1.0      knitr_1.50        htmltools_0.5.8.1
+##  [9] rmarkdown_2.29    lifecycle_1.0.4   cli_3.6.5         grid_4.5.1       
+## [13] sass_0.4.10       jquerylib_0.1.4   statmod_1.5.0     compiler_4.5.1   
+## [17] tools_4.5.1       evaluate_1.0.5    bslib_0.9.0       yaml_2.3.10      
+## [21] locfit_1.5-9.12   rlang_1.1.6       jsonlite_2.0.0</code></pre>
 </div>
 </div>
 
