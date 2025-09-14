@@ -1,9 +1,21 @@
 ---
 title: "FigureYa304MAGIC (low memory solution)"
-author: "Jarning"
-date: "2023/2/7"
+params:
+  author: "Jianing Gao; Yasi Zhang"  
+  reviewer: "Ying Ge"
+  date: "2025-05-20"
 output: html_document
 ---
+
+**Author(s)**: `r params$author`  
+**Reviewer(s)**: `r params$reviewer`  
+**Date**: `r params$date` 
+
+# Academic Citation
+If you use this code in your work or research, we kindly request that you cite our publication:
+
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
+
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -30,6 +42,8 @@ pip install python-libmagic
 加载R包
 
 ```{r}
+source("install_dependencies.R")
+
 library(Seurat)
 library(tidyverse)
 library(ComplexHeatmap)
