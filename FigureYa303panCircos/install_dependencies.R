@@ -47,10 +47,9 @@ install_bioc_package <- function(package_name) {
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
-
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("Brain", "Breast", "Colon", "Eye", "Kidney", "Liver", "Lung", "Ovary", "Prostate", "Skin", "Stomach", "Thyroid", "Uterus")
+cran_packages <- c("openxlsx", "plyr", "dplyr", "circlize", "reshape2", "ggplot2")
 
 for (pkg in cran_packages) {
   install_cran_package(pkg)
@@ -58,7 +57,7 @@ for (pkg in cran_packages) {
 
 # Installing Bioconductor packages
 cat("\nInstalling Bioconductor packages...\n")
-bioc_packages <- c("ComplexHeatmap", "circlize")
+bioc_packages <- c("ComplexHeatmap")
 
 for (pkg in bioc_packages) {
   install_bioc_package(pkg)
@@ -67,3 +66,11 @@ for (pkg in bioc_packages) {
 cat("\n===========================================\n")
 cat("Package installation completed!\n")
 cat("You can now run your R scripts in this directory.\n")
+
+# Test if openxlsx can be loaded
+cat("\nTesting openxlsx package...\n")
+if (require("openxlsx", quietly = TRUE)) {
+  cat("✅ openxlsx package loaded successfully!\n")
+} else {
+  cat("❌ openxlsx package could not be loaded.\n")
+}
