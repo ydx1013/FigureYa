@@ -10,7 +10,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -49,10 +48,6 @@ It is mainly used to filter the feature variables to construct the best classifi
 
 ```{r, message=FALSE}
 source("install_dependencies.R")
-#install.packages("glmnet") 
-#if (!requireNamespace("BiocManager", quietly = TRUE))
-    #install.packages("BiocManager")
-#BiocManager::install("sigFeature", version = "3.8") 
 
 library(tidyverse)
 library(glmnet)
@@ -309,6 +304,8 @@ There are several sets of codes to implement the SVM-REF algorithm, and two othe
 In practice, you can run them separately, compare the effect, and then choose one of them.
 
 See Methods 2 and Methods 3 in the Lasso-SVM-REF-algorithm-Feature selection.R file.
+
+# Session Info
 
 ```{r}
 sessionInfo()
