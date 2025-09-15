@@ -46,16 +46,11 @@ Gene names that are significantly up- or down-regulated, or gene names involved 
 
 # 环境设置
 
-
 # Environment settings
 
 ```{r}
 source("install_dependencies.R")
-```
 
-load packages
-
-```{r}
 library(dplyr)
 library(Seurat)
 library(patchwork)
@@ -205,13 +200,13 @@ DoHeatmap(pbmc, features = top10$gene) + NoLegend()
 
 如果只是为了复现文章中的图，可以不鉴定细胞类型，以下部分可不run，根据结合每个cluster的marker基因和生物学知识确定细胞类型。
 
-为了接近真实情况并结合实现示例数据，这里不将细胞类型划分的这么详细，进行以下更改
+为了接近真实情况并结合示例数据，这里不将细胞类型划分的这么详细，进行以下更改
 
 ## Identify cell types
 
 If you don't need to identify the cell types just to reproduce the diagram in the article, the following section can be done without running and determine the cell type based on the knowledge of the marker genes and biology that binds each cluster.
 
-In order to get close to the real situation and combine the crowdfunding example data, the cell types are not divided into such details here, and the following changes are made
+In order to get close to the real situation and combine the example data, the cell types are not divided into such details here, and the following changes are made
 
 ```{r}
 # 给每个cluster标注细胞类型
