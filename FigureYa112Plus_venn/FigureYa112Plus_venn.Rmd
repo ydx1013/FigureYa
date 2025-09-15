@@ -11,7 +11,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 # 设置knitr代码块的全局选项 / Set global options for knitr code chunks
@@ -39,7 +38,7 @@ Disadvantage: It can only be filled in gray and can only be saved as PNG.
 
 I want color, I want PDF vector graphics.
 
-When crowdfunding FigureYa112venn, there was no R package that could directly achieve the effect of filling colors by percentage. Therefore, the author of FigureYa112venn, Li Yuhui, integrated R packages such as VennDiagram and colorfulVennPlot to achieve the desired effect.
+When we wrote FigureYa112venn, there was no R package that could directly achieve the effect of filling colors by percentage. Therefore, the author of FigureYa112venn, Li Yuhui, integrated R packages such as VennDiagram and colorfulVennPlot to achieve the desired effect.
 
 Later, Gao Chunhui wrote the R package ggVennDiagram, which is convenient and easy to use. Below is a demonstration of how to use this R package to draw Venn diagrams.
 
