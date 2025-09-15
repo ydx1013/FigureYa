@@ -10,7 +10,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE,
                       tidy=TRUE,
@@ -54,16 +53,7 @@ You can also use your own data to draw such a heat map with local secondary labe
 
 ```{r message=FALSE, warning=FALSE}
 source("install_dependencies.R")
-if (!require("pacman")) install.packages("pacman")
-pacman::p_load(svglite, ggplot2, magrittr,patchwork,Rmisc,Cairo,stringr,tidyr,tidyfst,data.table,rlist,Hmisc,grid,gtable,gridExtra,ggpubr)
-if (!require("DESeq2")) BiocManager::install("DESeq2")
-if (!require("S4Vectors")) BiocManager::install("S4Vectors")
-if (!require("BiocParallel")) BiocManager::install("BiocParallel")
-```
 
-Load the R package
-
-```{r message=FALSE, warning=FALSE}
 library(DESeq2)
 library(S4Vectors)
 library(BiocParallel)
