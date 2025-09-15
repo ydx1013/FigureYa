@@ -58,6 +58,7 @@ Mainly used for prognostic analysis of tumors and other chronic diseases, but al
 One-way cox analysis is used to explore the independent prognostic impact of individual genes.
 
 Cox analysis can be used for transcriptome, methylation, miRNA, LncRNA, variable shear, etc.
+
 ## 环境设置
 
 ## Environment settings
@@ -89,6 +90,7 @@ If your data has been organized into easy_input_4coxv.csv format, you can skip t
 If your data has been organized into cox_output.csv format, you can skip this step and go directly to “Start Drawing”.
 
 Here we take LUAD as an example, download the survival data and expression matrix from TCGA, and process them into easy_input.csv for cox analysis.
+
 ### 第一步：样本资料整理，提取LUAD样本名
 
 数据来源：
