@@ -10,7 +10,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -46,8 +45,6 @@ Fig.1e的画法可参考FigureYa162boxViolin；
 Fig.2b的画法可参考FigureYa60GSEA_clusterProfiler；
 Fig.4f可参考FigureYa99smoothHR。
 
-Xiaofan Lu的更多作品看这里：
-
 Calculate the methylation age according to the DNA methylation beta value, and make a difference with chronological age to calculate the epigenetic age acceleration.
 
 > Note: The calculation of methylation age is currently only applicable to 450k and 27k data and is not suitable for 850k data.
@@ -63,26 +60,12 @@ For the drawing method of Fig.1e, you can refer to FigureYa162boxViolin;
 For the drawing method of Fig.2b, you can refer to FigureYa60GSEA_clusterProfiler;
 for Fig.4f, you can refer to FigureYa99smoothHR.
 
-For more works by Big Fish & Begonia, see: 
-
 # 环境设置
 # Environment setting
 
-
-use the domestic mirror installation package
-
 ```{r}
 source("install_dependencies.R")
-```
 
-```{r eval=FALSE}
-BiocManager::install("ChAMP")
-```
-
-
-load package
-
-```{r}
 library(ChAMP)
 library(wateRmelon)
 library(data.table)
