@@ -47,18 +47,17 @@ install_bioc_package <- function(package_name) {
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
-
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("CMScaller", "ClassDiscovery", "gplots", "tidyverse")
+cran_packages <- c("ClassDiscovery", "gplots", "tidyverse")
 
 for (pkg in cran_packages) {
   install_cran_package(pkg)
 }
 
-# Installing Bioconductor packages
+# Installing Bioconductor packages (包括 CMScaller)
 cat("\nInstalling Bioconductor packages...\n")
-bioc_packages <- c("ComplexHeatmap", "clusterProfiler", "org.Hs.eg.db")
+bioc_packages <- c("CMScaller", "ComplexHeatmap", "clusterProfiler", "org.Hs.eg.db")
 
 for (pkg in bioc_packages) {
   install_bioc_package(pkg)
