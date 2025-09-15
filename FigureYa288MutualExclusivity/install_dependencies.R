@@ -19,7 +19,7 @@ install_cran_package <- function(package_name) {
       install.packages(package_name, dependencies = TRUE)
       cat("Successfully installed:", package_name, "\n")
     }, error = function(e) {
-      cat("Failed to install", package_name, ":", e$message, "\n")
+      cat("Warning: Failed to install CRAN package '", package_name, "': ", e$message, "\n")
     })
   } else {
     cat("Package already installed:", package_name, "\n")
@@ -37,50 +37,68 @@ install_bioc_package <- function(package_name) {
       BiocManager::install(package_name, update = FALSE, ask = FALSE)
       cat("Successfully installed:", package_name, "\n")
     }, error = function(e) {
-      cat("Failed to install", package_name, ":", e$message, "\n")
+      cat("Warning: Failed to install Bioconductor package '", package_name, "': ", e$message, "\n")
     })
   } else {
     cat("Package already installed:", package_name, "\n")
   }
 }
 
+# Function to install DealGPL570 from source
+install_deal_gpl570 <- function() {
+  if (!is_package_installed("DealGPL570")) {
+    cat("Installing DealGPL570 from source...\n")
+    tryCatch({
+      # First install dependencies
+      cat("Installing dependencies for DealGPL570...\n")
+      install_bioc_package("GEOquery")
+      install_bioc_package("affy")
+      
+      # Install DealGPL570 from CRAN archive
+      install.packages("https://cran.r-project.org/src/contrib/Archive/DealGPL570/DealGPL570_0.0.1.tar.gz", 
+                      repos = NULL, type = "source")
+      cat("Successfully installed: DealGPL570\n")
+    }, error = function(e) {
+      cat("Warning: Failed to install DealGPL570: ", e$message, "\n")
+      cat("Trying alternative installation method...\n")
+      
+      # Alternative: install from GitHub if available
+      tryCatch({
+        if (!is_package_installed("remotes")) {
+          install.packages("remotes")
+        }
+        remotes::install_github("cran/DealGPL570")
+        cat("Successfully installed: DealGPL570 (from GitHub)\n")
+      }, error = function(e2) {
+        cat("Error: All installation methods failed for DealGPL570: ", e2$message, "\n")
+      })
+    })
+  } else {
+    cat("Package already installed: DealGPL570\n")
+  }
+}
+
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
-# Installing core CRAN dependencies first
+# First install BiocManager if not already installed
+if (!is_package_installed("BiocManager")) {
+  cat("Installing BiocManager...\n")
+  install.packages("BiocManager")
+}
+
+# Installing core CRAN dependencies
 cat("\nInstalling core CRAN dependencies...\n")
-core_packages <- c("curl", "httr", "gargle", "googledrive", "googlesheets4", "ragg", "rvest")
+core_packages <- c("curl", "httr", "gargle", "googledrive", "googlesheets4", "ragg", "rvest", "remotes")
 
 for (pkg in core_packages) {
   install_cran_package(pkg)
 }
 
-# 安装 DealGPL570 的特定历史版本（通过 CRAN Archive URL）
-deal_pkg_url <- "https://cran.r-project.org/src/contrib/Archive/DealGPL570/DealGPL570_0.0.1.tar.gz"
-deal_pkg_name <- "DealGPL570"
-
-if (!is_package_installed(deal_pkg_name)) {
-  cat("Installing archived DealGPL570 version 0.0.1 from CRAN Archive...\n")
-  tryCatch({
-    install.packages(deal_pkg_url, repos = NULL, type = "source")
-    cat("Successfully installed DealGPL570_0.0.1\n")
-  }, error = function(e) {
-    cat("Failed to install DealGPL570_0.0.1:", e$message, "\n")
-  })
-} else {
-  cat("Package already installed:", deal_pkg_name, "\n")
-}
-
-# 系统依赖提醒（如在 Linux 环境，需提前手动安装）
-cat("\nNOTE: If you encounter errors for packages like 'systemfonts', 'curl', or 'xml2',\n")
-cat("please ensure you have installed the necessary system libraries.\n")
-cat("For Ubuntu/Debian, run this in shell BEFORE using this script:\n")
-cat("  sudo apt-get update\n")
-cat("  sudo apt-get install libfontconfig1-dev libcurl4-openssl-dev libxml2-dev libssl-dev\n\n")
-
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("Chromosome", "End_Position", "Hugo_Symbol", "Reference_Allele", "Start_Position", "Tumor_Sample_Barcode", "Tumor_Seq_Allele1", "Tumor_Seq_Allele2", "Variant_Classification", "Variant_Type", "dplyr", "ggplot2", "readr", "tidyverse")
+# Removed invalid package names that appear to be column names, not packages
+cran_packages <- c("dplyr", "ggplot2", "readr", "tidyverse")
 
 for (pkg in cran_packages) {
   install_cran_package(pkg)
@@ -94,6 +112,29 @@ for (pkg in bioc_packages) {
   install_bioc_package(pkg)
 }
 
+# Special installation for DealGPL570
+cat("\nInstalling DealGPL570 (special package)...\n")
+install_deal_gpl570()
+
 cat("\n===========================================\n")
 cat("Package installation completed!\n")
+
+# Check if all required packages are installed
+cat("\nChecking installed packages:\n")
+all_packages <- c(core_packages, cran_packages, bioc_packages, "DealGPL570")
+for (pkg in all_packages) {
+  if (is_package_installed(pkg)) {
+    cat("✓", pkg, "is installed\n")
+  } else {
+    cat("✗", pkg, "is NOT installed\n")
+  }
+}
+
+# System dependency reminder
+cat("\nNOTE: If you encounter system dependency errors, please install:\n")
+cat("For Ubuntu/Debian:\n")
+cat("  sudo apt-get install libfontconfig1-dev libcurl4-openssl-dev libxml2-dev libssl-dev\n")
+cat("For CentOS/RHEL:\n")
+cat("  sudo yum install fontconfig-devel libcurl-devel libxml2-devel openssl-devel\n")
+
 cat("You can now run your R scripts in this directory.\n")
