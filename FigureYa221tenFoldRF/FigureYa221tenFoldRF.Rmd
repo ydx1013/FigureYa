@@ -1,24 +1,14 @@
 ---
 title: "FigureYa221tenFoldRF"
-author: "小丫画图出品"
+author: "Xiaofan Lu"
 date: "2021-2-26"
 output: html_document
 ---
-欢迎关注“小丫画图”公众号，回复“小白”，看小视频，实现点鼠标跑代码。
-
-小丫微信: epigenomics  E-mail: figureya@126.com
-
-作者：Xiaofan Lu
-
-单位：中国药科大学国家天然药物重点实验室，生物统计与计算药学研究中心
-
-小丫编辑校验
 
 # Academic Citation
 If you use this code in your work or research, we kindly request that you cite our publication:
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
-
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -26,7 +16,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # 需求描述
 
-想实现下10折交叉验证的分析方法，FigureYa182RFSurv和FigureYa198SignatureComb 都是根据基因的重要性筛选的，直接根据随机森林的准确度筛选，又是另一种不同的展示方式。
+想实现10折交叉验证的分析方法，FigureYa182RFSurv和FigureYa198SignatureComb 都是根据基因的重要性筛选的，直接根据随机森林的准确度筛选，又是另一种不同的展示方式。
 
 ![](example.png)
 
@@ -44,14 +34,9 @@ cox模型的10折交叉验证可参考FigureYa220repeatedLasso
 
 # 环境设置
 
-
 ```{r}
 source("install_dependencies.R")
 
-```
-
-
-```{r}
 library(caret)
 library(survival)
 library(shape)
@@ -73,7 +58,7 @@ display.progress = function (index, totalN, breakN=20) {
 
 InnateDB_genes.csv，免疫基因集。数据来自<https://www.innatedb.com/redirect.do?go=resourcesGeneLists> Immunogenetic Related Information Source (IRIS)
 
-easy_input_expr.txt，表达谱。文件较大，已上传至微云<https://share.weiyun.com/0esnGlCh>
+easy_input_expr.txt，表达谱。
 
 easy_input_surv.txt，生存数据。
 
