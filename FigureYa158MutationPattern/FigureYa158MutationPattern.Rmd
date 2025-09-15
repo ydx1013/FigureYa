@@ -11,7 +11,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -41,22 +40,9 @@ Here, we use maftools + MutationalPatterns to perform this analysis.
 # 环境设置
 # Environment Setup
 
-
 ```{r}
 source("install_dependencies.R")
-```
 
-```{r, eval=FALSE}
-BiocManager::install("MutationalPatterns")
-BiocManager::install("BSgenome")
-BiocManager::install("BSgenome.Hsapiens.UCSC.hg38")
-install.packages("tidyverse")
-install.packages("haven")
-```
-
-Load package
-
-```{r}
 library(MutationalPatterns)
 library(TCGAbiolinks)
 library(maftools)
