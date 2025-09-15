@@ -11,7 +11,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -38,14 +37,9 @@ This process explores whether the distribution of microenvironment-related signa
 ## 环境设置
 ## Environment settings
 
-
 ```{r}
 source("install_dependencies.R")
-```
 
-Load package
-
-```{r}
 library(reshape2)
 library(ggplot2)
 library(ggpubr)
@@ -62,7 +56,7 @@ options(stringsAsFactors = FALSE) #禁止chr转成factor #Display English error 
 If you don't want to calculate TMEscore, but just want to draw a significant box plot, you can refer to FigureYa12box. Or prepare your own data according to the very_easy_input.csv file and go directly to "Start drawing".
 
 - easy_input_cluster.txt，样本所在的分类，实际应用时可以替换成是否复发,  是否转移等表型。原文通过CIBERSORT的细胞聚类和基因聚类获得，这一步不太好实现，流程太长了，如果哪个朋友想要个性化服务再说吧。具体步骤如下：先通过consensuclusterplus2确定细胞的最佳聚类，然后通过kmeans获得cell cluster; 接着通过cell cluster进行了两两差异分析，再通过随机森林降维获得signature gene, 然后再用signature gene通过kmeans聚类获得这个数据中的TMEcluster。
-- easy_input_cluster.txt, the classification of the sample, can be replaced with phenotypes such as recurrence or metastasis in actual application. The original text is obtained through CIBERSORT cell clustering and gene clustering. This step is not easy to crowdfund, the process is too long, if any friend wants personalized service, please talk to us. The specific steps are as follows: first determine the best clustering of cells through consensusuclusterplus2, and then obtain cell cluster through kmeans; then perform pairwise difference analysis through cell cluster, and then obtain signature gene through random forest dimensionality reduction, and then use signature gene to obtain TMEcluster in this data through kmeans clustering.
+- easy_input_cluster.txt, the classification of the sample, can be replaced with phenotypes such as recurrence or metastasis in actual application. The original text is obtained through CIBERSORT cell clustering and gene clustering. This step is too long, if any friend wants personalized service, please talk to us. The specific steps are as follows: first determine the best clustering of cells through consensusuclusterplus2, and then obtain cell cluster through kmeans; then perform pairwise difference analysis through cell cluster, and then obtain signature gene through random forest dimensionality reduction, and then use signature gene to obtain TMEcluster in this data through kmeans clustering.
 
 Tumor microenvironment characterization in gastric cancer identifies prognostic and imunotherapeutically relevant gene signatures. 2019, Cancer Immunology Research. DOI: 10.1158/2326-6066.CIR-18-0436 PMID: 30842092
 
