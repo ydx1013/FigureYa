@@ -10,7 +10,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -21,7 +20,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Requirement Description
 
-I want to crowdfund the modeling method of this article, which is different from the conventional lasso, the product of the cox regression coefficient and the gene expression, this article uses Boruta to reduce the dimension and combine the principal component analysis with the first principal component to construct a signature score, which is especially suitable for molecular typing analysis.
+I want to try the modeling method of this article, which is different from the conventional lasso, the product of the cox regression coefficient and the gene expression, this article uses Boruta to reduce the dimension and combine the principal component analysis with the first principal component to construct a signature score, which is especially suitable for molecular typing analysis.
 
 ![](method.png)
 
@@ -38,17 +37,11 @@ According to the isoforms obtained by Figure201ClusterCorrelation and the ICI si
 
 # 环境设置
 
-
 # Environment settings
-
 
 ```{r}
 source("install_dependencies.R")
-install.packages('Boruta')
-```
-load package
 
-```{r}
 library(Boruta)
 library(ggplot2)
 library(ggpubr)
