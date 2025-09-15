@@ -10,18 +10,17 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
 # 需求描述
 
-以往的分子分型都是基于基因表达来做的，这有一个是基于多数据集免疫细胞的，能实现吗？输出Fig.1 A和B。
+以往的分子分型都是基于基因表达来做的，这有一个是基于多数据集免疫细胞的，输出Fig.1 A和B。
 
 # Requirement Description
 
-In the past, molecular typing was based on gene expression, but one of them is based on multiple datasets of immune cells, can it be crowdfunded? Outputs Fig.1 A and B.
+In the past, molecular typing was based on gene expression, but one of them is based on multiple datasets of immune cell. Outputs Fig.1 A and B.
 
 ![](example.png)
 
@@ -49,20 +48,11 @@ Original: We performed the CIBERSORT and ESTIMATE algorithms to quantify the act
 
 # 环境设置
 
-
 # Environment settings
-
 
 ```{r}
 source("install_dependencies.R")
-```
 
-```{r eval=FALSE}
-install.packages("estimate", repos="http://r-forge.r-project.org", dependencies=TRUE)
-```
-
-
-```{r}
 library(sva)
 library(ConsensusClusterPlus)
 library(survminer)
