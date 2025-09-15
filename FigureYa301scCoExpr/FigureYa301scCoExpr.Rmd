@@ -16,7 +16,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -63,31 +62,14 @@ The darker the color, the higher the expression level of the indicated markers. 
 
 展示单细胞的基因共表达，以及共表达基因相关性。
 
-更多单细胞FigureYa看这里<https://k.youshop10.com/McawGY6=>
-
-相关性展示FigureYa看这里<https://k.youshop10.com/Eig1YOB4>
-
 Displaying gene co-expression in single cells and the correlation of co-expressed genes.
-
-For more single-cell FigureYa, check here<https://k.youshop10.com/McawGY6=>
-
-For correlation visualization FigureYa, check here<https://k.youshop10.com/Eig1YOB4>
 
 # 环境设置
 # Environment Setup
 
-
-Using domestic mirrors for package installation.
-
 ```{r}
 source("install_dependencies.R")
-# devtools::install_github('satijalab/seurat-data')
-```
 
-# 加载包
-# Loading packages
-
-```{r}
 library(Seurat)
 library(SeuratData)
 library(ggplot2)
@@ -264,11 +246,8 @@ getScatterplot(pbmc3k, gene1 = "CD3G", gene2 = "CD247",
   theme(aspect.ratio = 1)
 ```
 
-# 会话信息
 # Session Info
 
 ```{r}
-# 显示会话信息
-# Show session information
 sessionInfo()
 ```
