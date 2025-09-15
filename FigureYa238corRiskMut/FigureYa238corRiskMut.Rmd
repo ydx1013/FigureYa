@@ -10,18 +10,17 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
 # 需求描述
 
-小丫老师，想实现下FigA-C，预后模型建立后寻找高低风险组中突变最显著的基因，并计算riskscore与有义和错义突变的相关性，谢谢啦
+想实现下FigA-C，预后模型建立后寻找高低风险组中突变最显著的基因，并计算riskscore与有义和错义突变的相关性，谢谢啦
 
 # Requirement Description
 
-Teacher Xiaoya, I want to crowdfund FigA-C, find the most significant mutations in the high and low risk groups after the prognostic model is established, and calculate the correlation between riskscore and sense and missense mutations, thank you
+I want to crowdfund FigA-C, find the most significant mutations in the high and low risk groups after the prognostic model is established, and calculate the correlation between riskscore and sense and missense mutations, thank you
 
 ![](example.png)
 
@@ -61,19 +60,11 @@ There are several diagrams in the article that can be implemented with our Figur
 
 # 环境设置
 
-
 # Environment settings
 
-
-```{r eval=TRUE}
-source("install_dependencies.R")
-BiocManager::install("maftools")
-install.packages("ggplot2")
-```
-
-load packages
-
 ```{r}
+source("install_dependencies.R")
+
 library(data.table)
 library(maftools)
 library(tidyverse)
@@ -91,8 +82,6 @@ options(stringsAsFactors = FALSE) #禁止chr转成factor # chr is not allowed to
 ```
 
 # 输入文件
-
-以下两个文件较大，已上传至微云<https://share.weiyun.com/ks0OVM7a>。建议按以下方式直接从官网下载：
 
 - 表达数据：TCGA-LUAD.htseq_fpkm.tsv.gz，gene expression RNAseq - HTSeq - FPKM，下载自 [XENA](https://xenabrowser.net/datapages/) [GDC TCGA Lung Adenocarcinoma (LUAD) (15 datasets)](https://xenabrowser.net/datapages/?dataset=TCGA-LUAD.htseq_fpkm.tsv&host=https%3A%2F%2Fgdc.xenahubs.net&removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443)，
 
