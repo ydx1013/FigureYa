@@ -16,7 +16,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -24,9 +23,9 @@ knitr::opts_chunk$set(echo = TRUE)
 # 需求描述
 # Demand description
 
-这个图信息量很大，非常高大上，热图和气泡图合用，展示差异富集信号通路信息，最好给实现一下哈。
+这个图信息量很大，非常高大上，热图和气泡图合用，展示差异富集信号通路信息。
 
-This diagram is packed with information and looks very high-end. The combination of a heatmap and bubble chart effectively displays differential enrichment signaling pathways. It would be great to crowdfund this.
+This diagram is packed with information and looks very high-end. The combination of a heatmap and bubble chart effectively displays differential enrichment signaling pathways.
 
 ![](example.png)
 
@@ -54,23 +53,9 @@ The expression heatmap on the left corresponds to the enrichment analysis result
 # 环境设置
 # Environment Setup
 
-
-Using domestic mirrors for package installation.
-
 ```{r}
 source("install_dependencies.R")
-```
 
-```{r eval=FALSE}
-BiocManager::install("batchelor")
-install.packages("Seurat")
-install.packages("Hmisc")
-```
-
-# 加载包
-# Loading packages
-
-```{r}
 library(tidyverse)
 library(magrittr)
 library(Seurat) # v3.1.5
