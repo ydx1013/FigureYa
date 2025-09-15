@@ -11,7 +11,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -45,8 +44,6 @@ For the analysis plots in Figure 6, please refer to FigureYa131CMap. For other c
 # 环境设置
 # Environment Setup
 
-Loading the package
-
 ```{r}
 source("install_dependencies.R")
 library(GEOquery)
@@ -70,19 +67,22 @@ Two files used: pcbc-stemsig.tsv and pcbc-stemsig.p219.Rda, from <https://www.ce
 ## 输入文件
 ## Input file
 
-需要表达数据和临床信息作为输入：
-Expression data and clinical information are required as input:
+需要表达数据GSE85217和临床信息作为输入：
+Expression data GSE85217 and clinical information are required as input:
 
-- GSE85217_family.soft.gz，表达数据。Download required data and read data. We directly download files from <https://ftp.ncbi.nlm.nih.gov/geo/series/GSE85nnn/GSE85217/soft/GSE85217_family.soft.gz>
 - easyinput_clinicaldata.csv，临床信息。
-- GSE85217_family.soft.gz, expression data. Download required data and read data. We directly download files from <https://ftp.ncbi.nlm.nih.gov/geo/series/GSE85nnn/GSE85217/soft/GSE85217_family.soft.gz>
 - easyinput_clinicaldata.csv, clinical information.
 
-GSE文件已上传到微云，下载链接：<https://share.weiyun.com/5X52f08>
-The GSE file has been uploaded to Weiyun. Download link: <https://share.weiyun.com/5X52f08>
-
 ```{r}
-gse <- getGEO(filename='GSE85217_family.soft.gz')
+data_dir <- "GEO_data"  # 创建专门的目录
+if (!dir.exists(data_dir)) {
+  dir.create(data_dir)
+}
+
+gse <- getGEO(GEO = "GSE85217", 
+              destdir = data_dir,  # 指定明确的数据目录
+              AnnotGPL = FALSE,
+              getGPL = TRUE)
 
 ## load clinical data
 clic <- read.csv("easyinput_clinicaldata.csv")
