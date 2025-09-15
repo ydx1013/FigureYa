@@ -1,7 +1,7 @@
 ---
 title: "FigureYa3genomeView"
 author: "Dekang Lv; Ying Ge, Yijing Chen"
-date: "2025-5-20"
+date: "2025-9-15"
 output: html_document
 ---
 
@@ -10,20 +10,19 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-### 需求描述
-### Requirement description
+# 需求描述
+# Requirement description
 
 想展示我感兴趣的基因附近的ChIP-seq、DNase/ATAC-seq或RNA-seq的bigwig信号图，不想用IGV或UCSC genome browser那种截图，我想要矢量图。
 
 I want to display bigwig signal plots of ChIP-seq, DNase/ATAC-seq, or RNA-seq near the gene I am interested in, without using screenshots from IGV or UCSC genome browser. I want vector plots.
 
-### 使用场景
-### Usage scenario
+# 使用场景
+# Usage scenario
 
 场景一：用DNase/ATAC-seq或H3K4me3、H3K4me1、H3K27ac等组蛋白修饰的ChIP-seq数据证实基因启动子、增强子的位置。
 
@@ -37,8 +36,19 @@ Scenario 2: Show ChIP-seq data to confirm which transcription factors regulate m
 
 Scenario 3: Show RNA-seq and ChIP-seq signals to confirm the effect of transcription factor binding on gene transcription.
 
-### 输入数据
-### Input data
+# 环境设置
+
+```{r}
+source("install_dependencies.R")
+
+library(data.table)
+library(Gviz)
+library(RColorBrewer)
+library(TxDb.Hsapiens.UCSC.hg38.knownGene)
+```
+
+# 输入数据
+# Input data
 
 需要展示的区域loci.bed
 
@@ -52,19 +62,10 @@ bigwig files TAL1.bw, POLR2A.bw, file link: https://pan.baidu.com/s/1hUP8xf3zO2y
 
 bigwig file description easy_input.txt
 
-### 开始画图
-### Start drawing
+# 开始画图
+# Start drawing
 
 ```{r,message=FALSE,warning=FALSE}
-source("install_dependencies.R")
-#source("http://bioconductor.org/biocLite.R")
-#biocLite("Gviz","RColorBrewer")
-#biocLite("TxDb.Hsapiens.UCSC.hg38.knownGene")
-#biocLite("org.Hs.eg.db")
-library(data.table)
-library(Gviz)
-library(RColorBrewer)
-library(TxDb.Hsapiens.UCSC.hg38.knownGene)
 txdb_hg38 <- TxDb.Hsapiens.UCSC.hg38.knownGene
 grt <- GeneRegionTrack(txdb_hg38, genome="hg38",showId=TRUE, geneSymbol=TRUE, name="UCSC")
 library(org.Hs.eg.db)
@@ -146,6 +147,10 @@ plotTracks(tracklist, from = startpoint, to = endpoint,
            rot.title=0,cex.title=0.9,margin=38,title.width=1.5,
            collapseTranscripts = "longest")#同一个基因的多个transcript压缩成最长的一个 multiple transcripts of the same gene compress into the longest one
 dev.off()
-sessionInfo()
+```
 
+# Session Info
+
+```{r}
+sessionInfo()
 ```
