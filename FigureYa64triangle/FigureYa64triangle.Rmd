@@ -10,13 +10,12 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## 需求描述
-## Requirement description
+# 需求描述
+# Requirement description
 
 用R画出paper里的Triangle plot
 
@@ -40,8 +39,8 @@ Original analysis:
 - The size of the dots represents the total frequency of mutations in glioma;
 - The color represents the relative mutation frequency
 
-## 应用场景
-## Application scenario
+# 应用场景
+# Application scenario
 
 展示3种不同疾病或者3组之间某个指标的相关性，一目了然。
 
@@ -63,16 +62,12 @@ Follow “Xiaoya Drawing” official account, reply “triangle” to see the us
 
 Use your imagination to develop more application scenarios.
 
-## 环境设置
-## Environment setting
+# 环境设置
+# Environment setting
 
 ```{r,message=FALSE}
 source("install_dependencies.R")
-#devtools::install_git('https://bitbucket.org/nicholasehamilton/ggtern')
-#install.packages("tidyverse")
-#install.packages('ggtern')
-#install.packages("proto")
-#install.packages("directlabels")
+
 library(ggtern)
 citation(package = 'ggtern')
 library(tidyverse)
@@ -84,8 +79,8 @@ Sys.setenv(LANGUAGE = "en") #显示英文报错信息 display English error mess
 options(stringsAsFactors = FALSE) #禁止chr转成factor prohibit the conversion of chr to factor
 ```
 
-## 输入数据预处理
-## Preprocessing of input data
+# 输入数据预处理
+# Preprocessing of input data
 
 如果你的数据已经整理成“easy_input.csv”的格式，就可以跳过这步，直接进入“输入文件”。
 
@@ -96,8 +91,8 @@ If your data has been organized into “easy_input.csv” format, you can skip t
 Download the original supplementary material Table2.pdf and organize it as “not_easy_input.csv”.
 
 
-### 直接用原文数据画图
-### Draw a graph directly using the original data
+## 直接用原文数据画图
+## Draw a graph directly using the original data
 
 ```{r}
 df <- read.csv("not_easy_input.csv")
@@ -112,8 +107,8 @@ ggtern(data=df, aes(x=df$Frequency.in.pGBM,
 
 As you can see, the dot sizes are quite different from the original article, indicating that the original article has optimized the data in some way.
 
-### 把size扩大50倍
-### Increase the size by 50 times
+## 把size扩大50倍
+## Increase the size by 50 times
 
 ```{r}
 ggtern(data=df,aes(x=df$Frequency.in.pGBM,y=df$Frequency.in.LGG,z=df$Frequency.in.sGBM)) +  
@@ -124,8 +119,8 @@ ggtern(data=df,aes(x=df$Frequency.in.pGBM,y=df$Frequency.in.LGG,z=df$Frequency.i
 
 As you can see, except for a few larger dots, the size of other dots is very similar to the original text, and it is assumed that the author handled the extremely large values differently
 
-### 分段处理
-### Segmented processing
+## 分段处理
+## Segmented processing
 
 ```{r}
 #先查看分布
@@ -150,8 +145,8 @@ write.csv(df[,c(1,4,8,11,13)],"easy_input.csv", quote = F, row.names = F)
 
 Next, use this method to preprocess the input data, adjust the details, and beautify the graphics.
 
-## 输入文件
-## Input file
+# 输入文件
+# Input file
 
 easy_input.csv：包含5列。
 
@@ -182,8 +177,8 @@ df <- read.csv('easy_input.csv')
 head(df)
 ```
 
-## 开始画图
-## Start drawing
+# 开始画图
+# Start drawing
 
 ```{r}
 p <- ggtern(data=df, aes(x=df$Frequency.in.pGBM, y=df$Frequency.in.LGG, z=df$Frequency.in.sGBM)) +
@@ -247,8 +242,8 @@ p <- ggtern(data=df, aes(x=df$Frequency.in.pGBM, y=df$Frequency.in.LGG, z=df$Fre
 p
 ```
 
-### 给点加颜色
-### Add color to dots
+## 给点加颜色
+## Add color to dots
 
 在原文中，颜色代表相对的表达频率，那么有3个类型，要上3种颜色，怎么办？
 
@@ -284,15 +279,15 @@ p1
 ggsave("triangle.pdf")
 ```
 
-### 标基因名
-### Label gene names
+## 标基因名
+## Label gene names
 
 为了避免基因名的重叠，我们通常会使用ggrepel，可惜ggrepel不支持ggtern。另外，geom_text的check_overlap也对ggtern无效。提供以下两种方案来解决字的重叠问题：
 
 To avoid overlapping of gene names, we usually use ggrepel, but unfortunately ggrepel does not support ggtern. Additionally, check_overlap of geom_text does not work for ggtern. The following two plans are provided to solve the word overlap problem:
 
-#### 方案一：geom_text + AI
-#### Plan 1: geom_text + AI
+## 方案一：geom_text + AI
+## Plan 1: geom_text + AI
 
 ```{r}
 p1 + geom_text(aes(label=Gene)) 
@@ -307,8 +302,8 @@ Advantage: label all gene names
 
 Disadvantage: need to open the pdf file with Illustrator and then drag the gene names with the mouse to fine-tune.
 
-#### 方案二：用directlabels包
-#### Plan 2: use directlabels package
+## 方案二：用directlabels包
+## Plan 2: use directlabels package
 
 参考这篇：<https://mp.weixin.qq.com/s/6MMVsO22n9oKZNC7qC7g5A>
 
@@ -326,6 +321,8 @@ ggsave('triangle_directlabels.pdf')
 Advantage: Most gene names are well dispersed.
 
 Disadvantage: The parameters in the package are limited. Gene names are far from the genes, requiring referring to Plan 1 to verify the correspondence between genes and dots. Additionally, gene names at the edges overflow. Therefore, it is necessary to use Illustrator for fine-tuning.
+
+# Session Info
 
 ```{r}
 sessionInfo()
