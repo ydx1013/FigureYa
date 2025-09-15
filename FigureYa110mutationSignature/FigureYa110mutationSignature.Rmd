@@ -13,8 +13,6 @@ Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for 
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-# 使用knitr包设置全局代码块选项
-# Set global chunk options using knitr package
 ```
 
 ## 需求描述
@@ -35,7 +33,7 @@ from<https://academic.oup.com/annonc/article/28/7/1597/3611460>
 
 利用deconstructsigs计算突变签名模式，NMF做聚类分析，寻找亚型驱动签名，并绘制热图。
 
-**注意：若使用本众筹分析流程，请引用：**
+**注意：若使用本分析流程，请引用：**
 
 Alexandrov LB, Nik-Zainal S, Wedge DC, Aparicio SA, Behjati S, Biankin AV, et al. Signatures of mutational processes in human cancer. Nature 2013;500(7463):415.
 
@@ -47,7 +45,7 @@ Gaujoux R , Seoighe C . A flexible R package for nonnegative matrix factorizatio
 
 Using decortructsigs to calculate mutation signature patterns, NMF performs clustering analysis to find subtype driven signatures, and draws a heatmap.
 
-**Attention: If using this crowdfunding analysis process, please cite:**
+**Attention: If using this analysis process, please cite:**
 
 Alexandrov LB, Nik-Zainal S, Wedge DC, Aparicio SA, Behjati S, Biankin AV, et al. Signatures of mutational processes in human cancer. Nature 2013; 500(7463):415.
 
@@ -59,18 +57,9 @@ Gaujoux R , Seoighe C . A flexible R package for nonnegative matrix factorizatio
 
 ## Environment settings
 
-deconstructsigs的安装：从github下载<https://github.com/raerose01/deconstructSigs>，解压缩，然后压缩为.tar.gz格式，本地安装。
-
-Installation of decorstructsigs: Download from GitHub< https://github.com/raerose01/deconstructSigs >Extract and compress to. tar.gz format for local installation.
-
-```bash
-tar -czvf deconstructSigs.tar.gz deconstructSigs-master
-```
-
-
-
 ```{r}
 source("install_dependencies.R")
+
 # 加载数据分析常用工具包
 # Load commonly used data analysis toolkits
 library(tidyverse)
@@ -399,6 +388,8 @@ aheatmap(as.matrix(nmf.input2[,sample.order]),  # 使用筛选的特征和排序
          filename = "NMF_heatmap.pdf")  # 保存为PDF文件
                                         # Save as PDF file
 ```
+
+# Session Info
 
 ```{r}
 sessionInfo()
