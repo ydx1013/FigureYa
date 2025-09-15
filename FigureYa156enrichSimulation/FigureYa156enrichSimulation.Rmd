@@ -11,7 +11,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -44,15 +43,9 @@ This method can help determine whether an observed event is a low-probability ev
 # 环境设置
 # Environment Setup
 
-
 ```{r}
 source("install_dependencies.R")
-if(!require('cgdsr')) install.packages("cgdsr") # cdgsr package @ http://www.cbioportal.org/rmatlab
-```
 
-Load the package
-
-```{r}
 library(cgdsr)
 Sys.setenv(LANGUAGE = "en") #显示英文报错信息 # Display English error messages
 options(stringsAsFactors = FALSE) #禁止chr转成factor # Disable conversion of chr to factor
@@ -185,6 +178,8 @@ p
 - 选的21个跟随机选取21基因没有统计学差异。
 - A probability greater than 0.05 is not a small probability event, so the null hypothesis is accepted.
 - There is no statistical difference between the 21 selected genes and the randomly selected 21 genes.
+
+# Session Info
 
 ```{r}
 sessionInfo()
