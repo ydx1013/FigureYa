@@ -10,19 +10,17 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
 # 需求描述
 
-想实现按照文中的方法构建基因对预后模型
-
+想按照文中的方法构建基因对预后模型
 
 # Requirement Description
 
-I want to crowdfund to construct a gene pair prognostic model according to the method in this paper
+I want to construct a gene pair prognostic model according to the method in this paper
 
 ![](example.png)
 
@@ -69,22 +67,11 @@ I'm going to take you through the repetition of this approach.
 
 # 环境设置
 
-
 # Environment settings
-
 
 ```{r}
 source("install_dependencies.R")
-```
 
-```{r eval=FALSE}
-install.packages("matlab")
-install.packages("EnvStats")
-```
-
-load packages
-
-```{r}
 library(matlab)
 library(EnvStats)
 library(pheatmap)
