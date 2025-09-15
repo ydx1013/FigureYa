@@ -10,7 +10,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -37,31 +36,18 @@ f, g Pie charts showing the Chi-squared test of clinicopathologic factors for PR
 # 应用场景
 
 搞清楚输入数据跟图的对应关系、理解每部分代码所画的内容，就可以套用到更多类型的数据上。
-更多泛癌的图看这里
 
 # Application Scenarios
-Once you understand the mapping between input data and visual outputs, as well as the role of each code block in generating plots, you can adapt this workflow to broader data types.
-Explore additional pan-cancer visualizations here:  
 
+Once you understand the mapping between input data and visual outputs, as well as the role of each code block in generating plots, you can adapt this workflow to broader data types.
 
 # 环境设置
 
-
 # Environment Configuration
-
-
 
 ```{r}
 source("install_dependencies.R")
-```
 
-```{r eval=FALSE}
-install.packages(c("dplyr", "ggplot2"))
-```
-
-load package
-
-```{r}
 library(dplyr)
 library(ggplot2)
 Sys.setenv(LANGUAGE = "en") #显示英文报错信息 # error messages are displayed in English
