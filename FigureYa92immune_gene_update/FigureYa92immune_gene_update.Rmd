@@ -11,7 +11,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 # 设置knitr的全局代码块选项 / Set global chunk options for knitr
@@ -57,37 +56,18 @@ Fig. 3 Construction of a prognostic immune-related gene signature. g ssGSEA reve
 
 不仅限于基因跟免疫浸润之间的关系，还可以把免疫细胞矩阵替换为基因表达矩阵，计算基因跟基因之间的关系，找出并可视化共表达基因；或者把基因表达矩阵替换为转录本或临床信息，用于分析不同转录本、甚至临床指标跟免疫浸润的关系。
 
-在“小丫画图”公众号回复“R2”查看类似的图在文章里的用法。
-
 # Application scenarios
 
 Evaluate the impact of genes on immune infiltration, and even write it as a cycle to batch screen candidate genes that affect immune infiltration.
 
 Not limited to the relationship between genes and immune infiltration, the immune cell matrix can also be replaced with a gene expression matrix to calculate the relationship between genes and identify and visualize co expressed genes; Alternatively, the gene expression matrix can be replaced with transcripts or clinical information to analyze the relationship between different transcripts, even clinical indicators, and immune infiltration.
 
-Reply "R2" on the "Xiaoya Painting" official account to check the usage of similar pictures in the article.
-
 # 环境设置
-
-
 # Environment settings
-
-Use domestic image installation package
 
 ```{r}
 source("install_dependencies.R")
-```
 
-```{r eval=FALSE}
-
-
-# 安装ggstatsplot包，该包集成了ggplot2和统计测试功能（Install the ggstatsplot package, which integrates ggplot2 and statistical testing functions）
-install.packages("ggstatsplot")
-```
-
-
-
-```{r}
 # 加载数据可视化和统计分析相关的包  
 # Load packages for data visualization and statistical analysis  
 library(ggstatsplot)  # 用于ggplot2扩展的统计可视化  
@@ -400,6 +380,8 @@ plot_df %>%  # Operate based on the plotting data frame
 # 保存图形为PDF文件（默认分辨率300dpi）
 ggsave("gene_1cell_ggplot2.pdf")
 ```
+
+# Session Info
 
 ```{r}
 sessionInfo()
