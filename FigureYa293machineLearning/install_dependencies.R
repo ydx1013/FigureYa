@@ -44,6 +44,35 @@ install_bioc_package <- function(package_name) {
   }
 }
 
+# Function to install from specific source
+install_specific_package <- function(package_name, source_type = "cran", url = NULL) {
+  if (!is_package_installed(package_name)) {
+    cat("Installing", package_name, "from", source_type, "\n")
+    tryCatch({
+      if (source_type == "cran") {
+        install.packages(package_name, dependencies = TRUE)
+      } else if (source_type == "bioc") {
+        if (!is_package_installed("BiocManager")) {
+          install.packages("BiocManager")
+        }
+        BiocManager::install(package_name, update = FALSE, ask = FALSE)
+      } else if (source_type == "github" && !is.null(url)) {
+        if (!is_package_installed("remotes")) {
+          install.packages("remotes")
+        }
+        remotes::install_github(url)
+      } else if (source_type == "source" && !is.null(url)) {
+        install.packages(url, repos = NULL, type = "source")
+      }
+      cat("Successfully installed:", package_name, "\n")
+    }, error = function(e) {
+      cat("Failed to install", package_name, "from", source_type, ":", e$message, "\n")
+    })
+  } else {
+    cat("Package already installed:", package_name, "\n")
+  }
+}
+
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
@@ -61,7 +90,6 @@ for (pkg in heatmap_deps) {
   install_cran_package(pkg)
 }
 
-
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
 cran_packages <- c("BART", "RColorBrewer", "compareC", "devtools", "dplyr", "gbm", "ggbreak", "ggplot2", "ggsci", "glmnet", "miscTools", "plsRcox", "randomForestSRC", "rlang", "superpc", "survival", "survivalsvm", "tibble", "tidyr")
@@ -78,18 +106,42 @@ for (pkg in bioc_packages) {
   install_bioc_package(pkg)
 }
 
-# Installing GitHub packages
-cat("\nInstalling GitHub packages...\n")
+# Special installation for CoxBoost - try multiple sources
+cat("\nInstalling CoxBoost (trying multiple sources)...\n")
+
+# 方法1: 从CRAN安装 (如果可用)
 if (!is_package_installed("CoxBoost")) {
-  cat("Installing CoxBoost from GitHub...\n")
+  cat("Trying to install CoxBoost from CRAN...\n")
   tryCatch({
-    if (!is_package_installed("devtools")) {
-      install.packages("devtools")
-    }
-    devtools::install_github("binderh/CoxBoost")
-    cat("Successfully installed CoxBoost from GitHub\n")
+    install.packages("CoxBoost")
+    cat("Successfully installed CoxBoost from CRAN\n")
   }, error = function(e) {
-    cat("Failed to install CoxBoost from GitHub:", e$message, "\n")
+    cat("CoxBoost not available on CRAN, trying alternative sources...\n")
+    
+    # 方法2: 从GitHub安装
+    tryCatch({
+      if (!is_package_installed("remotes")) {
+        install.packages("remotes")
+      }
+      remotes::install_github("binderh/CoxBoost")
+      cat("Successfully installed CoxBoost from GitHub\n")
+    }, error = function(e2) {
+      cat("Failed to install from GitHub, trying archive source...\n")
+      
+      # 方法3: 从存档源安装
+      tryCatch({
+        # 尝试从CRAN存档安装
+        install.packages("https://cran.r-project.org/src/contrib/Archive/CoxBoost/CoxBoost_1.4.tar.gz", 
+                         repos = NULL, type = "source")
+        cat("Successfully installed CoxBoost from archive\n")
+      }, error = function(e3) {
+        cat("All installation methods failed for CoxBoost:\n")
+        cat("CRAN:", e$message, "\n")
+        cat("GitHub:", e2$message, "\n")
+        cat("Archive:", e3$message, "\n")
+        cat("Please manually install CoxBoost\n")
+      })
+    })
   })
 } else {
   cat("Package already installed: CoxBoost\n")
@@ -98,3 +150,14 @@ if (!is_package_installed("CoxBoost")) {
 cat("\n===========================================\n")
 cat("Package installation completed!\n")
 cat("You can now run your R scripts in this directory.\n")
+
+# Final verification
+cat("\nVerifying critical package installation...\n")
+critical_packages <- c("CoxBoost", "survival", "glmnet", "randomForestSRC")
+for (pkg in critical_packages) {
+  if (is_package_installed(pkg)) {
+    cat("✓", pkg, "is installed\n")
+  } else {
+    cat("✗", pkg, "is NOT installed - may cause script failure\n")
+  }
+}
