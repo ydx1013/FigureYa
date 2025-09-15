@@ -43,16 +43,11 @@ Identify tumor immune infiltration related lncRNAs from expression data.
 
 # 环境设置
 
-
 # Environment settings
 
 ```{r}
 source("install_dependencies.R")
-```
 
-
-
-```{r}
 # 加载DealGPL570包，用于处理GPL570平台的表达谱数据（Load the DealGPL570 package to process expression profile data from the GPL570 platform）
 # 由于所有免疫细胞系的表达谱数据均来自GPL570平台([HG-U133_Plus_2] Affymetrix Human Genome U133 Plus 2.0 Array)，因此这里使用DealGPL570包来处理GPL570平台的表达谱数据。
 # Since the expression profile data of all immune cell lines are from the GPL570 platform ([HG-U133_Plus_2] Affymetrix Human Genome U133 Plus 2.0 Array), 
