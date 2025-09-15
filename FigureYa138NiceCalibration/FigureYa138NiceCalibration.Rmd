@@ -19,7 +19,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ## Requirement description
 
 想要实现这个漂亮的calibration图（A），用于logistics回归，要有这个Hosmer-Lemeshow test。
-I want to crowdfund this beautiful calibration graph (A) for logistics regression, which requires this Hosmer-Lemeshow test.
+I want to draw this beautiful calibration graph (A) for logistics regression, which requires this Hosmer-Lemeshow test.
 
 ![](example.png)
 
@@ -61,6 +61,7 @@ Discrimination (discrimination) and Calibration (consistency/calibration) are tw
 
 ```{r}
 source("install_dependencies.R")
+
 library(rms)
 library(scales)
 library(ResourceSelection)
