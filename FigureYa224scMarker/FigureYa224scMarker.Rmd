@@ -10,18 +10,17 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
 # 需求描述
 
-这篇NC单细胞展示比例和marker基因的图很好看啊，可以实现下做这几个图吗？
+这篇NC单细胞展示比例和marker基因的图很好看啊
 
 # Requirement Description
 
-This diagram of NC single-cell display ratio and marker gene is very good, can you make these figures under crowdfunding?
+This diagram of NC single-cell display ratio and marker gene is very good.
 
 ![](example.png)
 
@@ -47,18 +46,11 @@ Single-cell data showing cell ratios and marker genes.
 
 # 环境设置
 
-
 # Environment settings
-
 
 ```{r}
 source("install_dependencies.R")
 
-```
-
-load packages
-
-```{r}
 library(dplyr)
 library(Seurat)
 library(patchwork)
@@ -182,11 +174,11 @@ DoHeatmap(pbmc, features = top10$gene) + NoLegend()
 
 # 结合每个cluster的marker基因和生物学知识确定细胞类型，顺便画图A
 
-为了接近真实情况并结合实现示例数据，这里不将细胞类型划分得这么详细，进行以下更改：
+为了接近真实情况并结合示例数据，这里不将细胞类型划分得这么详细，进行以下更改：
 
 # Determine the cell type by combining the marker gene and biological knowledge of each cluster, and draw Figure A by the way
 
-In order to get close to the real situation and combine the crowdfunding example data, the cell types are not divided into such details here, and the following changes are made:
+In order to get close to the real situation and combine the example data, the cell types are not divided into such details here, and the following changes are made:
 
 ```{r}
 # 给每个cluster标注细胞类型
@@ -219,8 +211,8 @@ ggsave(paste0(plot_wd,"plotA_all.pdf"), plot = pA_all, width = 12, height = 6)
 celltype <- c("T","Mono","B","NK","DC","Platelet")
 pbmc@meta.data$celltype <- factor(pbmc@meta.data$celltype, levels = celltype)
 
-## 为了符合真实情况（大多数数据来自多个样本）和实现文章数据中的sample type，这里模拟一个数据，为pbmc数据中加入sample信息
-## In order to match the real situation (most of the data comes from multiple samples) and the sample type in the crowdfunding article data, here simulate a data and add sample information to the PBMC data
+## 为了符合真实情况（大多数数据来自多个样本）和原文数据中的sample type，这里模拟一个数据，为pbmc数据中加入sample信息
+## In order to match the real situation (most of the data comes from multiple samples) and the sample type in the article data, here simulate a data and add sample information to the PBMC data
 sample_type <- c("nLung","tLung","tL/B","mLN","mBrain")
 
 ### 设置set.seed方便重复
