@@ -18,11 +18,11 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## 需求描述
 
-仅对某感兴趣通路做聚类分析，同时纳入正常样本表达水平的考虑，来挖掘癌症样本异质性。大神丢的文章能解决我的问题，想众筹下面这个图
+仅对某感兴趣通路做聚类分析，同时纳入正常样本表达水平的考虑，来挖掘癌症样本异质性。大神丢的文章能解决我的问题，想画下面这个图
 
 ## Requirement description
 
-Perform cluster analysis only on a specific pathway of interest, while considering the expression level of normal samples, to explore cancer sample heterogeneity. The article lost by the great god can solve my problem. I would like to crowdfund the following image
+Perform cluster analysis only on a specific pathway of interest, while considering the expression level of normal samples, to explore cancer sample heterogeneity. The article lost by the great god can solve my problem. I would like to draw the following image
 
 ![](example.png)
 
@@ -49,6 +49,9 @@ At the same time, samples can be grouped based on the gene expression profile of
 ```{r}
 source("install_dependencies.R")
 library(GSVA)
+library(pheatmap)
+library(gplots)
+
 # 设置英文报错信息
 # Set error messages to English
 Sys.setenv(LANGUAGE = "en") 
@@ -59,7 +62,6 @@ options(stringsAsFactors = FALSE)
 ```
 
 ## 参数设置
-
 ## Parameter settings
 
 ```{r}
@@ -242,6 +244,8 @@ pheatmap(tumordata,
 ```
 
 ![](Heatmap_TernaryCluster.pdf)
+
+# Session Info
 
 ```{r}
 sessionInfo()
