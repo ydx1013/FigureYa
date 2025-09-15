@@ -11,7 +11,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 # 设置knitr的全局代码块选项 / Set global chunk options for knitr
@@ -54,22 +53,11 @@ As shown in the example text, a total of four clone groups were identified at th
 The clone evolution diagram is a bit like a sankey. I compared it with FigureYa25sankey for a more thorough understanding.
 
 ## 环境设置
-
-
 ## Environment settings
-
-Use domestic image installation package
-
-```r
-
-install.packages("devtools")
-library(devtools)
-install_github("chrisamiller/fishplot")
-```
-
 
 ```{r}
 source("install_dependencies.R")
+
 # 加载fishplot包，用于生成白血病克隆演化的鱼群图
 # Load the fishplot package for generating fish plots of leukemia clonal evolution
 library(fishplot)
@@ -270,6 +258,8 @@ fishPlot(fish, shape="spline")
 再进一步，互相对比着看fishplot自带的三条鱼<https://github.com/chrisamiller/fishplot>对应的代码：<https://github.com/chrisamiller/fishplot/blob/master/tests/test.R>，就能掌握写parents的规律。
 
 Furthermore, compare the three fish included in the fishplot with each other< https://github.com/chrisamiller/fishplot >Corresponding code:< https://github.com/chrisamiller/fishplot/blob/master/tests/test.R >You can master the rules of writing parents.
+
+# Session Info
 
 ```{r}
 sessionInfo()
