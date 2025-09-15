@@ -12,7 +12,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -65,6 +64,21 @@ Scenario 1: Multiple subgroups, three biological replicates per group. Do PCA an
 
 Scenario 2: Multiple subgroups, sent for sequencing in three batches. Do PCA, don't see a pattern in the grouping, but see samples in the same batch closer to each other, batch effect?
 
+## 环境设置
+## Environment Setup
+
+```{r}
+source("install_dependencies.R")
+
+library(ggplot2)
+library(plyr)
+library(ggord)
+library(yyplot)
+library(ggplot2)
+library(dplyr)
+library(plyr)
+```
+
 ## 输入数据
 ## Input data
 
@@ -87,7 +101,6 @@ The input data here is the expression of 5 genes "GATA3", "PTEN", "XBP1", "ESR1"
 Data source: using the R package `RTCGA.mRNA` extracts TCGA data. See also the data download methods in FigureYa18, 21 (clinical information) and FigureYa22, 23, 34 (expression matrix).
 
 ```{r}
-source("install_dependencies.R")
 expr_df <- read.csv(file='easy_input_expr.csv',row.names = 1, 
                     header = TRUE, sep=",", stringsAsFactors = FALSE)
 meta_df <- read.csv(file='easy_input_meta.csv', row.names = 1,
@@ -143,15 +156,6 @@ Uncle Y enhanced ggord and put it in the R package `yyplot`, see this article fo
 #### Classic version
 
 ```{r}
-#install.packages("devtools")
-#library(devtools)
-#devtools::install_github("GuangchuangYu/yyplot")
-#devtools::install_github('fawda123/ggord')
-library(ggplot2)
-library(plyr)
-library(ggord)
-library(yyplot)
-
 #有可能你的网络在安装yyplot时遇到困难，我把geom_ord_ellipse函数单独下载，通过本地进行加载。
 #调用yyplot包里的geom_ord_ellipse函数
 #It is possible that your network encountered difficulties when installing yyplot, so I downloaded the geom_ord_ellipse function separately and loaded it locally.
@@ -229,13 +233,6 @@ ggsave("PCA_arrow.pdf", width = 6, height = 6)
 After PCA analysis with `prcomp`, obtain the principal component values corresponding to each sample after dimensionality reduction and the variance explained by each principal component.
 
 ```{r,message=FALSE}
-#install.packages("ggplot2")
-#install.packages("dplyr")
-#install.packages("plyr")
-library(ggplot2)
-library(dplyr)
-library(plyr)
-
 pca.rotation <- pca.results$rotation
 pca.rotation
 pca.pv <- summary(pca.results)$importance[2,]
@@ -384,7 +381,6 @@ p2
 ggsave('PCA_DIY2.pdf',width = 5.5,height = 4)
 ```
 
-
 ## 附录
 ## Appendix
 
@@ -399,6 +395,8 @@ Full names of the three previously mentioned cancers
 - BRCA: Breast invasive carcinoma
 - OV: Ovarian serous cystadenocarcinoma
 - LUSC: Lung squamous cell carcinoma
+
+# Session Info
 
 ```{r}
 sessionInfo()
