@@ -44,21 +44,39 @@ install_bioc_package <- function(package_name) {
   }
 }
 
+# Function to install PMAPscore from GitHub
+install_pmapscore <- function() {
+  if (!is_package_installed("PMAPscore")) {
+    cat("Installing PMAPscore from GitHub...\n")
+    tryCatch({
+      if (!is_package_installed("remotes")) {
+        install.packages("remotes")
+      }
+      remotes::install_github("Jiaxin-Fan/PMAPscore")
+      cat("Successfully installed: PMAPscore\n")
+    }, error = function(e) {
+      cat("Failed to install PMAPscore:", e$message, "\n")
+      cat("You may need to install it manually: remotes::install_github('Jiaxin-Fan/PMAPscore')\n")
+    })
+  } else {
+    cat("Package already installed: PMAPscore\n")
+  }
+}
+
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
+# First install remotes for GitHub packages
+cat("\nInstalling remotes package...\n")
+install_cran_package("remotes")
 
-# Installing CRAN packages
-cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("PMAPscore")
-
-for (pkg in cran_packages) {
-  install_cran_package(pkg)
-}
+# Install PMAPscore from GitHub
+cat("\nInstalling PMAPscore...\n")
+install_pmapscore()
 
 # Installing Bioconductor packages
 cat("\nInstalling Bioconductor packages...\n")
-bioc_packages <- c("ComplexHeatmap")
+bioc_packages <- c("SPIA", "ComplexHeatmap", "KEGGREST")
 
 for (pkg in bioc_packages) {
   install_bioc_package(pkg)
@@ -66,4 +84,17 @@ for (pkg in bioc_packages) {
 
 cat("\n===========================================\n")
 cat("Package installation completed!\n")
+
+# Test if key packages can be loaded
+cat("\nTesting package availability...\n")
+test_packages <- c("SPIA", "PMAPscore", "ComplexHeatmap", "KEGGREST")
+
+for (pkg in test_packages) {
+  if (requireNamespace(pkg, quietly = TRUE)) {
+    cat("✅", pkg, "is available\n")
+  } else {
+    cat("❌", pkg, "is NOT available\n")
+  }
+}
+
 cat("You can now run your R scripts in this directory.\n")
