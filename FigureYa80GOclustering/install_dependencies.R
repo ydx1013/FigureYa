@@ -47,13 +47,20 @@ install_bioc_package <- function(package_name) {
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
-
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("GOSemSim", "ape", "cowplot", "ggplot2", "ggtree", "plyr", "scales", "stringr")
+cran_packages <- c("ape", "cowplot", "ggplot2", "ggtree", "plyr", "scales", "stringr")
 
 for (pkg in cran_packages) {
   install_cran_package(pkg)
+}
+
+# Installing Bioconductor packages
+cat("\nInstalling Bioconductor packages...\n")
+bioc_packages <- c("GOSemSim")
+
+for (pkg in bioc_packages) {
+  install_bioc_package(pkg)
 }
 
 cat("\n===========================================\n")
