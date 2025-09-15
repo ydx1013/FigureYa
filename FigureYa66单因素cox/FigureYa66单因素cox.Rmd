@@ -13,10 +13,7 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
-# 使用knitr包设置全局代码块选项
-# Set global chunk options using knitr package
 knitr::opts_chunk$set(
   echo = TRUE# 控制是否显示代码/Control whether to display code
   # include = FALSE 已在此chunk的头部设置，表示不包含此代码块的输出
@@ -67,7 +64,7 @@ Cox analysis can be used for transcriptome, methylation, miRNA, LncRNA, variable
 
 ```{r, message=FALSE}
 source("install_dependencies.R")
-#install.packages("ggstatsplot")
+
 library(tidyverse)
 library(ggplot2)
 library(ggstatsplot)
@@ -514,6 +511,8 @@ ggplot(data = AAtop20, aes(x = HR, y = symbol, color = pvalue)) +
 # Save plot as PDF (8x9 inches)
 ggsave('sameplot.pdf', width = 8, height = 9)
 ```
+
+# Session Info
 
 ```{r}
 sessionInfo()
