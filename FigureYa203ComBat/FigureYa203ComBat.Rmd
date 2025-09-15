@@ -16,7 +16,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -26,7 +25,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 想实现这篇文章里的数据处理方法，TCGA的RNA-seq数据和不同平台的microarray数据合并及标准化，希望能够得到相对统一的处理方式。
 
-We would like to crowdfund the data processing methods described in this article, specifically the merging and normalization of TCGA RNA-seq data and microarray data from different platforms, hoping to achieve a relatively unified processing approach.
+We would like to process the data as the methods described in this article, specifically the merging and normalization of TCGA RNA-seq data and microarray data from different platforms, hoping to achieve a relatively unified processing approach.
 
 ![](example.png)
 
@@ -52,18 +51,9 @@ Additionally, some studies employ non-classical batch effect removal approaches,
 # 环境设置
 # Environment Setup
 
-
-Using domestic mirrors for package installation.
-
 ```{r}
 source("install_dependencies.R")
 
-```
-
-# 加载包
-# Loading packages
-
-```{r}
 library(TCGAbiolinks)
 library(sva)
 library(cluster)
