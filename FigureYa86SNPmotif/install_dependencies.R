@@ -47,7 +47,6 @@ install_bioc_package <- function(package_name) {
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
-
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
 cran_packages <- c("devtools")
@@ -56,9 +55,15 @@ for (pkg in cran_packages) {
   install_cran_package(pkg)
 }
 
-# Installing Bioconductor packages
+# Installing Bioconductor packages (按依赖顺序安装)
 cat("\nInstalling Bioconductor packages...\n")
-bioc_packages <- c("BSgenome.Hsapiens.UCSC.hg19", "BiocManager", "SNPlocs.Hsapiens.dbSNP142.GRCh37", "motifbreakR")
+bioc_packages <- c(
+  "BSgenome.Hsapiens.UCSC.hg19", 
+  "SNPlocs.Hsapiens.dbSNP142.GRCh37",
+  "TFBSTools",      # motifbreakR 的依赖
+  "motifStack",     # motifbreakR 的依赖
+  "motifbreakR"     # 最后安装主包
+)
 
 for (pkg in bioc_packages) {
   install_bioc_package(pkg)
