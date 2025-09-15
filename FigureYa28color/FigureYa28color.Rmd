@@ -10,7 +10,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -59,17 +58,6 @@ If you need a lot of colors, then pick a colorful paper.
 用到Y叔推荐的`rPlotter`包<https://mp.weixin.qq.com/s/ZrS8IQOMSwx9R3006HYryA>，先安装它
 
 Use the `rPlotter` package recommended by Uncle Y <https://mp.weixin.qq.com/s/ZrS8IQOMSwx9R3006HYryA>, install it first
-
-```r
-#use the domestic mirror installation package
-
-install.packages(c("ggplot2", "stringr", "reshape2", "dichromat"))
-install("EBImage")
-
-library(devtools)
-install_github("ramnathv/rblocks")
-install_github("woobe/rPlotter")
-```
 
 ```{r}
 source("install_dependencies.R")
@@ -284,6 +272,8 @@ Replace the color code in the parentheses with your preferred color code.
 There are several sets of codes with colors written in the input file, modify the colors in the input file, for example `FigureYa8 RadarChart`, `FigureYa10 chromosome`, `FigureYa26 circos_R`.
 
 Open the input file, find the color column and replace the original color with your preferred color code, taking care to remove the `#` symbol.
+
+# Session Info
 
 ```{r}
 sessionInfo()
