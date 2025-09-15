@@ -232,7 +232,7 @@ fsim <- sqrt(simmf * simcc)
 ```
 
 > 声明！
-由于GO注释在不断的完善，而当年Y叔发文章是2012年，本次众筹是2019年，这几年GO数据库也在不断完善。所以用现在的GO注释算出来的结果画出来图和原文会有所不同，这不是原文的错误，只是对原文进行修正。这一次算出来的结果也更加的make sense，因为用抗FMNL1抗体拉下的蛋白中，理论上FMNL1应该是“朋友”最多的那个。
+由于GO注释在不断的完善，而当年Y叔发文章是2012年，本次实现是2019年，这几年GO数据库也在不断完善。所以用现在的GO注释算出来的结果画出来图和原文会有所不同，这不是原文的错误，只是对原文进行修正。这一次算出来的结果也更加的make sense，因为用抗FMNL1抗体拉下的蛋白中，理论上FMNL1应该是“朋友”最多的那个。
 
 > Statement!
 As the GO annotation is constantly improving, and the year Uncle Y posted the article is 2012, this crowdfunding is 2019, the GO database is also constantly improving in these years. So the results calculated with the current GO annotations will be different from the original article, which is not a mistake of the original article, but just a correction of the original article. This time, the result is also more sense, because among the proteins pulled down by anti-FMNL1 antibody, theoretically FMNL1 should be the one with the most “friends”.

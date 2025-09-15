@@ -17,7 +17,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # 需求描述
 
-想众筹图5A B, 首先对TCGA数据集进行聚类分析，之后将GDSC细胞系按照TCGA聚类结果进行分组，分组后比较分组的药物敏感性，用AUC定量分析。
+想实现图5A B, 首先对TCGA数据集进行聚类分析，之后将GDSC细胞系按照TCGA聚类结果进行分组，分组后比较分组的药物敏感性，用AUC定量分析。
 
 To crowdsource Figure 5A and B: first perform clustering on the TCGA dataset; then group GDSC cell lines according to the TCGA clustering results; after grouping, compare drug sensitivity between groups using AUC for quantitative analysis.
 

@@ -17,7 +17,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # 需求描述
 
-以往的分子分型都是基于基因表达来做的，这有一个是基于多数据集免疫细胞的，能众筹吗？输出Fig.1 A和B。
+以往的分子分型都是基于基因表达来做的，这有一个是基于多数据集免疫细胞的，能实现吗？输出Fig.1 A和B。
 
 # Requirement Description
 

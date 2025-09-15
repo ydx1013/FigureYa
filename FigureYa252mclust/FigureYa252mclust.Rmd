@@ -16,7 +16,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # 需求描述
 
-求众筹这篇文章的Fig4A，好看的聚类图
+求实现这篇文章的Fig4A，好看的聚类图
 
 # Requirement Description
 

@@ -99,7 +99,7 @@ How to obtain this file? Scroll to the end of the document and see "Appendix: Si
 ## 原文采用的聚类方法
 ## The clustering method employed in the original text
 
-例文的非监督聚类方法比较特殊，以SCENIC的分析结果作为输入（SCENIC的用法可参考FigureYa194pySCENIC），用modified ‘clustering-and-classification’ algorithm (Lake et al., 2016) 给细胞做聚类。clustering-and-classification也是个很有趣的半监督聚类算法，如果有需要，我们后面再众筹。
+例文的非监督聚类方法比较特殊，以SCENIC的分析结果作为输入（SCENIC的用法可参考FigureYa194pySCENIC），用modified ‘clustering-and-classification’ algorithm (Lake et al., 2016) 给细胞做聚类。clustering-and-classification也是个很有趣的半监督聚类算法，如果有需要，我们后面再实现。
 
 The unsupervised clustering method used in the example text is quite unique, taking the analysis results from SCENIC as input (for the usage of SCENIC, you can refer to FigureYa194pySCENIC), and applying modified 'clustering-and-classification' algorithm (Lake et al., 2016) to cluster the cells. The clustering-and-classification is also an interesting semi-supervised clustering algorithm, and if needed, we can consider crowdfunding it later on.
 

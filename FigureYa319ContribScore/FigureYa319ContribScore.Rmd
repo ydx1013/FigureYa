@@ -17,7 +17,7 @@ knitr::opts_chunk$set(echo = TRUE)
 # 需求描述
 # Requirements Description
 
-想众筹这个a图，怎么去算单细胞某个细胞亚群对疾病贡献度，知道哪些细胞亚群最重要。
+想实现这个a图，怎么去算单细胞某个细胞亚群对疾病贡献度，知道哪些细胞亚群最重要。
 
 We want to crowdfund this panel A figure, how to calculate the disease contribution score of single cell subsets and identify the most important ones.
 

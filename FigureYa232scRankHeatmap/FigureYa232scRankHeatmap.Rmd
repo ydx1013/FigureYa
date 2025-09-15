@@ -18,7 +18,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 这种图把富集的上调和下调的基因展示一下，常规用柱状图或点状图，太腻味了，热图要高大上一些，几乎用于所有差异分析的构图需求。
 
-跟FigureYa114ternaryCluster的图相似，这次是单细胞的，改动较大，还是发起众筹吧。
+跟FigureYa114ternaryCluster的图相似，这次是单细胞的，改动较大，还是发起实现吧。
 
 # Requirement Description
 

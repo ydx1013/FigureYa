@@ -171,7 +171,7 @@ for (i in 1:n.sub) {
   fdr <- p.adjust(p,method = "fdr") 
   
   # 生成差异表达结果数据框，格式模仿DESeq2输出（Generate a data frame of differential expression results, mimicking the output format of DESeq2）
-  # 由于差异表达分析不是本众筹的目的，所以这里采用简单的两样本t检验寻找显著差异表达基因。差异表达分析可根据实际数据情况换用limma（例文）, DESeq, DESeq2, edgeR等方法。
+  # 由于差异表达分析不是本实现的目的，所以这里采用简单的两样本t检验寻找显著差异表达基因。差异表达分析可根据实际数据情况换用limma（例文）, DESeq, DESeq2, edgeR等方法。
   # (Since differential expression analysis is not the main purpose here, a simple two-sample t-test is used to identify significantly differentially expressed genes. Depending on the data, methods like limma, DESeq, DESeq2, or edgeR can be used instead.)
   degs <- data.frame(mean_treat=meanA,
                      mean_ctrl=meanB,

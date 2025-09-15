@@ -46,7 +46,7 @@ Search for cis-regulation using single-cell ATAC-seq data to provide clues for e
 You can also refer to Figures 5 and 6 of this Cell paper for in-depth exploration.
 
 <https://www.sciencedirect.com/science/article/pii/S0092867418308559>，
-需要的话，咱们再众筹。
+需要的话，咱们再实现。
 If necessary, let's raise funds through crowdfunding.
 
 # 环境设置

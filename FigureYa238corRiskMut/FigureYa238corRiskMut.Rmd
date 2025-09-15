@@ -17,7 +17,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # 需求描述
 
-小丫老师，想众筹下FigA-C，预后模型建立后寻找高低风险组中突变最显著的基因，并计算riskscore与有义和错义突变的相关性，谢谢啦
+小丫老师，想实现下FigA-C，预后模型建立后寻找高低风险组中突变最显著的基因，并计算riskscore与有义和错义突变的相关性，谢谢啦
 
 # Requirement Description
 

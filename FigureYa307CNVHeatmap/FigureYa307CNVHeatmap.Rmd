@@ -44,7 +44,7 @@ a. Genome-wide copy number landscape of 473 tumors stratified by genomic class (
 
 利用GISTIC算法的输出文件，绘制拷贝数热图（不包含底部饼图）。
 
-我们众筹过一些突变相关以及富集分析的图，可灵活运用，画出文中的图：
+我们实现过一些突变相关以及富集分析的图，可灵活运用，画出文中的图：
 
 - Figure 1ah共识聚类及热图，可参考FigureYa202consensusGene
 - Figure 1b桑基图，画法可参考FigureYa25sankey

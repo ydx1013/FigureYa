@@ -8,7 +8,7 @@ output: html_document
 
 小丫微信: epigenomics  E-mail: figureya@126.com
 
-作者：大鱼海棠
+作者：Xiaofan Lu
 
 单位：中国药科大学国家天然药物重点实验室，生物统计与计算药学研究中心
 
@@ -26,7 +26,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # 需求描述
 
-想众筹下10折交叉验证的分析方法，FigureYa182RFSurv和FigureYa198SignatureComb 都是根据基因的重要性筛选的，直接根据随机森林的准确度筛选，又是另一种不同的展示方式。
+想实现下10折交叉验证的分析方法，FigureYa182RFSurv和FigureYa198SignatureComb 都是根据基因的重要性筛选的，直接根据随机森林的准确度筛选，又是另一种不同的展示方式。
 
 ![](example.png)
 

@@ -18,7 +18,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ## 需求描述
 ## Requirement description
 
-想要众筹这个漂亮的calibration图（A），用于logistics回归，要有这个Hosmer-Lemeshow test。
+想要实现这个漂亮的calibration图（A），用于logistics回归，要有这个Hosmer-Lemeshow test。
 I want to crowdfund this beautiful calibration graph (A) for logistics regression, which requires this Hosmer-Lemeshow test.
 
 ![](example.png)

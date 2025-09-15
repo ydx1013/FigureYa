@@ -46,7 +46,7 @@ Fig.1e的画法可参考FigureYa162boxViolin；
 Fig.2b的画法可参考FigureYa60GSEA_clusterProfiler；
 Fig.4f可参考FigureYa99smoothHR。
 
-大鱼海棠的更多作品看这里：<https://k.koudai.com/OFad8N0w>
+Xiaofan Lu的更多作品看这里：
 
 Calculate the methylation age according to the DNA methylation beta value, and make a difference with chronological age to calculate the epigenetic age acceleration.
 
@@ -63,7 +63,7 @@ For the drawing method of Fig.1e, you can refer to FigureYa162boxViolin;
 For the drawing method of Fig.2b, you can refer to FigureYa60GSEA_clusterProfiler;
 for Fig.4f, you can refer to FigureYa99smoothHR.
 
-For more works by Big Fish & Begonia, see: <https://k.koudai.com/OFad8N0w>
+For more works by Big Fish & Begonia, see: 
 
 # 环境设置
 # Environment setting

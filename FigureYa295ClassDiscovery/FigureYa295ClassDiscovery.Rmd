@@ -24,7 +24,7 @@ knitr::opts_chunk$set(echo = TRUE)
 # 需求描述
 # Demand description
 
-想众筹一个聚类分析的方法，主要是重现本文的方法，然后在自己的数据中进行分组，方法可能比较麻烦，但是个人感觉这种聚类的方法更加的新颖，可以适用于更多的疾病。最主要的是在第一篇文章的基础上衍生出的第二篇文章的分组（C1，C2A，C2B）。
+想实现一个聚类分析的方法，主要是重现本文的方法，然后在自己的数据中进行分组，方法可能比较麻烦，但是个人感觉这种聚类的方法更加的新颖，可以适用于更多的疾病。最主要的是在第一篇文章的基础上衍生出的第二篇文章的分组（C1，C2A，C2B）。
 
 We want to crowdfund a clustering analysis method, mainly to reproduce the approach described in this paper, and then apply it to group my own data. The method might be a bit complex, but I personally feel this clustering approach is more innovative and can be applied to a wider range of diseases. The most important aspect is the grouping (C1, C2A, C2B) derived from the second article, which builds upon the foundation of the first article.
 

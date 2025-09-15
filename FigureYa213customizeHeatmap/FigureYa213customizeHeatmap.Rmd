@@ -66,7 +66,7 @@ Chen Yang, Xiaowen Huang, Yan Li, Junfei Chen, Yuanyuan Lv, Shixue Dai, Prognosi
 
 画图用到了github最新版ComplexHeatmap里的pheatmap，两种方式都可以用上它，任选其一。
 
-方式一：安装github版的ComplexHeatmap（大鱼海棠亲测有效）
+方式一：安装github版的ComplexHeatmap（Xiaofan Lu亲测有效）
 
 # Environment settings
 

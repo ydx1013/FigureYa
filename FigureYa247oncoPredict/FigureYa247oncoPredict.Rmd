@@ -18,7 +18,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # 需求描述 Demand Description
 
-想众筹一下刚出的oncoPredict包的用法。pRRophetic包的升级版，表达谱药物敏感性评估的。用FigureYa105GDSC的输入文件，画出同一类型的图。 I’d like to crowdsource how to use the newly released oncoPredict package. It’s an upgraded version of pRRophetic for evaluating drug sensitivity from expression profiles. Use the input files from FigureYa105GDSC to produce the same type of plots.
+想实现一下刚出的oncoPredict包的用法。pRRophetic包的升级版，表达谱药物敏感性评估的。用FigureYa105GDSC的输入文件，画出同一类型的图。 I’d like to crowdsource how to use the newly released oncoPredict package. It’s an upgraded version of pRRophetic for evaluating drug sensitivity from expression profiles. Use the input files from FigureYa105GDSC to produce the same type of plots.
 
 ![](example.png)
 

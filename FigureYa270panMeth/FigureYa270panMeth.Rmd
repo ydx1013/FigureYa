@@ -19,7 +19,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # 需求描述
 
-小丫姐好，我还有很多小伙伴想众筹这篇铁死亡泛癌的其他图片，主要是Figure 1。感觉这个套路只要换一个通路就可以测试，我看大鱼老师写了这篇文章的Figure 2A（铁死亡基因在泛癌肿瘤与正常的差异箱线图，FigureYa208FPI），Figure 3B（铁死亡与免疫通路的相关性，FigureYa253panGSEA），可否请大鱼老师详细写一下文章Figure 1的相关代码？
+小丫姐好，我还有很多小伙伴想实现这篇铁死亡泛癌的其他图片，主要是Figure 1。感觉这个套路只要换一个通路就可以测试，我看大鱼老师写了这篇文章的Figure 2A（铁死亡基因在泛癌肿瘤与正常的差异箱线图，FigureYa208FPI），Figure 3B（铁死亡与免疫通路的相关性，FigureYa253panGSEA），可否请大鱼老师详细写一下文章Figure 1的相关代码？
 
 - 1A（铁死亡在泛癌中体细胞拷贝数变异情况，绘制条形图，可参考FigureYa265panCNV）
 - 1B（铁死亡基因在肿瘤与正常的差异表达，绘制拼接的点图和柱状图，可参考FigureYa263panDiff）
@@ -27,9 +27,9 @@ knitr::opts_chunk$set(echo = TRUE)
 - 1D（铁死亡基因肿瘤与正常组织甲基化状态点图）
 - 1E（铁死亡转录组表达与启动子甲基化相关性的点图）
 
-这些图都是泛癌的，不知道大鱼老师可不可以用例文数据分别众筹个教程 [皱眉] ？（感觉都可以出一期专栏——iSicence复现了哈哈）
+这些图都是泛癌的，不知道大鱼老师可不可以用例文数据分别实现个教程 [皱眉] ？（感觉都可以出一期专栏——iSicence复现了哈哈）
 
-这次众筹Figure 1D，铁死亡基因肿瘤与正常组织甲基化状态点图。
+这次实现Figure 1D，铁死亡基因肿瘤与正常组织甲基化状态点图。
 
 # Requirement description
 
@@ -50,7 +50,7 @@ Figure 1D, a point map of methylation status between iron death gene tumors and 
 
 from<https://linkinghub.elsevier.com/retrieve/pii/S2589004220304892>
 
-接下来会陆续众筹Figure1E，敬请关注。
+接下来会陆续实现Figure1E，敬请关注。
 
 We will continue to crowdfund Figure 1E, please stay tuned.
 

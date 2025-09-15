@@ -53,7 +53,7 @@ b) Similar to (a), but **in paired samples** grouped by cancer from the TCGA. Ea
 
 还可以把基因集换成你感兴趣的signature、biomarker。你在某个cohort里发现的差异基因，再来TCGA泛癌里看看异同。
 
-更多泛癌的图看这里<https://k.koudai.com/Wi1xos9X>
+更多泛癌的图看这里
 
 Extract expression data from paired samples in TCGA pan-cancer, then select genes from pathways of interest, calculate pathway enrichment scores, and generate a connected-line plot.
 
@@ -63,7 +63,7 @@ The paired-sample expression data can be used for additional analyses and visual
 
 You can also replace the gene sets with your own signatures or biomarkers of interest. For instance, DEGs identified in a specific cohort can be further examined in TCGA pan-cancer to compare similarities and differences.
 
-For more pan-cancer visualizations, check here<https://k.koudai.com/Wi1xos9X>
+For more pan-cancer visualizations, check here
 
 # 环境设置
 # Environment Setup

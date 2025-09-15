@@ -37,7 +37,7 @@ Figure S4. Integrative Analysis of Aging-Associated Differentially Expressed Gen
 
 这里输入数据有两种形式任你选，跟单细胞数据无缝对接，对非单细胞数据非常友好。
 
-我们众筹过例文的几个Figure：
+我们实现过例文的几个Figure：
 
 - Figure 1H，热图和气泡图对应展示表达谱和基因功能富集分析结果，可参考FigureYa206scHeatmap；
 - Figure 3AB，从PCA结果就能看出基因表达模式跟细胞类型的关系，可参考FigureYa222PCAgene；

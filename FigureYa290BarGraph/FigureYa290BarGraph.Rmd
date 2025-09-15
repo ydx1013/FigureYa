@@ -23,7 +23,7 @@ knitr::opts_chunk$set(echo = TRUE)
 # 需求描述
 # Demand description
 
-想众筹这两个柱状图，重点是不知道一个柱子的不同百分比是怎么做的统计检验。
+想实现这两个柱状图，重点是不知道一个柱子的不同百分比是怎么做的统计检验。
 
 We want to crowdfund reproduction of these bar graphs, particularly focusing on statistical tests for different percentages within each bar
 

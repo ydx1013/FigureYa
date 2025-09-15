@@ -17,7 +17,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # 需求描述
 
-想众筹按照文中的方法构建基因对预后模型
+想实现按照文中的方法构建基因对预后模型
 
 
 # Requirement Description

@@ -17,7 +17,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # 需求描述
 
-想众筹下这个文章的建模方法，不同于常规的lasso, cox回归系数与基因表达量的乘积，这篇文章采用Boruta降维，联合主成分分析第一主成分构建 signature score，特别适合做分子分型分析。
+想实现下这个文章的建模方法，不同于常规的lasso, cox回归系数与基因表达量的乘积，这篇文章采用Boruta降维，联合主成分分析第一主成分构建 signature score，特别适合做分子分型分析。
 
 # Requirement Description
 

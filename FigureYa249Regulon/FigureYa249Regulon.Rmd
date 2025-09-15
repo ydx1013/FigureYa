@@ -54,23 +54,23 @@ To further explore transcriptomic differences, we analysed regulons for **23 MIB
 Regulon activity profiles that were associated with cancerous **chromatin remodelling** highlighted other possible differential regulatory patterns among four iCSs, indicating that epigenetically driven transcriptional networks might be important differentiators of these molecular subtypes (Figure 2a). 
 The potential epigenetic differences among the subtypes might be further supported by **differential methylation analysis**, which demonstrated that iLS3 (265 vs. 45 in iLS2) and iBS4 (191 vs. 26 in iBS1) had more hypermethylated promoters (296 unique loci) than the 21 adjacent normal bladder samples had (Figure 2a).
 
-文中很多图我们都众筹过，例如：
+文中很多图我们都实现过，例如：
 
 - Figure 1b的画法可参考FigureYa196PanPie
 - Figure 2b的画法可参考FigureYa248MutLandscape
 - Figure 3de可产考FigureYa25sankey和FigureYa125Fishertest
-- Figure 4f可参考FigureYa106immunotherapy，4h可参考<https://k.koudai.com/Eig1YOB4>
+- Figure 4f可参考FigureYa106immunotherapy，4h可参考
 - Figure 5b可参考FigureYa12box，f可参考FigureYa162boxViolin
 - Figure 6可参考FigureYa35batch_bestSeparation，FigureYa144DiagHeatmap或<https://mp.weixin.qq.com/s/34WRZRBVPHUNRLlzNH2nzw>
 
-接下来会继续众筹Figure3a，欢迎添加小丫为好友（微信ID：epigenomics），查看朋友圈，关注后续众筹进展。
+接下来会继续实现Figure3a，欢迎添加小丫为好友（微信ID：epigenomics），查看朋友圈，关注后续实现进展。
 
 Many of the pictures in the article have been crowdfunded, such as:
 
 - For more information about Figure 1b, see FigureYa196PanPie
 - For Figure 2b, see FigureYa248MutLandscape
 - Figure 3de see FigureYa25sankey and FigureYa125Fishertest
-- Figure 4f can refer to Figure Ya106 immunotherapy, and 4h can refer to <https://k.koudai.com/Eig1YOB4>
+- Figure 4f can refer to Figure Ya106 immunotherapy, and 4h can refer to 
 - Figure 5b can refer to FigureYa12box, and f can refer to FigureYa162boxViolin
 - For Figure 6, see FigureYa35batch_bestSeparation, FigureYa144DiagHeatmap, or <https://mp.weixin.qq.com/s/34WRZRBVPHUNRLlzNH2nzw>
 

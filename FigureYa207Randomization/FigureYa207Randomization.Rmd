@@ -24,7 +24,7 @@ knitr::opts_chunk$set(echo = TRUE)
 # 需求描述
 # Demand description
 
-我想众筹文章Figure 1B的计算方法，用Randomization test来检测多个差异基因的分布情况，属于差异基因的横向分析，从不同的角度来认识差异基因。
+我想实现文章Figure 1B的计算方法，用Randomization test来检测多个差异基因的分布情况，属于差异基因的横向分析，从不同的角度来认识差异基因。
 
 I would like to crowdsource the computational method for Figure 1B in the article, which uses a Randomization test to examine the distribution of multiple differentially expressed genes. This belongs to the horizontal analysis of differentially expressed genes, providing different perspectives to understand them.
 
@@ -64,9 +64,9 @@ FigureYa156enrichSimulation的富集检验零假设为两者分布是否一致�
 
 这里的随机化检验，使用的方法和富集检验如出一辙，均为重抽样计算概率分布密度，但其零假设的关键是基因分类标签的可交换性，或者说是否是DEG与基因的分类标签是无关的（参考：<https://www.uvm.edu/~statdhtx/StatPages/Randomization%20Tests/null_hypotheses.html>）
 
-对于本众筹的原文，实际上作者也可以采用富集检验，来证明DEG是与CGC是弱关联（低富集），但是这里使用随机化检验，证明DEG的基因名的与CGC的标签无关。
+对于本实现的原文，实际上作者也可以采用富集检验，来证明DEG是与CGC是弱关联（低富集），但是这里使用随机化检验，证明DEG的基因名的与CGC的标签无关。
 
-甚至我们觉得，随机化检验可以没有零假设，只考虑计算的概率，如本众筹中计算得到，在1000次随机抽样中，DEG有95.6%的概率出现在正常表达的基因中，也就是说只有4.4%的概率出现在异常表达的基因中。
+甚至我们觉得，随机化检验可以没有零假设，只考虑计算的概率，如本实现中计算得到，在1000次随机抽样中，DEG有95.6%的概率出现在正常表达的基因中，也就是说只有4.4%的概率出现在异常表达的基因中。
 
 The enrichment test in FigureYa156enrichSimulation has the null hypothesis that the distributions of the two are consistent. When p>0.05, a small probability event occurs, thus accepting the null hypothesis and concluding there is no statistically significant difference in distribution, hence no enrichment;
 

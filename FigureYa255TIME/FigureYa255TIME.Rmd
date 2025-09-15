@@ -18,7 +18,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # 需求描述# Requirement Description
 
-Figure3a的免疫landscape，包括免疫检查点的表达，免疫signature的富集，免疫/基质得分的估计还有甲基化淋巴细胞的定量（大鱼海棠老师真是热图高手！）这里主要就是这个DNA甲基化淋巴细胞的定量计算，不知道是怎么来的，所有TCGA数据都可以计算吗？
+Figure3a的免疫landscape，包括免疫检查点的表达，免疫signature的富集，免疫/基质得分的估计还有甲基化淋巴细胞的定量（Xiaofan Lu老师真是热图高手！）这里主要就是这个DNA甲基化淋巴细胞的定量计算，不知道是怎么来的，所有TCGA数据都可以计算吗？
 The immune landscape of Figure 3a includes immune checkpoint expression, immune signature enrichment, immune/stromal score estimation, and methylated lymphocyte quantification (Dayu Haitang is truly a heatmap expert!). The main goal here is to calculate the quantification of DNA methylated lymphocytes. I'm not sure where this came from, but can this be performed on all TCGA data?
 
 ![](example.png)
@@ -34,7 +34,7 @@ FIGURE 3 Differential immune profile across MIBC subtypes and its association wi
 # 应用场景
 # Application Scenarios
 
-大鱼海棠写了一个神奇的R包——[MOVICS](https://academic.oup.com/bioinformatics/article/36/22-23/5539/6033582)，用自己的数据跑一遍，文章里的key figure就出来了。怎么把这些图组织到一起讲故事呢？这篇文章是个很好的应用MOVICS的例子。
+Xiaofan Lu写了一个神奇的R包——[MOVICS](https://academic.oup.com/bioinformatics/article/36/22-23/5539/6033582)，用自己的数据跑一遍，文章里的key figure就出来了。怎么把这些图组织到一起讲故事呢？这篇文章是个很好的应用MOVICS的例子。
 Dayu Haitang wrote an amazing R package called [MOVICS](https://academic.oup.com/bioinformatics/article/36/22-23/5539/6033582). Run it with your own data, and you'll instantly see the key figures from your article. How can you organize these figures to tell a story? This article provides a great example of MOVICS.
 
 根据甲基化计算DNA methylation of tumour-infiltrating lymphocyte (MeTIL)得分，并根据免疫检查点表达和肿瘤免疫微环境富集绘制热图。
@@ -43,20 +43,20 @@ We calculated DNA methylation of tumor-infiltrating lymphocyte (MeTIL) scores ba
 我们曾在FigureYa170ImmuLncRNA里用estimate包计算肿瘤纯度
 We previously used the estimate package in FigureYa170ImmuLncRNA to calculate tumor purity.
 
-例文中很多图我们都众筹过，例如：
+例文中很多图我们都实现过，例如：
 Many of the figures in the example article were crowdfunded, for example:
 
 - Figure 1b的画法可参考FigureYa196PanPie
 - Figure 2a的算法可参考FigureYa249Regulon，b的画法可参考FigureYa248MutLandscape
 - Figure 3de可产考FigureYa25sankey和FigureYa125Fishertest
-- Figure 4f可参考FigureYa106immunotherapy，4h可参考<https://k.koudai.com/Eig1YOB4>
+- Figure 4f可参考FigureYa106immunotherapy，4h可参考
 - Figure 5b可参考FigureYa12box，f可参考FigureYa162boxViolin
 - Figure 6可参考FigureYa35batch_bestSeparation，FigureYa144DiagHeatmap或<https://mp.weixin.qq.com/s/34WRZRBVPHUNRLlzNH2nzw>
 - Figure S4a可参考FigureYa251NPHSurv
 - For the plotting method of Figure 1b, refer to FigureYa196PanPie
 - For the algorithm of Figure 2a, refer to FigureYa249Regulon; for the plotting method of Figure 2b, refer to FigureYa248MutLandscape
 - For Figure 3d, refer to FigureYa25Sankey and FigureYa125Fishertest
-- For Figure 4f, refer to FigureYa106immunotherapy; for Figure 4h, refer to <https://k.koudai.com/Eig1YOB4>
+- For Figure 4f, refer to FigureYa106immunotherapy; for Figure 4h, refer to 
 - For Figure 5b, refer to FigureYa12box; for Figure 5f, refer to FigureYa162boxViolin
 - For Figure 6, refer to FigureYa35batch_bestSeparation, FigureYa144DiagHeatmap, or <https://mp.weixin.qq.com/s/34WRZRBVPHUNRLlzNH2nzw>
 - For Figure S4a, refer to FigureYa251NPHSurv

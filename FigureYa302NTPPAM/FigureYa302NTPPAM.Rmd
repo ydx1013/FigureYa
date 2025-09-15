@@ -23,7 +23,7 @@ knitr::opts_chunk$set(echo = TRUE)
 # 需求描述
 # Demand description
 
-我想众筹个找出分子亚型中的特异marker并用NTP预测外部数据亚型的，分别是这两篇文章中的方法，作者是同一个人。
+我想实现个找出分子亚型中的特异marker并用NTP预测外部数据亚型的，分别是这两篇文章中的方法，作者是同一个人。
 
 I want to crowdfund a project to identify specific markers in molecular subtypes and use NTP to predict the subtypes of external data, following the methods described in these two papers, which are authored by the same person.
 

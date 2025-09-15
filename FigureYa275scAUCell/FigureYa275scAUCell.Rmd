@@ -47,7 +47,7 @@ Fig. 2. ISG score of SLE PBMC cell clusters.
 
 本教程展示如何在单细胞数据中使用AUCell包计算自定义基因集的评分，并画图展示。
 
-我们众筹过的用到AUCell包的FigureYa：
+我们实现过的用到AUCell包的FigureYa：
 
 - FigureYa194pySCENIC<https://k.youshop10.com/5gCxXaGm>，用AUCell对每个细胞计算regulon activity score (RAS)
 - FigureYa223scNMF<https://k.youshop10.com/qjIM3DFg>，用AUCell对上皮细胞进行打分，然后做NMF聚类

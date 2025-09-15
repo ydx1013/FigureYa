@@ -24,7 +24,7 @@ knitr::opts_chunk$set(echo = TRUE)
 # 需求描述
 # Demand description
 
-这个图信息量很大，非常高大上，热图和气泡图合用，展示差异富集信号通路信息，最好给众筹一下哈。
+这个图信息量很大，非常高大上，热图和气泡图合用，展示差异富集信号通路信息，最好给实现一下哈。
 
 This diagram is packed with information and looks very high-end. The combination of a heatmap and bubble chart effectively displays differential enrichment signaling pathways. It would be great to crowdfund this.
 

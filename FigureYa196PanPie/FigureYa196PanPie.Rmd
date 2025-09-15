@@ -37,11 +37,11 @@ f, g Pie charts showing the Chi-squared test of clinicopathologic factors for PR
 # 应用场景
 
 搞清楚输入数据跟图的对应关系、理解每部分代码所画的内容，就可以套用到更多类型的数据上。
-更多泛癌的图看这里<https://k.koudai.com/Wi1xos9X>
+更多泛癌的图看这里
 
 # Application Scenarios
 Once you understand the mapping between input data and visual outputs, as well as the role of each code block in generating plots, you can adapt this workflow to broader data types.
-Explore additional pan-cancer visualizations here: <https://k.koudai.com/Wi1xos9X> 
+Explore additional pan-cancer visualizations here:  
 
 
 # 环境设置

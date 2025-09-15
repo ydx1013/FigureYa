@@ -17,7 +17,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # 需求描述
 
-小丫姐，想众筹下这个算法，利用CRISPR数据库，筛选出某种肿瘤细胞影响生长的基因，再结合TCGA数据库，对湿实验的指导意义非常大。谢谢啦
+小丫姐，想实现下这个算法，利用CRISPR数据库，筛选出某种肿瘤细胞影响生长的基因，再结合TCGA数据库，对湿实验的指导意义非常大。谢谢啦
 
 # Requirement Description
 
@@ -34,11 +34,11 @@ from<https://www.mdpi.com/2072-6694/13/9/2128>
 
 These findings may allow us to refine the preexisting subtype classification of LUAD, and also guide us in identifying tumors that may be vulnerable to specific treatments.
 
-Figure 1C相关性展示可参考我们之前众筹过的美图<https://mp.weixin.qq.com/s/D9wheY5QdnOh4JrjIc8-Cg>，<https://k.koudai.com/Eig1YOB4>
+Figure 1C相关性展示可参考我们之前实现过的美图<https://mp.weixin.qq.com/s/D9wheY5QdnOh4JrjIc8-Cg>，
 
-Figure 1D候选基因功能富集分析结果的展示可参考<https://k.koudai.com/sm2p0xYn>
+Figure 1D候选基因功能富集分析结果的展示可参考
 
-Figure 2的Consensus clustering可参考FigureYa202consensusGene<https://k.koudai.com/ze0XWeSL>
+Figure 2的Consensus clustering可参考FigureYa202consensusGene
 
 # Application Scenarios
 
@@ -46,11 +46,11 @@ The Cancer Dependency Atlas (DepMap) is based on CRISPR screening technology to 
 
 These findings may allow us to refine the preexisting subtype classification of LUAD, and also guide us in identifying tumors that may be vulnerable to specific treatments.
 
-Figure 1C correlation display can refer to our previous crowdfunded <https://mp.weixin.qq.com/s/D9wheY5QdnOh4JrjIc8-Cg>, <https://k.koudai.com/Eig1YOB4>
+Figure 1C correlation display can refer to our previous crowdfunded <https://mp.weixin.qq.com/s/D9wheY5QdnOh4JrjIc8-Cg>, 
 
-Figure 1D can be found in Figure 1D for a presentation of the results of the candidate gene function enrichment assay, as shown in <https://k.koudai.com/sm2p0xYn>
+Figure 1D can be found in Figure 1D for a presentation of the results of the candidate gene function enrichment assay, as shown in 
 
-For details about the consensus clustering of Figure 2, see FigureYa202consensusGene<https://k.koudai.com/ze0XWeSL>
+For details about the consensus clustering of Figure 2, see FigureYa202consensusGene
 
 # 环境设置
 

@@ -17,7 +17,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # 需求描述
 
-丫姐好，我想众筹这篇单细胞空间转录组的Figure 2，作者已经把原始数据都提供了。
+丫姐好，我想实现这篇单细胞空间转录组的Figure 2，作者已经把原始数据都提供了。
 
 # Requirement Description
 

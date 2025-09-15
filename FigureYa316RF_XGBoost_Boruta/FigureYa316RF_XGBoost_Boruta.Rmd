@@ -24,7 +24,7 @@ knitr::opts_chunk$set(echo = TRUE)
 # 需求描述
 # Demand description
 
-想众筹这篇文章的Figure S2；就是用4种机器学习来筛选生物标志物。
+想实现这篇文章的Figure S2；就是用4种机器学习来筛选生物标志物。
 
 We want to crowdfund Figure S2 from this paper; which uses 4 machine learning methods to screen biomarkers.
 
@@ -43,9 +43,9 @@ A total of 36, 15, 35 and 31 mRNAsi phenotype-based DEGs were selected by LASSO,
 
 文章补充图2中展示的图形为4种算法的结果（LASSO，XGBoost，RF，Boruta），但方法学描述的确是5种（LASSO，SVM-REF，XGBoost，RF，Boruta）。
 
-其中XGBoost是我们第一次众筹。FigureYa65SVM已经实现了前两种（LASSO，SVM-REF），本文档实现3种算法（XGBoost，RF，Boruta）。
+其中XGBoost是我们第一次实现。FigureYa65SVM已经实现了前两种（LASSO，SVM-REF），本文档实现3种算法（XGBoost，RF，Boruta）。
 
-我们众筹过的LASSO、SVM-REF、RF和Boruta如下。作者不同，可对比学习。
+我们实现过的LASSO、SVM-REF、RF和Boruta如下。作者不同，可对比学习。
 
 LASSO
 
@@ -74,7 +74,7 @@ Boruta
 
 - FigureYa204PCAscore <https://k.youshop10.com/=bRTDwW7>，不同于常规的lasso, cox回归系数与基因表达量的乘积，这篇文章采用Boruta降维，联合主成分分析第一主成分构建 signature score，特别适合做分子分型分析。
 
-另外，我们众筹过的FigureYa可以实现文中的几个图：
+另外，我们实现过的FigureYa可以实现文中的几个图：
 
 - Figure 1A，可以用FigureYa161stemness来计算mRNAsi并画图。
 - Figure 2A，可参考FigureYa71ssGSEA<https://k.youshop10.com/hhH631te>。

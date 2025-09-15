@@ -50,8 +50,8 @@ Problem: The same sample contains multiple cells. Note that the transcriptome we
 - 本文作者则采取了互信息(可以理解为两个细胞转录组的相似性)来评估。对每一个样本的细胞进行不放回抽样(100 cells)，然后利用normalized mutual information (NMI)来衡量每对细胞之间的相似性。作者对每个样本进行100次抽样，每次抽样的NMI的中值作为该样本在此次抽样下的transcriptional homogeneity(转录同质性)。最后，作者采用了经验P值来进行显著性分析。
 - The authors of this paper use mutual information (which can be understood as the similarity between two cell transcriptomes) for this assessment. Each sample was subsampled without replacement (100 cells), and the normalized mutual information (NMI) was used to measure the similarity between each pair of cells. The authors performed 100 subsamples for each sample, and the median NMI for each subsample was used as the transcriptional homogeneity for that sample. Finally, the authors used empirical P values ​​for significance analysis.
 
-例文的Figure 2D和G，利用cNMF提取expression programs，并通过整合其它已发表的数据，利用Gene set analysis来推断expression programs的生物学意义。做法可参考FigureYa226scRNA_cNMF<https://k.koudai.com/T9Zd8Fu9>
-In Figures 2D and 2G of the example paper, expression programs were extracted using cNMF. Gene set analysis was then used to infer the biological significance of these expression programs by integrating with other published data. For instructions, see FigureYa226scRNA_cNMF <https://k.koudai.com/T9Zd8Fu9>
+例文的Figure 2D和G，利用cNMF提取expression programs，并通过整合其它已发表的数据，利用Gene set analysis来推断expression programs的生物学意义。做法可参考FigureYa226scRNA_cNMF
+In Figures 2D and 2G of the example paper, expression programs were extracted using cNMF. Gene set analysis was then used to infer the biological significance of these expression programs by integrating with other published data. For instructions, see FigureYa226scRNA_cNMF 
 
 # 环境设置
 # Environment Setup

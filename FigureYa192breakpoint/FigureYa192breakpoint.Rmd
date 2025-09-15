@@ -19,7 +19,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Requirement
 
-求众筹Fig 2，输入seer数据，循环cox模型，lowess平滑并绘图。
+求实现Fig 2，输入seer数据，循环cox模型，lowess平滑并绘图。
 Find the crowdfunding Fig 2, input the seer data, loop the cox model, smooth it with lowess and plot it.
 
 ![](example.png)

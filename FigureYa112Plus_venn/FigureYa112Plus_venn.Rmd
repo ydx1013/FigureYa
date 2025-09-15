@@ -25,7 +25,7 @@ vennyhttp://bioinfogp.cnb.csic.es/tools/venny/，新出来个选项，颜色填�
 
 我想要彩色，我想要pdf矢量图。
 
-众筹FigureYa112venn时还没有R包能直接实现这样按百分比填充颜色的效果，于是FigureYa112venn的作者李誉辉综合了VennDiagram和colorfulVennPlot等R包，实现了想要的效果。
+实现FigureYa112venn时还没有R包能直接实现这样按百分比填充颜色的效果，于是FigureYa112venn的作者李誉辉综合了VennDiagram和colorfulVennPlot等R包，实现了想要的效果。
 
 后来高春辉写了R包ggVennDiagram，方便好用，下面就展示一下用这个R包画venn图的用法。
 

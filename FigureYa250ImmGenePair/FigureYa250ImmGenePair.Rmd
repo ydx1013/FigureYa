@@ -42,13 +42,13 @@ from<https://jamanetwork.com/journals/jamaoncology/fullarticle/2643120>
 
 采用较为传统的方式构建基因对。小伙伴可以后续继续运行lasso或者其他模型构建算法，可参考FigureYa31lasso或FigureYa65SVM。
 
-本文档作者参考例文的思路写了这篇文章，<https://onlinelibrary.wiley.com/doi/10.1002/ctm2.453>，小伙伴可参考。这篇文章里的多个图都可以用我们众筹的FigureYa实现：
+本文档作者参考例文的思路写了这篇文章，<https://onlinelibrary.wiley.com/doi/10.1002/ctm2.453>，小伙伴可参考。这篇文章里的多个图都可以用我们实现的FigureYa实现：
 
 - Figure 1E可参考FigureYa90subgroup，F可参考FigureYa35batch_bestSeparation；
 - Figure 3G画法可参考FigureYa227boxdensity；
 - Figure 4A可参考FigureYa187RMS，E可参考FigureYa173fancybar。
 
-小丫画图群里的小伙伴们也写过类似的文章，例如<https://www.frontiersin.org/articles/10.3389/fonc.2021.665870/full>，其中多个图也可以用我们众筹的FigureYa实现：
+小丫画图群里的小伙伴们也写过类似的文章，例如<https://www.frontiersin.org/articles/10.3389/fonc.2021.665870/full>，其中多个图也可以用我们实现的FigureYa实现：
 
 - Figure 2B可参考FigureYa31lasso，C可参考FigureYa39bar；EG可参考FigureYa141risk；
 - Figure 3AC可参考FigureYa35batch_bestSeparation；

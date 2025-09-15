@@ -180,7 +180,7 @@ See more parameter settings with ?ggsurvplot
 
 ```{r}
 # 这里用默认参数做回归
-# 如果想先判断符合哪种分布再选择合适的方法回归，我们再众筹吧。
+# 如果想先判断符合哪种分布再选择合适的方法回归，我们再实现吧。
 # Here the regression is done with default parameters
 # If you want to determine which distribution is met before choosing the appropriate method of regression, let's crowdsource it again.
 fit <- survfit(Surv(Months, Status) ~ Expression, data = svData)

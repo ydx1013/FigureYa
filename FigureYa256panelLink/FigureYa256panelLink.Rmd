@@ -8,7 +8,7 @@ output: html_document
 
 小丫微信: epigenomics  E-mail: figureya@126.com
 
-作者：Hazard，他的更多作品看这里<https://k.koudai.com/zuloxG1Y>
+作者：Hazard，他的更多作品看这里
 
 小丫编辑校验
 
@@ -24,7 +24,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # 需求描述
 
-这个图有机会能众筹一下吗？感觉很强大
+这个图有机会能实现一下吗？感觉很强大
 
 ![](example.png)
 
@@ -37,7 +37,7 @@ Bar plots in right panel indicate the number of cancer types with positive corre
 
 # 应用场景
 
-跟FigureYa174squareCross和FigureYa199crosslink出自同一篇文章，这篇文章以连线著称。后面我们还会众筹Figure 3c。
+跟FigureYa174squareCross和FigureYa199crosslink出自同一篇文章，这篇文章以连线著称。后面我们还会实现Figure 3c。
 
 该图的优势是将左右两个panel连起来，同时展示多种特征，具体让哪个形状、颜色代表哪些特征，自己可灵活运用。
 

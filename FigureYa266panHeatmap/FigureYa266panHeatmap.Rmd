@@ -53,7 +53,7 @@ f Box plots showing the expression distribution of IGF2BP3 across tumor and norm
 
 如果只对单个基因感兴趣，可参考FigureYa55panCancer_violin，画成小提琴图或box plot，<https://www.yuque.com/figureya/figureyaplus/figureya55p>。
 
-另外，我们还众筹过这篇文章的其他几个有意思的图：
+另外，我们还实现过这篇文章的其他几个有意思的图：
 
 - Fig.1D对角热图，可参考FigureYa144DiagHeatmap或<https://mp.weixin.qq.com/s/34WRZRBVPHUNRLlzNH2nzw>
 - Fig.2A靶向关系连线图，可参考FigureYa199crosslink，<https://k.youshop10.com/Zbb7VoNM>，带你实现连线自由

@@ -17,7 +17,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # 需求描述
 
-我想众筹Figure 1B，两个数据集里面看预后判断力都很好的基因。
+我想实现Figure 1B，两个数据集里面看预后判断力都很好的基因。
 
 # Requirement Description
 

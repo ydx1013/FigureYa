@@ -24,7 +24,7 @@ knitr::opts_chunk$set(echo = TRUE)
 # 需求描述
 # Demand description
 
-希望众筹补充材料里的Figure S2A
+希望实现补充材料里的Figure S2A
 
 We want to crowdfund Figure S2A in the supplementary materials
 

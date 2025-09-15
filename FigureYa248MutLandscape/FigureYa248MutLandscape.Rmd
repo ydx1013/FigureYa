@@ -16,9 +16,9 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # 需求描述
 
-大鱼海棠写的MOVICS包很神奇，一个包几乎就画出了分子分型文章的大部分图。大鱼海棠写的这篇预印本最近已接收，刚好可以作为MOVICS包的应用案例。接下来会连续众筹这篇文章里的几个图。
+Xiaofan Lu写的MOVICS包很神奇，一个包几乎就画出了分子分型文章的大部分图。Xiaofan Lu写的这篇预印本最近已接收，刚好可以作为MOVICS包的应用案例。接下来会连续实现这篇文章里的几个图。
 
-Figure2b的突变综合性热图，看起来非常酷炫。里头涉及的分析在以前的众筹里也有，包括TMB计算，突变signature，突变频数，拷贝数变异情况等等。如果大鱼老师可以随便拟定数据画图也可以！
+Figure2b的突变综合性热图，看起来非常酷炫。里头涉及的分析在以前的实现里也有，包括TMB计算，突变signature，突变频数，拷贝数变异情况等等。如果大鱼老师可以随便拟定数据画图也可以！
 
 # Requirement Description
 
@@ -40,13 +40,13 @@ b) Genomic alteration landscape according to iCS. Samples are ordered by the com
 
 - 突变频数TMB可参考FigureYa51TMB的mutation-load.txt，TCGA的TMB，来源于2018年的这篇文献：The Immune Landscape of Cancer <https://pubmed.ncbi.nlm.nih.gov/29628290/>，我们直接拿来用就好。
 - 突变签名可参考FigureYa110mutationSignature。
-- 更多分析、展示突变、拷贝数的FigureYa看这里<https://k.koudai.com/gZBI0YzR>
+- 更多分析、展示突变、拷贝数的FigureYa看这里
 
-文中很多图我们都众筹过，例如：
+文中很多图我们都实现过，例如：
 
 - Figure 1b的画法可参考FigureYa196PanPie
 - Figure 3de可产考FigureYa25sankey和FigureYa125Fishertest
-- Figure 4f可参考FigureYa106immunotherapy，4h可参考<https://k.koudai.com/Eig1YOB4>
+- Figure 4f可参考FigureYa106immunotherapy，4h可参考
 - Figure 5b可参考FigureYa12box，f可参考FigureYa162boxViolin
 - Figure 6可参考FigureYa35batch_bestSeparation，FigureYa144DiagHeatmap或<https://mp.weixin.qq.com/s/34WRZRBVPHUNRLlzNH2nzw>
 
@@ -56,13 +56,13 @@ Here, the mutation landscape is plotted with ComplexHeatMap, which shows the mut
 
 - For the mutation frequency TMB, please refer to the mutation-load.txt of FigureYa51TMB, the TMB of TCGA, from this 2018 article: The Immune Landscape of Cancer <https://pubmed.ncbi.nlm.nih.gov/29628290/>, let's just use it.
 - For more information about mutation signatures, see FigureYa110mutationSignature.
-- For more analysis and display of mutations and copy numbers of FigureYa see here <https://k.koudai.com/gZBI0YzR>
+- For more analysis and display of mutations and copy numbers of FigureYa see here 
 
 Many of the pictures in the article have been crowdfunded, such as:
 
 - For more information about Figure 1b, see FigureYa196PanPie
 - Figure 3de can be tested with FigureYa25sankey and FigureYa125Fishertest
-- Figure 4f can refer to Figure Ya106 immunotherapy, and 4h can refer to <https://k.koudai.com/Eig1YOB4>
+- Figure 4f can refer to Figure Ya106 immunotherapy, and 4h can refer to 
 - Figure 5b can refer to FigureYa12box, and f can refer to FigureYa162boxViolin
 - For Figure 6, see FigureYa35batch_bestSeparation, FigureYa144DiagHeatmap, or <https://mp.weixin.qq.com/s/34WRZRBVPHUNRLlzNH2nzw>
 

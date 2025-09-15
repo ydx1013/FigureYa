@@ -42,7 +42,7 @@ Fig. 1 | The SICs exhibit strongly different TMEs. This figure refers to the TCG
 
 用MCPcounter计算免疫富集得分，根据MCPcounter结果进行分型。
 
-我们曾众筹过FigureYa56immune_inflitration，也是用TCGA的表达数据计算免疫浸润，并画热图。我们这次画的图信息更丰富。
+我们曾实现过FigureYa56immune_inflitration，也是用TCGA的表达数据计算免疫浸润，并画热图。我们这次画的图信息更丰富。
 
 The immune enrichment scores were calculated using MCP-counter, and subtyping was performed based on the MCP-counter results.
 

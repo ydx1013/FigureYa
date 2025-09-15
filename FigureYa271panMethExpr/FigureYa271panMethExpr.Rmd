@@ -19,7 +19,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # 需求描述
 
-小丫姐好，我还有很多小伙伴想众筹这篇铁死亡泛癌的其他图片，主要是Figure 1。感觉这个套路只要换一个通路就可以测试，我看大鱼老师写了这篇文章的Figure 2A（铁死亡基因在泛癌肿瘤与正常的差异箱线图，FigureYa208FPI），Figure 3B（铁死亡与免疫通路的相关性，FigureYa253panGSEA），可否请大鱼老师详细写一下文章Figure 1的相关代码？
+小丫姐好，我还有很多小伙伴想实现这篇铁死亡泛癌的其他图片，主要是Figure 1。感觉这个套路只要换一个通路就可以测试，我看大鱼老师写了这篇文章的Figure 2A（铁死亡基因在泛癌肿瘤与正常的差异箱线图，FigureYa208FPI），Figure 3B（铁死亡与免疫通路的相关性，FigureYa253panGSEA），可否请大鱼老师详细写一下文章Figure 1的相关代码？
 
 - 1A（铁死亡在泛癌中体细胞拷贝数变异情况，绘制条形图，可参考FigureYa265panCNV）
 - 1B（铁死亡基因在肿瘤与正常的差异表达，绘制拼接的点图和柱状图，可参考FigureYa263panDiff）
@@ -27,9 +27,9 @@ knitr::opts_chunk$set(echo = TRUE)
 - 1D（铁死亡基因肿瘤与正常组织甲基化状态点图，可参考FigureYa270panMeth）
 - 1E（铁死亡转录组表达与启动子甲基化相关性的点图）
 
-这些图都是泛癌的，不知道大鱼老师可不可以用例文数据分别众筹个教程 [皱眉] ？（感觉都可以出一期专栏——iSicence复现了哈哈）
+这些图都是泛癌的，不知道大鱼老师可不可以用例文数据分别实现个教程 [皱眉] ？（感觉都可以出一期专栏——iSicence复现了哈哈）
 
-这次众筹Figure 1E，铁死亡转录组表达与启动子甲基化相关性的点图。
+这次实现Figure 1E，铁死亡转录组表达与启动子甲基化相关性的点图。
 
 # Requirement description
 
@@ -309,7 +309,7 @@ write.table(corExprMeth, "TCGA_pancan_correlation_expr_meth_subset.txt",sep = "\
 
 例文展示相关性画的是点图，也可以画成热图、圆圈图等形式。
 
-`TCGA_pancan_correlation_expr_meth_subset.txt`文件里存放了n*n的correlation和pvalue，可以套用到我们以前众筹过的FigureYa当中。更多相关性展示方式看这里：[相关性展示的8种情况，还想要哪样？](https://mp.weixin.qq.com/s/D9wheY5QdnOh4JrjIc8-Cg)
+`TCGA_pancan_correlation_expr_meth_subset.txt`文件里存放了n*n的correlation和pvalue，可以套用到我们以前实现过的FigureYa当中。更多相关性展示方式看这里：[相关性展示的8种情况，还想要哪样？](https://mp.weixin.qq.com/s/D9wheY5QdnOh4JrjIc8-Cg)
 
 The example text shows the correlation by drawing a point chart, which can also be drawn in the form of a heat map, circle chart, etc.
 

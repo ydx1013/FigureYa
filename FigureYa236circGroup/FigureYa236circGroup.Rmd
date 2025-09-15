@@ -17,7 +17,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # 需求描述
 
-你好，想众筹一下这个图，用圆圈图的方式展示不同分组的关系。网上没有找到可以实现的代码。最好是R语言做。
+你好，想实现一下这个图，用圆圈图的方式展示不同分组的关系。网上没有找到可以实现的代码。最好是R语言做。
 
 # Requirement Description
 
@@ -35,7 +35,7 @@ A, Overlay of metabolic profiles (inner ring) with PDAC expression subtypes (out
 
 将亚型（或其他分类变量）之间的映射关系（一致性）以圈状热图注释的方式展现。
 
-我们还众筹过例文的Figure 1ABC，通过基因共识聚类选择共表达的基因集，随后根据表达谱中位数划分四类样本，可参考`FigureYa202consensusGene`
+我们还实现过例文的Figure 1ABC，通过基因共识聚类选择共表达的基因集，随后根据表达谱中位数划分四类样本，可参考`FigureYa202consensusGene`
 
 # Application Scenarios
 

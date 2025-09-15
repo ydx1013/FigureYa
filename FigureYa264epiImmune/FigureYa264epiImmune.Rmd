@@ -24,7 +24,7 @@ knitr::opts_chunk$set(echo = TRUE)
 # 需求描述
 # Demand description
 
-我想众筹这篇文章的Figure 1A。
+我想实现这篇文章的Figure 1A。
 
 - 此图的内容：在117例CD8+T细胞高浸润的TCGA黑色素瘤样本中，表观遗传调节因子的表达与细胞毒性T淋巴细胞（CTL）评分之间的相关性。注：1.细胞毒性T淋巴细胞（CTL）评分：文献报道（PMID: 30127393）的CD8+T细胞标志与功能的基因的平均表达水平（CD8A、CD8B、GZMA、GZMB和PRF1）。2.CD8+ T细胞高浸润水平：高于TIMER上的四分位数。
   

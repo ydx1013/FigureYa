@@ -62,7 +62,7 @@ c Heatmap for genes with mutual exclusivity or co-occurrence in the whole UTUC c
 # 应用场景
 # Application Scenarios
 
-Mutual-exclusivity analysis，我们众筹过FigureYa70mutationEvents<https://k.youshop10.com/5qGbYAM3>，用Discover包实现TCGA的基因突变数据分析Co-occurrence/mutual exclusivity，未计算Odds Ratio。
+Mutual-exclusivity analysis，我们实现过FigureYa70mutationEvents<https://k.youshop10.com/5qGbYAM3>，用Discover包实现TCGA的基因突变数据分析Co-occurrence/mutual exclusivity，未计算Odds Ratio。
 
 这次我们用单侧Fisher's exact检验，并计算**Odds Ratio和P值**。
 
@@ -169,7 +169,7 @@ print(fisher.test(table(tmp$TP53,tmp$ZMAT3),alternative = "less"))
 ## 绘制热图
 ## Plot heatmap
 
-这里简单采用maftools里的绘图方法，瀑布图的绘制众筹过许多，这里不再赘述使用方法。用ComplexHeatmap重绘瀑布图更灵活，可参考FigureYa42oncoprint <https://k.youshop10.com/CUxBnX=A>，或FigureYa113MutSigCV <https://k.youshop10.com/0VYtgolm>，或FigureYa276panSNV <https://k.youshop10.com/D1fxfyJr>分析泛癌中特定通路基因的突变情况。
+这里简单采用maftools里的绘图方法，瀑布图的绘制实现过许多，这里不再赘述使用方法。用ComplexHeatmap重绘瀑布图更灵活，可参考FigureYa42oncoprint <https://k.youshop10.com/CUxBnX=A>，或FigureYa113MutSigCV <https://k.youshop10.com/0VYtgolm>，或FigureYa276panSNV <https://k.youshop10.com/D1fxfyJr>分析泛癌中特定通路基因的突变情况。
 
 Here we employ the built-in plotting function from maftools, as waterfall plot construction has been extensively demonstrated in previous community-shared cases (see references below). For more customizable waterfall plots using ComplexHeatmap, please refer to: FigureYa42oncoprint <https://k.youshop10.com/CUxBnX=A>, FigureYa113MutSigCV <https://k.youshop10.com/0VYtgolm>, FigureYa276panSNV <https://k.youshop10.com/D1fxfyJr>
 which demonstrate pan-cancer mutation patterns in specific pathway genes.

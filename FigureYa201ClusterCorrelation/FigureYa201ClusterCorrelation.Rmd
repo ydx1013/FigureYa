@@ -47,7 +47,7 @@ FigureYa154immuneSubtypes and FigureYa202consensusGene also use ConsensusCluster
 
 ConsensusClusterPlus包的描述：ConsensusClusterPlus function for determing cluster number and class membership by stability evidence.
 
-大鱼海棠作出以下解答：
+Xiaofan Lu作出以下解答：
 
 - **共识聚类**是对原数据集重新抽样，对抽样子集做聚类。
   - **多次重复**来评估样本同属于相同类的概率，这种是常用的consensus clustering。

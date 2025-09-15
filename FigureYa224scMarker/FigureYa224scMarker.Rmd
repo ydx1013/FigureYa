@@ -17,7 +17,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # 需求描述
 
-这篇NC单细胞展示比例和marker基因的图很好看啊，可以众筹下做这几个图吗？
+这篇NC单细胞展示比例和marker基因的图很好看啊，可以实现下做这几个图吗？
 
 # Requirement Description
 
@@ -182,7 +182,7 @@ DoHeatmap(pbmc, features = top10$gene) + NoLegend()
 
 # 结合每个cluster的marker基因和生物学知识确定细胞类型，顺便画图A
 
-为了接近真实情况并结合众筹示例数据，这里不将细胞类型划分得这么详细，进行以下更改：
+为了接近真实情况并结合实现示例数据，这里不将细胞类型划分得这么详细，进行以下更改：
 
 # Determine the cell type by combining the marker gene and biological knowledge of each cluster, and draw Figure A by the way
 
@@ -219,7 +219,7 @@ ggsave(paste0(plot_wd,"plotA_all.pdf"), plot = pA_all, width = 12, height = 6)
 celltype <- c("T","Mono","B","NK","DC","Platelet")
 pbmc@meta.data$celltype <- factor(pbmc@meta.data$celltype, levels = celltype)
 
-## 为了符合真实情况（大多数数据来自多个样本）和众筹文章数据中的sample type，这里模拟一个数据，为pbmc数据中加入sample信息
+## 为了符合真实情况（大多数数据来自多个样本）和实现文章数据中的sample type，这里模拟一个数据，为pbmc数据中加入sample信息
 ## In order to match the real situation (most of the data comes from multiple samples) and the sample type in the crowdfunding article data, here simulate a data and add sample information to the PBMC data
 sample_type <- c("nLung","tLung","tL/B","mLN","mBrain")
 

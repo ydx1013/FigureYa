@@ -36,7 +36,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 先分开计算每个数据集、基因的HR（各数据集的HR、LCI、HCI、pvalue作为输入），然后利用meta分析的随机效应模型合并效应量，给出一个总的HR值。
 
-我们众筹的森林图分别适用的情况：
+我们实现的森林图分别适用的情况：
 
 - FigureYa90subgroup适用于可以获取具体每个病历的生存信息的情况，是合并原始数据然后分析；
 - FigureYa193riskTable是多个数据集分开多因素，只不过是用森林图来呈现；

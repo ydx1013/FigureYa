@@ -24,7 +24,7 @@ knitr::opts_chunk$set(echo = TRUE)
 # 需求描述
 # Requirements Description
 
-想众筹铁死亡指数（FPI）的计算方法，根据基因表达，算出ssGSEA富集分数，再计算FPI，并用GSE121689数据集验证。
+想实现铁死亡指数（FPI）的计算方法，根据基因表达，算出ssGSEA富集分数，再计算FPI，并用GSE121689数据集验证。
 
 I want to crowdfund the calculation method of the Ferroptosis Potential Index (FPI), which involves calculating ssGSEA enrichment scores based on gene expression, then deriving the FPI, and validating it using the GSE121689 dataset.
 

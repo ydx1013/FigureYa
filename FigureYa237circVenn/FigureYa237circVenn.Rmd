@@ -17,7 +17,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # 需求描述
 
-丫姐好，我想众筹这幅韦恩图，觉得蛮有意思的
+丫姐好，我想实现这幅韦恩图，觉得蛮有意思的
 
 # Requirement Description
 

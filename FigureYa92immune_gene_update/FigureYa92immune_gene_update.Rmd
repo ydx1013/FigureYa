@@ -28,7 +28,7 @@ Calculate the correlation between immune infiltration and genes and draw a graph
 
 出自<https://mp.weixin.qq.com/s/tWJkLVDt1mx5COduw7H35w>
 
-当初众筹是因为果子的idea，用这种方式展示两个转录本和免疫浸润的关系，发布在果子学生信公众号上<https://mp.weixin.qq.com/s/tWJkLVDt1mx5COduw7H35w>。小伙伴看到了也想画，我们就众筹了。后来有小伙伴用这个图发表了文章，供参考：
+当初实现是因为果子的idea，用这种方式展示两个转录本和免疫浸润的关系，发布在果子学生信公众号上<https://mp.weixin.qq.com/s/tWJkLVDt1mx5COduw7H35w>。小伙伴看到了也想画，我们就实现了。后来有小伙伴用这个图发表了文章，供参考：
 
 From< https://mp.weixin.qq.com/s/tWJkLVDt1mx5COduw7H35w >
 

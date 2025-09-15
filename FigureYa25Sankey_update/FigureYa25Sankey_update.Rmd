@@ -185,7 +185,7 @@ ggplot(UCB_lodes,
 ggsave("sankey_stratum_2.pdf")
 ```
 
-## 后面多层继承第一层的关系（作者：大鱼海棠）
+## 后面多层继承第一层的关系（作者：Xiaofan Lu）
 ## Multiple layers behind inherit the relationship of the first layer
 
 用到参数：stat = "alluvium"，即传说中的“冲击图”

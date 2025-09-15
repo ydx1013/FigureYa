@@ -17,7 +17,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # 需求描述
 
-我想众筹下文章figure 1c的计算方法，FigureYa182RFSurv挑出了importance 比较大的基因，后续常规用muticox等方法再缩减基因。这篇文章写的是用1023中组合按KM的 logRank pvalue和基因数目挑选模型，不一样的风格。
+我想实现下文章figure 1c的计算方法，FigureYa182RFSurv挑出了importance 比较大的基因，后续常规用muticox等方法再缩减基因。这篇文章写的是用1023中组合按KM的 logRank pvalue和基因数目挑选模型，不一样的风格。
 
 # Requirement Description
 I would like to crowdsource the calculation method for Figure 1c in the article. FigureYa182RFSurv selected genes with relatively high importance, followed by conventional methods like multicox to further reduce the number of genes. However, this paper describes a different approach—selecting the model from 1,023 combinations based on the log-rank p-value of the Kaplan-Meier (KM) analysis and the number of genes, which is a distinct style.

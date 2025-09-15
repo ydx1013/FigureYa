@@ -44,7 +44,7 @@ from<http://www.docin.com/p-2008991503.html>
 
 两种方法 X 所有数据库，都跑出来看看。
 
-哪个容易讲故事，最后就选哪个方法、哪个数据库。然后继续做深入研究。后续展示方式可参考<https://k.koudai.com/sm2p0xYn>
+哪个容易讲故事，最后就选哪个方法、哪个数据库。然后继续做深入研究。后续展示方式可参考
 
 # Application Scenarios
 
@@ -58,7 +58,7 @@ Which one is right for me? It's too cumbersome to try one by one, and all the ba
 
 Two methods X all databases, run out and see.
 
-Which is easy to tell a story, in the end, choose which method and which database. Then go ahead and do in-depth research. For details on how to display the follow-up, please refer to <https://k.koudai.com/sm2p0xYn>
+Which is easy to tell a story, in the end, choose which method and which database. Then go ahead and do in-depth research. For details on how to display the follow-up, please refer to 
 
 # 环境设置
 

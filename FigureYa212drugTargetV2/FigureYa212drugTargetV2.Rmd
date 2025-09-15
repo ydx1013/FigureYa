@@ -8,7 +8,7 @@ output: html_document
 
 小丫微信: epigenomics  E-mail: figureya@126.com
 
-作者：大鱼海棠
+作者：Xiaofan Lu
 
 单位：中国药科大学国家天然药物重点实验室，生物统计与计算药学研究中心
 
@@ -29,7 +29,7 @@ knitr::opts_chunk$set(echo = TRUE)
 需求一：这篇文章的Figure5F，G图，同时要包括按照文中的方法对非肿瘤组织进行纯化。
 
 需求二：根据PRISM和CTRP2.0药物敏感性AUC值数据、以及CCLE表达谱数据，预测TCGA亚组潜在性治疗药物。
-我们之前众筹的FigureYa105GDSC也用到了pRRophetic。不同于FigureYa105GDSC，这个数据是药物敏感性AUC值，以及药物的范围更加广泛。里面提到一个算法ISOpureR，通过解卷积消除肿瘤样本中掺杂的正常样本，提纯肿瘤表达矩阵，感觉也还不错。
+我们之前实现的FigureYa105GDSC也用到了pRRophetic。不同于FigureYa105GDSC，这个数据是药物敏感性AUC值，以及药物的范围更加广泛。里面提到一个算法ISOpureR，通过解卷积消除肿瘤样本中掺杂的正常样本，提纯肿瘤表达矩阵，感觉也还不错。
 
 ![](example.png)
 

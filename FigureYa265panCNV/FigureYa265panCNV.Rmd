@@ -24,7 +24,7 @@ knitr::opts_chunk$set(echo = TRUE)
 # 需求描述
 # Demand description
 
-小丫姐好，我还有很多小伙伴想众筹这篇铁死亡泛癌的其他图片，主要是Figure 1。感觉这个套路只要换一个通路就可以测试，我看大鱼老师写了这篇文章的Figure 2A（铁死亡基因在泛癌肿瘤与正常的差异箱线图，FigureYa208FPI），Figure 3B（铁死亡与免疫通路的相关性，FigureYa253panGSEA），可否请大鱼老师详细写一下文章Figure 1的相关代码？
+小丫姐好，我还有很多小伙伴想实现这篇铁死亡泛癌的其他图片，主要是Figure 1。感觉这个套路只要换一个通路就可以测试，我看大鱼老师写了这篇文章的Figure 2A（铁死亡基因在泛癌肿瘤与正常的差异箱线图，FigureYa208FPI），Figure 3B（铁死亡与免疫通路的相关性，FigureYa253panGSEA），可否请大鱼老师详细写一下文章Figure 1的相关代码？
 
 - 1A（铁死亡在泛癌中体细胞拷贝数变异情况，绘制条形图）
 - 1B（铁死亡基因在肿瘤与正常的差异表达，绘制拼接的点图和柱状图，可参考FigureYa263panDiff）
@@ -32,9 +32,9 @@ knitr::opts_chunk$set(echo = TRUE)
 - 1D（铁死亡基因肿瘤与正常组织甲基化状态点图）
 - 1E（铁死亡转录组表达与启动子甲基化相关性的点图）
 
-这些图都是泛癌的，不知道大鱼老师可不可以用例文数据分别众筹个教程 [皱眉] ？（感觉都可以出一期专栏——iSicence复现了哈哈）
+这些图都是泛癌的，不知道大鱼老师可不可以用例文数据分别实现个教程 [皱眉] ？（感觉都可以出一期专栏——iSicence复现了哈哈）
 
-这次众筹Figure 1A，铁死亡在泛癌中体细胞拷贝数变异情况。
+这次实现Figure 1A，铁死亡在泛癌中体细胞拷贝数变异情况。
 
 Hi Sister Xiaoya, I still have many friends who’d like to crowdfund the other figures from this pan-cancer ferroptosis paper, especially Figure 1. It seems like this approach can be easily adapted by switching to a different pathway. I noticed that Teacher Dayu has already written code for:
 
@@ -59,7 +59,7 @@ For now, let’s crowdfund Figure 1A: Somatic copy number alterations of ferropt
 图1. 铁死亡调控基因（FRGs）的失调情况。其中，正调控因子和负调控因子分别用红色和蓝色标注）。
 (A) 柱状图展示各癌种中每个FRG基因的体细胞拷贝数变异频率。
 
-接下来会陆续众筹Figure1CDE，敬请关注。
+接下来会陆续实现Figure1CDE，敬请关注。
 
 Source: <https://linkinghub.elsevier.com/retrieve/pii/S2589004220304892>
 

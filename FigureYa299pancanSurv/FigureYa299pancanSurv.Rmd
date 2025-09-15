@@ -24,7 +24,7 @@ knitr::opts_chunk$set(echo = TRUE)
 # 需求描述
 # Demand description
 
-想众筹下这张图，泛癌预后KM+Cox分析后，热图形式展示，最后再单独展示OS结果，内容看起来更立体丰富一点。
+想实现下这张图，泛癌预后KM+Cox分析后，热图形式展示，最后再单独展示OS结果，内容看起来更立体丰富一点。
 
 We want to crowdfund this figure - After pan-cancer prognostic KM + Cox analysis, display results in heatmap format, then separately showcase OS outcomes to make the content more three-dimensional and enriched.
 

@@ -17,7 +17,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # 需求描述
 
-我想众筹一个多种算法的风险值和免疫细胞相关性热图（文中Figure 7）
+我想实现一个多种算法的风险值和免疫细胞相关性热图（文中Figure 7）
 
 # Requirement Description
 
@@ -43,7 +43,7 @@ Figure 7. Heatmap for immune responses based on CIBERSORT, ESTIMATE, MCPcounter,
 ①原文的pheatmap::pheatmap展示
 ②采用ComplexHeatmap::pheatmap对不同算法采用不同颜色的热图，后垂直衔接热图展示
 
-图中各种打分的计算方法可参考我们众筹过的FigureYa：
+图中各种打分的计算方法可参考我们实现过的FigureYa：
 
 - 计算CIBERSORT得分、ESTIMATE得分，可参考FigureYa211multiCohortImmSubtype<https://k.youshop10.com/VwpAWxx0>
 - ssGSEA，可参考FigureYa71ssGSEA<https://k.youshop10.com/hhH631te>

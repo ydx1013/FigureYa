@@ -8,7 +8,7 @@ output: html_document
 
 小丫微信: epigenomics  E-mail: figureya@126.com
 
-作者：大鱼海棠
+作者：Xiaofan Lu
 
 单位：中国药科大学国家天然药物重点实验室，生物统计与计算药学研究中心
 
@@ -26,7 +26,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # 需求描述
 
-老师这个图10D可以众筹吗？真的很漂亮，蝴蝶图
+老师这个图10D可以实现吗？真的很漂亮，蝴蝶图
 
 ![](example.png)
 

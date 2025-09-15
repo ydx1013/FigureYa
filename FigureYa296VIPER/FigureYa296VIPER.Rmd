@@ -50,7 +50,7 @@ Source: <https://linkinghub.elsevier.com/retrieve/pii/S1535610820306553>
 
 这里用VIPER包计算转录因子活性（Protein-activity by Enriched Regulon analysis）。另外，如果要分析**转录调控网络regulon的活性**（注意：并非转录因子活性），可参考FigureYa249Regulon。
 
-例文METHOD DETAILS的Integrated analysis部分描述了挖掘生物学意义时用到的整合分析方法，我们曾众筹过其中一些算法：
+例文METHOD DETAILS的Integrated analysis部分描述了挖掘生物学意义时用到的整合分析方法，我们曾实现过其中一些算法：
 
 - ESTIMATE：可参考FigureYa211multiCohortImmSubtype
 - ssGSEA：可参考FigureYa71ssGSEA

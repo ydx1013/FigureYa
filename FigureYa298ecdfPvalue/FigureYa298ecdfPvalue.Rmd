@@ -40,7 +40,7 @@ Source: <https://www.nature.com/articles/s41556-018-0045-z>
 Fig. 2 | IGF2BPs regulate transcriptome-wide mRNA levels.
 (b) Cumulative frequency of mRNA log2 FC in non-target, CLIP target and CLIP + RIP target genes upon IGF2BP silencing. P values were calculated using **two-sided Wilcoxon and Mann–Whitney test**. 
 
-我们众筹过的FigureYa290BarGraph所在的文章里也用到了类似的图：
+我们实现过的FigureYa290BarGraph所在的文章里也用到了类似的图：
 
 The article where the FigureYa290BarGraph we crowdfunded is located also uses a similar graph: 
 

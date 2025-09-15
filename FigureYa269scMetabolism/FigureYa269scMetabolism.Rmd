@@ -8,7 +8,7 @@ output: html_document
 
 小丫微信: epigenomics  E-mail: figureya@126.com
 
-作者：古潇，他的更多作品看这里<https://k.koudai.com/uH4zuEWC>
+作者：古潇，他的更多作品看这里
 
 小丫编辑校验
 
