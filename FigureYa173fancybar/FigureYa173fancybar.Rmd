@@ -14,7 +14,7 @@ knitr::opts_chunk$set(echo = TRUE)
 # Requirement
 
 我想实现这篇文章的Figure 4i和j，是同一种类型的图。这个图，可以比较组内的情况，然后还可以合并组内的数据，再比组间。还有这种可以直接实现出图的代码。
-I'm crowdfunding for Figures 4i and 4j in this article. They are the same type of graph. This graph allows for comparison within groups, merging data within groups, and comparing across groups. Code is also available to directly generate the graph.
+I want to draw as Figures 4i and 4j in this article. They are the same type of graph. This graph allows for comparison within groups, merging data within groups, and comparing across groups. Code is also available to directly generate the graph.
 
 ![](example.png)
 
