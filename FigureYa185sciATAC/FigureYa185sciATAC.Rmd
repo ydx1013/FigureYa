@@ -50,7 +50,12 @@ You can also refer to Figures 5 and 6 of this Cell paper for in-depth exploratio
 
 # Environment Setup
 
-参考
+```{r}
+source("install_dependencies.R")
+```
+
+遇到问题可参考以下安装方法：
+
 Refer to 
 [Cicero for Monocle 3](https://cole-trapnell-lab.github.io/cicero-release/docs_m3/#loading-data-from-a-simple-sparse-matrix-format)
 
@@ -68,11 +73,8 @@ conda install -c bioconda bioconductor-cicero -y
 cicero直接安装github版。不用conda安装，是因为conda的cicero不是最新版本，在处理10X cell ranger的数据没问题，但是在处理稀疏矩阵的时候有问题。
 Install the github version of cicero directly. Not using conda for installation is because conda's cicero is not the latest version. It works fine with the data of 10X cell ranger, but has problems when dealing with sparse matrices.
 
-```{r}
-source("install_dependencies.R")
-#MAC系统安装monocle时可能遇到问题，解决方法看这里https://cole-trapnell-lab.github.io/monocle3/docs/installation/
-# MAC system installing a monocle may encounter problems, solution here at https://cole-trapnell-lab.github.io/monocle3/docs/installation/
-```
+MAC系统安装monocle时可能遇到问题，解决方法看这里https://cole-trapnell-lab.github.io/monocle3/docs/installation/
+MAC system installing a monocle may encounter problems, solution here at https://cole-trapnell-lab.github.io/monocle3/docs/installation/
 
 ```{r, eval=FALSE}
 library(tidyverse)
