@@ -47,10 +47,17 @@ install_bioc_package <- function(package_name) {
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
+# Install Bioconductor packages first
+cat("\nInstalling Bioconductor packages...\n")
+bioc_packages <- c("CancerSubtypes")
+
+for (pkg in bioc_packages) {
+  install_bioc_package(pkg)
+}
 
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("CancerSubtypes", "data.table", "stringr")
+cran_packages <- c("data.table", "stringr")
 
 for (pkg in cran_packages) {
   install_cran_package(pkg)
@@ -58,4 +65,17 @@ for (pkg in cran_packages) {
 
 cat("\n===========================================\n")
 cat("Package installation completed!\n")
-cat("You can now run your R scripts in this directory.\n")
+
+# Verify installation
+cat("\nVerifying package installation:\n")
+all_packages <- c("CancerSubtypes", "data.table", "stringr")
+
+for (pkg in all_packages) {
+  if (is_package_installed(pkg)) {
+    cat("✓", pkg, "is installed\n")
+  } else {
+    cat("✗", pkg, "is NOT installed\n")
+  }
+}
+
+cat("\nYou can now run your R scripts in this directory.\n")
