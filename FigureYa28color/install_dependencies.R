@@ -26,18 +26,19 @@ install_cran_package <- function(package_name) {
   }
 }
 
-# Function to install Bioconductor packages
-install_bioc_package <- function(package_name) {
+# Function to install packages from GitHub
+install_github_package <- function(repo) {
+  package_name <- strsplit(repo, "/")[[1]][2]
   if (!is_package_installed(package_name)) {
-    cat("Installing Bioconductor package:", package_name, "\n")
+    cat("Installing GitHub package:", repo, "\n")
     tryCatch({
-      if (!is_package_installed("BiocManager")) {
-        install.packages("BiocManager")
+      if (!is_package_installed("remotes")) {
+        install.packages("remotes")
       }
-      BiocManager::install(package_name, update = FALSE, ask = FALSE)
+      remotes::install_github(repo)
       cat("Successfully installed:", package_name, "\n")
     }, error = function(e) {
-      cat("Failed to install", package_name, ":", e$message, "\n")
+      cat("Failed to install", repo, ":", e$message, "\n")
     })
   } else {
     cat("Package already installed:", package_name, "\n")
@@ -47,13 +48,20 @@ install_bioc_package <- function(package_name) {
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
-
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("rPlotter", "scales")
+cran_packages <- c("scales")
 
 for (pkg in cran_packages) {
   install_cran_package(pkg)
+}
+
+# Installing GitHub packages
+cat("\nInstalling GitHub packages...\n")
+github_packages <- c("tomwhoooo/rPlotter")  # rPlotter from GitHub
+
+for (pkg in github_packages) {
+  install_github_package(pkg)
 }
 
 cat("\n===========================================\n")
