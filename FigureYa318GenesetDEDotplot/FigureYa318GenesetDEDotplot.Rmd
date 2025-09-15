@@ -16,7 +16,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -45,36 +44,18 @@ Fig. 1 Dissection of the immune landscape in atherosclerosis with scRNA-seq.
 
 根据单细胞数据，计算不同细胞类型中两组间通路活性得分，并绘制差异分析点图(Fig.1 f)。点的大小表示显著性（padj或FDR等），点的颜色表示logFC。
 
-Figure 1e，细胞比例分布特异度（Ro/e）折线图，可参考FigureYa317RoeDot <https://k.youshop10.com/Qn2Wb5MU>。
+Figure 1e，细胞比例分布特异度（Ro/e）折线图，可参考FigureYa317RoeDot。
 
 Based on single-cell data, pathway activity scores between the two groups were calculated across different cell types, and differential analysis dot plots were generated (Fig. 1f). Dot size represents significance (e.g., padj or FDR), while dot color indicates logFC.
 
-Figure 1e displays the cell proportion distribution specificity (Ro/e) line graph, which can be referenced to FigureYa317RoeDot <https://k.youshop10.com/Qn2Wb5MU>.
+Figure 1e displays the cell proportion distribution specificity (Ro/e) line graph, which can be referenced to FigureYa317RoeDot.
 
 # 环境设置
 # Environment Setup
 
-
-Using domestic mirrors for package installation.
-
 ```{r}
 source("install_dependencies.R")
-```
 
-```{r eval=FALSE}
-install.packages("BiocManager")
-install.packages("SeuratObject")
-BiocManager::install("GEOquery")
-BiocManager::install("AUCell")
-BiocManager::install("clusterProfiler")
-BiocManager::install("limma")
-BiocManager::install("GSVA")
-```
-
-# 加载包
-# Loading packages
-
-```{r}
 library(Seurat)
 library(magrittr)
 library(GEOquery)
@@ -291,11 +272,8 @@ ggsave("hallmark.pdf", width = 12, height = 4)
 
 The output PDF file is a vector graphic that can be opened with vector editors like Illustrator for adjusting the positions of graphic elements or text.
 
-# 会话信息
 # Session Info
 
 ```{r}
-# 显示会话信息
-# Show session information
 sessionInfo()
 ```
