@@ -16,7 +16,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -49,32 +48,20 @@ Figure S5. Origins and regulation of LAMP3+ cDCs, related to Figure 4.
 
 本文档使用SingleR计算cDC3_LAMP3来源于cDC2的占比，实现Figure S5D。
 
-同一篇文章的Figure S5B（Stratification of cDC transcriptomes by scores generated from signature genes of three cDC subsets）可以用FigureYa314SingleRScore <https://k.youshop10.com/2DkhulHr>来计算和画图。
+同一篇文章的Figure S5B（Stratification of cDC transcriptomes by scores generated from signature genes of three cDC subsets）可以用FigureYa314SingleRScore来计算和画图。
 
 The example text explores the question of `origins of the LAMP3+ cDCs` from multiple perspectives, which can be flexibly applied to other cell types of interest.
 
 This document uses SingleR to calculate the proportion of cDC3_LAMP3 derived from cDC2, reproducing Figure S5D.
 
-For Figure S5B of the same paper (Stratification of cDC transcriptomes by scores generated from signature genes of three cDC subsets), the FigureYa314SingleRScore <https://k.youshop10.com/2DkhulHr>can be used for calculation and plotting.
+For Figure S5B of the same paper (Stratification of cDC transcriptomes by scores generated from signature genes of three cDC subsets), the FigureYa314SingleRScore can be used for calculation and plotting.
 
 # 环境设置
 # Environment Setup
 
-
-Using domestic mirrors for package installation.
-
 ```{r}
 source("install_dependencies.R")
-```
 
-```{r eval=FALSE}
-BiocManager::install("SingleR")
-```
-
-# 加载包
-# Loading packages
-
-```{r}
 library(Matrix)
 library(Seurat)
 
@@ -281,11 +268,8 @@ ggplot(plot.data, aes(x = cohort, y = prop*100, fill = cohort)) +
 ggsave("Proption_plus.pdf", width = 5, height = 4)
 ```
 
-# 会话信息
 # Session Info
 
 ```{r}
-# 显示会话信息
-# Show session information
 sessionInfo()
 ```
