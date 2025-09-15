@@ -10,7 +10,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -40,19 +39,9 @@ Calculate the restrictive survival time and compare the prognostic value of diff
 
 # Environment Setup
 
-
 ```{r}
 source("install_dependencies.R")
-```
 
-```{r eval=FALSE}
-BiocManager::install("survcomp")
-install.packages("survRM2")
-```
-
-Loading package
-
-```{r}
 library(survival)
 library(survcomp)
 library(survRM2)
