@@ -10,7 +10,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -36,29 +35,13 @@ FIGURE 5 | (A) Error rate for the data as a function of the classification tree;
 使用随机森林对生存数据降维，根据变量重要性排序并筛选基因组成prognostic signature
 The survival data was dimensionally reduced using random forest, and the prognostic signature of genetic composition was sorted and screened according to the importance of variables
 
-在“小丫画图”公众号回复“182”，看小伙伴对阈值设置等问题的讨论。
-Reply "182" on the "Xiaoya Drawing" public account to see your friends' discussions on issues such as threshold Settings.
-
 # 环境设置
 
 # Environment Setup
 
-
 ```{r}
 source("install_dependencies.R")
-```
 
-```{r, eval=FALSE}
-install.packages("survival")
-install.packages("randomForestSRC")
-
-# randomSurvivalForest包来源：https://cran.r-project.org/src/contrib/Archive/randomSurvivalForest/
-install.packages("randomSurvivalForest_3.6.4.tar.gz", repos = NULL, type="source")
-```
-
-Loading package
-
-```{r}
 library(survival)
 library(randomForestSRC)
 library(randomSurvivalForest)
