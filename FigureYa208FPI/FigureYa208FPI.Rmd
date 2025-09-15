@@ -16,7 +16,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -26,7 +25,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 想实现铁死亡指数（FPI）的计算方法，根据基因表达，算出ssGSEA富集分数，再计算FPI，并用GSE121689数据集验证。
 
-I want to crowdfund the calculation method of the Ferroptosis Potential Index (FPI), which involves calculating ssGSEA enrichment scores based on gene expression, then deriving the FPI, and validating it using the GSE121689 dataset.
+I want to try the calculation method of the Ferroptosis Potential Index (FPI), which involves calculating ssGSEA enrichment scores based on gene expression, then deriving the FPI, and validating it using the GSE121689 dataset.
 
 ![](example.png)
 
@@ -62,18 +61,9 @@ Additionally, it is not limited to calculating the Ferroptosis Potential Index (
 # 环境设置
 # Environment Setup
 
-
-Using domestic mirrors for package installation.
-
 ```{r}
 source("install_dependencies.R")
 
-```
-
-# 加载包
-# Loading packages=
-
-```{r}
 library(data.table)
 library(GSVA)
 library(ggplot2)
