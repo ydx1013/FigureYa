@@ -10,7 +10,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -32,11 +31,9 @@ Applicable to chip data in the GEO database.
 ## 环境设置
 ## Environment setting
 
-
-load package
-
 ```{r}
 source("install_dependencies.R")
+
 library(GEOquery)
 library(limma)
 library(ggplot2)
@@ -324,6 +321,8 @@ write.csv(x, "easy_input_limma.csv", quote = F)
 用上面获得的`easy_input_limma.csv`作为输入文件，继续运行FigureYa59volcano里的代码，即可画最美火山图。
 
 Use the `easy_input_limma.csv` obtained above as the input file and continue to run the code in FigureYa59volcano to draw the most beautiful volcano map.
+
+# Session Info
 
 ```{r}
 sessionInfo()
