@@ -5,12 +5,10 @@ date: "2025-5-20"
 output: html_document
 ---
 
-
 # Academic Citation
 If you use this code in your work or research, we kindly request that you cite our publication:
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
-
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -47,8 +45,6 @@ Reply to "organ" on Xiaoya Pictorial official account for more information.
 
 ```{r}
 source("install_dependencies.R")
-# 安装gganatogram包（从GitHub安装，当前行被注释掉） | Install the gganatogram package (from GitHub, current line is commented out)
-#devtools::install_github("jespermaag/gganatogram")
 
 # 加载gganatogram包，用于绘制器官图 | Load the gganatogram package for plotting anatomical diagrams
 library(gganatogram)
@@ -286,6 +282,8 @@ gganatogram(data=hgFemale_tpm,
   facet_wrap(~type) +            # 按type列分面展示 | Facet by 'type' column
   theme_void()                   # 隐藏坐标轴和背景 | Hide axes and background
 ```
+
+# Session Info
 
 ```{r}
 sessionInfo()
