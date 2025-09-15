@@ -10,7 +10,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -30,7 +29,7 @@ This PCA is quite special.
 (A) 基于主成分1（PC1）和主成分2（PC2）所呈现的基因表达模式，PCA图显示四种卵母细胞亚型。
 (B) 沿PC1维度，对卵母细胞发育至关重要的代表性基因的相对基因表达模式。
 
-from<https://linkinghub.elsevier.com/retrieve/pii/S0092867420300568>
+From<https://linkinghub.elsevier.com/retrieve/pii/S0092867420300568>
 
 Figure 3. Dynamic Gene-Expression Patterns of Oocyte Subtypes at Stepwise Developmental Stages
 (A) PCA plot showing four oocyte subtypes based on gene-expression patterns exhibited by PC1 and PC2.
@@ -54,24 +53,9 @@ Consistently, the relative expression levels of **genes known to be essential fo
 # 环境设置
 # Environment setting
 
-
-use the domestic mirror installation package
-
 ```{r}
 source("install_dependencies.R")
-```
 
-```{r eval=FALSE}
-install.packages("leiden")
-install.packages("spatstat")
-install.packages("uwot")
-install.packages("ggbeeswarm")
-```
-
-
-load package
-
-```{r}
 library(Seurat)
 library(magrittr)
 library(ggplot2)
@@ -99,9 +83,9 @@ How to obtain this file? Scroll to the end of the document and see "Appendix: Si
 ## 原文采用的聚类方法
 ## The clustering method employed in the original text
 
-例文的非监督聚类方法比较特殊，以SCENIC的分析结果作为输入（SCENIC的用法可参考FigureYa194pySCENIC），用modified ‘clustering-and-classification’ algorithm (Lake et al., 2016) 给细胞做聚类。clustering-and-classification也是个很有趣的半监督聚类算法，如果有需要，我们后面再实现。
+例文的非监督聚类方法比较特殊，以SCENIC的分析结果作为输入（SCENIC的用法可参考FigureYa194pySCENIC），用modified ‘clustering-and-classification’ algorithm (Lake et al., 2016) 给细胞做聚类。clustering-and-classification也是个很有趣的半监督聚类算法。
 
-The unsupervised clustering method used in the example text is quite unique, taking the analysis results from SCENIC as input (for the usage of SCENIC, you can refer to FigureYa194pySCENIC), and applying modified 'clustering-and-classification' algorithm (Lake et al., 2016) to cluster the cells. The clustering-and-classification is also an interesting semi-supervised clustering algorithm, and if needed, we can consider crowdfunding it later on.
+The unsupervised clustering method used in the example text is quite unique, taking the analysis results from SCENIC as input (for the usage of SCENIC, you can refer to FigureYa194pySCENIC), and applying modified 'clustering-and-classification' algorithm (Lake et al., 2016) to cluster the cells. The clustering-and-classification is also an interesting semi-supervised clustering algorithm.
 
 ![](clustering.png)
 
