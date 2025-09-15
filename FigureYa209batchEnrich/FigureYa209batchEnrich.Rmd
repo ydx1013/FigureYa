@@ -10,7 +10,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -44,7 +43,7 @@ from<http://www.docin.com/p-2008991503.html>
 
 两种方法 X 所有数据库，都跑出来看看。
 
-哪个容易讲故事，最后就选哪个方法、哪个数据库。然后继续做深入研究。后续展示方式可参考
+哪个容易讲故事，最后就选哪个方法、哪个数据库。然后继续做深入研究。
 
 # Application Scenarios
 
@@ -58,27 +57,15 @@ Which one is right for me? It's too cumbersome to try one by one, and all the ba
 
 Two methods X all databases, run out and see.
 
-Which is easy to tell a story, in the end, choose which method and which database. Then go ahead and do in-depth research. For details on how to display the follow-up, please refer to 
+Which is easy to tell a story, in the end, choose which method and which database. Then go ahead and do in-depth research.
 
 # 环境设置
 
-
 # Environment settings
-
 
 ```{r}
 source("install_dependencies.R")
-```
 
-```{r eval=FALSE}
-install.packages("msigdbr")
-install.packages("shadowtext")
-install.packages("ggstance")
-```
-
-load packages
-
-```{r}
 library(clusterProfiler)
 library(msigdbr)
 library(DOSE)
