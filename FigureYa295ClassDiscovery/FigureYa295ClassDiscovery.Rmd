@@ -54,12 +54,9 @@ It's somewhat like consensus clustering, just overly complex. The algorithmic wo
 # 环境设置
 # Requirements Description
 
-运行classpredict包，需要用**windows系统**
+运行classpredict包，建议使用**Windows系统**，但在其他系统上也可能正常工作
 
-To run the classpredict package, **Windows OS** is required.
-
-# 加载包
-# Loading packages
+To run the classpredict package, **Windows OS** is recommended, but it may also work on other systems.
 
 ```{r}
 source("install_dependencies.R")
