@@ -16,7 +16,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -52,11 +51,11 @@ This paper uses a similar approach, with the methods detailed in the supplementa
 
 出自：<https://www.nature.com/articles/nm.3175>
 
-大鱼海棠的MOVICS包其实有NTP预测亚型的，但是他是直接选亚型特异表达的靠前的基因，没有用PAM这些筛选方法。这里将实现用PAM筛选。
+MOVICS包其实有NTP预测亚型的，但是他是直接选亚型特异表达的靠前的基因，没有用PAM这些筛选方法。这里将实现用PAM筛选。
 
 Source: <https://www.nature.com/articles/nm.3175>
 
-The MOVICS package from Big Fish & Begonia actually includes NTP-based subtype prediction, but it directly selects the top differentially expressed genes (DEGs) for each subtype without using filtering methods like PAM. Here, we will implement PAM-based gene selection.
+The MOVICS package actually includes NTP-based subtype prediction, but it directly selects the top differentially expressed genes (DEGs) for each subtype without using filtering methods like PAM. Here, we will implement PAM-based gene selection.
 
 # 应用场景
 # Application scenarios
@@ -76,18 +75,9 @@ References available in the "Literatures" folder.
 # 环境设置
 # Environment Setup
 
-
-Using domestic mirrors for package installation.
-
 ```{r}
 source("install_dependencies.R")
-BiocManager::install("pamr")
-```
 
-# 加载包
-# Loading packages
-
-```{r}
 library(CMScaller)
 library(pamr)
 library(cluster)
@@ -260,11 +250,8 @@ cms.df$CMS.pred <- as.character(cms.pred$prediction)
 table(cms.df$CMS.true, cms.df$CMS.pred)
 ```
 
-# 会话信息
 # Session Info
 
 ```{r}
-# 显示会话信息
-# Show session information
 sessionInfo()
 ```
