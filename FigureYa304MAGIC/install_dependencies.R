@@ -22,66 +22,134 @@ install_cran_packages <- function(packages) {
       install.packages(pkg, dependencies = TRUE)
       cat("Successfully installed:", pkg, "\n")
     }, error = function(e) {
-      stop("Failed to install CRAN package ", pkg, ": ", e$message)
+      cat("Failed to install CRAN package", pkg, ":", e$message, "\n")
     })
   }
 }
 
-# Function to install GitHub packages
+# Function to install GitHub packages with better error handling
 install_github_packages <- function(repo) {
-  if (!is_package_installed(basename(repo))) {
+  pkg_name <- basename(repo)
+  if (!is_package_installed(pkg_name)) {
     cat("Installing GitHub package:", repo, "\n")
     tryCatch({
-      if (!is_package_installed("devtools")) {
-        install_cran_packages("devtools")
+      if (!is_package_installed("remotes")) {
+        install_cran_packages("remotes")
       }
-      devtools::install_github(repo)
+      remotes::install_github(repo)
       cat("Successfully installed:", repo, "\n")
     }, error = function(e) {
-      stop("Failed to install GitHub package ", repo, ": ", e$message)
+      cat("Failed to install GitHub package", repo, ":", e$message, "\n")
+      cat("Trying alternative installation method...\n")
+      
+      # Alternative: try to install from specific commit or branch
+      tryCatch({
+        remotes::install_github(paste0(repo, "@master"))
+        cat("Successfully installed from master branch:", repo, "\n")
+      }, error = function(e2) {
+        cat("Alternative installation also failed:", e2$message, "\n")
+        cat("You may need to install manually or check system dependencies.\n")
+      })
     })
   } else {
-    cat("Package already installed:", basename(repo), "\n")
+    cat("Package already installed:", pkg_name, "\n")
   }
 }
 
+# Function to check and handle hdf5r dependencies
+install_hdf5r_with_deps <- function() {
+  if (!is_package_installed("hdf5r")) {
+    cat("Installing hdf5r with special handling...\n")
+    
+    # Check system and provide guidance
+    if (.Platform$OS.type == "unix") {
+      cat("On Unix systems, hdf5r requires HDF5 library.\n")
+      cat("You may need to install system dependencies:\n")
+      cat("  Ubuntu/Debian: sudo apt-get install libhdf5-dev\n")
+      cat("  CentOS/RHEL: sudo yum install hdf5-devel\n")
+      cat("  macOS (Homebrew): brew install hdf5\n")
+    }
+    
+    tryCatch({
+      install.packages("hdf5r", dependencies = TRUE)
+      cat("Successfully installed: hdf5r\n")
+    }, error = function(e) {
+      cat("Failed to install hdf5r:", e$message, "\n")
+      cat("You may need to install system-level HDF5 library first.\n")
+    })
+  } else {
+    cat("Package already installed: hdf5r\n")
+  }
+}
 
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
-# --- Step 1: Install CRAN Packages ---
-# SeuratDisk is needed to read H5AD files.
-# hdf5r is a dependency for SeuratDisk.
-# reticulate is for Python integration.
-cat("\nInstalling CRAN packages...\n")
-cran_packages <- c(
-  "Seurat",
-  "SeuratDisk",
-  "hdf5r",
-  "reticulate",
+# --- Step 1: Install basic dependencies ---
+cat("\nInstalling basic CRAN packages...\n")
+basic_packages <- c(
   "ggplot2",
-  "dplyr"
+  "dplyr",
+  "remotes",
+  "reticulate"
 )
-install_cran_packages(cran_packages)
+install_cran_packages(basic_packages)
 
+# --- Step 2: Install hdf5r with special handling ---
+cat("\nInstalling hdf5r...\n")
+install_hdf5r_with_deps()
 
-# --- Step 2: Install GitHub Packages ---
-# Rmagic is hosted on GitHub.
-cat("\nInstalling GitHub packages...\n")
+# --- Step 3: Install other CRAN packages ---
+cat("\nInstalling other CRAN packages...\n")
+other_cran_packages <- c(
+  "Seurat",
+  "SeuratDisk"
+)
+install_cran_packages(other_cran_packages)
+
+# --- Step 4: Install Rmagic from GitHub ---
+cat("\nInstalling Rmagic from GitHub...\n")
 install_github_packages("KrishnaswamyLab/Rmagic")
 
-
-# --- Step 3: Install Python dependencies ---
-# SeuratDisk requires the 'anndata' Python package.
+# --- Step 5: Install Python dependencies ---
 cat("\nInstalling Python packages for reticulate...\n")
 tryCatch({
+  # First check if Python is available
+  if (!reticulate::py_available()) {
+    reticulate::install_python()
+  }
+  
+  # Install Python packages
   reticulate::py_install("anndata", pip = TRUE)
-  cat("Successfully installed Python package: anndata\n")
+  reticulate::py_install("magic-impute", pip = TRUE)
+  cat("Successfully installed Python packages: anndata, magic-impute\n")
 }, error = function(e) {
-  stop("Failed to install Python package 'anndata': ", e$message)
+  cat("Failed to install Python packages:", e$message, "\n")
+  cat("You can install them manually with: pip install anndata magic-impute\n")
 })
-
 
 cat("\n===========================================\n")
 cat("Package installation completed!\n")
-cat("You can now run your R scripts in this directory.\n")
+
+# Final check
+cat("\nFinal package availability check:\n")
+required_packages <- c("Seurat", "SeuratDisk", "hdf5r", "reticulate", "ggplot2", "dplyr")
+
+for (pkg in required_packages) {
+  if (requireNamespace(pkg, quietly = TRUE)) {
+    cat("✅", pkg, "is available\n")
+  } else {
+    cat("❌", pkg, "is NOT available\n")
+  }
+}
+
+# Check if Rmagic is available
+if (requireNamespace("Rmagic", quietly = TRUE)) {
+  cat("✅ Rmagic is available\n")
+} else {
+  cat("❌ Rmagic is NOT available\n")
+  cat("You may need to install it manually:\n")
+  cat("remotes::install_github('KrishnaswamyLab/Rmagic')\n")
+}
+
+cat("\nYou can now run your R scripts in this directory.\n")
