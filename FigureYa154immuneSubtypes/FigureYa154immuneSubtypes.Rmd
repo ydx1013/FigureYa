@@ -26,7 +26,6 @@ Reproduce the result graph in the article
 出自<https://doi.org/10.1016/j.immuni.2018.03.023>
 From <https://doi.org/10.1016/j.immuni.2018.03.023>
 
-
 Figure 1. Immune Subtypes in Cancer (A) Expression signature modules and identification of immune subtypes. 
 
 - Top: Consensus clustering of the pairwise correlation of cancer immune gene expression signature scores (rows and columns). Five modules of shared associations are indicated by boxes. 
@@ -50,13 +49,7 @@ Classify samples based on immune infiltration quantification results.
 
 ```{r}
 source("install_dependencies.R")
-library(devtools)
-install_github("Gibbsdavidl/ImmuneSubtypeClassifier")
-```
 
-Loading the package
-
-```{r}
 library(ConsensusClusterPlus)
 library(corrplot)
 library(ggplot2)
@@ -289,6 +282,8 @@ You can refer to this article <https://mp.weixin.qq.com/s/yVLgGQQi0CQ9Q9UfIKl5aA
 
 输出的pdf文件是矢量图，可以用Illustrator等矢量图软件打开，拼接、编辑图形和文字。
 The output PDF file is a vector image and can be opened in vector graphics software such as Illustrator to stitch and edit graphics and text.
+
+# Session Info
 
 ```{r}
 sessionInfo()
