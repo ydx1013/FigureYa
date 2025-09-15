@@ -34,9 +34,9 @@ from<http://www.nature.com/articles/ncomms6901>
 
 **小丫碎碎念：**像这种附带代码的好文章越来越多，是非常好的学习资源。
 
-这类文章怎么找到呢？小丫的经验是：在感兴趣的期刊主页的高级搜索里，搜code或script，同时限定research article和发表年份等信息。检索结果里会有上下文，一眼扫过去，就能看到哪些文章带代码。
+这类文章怎么找到呢？在感兴趣的期刊主页的高级搜索里，搜code或script，同时限定research article和发表年份等信息。检索结果里会有上下文，一眼扫过去，就能看到哪些文章带代码。
 
-怎样学习这类代码？这次实现就从这篇带代码的文章带你上手，以后你就可以自己去挖宝藏了。推荐路线：
+怎样学习这类代码？这次就从这篇带代码的文章带你上手，以后你就可以自己去挖宝藏了。推荐路线：
 
 - 先尝试自己写，或者至少在脑子里猜测作者是用什么方法哪个包实现的
 - 看原文代码，边看边实践
@@ -49,9 +49,9 @@ The code is provided in the supplementary materials of the original text, and th
 
 **Xiaoya's rambling: * * There are more and more good articles with accompanying code, which are very good learning resources.
 
-How can I find such articles? Xiaoya's experience is to search for code or script on the advanced search page of the journal she is interested in, while limiting information such as research article and publication year. There will be context in the search results, and at a glance, you can see which articles have code.
+How can I find such articles? Search for code or script on the advanced search page of the journal, while limiting information such as research article and publication year. There will be context in the search results, and at a glance, you can see which articles have code.
 
-How to learn this type of code? This crowdfunding campaign will take you through this article with code, so you can dig for treasure on your own in the future. Recommended route:
+How to learn this type of code? This time campaign will take you through this article with code, so you can dig for treasure on your own in the future. Recommended route:
 
 -Try writing it yourself first, or at least guess in your mind what method and package the author used to implement it
 -Read the original code and practice while reading
