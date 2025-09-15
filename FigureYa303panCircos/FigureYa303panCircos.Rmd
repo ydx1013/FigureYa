@@ -16,7 +16,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -45,45 +44,26 @@ Figure1. Comprehensive quantification of senescence levels in cancers and tissue
 
 在泛癌中根据组织类别、特定评分，绘制弦图。
 
-文中多个图可以用我们众筹过的FigureYa来实现：
-
-- Figure 4F ligand–receptorinteractions，可参考FigureYa178ReceptorLigand <https://k.youshop10.com/BWjYsgX=>
-- Figure 6B，可参考FigureYa35批量bestSeparation <https://k.youshop10.com/nesUttBS>
-- Figure 6E Consensus clustering，可参考FigureYa202consensusGene <https://k.youshop10.com/dNHdlWen>
-- FigureYa 6G Sankey diagram，可参考FigureYa25sankey <https://k.youshop10.com/1vm3In-4>
-- FigureYa 6H Hierarchical clustering of GSEA scores，可参考FigureYa71ssGSEA <https://k.youshop10.com/hhH631te>
-- 更多pancancer数据分析展示可参考 <https://k.youshop10.com/C8RkTgR3>
-- 更多单细胞分析及展示可参考 <https://k.youshop10.com/McawGY6=>
-- 更多圆圈图画法可参考 <https://k.youshop10.com/Ch9kUjuR>
+- Figure 4F ligand–receptorinteractions，可参考FigureYa178ReceptorLigand
+- Figure 6B，可参考FigureYa35批量bestSeparation
+- Figure 6E Consensus clustering，可参考FigureYa202consensusGene
+- FigureYa 6G Sankey diagram，可参考FigureYa25sankey
+- FigureYa 6H Hierarchical clustering of GSEA scores，可参考FigureYa71ssGSEA
 
 Draw chord diagrams in pan-cancer based on tissue categories and specific scores.
 
-Several figures in the article can be implemented using our crowdfunded FigureYa:
-
-- Figure 4F ligand–receptor interactions, see FigureYa178ReceptorLigand <https://k.youshop10.com/BWjYsgX=>
-- Figure 6B, see FigureYa35 batch bestSeparation <https://k.youshop10.com/nesUttBS>
-- Figure 6E Consensus clustering, see FigureYa202consensusGene <https://k.youshop10.com/dNHdlWen>
-- FigureYa 6G Sankey diagram, see FigureYa25sankey <https://k.youshop10.com/1vm3In-4>
-- FigureYa 6H Hierarchical clustering of GSEA scores, see FigureYa71ssGSEA <https://k.youshop10.com/hhH631te>
-- More pan-cancer data analysis and visualization see <https://k.youshop10.com/C8RkTgR3>
-- More single-cell analysis and visualization see <https://k.youshop10.com/McawGY6=>
-- More circle diagram drawing methods see <https://k.youshop10.com/Ch9kUjuR>
+- Figure 4F ligand–receptor interactions, see FigureYa178ReceptorLigand
+- Figure 6B, see FigureYa35 batch bestSeparation
+- Figure 6E Consensus clustering, see FigureYa202consensusGene
+- FigureYa 6G Sankey diagram, see FigureYa25sankey
+- FigureYa 6H Hierarchical clustering of GSEA scores, see FigureYa71ssGSEA
 
 # 环境设置
 # Environment Setup
 
-
-Using domestic mirrors for package installation.
-
 ```{r}
 source("install_dependencies.R")
 
-```
-
-# 加载包
-# Loading packages
-
-```{r}
 library(circlize)
 library(ComplexHeatmap)
 
@@ -330,11 +310,8 @@ dev.copy2pdf(file = "pancircos.pdf", width = 10, height = 10)
 
 For some types of samples with a small sample size, the text may overlap. You can refer to the example text for adjustment. The output PDF file is a vector graphic, which can be opened with vector graphic editors such as Adobe Illustrator. You can edit the position of the text and add guide lines.
 
-# 会话信息
 # Session Info
 
 ```{r}
-# 显示会话信息
-# Show session information
 sessionInfo()
 ```
