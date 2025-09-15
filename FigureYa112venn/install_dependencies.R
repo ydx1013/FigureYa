@@ -126,7 +126,7 @@ for (pkg in core_packages) {
     cat("✓", pkg, "is installed\n")
   } else {
     cat("✗", pkg, "FAILED to install\n")
-    all_core_installed <- FALSE
+    all_core_installed = FALSE
   }
 }
 
