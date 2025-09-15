@@ -11,15 +11,14 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 # 设置knitr代码块的全局选项 / Set global options for knitr code chunks
 ```
 
-## 需求描述
+# 需求描述
 
-## Requirements description
+# Requirements description
 
 co-occurrence/mutual exclusivity分析，画出图d。
 
@@ -33,7 +32,7 @@ Co-occurrence/mutual exclusivity -- Only mutations seen in **at least 10 patient
 
 from<https://www.nature.com/articles/s41586-018-0623-z>
 
-## 应用场景
+# 应用场景
 
 用TCGA的基因突变数据分析Co-occurrence/mutual exclusivity。
 
@@ -41,7 +40,7 @@ from<https://www.nature.com/articles/s41586-018-0623-z>
 
 corrplot这个包对相关性的更多展示方式可参考<http://www.sthda.com/english/wiki/visualize-correlation-matrix-using-correlogram>。
 
-## Application Scenarios
+# Application Scenarios
 
 Analyze Co-occurrence/mutual exclusivity with gene mutation data from TCGA.
 
@@ -49,29 +48,12 @@ Demonstrate both correlation and significance with corrplot.
 
 More ways of displaying correlation by the package corrplot can be found at <http://www.sthda.com/english/wiki/visualize-correlation-matrix-using-correlogram>.
 
-## 环境设置
+# 环境设置
 
-## Environment settings
+# Environment settings
 
 ```{r}
 source("install_dependencies.R")
-# ====================== 包安装设置 ======================
-# ====================== Package Installation Settings ======================
-
-
-
-# 安装Cairo图形设备包 (注释状态)
-# Install Cairo graphics device package (commented out)
-# install.packages("Cairo")
-
-# 添加discover包专用仓库并安装 (注释状态)
-# Add discover package repository and install (commented out)
-# options(repos=c(getOption("repos"), "http://ccb.nki.nl/software/discover/repos/r"))
-# install.packages("discover")
-
-
-# ====================== 加载所需包 ======================
-# ====================== Load Required Packages ======================
 
 # 数据重塑包：用于数据结构转换（宽表/长表）
 # Data reshaping package: for data structure transformation (wide/long format)
@@ -101,10 +83,6 @@ library(corrplot)
 # Excel file manipulation package: read/write Excel files
 library(openxlsx)
 
-
-# ====================== 系统环境设置 ======================
-# ====================== System Environment Settings ======================
-
 # 设置系统语言环境为英文（保证报错信息是英文）
 # Set system language to English (to ensure error messages in English)
 Sys.setenv(LANGUAGE = "en")
@@ -114,16 +92,16 @@ Sys.setenv(LANGUAGE = "en")
 options(stringsAsFactors = FALSE)
 ```
 
-## 参数设置
+# 参数设置
 
-## Parameter setting
+# Parameter setting
 
 ```{r}
 # 设置目标癌症类型 - 此处以乳腺癌(BRCA)为例 / Set target cancer type - using Breast Cancer (BRCA) as example
 target_tumor <- "BRCA"
 ```
 
-## 输入文件的准备
+# 输入文件的准备
 
 如果你的数据已经保存为“easy_input_mutation.csv”，就可以跳过这步，直接进入“Co-occurrence/mutual exclusivity分析”。
 
@@ -131,7 +109,7 @@ target_tumor <- "BRCA"
 
 例文没有提供基因层面的突变数据，此处以TCGA的BRCA为例，用DISCOVERY method进行co-occurrence和mutual exclusivity分析。
 
-## Input file preparation
+# Input file preparation
 
 If your data has been saved as “easy_input_mutation.csv”, you can skip this step and go directly to the “Co-occurrence/mutual exclusivity analysis “.
 
@@ -139,7 +117,7 @@ If you only want to draw a picture, you can go directly to “Start Drawing”.
 
 The example paper does not provide mutation data at the gene level, so here we take the BRCA of TCGA as an example, and use the DISCOVERY method to analyze the co-occurrence and mutual exclusivity.
 
-### 基因层面的突变数据下载
+# 基因层面的突变数据下载
 
 从UCSC xena的TCGA Pan-Cancer (PANCAN) (39 datasets)<https://xenabrowser.net/datapages/?cohort=TCGA%20Pan-Cancer%20(PANCAN)&removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443>，下载两个文件：
 
@@ -149,7 +127,7 @@ The example paper does not provide mutation data at the gene level, so here we t
 
 - TCGA的癌症全称和缩写的对应关系，参照GEPIA help的Differential analysis：<http://gepia.cancer-pku.cn/help.html>，整理成samplepair.txt文件
 
-### Gene-level mutation data downloads
+# Gene-level mutation data downloads
 
 TCGA Pan-Cancer (PANCAN) from UCSC xena (39 datasets)<https://xenabrowser.net/datapages/?cohort=TCGA%20Pan-Cancer%20(PANCAN)&removeHub= https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443>, download two files:
 
@@ -231,9 +209,9 @@ tcgatable <- tcgacase[, c(1, 5:7)]  # 选择样本ID和组织类型列 / Select 
 head(tcgatable)  # 预览结果 / Preview result
 ```
 
-### 提取你感兴趣的癌症的突变数据
+# 提取你感兴趣的癌症的突变数据
 
-### Extract mutation data for your cancer of interest
+# Extract mutation data for your cancer of interest
 
 ```{r}
 # 加载data.table包用于高效数据处理
@@ -294,7 +272,7 @@ target_mutationinfo[1:5, 1:5]
 write.csv(target_mutationinfo[, 1:5], "easy_input_mutation.csv", quote = FALSE)
 ```
 
-## Co-occurrence/mutual exclusivity分析
+# Co-occurrence/mutual exclusivity分析
 
 DESCOVERY method，用R版本的DESCOVERY计算co-occurrence和mutual exclusivity。
 
@@ -306,7 +284,7 @@ DESCOVERY method，用R版本的DESCOVERY计算co-occurrence和mutual exclusivit
 
 需要引用的文献：<https://genomebiology.biomedcentral.com/articles/10.1186/s13059-016-1114-x>
 
-## Co-occurrence/mutual exclusivity analysis
+# Co-occurrence/mutual exclusivity analysis
 
 DESCOVERY method to calculate co-occurrence and mutual exclusivity with R version of DESCOVERY.
 
@@ -407,15 +385,15 @@ Co-occurrence and mutual exclusivity. Only mutations seen in at least 10 patient
 
 However, DESCOVER does not output odds ratio, the original article does not describe the calculation method of odds ratio, and contacting the corresponding author did not get a reply. Welcome friends who are interested in the calculation of odds ratio to discuss it in Xiaoya Drawing Knowledge Planet or WeChat Group.
 
-## 例文的原图复现
+# 例文的原图复现
 
-## A reproduction of the original image of the example text
+# A reproduction of the original image of the example text
 
-### 输入文件
+# 输入文件
 
 输入数据来源：例文的Source Data Fig. 1，<https://static-content.springer.com/esm/art%3A10.1038%2Fs41586-018-0623-z/MediaObjects/41586_2018_623_MOESM4_ESM.xlsx>，Tab C。
 
-### Input file
+# Input file
 
 Input Data Source: Source Data for Example Fig.
 1，<https://static-content.springer.com/esm/art%3A10.1038%2Fs41586-018-0623-z/MediaObjects/41586_2018_623_MOESM4_ESM.xlsx>，Tab C。
@@ -550,9 +528,9 @@ input_pvalue[1:5, 1:5]
 #    - Missing values (NA) require special handling in visualization
 ```
 
-### 开始画图
+# 开始画图
 
-### Start drawing
+# Start drawing
 
 ```{r}
 # ====================== 突变相关性可视化 ======================
@@ -628,6 +606,8 @@ dev.off()
 ```
 
 ![](mutationplot.pdf)
+
+# Session Info
 
 ```{r}
 sessionInfo()
