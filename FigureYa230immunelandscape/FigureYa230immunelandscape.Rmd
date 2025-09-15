@@ -10,7 +10,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -21,7 +20,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Requirement Description
 
-I would like to crowdfund a heat map of risk value and immune cell correlation for multiple algorithms (Figure 7 in the article)
+I would like to draw a heat map of risk value and immune cell correlation for multiple algorithms (Figure 7 in the article)
 
 ![](example.png)
 
@@ -45,9 +44,9 @@ Figure 7. Heatmap for immune responses based on CIBERSORT, ESTIMATE, MCPcounter,
 
 图中各种打分的计算方法可参考我们实现过的FigureYa：
 
-- 计算CIBERSORT得分、ESTIMATE得分，可参考FigureYa211multiCohortImmSubtype<https://k.youshop10.com/VwpAWxx0>
-- ssGSEA，可参考FigureYa71ssGSEA<https://k.youshop10.com/hhH631te>
-- TIMER，从网站下载TIMER数据可参考FigureYa234panImmune<https://k.youshop10.com/Qis-lxH=>，用immunedeconv包进行TIMER打分可参考FigureYa264epiImmune<https://k.youshop10.com/3FtJ=KyB>
+- 计算CIBERSORT得分、ESTIMATE得分，可参考FigureYa211multiCohortImmSubtype
+- ssGSEA，可参考FigureYa71ssGSEA
+- TIMER，从网站下载TIMER数据可参考FigureYa234panImmune，用immunedeconv包进行TIMER打分可参考FigureYa264epiImmune
 
 # Application Scenarios
 
@@ -62,30 +61,19 @@ The original article uses pheatmap to make line comments on different algorithms
 (1) The original pheatmap: :p heatmap display
 (2) ComplexHeatmap: :p heatmap uses different colors for different algorithms, and then vertically connects the heatmap to display
 
-The calculation methods of various scores in the figure can be referred to our crowdfunded FigureYa:
+The calculation methods of various scores in the figure can be referred to:
 
-- To calculate the CIBERSORT score and ESTIMATE score, see FigureYa211multiCohortImmSubtype<https://k.youshop10.com/VwpAWxx0>
-- ssGSEA, see FigureYa71ssGSEA <https://k.youshop10.com/hhH631te>
-- TIMER, for downloading TIMER data from the website, please refer to FigureYa234panImmune<https://k.youshop10.com/Qis-lxH=>, and for TIMER scoring with the immunedeconv package, please refer to FigureYa264epiImmune<https://k.youshop10.com/3FtJ=KyB>
+- To calculate the CIBERSORT score and ESTIMATE score, see FigureYa211multiCohortImmSubtype
+- ssGSEA, see FigureYa71ssGSEA
+- TIMER, for downloading TIMER data from the website, please refer to FigureYa234panImmune, and for TIMER scoring with the immunedeconv package, please refer to FigureYa264epiImmune
 
 # 环境设置
 
-
 # Environment settings
-
 
 ```{r}
 source("install_dependencies.R")
-```
 
-```{r eval=FALSE}
-BiocManager::install("ComplexHeatmap")
-BiocManager::install("pheatmap")
-```
-
-load packages
-
-```{r}
 library(RColorBrewer)
 library(circlize)
 library(gplots)
