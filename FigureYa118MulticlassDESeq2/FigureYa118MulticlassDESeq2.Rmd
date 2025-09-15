@@ -37,7 +37,7 @@ Implement multi group differential analysis using DESeq2. Can be used to replace
 
 ## Application scenarios
 
-Based on Figure Ya109 subtype GSEA, analyze the differentially expressed genes between each group and other samples, and identify subtype specific enriched pathways;
+Based on FigureYa109 subtype GSEA, analyze the differentially expressed genes between each group and other samples, and identify subtype specific enriched pathways;
 
 Using FigureYa116supervisedCluster, analyze the differentially expressed genes between each group and other samples, and identify subtype specific marker genes.
 
@@ -47,19 +47,11 @@ For the case where the read count expression matrix is used as input, if your da
 
 ## 环境设置
 
-
 ## Environment settings
-
-Use domestic image installation package
-
-```r
-BiocManager::install("DESeq2")
-```
-
-
 
 ```{r}
 source("install_dependencies.R")
+
 # 加载DESeq2包，用于差异表达基因分析
 # Load the DESeq2 package for differential gene expression analysis
 library(DESeq2)
@@ -307,6 +299,8 @@ for (i in 1:n.sub) {  # n.sub为亚型数量，由前面代码计算得出
                                                                    # Use subtype name as list element name
 }
 ```
+
+# Session Info
 
 ```{r}
 sessionInfo()
