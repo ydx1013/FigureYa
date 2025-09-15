@@ -26,18 +26,19 @@ install_cran_package <- function(package_name) {
   }
 }
 
-# Function to install Bioconductor packages
-install_bioc_package <- function(package_name) {
+# Function to install GitHub packages
+install_github_package <- function(repo) {
+  package_name <- strsplit(repo, "/")[[1]][2]
   if (!is_package_installed(package_name)) {
-    cat("Installing Bioconductor package:", package_name, "\n")
+    cat("Installing GitHub package:", repo, "\n")
     tryCatch({
-      if (!is_package_installed("BiocManager")) {
-        install.packages("BiocManager")
+      if (!is_package_installed("devtools")) {
+        install.packages("devtools")
       }
-      BiocManager::install(package_name, update = FALSE, ask = FALSE)
+      devtools::install_github(repo)
       cat("Successfully installed:", package_name, "\n")
     }, error = function(e) {
-      cat("Failed to install", package_name, ":", e$message, "\n")
+      cat("Failed to install", package_name, "from GitHub:", e$message, "\n")
     })
   } else {
     cat("Package already installed:", package_name, "\n")
@@ -47,10 +48,17 @@ install_bioc_package <- function(package_name) {
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
+# Install GitHub packages first
+cat("\nInstalling GitHub packages...\n")
+github_packages <- c("jespermaag/gganatogram")
+
+for (pkg in github_packages) {
+  install_github_package(pkg)
+}
 
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("gganatogram", "gridExtra", "stringr")
+cran_packages <- c("gridExtra", "stringr", "ggplot2", "dplyr")
 
 for (pkg in cran_packages) {
   install_cran_package(pkg)
@@ -58,4 +66,17 @@ for (pkg in cran_packages) {
 
 cat("\n===========================================\n")
 cat("Package installation completed!\n")
-cat("You can now run your R scripts in this directory.\n")
+
+# Verify installation
+cat("\nVerifying package installation:\n")
+all_packages <- c("gganatogram", "gridExtra", "stringr", "ggplot2")
+
+for (pkg in all_packages) {
+  if (is_package_installed(pkg)) {
+    cat("✓", pkg, "is installed\n")
+  } else {
+    cat("✗", pkg, "is NOT installed\n")
+  }
+}
+
+cat("\nYou can now run your R scripts in this directory.\n")
