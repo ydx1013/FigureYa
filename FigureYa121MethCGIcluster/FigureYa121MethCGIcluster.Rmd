@@ -48,6 +48,7 @@ Can be used to mine DNA methylation data of TCGA.
 
 ```{r}
 source("install_dependencies.R")
+
 # 加载数据处理包
 # Load data processing package
 library(data.table)
@@ -82,6 +83,7 @@ options(stringsAsFactors = FALSE)
 数据于XENA平台下载，进入<https://xenabrowser.net/datapages/>，点击你感兴趣的癌症。此处以UCS为例，因此点击GDC TCGA Uterine Carcinosarcoma (UCS) (12 datasets)，点击DNA methylation下Illumina Human Methylation 450 (n=57) GDC Hub，<https://xenabrowser.net/datapages/?dataset=TCGA.UCS.sampleMap%2FHumanMethylation450&host=https%3A%2F%2Ftcga.xenahubs.net&removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443>，点击download右侧的链接，下载得到HumanMethylation450.gz，解压到当前文件夹，无后缀名
 
 - easy_input_age.txt，年龄，非必需，仅用于模仿例文的图，还可以是其他数据，可参考FigureYa71ssGSEA获得临床信息。
+
 ## Preparation of input files
 
 - HumanMethylation450.gz， Due to the large amount of data involved in methylation, we chose UCS, a uterine sarcoma with a relatively small sample size in TCGA, as an example
@@ -407,6 +409,8 @@ invisible(dev.off())
 ```
 
 ![](methylation_cgi_clustering_complexheatmap.pdf)
+
+# Session Info
 
 ```{r}
 sessionInfo()
