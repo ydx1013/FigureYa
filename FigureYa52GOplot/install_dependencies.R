@@ -47,10 +47,9 @@ install_bioc_package <- function(package_name) {
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
-
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("AnnotationHub", "GOplot", "ggplot2")
+cran_packages <- c("GOplot", "ggplot2")
 
 for (pkg in cran_packages) {
   install_cran_package(pkg)
@@ -58,7 +57,7 @@ for (pkg in cran_packages) {
 
 # Installing Bioconductor packages
 cat("\nInstalling Bioconductor packages...\n")
-bioc_packages <- c("AnnotationDbi", "clusterProfiler", "org.Mm.eg.db")
+bioc_packages <- c("AnnotationHub", "AnnotationDbi", "clusterProfiler", "org.Mm.eg.db")
 
 for (pkg in bioc_packages) {
   install_bioc_package(pkg)
@@ -67,3 +66,13 @@ for (pkg in bioc_packages) {
 cat("\n===========================================\n")
 cat("Package installation completed!\n")
 cat("You can now run your R scripts in this directory.\n")
+
+# Test if AnnotationHub can be loaded
+cat("\nTesting AnnotationHub package...\n")
+if (require("AnnotationHub", quietly = TRUE)) {
+  cat("✅ AnnotationHub package loaded successfully!\n")
+} else {
+  cat("❌ AnnotationHub package could not be loaded.\n")
+  cat("You may need to install it manually:\n")
+  cat("BiocManager::install('AnnotationHub')\n")
+}
