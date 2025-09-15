@@ -10,18 +10,17 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
 # 需求描述
 
-丫姐好，我想实现这幅韦恩图，觉得蛮有意思的
+我想实现这幅韦恩图，觉得蛮有意思的
 
 # Requirement Description
 
-Hello sister Ya, I want to crowdfund this Venn diagram, I think it's quite interesting
+I want to draw this Venn diagram, I think it's quite interesting
 
 ![](example.png)
 
@@ -40,21 +39,11 @@ To show the overlap genes between multiple groups and each specific gene, a venn
 
 # 环境设置
 
-
 # Environment settings
-
 
 ```{r}
 source("install_dependencies.R")
-```
 
-```{r eval=FALSE}
-install.packages("ggVennDiagram")
-```
-
-load packages
-
-```{r}
 library(ggVennDiagram) # 找overlap基因 # Find overlap genes
 library(ggplot2)
 library(magrittr)
