@@ -16,7 +16,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -53,8 +52,6 @@ b) Similar to (a), but **in paired samples** grouped by cancer from the TCGA. Ea
 
 还可以把基因集换成你感兴趣的signature、biomarker。你在某个cohort里发现的差异基因，再来TCGA泛癌里看看异同。
 
-更多泛癌的图看这里
-
 Extract expression data from paired samples in TCGA pan-cancer, then select genes from pathways of interest, calculate pathway enrichment scores, and generate a connected-line plot.
 
 The same barcode-based method for extracting paired samples can also be applied to other TCGA data types, such as DNA methylation.
@@ -63,26 +60,12 @@ The paired-sample expression data can be used for additional analyses and visual
 
 You can also replace the gene sets with your own signatures or biomarkers of interest. For instance, DEGs identified in a specific cohort can be further examined in TCGA pan-cancer to compare similarities and differences.
 
-For more pan-cancer visualizations, check here
-
 # 环境设置
 # Environment Setup
 
-
-Using domestic mirrors for package installation.
-
 ```{r}
 source("install_dependencies.R")
-```
 
-```{r eval=FALSE}
-install.packages(c("data.table", "knitr"))
-```
-
-# 加载包
-# Loading packages
-
-```{r}
 library(data.table)
 library(GSVA)
 
