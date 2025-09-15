@@ -31,7 +31,7 @@ Implement multi group differential analysis using DESeq2. Can be used to replace
 
 结合FigureYa116supervisedCluster，分析每一组与其他样品的差异基因，进而找出亚型特异的marker基因。
 
-**注意：**本实现不涉及批次效应消除，若样本间含有批次效应，请阅读DESeq2相关document并修改该脚本，在设计矩阵中纳入batch effect。
+**注意：**这里不涉及批次效应消除，若样本间含有批次效应，请阅读DESeq2相关document并修改该脚本，在设计矩阵中纳入batch effect。
 
 这里针对read count表达矩阵作为输入的情况，如果你的数据是FPKM/RPKM或芯片数据，请参考FigureYa119Multiclasslimma
 
@@ -41,7 +41,7 @@ Based on Figure Ya109 subtype GSEA, analyze the differentially expressed genes b
 
 Using FigureYa116supervisedCluster, analyze the differentially expressed genes between each group and other samples, and identify subtype specific marker genes.
 
-**Note: * * This crowdfunding does not involve batch effect elimination. If there are batch effects between samples, please read the relevant DESeq2 documents and modify the script to include batch effects in the design matrix.
+**Note: * * This time does not involve batch effect elimination. If there are batch effects between samples, please read the relevant DESeq2 documents and modify the script to include batch effects in the design matrix.
 
 For the case where the read count expression matrix is used as input, if your data is FPKM/RPKM or chip data, please refer to FigureYa119 Multiclasslimma
 
