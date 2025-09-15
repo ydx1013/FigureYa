@@ -47,10 +47,9 @@ install_bioc_package <- function(package_name) {
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
-
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("RColorBrewer", "TxDb.Hsapiens.UCSC.hg19.knownGene", "dplyr", "ggplot2", "trackViewer")
+cran_packages <- c("RColorBrewer", "dplyr", "ggplot2")
 
 for (pkg in cran_packages) {
   install_cran_package(pkg)
@@ -58,7 +57,15 @@ for (pkg in cran_packages) {
 
 # Installing Bioconductor packages
 cat("\nInstalling Bioconductor packages...\n")
-bioc_packages <- c("ComplexHeatmap", "TCGAbiolinks", "TxDb.Hsapiens.UCSC.hg38.knownGene", "circlize", "org.Hs.eg.db")
+bioc_packages <- c(
+  "TxDb.Hsapiens.UCSC.hg19.knownGene",  # 移到Bioconductor列表
+  "TxDb.Hsapiens.UCSC.hg38.knownGene",
+  "trackViewer",  # trackViewer也是Bioconductor包
+  "ComplexHeatmap", 
+  "TCGAbiolinks", 
+  "circlize", 
+  "org.Hs.eg.db"
+)
 
 for (pkg in bioc_packages) {
   install_bioc_package(pkg)
@@ -67,3 +74,15 @@ for (pkg in bioc_packages) {
 cat("\n===========================================\n")
 cat("Package installation completed!\n")
 cat("You can now run your R scripts in this directory.\n")
+
+# Test if TxDb packages can be loaded
+cat("\nTesting TxDb packages...\n")
+test_packages <- c("TxDb.Hsapiens.UCSC.hg19.knownGene", "TxDb.Hsapiens.UCSC.hg38.knownGene")
+
+for (pkg in test_packages) {
+  if (requireNamespace(pkg, quietly = TRUE)) {
+    cat("✅", pkg, "is available\n")
+  } else {
+    cat("❌", pkg, "is NOT available\n")
+  }
+}
