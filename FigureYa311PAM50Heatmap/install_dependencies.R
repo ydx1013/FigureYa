@@ -47,18 +47,16 @@ install_bioc_package <- function(package_name) {
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
-
-# Installing CRAN packages
-cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("Basal", "LumA", "LumB", "genefu")
-
-for (pkg in cran_packages) {
-  install_cran_package(pkg)
-}
-
 # Installing Bioconductor packages
 cat("\nInstalling Bioconductor packages...\n")
-bioc_packages <- c("AnnotationDbi", "circlize", "ComplexHeatmap", "GSVA", "org.Hs.eg.db")
+bioc_packages <- c(
+  "genefu",        # PAM50分型
+  "AnnotationDbi", # 基因ID转换
+  "org.Hs.eg.db",  # 人类基因组注释
+  "GSVA",          # 基因集变异分析
+  "ComplexHeatmap",# 热图可视化
+  "circlize"       # 配色方案
+)
 
 for (pkg in bioc_packages) {
   install_bioc_package(pkg)
@@ -66,4 +64,17 @@ for (pkg in bioc_packages) {
 
 cat("\n===========================================\n")
 cat("Package installation completed!\n")
+
+# Test if all packages can be loaded
+cat("\nTesting package availability...\n")
+required_packages <- c("genefu", "AnnotationDbi", "org.Hs.eg.db", "GSVA", "ComplexHeatmap", "circlize")
+
+for (pkg in required_packages) {
+  if (requireNamespace(pkg, quietly = TRUE)) {
+    cat("✅", pkg, "is available\n")
+  } else {
+    cat("❌", pkg, "is NOT available\n")
+  }
+}
+
 cat("You can now run your R scripts in this directory.\n")
