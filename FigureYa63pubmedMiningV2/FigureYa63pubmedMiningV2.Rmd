@@ -10,20 +10,19 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## 需求描述
-## Requirement description
+# 需求描述
+# Requirement description
 
 通过API检索NCBI的Pubmed数据库，批量获得文章信息，整理出摘要里基因的词频。
 
 NCBI's Pubmed database is searched through the API to obtain article information in bulk and organize the word frequencies of the genes in the abstracts.
 
-## 应用场景
-## Application scenario
+# 应用场景
+# Application scenario
 
 - 老板交给我的这个基因好陌生，用这套代码跑出表格，一眼望去，发现它的好朋友我都很熟，于是，熟悉的思路、方法都能用上了。
 - 文章做到第三部分卡住了，我的基因到底调控了谁，或者谁调控了它，或者它跟谁是好朋友一同发挥作用？用这套代码跑出表格，一眼望去，发现目的基因跟我熟悉的一类分子一同出现在某篇文章的摘要里，我们实验室有非常完善的研究这类分子的实验体系，接下来就瞄准这个分子了。
@@ -52,26 +51,12 @@ It contains three modules that are relatively independent and can be run separat
 
 [Module 3] **Find a good friend from the abstract**
 
-## 环境设置
-## Environment setting
-
-
-use the domestic mirror installation package
-
-```r
-BiocManager::install("rentrez")
-BiocManager::install("pubmed.mineR")
-install.packages("jiebaR")
-install.packages("bibliometrix")
-install.packages("DT")
-install.packages("htmlwidgets")
-```
-
-
-load package
+# 环境设置
+# Environment setting
 
 ```{r}
 source("install_dependencies.R")
+
 library(data.table)
 library(stringr)
 library(ggplot2)
@@ -89,11 +74,11 @@ Sys.setenv(LANGUAGE = "en") #显示英文报错信息 display English error mess
 options(stringsAsFactors = FALSE) #禁止chr转成factor prohibit the conversion of chr to factor
 ```
 
-### 输入文件
-### Input file
+# 输入文件
+# Input file
 
-#### 常用词
-#### Common words
+## 常用词
+## Common words
 
 common_words_new.v2.txt，常用词。【模块三】计算词频时，要去除这些常用词。
 
@@ -104,8 +89,8 @@ common_words_new <- read.table("common_words_new.v2.txt")
 common_words_new <- common_words_new$V1
 ```
 
-#### 基因名
-#### Gene name
+## 基因名
+## Gene name
 
 每行一个基因。包含基因名、别名、位点，【模块三】将从摘要中统计这些基因名。还可以换成你想统计词频的其他类型的词。
 
@@ -116,9 +101,8 @@ One gene per row. It contains gene names, aliases, and loci. [Module 3] will cou
 head(HGNCdata)
 ```
 
-
-## 参数设置
-## Parameter setting
+# 参数设置
+# Parameter setting
 
 在这里设置检索词、检索的文章发表时间范围
 
@@ -156,9 +140,8 @@ term
 #term <- "CD274 OR PD-L1 OR PDL1"
 ```
 
-
-## 【模块一】文章的增长趋势
-## [Module 1] Trends in the growth of articles
+# 【模块一】文章的增长趋势
+# [Module 1] Trends in the growth of articles
 
 ```{r}
 #查询NCBI里的数据库简称
@@ -182,12 +165,11 @@ papers <- sapply(year, search_year, term=term, USE.NAMES=FALSE)
 plot(year, papers, type='b', main="The PD-L1 papers")
 ```
 
+# 【模块二】发表了哪些文章
+# [Module 2] What articles are published
 
-## 【模块二】发表了哪些文章
-## [Module 2] What articles are published
-
-### 检索并从结果中提取出PMID、发表日期、文章名、期刊。
-### Retrieve and extract the PMID, publication date, article name, and journal from the results.
+## 检索并从结果中提取出PMID、发表日期、文章名、期刊。
+## Retrieve and extract the PMID, publication date, article name, and journal from the results.
 
 ```{r}
 #我们先把retmax设为0，先不让它返回结果，这步只为了查看一共多少条记录
@@ -230,8 +212,8 @@ res$authors <- tmp
 write.table(res, "output_paper.txt", quote = F, sep = "\t", row.names = F)
 ```
 
-### 添加文章的Pubmed链接，保存成网页格式
-### Add the Pubmed link of the article, save it in web format
+## 添加文章的Pubmed链接，保存成网页格式
+## Add the Pubmed link of the article, save it in web format
 
 ```{r}
 uid <- res$uid
@@ -265,12 +247,11 @@ y <- DT::datatable(res,escape = F,rownames=F)
 DT::saveWidget(y,"output_paper.html")
 ```
 
+# 【模块三】从摘要找好朋友
+# [Module 3] **Find a good friend from the abstract***
 
-## 【模块三】从摘要找好朋友
-## [Module 3] **Find a good friend from the abstract***
-
-### 检索
-### Retrieve
+## 检索
+## Retrieve
 
 这段检索跟前面“【模块二】发表了哪些文章”的开头一样，就不重复运行了。
 
@@ -288,8 +269,8 @@ pre.result$count
 result <- entrez_search(db="pubmed", term=term, retmode = "xml", retmax = 200)
 ```
 
-### 把xml文件整理成数据框格式
-### Organize xml file into dataframe format
+## 把xml文件整理成数据框格式
+## Organize xml file into dataframe format
 
 xml中包含title、authors、year、journal、key_words、doi、pmid、abstract等信息，整理成data.frame格式。
 
@@ -313,8 +294,8 @@ abstract <- unlist(abstract0$abstract)
 #abstract[30]
 ```
 
-### 提取abstract中的基因名，并统计出现频率。
-### Extract the gene names in abstract and count the frequency of occurrence.
+## 提取abstract中的基因名，并统计出现频率。
+## Extract the gene names in abstract and count the frequency of occurrence.
 
 先把摘要分割成单个的单词，然后根据输入文件common_words_new.v2.txt去掉常用词，再根据HGNCdata.rda挑出基因名。
 
@@ -368,8 +349,8 @@ colnames(data_table) <- c("Gene_symbol", "Synonyms", "Freq");
 write.table(data_table, "output_friends.txt", sep = "\t", quote = F, row.names = F)
 ```
 
-### 给基因添加GeneCards链接，保存成网页格式
-### Add GeneCards link to gene, save it in web format
+## 给基因添加GeneCards链接，保存成网页格式
+## Add GeneCards link to gene, save it in web format
 
 ```{r}
 # 跟【模块二】一样的函数
@@ -392,9 +373,8 @@ y <- DT::datatable(res,escape = F,rownames=F)
 DT::saveWidget(y,"output_friends.html")
 ```
 
-
-## 功能扩展
-## Function expansion
+# 功能扩展
+# Function expansion
 
 【模块一】的文章数量可以借鉴时间数据的展示方式，画出酷炫的图；
 
@@ -412,8 +392,8 @@ The results of [Module 3] can be drawn as word clouds.
 
 Enjoy it! Hope can help you speed up your research!!!
 
-## 参考资料
-## Reference
+# 参考资料
+# Reference
 
 NCBI里的各种数据库，都可以用rentrez这个R包通过API访问，达到批量检索、处理的目的。
 
@@ -422,6 +402,8 @@ NCBI里的各种数据库，都可以用rentrez这个R包通过API访问，达�
 Various databases in NCBI can be accessed through API using the rentrez R package, achieving the purpose of batch retrieval and processing.
 
 Reference: <https://bioconnector.github.io/workshops/r-ncbi.html>
+
+# Session Info
 
 ```{r}
 sessionInfo()
