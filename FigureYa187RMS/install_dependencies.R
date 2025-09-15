@@ -36,7 +36,7 @@ install_bioc_package <- function(package_name) {
       }
       BiocManager::install(package_name, update = FALSE, ask = FALSE)
       cat("Successfully installed:", package_name, "\n")
-    }, error = function(e) {
+    }, error function(e) {
       cat("Failed to install", package_name, ":", e$message, "\n")
     })
   } else {
@@ -47,13 +47,20 @@ install_bioc_package <- function(package_name) {
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
-
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("survRM2", "survcomp", "survival")
+cran_packages <- c("survRM2", "survival")
 
 for (pkg in cran_packages) {
   install_cran_package(pkg)
+}
+
+# Installing Bioconductor packages
+cat("\nInstalling Bioconductor packages...\n")
+bioc_packages <- c("survcomp")
+
+for (pkg in bioc_packages) {
+  install_bioc_package(pkg)
 }
 
 cat("\n===========================================\n")
