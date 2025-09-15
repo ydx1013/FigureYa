@@ -47,15 +47,32 @@ install_bioc_package <- function(package_name) {
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
-
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("ggplot2", "ggrepel", "nlme", "optparse", "spatstat.explore", "viper")
+cran_packages <- c("ggplot2", "ggrepel", "nlme", "optparse", "spatstat.explore")
 
 for (pkg in cran_packages) {
   install_cran_package(pkg)
 }
 
+# Installing Bioconductor packages
+cat("\nInstalling Bioconductor packages...\n")
+bioc_packages <- c("viper")
+
+for (pkg in bioc_packages) {
+  install_bioc_package(pkg)
+}
+
 cat("\n===========================================\n")
 cat("Package installation completed!\n")
 cat("You can now run your R scripts in this directory.\n")
+
+# Test if viper can be loaded
+cat("\nTesting viper package...\n")
+if (require("viper", quietly = TRUE)) {
+  cat("✅ viper package loaded successfully!\n")
+} else {
+  cat("❌ viper package could not be loaded.\n")
+  cat("You may need to install it manually:\n")
+  cat("BiocManager::install('viper')\n")
+}
