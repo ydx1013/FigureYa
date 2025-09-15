@@ -44,13 +44,40 @@ install_bioc_package <- function(package_name) {
   }
 }
 
+# Function to install ktplots from GitHub
+install_ktplots <- function() {
+  if (!is_package_installed("ktplots")) {
+    cat("Installing ktplots from GitHub...\n")
+    tryCatch({
+      if (!is_package_installed("remotes")) {
+        install.packages("remotes")
+      }
+      remotes::install_github("kendomaniac/ktplots")
+      cat("Successfully installed: ktplots\n")
+    }, error = function(e) {
+      cat("Failed to install ktplots:", e$message, "\n")
+      cat("You may need to install it manually: remotes::install_github('kendomaniac/ktplots')\n")
+    })
+  } else {
+    cat("Package already installed: ktplots\n")
+  }
+}
+
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
+# First install remotes for GitHub packages
+cat("\nInstalling remotes package...\n")
+install_cran_package("remotes")
+
+# Install ktplots from GitHub
+cat("\nInstalling ktplots...\n")
+install_ktplots()
 
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("RColorBrewer", "Seurat", "annotation_strategy", "gene_a", "gene_b", "ggraph", "ggrepel", "grid", "id_cp_interaction", "igraph", "interacting_pair", "is_integrin", "ktplots", "partner_a", "partner_b", "receptor_a", "receptor_b", "reshape2", "root", "secreted")
+# 移除了看起来像数据对象而不是真实包名的项
+cran_packages <- c("RColorBrewer", "Seurat", "ggraph", "ggrepel", "grid", "igraph", "reshape2")
 
 for (pkg in cran_packages) {
   install_cran_package(pkg)
@@ -66,4 +93,15 @@ for (pkg in bioc_packages) {
 
 cat("\n===========================================\n")
 cat("Package installation completed!\n")
+
+# Test if ktplots can be loaded
+cat("\nTesting ktplots package...\n")
+if (require("ktplots", quietly = TRUE)) {
+  cat("✅ ktplots package loaded successfully!\n")
+} else {
+  cat("❌ ktplots package could not be loaded.\n")
+  cat("You may need to install it manually:\n")
+  cat("remotes::install_github('kendomaniac/ktplots')\n")
+}
+
 cat("You can now run your R scripts in this directory.\n")
