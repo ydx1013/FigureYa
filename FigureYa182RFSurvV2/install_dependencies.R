@@ -44,17 +44,41 @@ install_bioc_package <- function(package_name) {
   }
 }
 
+# Function to install packages from source
+install_from_source <- function(package_url) {
+  cat("Installing package from source:", package_url, "\n")
+  tryCatch({
+    # Download the package source
+    temp_file <- tempfile(fileext = ".tar.gz")
+    download.file(package_url, temp_file, quiet = TRUE)
+    
+    # Install the package
+    install.packages(temp_file, repos = NULL, type = "source")
+    
+    # Clean up
+    unlink(temp_file)
+    
+    cat("Successfully installed package from source\n")
+  }, error = function(e) {
+    cat("Failed to install from source:", e$message, "\n")
+  })
+}
+
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
-
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("randomForestSRC", "randomSurvivalForest", "randomSurvivalForest_3.6.4.tar.gz", "survival")
+cran_packages <- c("randomForestSRC", "survival")
 
 for (pkg in cran_packages) {
   install_cran_package(pkg)
 }
+
+# Install randomSurvivalForest from source
+cat("\nInstalling randomSurvivalForest from source...\n")
+randomSurvivalForest_url <- "https://cran.r-project.org/src/contrib/Archive/randomSurvivalForest/randomSurvivalForest_3.6.4.tar.gz"
+install_from_source(randomSurvivalForest_url)
 
 cat("\n===========================================\n")
 cat("Package installation completed!\n")
