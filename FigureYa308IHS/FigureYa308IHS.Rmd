@@ -16,7 +16,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -26,11 +25,11 @@ knitr::opts_chunk$set(echo = TRUE)
 
 我想众筹一下这篇文章里Figure5D，作者写了一个计算基因异质性的方法，然后用VIPER推断检查点蛋白活性以后计算了检查点蛋白的异质性，我想这个方法应该也可以用来计算其他种类蛋白的异质性，应该挺实用的。
 
-FigureYa296VIPER<https://k.youshop10.com/CTEFqnpF>跟这个不一样。这篇里面用的是新版的weighted VIPER，和之前的算法不一样，而且这个图重点是IHS分数的计算，不仅是蛋白活性的计算。
+FigureYa296VIPER跟这个不一样。这篇里面用的是新版的weighted VIPER，和之前的算法不一样，而且这个图重点是IHS分数的计算，不仅是蛋白活性的计算。
 
 I'd like to crowdfund Figure 5D from this article. The author developed a method to calculate gene heterogeneity, then used VIPER to infer checkpoint protein activity before calculating the heterogeneity of checkpoint proteins. I think this method could also be applied to calculate heterogeneity for other types of proteins - it seems quite practical.
 
-FigureYa296VIPER<https://k.youshop10.com/CTEFqnpF> is different from this one. Here, they used the new weighted VIPER, which has a different algorithm from the previous version. Moreover, the focus of this figure is on the calculation of IHS scores, not just protein activity inference.
+FigureYa296VIPER is different from this one. Here, they used the new weighted VIPER, which has a different algorithm from the previous version. Moreover, the focus of this figure is on the calculation of IHS scores, not just protein activity inference.
 
 ![](example.png)
 
@@ -51,7 +50,7 @@ Dotted lines indicate the median IHS value across 5099 proteins
 
 通过weighted viper推断检查点蛋白活性并计算异质性。
 
-更多异质性FigureYa看这里<https://k.youshop10.com/S-utnyI7>
+更多异质性FigureYa
 
 - FigureYa114ternaryCluster，在一组样本中某个geneset表达谱变异很大时，**展示这个geneset的所有基因表达异质性**。
 - FigureYa223scNMF，适合**异质性较大的样本的聚类分析**。
@@ -63,7 +62,7 @@ Dotted lines indicate the median IHS value across 5099 proteins
 
 Infer checkpoint protein activity and calculate heterogeneity using weighted VIPER.
 
-For more heterogeneity figures, see here<https://k.youshop10.com/S-utnyI7>
+For more heterogeneity figures
 
 - FigureYa114ternaryCluster: When the expression profile of a geneset varies significantly in a group of samples, it **displays the expression heterogeneity of all genes in this geneset**.
 - FigureYa223scNMF: Suitable for **cluster analysis of samples with high heterogeneity**.
@@ -76,21 +75,9 @@ For more heterogeneity figures, see here<https://k.youshop10.com/S-utnyI7>
 # 环境设置
 # Environment Setup
 
-
-Install packages using domestic mirror
-
 ```{r}
 source("install_dependencies.R")
-```
 
-```{r eval=FALSE}
-install.packages("optparse")
-```
-
-# 加载包
-# Load packages
-
-```{r}
 library(viper)
 library(nlme)
 library(spatstat.explore)
@@ -345,11 +332,8 @@ ggplot(plot.data, aes(x = protein, y = IHS, label = label)) +
 ggsave(file.path(res.path, "IHS.pdf"), width = 4, height = 4)
 ```
 
-# 会话信息
 # Session Info
 
 ```{r}
-# 显示会话信息
-# Show session information
 sessionInfo()
 ```
