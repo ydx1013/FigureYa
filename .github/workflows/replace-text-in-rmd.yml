@@ -1,0 +1,41 @@
+name: Replace Text in RMD Files
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  replace-text:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    - name: Find and Replace in RMD Files
+      run: |
+        # Find all .rmd files and replace text as required
+        find . -type f -name "*.rmd" | while read file; do
+          # Replace "众筹" with "实现"
+          sed -i 's/众筹/实现/g' "$file"
+          # Replace "大鱼海棠" with "Xiaofan Lu"
+          sed -i 's/大鱼海棠/Xiaofan Lu/g' "$file"
+          # Replace "Da Yu Hai Tang" with "Xiaofan Lu"
+          sed -i 's/Da Yu Hai Tang/Xiaofan Lu/g' "$file"
+          # Remove links like <https://k.koudai.com/...>
+          sed -i 's|<https://k.koudai.com[^>]*>||g' "$file"
+        done
+
+    - name: Commit Changes
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git add .
+        git commit -m "Automated text replacement in RMD files" || echo "No changes to commit"
+        git push
