@@ -10,7 +10,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -21,7 +20,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Requirement Description
 
-I want to crowdfund Figure 1B, and look at the genes with good prognostic judgment in both datasets.
+I want to draw Figure 1B, and look at the genes with good prognostic judgment in both datasets.
 
 ![](example.png)
 
@@ -40,19 +39,11 @@ The training set defines the candidate genes, and then looks for the set of gene
 
 # 环境设置
 
-
 # Environment settings
-
-Use the domestic Mirror Installer
 
 ```{r}
 source("install_dependencies.R")
 
-```
-
-load packages
-
-```{r}
 library(limma) # 芯片差异表达 # Differential expression of chips
 library(impute) # 芯片缺失值多重填补 # Chip missing values are multi-filled
 library(dplyr)
