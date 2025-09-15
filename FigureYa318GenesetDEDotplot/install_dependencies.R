@@ -47,10 +47,9 @@ install_bioc_package <- function(package_name) {
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
-
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("AUCell", "Seurat", "SeuratObject", "cowplot", "dplyr", "ggplot2", "magrittr", "openxlsx", "plyr")
+cran_packages <- c("Seurat", "SeuratObject", "cowplot", "dplyr", "ggplot2", "magrittr", "openxlsx", "plyr")
 
 for (pkg in cran_packages) {
   install_cran_package(pkg)
@@ -58,7 +57,7 @@ for (pkg in cran_packages) {
 
 # Installing Bioconductor packages
 cat("\nInstalling Bioconductor packages...\n")
-bioc_packages <- c("BiocManager", "clusterProfiler", "GEOquery", "GSVA", "limma")
+bioc_packages <- c("AUCell", "clusterProfiler", "GEOquery", "GSVA", "limma")
 
 for (pkg in bioc_packages) {
   install_bioc_package(pkg)
@@ -67,3 +66,13 @@ for (pkg in bioc_packages) {
 cat("\n===========================================\n")
 cat("Package installation completed!\n")
 cat("You can now run your R scripts in this directory.\n")
+
+# Test if AUCell can be loaded
+cat("\nTesting AUCell package...\n")
+if (require("AUCell", quietly = TRUE)) {
+  cat("✅ AUCell package loaded successfully!\n")
+} else {
+  cat("❌ AUCell package could not be loaded.\n")
+  cat("You may need to install it manually:\n")
+  cat("BiocManager::install('AUCell')\n")
+}
