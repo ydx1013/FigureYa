@@ -66,7 +66,6 @@ install_github_package <- function(repo) {
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
-
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
 cran_packages <- c("devtools")
