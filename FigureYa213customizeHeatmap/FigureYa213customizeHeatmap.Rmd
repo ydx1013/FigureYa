@@ -10,7 +10,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -70,27 +69,8 @@ Chen Yang, Xiaowen Huang, Yan Li, Junfei Chen, Yuanyuan Lv, Shixue Dai, Prognosi
 
 # Environment settings
 
-You can use the pheatmap in the latest version of ComplexHeatmap on github for drawing, and you can use it in either way.
-
-Method 1: Install the github version of ComplexHeatmap (I personally tested it and found it to work)
-
 ```{r}
 source("install_dependencies.R")
-```
-
-```{r eval=FALSE}
-library(devtools)
-install_github("jokergoo/ComplexHeatmap") 
-# 如果github网速困难，可本地安装
-# If the network speed of GitHub is slow, you can install it locally
-install.packages("ComplexHeatmap-master.tar.gz", repos = NULL, type = "source")
-```
-
-方式二：如果安装github版有困难，可以安装bioconductor版，然后加载最新的函数（小丫亲测有效）
-Method 2: If you have difficulty installing the GitHub version, you can install the Bioconductor version and then load the latest function (Xiaoya's personal test is effective)
-
-```{r eval=FALSE}
-BiocManager::install("ComplexHeatmap")
 ```
 
 加载新ComplexHeatmap包里的pheatmap函数
@@ -99,8 +79,6 @@ Load the pheatmap function in the new ComplexHeatmap package
 ```{r}
 source("pheatmap_translate.R") # 来自github版ComplexHeatmap # From github version of ComplexHeatmap
 ```
-
-load package
 
 ```{r}
 library(devtools)
@@ -117,8 +95,6 @@ options(stringsAsFactors = FALSE) # 禁止chr转成factor # chr is not allowed t
 
 如果你只是想画图，就直接跳到“开始画图”。
 
-文件较大，已上传至微云，请点击链接下载<https://share.weiyun.com/c9oY6n0T>
-
 LIHC.TPM.txt，基因表达矩阵，用于计算差异表达倍数。与FigureYa212drugTarget的相同。
 
 data_mutations_mskcc.txt，maf突变数据，用于提取亚型样本，此处以TP53突变为例。与FigureYa212drugTarget相同。
@@ -126,8 +102,6 @@ data_mutations_mskcc.txt，maf突变数据，用于提取亚型样本，此处�
 # Input files
 
 If you just want to draw, just skip to "Start drawing".
-
-The file is large and has been uploaded to Weiyun, please click the link to download the <https://share.weiyun.com/c9oY6n0T>
 
 LIHC. TPM.txt, gene expression matrix, which is used to calculate differential expression folds. Same as FigureYa212drugTarget.
 
