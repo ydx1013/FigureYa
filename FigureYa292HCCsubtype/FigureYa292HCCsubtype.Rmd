@@ -16,7 +16,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -72,21 +71,9 @@ Clustering of HCC samples based on expression profiles and comparison with other
 # 环境设置
 # Environment Setup
 
-
-Install packages using domestic mirror
-
 ```{r}
 source("install_dependencies.R")
-```
 
-```{r eval=FALSE}
-devtools::install_github("Lothelab/CMScaller")
-```
-
-# 加载包
-# Load packages
-
-```{r}
 # 用来实现nearest template prediction(NTP)
 # Implementation of Nearest Template Prediction (NTP)
 library(CMScaller) 
@@ -432,11 +419,8 @@ write.table(outTabMS, file = "independent test between ms and other classificati
 
 The output PDF files are vector graphics that can be opened and edited with vector graphic tools like Illustrator to add p-values. If you prefer to add p-values programmatically, please refer to FigureYa165heatmapPvalue or FigureYa280TMEofSTS.
 
-# 会话信息
 # Session Info
 
 ```{r}
-# 显示会话信息
-# Show session information
 sessionInfo()
 ```
