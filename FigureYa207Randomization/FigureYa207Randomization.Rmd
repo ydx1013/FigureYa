@@ -16,7 +16,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -64,33 +63,24 @@ FigureYa156enrichSimulation的富集检验零假设为两者分布是否一致�
 
 这里的随机化检验，使用的方法和富集检验如出一辙，均为重抽样计算概率分布密度，但其零假设的关键是基因分类标签的可交换性，或者说是否是DEG与基因的分类标签是无关的（参考：<https://www.uvm.edu/~statdhtx/StatPages/Randomization%20Tests/null_hypotheses.html>）
 
-对于本实现的原文，实际上作者也可以采用富集检验，来证明DEG是与CGC是弱关联（低富集），但是这里使用随机化检验，证明DEG的基因名的与CGC的标签无关。
+实际上原文作者也可以采用富集检验，来证明DEG是与CGC是弱关联（低富集），但是这里使用随机化检验，证明DEG的基因名的与CGC的标签无关。
 
-甚至我们觉得，随机化检验可以没有零假设，只考虑计算的概率，如本实现中计算得到，在1000次随机抽样中，DEG有95.6%的概率出现在正常表达的基因中，也就是说只有4.4%的概率出现在异常表达的基因中。
+甚至我们觉得，随机化检验可以没有零假设，只考虑计算的概率，如下文中计算得到，在1000次随机抽样中，DEG有95.6%的概率出现在正常表达的基因中，也就是说只有4.4%的概率出现在异常表达的基因中。
 
 The enrichment test in FigureYa156enrichSimulation has the null hypothesis that the distributions of the two are consistent. When p>0.05, a small probability event occurs, thus accepting the null hypothesis and concluding there is no statistically significant difference in distribution, hence no enrichment;
 
 The randomization test used here employs a method virtually identical to the enrichment test, both involving resampling to calculate probability distribution density. However, the key to its null hypothesis lies in the exchangeability of gene classification labels, or in other words, whether being a DEG is independent of gene classification labels (reference: <https://www.uvm.edu/~statdhtx/StatPages/Randomization%20Tests/null_hypotheses.html>).
 
-For the original article in this crowdfunding project, the authors could have actually used an enrichment test to demonstrate that DEGs are weakly associated with CGC (low enrichment). But here they used a randomization test to prove that DEG gene identities are unrelated to CGC labels.
+The original article authors could have actually used an enrichment test to demonstrate that DEGs are weakly associated with CGC (low enrichment). But here they used a randomization test to prove that DEG gene identities are unrelated to CGC labels.
 
-We even think that a randomization test might not need a null hypothesis at all, focusing only on the calculated probabilities. As computed in this crowdfunding project: in 1000 random samplings, DEGs had a 95.6% probability of appearing in normally expressed genes, meaning only a 4.4% probability of appearing in abnormally expressed genes.
+We even think that a randomization test might not need a null hypothesis at all, focusing only on the calculated probabilities. As computed in this project: in 1000 random samplings, DEGs had a 95.6% probability of appearing in normally expressed genes, meaning only a 4.4% probability of appearing in abnormally expressed genes.
 
 # 环境设置
 # Environment Setup
 
-
-Using domestic mirrors for package installation.
-
 ```{r}
 source("install_dependencies.R")
-BiocManager::install("TCGAbiolinks")
-```
 
-# 加载包
-# Loading packages
-
-```{r}
 library(TCGAbiolinks)
 library(DESeq2)
 library(shape)
