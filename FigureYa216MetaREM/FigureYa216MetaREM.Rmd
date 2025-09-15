@@ -1,22 +1,14 @@
 ---
 title: "FigureYa216MetaREM"
-author: "小丫画图出品"
+author: "Jiawei Shi"
 date: "2021-1-15"
 output: html_document
 ---
-欢迎关注“小丫画图”公众号，回复“小白”，看小视频，实现点鼠标跑代码。
-
-小丫微信: epigenomics  E-mail: figureya@126.com
-
-作者：触手可及
-
-小丫编辑校验
 
 # Academic Citation
 If you use this code in your work or research, we kindly request that you cite our publication:
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
-
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -36,7 +28,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 先分开计算每个数据集、基因的HR（各数据集的HR、LCI、HCI、pvalue作为输入），然后利用meta分析的随机效应模型合并效应量，给出一个总的HR值。
 
-我们实现的森林图分别适用的情况：
+森林图分别适用的情况：
 
 - FigureYa90subgroup适用于可以获取具体每个病历的生存信息的情况，是合并原始数据然后分析；
 - FigureYa193riskTable是多个数据集分开多因素，只不过是用森林图来呈现；
@@ -44,17 +36,9 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # 环境设置
 
-
 ```{r}
 source("install_dependencies.R")
-```
 
-```{r eval=FALSE}
-install.packages("meta")
-```
-
-
-```{r}
 library(meta)
 library(dplyr)
 
