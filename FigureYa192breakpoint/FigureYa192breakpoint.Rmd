@@ -10,7 +10,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -20,7 +19,7 @@ knitr::opts_chunk$set(echo = TRUE)
 # Requirement
 
 求实现Fig 2，输入seer数据，循环cox模型，lowess平滑并绘图。
-Find the crowdfunding Fig 2, input the seer data, loop the cox model, smooth it with lowess and plot it.
+To draw the Fig 2, input the seer data, loop the cox model, smooth it with lowess and plot it.
 
 ![](example.png)
 
@@ -46,18 +45,9 @@ Here, we take the data from the SEER database as an example, which can also be u
 
 # Environment Setup
 
-
 ```{r}
 source("install_dependencies.R")
-```
 
-```{r eval=FALSE}
-install.packages("strucchange")
-```
-
-Loading package
-
-```{r}
 library(survival)
 library(strucchange)
 Sys.setenv(LANGUAGE = "en") #显示英文报错信息   # Display an English error message
