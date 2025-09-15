@@ -10,7 +10,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -21,7 +20,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Requirement Description
 
-If you want to crowdfund this Immunophenoscore algorithm, immune-related indicators include TMB, TILs and immune cell infiltration, etc., which is equivalent to a comprehensive score, which can enrich the content of immune analysis. The value of the z-score of each gene of IPS is output to a file.
+If you want to try this Immunophenoscore algorithm, immune-related indicators include TMB, TILs and immune cell infiltration, etc., which is equivalent to a comprehensive score, which can enrich the content of immune analysis. The value of the z-score of each gene of IPS is output to a file.
 
 ![](method.png)
 
@@ -55,17 +54,11 @@ The code has been slightly modified and translated here. **Please cite the origi
 
 # 环境设置
 
-
 # Environment settings
-
 
 ```{r}
 source("install_dependencies.R")
-```
 
-load packages
-
-```{r}
 library(ggplot2)
 library(grid)
 library(gridExtra)
