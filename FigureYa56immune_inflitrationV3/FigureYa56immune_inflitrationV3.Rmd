@@ -11,10 +11,7 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
-# 使用knitr包设置全局代码块选项
-# Set global chunk options using knitr package
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
@@ -61,30 +58,11 @@ reference material:
 -For more tested gene expression platforms, please refer to this article:< https://genomebiology.biomedcentral.com/articles/10.1186/s13059-016-1070-5 >
 
 # 环境设置
-
-安装需要的包
-
 # Environment settings
-
-Install the required packages
 
 ```{r}
 source("install_dependencies.R")
-install.packages("devtools")
 
-# 加载devtools包
-# Load the devtools package
-library(devtools)
-# 从GitHub安装MCPcounter包的master分支
-# Install the master branch of the MCPcounter package from GitHub
-install_github("ebecht/MCPcounter",ref="master", subdir="Source")
-```
-
-加载需要用到的包
-
-Load the required packages
-
-```{r}
 # 加载MCPcounter包，用于免疫细胞丰度估计
 # Load the MCPcounter package for immune cell abundance estimation
 library(MCPcounter)
@@ -671,6 +649,8 @@ pheatmap(targetCancerTPMestimates,
 ```
 
 ![](MCPcounter.pdf)
+
+# Session Info
 
 ```{r}
 sessionInfo()
