@@ -47,10 +47,9 @@ install_bioc_package <- function(package_name) {
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
-
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("RColorBrewer", "ggplot2", "ggridges", "mclust", "reshape2", "slingshot", "tradeSeq")
+cran_packages <- c("RColorBrewer", "ggplot2", "ggridges", "mclust", "reshape2")
 
 for (pkg in cran_packages) {
   install_cran_package(pkg)
@@ -58,7 +57,7 @@ for (pkg in cran_packages) {
 
 # Installing Bioconductor packages
 cat("\nInstalling Bioconductor packages...\n")
-bioc_packages <- c("ComplexHeatmap", "circlize")
+bioc_packages <- c("slingshot", "tradeSeq", "ComplexHeatmap", "circlize")
 
 for (pkg in bioc_packages) {
   install_bioc_package(pkg)
@@ -67,3 +66,13 @@ for (pkg in bioc_packages) {
 cat("\n===========================================\n")
 cat("Package installation completed!\n")
 cat("You can now run your R scripts in this directory.\n")
+
+# Test if slingshot can be loaded
+cat("\nTesting slingshot package...\n")
+if (require("slingshot", quietly = TRUE)) {
+  cat("✅ slingshot package loaded successfully!\n")
+} else {
+  cat("❌ slingshot package could not be loaded.\n")
+  cat("You may need to install it manually:\n")
+  cat("BiocManager::install('slingshot')\n")
+}
