@@ -10,18 +10,17 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
 # 需求描述
 
-你好，想实现一下这个图，用圆圈图的方式展示不同分组的关系。网上没有找到可以实现的代码。最好是R语言做。
+用圆圈图的方式展示不同分组的关系。网上没有找到可以实现的代码。最好是R语言做。
 
 # Requirement Description
 
-Hello, I would like to crowdfund this diagram to show the relationship between different groups in the form of a circle diagram. There is no code available online that can be implemented. It's best to do it in R.
+Draw this diagram to show the relationship between different groups in the form of a circle diagram. There is no code available online that can be implemented. It's best to do it in R.
 
 ![](example.png)
 
@@ -45,18 +44,11 @@ We have also crowdfunded Figure 1ABC for example, which selects co-expressed gen
 
 # 环境设置
 
-
 # Environment settings
-
 
 ```{r}
 source("install_dependencies.R")
 
-```
-
-load packages
-
-```{r}
 library(circlize)
 library(gridBase)
 library(grid)
