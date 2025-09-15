@@ -1,24 +1,14 @@
 ---
 title: "FigureYa228linkCor"
-author: "小丫画图出品"
+author: "Xiaofan Lu"
 date: "2021-4-16"
 output: html_document
 ---
-欢迎关注“小丫画图”公众号，回复“小白”，看小视频，实现点鼠标跑代码。
-
-小丫微信: epigenomics  E-mail: figureya@126.com
-
-作者：Xiaofan Lu
-
-单位：中国药科大学国家天然药物重点实验室，生物统计与计算药学研究中心
-
-小丫编辑校验
 
 # Academic Citation
 If you use this code in your work or research, we kindly request that you cite our publication:
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
-
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -26,7 +16,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # 需求描述
 
-老师这个图10D可以实现吗？真的很漂亮，蝴蝶图
+这个图10D可以实现吗？真的很漂亮，蝴蝶图
 
 ![](example.png)
 
@@ -54,20 +44,9 @@ Figure 6. Roles of Siglec15 in predicting immune phenotypes in the Xiangya cohor
 
 # 环境设置
 
-
 ```{r}
 source("install_dependencies.R")
-```
 
-```{r eval=FALSE}
-install.packages("ggnewscale")
-install.packages("ade4")
-# 下载自https://github.com/hannet91/ggcor
-install.packages("ggcor-master.tar.gz", repos = NULL, type = "source")
-```
-
-
-```{r}
 library(data.table)
 library(GSVA)
 library(ggplot2)
