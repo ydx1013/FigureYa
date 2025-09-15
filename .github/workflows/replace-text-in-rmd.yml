@@ -21,7 +21,7 @@ jobs:
     - name: Find and Replace in RMD Files
       run: |
         # Find all .rmd files and replace text as required
-        find . -type f -name "*.rmd" | while read file; do
+        find . -type f -name "*.Rmd" | while read file; do
           # Replace "众筹" with "实现"
           sed -i 's/众筹/实现/g' "$file"
           # Replace "大鱼海棠" with "Xiaofan Lu"
