@@ -44,28 +44,40 @@ install_bioc_package <- function(package_name) {
   }
 }
 
+# Function to install package from source
+install_source_package <- function(package_url) {
+  cat("Installing package from source:", package_url, "\n")
+  tryCatch({
+    install.packages(package_url, repos = NULL, type = "source")
+    cat("Successfully installed package from source\n")
+  }, error = function(e) {
+    cat("Failed to install from source:", e$message, "\n")
+  })
+}
+
 cat("Starting R package installation...\n")
 cat("===========================================\n")
-
 
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
 cran_packages <- c("dplyr", "stringr", "survival", "sva", "tibble", "tidyverse")
 
-# DealGPL570 package version 2.0 will report errors during operation, so I installed version 1.0
-install.packages("https://cran.r-project.org/src/contrib/Archive/DealGPL570/DealGPL570_0.0.1.tar.gz", repos = NULL, type = "source")
-
 for (pkg in cran_packages) {
   install_cran_package(pkg)
 }
 
-# Installing Bioconductor packages
+# Installing Bioconductor packages (including DealGPL570 dependencies first)
 cat("\nInstalling Bioconductor packages...\n")
-bioc_packages <- c("GenomicFeatures", "limma", "rtracklayer")
+bioc_packages <- c("GenomicFeatures", "limma", "rtracklayer", "GEOquery", "affy")
 
 for (pkg in bioc_packages) {
   install_bioc_package(pkg)
 }
+
+# Install DealGPL570 from source after its dependencies are installed
+cat("\nInstalling DealGPL570 from source...\n")
+deal_gpl570_url <- "https://cran.r-project.org/src/contrib/Archive/DealGPL570/DealGPL570_0.0.1.tar.gz"
+install_source_package(deal_gpl570_url)
 
 cat("\n===========================================\n")
 cat("Package installation completed!\n")
