@@ -11,7 +11,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -44,32 +43,12 @@ Step 3: Use REF-SVM to find the optimal feature range
 - 第四步，FW-SVM进一步喜欢特征数目
 Step 4: Use FW-SVM to further select feature numbers
 
-## 应用场景
-## Application Scenario
-
 ## 环境设置
 ## Environment Setup
 
-
-
-```r
-#' @ChAMP所依赖的包巨多，请耐心等待安装
-# ChAMP depends on many packages. Please be patient during installation.
-if (!requireNamespace("BiocManager", quietly = TRUE))
-  install.packages("BiocManager")
-BiocManager::install("ChAMP")
-BiocManager::install(c("minfi","ChAMPdata","Illumina450ProbeVariants.db","sva",
-                       "IlluminaHumanMethylation450kmanifest","limma","RPMM","DNAcopy",
-                       "preprocessCore","impute","marray","wateRmelon","goseq","plyr","GenomicRanges",
-                       "RefFreeEWAS","qvalue","isva","doParallel","bumphunter","quadprog",
-                       "shiny","shinythemes","plotly","RColorBrewer","DMRcate","dendextend",
-                       "IlluminaHumanMethylationEPICmanifest","FEM","matrixStats","missMethyl","combinat"))
-```
-
-Load required packages
-
 ```{r}
 source("install_dependencies.R")
+
 library(tidyverse)
 library(ChAMP)
 library(minfi)
@@ -261,6 +240,8 @@ write.csv(tumor_subtype_methy,"TCGA-LIHC-survival-relevant-DMP-matrix.csv")
 
 接下来将进入第三和第四步，请打开FigureYa130coxSVM_step34.ipynb文件，以第二步生成的TCGA-LIHC-survival-relevant-DMP-matrix.csv文件作为输入。
 Next, proceed to Steps 3 and 4. Open the FigureYa130coxSVM_step34.ipynb notebook and use the CSV file TCGA-LIHC-survival-relevant-DMP-matrix.csv generated in Step 2 as input.
+
+# Session Info
 
 ```{r}
 sessionInfo()
