@@ -44,17 +44,41 @@ install_bioc_package <- function(package_name) {
   }
 }
 
+# Function to install CMScaller from GitHub
+install_cmscaller <- function() {
+  if (!is_package_installed("CMScaller")) {
+    cat("Installing CMScaller from GitHub...\n")
+    tryCatch({
+      # First install remotes if not available
+      if (!is_package_installed("remotes")) {
+        install.packages("remotes")
+      }
+      # Install CMScaller from GitHub
+      remotes::install_github("LotteN/CMScaller")
+      cat("Successfully installed: CMScaller\n")
+    }, error = function(e) {
+      cat("Failed to install CMScaller:", e$message, "\n")
+      cat("You may need to install it manually with: remotes::install_github('LotteN/CMScaller')\n")
+    })
+  } else {
+    cat("Package already installed: CMScaller\n")
+  }
+}
+
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
-
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("CMScaller", "cluster")
+cran_packages <- c("cluster", "remotes")
 
 for (pkg in cran_packages) {
   install_cran_package(pkg)
 }
+
+# Install CMScaller from GitHub
+cat("\nInstalling CMScaller...\n")
+install_cmscaller()
 
 # Installing Bioconductor packages
 cat("\nInstalling Bioconductor packages...\n")
@@ -67,3 +91,13 @@ for (pkg in bioc_packages) {
 cat("\n===========================================\n")
 cat("Package installation completed!\n")
 cat("You can now run your R scripts in this directory.\n")
+
+# Test if CMScaller can be loaded
+cat("\nTesting CMScaller package...\n")
+if (require("CMScaller", quietly = TRUE)) {
+  cat("✅ CMScaller package loaded successfully!\n")
+} else {
+  cat("❌ CMScaller package could not be loaded.\n")
+  cat("You may need to install it manually:\n")
+  cat("remotes::install_github('LotteN/CMScaller')\n")
+}
