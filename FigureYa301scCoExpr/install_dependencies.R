@@ -26,34 +26,29 @@ install_cran_package <- function(package_name) {
   }
 }
 
-# Function to install Bioconductor packages
-install_bioc_package <- function(package_name) {
-  if (!is_package_installed(package_name)) {
-    cat("Installing Bioconductor package:", package_name, "\n")
-    tryCatch({
-      if (!is_package_installed("BiocManager")) {
-        install.packages("BiocManager")
-      }
-      BiocManager::install(package_name, update = FALSE, ask = FALSE)
-      cat("Successfully installed:", package_name, "\n")
-    }, error = function(e) {
-      cat("Failed to install", package_name, ":", e$message, "\n")
-    })
-  } else {
-    cat("Package already installed:", package_name, "\n")
-  }
-}
-
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
-
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("Seurat", "SeuratData", "ggplot2", "ggpubr", "magrittr", "patchwork")
+cran_packages <- c("Seurat", "ggplot2", "ggpubr", "magrittr", "patchwork", "remotes")
 
 for (pkg in cran_packages) {
   install_cran_package(pkg)
+}
+
+# Install SeuratData from GitHub
+cat("\nInstalling SeuratData from GitHub...\n")
+if (!is_package_installed("SeuratData")) {
+  tryCatch({
+    remotes::install_github("satijalab/seurat-data")
+    cat("Successfully installed: SeuratData\n")
+  }, error = function(e) {
+    cat("Failed to install SeuratData:", e$message, "\n")
+    cat("You may need to install it manually with: remotes::install_github('satijalab/seurat-data')\n")
+  })
+} else {
+  cat("Package already installed: SeuratData\n")
 }
 
 cat("\n===========================================\n")
