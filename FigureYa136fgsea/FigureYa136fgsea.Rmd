@@ -11,7 +11,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -280,8 +279,8 @@ par(opar)
 ## 方法三：用Java版GSEA的输出文件作为输入，DIY出paper里的图。
 ## Method 3: Use the output file of the Java version of GSEA as input and DIY the graph in the paper.
 
-GSEA JAVA版本跑出的结果（GSEA文件夹，微云链接<https://share.weiyun.com/5FYDPQZ>）作为输入，整理数据格式，然后画图，画图代码跟方法二的类似。
-Use the results of the GSEA JAVA version (GSEA folder, Weiyun link <https://share.weiyun.com/5FYDPQZ>) as input, organize the data format, and then draw the graph. The drawing code is similar to that of method 2.
+GSEA JAVA版本跑出的结果作为输入，整理数据格式，然后画图，画图代码跟方法二的类似。
+Use the results of the GSEA JAVA version as input, organize the data format, and then draw the graph. The drawing code is similar to that of method 2.
 
 先写个函数
 Write a function first
@@ -453,6 +452,8 @@ par(opar)
 ```
 
 ![](javagsea.pdf)
+
+# Session Info
 
 ```{r}
 sessionInfo()
