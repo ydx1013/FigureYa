@@ -46,7 +46,7 @@ install_bioc_package <- function(package_name) {
 }
 
 # 安装GitHub包
-install_github_package <- function(repo, package_name = NULL) {
+install_github_package <- function(repo, package_name = NULL, build_vignettes = FALSE) {
   if (is.null(package_name)) {
     package_name <- basename(repo)
   }
@@ -58,15 +58,15 @@ install_github_package <- function(repo, package_name = NULL) {
   
   cat("Installing from GitHub:", repo, "\n")
   tryCatch({
-    if (!is_package_installed("devtools")) {
-      install.packages("devtools")
-    }
     if (!is_package_installed("remotes")) {
       install.packages("remotes")
     }
     
-    # 尝试使用devtools安装
-    devtools::install_github(repo)
+    if (build_vignettes) {
+      remotes::install_github(repo, build_vignettes = TRUE)
+    } else {
+      remotes::install_github(repo)
+    }
     
     if (is_package_installed(package_name)) {
       cat("Successfully installed from GitHub:", package_name, "\n")
@@ -77,19 +77,6 @@ install_github_package <- function(repo, package_name = NULL) {
     }
   }, error = function(e) {
     cat("Failed to install from GitHub:", e$message, "\n")
-    
-    # 尝试使用remotes作为备选
-    cat("Trying with remotes package...\n")
-    tryCatch({
-      remotes::install_github(repo)
-      if (is_package_installed(package_name)) {
-        cat("Successfully installed with remotes:", package_name, "\n")
-        return(TRUE)
-      }
-    }, error = function(e2) {
-      cat("Also failed with remotes:", e2$message, "\n")
-    })
-    
     return(FALSE)
   })
 }
@@ -99,7 +86,7 @@ cat("===========================================\n")
 
 # 首先安装基础依赖
 cat("\nInstalling important dependency packages first...\n")
-base_dep_packages <- c("devtools", "remotes", "httr", "curl", "jsonlite")
+base_dep_packages <- c("remotes", "httr", "curl")
 for (pkg in base_dep_packages) {
   install_cran_package(pkg)
 }
@@ -111,18 +98,15 @@ for (pkg in cran_packages) {
   install_cran_package(pkg)
 }
 
-# 安装crosslinks包（从GitHub）
-cat("\nInstalling crosslinks package from GitHub...\n")
-crosslinks_success <- install_github_package("zzwch/crosslinks", "crosslinks")
+# 安装crosslink包（从GitHub）- 单数！
+cat("\nInstalling crosslink package from GitHub...\n")
+crosslink_success <- install_github_package("zzwch/crosslink", "crosslink", build_vignettes = TRUE)
 
 # 如果安装失败，尝试其他可能的方法
-if (!crosslinks_success) {
-  cat("\nTrying alternative installation methods for crosslinks...\n")
+if (!crosslink_success) {
+  cat("\nTrying alternative installation methods for crosslink...\n")
   
-  # 方法1：检查是否有系统依赖
-  cat("Checking for system dependencies...\n")
-  
-  # 方法2：尝试安装可能需要的依赖
+  # 方法1：尝试安装可能需要的依赖
   potential_deps <- c("Rcpp", "BH", "rcpparmadillo", "Matrix")
   for (pkg in potential_deps) {
     if (!is_package_installed(pkg)) {
@@ -130,14 +114,14 @@ if (!crosslinks_success) {
     }
   }
   
-  # 再次尝试安装
-  cat("Retrying crosslinks installation...\n")
-  crosslinks_success <- install_github_package("zzwch/crosslinks", "crosslinks")
+  # 再次尝试安装（不构建vignettes）
+  cat("Retrying crosslink installation (without vignettes)...\n")
+  crosslink_success <- install_github_package("zzwch/crosslink", "crosslink", build_vignettes = FALSE)
 }
 
 # 验证安装
 cat("\nVerifying package installation...\n")
-required_packages <- c("aplot", "dplyr", "ggplot2", "crosslinks")
+required_packages <- c("aplot", "dplyr", "ggplot2", "crosslink")
 
 all_installed <- TRUE
 for (pkg in required_packages) {
@@ -147,22 +131,13 @@ for (pkg in required_packages) {
     tryCatch({
       suppressPackageStartupMessages(library(pkg, character.only = TRUE, quietly = TRUE))
       cat("  Package loads successfully\n")
-      
-      # 特别测试crosslinks包的功能
-      if (pkg == "crosslinks") {
-        cat("  Testing crosslinks basic functions...\n")
-        # 可以添加一些简单的功能测试
-        if (exists("crosslinks")) {
-          cat("  crosslinks function is available\n")
-        }
-      }
     }, error = function(e) {
       cat("  ERROR: Package has loading issues:", e$message, "\n")
       all_installed <- FALSE
     })
   } else {
     cat("✗", pkg, "is NOT installed\n")
-    all_installed <- FALSE
+    all_installed = FALSE
   }
 }
 
@@ -175,17 +150,17 @@ if (all_installed) {
 }
 
 cat("\nInstallation summary:\n")
-cat("- crosslinks:", ifelse(is_package_installed("crosslinks"), "✓", "✗"), "\n")
+cat("- crosslink:", ifelse(is_package_installed("crosslink"), "✓", "✗"), "\n")
 cat("- aplot:", ifelse(is_package_installed("aplot"), "✓", "✗"), "\n") 
 cat("- dplyr:", ifelse(is_package_installed("dplyr"), "✓", "✗"), "\n")
 cat("- ggplot2:", ifelse(is_package_installed("ggplot2"), "✓", "✗"), "\n")
 
-if (!is_package_installed("crosslinks")) {
-  cat("\nTroubleshooting for crosslinks:\n")
+if (!is_package_installed("crosslink")) {
+  cat("\nTroubleshooting for crosslink:\n")
   cat("1. Make sure you have development tools installed (Rtools on Windows, Xcode on Mac)\n")
   cat("2. Try installing system dependencies first\n")
-  cat("3. Check the GitHub repository for specific installation instructions: https://github.com/zzwch/crosslinks\n")
-  cat("4. You can try manual installation: devtools::install_github('zzwch/crosslinks')\n")
+  cat("3. Check the GitHub repository: https://github.com/zzwch/crosslink\n")
+  cat("4. You can try manual installation: remotes::install_github('zzwch/crosslink', build_vignettes = TRUE)\n")
 }
 
 cat("You can now run your R scripts in this directory.\n")
