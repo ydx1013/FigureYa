@@ -44,24 +44,62 @@ install_bioc_package <- function(package_name) {
   }
 }
 
+# Function to install GitHub packages
+install_github_package <- function(repo) {
+  pkg_name <- basename(repo)
+  if (!is_package_installed(pkg_name)) {
+    cat("Installing GitHub package:", repo, "\n")
+    tryCatch({
+      if (!is_package_installed("devtools")) {
+        install.packages("devtools")
+      }
+      devtools::install_github(repo)
+      cat("Successfully installed:", pkg_name, "\n")
+    }, error = function(e) {
+      cat("Failed to install", pkg_name, ":", e$message, "\n")
+    })
+  } else {
+    cat("Package already installed:", pkg_name, "\n")
+  }
+}
+
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
-
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("ggcorrplot", "ggprism", "immunedeconv", "magrittr", "quantiseqr", "tidyverse")
+cran_packages <- c("ggcorrplot", "ggprism", "magrittr", "tidyverse", "devtools")
 
 for (pkg in cran_packages) {
   install_cran_package(pkg)
 }
 
+# Installing GitHub packages
+cat("\nInstalling GitHub packages...\n")
+github_packages <- c("icbi-lab/immunedeconv")  # immunedeconv is on GitHub
+
+for (pkg in github_packages) {
+  install_github_package(pkg)
+}
+
 # Installing Bioconductor packages
 cat("\nInstalling Bioconductor packages...\n")
-bioc_packages <- c("BiocManager", "SummarizedExperiment", "TCGAbiolinks", "clusterProfiler", "org.Hs.eg.db")
+bioc_packages <- c("SummarizedExperiment", "TCGAbiolinks", "clusterProfiler", "org.Hs.eg.db")
 
 for (pkg in bioc_packages) {
   install_bioc_package(pkg)
+}
+
+# Note: quantiseqr might also need special handling if it's not on CRAN
+# If quantiseqr fails, check if it needs to be installed from GitHub as well
+if (!is_package_installed("quantiseqr")) {
+  cat("\nAttempting to install quantiseqr...\n")
+  tryCatch({
+    install_cran_package("quantiseqr")
+  }, error = function(e) {
+    cat("quantiseqr not found on CRAN, trying GitHub...\n")
+    install_github_package("ccbeco/quantiseqr")
+  })
 }
 
 cat("\n===========================================\n")
