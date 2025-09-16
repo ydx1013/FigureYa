@@ -76,7 +76,7 @@ install_ktplots()
 
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
-# 移除了看起来像数据对象而不是真实包名的项
+# Removed items that seem like data objects rather than package names
 cran_packages <- c("RColorBrewer", "Seurat", "ggraph", "ggrepel", "grid", "igraph", "reshape2")
 
 for (pkg in cran_packages) {
