@@ -277,7 +277,7 @@ pancancer_mRNA_exprSet.Rdata，表达矩阵和癌症名type
 
 expr_pancancer.Rda，表达矩阵，取自pancancer_mRNA_exprSet.Rdata。
 
-数据来源于UCSC xena Pan-cancer，从数据下载到获得以上两个文件的过程见`TCGA_pan.R`（位于当前文件夹）。文件太大，已上传微云https://share.weiyun.com/g2BTNgVX
+数据来源于UCSC xena Pan-cancer，从数据下载到获得以上两个文件的过程见`TCGA_pan.R`（位于当前文件夹）
 
 ## Enter data
 
@@ -285,7 +285,7 @@ pancancer_mRNA_exprSet.Rdata, expression matrix and cancer name type
 
 expr_pancancer. Rda, Expression Matrix, taken from pancancer_mRNA_exprSet.Rdata.
 
-The data is from UCSC xena Pan-cancer, and the process from data download to obtaining the above two files is described in 'TCGA_pan. R' (located in the current folder). The file is too large and has been uploaded to Weiyun https://share.weiyun.com/g2BTNgVX
+The data is from UCSC xena Pan-cancer, and the process from data download to obtaining the above two files is described in 'TCGA_pan. R' (located in the current folder).
 
 ```{r}
 # 载入数据
