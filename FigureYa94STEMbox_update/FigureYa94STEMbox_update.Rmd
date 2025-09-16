@@ -11,7 +11,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 # 设置knitr的全局代码块选项 / Set global chunk options for knitr
@@ -47,29 +46,11 @@ The usage and parameter settings of STEM are not the topics to be discussed here
 
 # 环境设置
 
-
 # Environment settings
-
-Use domestic image installation package
 
 ```{r}
 source("install_dependencies.R")
-```
 
-```{r, eval=FALSE}
-
-
-# 安装Cairo包（用于高质量图形渲染，支持多种输出格式如PDF、PNG等）
-# Install the Cairo package (for high-quality graphics rendering, supporting multiple output formats like PDF, PNG, etc.)
-install.packages("Cairo")
-
-# 安装extrafont包（用于在R图形中使用系统字体，解决中文显示等字体问题）
-# Install the extrafont package (for using system fonts in R graphics, solving font issues like Chinese display)
-```
-
-
-
-```{r}
 # 加载数据读取包（提供更高效的read_csv等函数）
 # Load the data reading package (provides more efficient functions like read_csv)
 library(readr)
