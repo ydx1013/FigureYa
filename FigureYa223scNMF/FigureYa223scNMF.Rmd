@@ -12,7 +12,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -92,23 +91,9 @@ Read the entire text carefully, and Xiao Ya found that we have [corresponding Fi
 # 环境设置
 # Environment setting
 
-
-use the domestic mirror installation package
-
 ```{r}
 source("install_dependencies.R")
-```
 
-```{r eval=FALSE}
-install.packages("Seurat")
-BiocManager::install("AUCell")
-BiocManager::install("GEOquery")
-```
-
-
-load package
-
-```{r}
 library(NMF)
 library(data.table)
 library(ggsci)
@@ -164,11 +149,7 @@ Myenrich <- function(genes, category = c("kegg", "gobp"),
 # 输入文件
 # Input file
 
-文件较大，已上传至微云<https://share.weiyun.com/mpXIOggi>
-
 数据下载：从GEO数据库下载GSE150430的GSE150430_npc_scRNA_hg19_processed_data.txt.gz文件，<https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE150430>，解压、预处理。
-
-The file is rather large and has been uploaded to Weiyun: <https://share.weiyun.com/mpXIOggi>
 
 Data download: Download the GSE150430_npc_scRNA_hg19_processed_data.txt.gz file from the GEO database (GSE150430), <https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE150430>, decompress and preprocess it.
 
@@ -457,7 +438,6 @@ metaGene
 ```
 
 # Session Info
-# 会话信息
 
 ```{r}
 sessionInfo()
