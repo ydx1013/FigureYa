@@ -10,7 +10,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -44,21 +43,13 @@ Gene consensus clustering is used to select co-expressed gene sets, followed by 
 
 Both FigureYa154immuneSubtypes and FigureYa201ClusterCorrelation also employ ConsensusClusterPlus for consensus clustering. These examples can serve as mutual references, allowing flexible adaptation to design more innovative visualization approaches.
 
-
-
 # 环境设置
 
-
 # Environment settings
-
 
 ```{r}
 source("install_dependencies.R")
 
-```
-
-
-```{r}
 library(ConsensusClusterPlus)
 library(pheatmap)
 library(dendsort)
