@@ -112,13 +112,9 @@ countToTpm <- function(counts, geneLength) {
 
 如果你的表达矩阵已处理成easy_input_TCGA.csv和easy_input_GSE\*.csv的格式，就可以跳过这步，直接进入“检查数据的量级”。
 
-三个待合并的数据集（表达矩阵）较大，已上传微云<https://share.weiyun.com/9HCHPNBi>
-
 Here, we use one TCGA tumor dataset and two GEO microarray datasets as examples, but the same approach applies to processing more datasets.
 
 If your expression matrices have already been formatted as easy_input_TCGA.csv and easy_input_GSE\*.csv, you can skip this step and proceed directly to "Checking Data Magnitude.
-
-The three expression matrices to be merged are large and have been uploaded to Weiyun<https://share.weiyun.com/9HCHPNBi>
 
 ## TCGA数据下载及预处理
 ## Downloading and Preprocessing TCGA Data
@@ -342,11 +338,8 @@ range(combined.expr.combat)
 
 ![](Combat PCA for combined expression profile.pdf)
 
-# 会话信息
 # Session Info
 
 ```{r}
-# 显示会话信息
-# Show session information
 sessionInfo()
 ```
