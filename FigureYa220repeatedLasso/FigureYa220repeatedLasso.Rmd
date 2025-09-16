@@ -10,7 +10,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -42,21 +41,11 @@ Using Cox proportional hazards model (iteration = 1000) with an lasso penalty to
 
 # 环境设置
 
-
 # Environment settings
-
 
 ```{r}
 source("install_dependencies.R")
-```
 
-```{r eval=FALSE}
-BiocManager::install("survcomp")
-```
-
-load packages
-
-```{r}
 library(survival)
 library(glmnet)
 library(pbapply)
@@ -78,7 +67,7 @@ display.progress = function (index, totalN, breakN=20) {
 
 # 输入文件
 
-表达谱文件较大，已上传至微云<https://share.weiyun.com/0esnGlCh>
+表达谱文件
 
 - InnateDB_genes.csv，免疫基因集。数据来自<https://www.innatedb.com/redirect.do?go=resourcesGeneLists> Immunogenetic Related Information Source (IRIS)
 
@@ -92,7 +81,7 @@ display.progress = function (index, totalN, breakN=20) {
 
 # Input files
 
-The expression profile file is large and has been uploaded to the Weiyun <https://share.weiyun.com/0esnGlCh>
+The expression profile file
 
 - InnateDB_genes.csv, immune gene set. Data from <https://www.innatedb.com/redirect.do?go=resourcesGeneLists> Immunogenetic Related Information Source (IRIS)
 
@@ -126,7 +115,6 @@ expr <- expr[,apply(expr, 2, function(x) sum(x == 0) < pct * nrow(expr))]
 # 4. 防止基因名出错
 # 4. Prevent gene name errors
 colnames(expr) <- make.names(colnames(expr))
-
 
 
 ## 加载免疫基因集
