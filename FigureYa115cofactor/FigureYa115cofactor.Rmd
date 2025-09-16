@@ -11,7 +11,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 # 设置knitr代码块的全局选项 / Set global options for knitr code chunks
@@ -77,7 +76,7 @@ Which regulatory proteins have binding sites that are more similar? Who is more 
 
 通过bioconda安装intervene, python 2.7环境：
 
-**注：**下文以“```bash”开头的代码都要复制粘贴到Terminal里运行（Linux和MAC自带），Windows10用WSL。WSL的用法参考FigureYa111markerGene里的视频<https://share.weiyun.com/56viiqa>，一步一步跟着洲更的演示来操作，就能在Windows系统里用起linux了。
+**注：**下文以“```bash”开头的代码都要复制粘贴到Terminal里运行（Linux和MAC自带），Windows10用WSL。
 
 ## Environment settings
 
@@ -89,21 +88,11 @@ Open the FigureYa115cofactor.ipynb document with Jupyter notebook
 
 Install Interne through Bioconda, Python 2.7 environment:
 
-**Note: * * The code starting with 'bash' in the following text should be copied and pasted into Terminal to run (Linux and MAC built-in), Windows 10 uses WSI. Refer to the video in FigureYa111markerGene for the usage of WSLs< https://share.weiyun.com/56viiqa >By following Zhou Geng's demonstration step by step, you can start using Linux on the Windows system.
+**Note: * * The code starting with 'bash' in the following text should be copied and pasted into Terminal to run (Linux and MAC built-in), Windows 10 uses WSI.
 
 ```bash
 conda install -c bioconda intervene
 ```
-
-安装R包
-
-install packages
-
-```r
-install.packages("corrplot")
-```
-
-
 
 ```{r}
 source("install_dependencies.R")
@@ -352,6 +341,8 @@ pheatmap(intersection_matrix,
 ```
 
 ![](Intervene_pairwise_frac_tree.pdf)
+
+# Session Info
 
 ```{r}
 sessionInfo()
