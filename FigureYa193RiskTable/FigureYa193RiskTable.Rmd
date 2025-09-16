@@ -10,7 +10,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -38,14 +37,9 @@ The riskscore of the training set was constructed and verified. Multivariate reg
 
 # Environment Setup
 
-
 ```{r}
 source("install_dependencies.R")
-```
 
-Loading package
-
-```{r}
 library(survival) # 生存分析  # Survival Analysis
 library(glmnet) # LASSO回归   # LASSO Regression
 library(forestplot) # 绘制森林图   # Draw forest maps
@@ -69,9 +63,8 @@ display.progress = function (index, totalN, breakN=20) {
 
 # Input File
 
-需要表达矩阵和生存信息。表达矩阵文件较大，请到微云下载：
-The matrix and survival information need to be expressed. The expression matrix file is quite large. Please download it from Weiyun
-<https://share.weiyun.com/92trvp7M>
+需要表达矩阵和生存信息
+The matrix and survival information need to be expressed.
 
 这里用TCGA数据做训练集，用从GEO数据库下载的一组表达数据做测试集。如果你用多组GEO数据或自己的表达数据做测试集，就依次添加。
 Here, TCGA data is used as the training set, and a set of expression data downloaded from the GEO database is used as the test set. If you use multiple sets of GEO data or your own expression data as test sets, add them one by one.
