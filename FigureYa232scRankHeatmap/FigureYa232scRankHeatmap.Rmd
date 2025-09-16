@@ -74,13 +74,13 @@ options(stringsAsFactors = FALSE) #禁止chr转成factor # chr is not allowed to
 
 # 输入文件
 
-sc.seurat.Rdata，单细胞RNA-seq预处理获得的文件。出自FigureYa206scHeatmap，文件较大，已上传至微云<https://share.weiyun.com/vZiSM9pB>
+sc.seurat.Rdata，单细胞RNA-seq预处理获得的文件。出自FigureYa206scHeatmap
 
 怎样获得这个文件？拖到文末看“附：单细胞RNA-seq数据预处理”
 
 # Input files
 
-sc.seurat.Rdata, file obtained from single-cell RNA-seq pretreatment. From FigureYa206scHeatmap, the file size is large, and it has been uploaded to the Weiyun <https://share.weiyun.com/vZiSM9pB>
+sc.seurat.Rdata, file obtained from single-cell RNA-seq pretreatment from FigureYa206scHeatmap
 
 How do I get this document? Drag to the end of the article to see "Attached: Single-cell RNA-seq data preprocessing"
 
