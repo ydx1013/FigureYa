@@ -11,12 +11,11 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-需求描述 | Requirement Description
+# 需求描述 | Requirement Description
 只要这张图中间的热图部分。scRNA分不同的cluster鉴定细胞类型；两组之间比较markers的表达高低，调整顺序绘制热图。 Only the heatmap portion in the middle of this figure. scRNA identifies cell types by different clusters; compare marker expression levels between two groups, adjust the order, and plot a heatmap.
 
 ![](example.png)
@@ -33,22 +32,11 @@ D, Gene ontologies of cell-specific differentially expressed genes. The heat map
 
 例文该图用的是bulk RNA-seq数据，小伙伴觉得特适合用来展示单细胞marker基因在多个cluster当中的表达模式。 The example figure uses bulk RNA-seq data. Teammates think it is particularly suitable for displaying the expression patterns of single-cell marker genes across multiple clusters.
 
-环境设置 | Environment Setup
-
+# 环境设置 | Environment Setup
 
 ```{r}
 source("install_dependencies.R")
-```
 
-```{r eval=FALSE}
-install.packages("Seurat")
-devtools::install_github("satijalab/seurat-data")
-install.packages("colorRamps")
-```
- 
-加载包  Load packages
-
-```{r}
 library(Seurat)
 library(SeuratData)
 library(patchwork)
@@ -61,7 +49,7 @@ Sys.setenv(LANGUAGE = "en") #显示英文报错信息 | display error messages i
 options(stringsAsFactors = FALSE) #禁止chr转成factor | prevent chr from converting to factor
 ```
 
-输入文件及前期处理 | Input Files and Preprocessing
+# 输入文件及前期处理 | Input Files and Preprocessing
 
 这里用Seurat的数据，便于小伙伴套用在自己的单细胞数据上。 Here we use Seurat’s data to make it convenient for teammates to apply to their own single-cell data.
 
@@ -119,10 +107,8 @@ immune.combined <- IntegrateData(anchorset = immune.anchors)
 DefaultAssay(immune.combined) <- "integrated"
 ```
 
-常规单细胞流程 | Routine scRNA-seq Workflow
+# 常规单细胞流程 | Routine scRNA-seq Workflow
 reasonml
-
-
 
 ```{r}
 # 常规流程，scale数据，跑PCA，使用前30个PC进行降维跑UMAP，计算Neighbors，分cluster
@@ -134,7 +120,7 @@ immune.combined <- FindNeighbors(immune.combined, reduction = "pca", dims = 1:30
 immune.combined <- FindClusters(immune.combined, resolution = 0.5)
 ```
 
-计算marker基因 | Compute Marker Genes
+# 计算marker基因 | Compute Marker Genes
 
 ```{r}
 ### 设置分组和细胞类型颜色 | Set group and cell type colors
@@ -153,7 +139,6 @@ p2 <- DimPlot(immune.combined, reduction = "umap", group.by = "seurat_annotation
 pdf("./immune.combined.UMAP.pdf", height = 5,width = 12)
 p1 + p2
 dev.off()
-
 
 
 ### 为了后续画图简洁，这里将部分细胞类型进行合并，按照自己数据决定
@@ -189,7 +174,7 @@ celltype <- c("B_cell", "DC", "Eryth", "Monocyte", "NK", "Mk", "pDC", "T_cell")
 group <- c("CTRL", "STIM")
 ```
 
-为热图排序 | Order the Heatmap
+# 为热图排序 | Order the Heatmap
 
 ```{r}
 # 确定热图按列排布顺序，先分细胞类型，再分group
@@ -226,7 +211,7 @@ for (i in group_celltype_all) {
 plot_df <- plot_df[,celltype_group_all]
 ```
 
-开始画图 | Plot the Heatmap
+# 开始画图 | Plot the Heatmap
 
 ```{r}
 bks <- seq(-2.1, 2.1, by = 0.01)
