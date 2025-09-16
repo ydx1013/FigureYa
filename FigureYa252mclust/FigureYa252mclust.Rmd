@@ -20,7 +20,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Requirement Description
 
-Ask for crowdfunding for this article Fig4A, a good-looking cluster map
+Fig4A, a good-looking cluster map
 
 ![](example.png)
 
@@ -47,6 +47,7 @@ For more time series data results, see FigureYa16fitting, FigureYa94STEMbox, and
 
 ```{r}
 source("install_dependencies.R")
+
 library(tidyverse)
 library(magrittr)
 library(mclust)
