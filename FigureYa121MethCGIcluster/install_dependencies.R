@@ -57,11 +57,22 @@ install_kpmt <- function() {
       install.packages("remotes")
     }
     tryCatch({
-      remotes::install_github("tpq/kpmt")
+      # 使用正确的GitHub仓库地址
+      remotes::install_github("tpq/kpmt@master")
       cat("Successfully installed kpmt from GitHub\n")
     }, error = function(e) {
       cat("Warning: Failed to install kpmt from GitHub:", e$message, "\n")
-      cat("This may cause ChAMP installation to fail\n")
+      cat("Trying alternative installation method...\n")
+      
+      # 尝试直接下载并安装源代码
+      tryCatch({
+        download.file("https://github.com/tpq/kpmt/archive/master.zip", "kpmt-master.zip")
+        install.packages("kpmt-master.zip", repos = NULL, type = "source")
+        cat("Successfully installed kpmt from source\n")
+      }, error = function(e2) {
+        cat("Failed to install kpmt from source:", e2$message, "\n")
+        cat("This may cause ChAMP installation to fail\n")
+      })
     })
   } else {
     cat("kpmt package is already installed\n")
@@ -103,6 +114,8 @@ install_problematic_packages <- function() {
       # Alternative: try installing older version that might have fewer dependencies
       cat("Trying to install older version of ChAMP...\n")
       tryCatch({
+        # 使用特定版本的ChAMP
+        BiocManager::install(version = "3.16")
         BiocManager::install("ChAMP", version = "3.16", update = TRUE, ask = FALSE)
         if (is_package_installed("ChAMP")) {
           cat("Successfully installed older version of ChAMP\n")
