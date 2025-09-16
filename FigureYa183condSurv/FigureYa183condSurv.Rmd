@@ -10,7 +10,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -40,16 +39,10 @@ Draw the conditional probability survival curve and provide the conditional surv
 
 # Environment Setup
 
-
 ```{r}
 source("install_dependencies.R")
 options(warn = -1)
 
-```
-
-Loading package
-
-```{r}
 #library(condsurv) # 本代码使用的函数为该函数包中gg_conditional_surv的修改版 #The function used in this code is a modified version of gg_conditional_surv in the function package
 library(survival)
 library(tidyverse)
