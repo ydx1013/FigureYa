@@ -498,6 +498,8 @@ pheatmap(mat[, sam_order],            # 使用文件指定的样本顺序调整�
 
 ![](heatmap_with_file.pdf)
 
+# Session Info
+
 ```{r}
 sessionInfo()
 ```
