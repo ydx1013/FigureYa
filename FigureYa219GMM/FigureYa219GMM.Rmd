@@ -10,7 +10,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -41,23 +40,11 @@ All possible logistic regressions were constructed through permutations and comb
 
 # 环境设置
 
-
 # Environment settings
-
 
 ```{r}
 source("install_dependencies.R")
-```
 
-```{r eval=FALSE}
-BiocManager::install("miRBaseVersions.db")
-BiocManager::install("miRBaseConverter")
-BiocManager::install("SimDesign")
-```
-
-load packages
-
-```{r}
 library(mclust)
 library(miRBaseVersions.db)
 library(miRBaseConverter)
