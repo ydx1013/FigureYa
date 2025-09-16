@@ -16,7 +16,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -47,51 +46,38 @@ f Box plots showing the expression distribution of IGF2BP3 across tumor and norm
 
 对泛癌中肿瘤与正常样本做多个基因（m6A为例）的差异表达分析，并根据log2FoldChange值绘制泛癌热图，同时对感兴趣基因绘制泛癌箱型图。
 
-如果想换成泡泡图结合柱形图，可参考FigureYa263panDiff，<https://k.youshop10.com/v5okDUEr>
+如果想换成泡泡图结合柱形图，可参考FigureYa263panDiff
 
-如果想用GSEA计算并展示多个**基因集**的差异表达，可参考FigureYa253panGSEA，<https://k.youshop10.com/QbM6nwGB>
+如果想用GSEA计算并展示多个**基因集**的差异表达，可参考FigureYa253panGSEA
 
-如果只对单个基因感兴趣，可参考FigureYa55panCancer_violin，画成小提琴图或box plot，<https://www.yuque.com/figureya/figureyaplus/figureya55p>。
+如果只对单个基因感兴趣，可参考FigureYa55panCancer_violin，画成小提琴图或box plot，FigureYa55plus_pancancer_boxplot。
 
 另外，我们还实现过这篇文章的其他几个有意思的图：
 
-- Fig.1D对角热图，可参考FigureYa144DiagHeatmap或<https://mp.weixin.qq.com/s/34WRZRBVPHUNRLlzNH2nzw>
-- Fig.2A靶向关系连线图，可参考FigureYa199crosslink，<https://k.youshop10.com/Zbb7VoNM>，带你实现连线自由
-- Fig.3A基因集的survival landscape，可参考FigureYa210survivalScape，<https://k.youshop10.com/dDv=wvoj>
-
-更多泛癌FigureYa看这里，<https://k.youshop10.com/C8RkTgR3>
+- Fig.1D对角热图，可参考FigureYa144DiagHeatmap
+- Fig.2A靶向关系连线图，可参考FigureYa199crosslink，带你实现连线自由
+- Fig.3A基因集的survival landscape，可参考FigureYa210survivalScape
 
 Perform differential expression analysis of multiple genes (using m6A as an example) between tumor and normal samples across pan-cancer datasets, and generate pan-cancer heatmaps based on log2FoldChange values, along with pan-cancer box plots for genes of interest.
 
-To switch to bubble charts combined with bar plots, refer to FigureYa263panDiff <https://k.youshop10.com/v5okDUEr>
+To switch to bubble charts combined with bar plots, refer to FigureYa263panDiff
 
-To use GSEA for calculating and displaying differential expression of **multiple gene sets**, refer to FigureYa253panGSEA <https://k.youshop10.com/QbM6nwGB>
+To use GSEA for calculating and displaying differential expression of **multiple gene sets**, refer to FigureYa253panGSEA
 
-If only interested in a single gene, refer to FigureYa55panCancer_violin to create violin plots or box plots <https://www.yuque.com/figureya/figureyaplus/figureya55p>.
+If only interested in a single gene, refer to FigureYa55panCancer_violin to create violin plots or box plots FigureYa55plus_pancancer_boxplot.
 
 Additionally, we have crowdsourced several other interesting figures from this article:
 
-- Fig.1D diagonal heatmap, refer to FigureYa144DiagHeatmap or <https://mp.weixin.qq.com/s/34WRZRBVPHUNRLlzNH2nzw>
-- Fig.2A target relationship connection diagram, refer to FigureYa199crosslink<https://k.youshop10.com/dDv=wvoj>, achieving connection freedom
-- Fig.3A survival landscape of gene sets, refer to FigureYa210survivalScape<https://k.youshop10.com/dDv=wvoj>
-
-For more pan-cancer FigureYa resources, see here<https://k.youshop10.com/C8RkTgR3>
+- Fig.1D diagonal heatmap, refer to FigureYa144DiagHeatmap
+- Fig.2A target relationship connection diagram, refer to FigureYa199crosslink, achieving connection freedom
+- Fig.3A survival landscape of gene sets, refer to FigureYa210survivalScape
 
 # 环境设置
 # Environment Setup
 
-
-Using domestic mirrors for package installation.
-
 ```{r}
 source("install_dependencies.R")
 
-```
-
-# 加载包
-# Loading packages
-
-```{r}
 library(data.table)
 library(impute)
 library(ClassDiscovery)
