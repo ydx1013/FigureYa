@@ -10,7 +10,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -20,11 +19,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 画出像paper里这样美的火山图。
 
-关注“小丫画图”公众号（微信ID：FigureYa），回复“火山”，查看火山图在paper里的高级用法。
-
 Draw a beautiful volcano plot like this one in the paper.
-
-Follow “Xiaoya drawing” official account (WeChat ID: FigureYa), reply “volcano”, see the advanced use of volcano in the paper.
 
 ![](example.png)
 
@@ -44,7 +39,6 @@ Demonstrate overall gene expression trends between the two groups.
 
 ```{r}
 source("install_dependencies.R")
-#use the domestic mirror installation package
 
 library(ggplot2)
 library(ggrepel)
@@ -254,6 +248,8 @@ p2 + annotation_custom(tableGrob(labelsInfo$pathway, rows = c(rep("", np)), cols
 # save to PDF file
 if (plot_mode == "classic"){ggsave("volcano_classic.pdf", width=6,height=5)} else if (plot_mode == "advanced") {ggsave("Volcano_advanced.pdf",width=6,height=5)} else {stop("Unsupport mode")}
 ```
+
+# Session Info
 
 ```{r}
 sessionInfo()
