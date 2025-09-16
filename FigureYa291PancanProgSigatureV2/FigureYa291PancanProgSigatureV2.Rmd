@@ -16,7 +16,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -52,12 +51,8 @@ Figure 2 Prognostic performance of the 19-gene NETs score.
 - Figure 4AB，可参考FigureYa30
 - Figure 4C，可参考FigureYa85timeROC
 - Figure 4D，可参考FigureYa33DCA
-- Figure 5相关性结果展示，可参考 
-- Figure 2B、6FGH森林图，可参考 
 
 Pan-cancer analysis: Calculate a score of interest and evaluate its correlation with prognosis; generate scatter plots showing the distribution of the score against prognostic outcomes.
-
-For more pan-cancer FigureYa examples, visit: 
 
 FigureYa can be used to reproduce multiple figures from the example article, such as:
 
@@ -66,24 +61,13 @@ FigureYa can be used to reproduce multiple figures from the example article, suc
 - Figures 4AB → Refer to FigureYa30
 - Figure 4C → Refer to FigureYa85timeROC
 - Figure 4D → Refer to FigureYa33DCA
-- Figure 5 (correlation results) → See 
-- Figures 2B & 6FGH (forest plots) → See 
 
 # 环境设置
 # Environment Setup
 
-
-Using domestic mirrors for package installation.
-
 ```{r}
 source("install_dependencies.R")
 
-```
-
-# 加载包
-# Loading packages
-
-```{r}
 library(ggplot2)
 library(data.table)
 library(survival)
@@ -464,11 +448,8 @@ p
 ggsave(filename = "combined.pdf", width = 8,height = 6)
 ```
 
-# 会话信息
 # Session Info
 
 ```{r}
-# 显示会话信息
-# Show session information
 sessionInfo()
 ```
