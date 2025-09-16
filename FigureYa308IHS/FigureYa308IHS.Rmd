@@ -27,7 +27,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 FigureYa296VIPER跟这个不一样。这篇里面用的是新版的weighted VIPER，和之前的算法不一样，而且这个图重点是IHS分数的计算，不仅是蛋白活性的计算。
 
-I'd like to crowdfund Figure 5D from this article. The author developed a method to calculate gene heterogeneity, then used VIPER to infer checkpoint protein activity before calculating the heterogeneity of checkpoint proteins. I think this method could also be applied to calculate heterogeneity for other types of proteins - it seems quite practical.
+I'd like to draw Figure 5D from this article. The author developed a method to calculate gene heterogeneity, then used VIPER to infer checkpoint protein activity before calculating the heterogeneity of checkpoint proteins. I think this method could also be applied to calculate heterogeneity for other types of proteins - it seems quite practical.
 
 FigureYa296VIPER is different from this one. Here, they used the new weighted VIPER, which has a different algorithm from the previous version. Moreover, the focus of this figure is on the calculation of IHS scores, not just protein activity inference.
 
