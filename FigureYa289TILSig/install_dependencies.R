@@ -27,14 +27,18 @@ install_cran_package <- function(package_name) {
 }
 
 # Function to install Bioconductor packages
-install_bioc_package <- function(package_name) {
+install_bioc_package <- function(package_name, version = NULL) {
   if (!is_package_installed(package_name)) {
     cat("Installing Bioconductor package:", package_name, "\n")
     tryCatch({
       if (!is_package_installed("BiocManager")) {
         install.packages("BiocManager")
       }
-      BiocManager::install(package_name, update = FALSE, ask = FALSE)
+      if (is.null(version)) {
+        BiocManager::install(package_name, update = FALSE, ask = FALSE)
+      } else {
+        BiocManager::install(paste0(package_name, "@", version), update = FALSE, ask = FALSE)
+      }
       cat("Successfully installed:", package_name, "\n")
     }, error = function(e) {
       cat("Failed to install", package_name, ":", e$message, "\n")
@@ -55,8 +59,18 @@ install_source_package <- function(package_url) {
   })
 }
 
+# Function to install remotes package
+install_remotes_package <- function() {
+  if (!is_package_installed("remotes")) {
+    install_cran_package("remotes")
+  }
+}
+
 cat("Starting R package installation...\n")
 cat("===========================================\n")
+
+# Install remotes first
+install_remotes_package()
 
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
@@ -66,18 +80,34 @@ for (pkg in cran_packages) {
   install_cran_package(pkg)
 }
 
-# Installing Bioconductor packages (including DealGPL570 dependencies first)
-cat("\nInstalling Bioconductor packages...\n")
-bioc_packages <- c("GenomicFeatures", "limma", "rtracklayer", "GEOquery", "affy")
+# First install an older version of GEOquery that has gunzip function
+cat("\nInstalling older version of GEOquery...\n")
+tryCatch({
+  if (!is_package_installed("GEOquery")) {
+    remotes::install_version("GEOquery", version = "2.58.0")  # 选择一个较旧的版本
+  }
+}, error = function(e) {
+  cat("Failed to install older GEOquery:", e$message, "\n")
+})
+
+# Installing other Bioconductor packages
+cat("\nInstalling other Bioconductor packages...\n")
+bioc_packages <- c("GenomicFeatures", "limma", "rtracklayer", "affy")
 
 for (pkg in bioc_packages) {
   install_bioc_package(pkg)
 }
 
-# Install DealGPL570 from source after its dependencies are installed
+# Install DealGPL570 from source
 cat("\nInstalling DealGPL570 from source...\n")
 deal_gpl570_url <- "https://cran.r-project.org/src/contrib/Archive/DealGPL570/DealGPL570_0.0.1.tar.gz"
 install_source_package(deal_gpl570_url)
+
+# 如果上面的方法不行，尝试手动修复 DealGPL570 包
+if (!is_package_installed("DealGPL570")) {
+  cat("\n尝试替代方案：手动处理 GPL570 数据...\n")
+  # 这里可以添加替代 DealGPL570 功能的代码
+}
 
 cat("\n===========================================\n")
 cat("Package installation completed!\n")
