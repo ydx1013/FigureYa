@@ -10,7 +10,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -70,7 +69,6 @@ p1<-pheatmap(df,method="spearman", cluster_rows=T, cluster_cols=T,
 pdf(file="heatmap.pdf")
 p1
 dev.off()
-
 ```
 
 ## 多序列比对
@@ -136,3 +134,8 @@ p2
 dev.off()
 ```
 
+# Session Info
+
+```{r}
+sessionInfo()
+```
