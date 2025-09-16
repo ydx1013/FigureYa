@@ -16,7 +16,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -48,21 +47,9 @@ Bayesian age-period-cohort prediction model (Bayesian-age-period-cohort [BAPC] m
 # 环境设置
 # Environment Setup
 
-
-Using domestic mirrors for package installation.
-
 ```{r}
 source("install_dependencies.R")
-```
 
-```{r eval=FALSE}
-install.packages("bamp")
-```
-
-# 加载包
-# Loading packages
-
-```{r}
 # 加载用于估计BAPC模型及进行预测的R包
 # Load R package for estimating BAPC model and making predictions
 library(bamp) 
