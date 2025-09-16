@@ -31,64 +31,66 @@ install_cran_packages <- function(packages) {
   }
 }
 
-# 安全的GitHub包安装函数
-install_github_safe <- function(repo, max_retries = 3) {
-  pkg_name <- basename(repo)
-  
-  if (is_package_installed(pkg_name)) {
-    cat("Package already installed:", pkg_name, "\n")
+# 专门处理colorfulVennPlot安装
+install_colorfulVennPlot <- function() {
+  if (is_package_installed("colorfulVennPlot")) {
+    cat("colorfulVennPlot is already installed\n")
     return(TRUE)
   }
   
-  # 首先检查是否有可用的CRAN替代方案
-  cran_alternatives <- list(
-    "colorfulVennPlot" = c("VennDiagram", "ggvenn", "nVennR", "eulerr")
-  )
+  cat("Attempting to install colorfulVennPlot...\n")
   
-  if (pkg_name %in% names(cran_alternatives)) {
-    cat("Checking for CRAN alternatives for", pkg_name, "...\n")
-    alternatives <- cran_alternatives[[pkg_name]]
-    available_alternatives <- alternatives[sapply(alternatives, is_package_installed)]
-    
-    if (length(available_alternatives) > 0) {
-      cat("Using CRAN alternative:", available_alternatives[1], "instead of", pkg_name, "\n")
+  # 方法1: 直接从GitHub安装
+  tryCatch({
+    if (!is_package_installed("remotes")) {
+      install.packages("remotes")
+    }
+    remotes::install_github("yanlinlin82/colorfulVennPlot")
+    if (is_package_installed("colorfulVennPlot")) {
+      cat("Successfully installed colorfulVennPlot from GitHub\n")
       return(TRUE)
     }
-  }
+  }, error = function(e) {
+    cat("GitHub installation failed:", e$message, "\n")
+  })
   
-  # 如果必须从GitHub安装，尝试多次
-  for (attempt in 1:max_retries) {
-    cat("Attempt", attempt, "of", max_retries, "- Installing", repo, "from GitHub...\n")
-    
-    tryCatch({
-      # 确保remotes包已安装（比devtools更稳定）
-      if (!is_package_installed("remotes")) {
-        install.packages("remotes")
-      }
-      
-      # 使用remotes安装
-      remotes::install_github(repo, quiet = FALSE, upgrade = "never")
-      cat("Successfully installed", pkg_name, "from GitHub\n")
+  # 方法2: 尝试安装旧版本（如果知道具体版本号）
+  tryCatch({
+    # 这里假设我们知道一个可用的版本号，或者尝试从存档安装
+    remotes::install_version("colorfulVennPlot", version = "0.90")
+    if (is_package_installed("colorfulVennPlot")) {
+      cat("Successfully installed colorfulVennPlot from archive\n")
       return(TRUE)
-      
-    }, error = function(e) {
-      cat("Attempt", attempt, "failed:", e$message, "\n")
-      
-      # 如果是GitHub API限制错误，等待后重试
-      if (grepl("401", e$message) || grepl("Rate limit", e$message) || grepl("GitHub", e$message)) {
-        wait_time <- attempt * 30  # 递增等待时间（30, 60, 90秒）
-        cat("GitHub API limit reached. Waiting", wait_time, "seconds before retry...\n")
-        Sys.sleep(wait_time)
-      }
-    })
-  }
+    }
+  }, error = function(e) {
+    cat("Archive installation failed:", e$message, "\n")
+  })
   
-  cat("All GitHub attempts failed for", repo, "\n")
+  # 方法3: 手动下载并安装
+  tryCatch({
+    # 尝试从CRAN存档下载
+    download.file("https://cran.r-project.org/src/contrib/Archive/colorfulVennPlot/colorfulVennPlot_0.90.tar.gz", 
+                  "colorfulVennPlot.tar.gz")
+    install.packages("colorfulVennPlot.tar.gz", repos = NULL, type = "source")
+    if (is_package_installed("colorfulVennPlot")) {
+      cat("Successfully installed colorfulVennPlot from source\n")
+      return(TRUE)
+    }
+  }, error = function(e) {
+    cat("Source installation failed:", e$message, "\n")
+  })
   
-  # 如果GitHub安装失败，尝试安装CRAN替代方案
-  if (pkg_name %in% names(cran_alternatives)) {
-    cat("Installing CRAN alternatives for", pkg_name, "...\n")
-    install_cran_packages(cran_alternatives[[pkg_name]])
+  # 如果所有方法都失败，安装替代包
+  cat("All installation methods for colorfulVennPlot failed. Installing alternatives...\n")
+  alternatives <- c("VennDiagram", "ggvenn", "nVennR", "eulerr")
+  install_cran_packages(alternatives)
+  
+  # 检查是否有替代包安装成功
+  any_alternative <- any(sapply(alternatives, is_package_installed))
+  if (any_alternative) {
+    installed_alts <- alternatives[which(sapply(alternatives, is_package_installed))]
+    cat("Installed alternative Venn packages:", paste(installed_alts, collapse=", "), "\n")
+    return(FALSE)  # 返回FALSE表示原包未安装，但有替代方案
   }
   
   return(FALSE)
@@ -103,22 +105,20 @@ cran_packages <- c(
   "Cairo", "RColorBrewer", "VennDiagram", 
   "dplyr", "ggplot2", "grDevices", "magrittr", "purrr", "readr", 
   "stringr", "tibble", "tidyr",
-  "remotes",  # 使用remotes而不是devtools
-  "ggvenn", "nVennR", "eulerr"  # 添加Venn图替代方案
+  "remotes",
+  "ggvenn", "nVennR", "eulerr"  # Venn图替代方案
 )
 install_cran_packages(cran_packages)
 
-# --- Step 2: 尝试安装GitHub包 ---
-cat("\nInstalling GitHub packages...\n")
-
-# 尝试安装colorfulVennPlot（但优先使用CRAN替代方案）
-success <- install_github_safe("yanlinlin82/colorfulVennPlot")
+# --- Step 2: 专门处理colorfulVennPlot ---
+cat("\nHandling colorfulVennPlot installation...\n")
+colorfulVennPlot_installed <- install_colorfulVennPlot()
 
 # --- Step 3: 验证安装 ---
 cat("\nVerifying package installation...\n")
 
 # 核心CRAN包验证
-core_packages <- c("Cairo", "RColorBrewer", "VennDiagram", "dplyr", "ggplot2")
+core_packages <- c("Cairo", "RColorBrewer", "dplyr", "ggplot2")
 all_core_installed <- TRUE
 
 for (pkg in core_packages) {
@@ -141,6 +141,16 @@ if (venn_installed) {
   cat("✗ No Venn diagram packages installed\n")
 }
 
+# 提供使用替代包的建议
+if (!colorfulVennPlot_installed && venn_installed) {
+  cat("\nNote: colorfulVennPlot could not be installed, but alternatives are available.\n")
+  cat("You may need to modify your R script to use one of these alternatives:\n")
+  cat("- VennDiagram: Similar functionality, widely used\n")
+  cat("- ggvenn: ggplot2-based Venn diagrams\n")
+  cat("- nVennR: Interactive Venn diagrams\n")
+  cat("- eulerr: Euler diagrams (proportional Venn diagrams)\n")
+}
+
 cat("\n===========================================\n")
 if (all_core_installed && venn_installed) {
   cat("Package installation completed successfully!\n")
@@ -152,4 +162,12 @@ if (all_core_installed && venn_installed) {
 } else {
   cat("Package installation completed with significant warnings.\n")
   cat("You may need to manually install missing packages.\n")
+}
+
+# 提供修改R脚本的建议
+if (!colorfulVennPlot_installed) {
+  cat("\nTo use alternative Venn packages, you might need to modify your R script:\n")
+  cat("1. Replace 'library(colorfulVennPlot)' with 'library(VennDiagram)' or another alternative\n")
+  cat("2. Adjust function calls according to the alternative package's syntax\n")
+  cat("3. Check package documentation for equivalent functionality\n")
 }
