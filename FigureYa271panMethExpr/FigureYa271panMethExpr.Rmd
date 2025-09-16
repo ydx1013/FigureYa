@@ -302,7 +302,7 @@ write.table(corExprMeth, "TCGA_pancan_correlation_expr_meth_subset.txt",sep = "\
 
 The example text shows the correlation by drawing a point chart, which can also be drawn in the form of a heat map, circle chart, etc.
 
-`The TCGA_cncan_correlation-expr_eth_stubset. txt file contains n * n correlations and p-values, which can be applied to the FigureYa we previously crowdfunded. More ways to display relevance can be found here: [Which of the 8 situations to display relevance would you like?]（ https://mp.weixin.qq.com/s/D9wheY5QdnOh4JrjIc8-Cg )
+`The TCGA_cncan_correlation-expr_eth_stubset. txt file contains n * n correlations and p-values, which can be applied to the FigureYa. More ways to display relevance can be found here: [Which of the 8 situations to display relevance would you like?]（ https://mp.weixin.qq.com/s/D9wheY5QdnOh4JrjIc8-Cg )
 
 # 开始画图
 
