@@ -68,33 +68,11 @@ Translated with DeepL.com (free version)
 
 # 环境设置
 
-
 # Environment settings
-
-Installation of packages using domestic mirrors
 
 ```{r}
 source("install_dependencies.R")
-```
 
-```{r eval=FALSE}
-# 设置CRAN镜像源为清华镜像站 / Set CRAN mirror to Tsinghua TUNA mirror
-
-# 设置Bioconductor镜像源为清华镜像站 / Set Bioconductor mirror to Tsinghua TUNA mirror
-
-# 使用BiocManager安装人类基因注释数据库 / Install human gene annotation database using BiocManager
-BiocManager::install("org.Hs.eg.db", site_repository = "https://bioconductor.org/packages/3.18/data/annotation")
-
-# 安装基因本体语义相似度计算包 / Install GO semantic similarity calculation package
-BiocManager::install("GOSemSim")
-
-# 安装ggplot2绘图包 / Install ggplot2 plotting package
-install.packages("ggplot2")
-```
-
-
-
-```{r}
 # 加载必要的R包 / Load required R packages
 library(org.Hs.eg.db)  # 人类基因注释数据库 / Human gene annotation database
 library(GOSemSim)      # GO语义相似性分析 / GO semantic similarity analysis
