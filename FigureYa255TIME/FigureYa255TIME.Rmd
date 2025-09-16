@@ -126,9 +126,6 @@ annCol.tcga$MeTIL <- MeTIL
 
 # 计算免疫微环境 Computational immune microenvironment
 
-tcga.mibc.tpm.txt文件较大，已上传微云：<https://share.weiyun.com/LRTM3voy>
-The tcga.mibc.tpm.txt file is large and has been uploaded to Weiyun: <https://share.weiyun.com/LRTM3voy>
-
 使用curated免疫签名，包括22个CIBERSORT签名以及2个MCPcounter签名
 Using curated immune signatures, including 22 CIBERSORT signatures and 2 MCPcounter signatures
 
