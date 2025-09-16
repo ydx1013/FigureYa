@@ -94,7 +94,7 @@ If you already have the files easy_input_pair.txt, easy_input_expr.RDS and easy_
 
 GDC-PANCAN.basic_phenotype.tsv，样本信息，从XENA下载<https://xenabrowser.net/datapages/>
 
-EBPlusPlusAdjustPANCAN_IlluminaHiSeq_RNASeqV2.geneExp.tsv，表达矩阵，从TCGA PanCanAtlas下载：<https://gdc.cancer.gov/about-data/publications/pancanatlas>。太大，已上传微云<https://share.weiyun.com/K5dlEurP>
+EBPlusPlusAdjustPANCAN_IlluminaHiSeq_RNASeqV2.geneExp.tsv，表达矩阵，从TCGA PanCanAtlas下载：<https://gdc.cancer.gov/about-data/publications/pancanatlas>
 
 This step only needs to be run once. You can go directly to "Obtaining Gene Sets of Interest".
 
@@ -102,7 +102,7 @@ The extracted paired samples and their expression matrices have been saved in ea
 
 GDC-PANCAN.basic_phenotype.tsv: Sample information, downloaded from XENA<https://xenabrowser.net/datapages/>
 
-EBPlusPlusAdjustPANCAN_IlluminaHiSeq_RNASeqV2.geneExp.tsv: Expression matrix, downloaded from TCGA PanCanAtlas <https://gdc.cancer.gov/about-data/publications/pancanatlas>. (File is too large; already uploaded to Weiyun<https://share.weiyun.com/K5dlEurP>
+EBPlusPlusAdjustPANCAN_IlluminaHiSeq_RNASeqV2.geneExp.tsv: Expression matrix, downloaded from TCGA PanCanAtlas <https://gdc.cancer.gov/about-data/publications/pancanatlas>.
 
 ```{r eval=FALSE}
 # 载入样本信息
@@ -317,13 +317,13 @@ easy_input_gene.txt，代谢基因，来自例文补充材料41388_2019_1026_MOE
 
 easy_input_pair.txt，配对样本信息。
 
-easy_input_expr.RDS，配对样本的表达矩阵。太大，已上传微云<https://share.weiyun.com/K5dlEurP>
+easy_input_expr.RDS，配对样本的表达矩阵。
 
 easy_input_gene.txt - Metabolic genes sourced from Supplementary Table S1 in the reference publication (41388_2019_1026_MOESM2_ESM.xlsx). Not limited to pathway genes, this may also include specific gene sets such as signatures identified in previous studies.
 
 easy_input_pair.txt - Paired sample information.
 
-easy_input_expr.RDS - Expression matrix of paired samples. Due to large file size, this has been uploaded to Weiyun<https://share.weiyun.com/K5dlEurP>
+easy_input_expr.RDS - Expression matrix of paired samples.
 
 ```{r}
 # 加载感兴趣通路里的基因
@@ -559,11 +559,8 @@ invisible(dev.off())
 
 ![](Metabolic landscape of tcga paired sample.pdf)
 
-# 会话信息
 # Session Info
 
 ```{r}
-# 显示会话信息
-# Show session information
 sessionInfo()
 ```
