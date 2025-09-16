@@ -87,7 +87,6 @@ Step 2: Copy the 'MutSigCV. m' file to the current folder to use.
 
 ```{r}
 source("install_dependencies.R")
-#BiocManager::install("ComplexHeatmap")
 
 library(tidyverse)      # 数据处理和可视化工具集 | Data processing and visualization toolkit
 library(magrittr)       # 提供管道操作符 %>% | Provides pipe operator %>%
@@ -185,7 +184,7 @@ MutSigCV算法，这里采用：
 - 默认的突变字典文件：mutation_type_dictionary_file.txt
 - 默认的coverage文件：gene.covariates.txt和exome_full192.coverage.txt
 
-以上默认文件的源文件下载自<https://software.broadinstitute.org/cancer/cga/mutsig_download>，注册后就能下载。我已经下载好，微云地址：<https://share.weiyun.com/5MyC44s>，下载后全部解压到当前文件夹。
+以上默认文件的源文件下载自<https://software.broadinstitute.org/cancer/cga/mutsig_download>，注册后就能下载。下载后全部解压到当前文件夹。
 
 若对该算法非常熟悉，或者有其他个性化需求，可以自定义这些文件，技术细节请参考：<http://software.broadinstitute.org/cancer/software/genepattern/modules/docs/MutSigCV>
 
@@ -197,7 +196,7 @@ The MutSigCV algorithm is used here:
 -Default mutation dictionary file: mutation_type-dictionary_file. txt
 -Default coverage files: gene.comvariates.txt and exome_full192.cCovered. txt
 
-The source files for the default files above were downloaded from< https://software.broadinstitute.org/cancer/cga/mutsig_download >After registration, you can download it. I have downloaded it, Weiyun address:< https://share.weiyun.com/5MyC44s >After downloading, unzip everything to the current folder.
+The source files for the default files above were downloaded from< https://software.broadinstitute.org/cancer/cga/mutsig_download >After registration, you can download it. After downloading, unzip everything to the current folder.
 
 If you are very familiar with the algorithm or have other personalized needs, you can customize these files. For technical details, please refer to:< http://software.broadinstitute.org/cancer/software/genepattern/modules/docs/MutSigCV >
 
@@ -399,19 +398,13 @@ dev.off()
 
 # 附：
 
-作者使用的是Matlab R2017a版本，可以自行百度下载破解，也可采用如下百度网盘下载，附破解方法，见文件夹MATLAB R2017a安装方法.pdf。
-链接：https://pan.baidu.com/s/1koGMNmEALL1FmDakNwHa9A 
-提取码：3et5
-
-小丫使用的是Matlab R2019a的30天试用版本，已运行成功。
+Matlab R2019a的30天试用版本，已运行成功。
 
 # Attachment:
 
-The author is using Matlab R2017a version, which can be downloaded and cracked on their own from Baidu, or downloaded from the following Baidu cloud drive. The cracking method is attached and can be found in the MATLAB R2017a installation method. pdf folder.
-Link: https://pan.baidu.com/s/1koGMNmEALL1FmDakNwHa9A  
-Extraction code: 3et5
+The 30 day trial version of Matlab R2019a has been successfully run.
 
-Xiaoya is using the 30 day trial version of Matlab R2019a, which has been successfully run.
+# Session Info
 
 ```{r}
 sessionInfo()
