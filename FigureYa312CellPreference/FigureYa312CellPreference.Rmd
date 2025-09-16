@@ -16,7 +16,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -40,8 +39,6 @@ Source: <https://www.nature.com/articles/s41586-022-05400-x>
 Fig. 3 | Neutrophil heterogeneity and functional validation in humans.
 b, Tissue preference of neutrophil clusters in humans, revealed by
 **Ro/e (ratio of observed cell number to expected cell number)**.
-
-
 
 类似的图：
 
@@ -68,34 +65,18 @@ Ro/e (ratio of observed cell number to expected cell number)
 
 偏好性计算方法：实际细胞数目/期望细胞数目，期望细胞数为各组织中各细胞类型均匀分布下的细胞数目
 
-更多单细胞分析画图的FigureYa：
-
 Calculate the preference/enrichment level of each cell type (Celltypes) across different tissues (Tissue), and visualize the results with a heatmap.
 
 Ro/e (ratio of observed cell number to expected cell number)
 
 Calculation method: Actual cell count / Expected cell count, where the expected cell count represents the uniformly distributed cell number for each cell type across tissues.
 
-For more single-cell analysis visualization tools from FigureYa: 
-
 # 环境设置
 # Requirements Description
 
-
-Using domestic mirrors for package installation.
-
 ```{r}
 source("install_dependencies.R")
-```
 
-```{r eval=FALSE}
-install.packages("epitools")
-```
-
-# 加载包
-# Loading packages
-
-```{r}
 library(epitools)
 library(ComplexHeatmap)
 
@@ -212,11 +193,8 @@ draw(hm, annotation_legend_list = lgd)
 invisible(dev.off())
 ```
 
-# 会话信息
 # Session Info
 
 ```{r}
-# 显示会话信息
-# Show session information
 sessionInfo()
 ```
