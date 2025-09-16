@@ -37,8 +37,6 @@ co-expression significance of target genes in each dataset. Erythroblast related
 
 目前SCENIC支持*human*, *mouse* and *fly* (Drosophila melanogaster)这三个物种。
 
-关注“小丫画图”微信公众号，回复“194”，查看作者对文章method的解读。
-
 下面开始复现文章中的Figure 1、2、3
 
 # 环境设置
