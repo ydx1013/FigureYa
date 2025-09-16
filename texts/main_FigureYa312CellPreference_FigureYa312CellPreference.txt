@@ -49,8 +49,6 @@ Application scenarios
 计算各细胞类型（Celltypes）在各组织（Tissue）的偏好性/富集程度，并绘制热图。
 Ro/e (ratio of observed cell number to expected cell number)
 偏好性计算方法：实际细胞数目/期望细胞数目，期望细胞数为各组织中各细胞类型均匀分布下的细胞数目
-更多单细胞分析画图的FigureYa：
-https://k.youshop10.com/McawGY6=
 Calculate the preference/enrichment level of each cell type
 (Celltypes) across different tissues (Tissue), and visualize the results
 with a heatmap.
@@ -58,15 +56,9 @@ Ro/e (ratio of observed cell number to expected cell number)
 Calculation method: Actual cell count / Expected cell count, where
 the expected cell count represents the uniformly distributed cell number
 for each cell type across tissues.
-For more single-cell analysis visualization tools from FigureYa:
-https://k.youshop10.com/McawGY6=
 环境设置
 Requirements Description
-Using domestic mirrors for package installation.
 source("install_dependencies.R")
-install.packages("epitools")
-加载包
-Loading packages
 library(epitools)
 library(ComplexHeatmap)
 # 显示英文报错信息
@@ -162,8 +154,5 @@ draw(hm, annotation_legend_list = lgd)
 pdf("RatioHeatmap.pdf", width = 8, height = 6)
 draw(hm, annotation_legend_list = lgd)
 invisible(dev.off())
-会话信息
 Session Info
-# 显示会话信息
-# Show session information
 sessionInfo()

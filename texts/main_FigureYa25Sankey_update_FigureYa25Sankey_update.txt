@@ -52,11 +52,6 @@ different groups.
 环境设置
 Environment setting
 source("install_dependencies.R")
-#使用国内镜像安装包
-#use the domestic mirror installation package
-#options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-#install.packages("ggalluvial")
-
 library(ggalluvial)
 library(dplyr)
 Sys.setenv(LANGUAGE = "en") #显示英文报错信息 display English error messages
@@ -156,7 +151,7 @@ ggplot(UCB_lodes,
   ggtitle("") +
   guides(fill = FALSE)
 ggsave("sankey_stratum_2.pdf")
-后面多层继承第一层的关系（作者：大鱼海棠）
+后面多层继承第一层的关系（作者：Xiaofan Lu）
 Multiple layers behind inherit the relationship of the first
 layer
 用到参数：stat = “alluvium”，即传说中的“冲击图”
@@ -202,6 +197,5 @@ ggplot(as.data.frame(subdf),
         axis.text.y = element_blank()) + # 只保留x轴label keep only the x-axis label
   ggtitle("")
 ggsave("sankey_alluvium.pdf")
-会话信息
 Sessioninfo
 sessionInfo()

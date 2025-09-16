@@ -6,6 +6,13 @@ Reviewer(s)
 : Ying Ge
 Date
 : 2025-05-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
 Demand description
 绘制下图。
@@ -23,55 +30,25 @@ circle to the outer circle.
 应用场景
 Application Scenarios
 在泛癌中根据组织类别、特定评分，绘制弦图。
-文中多个图可以用我们众筹过的FigureYa来实现：
 Figure 4F
 ligand–receptorinteractions，可参考FigureYa178ReceptorLigand
-https://k.youshop10.com/BWjYsgX=
 Figure 6B，可参考FigureYa35批量bestSeparation
-https://k.youshop10.com/nesUttBS
 Figure 6E Consensus clustering，可参考FigureYa202consensusGene
-https://k.youshop10.com/dNHdlWen
 FigureYa 6G Sankey diagram，可参考FigureYa25sankey
-https://k.youshop10.com/1vm3In-4
 FigureYa 6H Hierarchical clustering of GSEA
 scores，可参考FigureYa71ssGSEA
-https://k.youshop10.com/hhH631te
-更多pancancer数据分析展示可参考
-https://k.youshop10.com/C8RkTgR3
-更多单细胞分析及展示可参考
-https://k.youshop10.com/McawGY6=
-更多圆圈图画法可参考
-https://k.youshop10.com/Ch9kUjuR
 Draw chord diagrams in pan-cancer based on tissue categories and
 specific scores.
-Several figures in the article can be implemented using our
-crowdfunded FigureYa:
 Figure 4F ligand–receptor interactions, see
 FigureYa178ReceptorLigand
-https://k.youshop10.com/BWjYsgX=
 Figure 6B, see FigureYa35 batch bestSeparation
-https://k.youshop10.com/nesUttBS
 Figure 6E Consensus clustering, see FigureYa202consensusGene
-https://k.youshop10.com/dNHdlWen
 FigureYa 6G Sankey diagram, see FigureYa25sankey
-https://k.youshop10.com/1vm3In-4
 FigureYa 6H Hierarchical clustering of GSEA scores, see
 FigureYa71ssGSEA
-https://k.youshop10.com/hhH631te
-More pan-cancer data analysis and visualization see
-https://k.youshop10.com/C8RkTgR3
-More single-cell analysis and visualization see
-https://k.youshop10.com/McawGY6=
-More circle diagram drawing methods see
-https://k.youshop10.com/Ch9kUjuR
 环境设置
 Environment Setup
-使用国内镜像安装包。
-Using domestic mirrors for package installation.
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
-加载包
-Loading packages
+source("install_dependencies.R")
 library(circlize)
 library(ComplexHeatmap)
 # 显示英文报错信息
@@ -132,8 +109,5 @@ overlap. You can refer to the example text for adjustment. The output
 PDF file is a vector graphic, which can be opened with vector graphic
 editors such as Adobe Illustrator. You can edit the position of the text
 and add guide lines.
-会话信息
 Session Info
-# 显示会话信息
-# Show session information
 sessionInfo()

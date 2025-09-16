@@ -33,24 +33,16 @@ data.
 应用场景
 Application scenarios
 对比两个群体的数值分布，无需一一对应，可以用散点图展示。
-我们在垂直坐标系中画过很多散点图
-https://k.youshop10.com/PqTXapih
-，用不同颜色或形状分组。这次画成圆圈，用不同圆圈来分组。
+我们在垂直坐标系中画过很多散点图，用不同颜色或形状分组。这次画成圆圈，用不同圆圈来分组。
 Compare the numerical distributions between two groups without
 requiring one-to-one correspondence, which can be displayed using
 scatter plots.
 We have previously created many scatter plots in vertical coordinate
-systems
-https://k.youshop10.com/PqTXapih
-, using different colors
-or shapes for grouping. This time we will plot them as circles, using
-different circles for grouping.
+systems , using different colors or shapes for grouping. This time we
+will plot them as circles, using different circles for grouping.
 环境设置
 Requirements Description
-Using domestic mirrors for package installation.
 source("install_dependencies.R")
-加载包
-Loading packages
 library(circlize)
 # 显示英文报错信息
 # Show English error messages
@@ -172,8 +164,5 @@ The output PDF file is a vector graphic. If text at the four edges is
 obscured, you can open it in vector graphic editing software like
 Illustrator to perform operations such as moving graphics, enlarging the
 canvas, and editing text.
-会话信息
 Session Info
-# 显示会话信息
-# Show session information
 sessionInfo()

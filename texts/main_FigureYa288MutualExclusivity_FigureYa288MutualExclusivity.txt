@@ -46,9 +46,8 @@ UTUC cohort. Stars refer to correlations that are statistically
 significant.
 应用场景
 Application Scenarios
-Mutual-exclusivity analysis，我们众筹过FigureYa70mutationEvents
-https://k.youshop10.com/5qGbYAM3
-，用Discover包实现TCGA的基因突变数据分析Co-occurrence/mutual
+Mutual-exclusivity
+analysis，我们实现过FigureYa70mutationEvents，用Discover包实现TCGA的基因突变数据分析Co-occurrence/mutual
 exclusivity，未计算Odds Ratio。
 这次我们用单侧Fisher’s exact检验，并计算
 Odds
@@ -57,11 +56,8 @@ Ratio和P值
 从费谢尔检验的代码来看，“less” 表示mutual-exclusivity
 analysis（二者“竞争”出现；OR<1）, 而”greater”则代表co-occurrence
 analysis（二者“共生”出现; OR>1）
-For mutual exclusivity analysis, our previous crowdsourced project
-FigureYa70mutationEvents
-https://k.youshop10.com/5qGbYAM3
-implemented the
-DISCOVER package to analyze TCGA gene mutation patterns
+For mutual exclusivity analysis, FigureYa70mutationEvents implemented
+the DISCOVER package to analyze TCGA gene mutation patterns
 (co-occurrence/mutual exclusivity) without calculating odds ratios.
 In this analysis, we employ one-sided Fisher’s exact test to compute
 both
@@ -74,8 +70,6 @@ alternative indicates mutual exclusivity (competitive pattern; OR <
 环境设置
 Environment Setup
 source("install_dependencies.R")
-加载包
-Loading packages
 library(ggplot2)
 library(dplyr)
 library(tidyverse)
@@ -145,25 +139,13 @@ boundaries (and typically alters the p-value as well).
 print(fisher.test(table(tmp$TP53,tmp$ZMAT3),alternative = "less"))
 绘制热图
 Plot heatmap
-这里简单采用maftools里的绘图方法，瀑布图的绘制众筹过许多，这里不再赘述使用方法。用ComplexHeatmap重绘瀑布图更灵活，可参考FigureYa42oncoprint
-https://k.youshop10.com/CUxBnX=A
-，或FigureYa113MutSigCV
-https://k.youshop10.com/0VYtgolm
-，或FigureYa276panSNV
-https://k.youshop10.com/D1fxfyJr
-分析泛癌中特定通路基因的突变情况。
+这里简单采用maftools里的绘图方法，瀑布图的绘制实现过许多，这里不再赘述使用方法。用ComplexHeatmap重绘瀑布图更灵活，可参考FigureYa42oncoprint，或FigureYa113MutSigCV，或FigureYa276panSNV分析泛癌中特定通路基因的突变情况。
 Here we employ the built-in plotting function from maftools, as
 waterfall plot construction has been extensively demonstrated in
 previous community-shared cases (see references below). For more
 customizable waterfall plots using ComplexHeatmap, please refer to:
-FigureYa42oncoprint
-https://k.youshop10.com/CUxBnX=A
-, FigureYa113MutSigCV
-https://k.youshop10.com/0VYtgolm
-, FigureYa276panSNV
-https://k.youshop10.com/D1fxfyJr
-which demonstrate
-pan-cancer mutation patterns in specific pathway genes.
+FigureYa42oncoprint, FigureYa113MutSigCV, FigureYa276panSNV, which
+demonstrate pan-cancer mutation patterns in specific pathway genes.
 maf <- read.maf("easy_input_two_genes.txt")
 pdf("oncoprint_two_genes.pdf", width = 10,height = 3)
 oncoplot(maf,
@@ -308,8 +290,5 @@ p <- ggplot(res, aes(geneA, geneB)) +
         axis.title = element_blank())
 p
 ggsave("mutual_exclusivity_multiple_genes.pdf",width = 5,height = 5)
-会话信息
 Session Info
-# 显示会话信息
-# Show session information
 sessionInfo()

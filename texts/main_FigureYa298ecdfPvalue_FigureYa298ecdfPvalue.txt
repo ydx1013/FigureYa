@@ -31,9 +31,9 @@ Cumulative frequency of mRNA log2 FC in non-target, CLIP target and CLIP
 + RIP target genes upon IGF2BP silencing. P values were calculated using
 two-sided Wilcoxon and Mann–Whitney test
 .
-我们众筹过的FigureYa290BarGraph所在的文章里也用到了类似的图：
-The article where the FigureYa290BarGraph we crowdfunded is located
-also uses a similar graph:
+FigureYa290BarGraph所在的文章里也用到了类似的图：
+The article where the FigureYa290BarGraph is located also uses a
+similar graph:
 出自：
 https://www.nature.com/articles/s41586-021-03626-9
 图3 | TIM-3缺陷增强树突细胞功能并促进抗原特异性抗肿瘤免疫。 (d)
@@ -72,9 +72,7 @@ ECDF图具有两大核心优势：
 出自：
 https://seaborn.pydata.org/tutorial/distributions.html#tutorial-ecdf
 ，里面有关于其他分布的介绍，推荐扩展阅读。
-我们在FigureYa278heatmapPoints
-https://k.youshop10.com/IZWXWn32
-中也有类似的一个需求，用的是
+我们在FigureYa278heatmapPoints中也有类似的一个需求，用的是
 kruskal.test
 ，这种统计方法也可用来计算两种分布的P值.
 Compare distributions using the empirical cumulative distribution
@@ -90,18 +88,14 @@ https://seaborn.pydata.org/tutorial/distributions.html#tutorial-ecdf
 ,
 which includes an introduction to other distributions—recommended for
 further reading.
-We had a similar requirement in FigureYa278heatmapPoints
-https://k.youshop10.com/IZWXWn32
-, where we used the
+We had a similar requirement in FigureYa278heatmapPoints , where we
+used the
 kruskal.test
-. This statistical method can also be used to
-compute the p-value between two distributions.
+. This statistical method can also be
+used to compute the p-value between two distributions.
 环境设置
 Environment Setup
-Using domestic mirrors for package installation.
 source("install_dependencies.R")
-加载包
-Loading packages
 library(tidyverse)
 library(rstatix)
 library(glue)
@@ -261,8 +255,5 @@ p2
 # 保存图片
 # Save plot 
 ggsave("ecdf_add_Pvalue.pdf", p2, height = 7, width = 7, device = "pdf")
-会话信息
 Session Info
-# 显示会话信息
-# Show session information
 sessionInfo()

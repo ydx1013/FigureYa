@@ -6,10 +6,17 @@ Reviewer(s)
 : Ying Ge
 Date
 : 2025-05-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
 Demand description
-希望众筹补充材料里的Figure S2A
-We want to crowdfund Figure S2A in the supplementary materials
+希望实现补充材料里的Figure S2A
+We want to draw Figure S2A in the supplementary materials
 出自：
 https://molecular-cancer.biomedcentral.com/articles/10.1186/s12943-021-01322-w
 ，跟FigureYa259circLink、FigureYa260CNV出自同一篇文章。
@@ -31,12 +38,7 @@ The visualization of TCGA pancancer mutation data can be achieved by
 providing the gene names of interest yourself
 环境设置
 Environment Setup
-使用国内镜像安装包。
-Using domestic mirrors for package installation.
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
-加载包
-Loading packages
+source("install_dependencies.R")
 library(tidyverse)
 library(magrittr)
 # 显示英文报错信息

@@ -59,28 +59,21 @@ differentiation (red, day 0; dark blue, day 63).
 应用场景
 Application Scenario
 特别适合两种独立分组方式的数据：外围的角代表第一种分组，点的颜色形状代表第二种分组，点跟角的距离代表数值高低。
-另外，还可以参考FigureYa235scDEG
-https://k.youshop10.com/m=E-yK5Z
-的画法，第一种分组从左往右一字排开，第二种分组画到上下两侧（如果超过两组就要再引入颜色、形状等特征来加以区分），点跟横轴的距离代表数值高低。
+另外，还可以参考FigureYa235scDEG的画法，第一种分组从左往右一字排开，第二种分组画到上下两侧（如果超过两组就要再引入颜色、形状等特征来加以区分），点跟横轴的距离代表数值高低。
 Particularly suitable for data with two independent grouping methods:
 the peripheral angles represent the first grouping, the color and shape
 of points represent the second grouping, and the distance from points to
 angles represents the magnitude of values.
 Additionally, you can refer to the visualization method in
-FigureYa235scDEG
-https://k.youshop10.com/m=E-yK5Z
-, where the first
-grouping is arranged from left to right in a straight line, the second
-grouping is plotted on the upper and lower sides (if there are more than
-two groups, additional features like color and shape need to be
-introduced to differentiate them), and the distance from points to the
-horizontal axis represents the magnitude of values.
+FigureYa235scDEG, where the first grouping is arranged from left to
+right in a straight line, the second grouping is plotted on the upper
+and lower sides (if there are more than two groups, additional features
+like color and shape need to be introduced to differentiate them), and
+the distance from points to the horizontal axis represents the magnitude
+of values.
 环境设置
 Environment Setup
-Using domestic mirrors for package installation.
 source("install_dependencies.R")
-加载包
-Loading packages
 library(ggplot2)
 
 # 显示英文报错信息
@@ -219,8 +212,5 @@ ggplot(plot.data, aes(x = x, y = y)) +
 # 保存图形
 # Save plot as PDF
 ggsave("wheelplot_plus.pdf", width = 8, height = 6)
-会话信息
 Session Info
-# 显示会话信息
-# Show session information
 sessionInfo()
