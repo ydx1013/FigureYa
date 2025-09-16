@@ -66,11 +66,7 @@ For which the positive and negative regulators are marked in red and blue, respe
 
 分析基因在肿瘤与正常组织中的差异表达情况并绘制拼接的点图与柱状图。
 
-更多pancancer分析画图FigureYa看这里
-
 Analyze differential gene expression between tumor and normal tissues and generate composite dot plots with bar charts.
-
-For more pan-cancer analysis and visualization tools (FigureYa series), visit 
 
 # 环境设置
 # Environment Setup
@@ -339,11 +335,8 @@ ggsave("Figure 1B differential expression of interested genes in pancancer.pdf",
 rm(expr); gc()
 ```
 
-# 会话信息
 # Session Info
 
 ```{r}
-# 显示会话信息
-# Show session information
 sessionInfo()
 ```
