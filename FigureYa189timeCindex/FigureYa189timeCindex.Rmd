@@ -10,7 +10,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -43,19 +42,9 @@ Time-dependent C-index, evaluating the consistency index of different models.
 
 # Environment Setup
 
-
 ```{r}
 source("install_dependencies.R")
-```
 
-```{r eval=FALSE}
-install.packages("pec")
-install.packages("riskRegression")
-```
-
-Loading package
-
-```{r}
 library(survival)
 library(pec)
 Sys.setenv(LANGUAGE = "en") #显示英文报错信息  # Display an English error message
