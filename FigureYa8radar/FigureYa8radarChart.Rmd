@@ -10,7 +10,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -44,12 +43,9 @@ Scenario 2: Evaluate different indicators under the same measurement system
 
 ```{r}
 source("install_dependencies.R")
-#use the domestic mirror installation package
-#install.packages("rsvg")
 
 Sys.setenv(LANGUAGE = "en") #显示英文报错信息 display English error messages
 options(stringsAsFactors = FALSE) #禁止chr转成factor prohibit the conversion of chr to factor
-
 ```
 
 ## 输入数据
@@ -219,6 +215,8 @@ rsvg_pdf("radar.svg", file = "radar.pdf")
 ```
 
 ![](radar.pdf)
+
+# Session Info
 
 ```{r}
 sessionInfo()
