@@ -18,24 +18,41 @@ jobs:
     - name: Checkout Code
       uses: actions/checkout@v3
 
+    - name: Debug - List All Matched Files
+      run: |
+        echo "Matched files:"
+        find . -type f -iname "*.rmd"
+
     - name: Find and Replace in RMD Files
       run: |
-        # Find all .rmd files and replace text as required
-        find . -type f -name "*.Rmd" | while read file; do
-          # Replace "众筹" with "实现"
-          sed -i 's/众筹/实现/g' "$file"
-          # Replace "大鱼海棠" with "Xiaofan Lu"
-          sed -i 's/大鱼海棠/Xiaofan Lu/g' "$file"
-          # Replace "Da Yu Hai Tang" with "Xiaofan Lu"
-          sed -i 's/Da Yu Hai Tang/Xiaofan Lu/g' "$file"
-          # Remove links like <https://k.koudai.com/...>
-          sed -i 's|<https://k.koudai.com[^>]*>||g' "$file"
+        find . -type f -iname "*.rmd" | while read file; do
+          echo "Processing $file"
+          # Replace "crowdfund" and its variations with "crowdsource"
+          sed -i -e 's/\bcrowdfund\b/crowdsource/g' \
+                 -e 's/\bcrowdfunded\b/crowdsourced/g' \
+                 -e 's/\bcrowdfunds\b/crowdsources/g' \
+                 -e 's/\bcrowdfunding\b/crowdsourcing/g' "$file"
+          # Replace "大鱼老师" with "Xiaofan Lu"
+          sed -i -e 's/大鱼老师/Xiaofan Lu/g' "$file"
+          # Replace "Teacher Da Yu" with "Xiaofan Lu"
+          sed -i -e 's/Teacher Da Yu/Xiaofan Lu/g' "$file"
+          # Remove links like <https://k.youshop10.com/...>
+          sed -i -e 's|<https://k.youshop10.com[^>]*>||g' "$file"
         done
+
+    - name: Debug - Show Changes
+      run: |
+        echo "Changes:"
+        git status --short
 
     - name: Commit Changes
       run: |
         git config --global user.name "github-actions[bot]"
         git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-        git add .
-        git commit -m "Automated text replacement in RMD files" || echo "No changes to commit"
-        git push
+        if ! git diff --quiet; then
+          git add .
+          git commit -m "Automated text replacement in RMD files"
+          git push
+        else
+          echo "No changes to commit"
+        fi
