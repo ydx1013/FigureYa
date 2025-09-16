@@ -16,7 +16,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -67,21 +66,9 @@ Here, using breast cancer as an example, the PAM50 classification includes five 
 # 环境设置
 # Environment Setup
 
-
-Using domestic mirrors for package installation.
-
 ```{r}
 source("install_dependencies.R")
-```
 
-```{r eval=FALSE}
-BiocManager::install("genefu")
-```
-
-# 加载包
-# Loading packages
-
-```{r}
 # 用于绘制热图
 # For generating heatmaps
 library(ComplexHeatmap) 
