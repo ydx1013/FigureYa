@@ -108,7 +108,7 @@ standarize.fun <- function(indata=NULL, halfwidth=NULL, centerFlag=T, scaleFlag=
 
 # 输入文件
 
-easyinput_tcga_tpm.txt，表达矩阵，文件较大，已上传至微云<https://share.weiyun.com/fMyfAzSg>。
+easyinput_tcga_tpm.txt，表达矩阵
 
 easyinput_tcga_phenotype.txt，每个样本对应的亚型信息，这里有四个亚型。
 
@@ -121,7 +121,7 @@ easyinput_regulon.txt，运行regulon分析只需要基因的名字。
 
 # Input files
 
-easyinput_tcga_tpm.txt, the expression matrix has a large file and has been uploaded to the Weiyun <https://share.weiyun.com/fMyfAzSg>。
+easyinput_tcga_tpm.txt, the expression matrix。
 
 easyinput_tcga_phenotype.txt, the subtype information corresponding to each sample, there are four subtypes here.
 
