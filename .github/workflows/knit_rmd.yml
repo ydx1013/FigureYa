@@ -13,7 +13,7 @@ jobs:
       - name: 1. Check out repository (LFS disabled)
         uses: actions/checkout@v4
         with:
-          lfs: false # 保持 LFS 禁用，按你的要求
+          lfs: false
 
       - name: 2. Install system dependencies and Git LFS
         run: |
@@ -30,12 +30,11 @@ jobs:
         with:
           r-version: 'latest'
       
-      # 新增：为 rJava 包安装和配置 Java 环境
       - name: 4. Set up Java for rJava
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
-          java-version: '11' # 一个稳定且广泛兼容的 Java 版本
+          java-version: '11'
 
       - name: 5. Configure R for Java
         run: sudo R CMD javareconf
@@ -43,21 +42,32 @@ jobs:
       - name: 6. Set up Pandoc
         uses: r-lib/actions/setup-pandoc@v2
 
-      # 修改：在核心依赖中加入 remotes 包，以支持特定版本的安装
       - name: 7. Install core R dependencies
         run: Rscript -e 'install.packages(c("rmarkdown", "knitr", "remotes"))'
 
-      # 保留：你原来的 LFS 目录识别和批处理准备逻辑
       - name: 8. Identify LFS directories & Prepare Batch
         id: batch_prep
         run: |
-          # Build LFS dir list safely; handle empty output and ensure file exists
-          git lfs ls-files -n | sed '/^[[:space:]]*$/d' | xargs -r -n1 dirname | sort -u > .lfs_dirs.txt || true
-          touch .lfs_dirs.txt
-          echo "LFS directories identified:"
-          if [ -s .lfs_dirs.txt ]; then cat .lfs_dirs.txt; else echo "(none)"; fi
+          # Read folder names from to_Knit file
+          TO_KNIT_FILE="to_Knit"
+          if [ -f "$TO_KNIT_FILE" ]; then
+            TARGET_DIRS=$(cat "$TO_KNIT_FILE" | xargs -I {} echo "./{}")
+          else
+            echo "No to_Knit file found!"
+            exit 1
+          fi
 
+          echo "Target directories:"
+          echo "$TARGET_DIRS"
+
+          # Find Rmd files in the specified directories
+          find $TARGET_DIRS -type f -name "*.Rmd" | sort > .all_rmd_files.txt
+          TOTAL_FILES=$(wc -l < .all_rmd_files.txt)
           BATCH_SIZE=80
+          TOTAL_BATCHES=$(( (TOTAL_FILES + BATCH_SIZE - 1) / BATCH_SIZE ))
+
+          echo "Total .Rmd files: $TOTAL_FILES, Total batches: $TOTAL_BATCHES"
+
           STATE_FILE=".rmd_batch_state"
           if [ -f "$STATE_FILE" ]; then
             CURRENT_BATCH=$(cat "$STATE_FILE" 2>/dev/null)
@@ -65,12 +75,6 @@ jobs:
             CURRENT_BATCH=1
           fi
           echo "Running batch number: $CURRENT_BATCH"
-
-          find . -mindepth 2 -maxdepth 2 -type f -name "*.Rmd" | sort > .all_rmd_files.txt
-          TOTAL_FILES=$(wc -l < .all_rmd_files.txt)
-          TOTAL_BATCHES=$(( (TOTAL_FILES + BATCH_SIZE - 1) / BATCH_SIZE ))
-
-          echo "Total .Rmd files: $TOTAL_FILES, Total batches: $TOTAL_BATCHES"
 
           if [ "$TOTAL_FILES" -eq 0 ]; then
             : > .current_batch_files.txt
@@ -91,7 +95,6 @@ jobs:
           echo "total_batches=$TOTAL_BATCHES" >> $GITHUB_OUTPUT
           echo "job_failed=false" >> $GITHUB_OUTPUT
 
-      # 保留：你原来的渲染逻辑，包含跳过 LFS 目录的功能
       - name: 9. Render Rmd files in Current Batch (Error Tolerant)
         id: render_step
         run: |
@@ -136,37 +139,24 @@ jobs:
 
       - name: 11. Update Batch State and Commit Files
         run: |
-          # 配置 Git 用户信息
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          
-          # 首先拉取远程最新更改并进行 rebase
           echo "Pulling latest changes from remote..."
           git pull origin main --rebase --autostash
-          
           CURRENT_BATCH=${{ steps.batch_prep.outputs.current_batch }}
           TOTAL_BATCHES=${{ steps.batch_prep.outputs.total_batches }}
-          
           NEXT_BATCH=$((CURRENT_BATCH + 1))
           if [ "$TOTAL_BATCHES" -gt 0 ] && [ "$NEXT_BATCH" -gt "$TOTAL_BATCHES" ]; then
             NEXT_BATCH=1
           fi
           echo "Next batch to run will be: $NEXT_BATCH"
           echo $NEXT_BATCH > .rmd_batch_state
-      
-          # 添加所有生成的HTML文件
           find . -name "*.html" -not -path "./.git/*" | xargs git add 2>/dev/null || true
-          
           git add .rmd_batch_state
           if [ -f summary.txt ]; then git add summary.txt; fi
-          
           if ! git diff --staged --quiet; then
             git commit -m "docs: Auto-render Rmd batch ${{ steps.batch_prep.outputs.current_batch }}"
-            
-            # 尝试推送，如果失败则进行强制推送
-            echo "Pushing changes to remote..."
             if ! git push origin main; then
-              echo "Push failed, attempting force push after rebase..."
               git push origin main --force
             fi
           else
