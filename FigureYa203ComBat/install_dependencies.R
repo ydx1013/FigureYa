@@ -1,17 +1,17 @@
 #!/usr/bin/env Rscript
-# Auto-generated R dependency installation script
-# This script installs all required R packages for this project
+# 修复后的 R 依赖安装脚本
+# 专门针对 FigureYa203ComBat.Rmd 的依赖
 
-# Set up mirrors for better download performance
+# 设置镜像
 options("repos" = c(CRAN = "https://cloud.r-project.org/"))
 options(BioC_mirror = "https://bioconductor.org/")
 
-# Function to check if a package is installed
+# 检查包是否已安装
 is_package_installed <- function(package_name) {
   return(package_name %in% rownames(installed.packages()))
 }
 
-# Function to install CRAN packages
+# 安装 CRAN 包
 install_cran_package <- function(package_name) {
   if (!is_package_installed(package_name)) {
     cat("Installing CRAN package:", package_name, "\n")
@@ -26,7 +26,7 @@ install_cran_package <- function(package_name) {
   }
 }
 
-# Function to install Bioconductor packages
+# 安装 Bioconductor 包
 install_bioc_package <- function(package_name) {
   if (!is_package_installed(package_name)) {
     cat("Installing Bioconductor package:", package_name, "\n")
@@ -44,26 +44,61 @@ install_bioc_package <- function(package_name) {
   }
 }
 
-cat("Starting R package installation...\n")
+cat("Starting R package installation for FigureYa203ComBat...\n")
 cat("===========================================\n")
 
-
-# Installing CRAN packages
-cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("cluster", "oompaBase", "sva")
-
-for (pkg in cran_packages) {
-  install_cran_package(pkg)
+# 首先安装 BiocManager（如果尚未安装）
+if (!is_package_installed("BiocManager")) {
+  install.packages("BiocManager")
 }
 
-# Installing Bioconductor packages
+# 安装 Bioconductor 包（包括 sva）
 cat("\nInstalling Bioconductor packages...\n")
-bioc_packages <- c("SummarizedExperiment", "TCGAbiolinks", "edgeR")
+bioc_packages <- c("sva", "SummarizedExperiment", "TCGAbiolinks", "edgeR")
 
 for (pkg in bioc_packages) {
   install_bioc_package(pkg)
 }
 
+# 安装 CRAN 包
+cat("\nInstalling CRAN packages...\n")
+cran_packages <- c("cluster", "oompaBase", "limma", "ggplot2", "pheatmap")
+
+for (pkg in cran_packages) {
+  install_cran_package(pkg)
+}
+
+# sva 包可能需要额外的系统依赖
+cat("\nChecking for system dependencies...\n")
+if (.Platform$OS.type == "unix") {
+  # 编译依赖
+  system("sudo apt-get update && sudo apt-get install -y libblas-dev liblapack-dev gfortran")
+}
+
 cat("\n===========================================\n")
 cat("Package installation completed!\n")
-cat("You can now run your R scripts in this directory.\n")
+
+# 验证安装
+cat("\nVerifying installation...\n")
+required_packages <- c("sva", "SummarizedExperiment", "edgeR", "limma")
+for (pkg in required_packages) {
+  if (is_package_installed(pkg)) {
+    cat("✅", pkg, "installed successfully\n")
+  } else {
+    cat("❌", pkg, "installation failed\n")
+  }
+}
+
+# 测试 sva 包的基本功能
+cat("\nTesting sva package...\n")
+if (is_package_installed("sva")) {
+  tryCatch({
+    library(sva)
+    cat("✅ sva package loaded successfully\n")
+    cat("sva package version:", packageVersion("sva"), "\n")
+  }, error = function(e) {
+    cat("❌ Error loading sva:", e$message, "\n")
+  })
+}
+
+cat("\nYou can now run FigureYa203ComBat.Rmd script!\n")
