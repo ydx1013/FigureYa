@@ -89,8 +89,6 @@ options(stringsAsFactors = FALSE) #禁止chr转成factor # chr is not allowed to
 
 # Input files
 
-The following two files are large and have been uploaded to the Weiyun <https://share.weiyun.com/ks0OVM7a>. It is recommended to download it directly from the official website in the following ways:
-
 - Expression data :TCGA-LUAD.htseq_fpkm.tsv.gz, gene expression RNAseq - HTSeq - FPKM, downloaded from [XENA](https://xenabrowser.net/datapages/) [GDC TCGA Lung Adenocarcinoma (LUAD) (15 datasets)](https://xenabrowser.net/datapages/?dataset=TCGA-LUAD.htseq_fpkm.tsv&host=https://gdc.xenahubs.net&removeHub=https://xena.treehouse.gi.ucsc.edu:443)，
 
 - :data_mutations_extended.txt mutation data, download it from [cBioPortal](http://www.cbioportal.org/datasets), download the luad_tcga_pan_can_atlas_2018.tar.gz file, unzip it, and put the data_mutations_ extended.txt move the file to the current folder.
