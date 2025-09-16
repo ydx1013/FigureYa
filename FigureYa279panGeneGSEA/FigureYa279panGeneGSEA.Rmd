@@ -16,7 +16,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -45,27 +44,14 @@ Figure 3. Relationships between Ferroptosis and Signaling Pathways and Immunophe
 
 基于特定基因两组数据，对每个肿瘤进行单基因集富集分析(GSEA)，展示某特定通路的富集情况。
 
-更多pancancer分析画图FigureYa看这里
-
 Based on two groups of specific gene data, single gene set enrichment analysis (GSEA) was performed for each tumor to demonstrate the enrichment of a particular pathway.
-
-For more pan-cancer analysis and visualization (FigureYa), check here
 
 # 环境设置
 # Environment Setup
 
-
-Using domestic mirrors for package installation.
-
 ```{r}
 source("install_dependencies.R")
 
-```
-
-# 加载包
-# Loading packages
-
-```{r}
 library(clusterProfiler)
 library(limma)
 library(ggplot2)
