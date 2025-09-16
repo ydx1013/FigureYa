@@ -26,34 +26,49 @@ install_cran_package <- function(package_name) {
   }
 }
 
-# Function to install Bioconductor packages
-install_bioc_package <- function(package_name) {
-  if (!is_package_installed(package_name)) {
-    cat("Installing Bioconductor package:", package_name, "\n")
+# Function to install from GitHub (更新版本，支持build_vignettes参数)
+install_github_package <- function(repo, build_vignettes = FALSE) {
+  pkg_name <- strsplit(repo, "/")[[1]][2]
+  if (!is_package_installed(pkg_name)) {
+    cat("Installing GitHub package:", repo, "\n")
     tryCatch({
-      if (!is_package_installed("BiocManager")) {
-        install.packages("BiocManager")
+      if (!is_package_installed("devtools")) {
+        install.packages("devtools")
       }
-      BiocManager::install(package_name, update = FALSE, ask = FALSE)
-      cat("Successfully installed:", package_name, "\n")
+      if (build_vignettes) {
+        devtools::install_github(repo, build_vignettes = TRUE)
+      } else {
+        devtools::install_github(repo)
+      }
+      cat("Successfully installed:", pkg_name, "\n")
     }, error = function(e) {
-      cat("Failed to install", package_name, ":", e$message, "\n")
+      cat("Failed to install", pkg_name, "from GitHub:", e$message, "\n")
     })
   } else {
-    cat("Package already installed:", package_name, "\n")
+    cat("Package already installed:", pkg_name, "\n")
   }
 }
 
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
-
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("crosslink", "ggplot2", "magrittr", "tidyverse")
+cran_packages <- c("ggplot2", "magrittr", "tidyverse")
 
 for (pkg in cran_packages) {
   install_cran_package(pkg)
+}
+
+# 安装GitHub包
+cat("\nInstalling GitHub packages...\n")
+github_packages <- list(
+  crosslink = list(repo = "zzwch/crosslink", build_vignettes = TRUE)
+)
+
+for (pkg_name in names(github_packages)) {
+  pkg_info <- github_packages[[pkg_name]]
+  install_github_package(pkg_info$repo, pkg_info$build_vignettes)
 }
 
 cat("\n===========================================\n")
