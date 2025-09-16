@@ -11,7 +11,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 # 设置knitr的全局代码块选项 / Set global chunk options for knitr
@@ -41,16 +40,7 @@ Clinical subgroup analysis.
 
 ## 环境设置
 
-
 ## Environment settings
-
-Use domestic image installation package
-
-```r
-install.packages("forestplot")
-```
-
-
 
 ```{r}
 source("install_dependencies.R")
@@ -377,6 +367,8 @@ dev.off()  # 关闭PDF设备
 ```
 
 ![](subgroup.pdf)
+
+# Session Info
 
 ```{r}
 sessionInfo()
