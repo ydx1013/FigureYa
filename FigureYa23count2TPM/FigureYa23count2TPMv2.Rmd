@@ -1,5 +1,5 @@
 ---
-title: "FigureYa23 count2TPMv2"
+title: "FigureYa23count2TPMv2"
 author: "Zhougeng Xu; Ying Ge, Yijing Chen"
 date: "2025-5-20"
 output: html_document
@@ -67,8 +67,6 @@ Recommended method 2
 If you just want to get a rough idea of the expression, you can simply use the difference between the start and end positions of the gene on the chromosome as a normalized length.
 
 ```r
-#source("https://bioconductor.org/biocLite.R")
-#biocLite("biomaRt")
 library(biomaRt)
 
 #查看基因组参数
