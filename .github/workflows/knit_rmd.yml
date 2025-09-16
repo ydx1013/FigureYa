@@ -57,7 +57,7 @@ jobs:
           echo "LFS directories identified:"
           if [ -s .lfs_dirs.txt ]; then cat .lfs_dirs.txt; else echo "(none)"; fi
 
-          BATCH_SIZE=100
+          BATCH_SIZE=80
           STATE_FILE=".rmd_batch_state"
           if [ -f "$STATE_FILE" ]; then
             CURRENT_BATCH=$(cat "$STATE_FILE" 2>/dev/null)
