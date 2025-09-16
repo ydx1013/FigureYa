@@ -11,7 +11,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 # 设置knitr的全局代码块选项 / Set global chunk options for knitr
@@ -59,24 +58,13 @@ The left side line chart is more suitable for time series data, such as developm
 
 # 环境设置
 
-
 # Environment settings
 
 Use domestic image installation package
 
 ```{r}
 source("install_dependencies.R")
-```
 
-```{r eval=FALSE}
-
-# 安装readxl包，用于读取Excel文件（Install the readxl package for reading Excel files）
-install.packages("readxl")
-```
-
-
-
-```{r}
 # 加载readxl包，用于读取Excel文件（Load the readxl package for reading Excel files）
 library(readxl)
 # 加载data.table包，提供高效数据处理功能（Load data.table for efficient data manipulation）
@@ -995,6 +983,8 @@ plot_draw
 dev.off()  # 关闭PDF设备
 # Close PDF device
 ```
+
+# Session Info
 
 ```{r}
 sessionInfo()
