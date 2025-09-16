@@ -10,7 +10,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -41,16 +40,6 @@ For example, the sample text simultaneously shows the correlation of B7-H3 expre
 
 ## 环境设置
 ## Environment setting
-
-
-use the domestic mirror installation package
-
-```r
-install.packages("ggplot2")
-```
-
-
-load package
 
 ```{r}
 source("install_dependencies.R")
@@ -318,6 +307,8 @@ grid.draw(g)
 ```
 
 ![](TwoPlotOfLinearRegression_plus.pdf)
+
+# Session Info
 
 ```{r}
 sessionInfo()
