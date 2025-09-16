@@ -1,7 +1,7 @@
 ---
 title: "FigureYa274MuSiCbulkProop"
 params:
-  author: "Gu Xiao; Yasi Zhang"  
+  author: "Xiao Gu; Yasi Zhang"  
   reviewer: "Ying Ge"
   date: "2025-09-12"
 output: html_document

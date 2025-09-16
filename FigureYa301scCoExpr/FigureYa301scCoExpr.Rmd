@@ -1,7 +1,7 @@
 ---
 title: "FigureYa301scCoExpr"
 params:
-  author: "Yandong Zheng; Yasi Zhang"  
+  author: "Xiao Gu; Yasi Zhang"  
   reviewer: "Ying Ge"
   date: "2025-05-20"
 output: html_document

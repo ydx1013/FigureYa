@@ -1,6 +1,6 @@
 ---
 title: "FigureYa235scDEG"
-author: "Yandong Zheng"
+author: "Xiao Gu"
 reviewers: "Ying Ge, Hui Huang"
 date: "2025-9-12"
 output: html_document

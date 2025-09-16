@@ -1,6 +1,6 @@
 ---
 title: "FigureYa98STEMheatmapV2"
-author: "Yuhui Li, Yandong Zheng, Taojun Ye"
+author: "Yuhui Li, Xiao Gu, Taojun Ye"
 reviewer: "Ying Ge"
 date: "2025-5-20"
 output: html_document
