@@ -401,7 +401,6 @@ scRNA-seq in Human CRC (C) Tissue prevalence estimated by Ro/e score
 <p>计算各细胞类型（Celltypes）在各组织（Tissue）的偏好性/富集程度，并绘制热图。</p>
 <p>Ro/e (ratio of observed cell number to expected cell number)</p>
 <p>偏好性计算方法：实际细胞数目/期望细胞数目，期望细胞数为各组织中各细胞类型均匀分布下的细胞数目</p>
-<p>更多单细胞分析画图的FigureYa：<a href="https://k.youshop10.com/McawGY6=" class="uri">https://k.youshop10.com/McawGY6=</a></p>
 <p>Calculate the preference/enrichment level of each cell type
 (Celltypes) across different tissues (Tissue), and visualize the results
 with a heatmap.</p>
@@ -409,14 +408,12 @@ with a heatmap.</p>
 <p>Calculation method: Actual cell count / Expected cell count, where
 the expected cell count represents the uniformly distributed cell number
 for each cell type across tissues.</p>
-<p>For more single-cell analysis visualization tools from FigureYa: <a href="https://k.youshop10.com/McawGY6=" class="uri">https://k.youshop10.com/McawGY6=</a></p>
 </div>
 <div id="环境设置" class="section level1">
 <h1>环境设置</h1>
 </div>
 <div id="requirements-description" class="section level1">
 <h1>Requirements Description</h1>
-<p>Using domestic mirrors for package installation.</p>
 <pre class="r"><code>source(&quot;install_dependencies.R&quot;)</code></pre>
 <pre><code>## Starting R package installation...
 ## ===========================================
@@ -430,13 +427,6 @@ for each cell type across tissues.</p>
 ## ===========================================
 ## Package installation completed!
 ## You can now run your R scripts in this directory.</code></pre>
-<pre class="r"><code>install.packages(&quot;epitools&quot;)</code></pre>
-</div>
-<div id="加载包" class="section level1">
-<h1>加载包</h1>
-</div>
-<div id="loading-packages" class="section level1">
-<h1>Loading packages</h1>
 <pre class="r"><code>library(epitools)
 library(ComplexHeatmap)</code></pre>
 <pre><code>## Loading required package: grid</code></pre>
@@ -565,14 +555,9 @@ pdf(&quot;RatioHeatmap.pdf&quot;, width = 8, height = 6)
 draw(hm, annotation_legend_list = lgd)
 invisible(dev.off())</code></pre>
 </div>
-<div id="会话信息" class="section level1">
-<h1>会话信息</h1>
-</div>
 <div id="session-info" class="section level1">
 <h1>Session Info</h1>
-<pre class="r"><code># 显示会话信息
-# Show session information
-sessionInfo()</code></pre>
+<pre class="r"><code>sessionInfo()</code></pre>
 <pre><code>## R version 4.5.1 (2025-06-13)
 ## Platform: x86_64-pc-linux-gnu
 ## Running under: Ubuntu 24.04.3 LTS

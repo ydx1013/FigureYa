@@ -410,25 +410,24 @@ differentiation (red, day 0; dark blue, day 63).</p>
 <div id="application-scenario" class="section level1">
 <h1>Application Scenario</h1>
 <p>特别适合两种独立分组方式的数据：外围的角代表第一种分组，点的颜色形状代表第二种分组，点跟角的距离代表数值高低。</p>
-<p>另外，还可以参考FigureYa235scDEG<a href="https://k.youshop10.com/m=E-yK5Z" class="uri">https://k.youshop10.com/m=E-yK5Z</a>的画法，第一种分组从左往右一字排开，第二种分组画到上下两侧（如果超过两组就要再引入颜色、形状等特征来加以区分），点跟横轴的距离代表数值高低。</p>
+<p>另外，还可以参考FigureYa235scDEG的画法，第一种分组从左往右一字排开，第二种分组画到上下两侧（如果超过两组就要再引入颜色、形状等特征来加以区分），点跟横轴的距离代表数值高低。</p>
 <p>Particularly suitable for data with two independent grouping methods:
 the peripheral angles represent the first grouping, the color and shape
 of points represent the second grouping, and the distance from points to
 angles represents the magnitude of values.</p>
 <p>Additionally, you can refer to the visualization method in
-FigureYa235scDEG<a href="https://k.youshop10.com/m=E-yK5Z" class="uri">https://k.youshop10.com/m=E-yK5Z</a>, where the first
-grouping is arranged from left to right in a straight line, the second
-grouping is plotted on the upper and lower sides (if there are more than
-two groups, additional features like color and shape need to be
-introduced to differentiate them), and the distance from points to the
-horizontal axis represents the magnitude of values.</p>
+FigureYa235scDEG, where the first grouping is arranged from left to
+right in a straight line, the second grouping is plotted on the upper
+and lower sides (if there are more than two groups, additional features
+like color and shape need to be introduced to differentiate them), and
+the distance from points to the horizontal axis represents the magnitude
+of values.</p>
 </div>
 <div id="环境设置" class="section level1">
 <h1>环境设置</h1>
 </div>
 <div id="environment-setup" class="section level1">
 <h1>Environment Setup</h1>
-<p>Using domestic mirrors for package installation.</p>
 <pre class="r"><code>source(&quot;install_dependencies.R&quot;)</code></pre>
 <pre><code>## Starting R package installation...
 ## ===========================================
@@ -439,12 +438,6 @@ horizontal axis represents the magnitude of values.</p>
 ## ===========================================
 ## Package installation completed!
 ## You can now run your R scripts in this directory.</code></pre>
-</div>
-<div id="加载包" class="section level1">
-<h1>加载包</h1>
-</div>
-<div id="loading-packages" class="section level1">
-<h1>Loading packages</h1>
 <pre class="r"><code>library(ggplot2)
 
 # 显示英文报错信息
@@ -603,14 +596,9 @@ ggplot(plot.data, aes(x = x, y = y)) +
 # Save plot as PDF
 ggsave(&quot;wheelplot_plus.pdf&quot;, width = 8, height = 6) </code></pre>
 </div>
-<div id="会话信息" class="section level1">
-<h1>会话信息</h1>
-</div>
 <div id="session-info" class="section level1">
 <h1>Session Info</h1>
-<pre class="r"><code># 显示会话信息
-# Show session information
-sessionInfo()</code></pre>
+<pre class="r"><code>sessionInfo()</code></pre>
 <pre><code>## R version 4.5.1 (2025-06-13)
 ## Platform: x86_64-pc-linux-gnu
 ## Running under: Ubuntu 24.04.3 LTS
@@ -643,8 +631,9 @@ sessionInfo()</code></pre>
 ## [21] jquerylib_0.1.4    fastmap_1.2.0      yaml_2.3.10        lifecycle_1.0.4   
 ## [25] compiler_4.5.1     dplyr_1.1.4        RColorBrewer_1.1-3 pkgconfig_2.0.3   
 ## [29] systemfonts_1.2.3  farver_2.1.2       digest_0.6.37      R6_2.6.1          
-## [33] tidyselect_1.2.1   pillar_1.11.0      magrittr_2.0.4     bslib_0.9.0       
-## [37] withr_3.0.2        tools_4.5.1        gtable_0.3.6       cachem_1.1.0</code></pre>
+## [33] tidyselect_1.2.1   dichromat_2.0-0.1  pillar_1.11.0      magrittr_2.0.4    
+## [37] bslib_0.9.0        withr_3.0.2        tools_4.5.1        gtable_0.3.6      
+## [41] cachem_1.1.0</code></pre>
 </div>
 
 
