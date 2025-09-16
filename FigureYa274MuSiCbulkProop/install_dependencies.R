@@ -44,12 +44,32 @@ install_bioc_package <- function(package_name) {
   }
 }
 
+# Function to install SeuratData
+install_seurat_data <- function() {
+  if (!is_package_installed("SeuratData")) {
+    cat("Installing SeuratData package...\n")
+    tryCatch({
+      # 先安装remotes包（如果还没安装）
+      if (!is_package_installed("remotes")) {
+        install.packages("remotes")
+      }
+      # 从Satija Lab的安装源安装SeuratData
+      remotes::install_github("satijalab/seurat-data")
+      cat("Successfully installed: SeuratData\n")
+    }, error = function(e) {
+      cat("Failed to install SeuratData:", e$message, "\n")
+    })
+  } else {
+    cat("Package already installed: SeuratData\n")
+  }
+}
+
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
 cat("\nInstalling important CRAN dependency packages first...\n")
 cran_dep_packages <- c(
-  "curl", "httr", "httr2", "png", "xml2", "rvest"
+  "curl", "httr", "httr2", "png", "xml2", "rvest", "remotes"
 )
 for (pkg in cran_dep_packages) {
   install_cran_package(pkg)
@@ -57,11 +77,15 @@ for (pkg in cran_dep_packages) {
 
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("Seurat", "SeuratData", "devtools", "dplyr", "magrittr", "patchwork", "pheatmap")
+cran_packages <- c("Seurat", "devtools", "dplyr", "magrittr", "patchwork", "pheatmap")
 
 for (pkg in cran_packages) {
   install_cran_package(pkg)
 }
+
+# 特殊安装SeuratData
+cat("\nInstalling SeuratData package...\n")
+install_seurat_data()
 
 # Installing Bioconductor packages
 cat("\nInstalling Bioconductor packages...\n")
@@ -71,11 +95,9 @@ for (pkg in bioc_packages) {
   install_bioc_package(pkg)
 }
 
-
-# Installing GitHub packages
-cat("\nInstalling GitHub packages...\n")
+# 检查并安装MuSiC（如果Bioconductor安装失败）
 if (!is_package_installed("MuSiC")) {
-  cat("Installing MuSiC from GitHub...\n")
+  cat("\nMuSiC not found, trying to install from GitHub...\n")
   tryCatch({
     if (!is_package_installed("devtools")) {
       install.packages("devtools")
