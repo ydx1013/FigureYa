@@ -10,7 +10,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -56,22 +55,9 @@ Maftools are rich in functions, browse <https://bioconductor.org/packages/releas
 # 环境设置
 # Environment setting
 
-
-use the domestic mirror installation package
-
 ```{r}
 source("install_dependencies.R")
-```
 
-```{r, eval=FALSE}
-BiocManager::install("TCGAbiolinks")
-BiocManager::install("maftools")
-```
-
-
-load package
-
-```{r}
 library(TCGAbiolinks)
 library(maftools)
 Sys.setenv(LANGUAGE = "en") #显示英文报错信息 display English error messages
@@ -267,6 +253,8 @@ dev.off()
 ```
 
 ![](oncoplotGroup.pdf)
+
+# Session Info
 
 ```{r}
 sessionInfo()
