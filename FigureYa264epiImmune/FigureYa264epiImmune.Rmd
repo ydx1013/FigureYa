@@ -16,7 +16,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -32,7 +31,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 - 绘图的难点：1.作者通过5个基因的平均表达量来定义CTL评分，代码如何实现呢？2.如何通过TIMER确定CD8 +T细胞高浸润的TCGA样本？3.CTL评分与TCGA基因表达水平之间的相关性，代码如何实现？4.如何绘制文章中的柱状图？
 
-I would like to crowdfund the creation of Figure 1A for this article.
+I would like to draw the creation of Figure 1A for this article.
 
 - Content of the figure: The correlation between the expression of epigenetic regulators and the Cytotoxic T Lymphocyte (CTL) score in 117 TCGA melanoma samples with high CD8+ T-cell infiltration. Notes: 1.CTL score: The average expression level of genes associated with CD8+ T-cell markers and function, as reported in the literature (PMID: 30127393) (CD8A, CD8B, GZMA, GZMB, and PRF1). 2.High CD8+ T-cell infiltration level: Above the upper quartile on TIMER.
   
@@ -59,47 +58,16 @@ Figure 1. The absence of FTO inhibits tumor growth by enhancing tumor-infiltrati
 
 把TCGA表达数据跟免疫浸润、表观遗传都联系起来了，或许对挖掘调控机制有启发。
 
-更多免疫浸润FigureYa看这里<https://k.youshop10.com/VfrgxyYb>
-
-转录调控机制挖掘FigureYa看这里<https://k.youshop10.com/ohh48vwq>
-
 Starting from downloading TCGA data, perform TIMER scoring, group by a specific type of immune cell, calculate the correlation between the expression of epigenetic regulatory factors and the cytotoxic T lymphocyte (CTL) score, and plot a bar chart.  
 
 This connects TCGA expression data with immune infiltration and epigenetics, which may provide insights into regulatory mechanisms.  
 
-For more immune infiltration figures, check FigureYa here: <https://k.youshop10.com/VfrgxyYb>  
-
-For transcriptional regulatory mechanism exploration, check FigureYa here: <https://k.youshop10.com/ohh48vwq>
-
 # 环境设置
 # Environment Setup
 
-
-Using domestic mirrors for package installation.
-
 ```{r}
 source("install_dependencies.R")
-```
 
-```{r eval=FALSE}
-install.packages(c("ggcorrplot", "ggprism"))
-
-# immunedeconv依赖包的安装
-# Installation of the immunedeconv dependency package
-remotes::install_github("cran/limSolve")
-if (!require("BiocManager", quietly = TRUE))
-    install.packages("BiocManager")
-BiocManager::install("quantiseqr")
-
-# immunedeconv的安装方法看这里：https://github.com/icbi-lab/immunedeconv
-# For immunedeconv installation instructions, see: https://github.com/icbi-lab/immunedeconv
-remotes::install_github("icbi-lab/immunedeconv")
-```
-
-# 加载包
-# Loading packages
-
-```{r}
 library(ggprism)
 library(magrittr)
 library(tidyverse)
