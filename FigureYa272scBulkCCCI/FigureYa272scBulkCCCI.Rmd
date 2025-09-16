@@ -16,7 +16,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -78,27 +77,9 @@ After downloading and extracting the package, you can view its contents:
 # 环境设置
 # Environment Setup
 
-
-Using domestic mirrors for package installation.
-
 ```{r}
 source("install_dependencies.R")
-```
 
-```{r eval=FALSE}
-install.packages("ggthemes")
-
-# 下载后本地安装
-# 下载地址：https://www.yuque.com/figureya/figureyaplus/package
-# Download and install locally
-# Download link: https://www.yuque.com/figureya/figureyaplus/package
-install.packages("ScBulkCCCI_0.1.3.tar.gz", repos = NULL, type = "source")
-```
-
-# 加载包
-# Loading packages
-
-```{r}
 library("ScBulkCCCI")
 library("pheatmap")
 library("RColorBrewer")
@@ -577,11 +558,8 @@ Zhang L, Li Z, Skrzypczynska KM, Fang Q, Zhang W, O'Brien SA, He Y, Wang L, Zhan
 
 Zhang L, Yu X, Zheng L, Zhang Y, Li Y, Fang Q, Gao R, Kang B, Zhang Q, Huang JY, Konno H, Guo X, Ye Y, Gao S, Wang S, Hu X, Ren X, Shen Z, Ouyang W, Zhang Z. Lineage tracking reveals dynamic relationships of T cells in colorectal cancer. Nature. 2018 Dec;564(7735):268-272. doi: 10.1038/s41586-018-0694-x. Epub 2018 Oct 29. PMID: 30479382.
 
-# 会话信息
 # Session Info
 
 ```{r}
-# 显示会话信息
-# Show session information
 sessionInfo()
 ```
