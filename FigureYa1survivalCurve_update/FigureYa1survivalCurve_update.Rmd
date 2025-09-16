@@ -10,7 +10,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -81,20 +80,6 @@ Or instead of using expression grouping, use known subtypes (obtained by cluster
 
 ## 环境设置
 ## Environment setting
-
-安装需要的包
-
-Install the required packages
-
-```r
-#Installation of packages using domestic mirrors
-install.packages("survival")
-install.packages("survminer")
-```
-
-加载需要用到的包
-
-Load the required packages
 
 ```{r}
 source("install_dependencies.R")
@@ -286,6 +271,8 @@ dev.off()
 输出的pdf文件是矢量图，可以在Illustrator等软件里进行字体、字号等编辑操作
 
 The output pdf file is a vector image, can be in Illustrator and other software for fonts, font size and other editing operations
+
+# Session Info
 
 ```{r}
 sessionInfo()
