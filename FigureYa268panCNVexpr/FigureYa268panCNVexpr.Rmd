@@ -371,11 +371,8 @@ rm(cna); gc()
 
 The example plot shows mostly positive correlations, which differs from the results we obtained here. Fellow researchers are welcome to join the discussion.
 
-# 会话信息
 # Session Info
 
 ```{r}
-# 显示会话信息
-# Show session information
 sessionInfo()
 ```
