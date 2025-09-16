@@ -80,14 +80,14 @@ options(stringsAsFactors = FALSE) #禁止chr转成factor # chr is not allowed to
 
 单细胞和非单细胞数据任选其一：
 
-- 单细胞数据。sc.seurat.Rdata，单细胞RNA-seq预处理获得的文件。文件较大，已上传至微云<https://share.weiyun.com/vZiSM9pB>。怎样获得这个文件？拖到文末看“附：单细胞RNA-seq数据预处理”
+- 单细胞数据。sc.seurat.Rdata，单细胞RNA-seq预处理获得的文件。怎样获得这个文件？拖到文末看“附：单细胞RNA-seq数据预处理”
 - 非单细胞数据。easy_input.csv，只要你的数据也有三种特征，整理成的easy_input.csv的样子，就可以画这样的图。
 
 # Input files
 
 Choose between single-cell and non-single-cell data:
 
-- Single-cell data. sc.seurat.Rdata, file obtained from single-cell RNA-seq pretreatment. The file size is large and has been uploaded to the Weiyun <https://share.weiyun.com/vZiSM9pB>. How do I get this document? Drag to the end of the article to see "Attached: Single-cell RNA-seq data preprocessing"
+- Single-cell data. sc.seurat.Rdata, file obtained from single-cell RNA-seq pretreatment. How do I get this document? Drag to the end of the article to see "Attached: Single-cell RNA-seq data preprocessing"
 - Non-single-cell data. easy_input.csv, as long as your data also has three characteristics, organized into a easy_input.csv appearance, you can draw such a graph.
 
 ## 单细胞数据
