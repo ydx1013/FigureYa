@@ -16,7 +16,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -62,18 +61,9 @@ Plot the Ro/e values of multiple groups as a heatmap, refer to FigureYa312CellPr
 # 环境设置
 # Environment Setup
 
-
-Using domestic mirrors for package installation.
-
 ```{r}
 source("install_dependencies.R")
 
-```
-
-# 加载包
-# Loading packages
-
-```{r}
 library(Seurat)
 
 # 用于从GEO里的GSE159677_series_matrix.txt.gz文件读取样本信息
@@ -241,11 +231,8 @@ ggplot(plot.data, aes(x = Celltype, y = Ratio, group = Group, color = Group))+
 ggsave("Roedot.pdf", width = 5, height = 4)
 ```
 
-# 会话信息
 # Session Info
 
 ```{r}
-# 显示会话信息
-# Show session information
 sessionInfo()
 ```
