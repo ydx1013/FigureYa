@@ -46,7 +46,7 @@ Fig. 1 | The SICs exhibit strongly different TMEs. This figure refers to the TCG
 
 The immune enrichment scores were calculated using MCP-counter, and subtyping was performed based on the MCP-counter results.
 
-We previously conducted a crowdfunding project (FigureYa56immune_infiltration), which also used TCGA expression data to compute immune infiltration and generate heatmaps. However, the current visualization provides more comprehensive analytical dimensions.
+We previously conducted FigureYa56immune_infiltration, which also used TCGA expression data to compute immune infiltration and generate heatmaps. However, the current visualization provides more comprehensive analytical dimensions.
 
 # 环境设置
 # Environment Setup
