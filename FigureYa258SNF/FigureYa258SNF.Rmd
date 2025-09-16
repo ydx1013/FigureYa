@@ -16,7 +16,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -48,22 +47,9 @@ FigureYa69cancerSubtype employed the SNFCC method for clustering the same datase
 # 环境设置
 # Environment Setup
 
-
-Using domestic mirrors for package installation.
-
 ```{r}
 source("install_dependencies.R")
-```
 
-```{r eval=FALSE}
-install.packages("SNFtool")
-BiocManager::install("wateRmelon")
-```
-
-# 加载包
-# Loading packages
-
-```{r}
 library(SNFtool)
 library(data.table)
 library(pheatmap)
@@ -84,13 +70,9 @@ options(stringsAsFactors = FALSE)
 # 输入文件
 # Input Files
 
-文件较大，已上传微云 <https://share.weiyun.com/9BYhu2QF>
-
 easy_input_expr.txt: 表达谱矩阵。
 
 easy_input_beta.txt: 甲基化数据，beta值。
-
-The file is large and has been uploaded to Weiyun <https://share.weiyun.com/9BYhu2QF>
 
 easy_input_expr.txt: Expression profile matrix.
 
@@ -233,11 +215,8 @@ indata <- indata + t(indata)
 sam_order <- row.names(indata[ind, ind])
 ```
 
-# 会话信息
 # Session Info
 
 ```{r}
-# 显示会话信息
-# Show session information
 sessionInfo()
 ```
