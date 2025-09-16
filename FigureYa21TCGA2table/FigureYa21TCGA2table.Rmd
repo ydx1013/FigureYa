@@ -12,7 +12,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -42,17 +41,6 @@ If you also want to add the expression data of a certain gene, and calculate the
 
 ## 环境设置
 ## Environment setting
-
-
-use the domestic mirror installation package
-
-```r
-BiocManager::install("TCGAbiolinks")
-install.packages("kableExtra")
-```
-
-
-load package
 
 ```{r}
 source("install_dependencies.R")
@@ -359,6 +347,8 @@ texi2pdf("FigureYa21TCGA2table_latex.tex")
 注：如果要表格页不显示代码，就把第224行换成这句：“```{r eval=T, echo = F}”
 
 Note: If you want the form page to not show the code, replace line 224 with this, “```{r eval=T, echo = F}”
+
+# Session Info
 
 ```{r}
 sessionInfo()
