@@ -2,9 +2,16 @@ FigureYa87fish
 FigureYa87fish
 Chengli Song, Taojun Ye
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
 用R画文章里的这种肿瘤克隆进化的图。
-##Requirement description
+Requirement description
 Draw a graph of the evolution of tumor clones in the article using
 R.
 出自
@@ -12,7 +19,7 @@ https://www.nature.com/articles/leu2014289
 from
 https://www.nature.com/articles/leu2014289
 应用场景
-##Application scenarios
+Application scenarios
 Create timecourse “fish plots” that show changes in the clonal
 architecture of tumors,
 https://github.com/chrisamiller/fishplot
@@ -43,16 +50,8 @@ https://bioconductor.org/packages/release/bioc/vignettes/timescape/inst/doc/time
 The clone evolution diagram is a bit like a sankey. I compared it
 with FigureYa25sankey for a more thorough understanding.
 环境设置
-使用国内镜像安装包
-##Environment settings
-Use domestic image installation package
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
-
-install.packages("devtools")
-library(devtools)
-install_github("chrisamiller/fishplot")
-加载包
+Environment settings
+source("install_dependencies.R")
 # 加载fishplot包，用于生成白血病克隆演化的鱼群图
 # Load the fishplot package for generating fish plots of leukemia clonal evolution
 library(fishplot)
@@ -70,7 +69,7 @@ easy_input.txt，每行表示每个克隆群在不同时间节点的VAF/CCF
 timepoints，用来定义easy_input.txt的四列对应的4个时间节点。其中therapyTime列是化疗后休复期推断出的克隆群整体状况。
 parents，与时间节点相对应的各个克隆群进化关系。例图中，“0”表示主克隆，“1,
 1”表示在主克隆之后有两个平行发展的亚克隆簇，“3”表示在这个克隆簇发生时，已经有两次克隆事件。进一步根据各个时间节点，各个克隆簇占比情况，脚本便可实现。为便于理解parents的写法，结尾附上了几个例子。
-##Input data
+Input data
 Three types of inputs are required:
 easy_input.txt， Each row represents the VAF/CCF ratio of each
 clone group at different time points, and each column represents the
@@ -118,7 +117,7 @@ https://github.com/chrisamiller/fishplot
 >The
 ‘clonevol integration’ in
 开始画图
-##Start drawing
+Start drawing
 # 创建fishplot对象，输入数据为克隆频率矩阵、谱系关系和时间点
 # Create fishplot object with clone frequency matrix, lineage relationships and timepoints
 fish <- createFishObject(frac.table, parents, timepoints)
@@ -190,7 +189,7 @@ legend("bottomright",
 或者用
 export包
 导出矢量图，用ppt就能编辑。
-##Post processing processing
+Post processing processing
 The fish. pdf file output earlier is a vector image that can be
 edited using tools such as Illustrator, such as adding points and gene
 names from example texts, moving text positions, and so on.
@@ -199,7 +198,7 @@ https://mp.weixin.qq.com/s/QziYUmpag1MQRkN_xfvZJQ
 ）Export vector graphics and edit them using PowerPoint.
 附
 如果有更多克隆，要怎样设置parents，能再举个例子吗？
-##Attached
+Attached
 If there are more clones, how can parents be set? Can you give
 another example?
 # 从easy_input2.txt读取克隆频率数据，设置表头和制表符分隔符，第一列作为行名
@@ -252,4 +251,5 @@ https://github.com/chrisamiller/fishplot
 >Corresponding code:<
 https://github.com/chrisamiller/fishplot/blob/master/tests/test.R
 >You can master the rules of writing parents.
+Session Info
 sessionInfo()

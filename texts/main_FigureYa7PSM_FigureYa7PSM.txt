@@ -154,5 +154,5 @@ dfpair<-data.frame(df$ID[1:250],df$ID[251:500])
 colnames(dfpair)<-c("CASEID","CONTROLID")
 head(dfpair)
 write.table(dfpair,"pair_ID.txt",quote = F,sep = "\t",row.names = F )
-
+Session Info
 sessionInfo()

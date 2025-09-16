@@ -116,10 +116,6 @@ Then copy the
 seqman
 file to the current folder
 source("install_dependencies.R")
-#use the domestic mirror installation package
-if(! require('tidyverse')) install.packages('tidyverse')
-if(! require('GEOquery')) install.packages('GEOquery')
-
 library(tidyverse)
 library(GEOquery)
 
@@ -395,4 +391,5 @@ http://www-personal.umich.edu/~jianghui/seqmap/Docs.txt
 http://www-personal.umich.edu/~jianghui/seqmap/FAQ.html
 In addition, software such as Dianmond (linux mac) can also
 accomplish sequence comparison.
+Session Info
 sessionInfo()

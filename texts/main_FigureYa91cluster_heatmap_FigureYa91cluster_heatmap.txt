@@ -38,8 +38,6 @@ Sort the samples in the heatmap in the order specified in the
 file, such as by subtype or phenotype.
 环境设置
 Environment settings
-Use domestic image installation package
-install.packages("ClassDiscovery")
 source("install_dependencies.R")
 # 加载用于外部聚类分析的R包
 # Load the R package for external clustering analysis
@@ -409,4 +407,5 @@ pheatmap(mat[, sam_order],            # 使用文件指定的样本顺序调整�
                                          # Hide column names (sample IDs)
          filename = "heatmap_with_file.pdf") # 保存热图，文件名强调使用外部文件定义顺序
                                          # Save heatmap with order defined by external file
+Session Info
 sessionInfo()

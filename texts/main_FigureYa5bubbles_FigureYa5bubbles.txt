@@ -128,7 +128,5 @@ To imitate the effect of the original version, we extracted the data
 corresponding to the transcription factors mentioned in the paper and
 redrew the graphs.
 ggsave(file="paper_gene.pdf",height=8.4,width = 3.2)
-在嘉因公众号回复“世界名画”，查看世界名画的配色代码
-Reply with “World Famous Paintings” on the Jiayin public account to
-see the color codes of world famous paintings.
+Session Info
 sessionInfo()

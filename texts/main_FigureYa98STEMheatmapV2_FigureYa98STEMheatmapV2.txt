@@ -1,6 +1,6 @@
 FigureYa98STEMheatmapV2
 FigureYa98STEMheatmapV2
-Yuhui Li, Yandong Zheng, Taojun Ye
+Yuhui Li, Xiao Gu, Taojun Ye
 2025-5-20
 Academic Citation
 If you use this code in your work or research, we kindly request that
@@ -54,8 +54,6 @@ as developmental stages, processed time points, etc.
 Environment settings
 Use domestic image installation package
 source("install_dependencies.R")
-# 安装readxl包，用于读取Excel文件（Install the readxl package for reading Excel files）
-install.packages("readxl")
 # 加载readxl包，用于读取Excel文件（Load the readxl package for reading Excel files）
 library(readxl)
 # 加载data.table包，提供高效数据处理功能（Load data.table for efficient data manipulation）
@@ -921,4 +919,5 @@ for (i in 1:nrow(profile_num)) {
 plot_draw
 dev.off()  # 关闭PDF设备
 # Close PDF device
+Session Info
 sessionInfo()

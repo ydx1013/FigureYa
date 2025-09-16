@@ -34,9 +34,6 @@ be downregulated by both methylation on cg10586317 and microRNA‐29a,
 rationalizing the paradox in grade II gliomas with wild‐type IDH.
 环境设置
 Environment setting
-use the domestic mirror installation package
-install.packages("ggplot2")
-load package
 source("install_dependencies.R")
 library(ggplot2)
 library(gtable) #方法二要用到 Method 2 is to be used
@@ -249,4 +246,5 @@ g <- gtable_add_grob(g, axYLT, pp$t, length(g$widths) - 1, pp$b)
 
 grid.draw(g)
 #dev.off()
+Session Info
 sessionInfo()

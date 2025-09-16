@@ -63,20 +63,7 @@ find the most important hub gene.
 Translated with DeepL.com (free version)
 环境设置
 Environment settings
-Installation of packages using domestic mirrors
 source("install_dependencies.R")
-# 设置CRAN镜像源为清华镜像站 / Set CRAN mirror to Tsinghua TUNA mirror
-
-# 设置Bioconductor镜像源为清华镜像站 / Set Bioconductor mirror to Tsinghua TUNA mirror
-
-# 使用BiocManager安装人类基因注释数据库 / Install human gene annotation database using BiocManager
-BiocManager::install("org.Hs.eg.db", site_repository = "https://bioconductor.org/packages/3.18/data/annotation")
-
-# 安装基因本体语义相似度计算包 / Install GO semantic similarity calculation package
-BiocManager::install("GOSemSim")
-
-# 安装ggplot2绘图包 / Install ggplot2 plotting package
-install.packages("ggplot2")
 # 加载必要的R包 / Load required R packages
 library(org.Hs.eg.db)  # 人类基因注释数据库 / Human gene annotation database
 library(GOSemSim)      # GO语义相似性分析 / GO semantic similarity analysis
@@ -194,17 +181,16 @@ fsim <- sqrt(simmf * simcc)
 # Commented code for geometric mean of MF+CC+BP ontologies
 # fsim <- (simmf * simcc * simbp)^(1/3)
 声明！
-由于GO注释在不断的完善，而当年Y叔发文章是2012年，本次众筹是2019年，这几年GO数据库也在不断完善。所以用现在的GO注释算出来的结果画出来图和原文会有所不同，这不是原文的错误，只是对原文进行修正。这一次算出来的结果也更加的make
+由于GO注释在不断的完善，而当年Y叔发文章是2012年，这几年GO数据库也在不断完善。所以用现在的GO注释算出来的结果画出来图和原文会有所不同，这不是原文的错误，只是对原文进行修正。这一次算出来的结果也更加的make
 sense，因为用抗FMNL1抗体拉下的蛋白中，理论上FMNL1应该是“朋友”最多的那个。
 Statement! As the GO annotation is constantly improving, and the year
-Uncle Y posted the article is 2012, this crowdfunding is 2019, the GO
-database is also constantly improving in these years. So the results
-calculated with the current GO annotations will be different from the
-original article, which is not a mistake of the original article, but
-just a correction of the original article. This time, the result is also
-more sense, because among the proteins pulled down by anti-FMNL1
-antibody, theoretically FMNL1 should be the one with the most
-“friends”.
+Uncle Y posted the article is 2012, the GO database is also constantly
+improving in these years. So the results calculated with the current GO
+annotations will be different from the original article, which is not a
+mistake of the original article, but just a correction of the original
+article. This time, the result is also more sense, because among the
+proteins pulled down by anti-FMNL1 antibody, theoretically FMNL1 should
+be the one with the most “friends”.
 # 如果想要完全重复Y叔文章里的图，请从这里导入当年计算的fsim。
 # If you want to exactly reproduce the figures from Y's paper, load the pre-calculated fsim here
 # 注意：使用预先计算的结果可确保完全重复性，但会跳过前面的计算步骤
@@ -435,4 +421,5 @@ ggsave("friends.pdf",
 #           align = "hv",                    # 水平和垂直对齐/Horizontal and vertical alignment
 #           ncol = 2,                        # 2列布局/2-column layout
 #           rel_widths = c(1, 1.3))          # 相对宽度/Relative widths
+Session info
 sessionInfo()

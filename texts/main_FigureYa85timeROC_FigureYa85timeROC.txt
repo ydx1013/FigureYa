@@ -23,8 +23,6 @@ Application scenarios
 Draw timeROC curves for different fitting models.
 环境设置
 Environment settings
-Use domestic image installation package
-install.packages("timeROC")
 source("install_dependencies.R")
 # 加载timeROC包，用于时间依赖型ROC曲线分析 - Load the timeROC package for time-dependent ROC curve analysis
 library(timeROC)
@@ -156,4 +154,5 @@ I found a well written post that can be used to draw Figure 3A in the
 example article. The author is Chen Qi from the Statistics Teaching and
 Research Office of the Second Military Medical University
 https://www.wowodx.com/weishengjiandu/7180143d4c3b48228e7d04e97e2ac3c1.html
+Session Info
 sessionInfo()

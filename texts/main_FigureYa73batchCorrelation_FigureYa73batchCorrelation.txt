@@ -241,4 +241,5 @@ ggsave(
   width = 8,  # 宽度8英寸 / Width 8 inches
   height = 10  # 高度10英寸 / Height 10 inches
 )
+Session Info
 sessionInfo()

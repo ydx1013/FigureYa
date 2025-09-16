@@ -141,4 +141,5 @@ pheatmap(deg, cellwidth = 8, cellheight = 1, fontsize = 8,
          filename = "pheatmap.pdf", #直接保存到pdf文件 save directly to pdf file
          border_color = "NA") #不给每个小格子画边框，如果画边框，可以把NA改为你想要的颜色
 #Do not draw borders for each cubby, if you do, you can change the NA to the color you want
+Session Info
 sessionInfo()

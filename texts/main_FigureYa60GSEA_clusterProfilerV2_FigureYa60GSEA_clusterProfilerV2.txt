@@ -45,9 +45,6 @@ DIY result plot by yourself, please use FigureYa13GSEA_Java.
 环境设置
 Environment setting
 source("install_dependencies.R")
-#use the domestic mirror installation package
-#BiocManager::install("clusterProfiler", version = "3.8")
-
 library(clusterProfiler)
 library(enrichplot)
 library(plyr)
@@ -377,4 +374,5 @@ plot_grid(p.res, p2, ncol = 1, align="v", rel_heights = c(1.5, .2))
 # 保存到PDF文件
 # save to PDF file
 ggsave("GSEA_multi_groups.pdf",width=5,height=3)
+Session Info
 sessionInfo()

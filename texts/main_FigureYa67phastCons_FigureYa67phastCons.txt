@@ -317,4 +317,5 @@ axis(side=1,  # 底部X轴 / Bottom x-axis
                paste(span/1000,"kb")))          # 右侧标签 / Right label
 # 关闭图形设备 (与pdf()配对使用) / Close graphic device (paired with pdf())
 # dev.off()  # 已注释，实际使用时取消 / Commented out, uncomment for actual use
+Session Info
 sessionInfo()

@@ -28,9 +28,6 @@ system
 环境设置
 Environment setting
 source("install_dependencies.R")
-#use the domestic mirror installation package
-#install.packages("rsvg")
-
 Sys.setenv(LANGUAGE = "en") #显示英文报错信息 display English error messages
 options(stringsAsFactors = FALSE) #禁止chr转成factor prohibit the conversion of chr to factor
 输入数据
@@ -165,4 +162,5 @@ Inkscape and other tools
 It can also be converted to a pdf file.
 library(rsvg)
 rsvg_pdf("radar.svg", file = "radar.pdf")
+Session Info
 sessionInfo()

@@ -87,8 +87,6 @@ matrices, perform differential expression analysis on all genes using
 limma without screening for differentially expressed genes.
 环境设置
 Environment settings
-Use domestic image installation package
-install.packages("statmod")
 source("install_dependencies.R")
 # 加载limma包，用于基因表达数据分析和差异表达分析
 # Load the limma package for gene expression data analysis and differential expression analysis
@@ -217,4 +215,5 @@ http://genomicsclass.github.io/book/pages/gene_set_analysis_in_R.html
 More enrichment analysis methods in the limma package:<
 http://web.mit.edu/
 ~r/current/arch/i386_linux26/lib/R/library/limma/html/10GeneSetTests.html>
+Session Info
 sessionInfo()

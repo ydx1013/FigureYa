@@ -35,7 +35,6 @@ genes and their relationship with immune infiltration, please refer to
 “FigureYa96R2”.
 环境设置
 Environment settings
-Load Package
 source("install_dependencies.R")
 # 加载ggplot2包，用于数据可视化
 # Load the ggplot2 package for data visualization
@@ -309,4 +308,5 @@ ggplot(data, aes(immune_cells, gene)) +
     size = "Correlation"  # 修改大小图例的标题
     # Modify the title of the size legend
   )
+Session Info
 sessionInfo()

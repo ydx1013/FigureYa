@@ -27,7 +27,6 @@ Input
 A file containing three columns of gene expression levels, survival
 time, and tracking, the file used for testing is dsg1.txt
 source("install_dependencies.R")
-#install.packages(c("survival","survminer","ggplot2"))
 library(survival)
 library("survminer")
 library(ggplot2)
@@ -100,4 +99,5 @@ sc_minp<-ggsurvplot(fit, linetype = "strata", conf.int = F, pval = TRUE,palette 
 sc_minp
 dev.off()
 sc_minp
+Session Info
 sessionInfo()

@@ -33,7 +33,6 @@ In the next step, it is also possible to do survival analysis by
 grouping with high or low TMB values.
 环境设置
 Environment setting
-Load R package
 source("install_dependencies.R")
 library(TCGAbiolinks)
 library(dplyr)
@@ -187,4 +186,5 @@ p + geom_point(aes(group = Expr_level),
              size = 2, #点的大小 size of the point
              position="jitter") #分散 disperse
 ggsave("TMB_point.pdf")
+Session Info
 sessionInfo()
