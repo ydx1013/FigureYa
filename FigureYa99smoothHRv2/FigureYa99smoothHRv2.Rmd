@@ -45,16 +45,7 @@ Please refer to the "Theoretical References" folder in the document for specific
 
 ## 环境设置
 
-
 ## Environment settings
-
-Use domestic image installation package
-
-```r
-install.packages("smoothHR")
-```
-
-
 
 ```{r}
 source("install_dependencies.R")
