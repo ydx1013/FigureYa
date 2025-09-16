@@ -53,9 +53,9 @@ It's somewhat like consensus clustering, just overly complex. The algorithmic wo
 # 环境设置
 # Requirements Description
 
-运行classpredict包，建议使用**Windows系统**，但在其他系统上也可能正常工作
+运行classpredict包，建议使用**Windows系统**。其他系统上可以用替代方案。
 
-To run the classpredict package, **Windows OS** is recommended, but it may also work on other systems.
+To run the classpredict package, **Windows OS** is recommended. Other systems are available with Plan B.
 
 ```{r}
 source("install_dependencies.R")
@@ -376,7 +376,7 @@ resList <- classPredict(exprTrain = train.data, exprTest = test.data, isPaired =
                         filter = rep(1, length(geneId)), ngenePairs = 25, nfrvm = 10, cvMethod = 1,
                         kfoldValue = 10, bccPrior = 1, bccThresh = 0.8, nperm = 0,
                         svmCost = 1, svmWeight =1, fixseed = 1, prevalence = NULL, 
-                        outputName = "ClassPrediction", generateHTML = T)
+                        outputName = "ClassPrediction", generateHTML = F)
 View(resList$predNewSamples)
 View(resList$performClass)
 write.table(resList$predNewSamples, file.path(res.path, "output_ClassPrediction.txt"),
