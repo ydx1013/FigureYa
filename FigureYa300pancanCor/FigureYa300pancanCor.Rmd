@@ -16,7 +16,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -43,8 +42,6 @@ Figure 5 The neutrophil extracellular traps score was highly correlated with man
 
 在泛癌中计算某感兴趣得分并计算该得分与几种致癌通路的相关性。
 
-更多泛癌FigureYa看这里 
-
 相关性展示的8种情况 <https://mp.weixin.qq.com/s/D9wheY5QdnOh4JrjIc8-Cg>，相关FigureYa看这里 
 
 可以用FigureYa实现例文多个Figure，例如：
@@ -54,13 +51,9 @@ Figure 5 The neutrophil extracellular traps score was highly correlated with man
 - Figure 2CDE、3、6BCDE，可参考FigureYa35batch_bestSeparation 
 - Figure 4AB，可参考FigureYa30 
 - Figure 4C，可参考FigureYa85timeROC 
-- Figure 4D，可参考FigureYa33DCA 
-- Figure 5相关性结果展示，可参考 
-- Figure 2B、6FGH森林图，可参考 
+- Figure 4D，可参考FigureYa33DCA
 
 Calculate a score of interest across pan-cancer and assess its correlation with several oncogenic pathways.
-
-For more pan-cancer FigureYa examples, see here: 
 
 Eight scenarios for correlation visualization: <https://mp.weixin.qq.com/s/D9wheY5QdnOh4JrjIc8-Cg>. Related FigureYa examples available here: 
 
@@ -72,24 +65,13 @@ FigureYa can be used to create multiple figures as shown in the example article,
 - Figures 4AB, refer to FigureYa30: 
 - Figure 4C, refer to FigureYa85timeROC: 
 - Figure 4D, refer to FigureYa33DCA: 
-- Figure 5 correlation results display, refer to: 
-- Figures 2B and 6FGH forest plots, refer to: 
 
 # 环境设置
 # Environment Setup
 
-
-Using domestic mirrors for package installation.
-
 ```{r}
 source("install_dependencies.R")
 
-```
-
-# 加载包
-# Loading packages
-
-```{r}
 library(ggplot2)
 library(data.table)
 library(cowplot)
@@ -396,11 +378,8 @@ p <- plot_grid(p1,p2,p3, align = "v", ncol = 1)
 ggsave(filename = "combined correlation scatter plot of zscored oncogenic and NETs in pancancer.pdf", width = 15,height = 18)
 ```
 
-# 会话信息
 # Session Info
 
 ```{r}
-# 显示会话信息
-# Show session information
 sessionInfo()
 ```
