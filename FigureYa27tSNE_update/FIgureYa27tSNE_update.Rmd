@@ -12,7 +12,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -52,29 +51,10 @@ Scenario 2: Hundreds of tumor samples, identify subtypes, find marker genes. Use
 # 环境设置
 # Environment setting
 
-安装R包`Seurat`。之前的版本对应2.x, 目前版本对应3.x.x.
-
-Install the R package `Seurat`. The previous version corresponded to 2.x, the current version corresponds to 3.x.x.
-
 ```{r, warning=FALSE,message=FALSE}
 source("install_dependencies.R")
-# 加载Seurat
-# loading Seurat
-if (! require("Seurat")){
-  install.packages('Seurat')
-  library(Seurat)
-} else{
-  library(Seurat)
-}
-# 加载plyr
-# loading plyr
-if (! require(plyr)){
-  install.packages("plyr")
-  library(plyr)
-} else{
-  library(plyr)
-}
-
+library(Seurat)
+library(plyr)
 library(ggplot2)
 ```
 
