@@ -104,9 +104,6 @@ If you only want to draw this dual-coordinate graph, format your data as easy_in
 ## 数据下载
 ## Data Download
 
-中间文件已上传至微云<https://share.weiyun.com/5zZiFrs>
-The intermediate file has been uploaded to Weiyun <https://share.weiyun.com/5zZiFrs>
-
 以ACC为例，其余癌种同；下载数据后根据GENECODE的注释划分lncRNA表达矩阵和mRNA表达矩阵。数据处理为排除read数为0后进行Log转化。
 Using ACC as an example, the same procedure applies to other cancer types. After downloading the data, divide the lncRNA expression matrix into an mRNA expression matrix based on GENECODE annotations. Data processing includes excluding reads with zero counts and performing log transformation.
 
