@@ -10,7 +10,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 # 设置knitr的全局代码块选项 / Set global chunk options for knitr
@@ -73,16 +72,7 @@ Applicability: Suitable for microarray and RNA seq expression matrices, perform 
 
 ## 环境设置
 
-
 ## Environment settings
-
-Use domestic image installation package
-
-```r
-install.packages("statmod")
-```
-
-
 
 ```{r}
 source("install_dependencies.R")
@@ -234,6 +224,8 @@ For example, RNA seq:< https://bioconductor.org/packages/release/bioc/vignettes/
 For example, microarray:< http://genomicsclass.github.io/book/pages/gene_set_analysis_in_R.html >
 
 More enrichment analysis methods in the limma package:< http://web.mit.edu/ ~r/current/arch/i386_linux26/lib/R/library/limma/html/10GeneSetTests.html>
+
+# Session Info
 
 ```{r}
 sessionInfo()
