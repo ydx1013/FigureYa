@@ -11,7 +11,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 knitr::opts_chunk$set(warning = FALSE)
@@ -53,7 +52,6 @@ We've repackaged the code here to provide a simpler way to use it.
 
 # 环境设置
 # Environment Setup
-
 
 ```{r}
 source("install_dependencies.R")
@@ -102,9 +100,6 @@ source("Tumorindex.R")
 
 # 准备输入数据
 # Prepare input data
-
-data.csv文件太大，请从微云下载<https://share.weiyun.com/54ElVDG>
-The data.csv file is too large. Please download it from Weiyun <https://share.weiyun.com/54ElVDG>
 
 ```{r}
 #x_train_m为WT&HCC RNAseq，在计算样本的TF activity需要用到。
