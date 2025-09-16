@@ -10,7 +10,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -38,7 +37,6 @@ A file containing three columns of gene expression levels, survival time, and tr
 
 ```{r,message=FALSE,warning=FALSE}
 source("install_dependencies.R")
-#install.packages(c("survival","survminer","ggplot2"))
 library(survival)
 library("survminer")
 library(ggplot2)
@@ -51,6 +49,7 @@ head(svdata)
 #Sort the rows by gene expression levels, with the default order being from low to high
 sortsv<-svdata[order(svdata$expression),]
 ```
+
 ## 输出
 ## Output
 
@@ -127,6 +126,10 @@ sc_minp<-ggsurvplot(fit, linetype = "strata", conf.int = F, pval = TRUE,palette 
 sc_minp
 dev.off()
 sc_minp
+```
 
+# Session Info
+
+```{r}
 sessionInfo()
 ```
