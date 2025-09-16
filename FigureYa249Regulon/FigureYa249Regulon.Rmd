@@ -10,7 +10,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -59,7 +58,7 @@ The potential epigenetic differences among the subtypes might be further support
 - Figure 1b的画法可参考FigureYa196PanPie
 - Figure 2b的画法可参考FigureYa248MutLandscape
 - Figure 3de可产考FigureYa25sankey和FigureYa125Fishertest
-- Figure 4f可参考FigureYa106immunotherapy，4h可参考
+- Figure 4f可参考FigureYa106immunotherapy
 - Figure 5b可参考FigureYa12box，f可参考FigureYa162boxViolin
 - Figure 6可参考FigureYa35batch_bestSeparation，FigureYa144DiagHeatmap或<https://mp.weixin.qq.com/s/34WRZRBVPHUNRLlzNH2nzw>
 
@@ -70,29 +69,19 @@ Many of the pictures in the article have been crowdfunded, such as:
 - For more information about Figure 1b, see FigureYa196PanPie
 - For Figure 2b, see FigureYa248MutLandscape
 - Figure 3de see FigureYa25sankey and FigureYa125Fishertest
-- Figure 4f can refer to Figure Ya106 immunotherapy, and 4h can refer to 
+- Figure 4f can refer to Figure Ya106 immunotherapy
 - Figure 5b can refer to FigureYa12box, and f can refer to FigureYa162boxViolin
 - For Figure 6, see FigureYa35batch_bestSeparation, FigureYa144DiagHeatmap, or <https://mp.weixin.qq.com/s/34WRZRBVPHUNRLlzNH2nzw>
 
-Next, we will continue to crowdfund Figure3a, welcome to add Xiaoya as a friend (WeChat ID: epigenomics), check the circle of friends, and pay attention to the follow-up crowdfunding progress.
+Next, we will continue to draw Figure3a, welcome to add Xiaoya as a friend (WeChat ID: epigenomics), check the circle of friends, and pay attention to the follow-up crowdfunding progress.
 
 # 环境设置
 
-
 # Environment settings
-
 
 ```{r}
 source("install_dependencies.R")
-```
 
-```{r eval=FALSE}
-BiocManager::install("RTN")
-```
-
-load packages
-
-```{r}
 library(RTN)
 library(snow)
 library(ComplexHeatmap)
