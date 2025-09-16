@@ -11,7 +11,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -47,15 +46,9 @@ Calculate CNVs using single-cell RNA-seq data and compare differences between mu
 # 环境设置
 # Environment Setup
 
-Using a domestic mirror to install the package
-
 ```{r}
 source("install_dependencies.R")
-```
 
-Loading the package
-
-```{r}
 library(org.Hs.eg.db)
 library(magrittr)
 library(dplyr)
@@ -80,10 +73,10 @@ minmax <- function(x, min, max ){
 # Input file
 
 GSE103322_HNSCC_all_data.txt.gz，这里以原文的数据为例，其他单细胞RNA-seq数据与此类似，包含表达矩阵和样品分组等信息meta data。
+
 GSE103322_HNSCC_all_data.txt.gz. This example uses the original data. Other single-cell RNA-seq datasets are similar and include metadata such as expression matrix and sample grouping.
 
-Download GSE103322_HNSCC_all_data.txt.gz from <https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE103322>，已上传到微云，下载链接<https://share.weiyun.com/5gsuteR>
-Download GSE103322_HNSCC_all_data.txt.gz from <https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE103322>, uploaded to Weiyun, download link <https://share.weiyun.com/5gsuteR>
+Download GSE103322_HNSCC_all_data.txt.gz from <https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE103322>
 
 ```{r}
 # read cell annotation information
