@@ -18,13 +18,13 @@ knitr::opts_chunk$set(echo = TRUE)
 
 Xiaofan Lu写的MOVICS包很神奇，一个包几乎就画出了分子分型文章的大部分图。Xiaofan Lu写的这篇预印本最近已接收，刚好可以作为MOVICS包的应用案例。接下来会连续实现这篇文章里的几个图。
 
-Figure2b的突变综合性热图，看起来非常酷炫。里头涉及的分析在以前的实现里也有，包括TMB计算，突变signature，突变频数，拷贝数变异情况等等。如果大鱼老师可以随便拟定数据画图也可以！
+Figure2b的突变综合性热图，看起来非常酷炫。里头涉及的分析可参考相应的FigureYa，包括TMB计算，突变signature，突变频数，拷贝数变异情况等等。如果大鱼老师可以随便拟定数据画图也可以！
 
 # Requirement Description
 
 The MOVICS package I wrote was amazing, and a single package almost drew most of the diagram of the molecular typing article. This preprint I wrote was recently received and could be used as an example of the use case for the MOVICS package. Next, we will continue to crowdfund several pictures in this article.
 
-Figure2b's comprehensive heatmap of mutations looks really cool. The analysis involved in it is also available in previous crowdfunding, including TMB calculation, mutation signature, mutation frequency, copy number variation, and so on.
+Figure2b's comprehensive heatmap of mutations looks really cool. The analysis involved in it is also available in FigureYa, including TMB calculation, mutation signature, mutation frequency, copy number variation, and so on.
 
 ![](example.png)
 
@@ -46,7 +46,7 @@ b) Genomic alteration landscape according to iCS. Samples are ordered by the com
 
 - Figure 1b的画法可参考FigureYa196PanPie
 - Figure 3de可产考FigureYa25sankey和FigureYa125Fishertest
-- Figure 4f可参考FigureYa106immunotherapy，4h可参考
+- Figure 4f可参考FigureYa106immunotherapy
 - Figure 5b可参考FigureYa12box，f可参考FigureYa162boxViolin
 - Figure 6可参考FigureYa35batch_bestSeparation，FigureYa144DiagHeatmap或<https://mp.weixin.qq.com/s/34WRZRBVPHUNRLlzNH2nzw>
 
@@ -58,11 +58,11 @@ Here, the mutation landscape is plotted with ComplexHeatMap, which shows the mut
 - For more information about mutation signatures, see FigureYa110mutationSignature.
 - For more analysis and display of mutations and copy numbers of FigureYa see here 
 
-Many of the pictures in the article have been crowdfunded, such as:
+Many of the pictures in the article, such as:
 
 - For more information about Figure 1b, see FigureYa196PanPie
 - Figure 3de can be tested with FigureYa25sankey and FigureYa125Fishertest
-- Figure 4f can refer to Figure Ya106 immunotherapy, and 4h can refer to 
+- Figure 4f can refer to Figure Ya106 immunotherapy
 - Figure 5b can refer to FigureYa12box, and f can refer to FigureYa162boxViolin
 - For Figure 6, see FigureYa35batch_bestSeparation, FigureYa144DiagHeatmap, or <https://mp.weixin.qq.com/s/34WRZRBVPHUNRLlzNH2nzw>
 
@@ -72,11 +72,7 @@ Many of the pictures in the article have been crowdfunded, such as:
 
 ```{r}
 source("install_dependencies.R")
-```
 
-load packages
-
-```{r}
 library(ComplexHeatmap)
 library(RColorBrewer)
 
