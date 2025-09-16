@@ -10,7 +10,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -45,32 +44,15 @@ For further expansion, you can replace the above "expression level of a certain 
 
 > 本文档将提供这两种情况的解决方案。
 
-更多富集分析展示方式看这里
-
-更多pancancer分析画图FigureYa看这里
-
 > This document will provide solutions for both scenarios.
-
-For more enrichment analysis display methods, see here 
-
-For more pancancer analysis plotting FigureYa see here 
 
 # 环境设置
 
-
 # Environment settings
-
 
 ```{r}
 source("install_dependencies.R")
-options(download.file.method = 'libcurl')
-options(url.method='libcurl')
-BiocManager::install("clusterProfiler")
-```
 
-load packages
-
-```{r}
 library(clusterProfiler)
 library(limma)
 library(ggplot2)
