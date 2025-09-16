@@ -16,7 +16,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -58,19 +57,9 @@ If you also want to illustrate relationships between genes, refer to FigureYa74O
 # 环境设置
 # Environment Setup
 
-
-Using domestic mirrors for package installation.
-
 ```{r}
 source("install_dependencies.R")
-BiocManager::install("RCircos")
-BiocManager::install("TCGAbiolinks")
-```
 
-# 加载包
-# Loading packages
-
-```{r}
 library(RCircos)
 library(magrittr)
 library(tidyverse)
@@ -92,13 +81,13 @@ options(stringsAsFactors = FALSE)
 
 easy_input_gene.txt，根据需要定义一个基因集，后面将把基因名标在画成环状的染色体上。
 
-hg38.gtf，基因组上所有基因所在位置，从中提取出目标基因的位置。可以从[gencode](https://www.gencodegenes.org)下载<https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_39/gencode.v39.annotation.gtf.gz>。文件较大，已上传到微云<https://share.weiyun.com/QXyYwYeP>。
+hg38.gtf，基因组上所有基因所在位置，从中提取出目标基因的位置。可以从[gencode](https://www.gencodegenes.org)下载<https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_39/gencode.v39.annotation.gtf.gz>。
 
 If you already have very_easy_input.txt, you can skip this step and proceed directly to "Start Plotting."
 
 easy_input_gene.txt: Define a gene set as needed. These gene names will later be labeled on the circular chromosome plot.
 
-hg38.gtf: Contains the genomic coordinates of all genes. Extract the positions of your target genes from this file. You can download the hg38.gtf file from [gencode](https://www.gencodegenes.org) at: <https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_39/gencode.v39.annotation.gtf.gz>. The file is large. A copy has been uploaded to Weiyun for convenience <https://share.weiyun.com/QXyYwYeP>.
+hg38.gtf: Contains the genomic coordinates of all genes. Extract the positions of your target genes from this file. You can download the hg38.gtf file from [gencode](https://www.gencodegenes.org) at: <https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_39/gencode.v39.annotation.gtf.gz>.
 
 ```{r eval=FALSE}
 # 根据需要定义一个基因集，可以从文件读入
@@ -215,11 +204,8 @@ dev.off()
 
 The plot is exported as a vector graphic in PDF format, which can be opened and edited in software like Adobe Illustrator. For example, you may manually adjust text positions to prevent gene name overlaps and modify connector shapes.
 
-# 会话信息
 # Session Info
 
 ```{r}
-# 显示会话信息
-# Show session information
 sessionInfo()
 ```
