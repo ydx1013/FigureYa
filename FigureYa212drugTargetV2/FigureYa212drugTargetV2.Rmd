@@ -1,7 +1,7 @@
 ---
 title: "FigureYa212drugTargetV2"
 author: "Xiaofan Lu"
-date: "2025-9-15"
+date: "2021-1-3"
 output: html_document
 ---
 
@@ -95,8 +95,6 @@ display.progress = function (index, totalN, breakN=20) {
 ```
 
 # 输入文件
-
-文件较大，已上传至微云，请点击链接下载<https://share.weiyun.com/c9oY6n0T>
 
 LIHC.TPM.txt，基因表达矩阵。计算PPS得分和药敏预测，都基于这个表达矩阵。实际应用时把这个表达矩阵替换成你自己的数据。
 
