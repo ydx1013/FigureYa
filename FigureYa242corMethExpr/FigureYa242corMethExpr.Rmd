@@ -11,7 +11,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -28,15 +27,9 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # 环境设置 / Environment Setup
 
-
 ```{r}
 source("install_dependencies.R")
 
-```
-
-# 加载包 / Load packages
-
-```{r}
 library(TCGAbiolinks)
 library(ChAMPdata)
 library(data.table)
@@ -48,7 +41,7 @@ options(stringsAsFactors = FALSE) #禁止chr转成factor / Prevent chr from conv
 
 # 输入文件
 
-TCGA-UCEC.methylation450.tsv.gz，UCEC的DNA甲基化数据，下载自XENA<https://xenabrowser.net/datapages/?dataset=TCGA-UCEC.methylation450.tsv&host=https%3A%2F%2Fgdc.xenahubs.net&removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443>。已上传至微云<https://share.weiyun.com/Qn0X57I0>
+TCGA-UCEC.methylation450.tsv.gz，UCEC的DNA甲基化数据，下载自XENA<https://xenabrowser.net/datapages/?dataset=TCGA-UCEC.methylation450.tsv&host=https%3A%2F%2Fgdc.xenahubs.net&removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443>
 
 ```{r}
 # 加载基因表达注释文件 / Load gene expression annotation file
