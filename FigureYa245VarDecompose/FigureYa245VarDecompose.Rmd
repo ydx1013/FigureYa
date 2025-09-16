@@ -10,7 +10,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -23,7 +22,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Requirement Description
 
-I would like to crowdfund Fig.2b of this article, using RNA-seq to measure the conserved expression of genes.
+I would like to draw Fig.2b of this article, using RNA-seq to measure the conserved expression of genes.
 
 The conservation of gene expression between species was intended to analyze the expression conservation of non-coding RNAs between species.
 
@@ -68,21 +67,11 @@ This script implements the following functions:
 
 # 环境设置
 
-
 # Environment settings
-
 
 ```{r}
 source("install_dependencies.R")
-```
 
-```{r eval=FALSE}
-install.packages(c("foreach", "doParallel"))
-```
-
-load packages
-
-```{r}
 suppressPackageStartupMessages({
   library(tidyverse)
   library(lme4) # 用于实现linear mixed model (LMM) # Used to implement linear mixed model (LMM)
