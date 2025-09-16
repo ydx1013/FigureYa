@@ -11,7 +11,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 # 设置knitr的全局代码块选项 / Set global chunk options for knitr
@@ -45,35 +44,12 @@ UMAP, one of the three mainstream latitude reduction methods. the advantage of U
 
 ## 环境设置
 
-先查看install_UMAP.md，安装anaconda和UMAP和添加环境变量。
-
-> Windows系统根据提供的视频“Windows10-UMAP安装.mov”进行软件安装和检查
-
-Mac系统这样添加环境变量：
-
 ## Environment Setup
+
+先查看install_UMAP.md，安装anaconda和UMAP和添加环境变量。
 
 First check install_UMAP.md to install anaconda and UMAP and add environment variables.
 
-> Windows systems install and check the software according to the provided video “Windows10-UMAP installation.mov”
-
-Mac systems add environment variables like this:
-
-```r
-Sys.getenv("PATH") #检查/Anaconda/bin 是否在环境中
-Sys.getenv("PATH"="/anaconda3/bin/") #如果不在的话，需要将其加入环境变量中
-Sys.getenv("PATH") #再次检查
-```
-
-
-Installation of packages using domestic mirrors
-
-```r
-install.packages("Seurat")
-```
-
-
-library pacakges
 ```{r}
 source("install_dependencies.R")
 # 加载Seurat包 - 用于单细胞RNA测序数据分析
@@ -839,6 +815,8 @@ pdf("UMAP_gene_dist.pdf", width = 8,height = 4)
 print(fp)
 dev.off()
 ```
+
+# Session Info
 
 ```{r}
 sessionInfo()
