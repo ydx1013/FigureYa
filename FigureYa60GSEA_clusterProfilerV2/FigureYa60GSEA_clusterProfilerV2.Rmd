@@ -10,7 +10,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -58,8 +57,6 @@ If you want to use Java version of GSEA to do enrichment analysis and DIY result
 
 ```{r}
 source("install_dependencies.R")
-#use the domestic mirror installation package
-#BiocManager::install("clusterProfiler", version = "3.8")
 
 library(clusterProfiler)
 library(enrichplot)
@@ -416,6 +413,8 @@ plot_grid(p.res, p2, ncol = 1, align="v", rel_heights = c(1.5, .2))
 # save to PDF file
 ggsave("GSEA_multi_groups.pdf",width=5,height=3)
 ```
+
+# Session Info
 
 ```{r}
 sessionInfo()
