@@ -386,7 +386,5 @@ invisible(dev.off())
 # Session Info
 
 ```{r}
-# 显示会话信息
-# Show session information
 sessionInfo()
 ```
