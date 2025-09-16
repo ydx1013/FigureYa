@@ -16,7 +16,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -24,7 +23,7 @@ knitr::opts_chunk$set(echo = TRUE)
 # 需求描述
 # Demand description
 
-小丫姐好，我还有很多小伙伴想实现这篇铁死亡泛癌的其他图片，主要是Figure 1。感觉这个套路只要换一个通路就可以测试，我看大鱼老师写了这篇文章的Figure 2A（铁死亡基因在泛癌肿瘤与正常的差异箱线图，FigureYa208FPI），Figure 3B（铁死亡与免疫通路的相关性，FigureYa253panGSEA），可否请大鱼老师详细写一下文章Figure 1的相关代码？
+想实现这篇铁死亡泛癌的其他图片，主要是Figure 1。感觉这个套路只要换一个通路就可以测试，我看Xiaofan Lu写了这篇文章的Figure 2A（铁死亡基因在泛癌肿瘤与正常的差异箱线图，FigureYa208FPI），Figure 3B（铁死亡与免疫通路的相关性，FigureYa253panGSEA），可否请Xiaofan Lu详细写一下文章Figure 1的相关代码？
 
 - 1A（铁死亡在泛癌中体细胞拷贝数变异情况，绘制条形图，可参考FigureYa265panCNV）
 - 1B（铁死亡基因在肿瘤与正常的差异表达，绘制拼接的点图和柱状图，可参考FigureYa263panDiff）
@@ -32,11 +31,11 @@ knitr::opts_chunk$set(echo = TRUE)
 - 1D（铁死亡基因肿瘤与正常组织甲基化状态点图）
 - 1E（铁死亡转录组表达与启动子甲基化相关性的点图）
 
-这些图都是泛癌的，不知道大鱼老师可不可以用例文数据分别实现个教程 [皱眉] ？（感觉都可以出一期专栏——iSicence复现了哈哈）
+这些图都是泛癌的，不知道Xiaofan Lu可不可以用例文数据分别实现个教程 [皱眉] ？（感觉都可以出一期专栏——iSicence复现了哈哈）
 
 这次实现Figure 1C，铁死亡基因体细胞拷贝数与基因表达的相关性点图。
 
-Hello Sister Xiaoya, I have many friends who would like to crowdfund the other figures from this pan-cancer ferroptosis study, mainly Figure 1. It seems that this approach can be tested just by switching to a different pathway. I noticed that Teacher Dayu has already written about Figure 2A (boxplot of ferroptosis gene differences between tumors and normal tissues in pan-cancer, FigureYa208FPI) and Figure 3B (correlation between ferroptosis and immune pathways, FigureYa253panGSEA) from this article. Could Teacher Dayu please provide a detailed explanation of the code for Figure 1 in the article?
+The other figures from this pan-cancer ferroptosis study, mainly Figure 1. It seems that this approach can be tested just by switching to a different pathway. I noticed that Xiaofan Lu has already written about Figure 2A (boxplot of ferroptosis gene differences between tumors and normal tissues in pan-cancer, FigureYa208FPI) and Figure 3B (correlation between ferroptosis and immune pathways, FigureYa253panGSEA) from this article. Could Xiaofan Lu please provide a detailed explanation of the code for Figure 1 in the article?
 
 - 1A (somatic copy number variation of ferroptosis in pan-cancer, bar plot, refer to FigureYa265panCNV)
 - 1B (differential expression of ferroptosis genes in tumors vs. normal tissues, combined dot and bar plot, refer to FigureYa263panDiff)
@@ -44,9 +43,9 @@ Hello Sister Xiaoya, I have many friends who would like to crowdfund the other f
 - 1D (methylation status dot plot of ferroptosis genes in tumor vs. normal tissues)
 - 1E (scatter plot of correlation between ferroptosis transcriptome expression and promoter methylation)
 
-All these figures are pan-cancer analyses. I wonder if Teacher Dayu could create separate crowdfunding tutorials using the example data? (Feels like it could even be a column—iScience reproduction, haha!)
+All these figures are pan-cancer analyses. I wonder if Xiaofan Lu could create separate crowdfunding tutorials using the example data? (Feels like it could even be a column—iScience reproduction, haha!)
 
-This time, we’re crowdfunding Figure 1C: the scatter plot showing the correlation between somatic copy number and gene expression of ferroptosis genes."
+This time, we’re drawing Figure 1C: the scatter plot showing the correlation between somatic copy number and gene expression of ferroptosis genes."
 
 ![](example.png)
 
@@ -64,7 +63,7 @@ Figure 1. The Dysregulation of Ferroptosis Regulator Genes (FRGs).
 For which the positive and negative regulators are marked in red and blue, respectively.
 (C) The Spearman’s correlation between somatic copy number alterations and the expression of FRGs.
 
-The crowdfunding for Figure 1DE will be launched successively, so stay tuned.
+Figure 1DE will be launched successively, so stay tuned.
 
 # 应用场景
 # Application scenarios
@@ -76,18 +75,9 @@ Analyze the correlation between somatic copy number and gene expression (using f
 # 环境设置
 # Environment Setup
 
-
-Using domestic mirrors for package installation.
-
 ```{r}
 source("install_dependencies.R")
 
-```
-
-# 加载包
-# Loading packages
-
-```{r}
 library(ggplot2)
 library(data.table)
 library(randomcoloR)
