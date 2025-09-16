@@ -16,7 +16,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -54,18 +53,9 @@ RNA-seq data can also be leveraged for in-depth analysis using such approaches. 
 # 环境设置
 # Environment Setup
 
-
-Using domestic mirrors for package installation.
-
 ```{r}
 source("install_dependencies.R")
 
-```
-
-# 加载包
-# Loading packages
-
-```{r}
 library(magrittr)
 library(tidyverse)
 library(org.Hs.eg.db)
@@ -298,11 +288,8 @@ The frequencies we calculated show significant discrepancies from those reported
 
 ![](cBioportal_oncoprint.pdf)
 
-# 会话信息
 # Session Info
 
 ```{r}
-# 显示会话信息
-# Show session information
 sessionInfo()
 ```
