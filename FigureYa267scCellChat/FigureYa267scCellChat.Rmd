@@ -1,6 +1,6 @@
 ---
 title: "FigureYa267scCellChat"
-author: "Yandong Zheng, Taojun Ye"
+author: "Xiao Gu, Taojun Ye"
 reviewer: "Ying Ge"
 date: "2025-5-20"
 output: html_document
@@ -10,7 +10,6 @@ output: html_document
 If you use this code in your work or research, we kindly request that you cite our publication:
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
-
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -76,32 +75,11 @@ In addition, the usage of CellPhoneDB can refer to FigureYa178receptorLigand< ht
 
 # 环境设置
 
-
 # Environment settings
-
-Use domestic image installation package
 
 ```{r}
 source("install_dependencies.R")
-```
 
-```{r eval=FALSE}
-# 设置R包安装源为清华镜像（Set CRAN mirror to Tsinghua University）
-# 设置Bioconductor镜像为清华源（Set Bioconductor mirror to Tsinghua University）
-# 安装管道操作符包（Install the magrittr package for pipe operators）
-install.packages("magrittr")
-# 从GitHub安装Seurat-data包（Install the Seurat-data package from GitHub）
-devtools::install_github('satijalab/seurat-data')
-# 从GitHub安装CellChat包用于细胞间通讯分析（Install the CellChat package from GitHub for cell-cell communication analysis）
-devtools::install_github("jinworks/CellChat") 
-install.packages("ifnb.SeuratData_3.1.0.tar.gz", repos = NULL, type = "source")
-devtools::install_github('immunogenomics/presto')
-```
-
-
-Load Package
-
-```{r}
 # 加载Seurat包用于单细胞数据分析（Load the Seurat package for single-cell RNA-seq data analysis）
 library(Seurat)
 # 加载SeuratData包用于获取示例数据集（Load the SeuratData package for accessing example datasets）
