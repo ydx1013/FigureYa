@@ -79,11 +79,11 @@ options(stringsAsFactors = FALSE) #禁止chr转成factor prohibit the conversion
 
 easy_input_age.txt，临床真实年龄。
 
-HumanMethylation450，CESC的DNA甲基化数据beta value。下载自<https://xenabrowser.net/datapages/?dataset=TCGA.CESC.sampleMap%2FHumanMethylation450&host=https%3A%2F%2Ftcga.xenahubs.net&removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443>，已上传至微云<https://share.weiyun.com/o1g5N29h>
+HumanMethylation450，CESC的DNA甲基化数据beta value。下载自<https://xenabrowser.net/datapages/?dataset=TCGA.CESC.sampleMap%2FHumanMethylation450&host=https%3A%2F%2Ftcga.xenahubs.net&removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443>
 
 easy_input_age.txt, clinical chronological age.
 
-HumanMethylation450, CESC DNA methylation data beta values. Downloaded from <https://xenabrowser.net/datapages/?dataset=TCGA.CESC.sampleMap%2FHumanMethylation450&host=https%3A%2F%2Ftcga.xenahubs.net&removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443> and uploaded to Weiyun <https://share.weiyun.com/o1g5N29h>
+HumanMethylation450, CESC DNA methylation data beta values. Downloaded from <https://xenabrowser.net/datapages/?dataset=TCGA.CESC.sampleMap%2FHumanMethylation450&host=https%3A%2F%2Ftcga.xenahubs.net&removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443>
 
 ```{r}
 ## 读取临床真实年龄
@@ -224,7 +224,6 @@ invisible(dev.off())
 ![](barplot for DNA methylation acceleration.pdf)
 
 # Session Info
-# 会话信息
 
 ```{r}
 sessionInfo()
