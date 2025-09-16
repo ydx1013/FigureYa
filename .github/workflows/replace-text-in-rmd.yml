@@ -28,17 +28,8 @@ jobs:
       run: |
         find . -type f -iname "*.rmd" | while read file; do
           echo "Processing $file"
-          # Replace "crowdfund" and its variations with "crowdsource"
-          sed -i -e 's/\bcrowdfund\b/crowdsource/g' \
-                 -e 's/\bcrowdfunded\b/crowdsourced/g' \
-                 -e 's/\bcrowdfunds\b/crowdsources/g' \
-                 -e 's/\bcrowdfunding\b/crowdsourcing/g' "$file"
-          # Replace "大鱼老师" with "Xiaofan Lu"
-          sed -i -e 's/大鱼老师/Xiaofan Lu/g' "$file"
-          # Replace "Teacher Da Yu" with "Xiaofan Lu"
-          sed -i -e 's/Teacher Da Yu/Xiaofan Lu/g' "$file"
-          # Remove links like <https://k.youshop10.com/...>
-          sed -i -e 's|<https://k.youshop10.com[^>]*>||g' "$file"
+          sed -i -e 's/Gu Xiao/Xiao Gu/g' "$file"
+          sed -i -e 's/Yandong Zheng/Xiao Gu/g' "$file"
         done
 
     - name: Debug - Show Changes
