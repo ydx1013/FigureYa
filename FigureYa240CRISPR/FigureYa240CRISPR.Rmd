@@ -77,19 +77,19 @@ standarize.fun <- function(indata=NULL, halfwidth=NULL, centerFlag=T, scaleFlag=
 
 # 输入文件
 
-TCGA-LUAD.htseq_fpkm.tsv.gz，表达矩阵。根据原文从XENA数据平台下载LUAD的FPKM数据，<https://xenabrowser.net/datapages/?dataset=TCGA-LUAD.htseq_fpkm.tsv&host=https%3A%2F%2Fgdc.xenahubs.net&removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443>。跟FigureYa238corRiskMut为同一输入文件，也可以从微云下载<https://share.weiyun.com/ks0OVM7a>
+TCGA-LUAD.htseq_fpkm.tsv.gz，表达矩阵。根据原文从XENA数据平台下载LUAD的FPKM数据，<https://xenabrowser.net/datapages/?dataset=TCGA-LUAD.htseq_fpkm.tsv&host=https%3A%2F%2Fgdc.xenahubs.net&removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443>。跟FigureYa238corRiskMut为同一输入文件
 
 gencode.v22.annotation.gene.probeMap，表达数据对应的GENECODE22注释文件。
 
-CRISPR_gene_effect.csv，CRISPR相关信息。下载自DepMap，<https://depmap.org/portal/download/>; CRISPR (DepMap 21Q2 Public+Score, CERES)，也可以从微云下载<https://share.weiyun.com/YTA8nmOE>
+CRISPR_gene_effect.csv，CRISPR相关信息。下载自DepMap，<https://depmap.org/portal/download/>; CRISPR (DepMap 21Q2 Public+Score, CERES)
 
 # Input files
 
-TCGA-LUAD.htseq_fpkm.tsv.gz, the expression matrix. According to the original text, download the FPKM data of LUAD from the XENA data platform, <https://xenabrowser.net/datapages/?dataset=TCGA-LUAD.htseq_fpkm.tsv&host=https://gdc.xenahubs.net&removeHub=https://xena.treehouse.gi.ucsc.edu:443>。 It is the same input file as FigureYa238corRiskMut, and you can also download <https://share.weiyun.com/ks0OVM7a> from weiyun
+TCGA-LUAD.htseq_fpkm.tsv.gz, the expression matrix. According to the original text, download the FPKM data of LUAD from the XENA data platform, <https://xenabrowser.net/datapages/?dataset=TCGA-LUAD.htseq_fpkm.tsv&host=https://gdc.xenahubs.net&removeHub=https://xena.treehouse.gi.ucsc.edu:443>。 It is the same input file as FigureYa238corRiskMut
 
 gencode.v22.annotation.gene.probeMap, the GENECODE22 annotation file corresponding to the expression data.
 
-CRISPR_gene_effect.csv, CRISPR-related information. Download from DepMap, <https://depmap.org/portal/download/>; CRISPR (DepMap 21Q2 Public Score, CERES), which can also be downloaded from Microcloud <https://share.weiyun.com/YTA8nmOE>
+CRISPR_gene_effect.csv, CRISPR-related information. Download from DepMap, <https://depmap.org/portal/download/>; CRISPR (DepMap 21Q2 Public Score, CERES)
 
 ![](depmap.png)
 
