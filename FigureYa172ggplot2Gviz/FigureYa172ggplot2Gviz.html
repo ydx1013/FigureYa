@@ -435,7 +435,6 @@ logo.</li>
 <p>画图前的代码需要在terminal里运行，可参考这篇方法<a href="https://www.jianshu.com/p/c16c7095e4b2?from=singlemessage&amp;isappinstalled=0" class="uri">https://www.jianshu.com/p/c16c7095e4b2?from=singlemessage&amp;isappinstalled=0</a>
 Before drawing, the code needs to be run in a terminal. Refer to this
 method <a href="https://www.jianshu.com/p/c16c7095e4b2?from=singlemessage&amp;isappinstalled=0" class="uri">https://www.jianshu.com/p/c16c7095e4b2?from=singlemessage&amp;isappinstalled=0</a></p>
-<p>使用国内镜像安装包 Use a domestic mirror to install the package</p>
 <pre class="r"><code>source(&quot;install_dependencies.R&quot;)</code></pre>
 <pre><code>## Starting R package installation...
 ## ===========================================
@@ -447,9 +446,6 @@ method <a href="https://www.jianshu.com/p/c16c7095e4b2?from=singlemessage&amp;is
 ## ===========================================
 ## Package installation completed!
 ## You can now run your R scripts in this directory.</code></pre>
-<pre class="r"><code>options(&quot;repos&quot;= c(CRAN=&quot;https://mirrors.tuna.tsinghua.edu.cn/CRAN/&quot;))
-options(BioC_mirror=&quot;http://mirrors.ustc.edu.cn/bioc/&quot;)</code></pre>
-<p>加载包 Load the package</p>
 <pre class="r"><code>library(ggplot2)
 library(cowplot)
 Sys.setenv(LANGUAGE = &quot;en&quot;) #显示英文报错信息
@@ -477,12 +473,10 @@ Download.</p>
 <ul>
 <li>ChIP-seq，GSE107236。作者提供了bedgraph文件<a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE107236" class="uri">https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE107236</a></li>
 <li>ATAC-seq，GSE107242。作者提供了bigwig文件<a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE107242" class="uri">https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE107242</a>，需要先转换成bedgraph。</li>
-<li>以上数据已传到微云，便于下载，<a href="https://share.weiyun.com/55dfZPV" class="uri">https://share.weiyun.com/55dfZPV</a></li>
 <li>如果你感兴趣的数据作者没有上传bedgraph或bw或wig文件，可以从SRA格式开始跑，方法可参考FigureYa155ATAC。</li>
 <li>ChIP-seq, GSE107236. The authors provided a bedgraph file <a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE107236" class="uri">https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE107236</a></li>
 <li>ATAC-seq, GSE107242. The authors also provided a BigWig file <a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE107242" class="uri">https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE107242</a>,
 which needs to be converted to a bedgraph first.</li>
-<li>The above data has been uploaded to Weiyun for easy download <a href="https://share.weiyun.com/55dfZPV" class="uri">https://share.weiyun.com/55dfZPV</a></li>
 <li>If the author of the data you are interested in did not upload a
 bedgraph, BW, or WIG file, you can start from the SRA format. The method
 can be found in FigureYa155ATAC.</li>
@@ -532,11 +526,10 @@ bedtools intersect -wa -a GSM2863149_EBF1_NO14_cd19pos_mm9.bedGraph -b Igll1.bed
 <h1>Prepare the gene structure file</h1>
 <p>从gtf文件里可以找到基因exon的具体位置。 The specific locations of
 gene exons can be found in the gtf file.</p>
-<p>小鼠和人通常用gencode的基因注释文件。mm9的gtf文件：<a href="https://www.gencodegenes.org/mouse/release_M9.html" class="uri">https://www.gencodegenes.org/mouse/release_M9.html</a>，已传到微云便于下载，<a href="https://share.weiyun.com/55dfZPV" class="uri">https://share.weiyun.com/55dfZPV</a>。人的<a href="https://www.gencodegenes.org/human/" class="uri">https://www.gencodegenes.org/human/</a>，其他物种可以从ensembl下载<a href="http://asia.ensembl.org/info/data/ftp/index.html" class="uri">http://asia.ensembl.org/info/data/ftp/index.html</a> Mouse
+<p>小鼠和人通常用gencode的基因注释文件。mm9的gtf文件：<a href="https://www.gencodegenes.org/mouse/release_M9.html" class="uri">https://www.gencodegenes.org/mouse/release_M9.html</a>。人的<a href="https://www.gencodegenes.org/human/" class="uri">https://www.gencodegenes.org/human/</a>，其他物种可以从ensembl下载<a href="http://asia.ensembl.org/info/data/ftp/index.html" class="uri">http://asia.ensembl.org/info/data/ftp/index.html</a> Mouse
 and human gene annotation files are typically generated using Gencode.
-The mm9 gtf file is available at: <a href="https://www.gencodegenes.org/mouse/release_M9.html" class="uri">https://www.gencodegenes.org/mouse/release_M9.html</a>, and
-has been uploaded to Weiyun for easy download: <a href="https://share.weiyun.com/55dfZPV" class="uri">https://share.weiyun.com/55dfZPV</a>. Human annotations are
-available at <a href="https://www.gencodegenes.org/human/" class="uri">https://www.gencodegenes.org/human/</a>. Other species can
+The mm9 gtf file is available at: <a href="https://www.gencodegenes.org/mouse/release_M9.html" class="uri">https://www.gencodegenes.org/mouse/release_M9.html</a>.
+Human annotations are available at <a href="https://www.gencodegenes.org/human/" class="uri">https://www.gencodegenes.org/human/</a>. Other species can
 be downloaded from Ensembl: <a href="http://asia.ensembl.org/info/data/ftp/index.html" class="uri">http://asia.ensembl.org/info/data/ftp/index.html</a>.</p>
 <p>例文用的Igll1基因包含两个exon的转录本，我们也用这个。ID是ENSMUST00000124649.1。位置：chr16:16860674-16863985。下面就提取这个基因的外显子。
 The Igll1 gene used in the example contains two exon transcripts, which
@@ -735,15 +728,15 @@ plot_grid(pe0,pa0,pe1,pa1,pe2,pa2,pe3,pa3,peg,peg,
 ## 
 ## loaded via a namespace (and not attached):
 ##  [1] vctrs_0.6.5        cli_3.6.5          knitr_1.50         rlang_1.1.6       
-##  [5] xfun_0.53          generics_0.1.4     S7_0.2.0           jsonlite_2.0.0    
-##  [9] labeling_0.4.3     glue_1.8.0         htmltools_0.5.8.1  sass_0.4.10       
-## [13] scales_1.4.0       rmarkdown_2.29     grid_4.5.1         tibble_3.3.0      
-## [17] evaluate_1.0.5     jquerylib_0.1.4    fastmap_1.2.0      yaml_2.3.10       
-## [21] lifecycle_1.0.4    compiler_4.5.1     dplyr_1.1.4        RColorBrewer_1.1-3
-## [25] pkgconfig_2.0.3    farver_2.1.2       digest_0.6.37      R6_2.6.1          
-## [29] tidyselect_1.2.1   dichromat_2.0-0.1  pillar_1.11.0      magrittr_2.0.3    
-## [33] bslib_0.9.0        withr_3.0.2        tools_4.5.1        gtable_0.3.6      
-## [37] cachem_1.1.0</code></pre>
+##  [5] xfun_0.53          generics_0.1.4     textshaping_1.0.3  S7_0.2.0          
+##  [9] jsonlite_2.0.0     labeling_0.4.3     glue_1.8.0         htmltools_0.5.8.1 
+## [13] ragg_1.5.0         sass_0.4.10        scales_1.4.0       rmarkdown_2.29    
+## [17] grid_4.5.1         tibble_3.3.0       evaluate_1.0.5     jquerylib_0.1.4   
+## [21] fastmap_1.2.0      yaml_2.3.10        lifecycle_1.0.4    compiler_4.5.1    
+## [25] dplyr_1.1.4        RColorBrewer_1.1-3 pkgconfig_2.0.3    systemfonts_1.2.3 
+## [29] farver_2.1.2       digest_0.6.37      R6_2.6.1           tidyselect_1.2.1  
+## [33] dichromat_2.0-0.1  pillar_1.11.0      magrittr_2.0.4     bslib_0.9.0       
+## [37] withr_3.0.2        tools_4.5.1        gtable_0.3.6       cachem_1.1.0</code></pre>
 </div>
 
 

@@ -1,155 +1,345 @@
-RMD Render Summary (Batch 4/4)
+RMD Render Summary (Batch 1/5)
 ======================================
 
-[SUCCESS] - ./FigureYa7PSM/FigureYa7PSM.Rmd
-[FAILED] - ./FigureYa80GOclustering/FigureYa80GOclustering.Rmd
---- Error Log for ./FigureYa80GOclustering/FigureYa80GOclustering.Rmd ---
-Error in `library()`:
-! there is no package called 'GOSemSim'
+[FAILED] - ./FigureYa101PCA/FigureYa101PCA.Rmd
+--- Error Log for ./FigureYa101PCA/FigureYa101PCA.Rmd ---
+Error in `file()`:
+! cannot open the connection
 Backtrace:
     ▆
- 1. └─base::library(GOSemSim)
+ 1. └─utils::read.csv(...)
+ 2.   └─utils::read.table(...)
+ 3.     └─base::file(file, "rt")
 
-Quitting from FigureYa80GOclustering.Rmd:74-115 [unnamed-chunk-1]
+Quitting from FigureYa101PCA.Rmd:385-416 [unnamed-chunk-5]
 Execution halted
 -----------------------------------
-[SUCCESS] - ./FigureYa81immune_network/FigureYa81immune_network.Rmd
-[SUCCESS] - ./FigureYa83enrichment/FigureYa83enrichment.Rmd
-[SUCCESS] - ./FigureYa84roast/FigureYa84roast.Rmd
-[SUCCESS] - ./FigureYa85timeROC/FigureYa85timeROC.Rmd
-[FAILED] - ./FigureYa86SNPmotif/FigureYa86SNPmotif.Rmd
---- Error Log for ./FigureYa86SNPmotif/FigureYa86SNPmotif.Rmd ---
-* removing ‘/home/runner/work/_temp/Library/TFBSTools’
-ERROR: dependency ‘TFBSTools’ is not available for package ‘motifStack’
+[SUCCESS] - ./FigureYa102multipanelROC/FigureYa102multipanelROC.Rmd
+[SUCCESS] - ./FigureYa103coAbundant/FigureYa103coAbundant.Rmd
+[FAILED] - ./FigureYa105GDSC/FigureYa105GDSC.Rmd
+--- Error Log for ./FigureYa105GDSC/FigureYa105GDSC.Rmd ---
+Error in `library()`:
+! there is no package called 'pRRophetic'
+Backtrace:
+    ▆
+ 1. └─base::library(pRRophetic)
+
+Quitting from FigureYa105GDSC.Rmd:72-94 [unnamed-chunk-1]
+Execution halted
+-----------------------------------
+[SUCCESS] - ./FigureYa106immunotherapy/FigureYa106immunotherapy.Rmd
+[SUCCESS] - ./FigureYa109SubtypeGSEA_update/FigureYa109SubtypeGSEA_update.Rmd
+[SUCCESS] - ./FigureYa10chromosomeV2_update/FigureYa10chromosomeV2_update.Rmd
+[FAILED] - ./FigureYa110mutationSignature/FigureYa110mutationSignature.Rmd
+--- Error Log for ./FigureYa110mutationSignature/FigureYa110mutationSignature.Rmd ---
+Error in `library()`:
+! there is no package called 'tidyverse'
+Backtrace:
+    ▆
+ 1. └─base::library(tidyverse)
+
+Quitting from FigureYa110mutationSignature.Rmd:60-94 [unnamed-chunk-1]
+Execution halted
+-----------------------------------
+[FAILED] - ./FigureYa111markerGene/FigureYa111markerGene_step1.Rmd
+--- Error Log for ./FigureYa111markerGene/FigureYa111markerGene_step1.Rmd ---
+Error in `Read10X()`:
+! could not find function "Read10X"
+
+Quitting from FigureYa111markerGene_step1.Rmd:93-110 [unnamed-chunk-1]
+Execution halted
+-----------------------------------
+[SUCCESS] - ./FigureYa112Plus_venn/FigureYa112Plus_venn.Rmd
+[FAILED] - ./FigureYa112venn/FigureYa112venn.Rmd
+--- Error Log for ./FigureYa112venn/FigureYa112venn.Rmd ---
+Error in `library()`:
+! there is no package called 'colorfulVennPlot'
+Backtrace:
+    ▆
+ 1. └─base::library(colorfulVennPlot)
+
+Quitting from FigureYa112venn.Rmd:45-80 [unnamed-chunk-1]
+Execution halted
+-----------------------------------
+[SUCCESS] - ./FigureYa113MutSigCV/FigureYa113MutSigCV.Rmd
+[SUCCESS] - ./FigureYa114ternaryCluster/FigureYa114ternaryCluster.Rmd
+[SUCCESS] - ./FigureYa115cofactor/FigureYa115cofactor.Rmd
+[SUCCESS] - ./FigureYa116supervisedCluster/FigureYa116supervisedCluster.Rmd
+[SUCCESS] - ./FigureYa117multilinearDE/FigureYa117multilinearDE.Rmd
+[SUCCESS] - ./FigureYa118MulticlassDESeq2/FigureYa118MulticlassDESeq2.Rmd
+[SUCCESS] - ./FigureYa119Multiclasslimma/FigureYa119Multiclasslimma.Rmd
+[SUCCESS] - ./FigureYa11bubble/FigureYa11bubbles.Rmd
+[SUCCESS] - ./FigureYa120MulticlassedgeR/FigureYa120MulticlassedgeR.Rmd
+[FAILED] - ./FigureYa121MethCGIcluster/FigureYa121MethCGIcluster.Rmd
+--- Error Log for ./FigureYa121MethCGIcluster/FigureYa121MethCGIcluster.Rmd ---
+trying URL 'https://bioconductor.org//packages/3.21/bioc/src/contrib/ChAMP_2.38.0.tar.gz'
+Content type 'application/x-gzip' length 8337757 bytes (8.0 MB)
+==================================================
+downloaded 8.0 MB
+
+ERROR: dependency ‘kpmt’ is not available for package ‘ChAMP’
 Perhaps try a variation of:
-install.packages('TFBSTools')
-* removing ‘/home/runner/work/_temp/Library/motifStack’
-ERROR: dependency ‘motifStack’ is not available for package ‘motifbreakR’
-Perhaps try a variation of:
-install.packages('motifStack')
-* removing ‘/home/runner/work/_temp/Library/motifbreakR’
+install.packages('kpmt')
+* removing ‘/home/runner/work/_temp/Library/ChAMP’
 
 The downloaded source packages are in
-	'/tmp/RtmpIEzLm1/downloaded_packages'
+	'/tmp/RtmpUobbkl/downloaded_packages'
 Error in `library()`:
-! there is no package called 'motifbreakR'
+! there is no package called 'ChAMP'
 Backtrace:
     ▆
- 1. └─base::library(motifbreakR)
+ 1. └─base::library(ChAMP)
 
-Quitting from FigureYa86SNPmotif.Rmd:88-112 [unnamed-chunk-4]
+Quitting from FigureYa121MethCGIcluster.Rmd:49-77 [unnamed-chunk-1]
 Execution halted
 -----------------------------------
-[FAILED] - ./FigureYa87fish/FigureYa87fish.Rmd
---- Error Log for ./FigureYa87fish/FigureYa87fish.Rmd ---
-Error in `library()`:
-! there is no package called 'fishplot'
+[SUCCESS] - ./FigureYa122mut2expr_20230822_223122/FigureYa122mut2expr.Rmd
+[SUCCESS] - ./FigureYa123mutVSexpr/FigureYa123mutVSexpr.Rmd
+[SUCCESS] - ./FigureYa124AssociationHeatmap/FigureYa124AssociationHeatmap.Rmd
+[SUCCESS] - ./FigureYa125FishertestV2/FigureYa125FishertestV2.Rmd
+[SUCCESS] - ./FigureYa126CorrelationHeatmap/FigureYa126CorrelationHeatmap.Rmd
+[SUCCESS] - ./FigureYa127HeatmapPie/FigureYa127HeatmapPie.Rmd
+[FAILED] - ./FigureYa128Prognostic/FigureYa128Prognostic.Rmd
+--- Error Log for ./FigureYa128Prognostic/FigureYa128Prognostic.Rmd ---
+Error in `file()`:
+! cannot open the connection
 Backtrace:
     ▆
- 1. └─base::library(fishplot)
+ 1. └─utils::read.table(...)
+ 2.   └─base::file(file, "rt")
 
-Quitting from FigureYa87fish.Rmd:71-84 [unnamed-chunk-1]
+Quitting from FigureYa128Prognostic.Rmd:156-180 [unnamed-chunk-3]
 Execution halted
 -----------------------------------
-[FAILED] - ./FigureYa88DAVIDkappa/FigureYa88DAVIDkappa.Rmd
---- Error Log for ./FigureYa88DAVIDkappa/FigureYa88DAVIDkappa.Rmd ---
-Error in `library()`:
-! there is no package called 'ggtree'
-Backtrace:
-    ▆
- 1. └─base::library(ggtree)
-
-Quitting from FigureYa88DAVIDkappa.Rmd:89-114 [unnamed-chunk-1]
-Execution halted
------------------------------------
-[FAILED] - ./FigureYa89ggplotCirco/FigureYa89ggplotCirco.Rmd
---- Error Log for ./FigureYa89ggplotCirco/FigureYa89ggplotCirco.Rmd ---
-     ▆
-  1. └─rmarkdown::render(...)
-  2.   └─knitr::knit(knit_input, knit_output, envir = envir, quiet = quiet)
-  3.     └─knitr:::process_file(text, output)
-  4.       ├─xfun:::handle_error(...)
-  5.       ├─base::withCallingHandlers(...)
-  6.       └─knitr:::process_group(group)
-  7.         └─knitr:::call_block(x)
-  8.           └─knitr:::block_exec(params)
-  9.             └─knitr:::eng_r(options)
- 10.               ├─knitr:::in_input_dir(...)
- 11.               │ └─knitr:::in_dir(input_dir(), expr)
- 12.               └─knitr (local) evaluate(...)
- 13.                 └─evaluate::evaluate(...)
- 14.                   ├─evaluate::parse_all(input, filename = filename)
- 15.                   └─evaluate:::parse_all.character(input, filename = filename)
- 16.                     └─base::parse(text = x, srcfile = src)
-
-Quitting from FigureYa89ggplotCirco.Rmd:345-377 [unnamed-chunk-8]
-Execution halted
------------------------------------
-[SUCCESS] - ./FigureYa8radar/FigureYa8radarChart.Rmd
-[SUCCESS] - ./FigureYa90subgroup/FigureYa90subgroup/FigureYa90subgroup.Rmd
-[SUCCESS] - ./FigureYa91cluster_heatmap/FigureYa91cluster_heatmap.Rmd
-[FAILED] - ./FigureYa92immune_gene_update/FigureYa92immune_gene_update.Rmd
---- Error Log for ./FigureYa92immune_gene_update/FigureYa92immune_gene_update.Rmd ---
-* removing ‘/home/runner/work/_temp/Library/PMCMRplus’
-ERROR: dependency ‘PMCMRplus’ is not available for package ‘statsExpressions’
-Perhaps try a variation of:
-install.packages('PMCMRplus')
-* removing ‘/home/runner/work/_temp/Library/statsExpressions’
-ERROR: dependency ‘statsExpressions’ is not available for package ‘ggstatsplot’
-Perhaps try a variation of:
-install.packages('statsExpressions')
-* removing ‘/home/runner/work/_temp/Library/ggstatsplot’
-
-The downloaded source packages are in
-	'/tmp/RtmpVU32KS/downloaded_packages'
-Error in `library()`:
-! there is no package called 'ggstatsplot'
-Backtrace:
-    ▆
- 1. └─base::library(ggstatsplot)
-
-Quitting from FigureYa92immune_gene_update.Rmd:90-111 [unnamed-chunk-3]
-Execution halted
------------------------------------
-[FAILED] - ./FigureYa93UMAP/FigureYa93UMAP.Rmd
---- Error Log for ./FigureYa93UMAP/FigureYa93UMAP.Rmd ---
+[FAILED] - ./FigureYa129TCGAbox/FigureYa129TCGAbox.Rmd
+--- Error Log for ./FigureYa129TCGAbox/FigureYa129TCGAbox.Rmd ---
 Error in `fread()`:
-! File 'GSE123818_Root_single_cell_wt_datamatrix.csv.gz' does not exist or is non-readable. getwd()=='/home/runner/work/FigureYa/FigureYa/FigureYa93UMAP'
+! File 'HiSeqV2' does not exist or is non-readable. getwd()=='/home/runner/work/FigureYa/FigureYa/FigureYa129TCGAbox'
 Backtrace:
     ▆
- 1. └─data.table::fread(...)
+ 1. └─data.table::fread("HiSeqV2")
  2.   └─data.table:::stopf(...)
  3.     └─data.table:::raise_condition(...)
 
-Quitting from FigureYa93UMAP.Rmd:130-151 [unnamed-chunk-2]
+Quitting from FigureYa129TCGAbox.Rmd:115-168 [unnamed-chunk-2]
 Execution halted
 -----------------------------------
-[FAILED] - ./FigureYa94STEMbox_update/FigureYa94STEMbox_update.Rmd
---- Error Log for ./FigureYa94STEMbox_update/FigureYa94STEMbox_update.Rmd ---
-  5. │   └─ggplot2:::by_layer(...)
-  6. │     ├─rlang::try_fetch(...)
-  7. │     │ ├─base::tryCatch(...)
-  8. │     │ │ └─base (local) tryCatchList(expr, classes, parentenv, handlers)
-  9. │     │ │   └─base (local) tryCatchOne(expr, names, parentenv, handlers[[1L]])
- 10. │     │ │     └─base (local) doTryCatch(return(expr), name, parentenv, handler)
- 11. │     │ └─base::withCallingHandlers(...)
- 12. │     └─ggplot2 (local) f(l = layers[[i]], d = data[[i]])
- 13. │       └─l$compute_geom_2(d, theme = plot@theme)
- 14. │         └─ggplot2 (local) compute_geom_2(..., self = self)
- 15. │           └─self$geom$use_defaults(...)
- 16. │             └─ggplot2 (local) use_defaults(..., self = self)
- 17. │               └─ggplot2:::check_aesthetics(new_params, nrow(data))
- 18. │                 └─vctrs::list_sizes(x)
- 19. └─vctrs:::stop_scalar_type(`<fn>`(`<expression>`), "x$label", `<env>`)
- 20.   └─vctrs:::stop_vctrs(...)
- 21.     └─rlang::abort(message, class = c(class, "vctrs_error"), ..., call = call)
+[SUCCESS] - ./FigureYa12box/FigureYa12box.Rmd
+[FAILED] - ./FigureYa130coxSVM/FigureYa130coxSVM_step12.Rmd
+--- Error Log for ./FigureYa130coxSVM/FigureYa130coxSVM_step12.Rmd ---
+trying URL 'https://bioconductor.org//packages/3.21/bioc/src/contrib/ChAMP_2.38.0.tar.gz'
+Content type 'application/x-gzip' length 8337757 bytes (8.0 MB)
+==================================================
+downloaded 8.0 MB
 
-Quitting from FigureYa94STEMbox_update.Rmd:697-727 [unnamed-chunk-14]
+ERROR: dependency ‘kpmt’ is not available for package ‘ChAMP’
+Perhaps try a variation of:
+install.packages('kpmt')
+* removing ‘/home/runner/work/_temp/Library/ChAMP’
+
+The downloaded source packages are in
+	'/tmp/RtmpzU3z5w/downloaded_packages'
+Error in `library()`:
+! there is no package called 'ChAMP'
+Backtrace:
+    ▆
+ 1. └─base::library(ChAMP)
+
+Quitting from FigureYa130coxSVM_step12.Rmd:49-60 [unnamed-chunk-1]
 Execution halted
 -----------------------------------
-[SUCCESS] - ./FigureYa95pairwise/FigureYa95pairwise.Rmd
-[SUCCESS] - ./FigureYa96R2/FigureYa96R2.Rmd
-[SUCCESS] - ./FigureYa97correlationV3/FigureYa97correlationV3.Rmd
-[SUCCESS] - ./FigureYa98STEMheatmapV2/FigureYa98STEMheatmapV2.Rmd
-[SUCCESS] - ./FigureYa99smoothHRv2/FigureYa99smoothHRv2.Rmd
-[SUCCESS] - ./FigureYa9heatmap/FigureYa9heatmap.Rmd
+[SUCCESS] - ./FigureYa131CMap_update/FigureYa131CMap_update.Rmd
+[SUCCESS] - ./FigureYa132alteration/FigureYa132alteration.Rmd
+[SUCCESS] - ./FigureYa135multiVolcano/FigureYa135multiVolcano.Rmd
+[FAILED] - ./FigureYa136fgsea/FigureYa136fgsea.Rmd
+--- Error Log for ./FigureYa136fgsea/FigureYa136fgsea.Rmd ---
+Error in `file()`:
+! cannot open the connection
+Backtrace:
+    ▆
+ 1. └─utils::read.table(...)
+ 2.   └─base::file(file, "rt")
+
+Quitting from FigureYa136fgsea.Rmd:312-342 [unnamed-chunk-7]
+Execution halted
+-----------------------------------
+[SUCCESS] - ./FigureYa138NiceCalibration/FigureYa138NiceCalibration.Rmd
+[SUCCESS] - ./FigureYa139TMB_titv/FigureYa139TMB_titv.Rmd
+[SUCCESS] - ./FigureYa13GSEA_Java_update/FigureYa13GSEA_Java_update.Rmd
+[FAILED] - ./FigureYa140mosaicpie/FigureYa140mosaicpie.Rmd
+--- Error Log for ./FigureYa140mosaicpie/FigureYa140mosaicpie.Rmd ---
+Error in `!success`:
+! invalid argument type
+Backtrace:
+    ▆
+ 1. └─global install_cgdsr()
+
+Quitting from FigureYa140mosaicpie.Rmd:60-71 [unnamed-chunk-1]
+Execution halted
+-----------------------------------
+[FAILED] - ./FigureYa141risk/FigureYa141risk.Rmd
+--- Error Log for ./FigureYa141risk/FigureYa141risk.Rmd ---
+Error in `[.data.frame`:
+! undefined columns selected
+Backtrace:
+    ▆
+ 1. ├─data[1:2, 1:4]
+ 2. └─base::`[.data.frame`(data, 1:2, 1:4)
+
+Quitting from FigureYa141risk.Rmd:68-74 [unnamed-chunk-2]
+Execution halted
+-----------------------------------
+[SUCCESS] - ./FigureYa142circosBar/FigureYa142circosBar.Rmd
+[SUCCESS] - ./FigureYa143survCor/FigureYa143survCor.Rmd
+[SUCCESS] - ./FigureYa144DiagHeatmap/FigureYa144DiagHeatmap.Rmd
+[SUCCESS] - ./FigureYa145target/FigureYa145target.Rmd
+[SUCCESS] - ./FigureYa146TMEbox/FigureYa146TMEbox.Rmd
+[SUCCESS] - ./FigureYa147interaction/FigureYa147interaction.Rmd
+[SUCCESS] - ./FigureYa148SimpleDendrogram/FigureYa148SimpleDendrogram.Rmd
+[SUCCESS] - ./FigureYa149rankHeatmap/FigureYa149rankHeatmap.Rmd
+[FAILED] - ./FigureYa150diversityScore/FigureYa150diversityScore.Rmd
+--- Error Log for ./FigureYa150diversityScore/FigureYa150diversityScore.Rmd ---
+Error in `Read10X()`:
+! could not find function "Read10X"
+
+Quitting from FigureYa150diversityScore.Rmd:123-146 [unnamed-chunk-3]
+Execution halted
+-----------------------------------
+[SUCCESS] - ./FigureYa151pathifier/FigureYa151pathifier.Rmd
+[SUCCESS] - ./FigureYa152DouleCorPlot/FigureYa152DouleCorPlot.Rmd
+[SUCCESS] - ./FigureYa153ccgraph/FigureYa153ccgraph.Rmd
+[SUCCESS] - ./FigureYa154immuneSubtypes/FigureYa154immuneSubtypes.Rmd
+[SUCCESS] - ./FigureYa155ATAC/FigureYa155ATAC.Rmd
+[SUCCESS] - ./FigureYa156enrichSimulation/FigureYa156enrichSimulation.Rmd
+[FAILED] - ./FigureYa157ChIPpvalue/FigureYa157ChIPpvalue.Rmd
+--- Error Log for ./FigureYa157ChIPpvalue/FigureYa157ChIPpvalue.Rmd ---
+                        parts. Default is 1.
+  -b BEDFILE, --bedFile=BEDFILE
+                        BedFile for capture.
+  -w BIGWIGFILES, --bigWig=BIGWIGFILES
+                        bigWigFiles for capture.
+  -m MODEL, --model=MODEL
+                        Capture model: security or speed. Default is Security
+  --strand              If Strand specific
+Error in `open.connection()`:
+! cannot open the connection
+Backtrace:
+    ▆
+ 1. └─global average_signal_caputer_around_region(...)
+ 2.   └─global regionCapture(...)
+ 3.     └─utils::read.table(gzfile("signal_regionCapture_siteprof1.gz"))
+ 4.       ├─base::open(file, "rt")
+ 5.       └─base::open.connection(file, "rt")
+
+Quitting from FigureYa157ChIPpvalue.Rmd:149-181 [unnamed-chunk-5]
+Execution halted
+-----------------------------------
+[FAILED] - ./FigureYa158MutationPattern/FigureYa158MutationPattern.Rmd
+--- Error Log for ./FigureYa158MutationPattern/FigureYa158MutationPattern.Rmd ---
+Error in `GDCquery_Maf()`:
+! could not find function "GDCquery_Maf"
+
+Quitting from FigureYa158MutationPattern.Rmd:67-82 [unnamed-chunk-2]
+Execution halted
+-----------------------------------
+[SUCCESS] - ./FigureYa159LR_RF_V2/FigureYa159LR_RF_V2.Rmd
+[SUCCESS] - ./FigureYa15WGCNA/FigureYa15WGCNA.Rmd
+[FAILED] - ./FigureYa160scGSVA/FigureYa160scGSVA.Rmd
+--- Error Log for ./FigureYa160scGSVA/FigureYa160scGSVA.Rmd ---
+Error in `cat()`:
+! argument 2 (type 'list') cannot be handled by 'cat'
+Backtrace:
+    ▆
+ 1. └─global test_gsva_functionality()
+ 2.   └─base::tryCatch(...)
+ 3.     └─base (local) tryCatchList(expr, classes, parentenv, handlers)
+ 4.       └─base (local) tryCatchOne(expr, names, parentenv, handlers[[1L]])
+ 5.         └─value[[3L]](cond)
+ 6.           └─base::cat("  GSVA version:", packageVersion("GSVA"), "\n")
+
+Quitting from FigureYa160scGSVA.Rmd:40-52 [unnamed-chunk-1]
+Execution halted
+-----------------------------------
+[FAILED] - ./FigureYa161stemness/FigureYa161stemness.Rmd
+--- Error Log for ./FigureYa161stemness/FigureYa161stemness.Rmd ---
+Error:
+! unable to find an inherited method for function 'GSMList' for signature 'object = "list"'
+Backtrace:
+    ▆
+ 1. └─GEOquery::GSMList(gse)
+ 2.   └─methods (local) `<fn>`(`<list>`, `<stndrdGn>`, `<env>`)
+
+Quitting from FigureYa161stemness.Rmd:96-171 [unnamed-chunk-3]
+Execution halted
+-----------------------------------
+[SUCCESS] - ./FigureYa162boxViolin/FigureYa162boxViolin.Rmd
+[SUCCESS] - ./FigureYa163twoVarCor_update/FigureYa163twoVarCor_update.Rmd
+[SUCCESS] - ./FigureYa164PCA3D/FigureYa164PCA3D.Rmd
+[SUCCESS] - ./FigureYa165heatmapPvalue/FigureYa165heatmapPvalue.Rmd
+[FAILED] - ./FigureYa166scCNV/FigureYa166scCNV.Rmd
+--- Error Log for ./FigureYa166scCNV/FigureYa166scCNV.Rmd ---
+Error in `h()`:
+! error in evaluating the argument 'x' in selecting a method for function 'as.data.frame': error in evaluating the argument 'x' in selecting a method for function 't': cannot open the connection
+Backtrace:
+    ▆
+ 1. ├─BiocGenerics::as.data.frame(...)
+ 2. ├─base::t(...)
+ 3. ├─utils::read.table(...)
+ 4. │ ├─base::open(file, "rt")
+ 5. │ └─base::open.connection(file, "rt")
+ 6. ├─base::.handleSimpleError(...)
+ 7. │ └─base (local) h(simpleError(msg, call))
+ 8. └─base::.handleSimpleError(...)
+ 9.   └─base (local) h(simpleError(msg, call))
+
+Quitting from FigureYa166scCNV.Rmd:81-103 [unnamed-chunk-3]
+Execution halted
+-----------------------------------
+[FAILED] - ./FigureYa167TumorIndex/FigureYa167TumorIndex.Rmd
+--- Error Log for ./FigureYa167TumorIndex/FigureYa167TumorIndex.Rmd ---
+Error in `file()`:
+! cannot open the connection
+Backtrace:
+    ▆
+ 1. ├─read.csv("data.csv") %>% na.omit() %>% ...
+ 2. ├─stats::na.omit(.)
+ 3. └─utils::read.csv("data.csv")
+ 4.   └─utils::read.table(...)
+ 5.     └─base::file(file, "rt")
+
+Quitting from FigureYa167TumorIndex.Rmd:104-117 [unnamed-chunk-3]
+Execution halted
+-----------------------------------
+[SUCCESS] - ./FigureYa168legoplot/FigureYa168legoplot.Rmd
+[SUCCESS] - ./FigureYa169sigHeatmap/FigureYa169sigHeatmap.Rmd
+[SUCCESS] - ./FigureYa16fitting/FigureYa16WGCNA_fitting.Rmd
+[SUCCESS] - ./FigureYa170ImmuLncRNA/FigureYa170ImmuLncRNA.Rmd
+[SUCCESS] - ./FigureYa171subgroupSurv/FigureYa171subgroupSurv.Rmd
+[SUCCESS] - ./FigureYa172ggplot2Gviz/FigureYa172ggplot2Gviz.Rmd
+[SUCCESS] - ./FigureYa173fancybar/FigureYa173fancybar.Rmd
+[FAILED] - ./FigureYa174squareCross/FigureYa174squareCross.Rmd
+--- Error Log for ./FigureYa174squareCross/FigureYa174squareCross.Rmd ---
+Error in `library()`:
+! there is no package called 'crosslinks'
+Backtrace:
+    ▆
+ 1. └─base::library(crosslinks)
+
+Quitting from FigureYa174squareCross.Rmd:53-63 [unnamed-chunk-1]
+Execution halted
+-----------------------------------
+[SUCCESS] - ./FigureYa175quadrant/FigureYa175quadrant.Rmd
+[SUCCESS] - ./FigureYa176BlandAltman/FigureYa176BlandAltman.Rmd
+[SUCCESS] - ./FigureYa177RNAvelocity/FigureYa177RNAvelocity.Rmd
+[FAILED] - ./FigureYa177RNAvelocity/scripts/s0_createEnv.Rmd
+--- Error Log for ./FigureYa177RNAvelocity/scripts/s0_createEnv.Rmd ---
+Error in `install.packages()`:
+! unable to install packages
+Backtrace:
+    ▆
+ 1. └─utils::install.packages("devtools")
+
+Quitting from s0_createEnv.Rmd:23-50 [unnamed-chunk-2]
+Execution halted
+-----------------------------------
+[SUCCESS] - ./FigureYa177RNAvelocity/scripts/s1_prepare.Rmd
