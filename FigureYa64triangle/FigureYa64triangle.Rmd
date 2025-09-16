@@ -48,8 +48,6 @@ ggtern在文献中的应用：<http://www.ggtern.com/publications/>
 
 带代码的更多主题：<http://www.ggtern.com/posts/>
 
-关注“小丫画图”公众号，回复“三角形”查看ggtern在另一篇Cell paper中的用法及代码。
-
 脑洞大开，发挥你的想象力，一定能拓展出更多应用场景。
 
 Display the correlation of a certain indicator among 3 different diseases or 3 groups, clearly and concisely.
@@ -57,8 +55,6 @@ Display the correlation of a certain indicator among 3 different diseases or 3 g
 Application of ggtern in the literature: <http://www.ggtern.com/publications/>
 
 More topics with codes: <http://www.ggtern.com/posts/>.
-
-Follow “Xiaoya Drawing” official account, reply “triangle” to see the usage and code of ggtern in another Cell paper.
 
 Use your imagination to develop more application scenarios.
 
