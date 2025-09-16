@@ -77,7 +77,7 @@ for (pkg in cran_packages) {
 
 # Installing GitHub packages
 cat("\nInstalling GitHub packages...\n")
-github_packages <- c("zzwch/crosslinks")
+github_packages <- c("zzwch/crosslink")
 
 for (repo in github_packages) {
   install_github_package(repo)
