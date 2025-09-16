@@ -46,11 +46,7 @@ Shen R, Li P, Li B, Zhang B, Feng L, Cheng S. Identification of Distinct Immune 
 
 ```{r}
 source("install_dependencies.R")
-```
 
-Loading package
-
-```{r}
 library(cowplot)
 library(ggplot2)
 library(ggpubr)
