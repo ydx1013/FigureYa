@@ -11,7 +11,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 # 设置knitr的全局代码块选项 / Set global chunk options for knitr
@@ -79,16 +78,7 @@ $ATAC-seq_peak
   
 ## 环境设置
 
-
 ## Environment settings
-
-Installation of packages using domestic mirrors
-
-```r
-install.packages("rentrez")
-```
-
-
 
 ```{r}
 source("install_dependencies.R")
@@ -504,6 +494,8 @@ dev.off()
 ```
 
 ![](Enrichment_baseplot.pdf)
+
+# Session Info
 
 ```{r}
 sessionInfo()
