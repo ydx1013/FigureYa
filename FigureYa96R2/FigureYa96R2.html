@@ -1050,7 +1050,7 @@ system.time(
   data &lt;- future_lapply(rownames(tcga_expr), my_cor, y)
 )</code></pre>
 <pre><code>##    user  system elapsed 
-##  88.399   0.079  88.502</code></pre>
+##  90.626   0.075  90.719</code></pre>
 <pre class="r"><code># 将结果整理成数据框格式
 # Convert results into a data frame
 result1 &lt;- data.frame(
@@ -1118,7 +1118,7 @@ system.time(
   data &lt;- future_lapply(rownames(tcga_expr), my_cor, y)
 )</code></pre>
 <pre><code>##    user  system elapsed 
-##  87.910   0.042  87.962</code></pre>
+##  89.768   0.034  89.825</code></pre>
 <pre class="r"><code># 将结果整理成数据框格式
 # Convert results into a data frame
 result2 &lt;- data.frame(
