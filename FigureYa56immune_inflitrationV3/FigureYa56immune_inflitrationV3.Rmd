@@ -128,8 +128,6 @@ If you want to draw a graph like the one in the paper, you also need clinical an
 
 ## 文件地址
 
-以下文件已上传到微云：<https://share.weiyun.com/5kthgr4>
-
 从UCSC xena<https://xenabrowser.net/datapages/>进入Pan-Cancer (PANCAN) (39 datasets)
 
 - 点击gene expression RNAseq里的TOIL RSEM tpm (n=10,535) UCSC Toil RNAseq Recompute，下载TPM：<https://toil.xenahubs.net/download/tcga_RSEM_gene_tpm.gz>。
@@ -147,8 +145,6 @@ If you want to draw a graph like the one in the paper, you also need clinical an
 - 点击phenotype里的Phenotypes (n=629) TCGA hub，下载带亚型的临床数据：<https://tcga.xenahubs.net/download/TCGA.GBM.sampleMap/GBM_clinicalMatrix.gz>
 
 ## File address
-
-The following files have been uploaded to Weiyun:< https://share.weiyun.com/5kthgr4 >
 
 From UCSC Xena< https://xenabrowser.net/datapages/ >Enter Pan Cancer (PANCAN) (39 datasets)
 
