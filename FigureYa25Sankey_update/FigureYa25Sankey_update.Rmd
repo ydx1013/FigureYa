@@ -59,8 +59,6 @@ Original text: Graphical summary of the most frequently mutated genes (≥10 aff
 
 ```{r}
 source("install_dependencies.R")
-#use the domestic mirror installation package
-#install.packages("ggalluvial")
 
 library(ggalluvial)
 library(dplyr)
@@ -236,7 +234,6 @@ ggplot(as.data.frame(subdf),
 ggsave("sankey_alluvium.pdf")
 ```
 
-# 会话信息
 # Sessioninfo
 
 ```{r}
