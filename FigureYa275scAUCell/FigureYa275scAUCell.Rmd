@@ -1,7 +1,7 @@
 ---
 title: "FigureYa275scAUCell"
 params:
-  author: "Yandong Zheng; Yasi Zhang"  
+  author: "Xiao Gu; Yasi Zhang"  
   reviewer: "Ying Ge"
   date: "2025-05-20"
 output: html_document
@@ -392,19 +392,16 @@ head(ISGs.DEGs.filter)
 write.csv(ISGs.DEGs.filter, "output_ISGs.type.DEGs.filter.list.csv")
 ```
 
-最后选取High.ISGs组的基因去做GO和pathway，可以用Y叔的clusterProfiler包或者各种在线包，更多富集分析展示方式看这里
+最后选取High.ISGs组的基因去做GO和pathway，可以用Y叔的clusterProfiler包或者各种在线包
 
 最核心还是找到适合自己研究思路的基因集！
 
-Finally, select genes from the High.ISGs group for GO and pathway analysis. You can use Dr. Y's clusterProfiler package or various online tools. For more enrichment visualization methods, see: 
+Finally, select genes from the High.ISGs group for GO and pathway analysis. You can use Dr. Y's clusterProfiler package or various online tools.
 
 The key is to identify gene sets that align with your research objectives!
 
-# 会话信息
 # Session Info
 
 ```{r}
-# 显示会话信息
-# Show session information
 sessionInfo()
 ```
