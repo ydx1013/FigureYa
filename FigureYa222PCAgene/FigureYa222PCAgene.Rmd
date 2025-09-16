@@ -66,11 +66,11 @@ options(stringsAsFactors = FALSE) #禁止chr转成factor prohibit the conversion
 # 输入文件
 # Input file
 
-sc.seurat.Rdata，单细胞RNA-seq预处理获得的文件。出自FigureYa206scHeatmap，文件较大，已上传至微云<https://share.weiyun.com/vZiSM9pB>
+sc.seurat.Rdata，单细胞RNA-seq预处理获得的文件，出自FigureYa206scHeatmap
 
 怎样获得这个文件？拖到文末看“附：单细胞RNA-seq数据预处理”
 
-sc.seurat.Rdata, the file obtained from single-cell RNA-seq preprocessing. It originates from FigureYa206scHeatmap. The file is relatively large and has been uploaded to Weiyun<https://share.weiyun.com/vZiSM9pB>
+sc.seurat.Rdata, the file obtained from single-cell RNA-seq preprocessing. It originates from FigureYa206scHeatmap.
 
 How to obtain this file? Scroll to the end of the document and see "Appendix: Single-cell RNA-seq Data Preprocessing"
 
@@ -339,7 +339,6 @@ save(sc, cluster_colors, file = "sc.seurat.Rdata")
 ```
 
 # Session Info
-# 会话信息
 
 ```{r}
 sessionInfo()
