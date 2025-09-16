@@ -10,7 +10,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -81,6 +80,7 @@ The input data needs to be formatted.
 ## Formatting input data
 ```{r,message=FALSE,warning=FALSE}
 source("install_dependencies.R")
+
 ##读入knownResults.txt中的记录
 ## Read the records in knownResults.txt
 library(data.table)
@@ -266,12 +266,9 @@ ggplot(pm5,aes(type,id,size=`-logP`))+
   scale_size_continuous(range=c(0,10))+scale_y_discrete(labels=pm5$gene)
 ggsave(file="paper_gene.pdf",height=8.4,width = 3.2)
 ```
-在嘉因公众号回复“世界名画”，查看世界名画的配色代码
 
-Reply with "World Famous Paintings" on the Jiayin public account to see the color codes of world famous paintings.
+# Session Info
 
 ```{r}
 sessionInfo()
 ```
-
-
