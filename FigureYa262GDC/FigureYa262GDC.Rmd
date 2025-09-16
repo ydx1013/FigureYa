@@ -16,7 +16,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -26,7 +25,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 希望实现补充材料里的Figure S2A
 
-We want to crowdfund Figure S2A in the supplementary materials
+We want to draw Figure S2A in the supplementary materials
 
 ![](example.png)
 
@@ -50,18 +49,9 @@ The visualization of TCGA pancancer mutation data can be achieved by providing t
 # 环境设置
 # Environment Setup
 
-
-Using domestic mirrors for package installation.
-
 ```{r}
 source("install_dependencies.R")
 
-```
-
-# 加载包
-# Loading packages
-
-```{r}
 library(tidyverse)
 library(magrittr)
 
