@@ -89,7 +89,7 @@ standarize.fun <- function(indata=NULL, halfwidth=NULL, centerFlag=T, scaleFlag=
 
 测试集：
 
-- LIHC.expr.txt (TCGA)，有点大，放到微云上<https://share.weiyun.com/85eUvRBp>
+- LIHC.expr.txt (TCGA)
 - LIHC.sinfo.txt (TCGA)
 - GSE10186.expr.txt
 - GSE10186.sinfo.txt
@@ -103,7 +103,7 @@ Training Set:
 -GSE364.sinfo.txt
 
 Test Set:
--LIHC.expr.txt (TCGA) – Note: This file is large and has been uploaded to Weiyun: https://share.weiyun.com/85eUvRBp
+-LIHC.expr.txt (TCGA)
 
 -LIHC.sinfo.txt (TCGA)
 
