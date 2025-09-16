@@ -80,10 +80,6 @@ options(stringsAsFactors = FALSE)
 # 输入文件
 # Input Files
 
-大文件已上传到微云：<https://share.weiyun.com/c8GQyxR4>
-
-Large files have been uploaded to Weiyun: <https://share.weiyun.com/c8GQyxR4>
-
 ## 下载TCGA pan-cancer数据
 ## Download TCGA Pan-Cancer Data
 
@@ -471,11 +467,8 @@ text(1.5, 2.3, paste0("p = ",round(wt$p.value, 3)))
 dev.copy2pdf(file = "FPI_GSE121689.pdf", width = 3, height = 3.8)
 ```
 
-# 会话信息
 # Session Info
 
 ```{r}
-# 显示会话信息
-# Show session information
 sessionInfo()
 ```
