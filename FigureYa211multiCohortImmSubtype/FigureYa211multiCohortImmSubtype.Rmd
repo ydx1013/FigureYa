@@ -81,7 +81,7 @@ standarize.fun <- function(indata=NULL, halfwidth=NULL, centerFlag=T, scaleFlag=
 
 # 输入文件
 
-表达矩阵文件较大，已上传微云<https://share.weiyun.com/kvInGjRq>，数据下载和预处理可参考FigureYa203ComBat。
+表达矩阵文件，数据下载和预处理可参考FigureYa203ComBat。
 
 TCGA hnsc的表达数据和生存信息：tcga_hnsc.expr.txt和tcga_hnsc.surv.txt。可以用TCGAbiolinks下载，或从[xena](https://xenabrowser.net/datapages/)下载。
 
@@ -89,7 +89,7 @@ TCGA hnsc的表达数据和生存信息：tcga_hnsc.expr.txt和tcga_hnsc.surv.tx
 
 # Input files
 
-The expression matrix file is large, and the microcloud <https://share.weiyun.com/kvInGjRq> has been uploaded, and the data download and preprocessing can be found in FigureYa203ComBat.
+The expression matrix file, the data download and preprocessing can be found in FigureYa203ComBat.
 
 Expression data and survival information :tcga_hnsc.expr.txt and tcga_hnsc.surv.txt of TCGA hnsc. It can be downloaded with TCGAbiolinks, or from [xena](https://xenabrowser.net/datapages/)
 
