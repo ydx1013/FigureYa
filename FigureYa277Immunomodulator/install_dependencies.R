@@ -47,10 +47,9 @@ install_bioc_package <- function(package_name) {
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
-
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("data.table", "genefu", "grey90")
+cran_packages <- c("data.table")
 
 for (pkg in cran_packages) {
   install_cran_package(pkg)
@@ -58,12 +57,39 @@ for (pkg in cran_packages) {
 
 # Installing Bioconductor packages
 cat("\nInstalling Bioconductor packages...\n")
-bioc_packages <- c("ChAMPdata", "ComplexHeatmap", "circlize")
+bioc_packages <- c("genefu", "ChAMPdata", "ComplexHeatmap", "circlize")
 
 for (pkg in bioc_packages) {
   install_bioc_package(pkg)
 }
 
+# 检查是否有grey90包（可能是个拼写错误）
+cat("\nChecking for additional packages...\n")
+if (!is_package_installed("grDevices")) {
+  cat("Note: grDevices is a base R package, no need to install\n")
+}
+
 cat("\n===========================================\n")
 cat("Package installation completed!\n")
-cat("You can now run your R scripts in this directory.\n")
+
+# 验证所有必需的包是否安装成功
+cat("\nVerifying package installation...\n")
+required_packages <- c("data.table", "genefu", "ChAMPdata", "ComplexHeatmap", "circlize")
+
+all_installed <- TRUE
+for (pkg in required_packages) {
+  if (is_package_installed(pkg)) {
+    cat("✓", pkg, "is installed\n")
+  } else {
+    cat("✗", pkg, "is NOT installed\n")
+    all_installed <- FALSE
+  }
+}
+
+if (all_installed) {
+  cat("\nAll required packages are installed successfully!\n")
+  cat("You can now run your R scripts in this directory.\n")
+} else {
+  cat("\nSome packages failed to install. Please check the error messages above.\n")
+  cat("You may need to manually install missing packages.\n")
+}
