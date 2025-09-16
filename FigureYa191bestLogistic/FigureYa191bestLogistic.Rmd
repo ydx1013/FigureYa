@@ -10,7 +10,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -36,18 +35,9 @@ ROC was used to find the best cutoff for continuous variables, and two groups we
 
 # Environment Setup
 
-
 ```{r}
 source("install_dependencies.R")
-```
 
-```{r eval=FALSE}
-install.packages("tdROC")
-```
-
-Loading package
-
-```{r}
 library(SimDesign) # 用于沉默逐步回归的信息  # Information for silent stepwise regression
 library(tdROC) # 用于计算曲线下面积   # is used to calculate the area under the curve
 Sys.setenv(LANGUAGE = "en") #显示英文报错信息  # displays an English error message
