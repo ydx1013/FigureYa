@@ -47,23 +47,47 @@ install_bioc_package <- function(package_name) {
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
+# 首先安装 BiocManager（如果需要）
+if (!is_package_installed("BiocManager")) {
+  install.packages("BiocManager")
+}
+
+# 根据您提供的library列表确定需要安装的包
+cran_packages <- c("utils", "viridis", "gplots", "data.table")
+
+bioc_packages <- c("GSVA", "ComplexHeatmap", "circlize", "estimate")
+
+# 注意：utils是R的基础包，通常不需要安装
+# 但为了完整性，我们仍然包含它（安装时会自动跳过）
 
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("B.cells.memory", "B.cells.naive", "Dendritic.cells.activated", "Dendritic.cells.resting", "Eosinophils", "Fibroblasts", "Macrophages.M0", "Macrophages.M1", "Macrophages.M2", "Mast.cells.activated", "Mast.cells.resting", "Monocytes", "NK.cells.activated", "NK.cells.resting", "Neutrophils", "Plasma.cells", "R.utils", "T.cells.CD4.memory.activated", "T.cells.CD4.memory.resting", "T.cells.CD4.naive", "T.cells.CD8", "T.cells.follicular.helper", "T.cells.gamma.delta", "T.cells.regulatory..Tregs.", "cg12069309", "cg20425130", "cg20792833", "cg21554552", "cg23642747", "data.table", "estimate", "gplots", "utils", "viridis")
-
 for (pkg in cran_packages) {
   install_cran_package(pkg)
 }
 
 # Installing Bioconductor packages
 cat("\nInstalling Bioconductor packages...\n")
-bioc_packages <- c("Biobase", "circlize", "ComplexHeatmap", "GSVA")
-
 for (pkg in bioc_packages) {
   install_bioc_package(pkg)
 }
 
+# 特别处理：确保ComplexHeatmap版本至少为2.8
+cat("\nChecking ComplexHeatmap version...\n")
+if (is_package_installed("ComplexHeatmap")) {
+  ch_version <- packageVersion("ComplexHeatmap")
+  cat("ComplexHeatmap version:", as.character(ch_version), "\n")
+  
+  if (ch_version < "2.8.0") {
+    cat("Upgrading ComplexHeatmap to latest version (requires >= 2.8.0)...\n")
+    BiocManager::install("ComplexHeatmap", update = TRUE, ask = FALSE)
+    cat("ComplexHeatmap upgraded to version:", as.character(packageVersion("ComplexHeatmap")), "\n")
+  } else {
+    cat("ComplexHeatmap version is sufficient (>= 2.8.0)\n")
+  }
+}
+
 cat("\n===========================================\n")
 cat("Package installation completed!\n")
+cat("Note: 'utils' is a base R package and doesn't need installation.\n")
 cat("You can now run your R scripts in this directory.\n")
