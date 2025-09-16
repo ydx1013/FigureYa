@@ -28,8 +28,11 @@ install_cran_packages <- function(packages) {
 }
 
 # Function to install GitHub packages with better error handling
-install_github_packages <- function(repo) {
-  pkg_name <- basename(repo)
+install_github_packages <- function(repo, pkg_name = NULL) {
+  if (is.null(pkg_name)) {
+    pkg_name <- basename(repo)
+  }
+  
   if (!is_package_installed(pkg_name)) {
     cat("Installing GitHub package:", repo, "\n")
     tryCatch({
@@ -37,7 +40,7 @@ install_github_packages <- function(repo) {
         install_cran_packages("remotes")
       }
       remotes::install_github(repo)
-      cat("Successfully installed:", repo, "\n")
+      cat("Successfully installed:", pkg_name, "\n")
     }, error = function(e) {
       cat("Failed to install GitHub package", repo, ":", e$message, "\n")
       cat("Trying alternative installation method...\n")
@@ -45,7 +48,7 @@ install_github_packages <- function(repo) {
       # Alternative: try to install from specific commit or branch
       tryCatch({
         remotes::install_github(paste0(repo, "@master"))
-        cat("Successfully installed from master branch:", repo, "\n")
+        cat("Successfully installed from master branch:", pkg_name, "\n")
       }, error = function(e2) {
         cat("Alternative installation also failed:", e2$message, "\n")
         cat("You may need to install manually or check system dependencies.\n")
@@ -91,6 +94,7 @@ basic_packages <- c(
   "ggplot2",
   "dplyr",
   "remotes",
+  "devtools",
   "reticulate"
 )
 install_cran_packages(basic_packages)
@@ -99,23 +103,35 @@ install_cran_packages(basic_packages)
 cat("\nInstalling hdf5r...\n")
 install_hdf5r_with_deps()
 
-# --- Step 3: Install other CRAN packages ---
-cat("\nInstalling other CRAN packages...\n")
-other_cran_packages <- c(
-  "Seurat",
-  "SeuratDisk"
-)
-install_cran_packages(other_cran_packages)
+# --- Step 3: Install Seurat from CRAN ---
+cat("\nInstalling Seurat...\n")
+install_cran_packages("Seurat")
 
-# --- Step 4: Install Rmagic from GitHub ---
+# --- Step 4: Install SeuratDisk from GitHub (关键修复) ---
+cat("\nInstalling SeuratDisk from GitHub...\n")
+install_github_packages("mojaveazure/seurat-disk", "SeuratDisk")
+
+# --- Step 5: Install Rmagic from GitHub ---
 cat("\nInstalling Rmagic from GitHub...\n")
-install_github_packages("KrishnaswamyLab/Rmagic")
+install_github_packages("KrishnaswamyLab/Rmagic", "Rmagic")
 
-# --- Step 5: Install Python dependencies ---
+# --- Step 6: Install other useful packages ---
+cat("\nInstalling additional packages...\n")
+additional_packages <- c(
+  "patchwork",
+  "cowplot",
+  "RColorBrewer",
+  "viridis",
+  "pheatmap"
+)
+install_cran_packages(additional_packages)
+
+# --- Step 7: Install Python dependencies ---
 cat("\nInstalling Python packages for reticulate...\n")
 tryCatch({
   # First check if Python is available
   if (!reticulate::py_available()) {
+    cat("Python not available, installing...\n")
     reticulate::install_python()
   }
   
@@ -133,7 +149,7 @@ cat("Package installation completed!\n")
 
 # Final check
 cat("\nFinal package availability check:\n")
-required_packages <- c("Seurat", "SeuratDisk", "hdf5r", "reticulate", "ggplot2", "dplyr")
+required_packages <- c("Seurat", "SeuratDisk", "hdf5r", "reticulate", "ggplot2", "dplyr", "Rmagic")
 
 for (pkg in required_packages) {
   if (requireNamespace(pkg, quietly = TRUE)) {
@@ -143,13 +159,33 @@ for (pkg in required_packages) {
   }
 }
 
-# Check if Rmagic is available
-if (requireNamespace("Rmagic", quietly = TRUE)) {
-  cat("✅ Rmagic is available\n")
-} else {
-  cat("❌ Rmagic is NOT available\n")
-  cat("You may need to install it manually:\n")
-  cat("remotes::install_github('KrishnaswamyLab/Rmagic')\n")
+# Test loading SeuratDisk specifically
+cat("\nTesting SeuratDisk package...\n")
+tryCatch({
+  if (requireNamespace("SeuratDisk", quietly = TRUE)) {
+    library(SeuratDisk)
+    cat("✅ SeuratDisk loaded successfully!\n")
+    cat("✅ Package version:", packageVersion("SeuratDisk"), "\n")
+  } else {
+    cat("❌ SeuratDisk not available\n")
+  }
+}, error = function(e) {
+  cat("❌ Failed to load SeuratDisk:", e$message, "\n")
+})
+
+# If SeuratDisk installation fails completely, provide detailed instructions
+if (!is_package_installed("SeuratDisk")) {
+  cat("\n" + strrep("=", 60) + "\n")
+  cat("MANUAL INSTALLATION INSTRUCTIONS FOR SeuratDisk:\n")
+  cat("1. Make sure hdf5r is installed and working\n")
+  cat("2. Install SeuratDisk manually:\n")
+  cat("   remotes::install_github('mojaveazure/seurat-disk')\n")
+  cat("3. If that fails, check system dependencies for hdf5r:\n")
+  if (.Platform$OS.type == "unix") {
+    cat("   Ubuntu/Debian: sudo apt-get install libhdf5-dev\n")
+    cat("   CentOS/RHEL: sudo yum install hdf5-devel\n")
+  }
+  cat(strrep("=", 60) + "\n")
 }
 
 cat("\nYou can now run your R scripts in this directory.\n")
