@@ -95,7 +95,7 @@ EBPlusPlusAdjustPANCAN_IlluminaHiSeq_RNASeqV2.geneExp.tsv，表达矩阵，第�
 
 merged_sample_quality_annotations.tsv，下载自<https://gdc.cancer.gov/about-data/publications/pancanatlas>，下载地址<http://api.gdc.cancer.gov/data/1a7d7be8-675d-4e60-a105-19d4121bdebf>。
 
-tcga_methy450文件夹里面是甲基化数据，过滤掉了有空值的探针，均已保存为RData文件，微云链接：<https://share.weiyun.com/jRry4rlU>。下载后把tcga_methy450文件夹放到当前文件夹。跟FigureYa270panMeth使用的是同一文件。
+tcga_methy450文件夹里面是甲基化数据，过滤掉了有空值的探针，均已保存为RData文件。下载后把tcga_methy450文件夹放到当前文件夹。跟FigureYa270panMeth使用的是同一文件。
 
 # Input file
 
@@ -103,7 +103,7 @@ EBPlusPlusAdjustPANCAN_IlluminaHiSeq_RNASeqV2.geneExp.tsv， The expression matr
 
 merged_sample_quality_annotations.tsv， Download from< https://gdc.cancer.gov/about-data/publications/pancanatlas >, download link< http://api.gdc.cancer.gov/data/1a7d7be8-675d-4e60-a105-19d4121bdebf >.
 
-The tcga_sthy450 folder contains methylation data, filtered out probes with null values, and saved them as RData files. Weiyun link:< https://share.weiyun.com/jRry4rlU >After downloading, place the tcga_cethy450 folder into the current folder. The same file is used as FigureYa270panMet.
+The tcga_sthy450 folder contains methylation data, filtered out probes with null values, and saved them as RData files. After downloading, place the tcga_cethy450 folder into the current folder. The same file is used as FigureYa270panMet.
 
 ```{r}
 # 获得同时有肿瘤和正常样本的肿瘤名（20种癌症类型缩写）
