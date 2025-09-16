@@ -1,22 +1,14 @@
 ---
 title: "FigureYa256panelLink"
-author: "小丫画图出品"
+author: "Zongcheng Li"
 date: "2021-12-17"
 output: html_document
 ---
-欢迎关注“小丫画图”公众号，回复“小白”，看小视频，实现点鼠标跑代码。
-
-小丫微信: epigenomics  E-mail: figureya@126.com
-
-作者：Hazard，他的更多作品看这里
-
-小丫编辑校验
 
 # Academic Citation
 If you use this code in your work or research, we kindly request that you cite our publication:
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
-
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -24,7 +16,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # 需求描述
 
-这个图有机会能实现一下吗？感觉很强大
+这个图有机会能实现吗？感觉很强大
 
 ![](example.png)
 
@@ -45,18 +37,9 @@ Bar plots in right panel indicate the number of cancer types with positive corre
 
 # 环境设置
 
-
 ```{r}
 source("install_dependencies.R")
-```
 
-```{r eval=FALSE}
-install.packages("remotes")
-remotes::install_github("zzwch/crosslink", build = FALSE)
-```
-
-
-```{r}
 library(magrittr)
 library(tidyverse)
 library(ggplot2)
