@@ -139,7 +139,7 @@ write.table(combined.tpm,paste0("tpms_",tissue,"_TCGAGTEX.txt"),sep = "\t",row.n
 # Input Files
 
 - 训练集：
-  - tpms_Liver_TCGAGTEX.txt，TCGA（肝癌）和GTEX（正常组织）表达矩阵。文件太大，在微云上<https://share.weiyun.com/HHLSNqoC>
+  - tpms_Liver_TCGAGTEX.txt，TCGA（肝癌）和GTEX（正常组织）表达矩阵。
   - lihc_sinfo.txt，TCGA肝癌临床信息
 - 测试集（GEO数据的下载及数据预处理可参考FigureYa203ComBat）
   - gse101685.expr.txt，表达矩阵
@@ -148,7 +148,7 @@ write.table(combined.tpm,paste0("tpms_",tissue,"_TCGAGTEX.txt"),sep = "\t",row.n
 加载数据，构建训练集和测试集，并定义早期肝癌与正常组织。
 
 - Training set:
-  - tpms_Liver_TCGAGTEX.txt, TCGA (liver cancer) and GTEX (normal tissue) expression matrices. The file is too large and is available on Weiyun<https://share.weiyun.com/HHLSNqoC>
+  - tpms_Liver_TCGAGTEX.txt, TCGA (liver cancer) and GTEX (normal tissue) expression matrices.
   - lihc_sinfo.txt, TCGA liver cancer clinical information
 - Test set (GEO data download and preprocessing can be referenced to FigureYa203ComBat)
   - gse101685.expr.txt, expression matrix
@@ -351,7 +351,6 @@ ggsave(file = "Figure2E.pdf",width = 6,height = 4)
 ```
 
 # Session Info
-# 会话信息
 
 ```{r}
 sessionInfo()
