@@ -36,7 +36,7 @@ install_bioc_package <- function(package_name) {
       }
       BiocManager::install(package_name, update = FALSE, ask = FALSE)
       cat("Successfully installed:", package_name, "\n")
-    }, error function(e) {
+    }, error = function(e) {
       cat("Failed to install", package_name, ":", e$message, "\n")
     })
   } else {
