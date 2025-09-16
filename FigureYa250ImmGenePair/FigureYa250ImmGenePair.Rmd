@@ -136,15 +136,15 @@ IRGP.generator <- function(expr = NULL, immuneGene = NULL) {
 
 # 输入文件
 
-easyinput_tcga_tpm.txt，表达矩阵，文件较大，已上传至微云<https://share.weiyun.com/Idkrb3Xu>。
+easyinput_tcga_tpm.txt，表达矩阵
 
-easyinput_tcga_surv.txt，样本生存信息。
+easyinput_tcga_surv.txt，样本生存信息
 
 InnateDB_genes_IRIS.txt，免疫基因，来自IRIS <https://innatedb.com/redirect.do?go=resourcesGeneLists>，原文使用ImmPort，这里也提供了list，但是我电脑内存比较小，生成不了那么大的基因对矩阵，所以换用IRIS。
 
 # Input files
 
-easyinput_tcga_tpm.txt, the expression matrix has a large file and has been uploaded to the Weiyun <https://share.weiyun.com/Idkrb3Xu>.
+easyinput_tcga_tpm.txt, the expression matrix.
 
 easyinput_tcga_surv.txt, sample survival information.
 
