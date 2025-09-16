@@ -16,7 +16,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -47,31 +46,14 @@ FIGURE 2 Single nucleotide variation(SNV) frequency and variant types of melaton
 
 分析泛癌中特定通路基因的突变情况。
 
-更多pancancer分析和可视化看这里
-
 Analysis of mutation patterns in specific pathway genes across pan-cancer.
-
-For more pancancer analysis and visualization resources, visit: 
 
 # 环境设置
 # Environment Setup
 
-
-Using domestic mirrors for package installation.
-
-
 ```{r}
 source("install_dependencies.R")
-```
 
-```{r eval=FALSE}
-BiocManager::install("maftools")
-```
-
-# 加载包
-# Loading packages
-
-```{r}
 library(tidyverse)
 library(magrittr)
 library(readxl)
@@ -391,11 +373,8 @@ invisible(dev.off())
 
 ![](oncoprint.pdf)
 
-# 会话信息
 # Session Info
 
 ```{r}
-# 显示会话信息
-# Show session information
 sessionInfo()
 ```
