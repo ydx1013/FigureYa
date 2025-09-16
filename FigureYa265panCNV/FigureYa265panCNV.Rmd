@@ -73,11 +73,7 @@ For Figure1CDE will be launched successively. Stay tuned for updates.
 
 分析铁死亡在泛癌中体细胞拷贝数变异情况并绘制条形图。
 
-更多pancancer分析画图FigureYa看这里 。
-
 Analyze somatic copy number variations (SCNAs) related to ferroptosis across pan-cancer and generate bar plots.
-
-For more pan-cancer analysis and visualization (FigureYa), visit: .
 
 # 环境设置
 # Environment Setup
