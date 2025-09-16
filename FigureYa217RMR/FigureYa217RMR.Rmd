@@ -10,7 +10,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -42,21 +41,9 @@ Differential genes are identified using the minimal Redundancy Maximal Relevance
 # 环境设置
 # Environment setting
 
-
-use the domestic mirror installation package
-
 ```{r}
 source("install_dependencies.R")
-```
 
-```{r eval=FALSE}
-install.packages("mRMRe")
-```
-
-
-load package
-
-```{r}
 library(mRMRe)
 library(e1071)
 
@@ -215,7 +202,6 @@ dev.copy2pdf(file = "mcc.pdf",width = 4,height = 4)
 ```
 
 # Session Info
-# 会话信息
 
 ```{r}
 sessionInfo()
