@@ -16,7 +16,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -92,18 +91,9 @@ D: Refer to FigureYa165heatmapPvalue
 # 环境设置
 # Environment Setup
 
-
-Using domestic mirrors for package installation.
-
 ```{r}
 source("install_dependencies.R")
 
-```
-
-# 加载包
-# Loading packages
-
-```{r}
 library(readr)
 library(ggplot2)
 library(ggrepel)
@@ -577,11 +567,8 @@ ggsave(filename = "combined plot.pdf", width = 12, height = 5)
 
 ![](combined plot.pdf)
 
-# 会话信息
 # Session Info
 
 ```{r}
-# 显示会话信息
-# Show session information
 sessionInfo()
 ```
