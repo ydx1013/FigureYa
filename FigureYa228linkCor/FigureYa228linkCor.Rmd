@@ -87,7 +87,7 @@ gmt2list <- function(annofile){
 
 下面用基因表达矩阵和通路-基因信息，计算各通路的富集得分（可以理解为通路的表达矩阵）。
 
-- tcga_blca_fpkm.txt，基因表达矩阵，文件太大，上传到微云<https://share.weiyun.com/cKd3bIXW>。
+- tcga_blca_fpkm.txt，基因表达矩阵
 - 通路的基因信息，例文根据文献整理了两类通路，其他通路套用这样的格式即可：
   - bladder cancer signature.txt，膀胱癌相关签名，每行一个通路，第一列为通路名（Signature），第二列为基因（Genes）。用于绘制(C) Correlations between Siglec15 and the steps of the cancer immunity cycle。出自例文的Table S9.xlsx，Bladder cancer signatures，取Signature和Genes两列。是例文作者从这篇文章整理出来的：Mariathasan S, Turley SJ, Nickles D, Castiglioni A, Yuen K, Wang Y, et al. TGFβ attenuates tumour response to PD-L1 blockade by contributing to exclusion of T cells. Nature. 2018; 554: 544-8.
   - immunotherapy predicted pathways.txt，治疗签名，用于绘制(D) Correlations between Siglec15 and the enrichment scores of immunotherapy-predicted pathways。整理自例文的Table S9.xlsx，Therapeutic predicted pathways，选取Description一列为Anticancer_immunotherapy的Pathway及其对应的Genes。可以直接拿来用到自己的文章里，记得引用例文哦～～
