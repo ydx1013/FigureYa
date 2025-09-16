@@ -80,6 +80,12 @@ jobs:
             echo "Processing $rmd_file..."
             rmd_dir=$(dirname "$rmd_file")
 
+            # Check if the file is in an LFS directory and skip if necessary
+            if grep -qxF "$rmd_dir" .lfs_dirs.txt; then
+              echo "[SKIPPED-LFS] - $rmd_file (In LFS directory)"
+              continue
+            fi
+
             if [ -f "$rmd_dir/install_dependencies.R" ]; then
               echo "Installing dependencies for $rmd_file..."
               (cd "$rmd_dir" && Rscript install_dependencies.R > install.log 2>&1 || echo "WARNING: Dependency installation failed for $rmd_file.")
@@ -97,7 +103,8 @@ jobs:
           done < .all_rmd_files.txt
 
       - name: 10. Upload Knit Results
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: knit-results
           path: "**/*.html"
+          
