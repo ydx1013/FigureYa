@@ -11,7 +11,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -67,15 +66,9 @@ Which combination will best demonstrate the evidence for transcriptional regulat
 画图前的代码需要在terminal里运行，可参考这篇方法<https://www.jianshu.com/p/c16c7095e4b2?from=singlemessage&isappinstalled=0>
 Before drawing, the code needs to be run in a terminal. Refer to this method <https://www.jianshu.com/p/c16c7095e4b2?from=singlemessage&isappinstalled=0>
 
-
 ```{r}
 source("install_dependencies.R")
 
-```
-
-Load the package
-
-```{r}
 library(ggplot2)
 library(cowplot)
 Sys.setenv(LANGUAGE = "en") #显示英文报错信息
@@ -96,11 +89,9 @@ Download previously published ChIP/ATAC/RNA-seq data from the GEO database. Clic
 
 - ChIP-seq，GSE107236。作者提供了bedgraph文件<https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE107236>
 - ATAC-seq，GSE107242。作者提供了bigwig文件<https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE107242>，需要先转换成bedgraph。
-- 以上数据已传到微云，便于下载，<https://share.weiyun.com/55dfZPV>
 - 如果你感兴趣的数据作者没有上传bedgraph或bw或wig文件，可以从SRA格式开始跑，方法可参考FigureYa155ATAC。
 - ChIP-seq, GSE107236. The authors provided a bedgraph file <https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE107236>
 - ATAC-seq, GSE107242. The authors also provided a BigWig file <https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE107242>, which needs to be converted to a bedgraph first.
-- The above data has been uploaded to Weiyun for easy download <https://share.weiyun.com/55dfZPV>
 - If the author of the data you are interested in did not upload a bedgraph, BW, or WIG file, you can start from the SRA format. The method can be found in FigureYa155ATAC.
 
 ## bigwig转bedgraph
@@ -144,8 +135,8 @@ bedtools intersect -wa -a GSM2863149_EBF1_NO14_cd19pos_mm9.bedGraph -b Igll1.bed
 从gtf文件里可以找到基因exon的具体位置。
 The specific locations of gene exons can be found in the gtf file.
 
-小鼠和人通常用gencode的基因注释文件。mm9的gtf文件：<https://www.gencodegenes.org/mouse/release_M9.html>，已传到微云便于下载，<https://share.weiyun.com/55dfZPV>。人的<https://www.gencodegenes.org/human/>，其他物种可以从ensembl下载<http://asia.ensembl.org/info/data/ftp/index.html>
-Mouse and human gene annotation files are typically generated using Gencode. The mm9 gtf file is available at: <https://www.gencodegenes.org/mouse/release_M9.html>, and has been uploaded to Weiyun for easy download: <https://share.weiyun.com/55dfZPV>. Human annotations are available at <https://www.gencodegenes.org/human/>. Other species can be downloaded from Ensembl: <http://asia.ensembl.org/info/data/ftp/index.html>.
+小鼠和人通常用gencode的基因注释文件。mm9的gtf文件：<https://www.gencodegenes.org/mouse/release_M9.html>。人的<https://www.gencodegenes.org/human/>，其他物种可以从ensembl下载<http://asia.ensembl.org/info/data/ftp/index.html>
+Mouse and human gene annotation files are typically generated using Gencode. The mm9 gtf file is available at: <https://www.gencodegenes.org/mouse/release_M9.html>. Human annotations are available at <https://www.gencodegenes.org/human/>. Other species can be downloaded from Ensembl: <http://asia.ensembl.org/info/data/ftp/index.html>.
 
 例文用的Igll1基因包含两个exon的转录本，我们也用这个。ID是ENSMUST00000124649.1。位置：chr16:16860674-16863985。下面就提取这个基因的外显子。
 The Igll1 gene used in the example contains two exon transcripts, which we will also use. Its ID is ENSMUST00000124649.1 and its location is chr16:16860674-16863985. Next, we will extract the exons of this gene.
