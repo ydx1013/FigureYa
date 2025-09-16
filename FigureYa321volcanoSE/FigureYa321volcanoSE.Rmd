@@ -16,7 +16,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -49,7 +48,6 @@ FIGURE 5 Transcriptional and post-transcriptional characteristics related to WM_
 
 - 一组：FigureYa59volcano ，FigureYa75baseVolcano   
 - 多组：FigureYa135multiVolcano ，
-- 更多散点图：
 
 The example focuses on PAAD but can be adapted to other TCGA cancer types.
 
@@ -57,23 +55,13 @@ Use a volcano plot to display differential analysis results. Alternatively, more
 
 - A group: FigureYa59volcano ，FigureYa75baseVolcano  
 - Multiple group: FigureYa135multiVolcano ，
-- More scatter plots: 
 
 # 环境设置
 # Environment Setup
 
-
-Using domestic mirrors for package installation.
-
 ```{r}
 source("install_dependencies.R")
 
-```
-
-# 加载包
-# Loading packages
-
-```{r}
 library(limma)
 library(ggplot2)
 library(ggrepel)
@@ -210,11 +198,8 @@ ggplot(data = plot.data, aes(x = logFC, y = logPadj, color = color)) +
 ggsave("volcano.pdf", width = 6, height = 6)
 ```
 
-# 会话信息
 # Session Info
 
 ```{r}
-# 显示会话信息
-# Show session information
 sessionInfo()
 ```
