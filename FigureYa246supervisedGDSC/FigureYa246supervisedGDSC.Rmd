@@ -10,7 +10,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -44,15 +43,9 @@ This time, subtypes derived from the TCGA expression profile are extrapolated to
 
 # 环境设置
 
-
 ```{r}
 source("install_dependencies.R")
-install.packages("lolR")
-```
 
-加载包 Load packages
-
-```{r}
 library(pheatmap)
 library(data.table)
 library(ConsensusClusterPlus)
@@ -79,9 +72,6 @@ standarize.fun <- function(indata=NULL, halfwidth=NULL, centerFlag=T, scaleFlag=
 ```
 
 # 输入文件
-
-大文件已上传至微云<https://share.weiyun.com/AW2ZOfhr>，建议小伙伴亲自去官网下载。
-Large files have been uploaded to Weiyun; it’s recommended to download from the official sources yourself.
 
 TCGA-LUAD.htseq_fpkm.tsv.gz，TCGA-LUAD的表达谱数据以及基因注释，源于<https://xenabrowser.net/datapages/?dataset=TCGA-LUAD.htseq_fpkm.tsv&host=https%3A%2F%2Fgdc.xenahubs.net&removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443>
 
