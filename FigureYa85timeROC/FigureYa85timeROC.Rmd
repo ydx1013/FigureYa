@@ -11,7 +11,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 # 设置knitr的全局代码块选项 / Set global chunk options for knitr
@@ -41,16 +40,7 @@ Draw timeROC curves for different fitting models.
 
 ## 环境设置
 
-
 ## Environment settings
-
-Use domestic image installation package
-
-```r
-install.packages("timeROC")
-```
-
-
 
 ```{r}
 source("install_dependencies.R")
@@ -208,6 +198,8 @@ dev.off()  # 关闭图形设备，保存PDF文件 - Close the graphics device an
 I found a well written post that can be used to draw Figure 3A in the example article. The author is Chen Qi from the Statistics Teaching and Research Office of the Second Military Medical University
 
 <https://www.wowodx.com/weishengjiandu/7180143d4c3b48228e7d04e97e2ac3c1.html>
+
+# Session Info
 
 ```{r}
 sessionInfo()
