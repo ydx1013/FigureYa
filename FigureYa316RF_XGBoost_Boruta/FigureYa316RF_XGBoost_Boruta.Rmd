@@ -16,7 +16,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -26,7 +25,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 想实现这篇文章的Figure S2；就是用4种机器学习来筛选生物标志物。
 
-We want to crowdfund Figure S2 from this paper; which uses 4 machine learning methods to screen biomarkers.
+We want to draw Figure S2 from this paper; which uses 4 machine learning methods to screen biomarkers.
 
 ![](example.png)
 
@@ -49,71 +48,71 @@ A total of 36, 15, 35 and 31 mRNAsi phenotype-based DEGs were selected by LASSO,
 
 LASSO
 
-- FigureYa31lasso <https://k.youshop10.com/BflugKvZ>
-- FigureYa65SVM <https://k.youshop10.com/5RZm-I9h>
-- FigureYa128Prognostic <https://k.youshop10.com/5be2BiFs>
-- FigureYa220repeatedLasso <https://k.youshop10.com/4TzImkC6>
-- FigureYa238corRiskMut <https://k.youshop10.com/nUP=aC-n>
-- FigureYa293machineLearning <https://k.youshop10.com/vkyERKZ7>
-- FigureYa45iCluster <https://k.youshop10.com/puSQ=xuo>
+- FigureYa31lasso
+- FigureYa65SVM
+- FigureYa128Prognostic
+- FigureYa220repeatedLasso
+- FigureYa238corRiskMut
+- FigureYa293machineLearning
+- FigureYa45iCluster
 
 SVM-REF
 
-- FigureYa65SVM <https://k.youshop10.com/5RZm-I9h>
-- FigureYa130coxSVM <https://k.youshop10.com/eUd6aHnK>
-- FigureYa217RMR <https://k.youshop10.com/S6owwKd8>
-- FigureYa293machineLearning <https://k.youshop10.com/vkyERKZ7>
+- FigureYa65SVM
+- FigureYa130coxSVM
+- FigureYa217RMR
+- FigureYa293machineLearning
 
 RF
 
-- FigureYa159LR_RF <https://k.youshop10.com/YgeCQyJm>
-- FigureYa184ranger <https://k.youshop10.com/ZvyyYkr9>
-- FigureYa221tenFoldRF <https://k.youshop10.com/3mnuaz7y>
+- FigureYa159LR_RF
+- FigureYa184ranger
+- FigureYa221tenFoldRF
 
 Boruta
 
-- FigureYa204PCAscore <https://k.youshop10.com/=bRTDwW7>，不同于常规的lasso, cox回归系数与基因表达量的乘积，这篇文章采用Boruta降维，联合主成分分析第一主成分构建 signature score，特别适合做分子分型分析。
+- FigureYa204PCAscore，不同于常规的lasso, cox回归系数与基因表达量的乘积，这篇文章采用Boruta降维，联合主成分分析第一主成分构建 signature score，特别适合做分子分型分析。
 
 另外，我们实现过的FigureYa可以实现文中的几个图：
 
 - Figure 1A，可以用FigureYa161stemness来计算mRNAsi并画图。
-- Figure 2A，可参考FigureYa71ssGSEA<https://k.youshop10.com/hhH631te>。
-- Figure 2B，ESTIMATE可参考FigureYa211multiCohortImmSubtype<https://k.youshop10.com/VwpAWxx0>或FigureYa230immunelandscape<https://k.youshop10.com/wQSoNWJ0>，相关性展示可参考<https://k.youshop10.com/Eig1YOB4>。
-- Figure 2D，CIBERSORT可参考FigureYa211multiCohortImmSubtype<https://k.youshop10.com/VwpAWxx0>，画图可参考FigureYa12box<https://k.youshop10.com/GyC0Qm3g>
-- Figure 3C，ClusterProfiler衔接GOplot可参考FigureYa52GOplot<https://k.youshop10.com/DmEbg3iO>
-- Figure 3E，可参考FigureYa69cancerSubtypes<https://k.youshop10.com/kdKt1Kit>
-- Figure 5K，可参考FigureYa131CMap<https://k.youshop10.com/7kOjUwPe>
-- Figure 6D，可参考FigureYa102multipanelROC<https://k.youshop10.com/7bYkTnXu>
+- Figure 2A，可参考FigureYa71ssGSEA
+- Figure 2B，ESTIMATE可参考FigureYa211multiCohortImmSubtype或FigureYa230immunelandscape
+- Figure 2D，CIBERSORT可参考FigureYa211multiCohortImmSubtype，画图可参考FigureYa12box
+- Figure 3C，ClusterProfiler衔接GOplot可参考FigureYa52GOplot
+- Figure 3E，可参考FigureYa69cancerSubtypes
+- Figure 5K，可参考FigureYa131CMap
+- Figure 6D，可参考FigureYa102multipanelROC
 
 
 Figure S2 displays the results of four algorithms (LASSO, XGBoost, Random Forest [RF], and Boruta), while the Methods section describes five algorithms (LASSO, SVM-RFE, XGBoost, RF, and Boruta).
 
 This represents our first crowdfunding initiative for XGBoost implementation. FigureYa65SVM has already covered the first two algorithms (LASSO and SVM-RFE), while this document implements the remaining three (XGBoost, RF, and Boruta).
 
-For reference, our previous crowdfunded implementations of LASSO, SVM-RFE, RF, and Boruta (from different authors) are listed below for comparative study.
+For reference, FigureYas implementations of LASSO, SVM-RFE, RF, and Boruta (from different authors) are listed below for comparative study.
 
 LASSO
 
-- FigureYa31lasso <https://k.youshop10.com/BflugKvZ>
-- FigureYa65SVM <https://k.youshop10.com/5RZm-I9h>
-- FigureYa128Prognostic <https://k.youshop10.com/5be2BiFs>
-- FigureYa220repeatedLasso <https://k.youshop10.com/4TzImkC6>
-- FigureYa238corRiskMut <https://k.youshop10.com/nUP=aC-n>
-- FigureYa293machineLearning <https://k.youshop10.com/vkyERKZ7>
-- FigureYa45iCluster <https://k.youshop10.com/puSQ=xuo>
+- FigureYa31lasso
+- FigureYa65SVM
+- FigureYa128Prognostic
+- FigureYa220repeatedLasso
+- FigureYa238corRiskMut
+- FigureYa293machineLearning
+- FigureYa45iCluster
 
 SVM-REF
 
-- FigureYa65SVM <https://k.youshop10.com/5RZm-I9h>
-- FigureYa130coxSVM <https://k.youshop10.com/eUd6aHnK>
-- FigureYa217RMR <https://k.youshop10.com/S6owwKd8>
-- FigureYa293machineLearning <https://k.youshop10.com/vkyERKZ7>
+- FigureYa65SVM
+- FigureYa130coxSVM
+- FigureYa217RMR
+- FigureYa293machineLearning
 
 RF
 
-- FigureYa159LR_RF <https://k.youshop10.com/YgeCQyJm>
-- FigureYa184ranger <https://k.youshop10.com/ZvyyYkr9>
-- FigureYa221tenFoldRF <https://k.youshop10.com/3mnuaz7y>
+- FigureYa159LR_RF
+- FigureYa184ranger
+- FigureYa221tenFoldRF
 
 Boruta
 
@@ -122,30 +121,20 @@ Boruta
 In addition, the FigureYa we have crowdfunded can realize several of the images mentioned in the figure:
 
 - Figure 1A, Use FigureYa161stemness to calculate mRNAsi and generate plots.
-- Figure 2A, Refer to FigureYa71ssGSEA <https://k.youshop10.com/hhH631te>.
-- Figure 2B, For ESTIMATE analysis, see FigureYa211multiCohortImmSubtype  <https://k.youshop10.com/VwpAWxx0> or FigureYa230immunelandscape <https://k.youshop10.com/wQSoNWJ0>; for correlation visualization, use<https://k.youshop10.com/Eig1YOB4>
-- Figure 2D, CIBERSORT implementation via FigureYa211multiCohortImmSubtype  <https://k.youshop10.com/VwpAWxx0>, with plotting templates from FigureYa12box <https://k.youshop10.com/GyC0Qm3g>.
-- Figure 3C, Integrate ClusterProfiler with GOplot using FigureYa52GOplot <https://k.youshop10.com/DmEbg3iO>.
-- Figure 3E, Adapt FigureYa69cancerSubtypes <https://k.youshop10.com/kdKt1Kit>.
-- Figure 5K, Leverage FigureYa131CMap<https://k.youshop10.com/7kOjUwPe>.
-- Figure 6D, Reproduce using FigureYa102multipanelROC <https://k.youshop10.com/7bYkTnXu>.
+- Figure 2A, Refer to FigureYa71ssGSEA
+- Figure 2B, For ESTIMATE analysis, see FigureYa211multiCohortImmSubtype or FigureYa230immunelandscape;
+- Figure 2D, CIBERSORT implementation via FigureYa211multiCohortImmSubtype with plotting templates from FigureYa12box.
+- Figure 3C, Integrate ClusterProfiler with GOplot using FigureYa52GOplot.
+- Figure 3E, Adapt FigureYa69cancerSubtypes
+- Figure 5K, Leverage FigureYa131CMap
+- Figure 6D, Reproduce using FigureYa102multipanelROC
 
 # 环境设置
 # Requirements Description
 
-
-Using domestic mirrors for package installation.
-
 ```{r}
 source("install_dependencies.R")
-```
 
-```{r eval=FALSE}
-BiocManager::install("randomForest")
-```
-
-
-```{r}
 # 显示英文报错信息
 # Show English error messages
 Sys.setenv(LANGUAGE = "en") 
@@ -334,11 +323,8 @@ attStats(boruta)
 write.table(attStats(boruta), "output_importance_Boruta.txt", col.names = T, row.names = T, sep = "\t", quote = F)
 ```
 
-# 会话信息
 # Session Info
 
 ```{r}
-# 显示会话信息
-# Show session information
 sessionInfo()
 ```
