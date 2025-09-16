@@ -10,7 +10,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -51,7 +50,7 @@ The three characteristics are displayed in comparison at the same time. Just lik
 
 There are two forms of input data for you to choose from, which is seamless with single-cell data and very friendly to non-single-cell data.
 
-Here are a few examples of how we crowdfunded:
+Here are a few examples:
 
 - Figure 1H, heat map and bubble map correspond to the results of expression profiling and gene function enrichment analysis, please refer to FigureYa206scHeatmap;
 - Figure 3AB, the relationship between gene expression patterns and cell types can be seen from the PCA results, please refer to FigureYa222PCAgene;
@@ -61,18 +60,11 @@ In addition, Figure S6H uses color and shape to display the grouping information
 
 # 环境设置
 
-
 # Environment settings
-
 
 ```{r}
 source("install_dependencies.R")
 
-```
-
-load packages
-
-```{r}
 library(Seurat)
 library(magrittr)
 library(tidyverse)
