@@ -16,7 +16,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -47,44 +46,29 @@ Fig. 2. ISG score of SLE PBMC cell clusters.
 
 本教程展示如何在单细胞数据中使用AUCell包计算自定义基因集的评分，并画图展示。
 
-我们实现过的用到AUCell包的FigureYa：
+用到AUCell包的FigureYa：
 
-- FigureYa194pySCENIC<https://k.youshop10.com/5gCxXaGm>，用AUCell对每个细胞计算regulon activity score (RAS)
-- FigureYa223scNMF<https://k.youshop10.com/qjIM3DFg>，用AUCell对上皮细胞进行打分，然后做NMF聚类
-- FigureYa269scMetabolism<https://k.youshop10.com/lCYoADnk>，计算scMetabolism时有多种方法供选择，AUCell是其中之一
+- FigureYa194pySCENIC，用AUCell对每个细胞计算regulon activity score (RAS)
+- FigureYa223scNMF，用AUCell对上皮细胞进行打分，然后做NMF聚类
+- FigureYa269scMetabolism，计算scMetabolism时有多种方法供选择，AUCell是其中之一
 
 This tutorial demonstrates how to calculate customized gene set scores in single-cell data using the AUCell package and visualize the results.
 
 Below are our crowdfunded FigureYa projects utilizing the AUCell package:
 
-- FigureYa194pySCENIC<https://k.youshop10.com/5gCxXaGm>,
+- FigureYa194pySCENIC
 Computes regulon activity score (RAS) per cell using AUCell
-- FigureYa223scNMF<https://k.youshop10.com/qjIM3DFg>,
+- FigureYa223scNMF
 Scores epithelial cells with AUCell followed by NMF clustering
-- FigureYa269scMetabolism<https://k.youshop10.com/lCYoADnk>,
+- FigureYa269scMetabolism
 Implements multiple metabolic scoring methods including AUCell
 
 # 环境设置
 # Environment Setup
 
-
-Using domestic mirrors for package installation.
-
 ```{r}
 source("install_dependencies.R")
-```
 
-```{r eval=FALSE}
-
-# 安装AUCell
-# Install AUCell
-BiocManager::install("AUCell")
-```
-
-# 加载包
-# Loading packages
-
-```{r}
 library(Seurat)
 library(SeuratData)
 library(patchwork)
