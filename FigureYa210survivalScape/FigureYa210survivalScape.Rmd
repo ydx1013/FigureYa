@@ -10,7 +10,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -73,18 +72,11 @@ Visualization of results. Examples are written in red, blue, and white for risk,
 
 # 环境设置
 
-
 # Environment settings
-
 
 ```{r}
 source("install_dependencies.R")
 
-```
-
-load package
-
-```{r}
 library(data.table)
 library(survival)
 library(pheatmap)
@@ -98,7 +90,7 @@ options(stringsAsFactors = FALSE) #禁止chr转成factor # chr is not allowed to
 
 - easy_input_gene.txt，例文中的m6A基因，用到`Symbol`列，将提取这些基因的表达矩阵。
 
-- tcga_RSEM_gene_tpm和gencode.v23.annotation.gene.probemap，表达矩阵和Gene mapping，跟FigureYa208FPI的一样，微云链接：<https://share.weiyun.com/c8GQyxR4>。**建议自己动手，从xena网站下载**，下载方式：
+- tcga_RSEM_gene_tpm和gencode.v23.annotation.gene.probemap，表达矩阵和Gene mapping，跟FigureYa208FPI的一样。**建议自己动手，从xena网站下载**，下载方式：
 
   - 这里跟FigureYa55panCancer_violin保持一致，从[XENA](https://xenabrowser.net/datapages/)下载UCSC Toil RNA-seq Recompute TPM：[TCGA Pan-Cancer (PANCAN) (41 datasets)](https://xenabrowser.net/datapages/?cohort=TCGA%20Pan-Cancer%20(PANCAN)&removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443)里的[TOIL RSEM tpm (n=10,535) UCSC Toil RNA-seq Recompute](https://toil.xenahubs.net/download/tcga_rsem_isoform_tpm.gz)，[Gene Mapping](https://toil.xenahubs.net/download/probeMap/gencode.v23.annotation.transcript.probemap)
 
@@ -116,7 +108,7 @@ Matrix and survival data need to be expressed, and if you already have easy_inpu
 
 - easy_input_gene.txt, the m6A gene in the example is used in the 'Symbol' column to extract the expression matrix of these genes.
 
-- tcga_RSEM_gene_tpm and gencode.v23.annotation.gene.probemap, expression matrix and gene mapping, the same as FigureYa208FPI, microcloud link: <https://share.weiyun.com/c8GQyxR4>。 **It is recommended to do it yourself, download it from the Xena website**, download method:
+- tcga_RSEM_gene_tpm and gencode.v23.annotation.gene.probemap, expression matrix and gene mapping, the same as FigureYa208FPI **It is recommended to do it yourself, download it from the Xena website**, download method:
 
 - Consistent with FigureYa55panCancer_violin here, download UCSC Toil RNA-seq Recompute TPM from [XENA](https://xenabrowser.net/datapages/): [TCGA Pan-Cancer (PANCAN) (41 datasets)]( https://xenabrowser.net/datapages/?cohort=TCGA [TOIL RSEM tpm (n=10,535) UCSC Toil RNA-seq] in Pan-Cancer (PANCAN)&removeHub=https://xena.treehouse.gi.ucsc.edu:443). Recompute](https://toil.xenahubs.net/download/tcga_rsem_isoform_tpm.gz)，[Gene Mapping]( https://toil.xenahubs.net/download/probeMap/gencode.v23.annotation.transcript.probemap)
 
