@@ -1,21 +1,21 @@
-name: Knit Rmd Files in Batches (Robust)
+name: Knit Rmd Files (Single Run)
 
 on:
   workflow_dispatch:
 
 jobs:
-  test-render-batch:
+  knit-rmd:
     runs-on: ubuntu-latest
     permissions:
       contents: write
     
     steps:
-      - name: 1. Check out repository (LFS disabled)
+      - name: 1. Check out repository
         uses: actions/checkout@v4
         with:
           lfs: false
 
-      - name: 2. Install system dependencies and Git LFS
+      - name: 2. Install system dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y git-lfs libmagick++-dev libgeos-dev libgfortran5 liblapack-dev libblas-dev \
@@ -45,8 +45,8 @@ jobs:
       - name: 7. Install core R dependencies
         run: Rscript -e 'install.packages(c("rmarkdown", "knitr", "remotes"))'
 
-      - name: 8. Identify LFS directories & Prepare Batch
-        id: batch_prep
+      - name: 8. Identify Rmd files to knit
+        id: identify_rmd
         run: |
           # Read folder names from to_Knit file
           TO_KNIT_FILE="to_Knit"
@@ -63,111 +63,41 @@ jobs:
           # Find Rmd files in the specified directories
           find $TARGET_DIRS -type f -name "*.Rmd" | sort > .all_rmd_files.txt
           TOTAL_FILES=$(wc -l < .all_rmd_files.txt)
-          BATCH_SIZE=80
-          TOTAL_BATCHES=$(( (TOTAL_FILES + BATCH_SIZE - 1) / BATCH_SIZE ))
-
-          echo "Total .Rmd files: $TOTAL_FILES, Total batches: $TOTAL_BATCHES"
-
-          STATE_FILE=".rmd_batch_state"
-          if [ -f "$STATE_FILE" ]; then
-            CURRENT_BATCH=$(cat "$STATE_FILE" 2>/dev/null)
-          else
-            CURRENT_BATCH=1
-          fi
-          echo "Running batch number: $CURRENT_BATCH"
 
           if [ "$TOTAL_FILES" -eq 0 ]; then
-            : > .current_batch_files.txt
-          else
-            if [ "$CURRENT_BATCH" -gt "$TOTAL_BATCHES" ] && [ "$TOTAL_BATCHES" -gt 0 ]; then
-              echo "All batches completed. Resetting to batch 1."
-              CURRENT_BATCH=1
-            fi
-
-            START_LINE=$(( (CURRENT_BATCH - 1) * BATCH_SIZE + 1 ))
-            END_LINE=$(( CURRENT_BATCH * BATCH_SIZE ))
-
-            echo "Processing files from line $START_LINE to $END_LINE..."
-            sed -n "${START_LINE},${END_LINE}p" .all_rmd_files.txt > .current_batch_files.txt
+            echo "No .Rmd files found in the to_Knit directories."
+            exit 1
           fi
 
-          echo "current_batch=$CURRENT_BATCH" >> $GITHUB_OUTPUT
-          echo "total_batches=$TOTAL_BATCHES" >> $GITHUB_OUTPUT
-          echo "job_failed=false" >> $GITHUB_OUTPUT
+          echo "Found $TOTAL_FILES .Rmd files."
+          cat .all_rmd_files.txt
 
-      - name: 9. Render Rmd files in Current Batch (Error Tolerant)
-        id: render_step
+      - name: 9. Knit all Rmd files
         run: |
-          ANY_FILE_FAILED=false
-          echo "RMD Render Summary (Batch ${{ steps.batch_prep.outputs.current_batch }}/${{ steps.batch_prep.outputs.total_batches }})" > summary.txt
-          echo "======================================" >> summary.txt
-          echo "" >> summary.txt
-
+          echo "Starting knitting process..."
           while IFS= read -r rmd_file; do
             [ -z "$rmd_file" ] && continue
-            echo "========== START: $rmd_file =========="
+            echo "Processing $rmd_file..."
             rmd_dir=$(dirname "$rmd_file")
 
-            if grep -qxF "$rmd_dir" .lfs_dirs.txt; then
-              echo "[SKIPPED-LFS] - $rmd_file (In LFS directory)" | tee -a summary.txt
+            if [ -f "$rmd_dir/install_dependencies.R" ]; then
+              echo "Installing dependencies for $rmd_file..."
+              (cd "$rmd_dir" && Rscript install_dependencies.R > install.log 2>&1 || echo "WARNING: Dependency installation failed for $rmd_file.")
+            fi
+            
+            echo "Knitting $rmd_file..."
+            if Rscript -e "rmarkdown::render('$rmd_file', quiet=TRUE)" > rmd_render.log 2>&1; then
+              echo "[SUCCESS] - $rmd_file"
             else
-              if [ -f "$rmd_dir/install_dependencies.R" ]; then
-                (cd "$rmd_dir" && Rscript install_dependencies.R > install.log 2>&1 || echo "WARNING: Dependency installation failed for $rmd_file.")
-              fi
-              
-              if Rscript -e "rmarkdown::render('$rmd_file', quiet=TRUE)" > rmd_render.log 2>&1; then
-                echo "[SUCCESS] - $rmd_file" | tee -a summary.txt
-              else
-                ANY_FILE_FAILED=true
-                echo "[FAILED] - $rmd_file" | tee -a summary.txt
-                echo "--- Error Log for $rmd_file ---" | tee -a summary.txt
-                tail -n 20 rmd_render.log | tee -a summary.txt
-                echo "-----------------------------------" | tee -a summary.txt
-              fi
+              echo "[FAILED] - $rmd_file"
+              echo "--- Error Log for $rmd_file ---"
+              tail -n 20 rmd_render.log
+              echo "-----------------------------------"
             fi
-            echo "=========== END: $rmd_file ==========="; echo ""
-          done < .current_batch_files.txt
+          done < .all_rmd_files.txt
 
-          echo "job_failed=$ANY_FILE_FAILED" >> $GITHUB_OUTPUT
-        continue-on-error: true
-
-      - name: 10. Upload Render Summary
-        uses: actions/upload-artifact@v4
+      - name: 10. Upload Knit Results
+        uses: actions/upload-artifact@v3
         with:
-          name: render-summary-batch-${{ steps.batch_prep.outputs.current_batch }}
-          path: summary.txt
-
-      - name: 11. Update Batch State and Commit Files
-        run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          echo "Pulling latest changes from remote..."
-          git pull origin main --rebase --autostash
-          CURRENT_BATCH=${{ steps.batch_prep.outputs.current_batch }}
-          TOTAL_BATCHES=${{ steps.batch_prep.outputs.total_batches }}
-          NEXT_BATCH=$((CURRENT_BATCH + 1))
-          if [ "$TOTAL_BATCHES" -gt 0 ] && [ "$NEXT_BATCH" -gt "$TOTAL_BATCHES" ]; then
-            NEXT_BATCH=1
-          fi
-          echo "Next batch to run will be: $NEXT_BATCH"
-          echo $NEXT_BATCH > .rmd_batch_state
-          find . -name "*.html" -not -path "./.git/*" | xargs git add 2>/dev/null || true
-          git add .rmd_batch_state
-          if [ -f summary.txt ]; then git add summary.txt; fi
-          if ! git diff --staged --quiet; then
-            git commit -m "docs: Auto-render Rmd batch ${{ steps.batch_prep.outputs.current_batch }}"
-            if ! git push origin main; then
-              git push origin main --force
-            fi
-          else
-            echo "No new files or changes to commit."
-          fi
-
-      - name: 12. Report Final Status
-        if: always()
-        run: |
-          if [ "${{ steps.render_step.outputs.job_failed }}" = "true" ]; then
-            echo "::warning ::One or more Rmd files failed to render in this batch. Check the 'render-summary' artifact for details."
-          else
-            echo "All Rmd files in this batch were processed successfully (or skipped as intended)."
-          fi
+          name: knit-results
+          path: "**/*.html"
