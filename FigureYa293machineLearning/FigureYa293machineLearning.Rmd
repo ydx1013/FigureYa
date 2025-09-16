@@ -16,7 +16,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -56,7 +55,7 @@ Cox regression. D–K Kaplan–Meier curves of OS according to the IRLS in TCGA-
 
 最后的result都会有结果，但是得到结果会有变化，以及有些模型（指单一模型）或模型组合（指组合模型）预测效能的C指数为0.5，这些模型都是未得到结果的模型（根本原因是输入数据中基因的问题），所以可以调整输入数据的基因来获取更多有结果的模型组合结果。
 
-例文当中有些Figure的画法可参考我们之前实现过的FigureYa：
+例文当中有些Figure的画法可参考FigureYa：
 
 - Figure 1，FigureYa69cancerSubtype、FigureYa71ssGSEA、FigureYa55panCancer_violin、FigureYa15WGCNA、FigureYa170ImmuLncRNA
 - Figure 2，FigureYa293machineLearning、FigureYa31lasso、FigureYa35batch_bestSeparation
@@ -71,7 +70,7 @@ Therefore, depending on the genes used, some models may fail to extract features
 
 All final results will be generated, but the outcomes may vary. Additionally, some models (single models) or model combinations (ensemble models) may yield a C-index of 0.5, indicating that they failed to produce meaningful results (primarily due to issues with the input gene data). To obtain more valid model combinations, adjusting the input gene set may help.
 
-For reference on figure design, you may consult our previously crowdsourced FigureYa:
+For reference on figure design, you may consult FigureYa:
 
 - Figure 1，FigureYa69cancerSubtype、FigureYa71ssGSEA、FigureYa55panCancer_violin、FigureYa15WGCNA、FigureYa170ImmuLncRNA
 - Figure 2，FigureYa293machineLearning、FigureYa31lasso、FigureYa35batch_bestSeparation
@@ -83,26 +82,9 @@ For reference on figure design, you may consult our previously crowdsourced Figu
 # 环境设置
 # Environment Setup
 
-
-Using domestic mirrors for package installation.
-
 ```{r}
 source("install_dependencies.R")
-```
 
-```{r eval=FALSE}
-BiocManager::install("mixOmics")
-install.packages("plsRcox")
-BiocManager::install("survcomp")
-install.packages("rlang")
-library(devtools)
-install_github("binderh/CoxBoost")
-```
-
-# 加载包
-# Loading packages
-
-```{r}
 library(survival)
 library(randomForestSRC)
 library(glmnet)
@@ -133,9 +115,9 @@ options(stringsAsFactors = FALSE)
 # 输入文件
 # Input Files
 
-TCGA.txt，GSE57303.txt，GSE62254.txt，数据集。行为样本，第一列为样本名，第二三列为生存时间和生存状态，后面的列均为基因。文件较大，已上传至微云 <https://share.weiyun.com/y3qYgKCK>
+TCGA.txt，GSE57303.txt，GSE62254.txt，数据集。行为样本，第一列为样本名，第二三列为生存时间和生存状态，后面的列均为基因。
 
-TCGA.txt, GSE57303.txt, GSE62254.txt, datasets. Rows represent samples, with the first column being sample names, the second and third columns being survival time and survival status, and the remaining columns all being genes. The files are large and have been uploaded to Weiyun <https://share.weiyun.com/y3qYgKCK>
+TCGA.txt, GSE57303.txt, GSE62254.txt, datasets. Rows represent samples, with the first column being sample names, the second and third columns being survival time and survival status, and the remaining columns all being genes.
 
 ```{r}
 # 加载数据集
