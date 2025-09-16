@@ -10,7 +10,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -115,9 +114,6 @@ Then copy the `seqman` file to the current folder
 
 ```{r, message=FALSE}
 source("install_dependencies.R")
-#use the domestic mirror installation package
-if(! require('tidyverse')) install.packages('tidyverse')
-if(! require('GEOquery')) install.packages('GEOquery')
 
 library(tidyverse)
 library(GEOquery)
@@ -417,6 +413,8 @@ write.csv(lncRNA.probe.expr, "lncRNA_expr.csv", quote = F, row.names = F)
 - seqmap (all platforms) official description document: <http://www-personal.umich.edu/~jianghui/seqmap/Docs.txt>，FAQ<http://www-personal.umich.edu/~jianghui/seqmap/FAQ.html>
 
 In addition, software such as Dianmond (linux mac) can also accomplish sequence comparison.
+
+# Session Info
 
 ```{r}
 sessionInfo()
