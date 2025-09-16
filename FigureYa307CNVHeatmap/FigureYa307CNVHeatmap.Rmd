@@ -55,10 +55,10 @@ a. Genome-wide copy number landscape of 473 tumors stratified by genomic class (
 
 Copy Number Heatmap Generation Using GISTIC Output Files (Excluding Bottom Pie Chart).
 
-We have previously crowdsourced several mutation-related and enrichment analysis plots, which can be flexibly adapted to reproduce the figures in this study:
+We have several mutation-related and enrichment analysis plots, which can be flexibly adapted to reproduce the figures in this study:
 
 - Figure 1a&h: Consensus clustering and heatmap, refer to FigureYa202consensusGene 
-- Figure 1b: Sankey diagram, refer to FigureYa25sankey <https://k.youshop10.com/1vm3In-4>
+- Figure 1b: Sankey diagram, refer to FigureYa25sankey
 - Figures 1c-d, 2b-d, 3c, 4e, 5c: Multi-subtype survival analysis, refer to FigureYa284pairwiseLogrank or FigureYa1survivalCurve
 - Figure 2a: This document will guide you through its implementation. For the left-side frequency comparison plot only, refer to FigureYa79CNV
 - Figure 3e: Integrated mutation heatmap, refer to FigureYa248MutLandscape
