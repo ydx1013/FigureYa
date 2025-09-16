@@ -111,11 +111,8 @@ genes and which inhibit them. If there is HiC or ChIA-pet data, the
 interaction between hub sites and target genes is the same.
 环境设置
 Environment settings
-使用国内镜像安装包 Use domestic mirror installation package
 source("install_dependencies.R")
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
-加载包 Load package
+Load package
 library(ggplot2) #用于画图 #For drawing
 library(dplyr) #用于数据处理 #For data processing
 Sys.setenv(LANGUAGE = "en") #显示英文报错信息 #Display English error message

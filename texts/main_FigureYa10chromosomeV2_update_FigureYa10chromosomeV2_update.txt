@@ -1,18 +1,18 @@
 FigureYa10chromosomeV2_update
 FigureYa10chromosomeV2_update
 Zhaodong Hao; Ying Ge, Yijing Chen
-2025-5-20
+2025-9-12
 需求描述
-requirement description
+Requirement description
 用R代码画出paper里的直的染色体分布图
 Use R code to draw the straight chromosome distribution map in
 paper
 出自
 https://academic.oup.com/brain/article/138/3/616/333368
-from
+From
 https://academic.oup.com/brain/article/138/3/616/333368
 应用场景
-application scenario
+Application scenario
 差异表达基因（RNA-seq）、开放染色质（DNase/ATAC-seq）、CTCF结合位点（ChIP-seq）、突变位点（WGS）或DNA甲基化（WGBS）在染色体上的分布，或者只是画Ideogram
 在“小丫画图”微信公众号回复“染色体”查看这套代码的来历
 如果您在发表的论文中使用此软件包，请引用本文：
@@ -33,8 +33,8 @@ drawing SVG graphics to visualize and map genome-wide data on the
 idiograms. PeerJ Comput. Sci. 6:e251
 http://doi.org/10.7717/peerj-cs.251
 环境设置
-environment setting
-#install.packages("RIdeogram")
+Environment setting
+source("install_dependencies.R")
 library(RIdeogram)
 Sys.setenv(LANGUAGE = "en") #显示英文报错信息 display English error messages
 options(stringsAsFactors = FALSE) #禁止chr转成factor prohibit the conversion of chr to factor
@@ -117,7 +117,7 @@ ideogram(karyotype = karyotype,
 # It can be converted to png for easy viewing
 convertSVG("chromosome.svg", device = "png")
 格式转换
-format conversion
+Format conversion
 运行完上面这段，当前文件夹里会生成一个“chromosome.svg”文件，是矢量图。可以用Inkscape、Illustrator等工具打开、编辑、转换成其他格式。
 还可以运行下面这段把svg转成pdf或tiff、jpg、png等格式的文件
 After running the above paragraph, a file “chromosome.svg” will be

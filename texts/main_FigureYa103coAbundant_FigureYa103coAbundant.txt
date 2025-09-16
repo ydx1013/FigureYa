@@ -1,10 +1,17 @@
 FigureYa103coAbundant
 FigureYa103coAbundant
 Xiaofan Lu, Taojun Ye
-2025-5-20
+2025-9-12
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
 这个图，想知道怎么聚类的。WGCNA这个方法不会做，输入的是代谢化合物在各个sample里的浓度。
-##Requirement description
+Requirement description
 I want to know how to cluster this graph. The WGCNA method does not
 perform it, it only inputs the concentration of metabolic compounds in
 each sample.
@@ -33,26 +40,18 @@ between network modules and other variables (to demonstrate
 significance).
 应用场景
 计算并用热图展示WGCNA找出的共表达模块跟表型数据（数量性状）之间的相关性。
-##Application scenarios
+Application scenarios
 Calculate and display the correlation between the co expression
 modules identified by WGCNA and phenotype data (quantitative traits)
 using a heatmap.
 环境设置
-使用国内镜像安装包
-##Environment settings
-Use domestic image installation package
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
-if (!requireNamespace("BiocManager", quietly = TRUE))
-    install.packages("BiocManager")
-BiocManager::install("impute")
-BiocManager::install("preprocessCore")
-BiocManager::install("GO.db")
-BiocManager::install("AnnotationDbi")
-BiocManager::install("WGCNA") #MAC系统，可能需要手动下载WGCNA后本地安装，下载链接：https://horvath.genetics.ucla.edu/html/CoexpressionNetwork/Rpackages/WGCNA/WGCNA_1.67.tgz
-#MAC system, may require manual download of WGCNA and local installation. Download link: https://horvath.genetics.ucla.edu/html/CoexpressionNetwork/Rpackages/WGCNA/WGCNA_1.67.tgz
-加载包
-library packages
+Environment settings
+MAC系统可能需要手动下载WGCNA后本地安装，下载链接：
+https://horvath.genetics.ucla.edu/html/CoexpressionNetwork/Rpackages/WGCNA/WGCNA_1.67.tgz
+For MAC system, may require manual download of WGCNA and local
+installation. Download link:
+https://horvath.genetics.ucla.edu/html/CoexpressionNetwork/Rpackages/WGCNA/WGCNA_1.67.tgz
+source("install_dependencies.R")
 # 加载WGCNA包，用于加权基因共表达网络分析
 # Load the WGCNA package for weighted gene co-expression network analysis
 library(WGCNA)
@@ -78,7 +77,7 @@ options(stringsAsFactors = FALSE)
 easy_input_data.txt，表达矩阵，用于构建加权共表达网络。每行一个sample，每列一个基因。
 easy_input_anno.txt，表型信息，用于计算module
 score跟它的相关性分析及聚类热图绘制。每行一个sample，每列一种表型，这里的列是代谢物浓度，还可以是其他数量性状、临床指标等等。如果只想构建共表达网络，就不需要这个文件。
-##Input file
+Input file
 Two types of input files are required, and the lines of the two files
 should correspond one-to-one:
 easy_input_data.txt， Expression matrix, used to construct weighted
@@ -124,8 +123,8 @@ minClusterSize是每个module里的最少特征数，默认30
 isprefix为逻辑变量，指示是否修改module名的前缀，若不修改，则将module映射到颜色上
 prefix为当isprefix为TRUE时，生成module的前缀，默认为”P”，如例文。
 另外，如果你想用WGCNA自带的函数构建共表达网络（automatically），可参考FigureYa15WGCNA。
-##Co expression network construction
-###Custom functions for co expression network construction
+Co expression network construction
+Custom functions for co expression network construction
 (manually)
 Here we have written a custom function based on the example text,
 which will be called later to construct a co expression network. The
@@ -226,7 +225,7 @@ netconstruct <- function(indata=NULL, power=NULL, TOMType="unsigned",clustMethod
 选择构建网络的合适阈值
 原文提到：A scale-free topology criterion was used to choose the soft
 threshold
-###Choose the appropriate threshold for building the network
+Choose the appropriate threshold for building the network
 The original text mentions: A scale free topology criteria were used
 to choose the soft threshold
 # 设置待测试的软阈值参数范围（1-10及12-20的偶数）
@@ -264,7 +263,7 @@ invisible(dev.off())
 # Based on the example data, the "plateau" starts at power=6, so we choose this value
 softPower = 6
 构建共表达网络
-###Building a Co expression Network
+Building a Co expression Network
 # 执行WGCNA网络构建：基于选定的软阈值和参数识别共表达模块
 # Perform WGCNA network construction: Identify co-expression modules based on the selected soft threshold and parameters
 wgcna.res <- netconstruct(indata = example.data,
@@ -282,7 +281,7 @@ wgcna.res <- netconstruct(indata = example.data,
 # View the first 3 module eigengene values for the first 3 samples
 wgcna.res$MEs[1:3,1:3]
 module score 与其他变量的相关性分析
-###Correlation analysis between module score and other variables
+Correlation analysis between module score and other variables
 # 检查样本是否顺序完全一致
 # Check if samples are in the exact same order between module eigengenes and annotation data
 if(!identical(rownames(wgcna.res$MEs),rownames(example.anno))) {
@@ -334,7 +333,7 @@ write.table(cor.star,"output_correlation star.txt",sep = "\t",row.names = T,col.
 开始画图
 对WGCNA得到的module维度进行聚类，用热图展示，显著的标*。
 注意：这里纯粹模仿需求例文中的聚类热图，如需DIY展示多种聚类结果或自行排序，可参考FigureYa91cluster_heatmap。
-##Start drawing
+Start drawing
 Cluster the module dimensions obtained from WGCNA and display them on
 a heatmap with significant markers *.
 Note: This is purely an imitation of the clustering heatmap in the
@@ -381,4 +380,5 @@ pheatmap(
   display_numbers = t(cor.star)[starcount,],  # 在热图上显示显著性标记 / Display significance markers
   filename = "wgcnamodule_and_variables_correlation_heatmap.pdf"  # 保存热图为PDF / Save heatmap as PDF
 )
+Session Info
 sessionInfo()

@@ -47,11 +47,8 @@ or shapes for grouping. This time we will plot them as circles, using
 different circles for grouping.
 环境设置
 Requirements Description
-使用国内镜像安装包。
 Using domestic mirrors for package installation.
 source("install_dependencies.R")
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
 加载包
 Loading packages
 library(circlize)

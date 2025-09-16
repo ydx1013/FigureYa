@@ -51,11 +51,8 @@ FigureYa143survCor shows the correlation while providing the proportion
 of each regional point.
 环境设置
 Environment Setup
-使用国内镜像安装包 Use the domestic mirror installation package
 source("install_dependencies.R")
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
-加载包 Loading package
+Loading package
 # 加载需要的包
 # Load the required packages
 library(dplyr)

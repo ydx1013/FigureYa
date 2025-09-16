@@ -2,9 +2,16 @@ FigureYa127HeatmapPie
 FigureYa127HeatmapPie
 Xiaofan Lu, Taojun Ye
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
 绘制相关性热图并添加相关系数扇形图，使用TCGA GBM数据，原图复现。
-##Requirement description
+Requirement description
 Draw a correlation heatmap and add a correlation coefficient pie
 chart. Use TCGA GBM data to reproduce the original image.
 出自
@@ -17,7 +24,7 @@ CGGA and TCGA data set.
 应用场景
 左侧是通路的表达矩阵（用gsva算出来的）热图。其实单画这个图，展示通路的表达变化，就可以放进文章里了。还可以参考FigureYa61GSVA的展示方式。
 右侧用饼图展示各个通路跟某一个基因（例文用的是TIM-3）的相关性，若正相关则顺时针填充扇形图（红色），若负相关则逆时针填充扇形图（绿色）
-##Application scenarios
+Application scenarios
 On the left is the expression matrix of the pathway (calculated using
 GSVA) heatmap. In fact, just drawing this diagram to show the expression
 changes of pathways can be included in the article. You can also refer
@@ -27,16 +34,9 @@ each pathway and a certain gene (e.g. TIM-3). If there is a positive
 correlation, fill the pie chart clockwise (red), and if there is a
 negative correlation, fill the pie chart counterclockwise (green)
 环境设置
-使用国内镜像安装包
-##Environment settings
+Environment settings
 Use domestic image installation package
-# 设置CRAN镜像为清华大学镜像站（Set CRAN mirror to Tsinghua University mirror site）
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-
-# 设置Bioconductor镜像为中国科学技术大学镜像站（Set Bioconductor mirror to USTC mirror site）
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
-加载包
-library packages
+source("install_dependencies.R")
 # 加载clusterProfiler包，用于基因富集分析和功能注释（Load the clusterProfiler package for gene enrichment analysis and functional annotation）
 library(clusterProfiler)
 # 加载org.Hs.eg.db包，包含人类基因注释信息（Load the org.Hs.eg.db package containing human gene annotation information）
@@ -61,7 +61,7 @@ options(stringsAsFactors = FALSE)
 easy_input_expr.csv，TCGA-GBM.htseq_fpkm，基因表达谱。跟FigureYa126CorrelationHeatmap用的是同一个文件。从XENA下载得到，值为log2（FPKM+1），为方便传输，小数点后保留2位。需要把基因名换成gene
 symbol。
 easy_input_GO.txt，感兴趣的通路的GO ID。
-##Input file
+Input file
 easy_input_expr.csv，TCGA-GBM.htseq_fpkm， Gene expression profile.
 The same file is used as FigureYa126CorrelationHeatmap. Downloaded from
 XENA, the value is log2 (FPKM+1), with 2 decimal places reserved for
@@ -88,7 +88,7 @@ sam.order <- sort(sapply(expr2["HAVCR2",],as.factor),decreasing = F)
 gosets <- read.table("easy_input_GO.txt")
 gosets <- gosets$V1
 对感兴趣GO通路做GSVA，从而获得通路的表达矩阵，并计算相关系数
-##Perform GSVA on the GO pathway of interest to obtain the expression
+Perform GSVA on the GO pathway of interest to obtain the expression
 matrix of the pathway and calculate the correlation coefficient
 # 连接到Ensembl数据库的人类基因数据集（使用亚洲镜像）
 # Connect to the human gene dataset in Ensembl database (using Asian mirror)
@@ -128,7 +128,7 @@ cor.res <- apply(enrich.go, 1, function(x) {return(cor.test(x, as.numeric(sam.or
 cor.res
 开始画图
 这里提供两种绘图方式：baseplot，或pheatmap + pie + 后期
-##Start drawing
+Start drawing
 There are two drawing methods provided here: baseplot or
 pheatmap+pie+post production
 方法一：硬核baseplot直接画
@@ -136,7 +136,7 @@ pheatmap+pie+post production
 使用baseplot绘图非常灵活，也是学习绘图思路的重要途径，但对于大多数使用者来说，复杂图形的baseplot很耗时，尤其是参数的微调。
 如果希望快速出图，或者有一定PPT/AI技巧的小伙伴，可直接移步方法二，方法二采用pheatmap
 + pie + PPT/AI（后期）也能完美解决。
-###Method 1: Draw a hardcore baseplot directly
+Method 1: Draw a hardcore baseplot directly
 **Off topic: * * Using baseplot for plotting is very flexible and an
 important way to learn plotting ideas, but for most users, baseplot for
 complex graphics is time-consuming, especially for fine-tuning
@@ -416,7 +416,7 @@ invisible(dev.off())
 个人觉得complexheatmap也能实现，但我在教程里没发现添加pie
 chart的例子，所以只能等待其他小伙伴去挖掘啦。
 方法二依赖输出子图再后期拼接的方式，方便快捷，对有PPT/AI基础的小伙伴很友好，推荐使用。
-###Method 2: pheatmap+pie+PPT/AI (later stage)
+Method 2: pheatmap+pie+PPT/AI (later stage)
 **Off topic: * * I personally think complexheatmap can also be
 implemented, but I didn’t find any examples of adding pie charts in the
 tutorial, so I can only wait for other friends to explore.

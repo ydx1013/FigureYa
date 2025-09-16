@@ -2,10 +2,17 @@ FigureYa113MutSigCV
 FigureYa113MutSigCV
 Xiaofan Lu, Taojun Ye
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
 用MutSigCV推断SMG（significantly mutated gene），画出文章里的图。
 MutSigCV是用matlab写成的，带我顺利用上它。
-#Requirement description
+Requirement description
 Infer SMG (significantly mutated gene) using MutSigCV and draw the
 graph in the article.
 MutSigCV is written in Matlab, let me use it smoothly.
@@ -27,7 +34,7 @@ P, Polak P, Kryukov GV, Cibulskis K, Sivachenko A, Carter SL, Stewart C,
 Mermel CH, Roberts SA (2013) Mutational heterogeneity in cancer and the
 search for new cancer-associated genes. Nature 499(7457): 214
 如果只想直接从TCGA下载MAF文件画图，可直接使用FigureYa18oncoplot，还可以进一步用FigureYa42oncoprint自己定制瀑布图。
-#Application scenarios
+Application scenarios
 When drawing a waterfall diagram of gene mutations, which genes are
 displayed? Can display significantly mutated genes. According to the
 example text description: We used MutSigCV_v1.41 (20)
@@ -49,7 +56,7 @@ customize waterfall plots yourself using FigureYa42oncoprint.
 环境设置
 先在R里准备MutSigCV所需的输入数据，然后用MutSigCV推断SMG，最后在R里用MutSigCV的输出文件画瀑布图。
 （其实Matlab的使用方式很傻瓜，比R更容易，更像Excel）
-#Environment settings
+Environment settings
 First, prepare the input data required for MutSigCV in R, then infer
 SMG using MutSigCV, and finally draw a waterfall plot using MutSigCV’s
 output file in R.
@@ -62,7 +69,7 @@ https://ww2.mathworks.cn/campaigns/products/trials.highResolutionDisplay.html?pr
 第二步：把
 MutSigCV.m
 文件拷贝到当前文件夹就可以使用了。
-##Install MutSigCV
+Install MutSigCV
 Step 1: Install Matlab. At present, the source code of MutSigCV is
 written in Matlab. You can register on the Matlab website and download
 the 30 day trial version:<
@@ -70,13 +77,8 @@ https://ww2.mathworks.cn/campaigns/products/trials.highResolutionDisplay.html?pr
 >.
 Step 2: Copy the ‘MutSigCV. m’ file to the current folder to use.
 安装并加载画图所需的R包
-##Install and load the R package required for drawing
-# 使用国内镜像安装所需的R包 | Use domestic mirror to install required R packages
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
-#BiocManager::install("ComplexHeatmap")
-
-# 加载R包 | Load R packages
+Install and load the R package required for drawing
+source("install_dependencies.R")
 library(tidyverse)      # 数据处理和可视化工具集 | Data processing and visualization toolkit
 library(magrittr)       # 提供管道操作符 %>% | Provides pipe operator %>%
 library(readxl)         # 读取Excel文件 | Read Excel files
@@ -91,7 +93,7 @@ easy_input_meta.local
 mutation.full.txt，MAF文件，用于推断SVG。从TCGA下载MAF文件的方法可参考FigureYa19Lollipop。
 meta.mut.rda和local.mut.rda，用于画图时展示两组，非必需。里面分别保存了两组样品名称（字符串）。此处只是为了重现原图，实际使用时请选用自己不同亚型的样本。
 另外，在后面的“使用MutSigCV推断SMG”的“参数设置”部分需要下载默认文件。
-#Input file
+Input file
 Easyinput_ceta.local mutation.full.txt, MAF file, used for inferring
 SVG. The method of downloading MAF files from TCGA can refer to
 FigureYa19Lollipop.
@@ -112,7 +114,7 @@ local.mut <- read.table("easy_input_local.mut.txt")[,1]  # 原发组样品名 | 
 把MAF文件整理成MutSigCV所需的输入文件的格式，生成文件：meta.local
 mutation.full_for_MutSig_input.txt
 阅读MutSigCV教程，了解数据格式要求，就能理解下面的预处理过程了
-#Input file preprocessing
+Input file preprocessing
 Organize the MAF file into the input file format required by
 MutSigCV, and generate the file: meta. local
 mutation.full_for_SutSig_input. txt
@@ -145,7 +147,7 @@ write.table(outTable,              # 输出表格 | Output table
 这一步要用到Matlab，会生成meta.local
 mutation.full_MutSig_output.sig_genes.txt文件，用于下一步画图。
 也可以在GenePattern云服务器上运行，不想使用Matlab的小伙伴就自行探究在线模式吧。
-#Inferring SMG using MutSigCV
+Inferring SMG using MutSigCV
 This step requires the use of Matlab, which will generate the
 meta.local mutation.full_SutSig_out.sig_genes. txt file for the next
 step of drawing.
@@ -158,12 +160,10 @@ MutSigCV算法，这里采用：
 默认的coverage文件：gene.covariates.txt和exome_full192.coverage.txt
 以上默认文件的源文件下载自
 https://software.broadinstitute.org/cancer/cga/mutsig_download
-，注册后就能下载。我已经下载好，微云地址：
-https://share.weiyun.com/5MyC44s
-，下载后全部解压到当前文件夹。
+，注册后就能下载。下载后全部解压到当前文件夹。
 若对该算法非常熟悉，或者有其他个性化需求，可以自定义这些文件，技术细节请参考：
 http://software.broadinstitute.org/cancer/software/genepattern/modules/docs/MutSigCV
-##Parameter settings
+Parameter settings
 The MutSigCV algorithm is used here:
 -Default parameters: hg19 comment file, chr_files_hg19 folder
 -Default mutation dictionary file: mutation_type-dictionary_file. txt
@@ -171,11 +171,8 @@ The MutSigCV algorithm is used here:
 exome_full192.cCovered. txt
 The source files for the default files above were downloaded from<
 https://software.broadinstitute.org/cancer/cga/mutsig_download
->After registration, you can download it. I have downloaded it,
-Weiyun address:<
-https://share.weiyun.com/5MyC44s
->After downloading,
-unzip everything to the current folder.
+>After registration, you can download it. After downloading, unzip
+everything to the current folder.
 If you are very familiar with the algorithm or have other
 personalized needs, you can customize these files. For technical
 details, please refer to:<
@@ -186,7 +183,7 @@ http://software.broadinstitute.org/cancer/software/genepattern/modules/docs/MutS
 现在，在Matlab的Current
 Folder里选择进入当前文件夹，然后把下面这行代码复制粘贴到Matlab的Command
 Window，敲回车，就开始运行啦！
-##Run MutSigCV
+Run MutSigCV
 I have already collected all the input files and saved them in the
 current folder.
 Now, select enter the current folder in Matlab’s Current Folder, then
@@ -240,7 +237,7 @@ mutated genes, which can be filtered based on qvalue or pvalue.
 Generally, qvalue<0.05, similar to adjusted p-values:
 开始画图
 提取显著突变基因SMGs，用q < 0.05筛选
-#Start drawing
+Start drawing
 Extract significant mutated genes SMGs and screen with q<0.05
 # 读取MutSigCV输出的显著突变基因结果 | Read significant mutated genes output from MutSigCV
 mutsigcv <- read.table("meta.local mutation.full_MutSig_output.sig_genes.txt", 
@@ -332,19 +329,9 @@ oncoPrint(mygene, alter_fun = alter_fun, col = col,
           column_names_gp = gpar(fontsize = 6))  # 列名(样本名)字体大小 | Column name font size
 dev.off()
 附：
-作者使用的是Matlab
-R2017a版本，可以自行百度下载破解，也可采用如下百度网盘下载，附破解方法，见文件夹MATLAB
-R2017a安装方法.pdf。 链接：
-https://pan.baidu.com/s/1koGMNmEALL1FmDakNwHa9A
-提取码：3et5
-小丫使用的是Matlab R2019a的30天试用版本，已运行成功。
-#Attachment:
-The author is using Matlab R2017a version, which can be downloaded
-and cracked on their own from Baidu, or downloaded from the following
-Baidu cloud drive. The cracking method is attached and can be found in
-the MATLAB R2017a installation method. pdf folder. Link:
-https://pan.baidu.com/s/1koGMNmEALL1FmDakNwHa9A
-Extraction code: 3et5
-Xiaoya is using the 30 day trial version of Matlab R2019a, which has
-been successfully run.
+Matlab R2019a的30天试用版本，已运行成功。
+Attachment:
+The 30 day trial version of Matlab R2019a has been successfully
+run.
+Session Info
 sessionInfo()

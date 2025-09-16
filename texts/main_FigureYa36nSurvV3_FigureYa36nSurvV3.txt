@@ -2,8 +2,15 @@ FigureYa36双因子生存分析v3
 FigureYa36双因子生存分析v3
 Guoshuang Feng; Ying Ge, Yijing Chen
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
-requirement description
+Requirement description
 用R画出paper里的双因子生存分析图，计算p value。
 Use R to draw the two-factor survival analysis plot from the paper
 and calculate the p value.
@@ -30,19 +37,16 @@ https://molecular-cancer.biomedcentral.com/articles/10.1186/s12943-020-01170-0
 from
 https://molecular-cancer.biomedcentral.com/articles/10.1186/s12943-020-01170-0
 应用场景
-application scenario
+Application scenario
 对比两个因素对生存的影响。
 例如，基因A和B都高表达，跟基因A和B都低表达比起来，生存期是否更长？
 Compare the effects of two factors on survival.
 For example, does high expression of both genes A and B result in
 longer survival compared to low expression of both genes A and B?
 环境设置
-environment setting
-使用国内镜像安装包
+Environment setting
 use the domestic mirror installation package
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
-加载包
+source("install_dependencies.R")
 load package
 library(survival)
 library(survminer)

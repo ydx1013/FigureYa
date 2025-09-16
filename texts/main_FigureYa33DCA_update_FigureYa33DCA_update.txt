@@ -2,8 +2,15 @@ FigureYa33DCA_update
 FigureYa33DCA_update
 Dongqiang Zeng; Ying Ge, Yijing Chen
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
-requirement description
+Requirement description
 画出paper里的DCA曲线
 Draw the DCA curve from the paper
 出自
@@ -11,7 +18,7 @@ https://www.europeanurology.com/article/S0302-2838(17)30267-1/fulltext
 from
 https://www.europeanurology.com/article/S0302-2838(17)30267-1/fulltext
 应用场景
-application scenario
+Application scenario
 生存数据因为带了时间和事件发生的混合因素，适合用
 stdca.R
 这个function，是MSKCC的统计学专家写的。
@@ -26,14 +33,11 @@ opt-in and opt-out choices to help identify high-risk patients for
 intervention and low-risk patients to avoid overmedication. The ultimate
 purpose of this graph is to demonstrate this value.
 环境设置
-environment setting
-使用国内镜像安装包
+Environment setting
 use the domestic mirror installation package
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
+source("install_dependencies.R")
 install.packages("magick")
 install.packages("cmprsk")
-加载包
 load package
 library(survival)
 library(ggplotify)

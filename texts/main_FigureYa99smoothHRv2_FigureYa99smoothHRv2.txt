@@ -30,14 +30,9 @@ using the baseline (reference point) as a reference.
 Please refer to the “Theoretical References” folder in the document
 for specific theoretical derivation and details
 环境设置
-使用国内镜像安装包
 Environment settings
 Use domestic image installation package
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 install.packages("smoothHR")
-加载包
-library packages
 source("install_dependencies.R")
 # 加载smoothHR包 - 用于平滑危险比分析
 # Load the smoothHR package - used for smooth hazard ratio analysis

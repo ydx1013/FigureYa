@@ -2,6 +2,13 @@ FigureYa177RNAvelocity
 FigureYa177RNAvelocity
 Jianing Gao
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
 Requirement
 使用velotyto对单细胞数据进行RNA velocity分析 RNA velocity analysis of
@@ -423,12 +430,6 @@ data
 │   ├── young1
 │   ├── young2
 │   └── young3
-data文件夹和ref文件夹已上传至微云
-https://share.weiyun.com/5ohZLOk
-Data folder and ref
-folder has been uploaded to the tiny cloud <
-https://share.weiyun.com/5ohZLOk
->
 数据预处理
 Data preprocessing
 见

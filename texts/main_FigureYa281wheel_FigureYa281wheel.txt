@@ -77,11 +77,8 @@ introduced to differentiate them), and the distance from points to the
 horizontal axis represents the magnitude of values.
 环境设置
 Environment Setup
-使用国内镜像安装包。
 Using domestic mirrors for package installation.
 source("install_dependencies.R")
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
 加载包
 Loading packages
 library(ggplot2)

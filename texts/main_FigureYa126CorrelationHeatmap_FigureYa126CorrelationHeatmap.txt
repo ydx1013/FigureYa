@@ -2,10 +2,17 @@ FigureYa126CorrelationHeatmap
 FigureYa126CorrelationHeatmap
 Xiaofan Lu, Taojun Ye
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
 根据相关系数排列的无聚类热图，展示和TIM-3基因表达（某一连续变量）相关的免疫基因（其他连续变量）在样本中的分布情况。使用TCGA
 GBM数据以及例文给出的基因集，复现原图。
-##Requirement description
+Requirement description
 Display the distribution of immune genes (other continuous variables)
 related to TIM-3 gene expression (a certain continuous variable) in the
 sample using a non clustered heatmap arranged according to the
@@ -22,7 +29,7 @@ correlated with Tim-3 expression.
 应用场景
 展示跟某一个基因呈正/负相关的多个基因的表达模式。
 例如像例文这种，每列一个样本，每行一个基因。上半部分画出与目标基因的表达模式呈正相关的免疫相关基因，下半部分是负相关的。顶部展示样本的亚组、基因型或其他临床信息。
-##Application scenarios
+Application scenarios
 Display the expression patterns of multiple genes that are
 positively/negatively correlated with a certain gene.
 For example, in the example text, there is one sample per column and
@@ -32,18 +39,9 @@ while the lower part shows a negative correlation. Display the
 subgroups, genotypes, or other clinical information of the sample at the
 top.
 环境设置
-使用国内镜像安装包
-##Environment settings
+Environment settings
 Use domestic image installation package
-# 设置CRAN镜像为清华大学镜像源
-# Set CRAN mirror to Tsinghua University mirror source
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-
-# 设置Bioconductor镜像为中国科学技术大学镜像源
-# Set Bioconductor mirror to University of Science and Technology of China mirror source
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
-加载包
-library packages
+source("install_dependencies.R")
 # 加载clusterProfiler包，用于基因富集分析和功能注释
 # Load the clusterProfiler package for gene enrichment analysis and functional annotation
 library(clusterProfiler)
@@ -53,6 +51,7 @@ library(org.Hs.eg.db)
 # 加载biomaRt包，用于访问Ensembl数据库获取基因注释
 # Load the biomaRt package for accessing Ensembl databases to retrieve gene annotations
 library(biomaRt)
+
 # 加载pheatmap包，用于绘制热图
 # Load the pheatmap package for drawing heatmaps
 library(pheatmap)
@@ -75,7 +74,7 @@ gbm_tcga_pub2013_clinical_data.tsv，临床信息。从cBioPortal上下载得到
 http://www.cbioportal.org/study/clinicalData?id=gbm_tcga_pub2013
 easy_input_genes.txt，immune-response-related基因集。来自例文补充材料：Supplementary
 table1.xlsx
-##Input file
+Input file
 easy_input_expr.csv，TCGA-GBM.htseq_fpkm， Gene expression profile.
 Downloaded from XENA, the value is log2 (FPKM+1), with 2 decimal places
 reserved for ease of transmission. We need to change the gene name to
@@ -121,7 +120,7 @@ imm.expr <- expr2[intersect(rownames(expr2), genelist$`GENE LIST`), names(sam.or
 # View the first 3 rows and 3 columns of the immune-related gene expression matrix
 imm.expr[1:3, 1:3]
 与基因集的相关性分析
-##Correlation analysis with gene set
+Correlation analysis with gene set
 # 初始化相关性结果矩阵
 # Initialize matrix to store correlation results
 cor.res <- NULL
@@ -151,5 +150,5 @@ pos.cor.gene <- pos.cor.gene[order(pos.cor.gene$rho,decreasing = F),]
 # Sort negatively correlated genes by rho ascending for wedge-shaped gradient in heatmap
 neg.cor.gene <- neg.cor.gene[order(neg.cor.gene$rho,decreasing = F),]
 开始画图
-##Start drawing
+Start drawing
 sessionInfo()

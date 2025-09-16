@@ -2,8 +2,15 @@ FigureYa8 Radar chart
 FigureYa8 Radar chart
 Zhaodong Hao; Ying Ge, Yijing Chen
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
-requirement description
+Requirement description
 用R代码画出paper里的图
 Draw the figure in paper with R code
 出自
@@ -11,7 +18,7 @@ https://www.nature.com/articles/nplants2015221
 from
 https://www.nature.com/articles/nplants2015221
 使用场景
-usage scenario
+Usage scenario
 场景一：评估一个总体的不同组分的比例变化
 场景二：评价同一衡量体系下的各项不同指标
 Scenario 1: Evaluate the proportional changes of different components
@@ -19,10 +26,9 @@ of a whole
 Scenario 2: Evaluate different indicators under the same measurement
 system
 环境设置
-environment setting
-#使用国内镜像安装包
+Environment setting
+source("install_dependencies.R")
 #use the domestic mirror installation package
-#options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
 #install.packages("rsvg")
 
 Sys.setenv(LANGUAGE = "en") #显示英文报错信息 display English error messages

@@ -36,10 +36,6 @@ methylation, you can try this binning approach.
 环境设置
 Environment settings
 source("install_dependencies.R")
-# 设置国内镜像源以加速R包下载 / Set domestic mirror to speed up package installation
-# options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))  # 清华大学CRAN镜像 / Tsinghua University CRAN mirror
-# options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")  # 中科大Bioconductor镜像 / USTC Bioconductor mirror
-
 # 加载必要的R包 / Load required packages
 library(reshape2)   # 数据重塑工具（如宽表转长表） / Data reshaping tools (e.g., wide to long format)
 library(ggplot2)    # 高级数据可视化 / Advanced data visualization

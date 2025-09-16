@@ -2,6 +2,13 @@ FigureYa68friendsV2
 FigureYa68friendsV2
 Zhongtian Xu, Taojun Ye
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
 输入基因列表，用GO注释的相似性找它的好朋友，画出云雨图。
 Requirement Description.
@@ -55,14 +62,12 @@ pile of egg white from a double hybrid, can be used in a similar way to
 find the most important hub gene.
 Translated with DeepL.com (free version)
 环境设置
-使用国内镜像安装包
 Environment settings
 Installation of packages using domestic mirrors
+source("install_dependencies.R")
 # 设置CRAN镜像源为清华镜像站 / Set CRAN mirror to Tsinghua TUNA mirror
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
 
 # 设置Bioconductor镜像源为清华镜像站 / Set Bioconductor mirror to Tsinghua TUNA mirror
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
 
 # 使用BiocManager安装人类基因注释数据库 / Install human gene annotation database using BiocManager
 BiocManager::install("org.Hs.eg.db", site_repository = "https://bioconductor.org/packages/3.18/data/annotation")
@@ -72,8 +77,6 @@ BiocManager::install("GOSemSim")
 
 # 安装ggplot2绘图包 / Install ggplot2 plotting package
 install.packages("ggplot2")
-加载包
-library packages
 # 加载必要的R包 / Load required R packages
 library(org.Hs.eg.db)  # 人类基因注释数据库 / Human gene annotation database
 library(GOSemSim)      # GO语义相似性分析 / GO semantic similarity analysis

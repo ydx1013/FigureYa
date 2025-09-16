@@ -2,8 +2,15 @@ FigureYa30nomogram_update
 FigureYa30nomogram_update
 Dongqiang Zeng, Ying Ge; Yijing Chen
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
-requirement description
+Requirement description
 画出新型nomogram图（d）和对比曲线（f、g）
 Draw the new nomogram (d) and comparison curves (f, g)
 出自
@@ -39,7 +46,7 @@ referring to
 FigureYa33DCA_update
 .
 应用场景
-application scenario
+Application scenario
 列线图（nomogram，诺莫图）是在平面直角坐标系中用一簇互不相交的线段表示多个独立变量之间函数关系的图。
 将Logistic回归或Cox回归的结果进行可视化呈现，给出其发病风险或比例风险。
 关注“小丫画图”微信公众号，回复“30”查看这两个图在更多文章中的应用。
@@ -51,13 +58,10 @@ giving the risk or proportional risk of developing a disease.
 Follow “Xiaoya Drawing” WeChat Official Account, reply “30” to see
 the application of these two graphs in more articles.
 环境设置
-environment setting
-使用国内镜像安装包
+Environment setting
 use the domestic mirror installation package
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
+source("install_dependencies.R")
 install.packages(c("rms", "nomogramEx", "regplot", "vioplot", "sm", "beanplot"))
-加载包
 load package
 library(survival)
 library(regplot)

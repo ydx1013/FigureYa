@@ -20,7 +20,7 @@ it.
 结合FigureYa109subtypeGSEA，分析每一组与其他样品的差异基因，进而找出亚型特异富集的通路；
 结合FigureYa116supervisedCluster，分析每一组与其他样品的差异基因，进而找出亚型特异的marker基因。
 注意：
-本众筹不涉及批次效应消除，若样本间含有批次效应，请阅读edgeR的document，在设计矩阵中纳入batch
+本次不涉及批次效应消除，若样本间含有批次效应，请阅读edgeR的document，在设计矩阵中纳入batch
 effect。
 https://bioconductor.org/packages/release/bioc/vignettes/edgeR/inst/doc/edgeRUsersGuide.pdf
 ，有个完整的例子：4.2
@@ -34,9 +34,9 @@ subtype specific enriched pathways;
 Using FigureYa116supervisedCluster, analyze the differentially
 expressed genes between each group and other samples, and identify
 subtype specific marker genes.
-**Note: * * This crowdfunding does not involve batch effect
-elimination. If there are batch effects between samples, please read the
-edgeR document and include batch effects in the design matrix<
+**Note: * * This time does not involve batch effect elimination. If
+there are batch effects between samples, please read the edgeR document
+and include batch effects in the design matrix<
 https://bioconductor.org/packages/release/bioc/vignettes/edgeR/inst/doc/edgeRUsersGuide.pdf
 >Here is a complete example: 4.2 RNA Seq of pathogenic uncoordinated
 arabidopsis with batch effects
@@ -44,23 +44,15 @@ For the case where the read count expression matrix is used as input,
 FigureYa118MulticlassDESeq2 can also be used. If your data is FPKM/RPKM
 or chip data, please refer to FigureYa119 Multiclasslimma.
 环境设置
-使用国内镜像安装包
 Environment settings
-Use domestic image installation package
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
-BiocManager::install("edgeR")
-加载包
-library packages
+source("install_dependencies.R")
 library(edgeR)
-
 Sys.setenv(LANGUAGE = "en") #显示英文报错信息
 options(stringsAsFactors = FALSE) #禁止chr转成factor
 自定义函数，分别比较每一组跟其他样品之间的差异，如果有更多组，按规律补充进去即可。
 Customize the function to compare the differences between each group
 and other samples separately. If there are more groups, simply add them
 according to the pattern.
-source("install_dependencies.R")
 # 创建需要配对比较的列表 [Create a list for pairwise comparisons]
 # 参数：group - 样本分组信息，命名向量，格式为样本名=分组名 [Parameter: group - Sample grouping information, named vector with format sample_name=group_name]
 createList <- function(group=NULL) {

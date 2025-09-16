@@ -2,8 +2,15 @@ FigureYa42oncoprintV2_update
 FigureYa42oncoprintV2_update
 Ying Ge, Yi Xiong; Yijing Chen
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
-requirement description
+Requirement description
 没有具体突变位点信息，只有临床信息和突变名称，对应着每个个体，01矩阵，需要画这样的oncoprint图，按照pathway分开。
 There is no specific mutation site information, only clinical
 information and mutation names, corresponding to each individual, 01
@@ -16,7 +23,7 @@ https://www.nejm.org/doi/full/10.1056/NEJMoa1301689
 from
 https://www.nejm.org/doi/full/10.1056/NEJMoa1301689
 应用场景
-application scenario
+Application scenario
 展示多个样本中多个基因的变异，以及临床信息。
 场景一：01矩阵代表的一种变异类型。例如从基因检测报告中收集的变异基因。
 场景二：多种变异类型，外显子测序数据。例如用FigureYa18oncoplot输出变异和临床信息，然后用本套代码修改成自己想要的效果。
@@ -35,12 +42,9 @@ If you use it in published research, please cite:
 Gu, Z. Complex heatmaps reveal patterns and correlations in
 multidimensional genomic data. Bioinformatics 2016.
 环境设置
-environment setting
-使用国内镜像安装包
+Environment setting
 use the domestic mirror installation package
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
-加载包
+source("install_dependencies.R")
 load package
 library(ComplexHeatmap)
 Sys.setenv(LANGUAGE = "en") #显示英文报错信息 display English error messages

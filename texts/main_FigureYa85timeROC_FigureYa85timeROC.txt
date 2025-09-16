@@ -22,14 +22,9 @@ https://academic.oup.com/annonc/article/29/7/1554/4993948
 Application scenarios
 Draw timeROC curves for different fitting models.
 环境设置
-使用国内镜像安装包
 Environment settings
 Use domestic image installation package
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 install.packages("timeROC")
-加载包
-library packages
 source("install_dependencies.R")
 # 加载timeROC包，用于时间依赖型ROC曲线分析 - Load the timeROC package for time-dependent ROC curve analysis
 library(timeROC)

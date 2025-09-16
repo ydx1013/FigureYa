@@ -34,12 +34,8 @@ be downregulated by both methylation on cg10586317 and microRNA‐29a,
 rationalizing the paradox in grade II gliomas with wild‐type IDH.
 环境设置
 Environment setting
-使用国内镜像安装包
 use the domestic mirror installation package
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 install.packages("ggplot2")
-加载包
 load package
 source("install_dependencies.R")
 library(ggplot2)

@@ -38,11 +38,8 @@ cross-validation to evaluate the prediction performance of LASSO
 selected features.
 环境设置
 Environment Setup
-使用国内镜像安装包 Use a domestic mirror to install the package
 source("install_dependencies.R")
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
-加载包 Load the package
+Load the package
 library(glmnet) # 做LASSO和LR # Perform LASSO and LR
 library(randomForest) # 做RF # Perform RF
 library(pROC) # 绘制ROC # Plot ROC

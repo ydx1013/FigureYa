@@ -2,8 +2,15 @@ FigureYa35batch_bestSeparationV3_update
 FigureYa35batch_bestSeparationV3_update
 Hao Li, Xiaofan Lu; Ying Ge, Yijing Chen
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
-requirement description
+Requirement description
 需求一：批量画生存分析Best
 separation的图，所有基因保存到一个文件，或每个基因1个文件。
 只保留p value<0.05的基因，在图上标注HR、p value、95% CI。
@@ -22,7 +29,7 @@ https://www.frontiersin.org/articles/10.3389/fonc.2019.00488/full
 from
 https://www.frontiersin.org/articles/10.3389/fonc.2019.00488/full
 使用场景
-usage scenario
+Usage scenario
 在展示基因表达水平（连续变量）对生存期的影响时找到最佳分组，多个基因，一次出图
 后面可以接
 FigureYa36双因子生存分析
@@ -40,15 +47,12 @@ Follow “Xiaoya drawing” WeChat official account, reply “35”, to see
 how these two graphs are used in the article, as well as partners on the
 statistical method of the graph of the discussion.
 环境设置
-environment setting
-使用国内镜像安装包
+Environment setting
 use the domestic mirror installation package
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
+source("install_dependencies.R")
 install.packages("survival")
 install.packages("survminer")
 install.packages("KMsurv")
-加载包
 load package
 library(survival)
 library(survminer)
@@ -216,7 +220,6 @@ for (i in colnames(res.cat)[3:ncol(svdata)]) {
   #save each diagram as a pdf file
   ggsave(paste0(i," event.pdf"),width = 4,height = 4)
 }
-
 length(pl)
 # 保存到文件
 # save to file

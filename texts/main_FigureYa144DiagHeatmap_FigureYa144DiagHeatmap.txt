@@ -38,11 +38,8 @@ Or simultaneously display the expression level (activation) and DNA
 methylation level (inhibition) of a gene in multiple samples, etc.
 环境设置
 Environment settings
-使用国内镜像安装包 Use domestic mirror installation package
 source("install_dependencies.R")
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
-加载包 Load package
+Load package
 library(reshape2)
 library(RColorBrewer)
 

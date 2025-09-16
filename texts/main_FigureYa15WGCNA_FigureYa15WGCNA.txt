@@ -2,8 +2,15 @@ FigureYa15WGCNA
 FigureYa15WGCNA
 Saisai Tian; Ying Ge, Yijing Chen
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
-requirement description
+Requirement description
 用R代码画出paper里的WGCNA结果图、输出每个模块的基因表达谱，用于进一步绘制heatmap、功能富集分析、或拟合表达谱曲线。
 Use the R code to draw the WGCNA result map in the paper, output the
 gene expression profile of each module for further drawing the heatmap,
@@ -14,7 +21,7 @@ https://www.cell.com/cell/abstract/S0092-8674(18)30511-7
 from
 https://www.cell.com/cell/abstract/S0092-8674(18)30511-7
 应用场景
-application scenario
+Application scenario
 不需要筛差异表达基因，直接从全基因组找表达谱相似的gene组成的gene
 module（模块）。尤其适合样本量超过15的高通量测序数据。
 用于研究表型的差异是由哪些gene决定的，例如找出决定不同发育阶段、疾病亚型、药物处理反应的关键基因module，进而鉴定新的biomarkers或治疗靶标。
@@ -27,12 +34,8 @@ for example, to identify key gene modules that determine responses to
 different developmental stages, disease subtypes, and drug treatments,
 and thus to identify new biomarkers or therapeutic targets.
 环境设置
-environment setting
-使用国内镜像安装包
-use the domestic mirror installation package
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
-加载包
+Environment setting
+source("install_dependencies.R")
 load package
 library(WGCNA)
 Sys.setenv(LANGUAGE = "en") #显示英文报错信息 display English error messages
@@ -68,7 +71,7 @@ want to do the same, run the following line of code first, skip the
 next section.
 datExpr1<-datExpr0
 筛选方差前25%的基因
-filter for genes in the top 25% of variance
+Filter for genes in the top 25% of variance
 输入数据的作者选取的是TPM>1的基因作为WGCNA的输入。基因数量较多，对电脑要求高。为了便于大家在自己的电脑上操作本套代码，此处挑选了变化较大的前25%的基因。
 用前25%的基因会比用全部基因找出来的module数量少。
 The author of the input data selected genes with TPM>1 as input
@@ -133,7 +136,7 @@ This data set has no outlier samples to remove.
 If your data has outlier samples that need to be removed, run this
 code below.
 去除离群样本
-remove outlier samples
+Remove outlier samples
 例如：以35000作为cutoff，就会去除最左边的4四个sample，只剩下16个sample。
 For example, using 35000 as the cutoff would remove the leftmost 4
 four samples, leaving only 16 samples.

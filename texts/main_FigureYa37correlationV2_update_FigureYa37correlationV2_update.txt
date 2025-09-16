@@ -39,15 +39,11 @@ please refer to the “condensed strategy” at the end of this article:
 https://mp.weixin.qq.com/s/UFbF5Ru8Pd67AcxCLODsfw
 环境设置
 Environment setting
-使用国内镜像安装包
 use the domestic mirror installation package
 source("install_dependencies.R")
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 #安装circlize包
 #install the circlize package
 #install.packages("circlize")
-加载包
 load package
 library(circlize)
 library(ggsci)

@@ -2,9 +2,16 @@ FigureYa119Multiclasslimma
 FigureYa119Multiclasslimma
 Xiaofan Lu, Taojun Ye
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
 用limma实现多组差异分析。能用来替换FigureYa109SubtypeGSEA中的配对差异表达过程（亚型数目>=3），并跟它无缝对接。
-##Requirement description
+Requirement description
 Implement multi group difference analysis using limma. Can be used to
 replace the paired differential expression process (subtype
 number>=3) in FigureYa109SubtypeGSEA and seamlessly integrate with
@@ -13,37 +20,34 @@ it.
 结合FigureYa109subtypeGSEA，分析每一组与其他样品的差异基因，进而找出亚型特异富集的通路；
 结合FigureYa116supervisedCluster，分析每一组与其他样品的差异基因，进而找出亚型特异的marker基因。
 注意：
-本众筹不涉及批次效应消除，若样本间含有批次效应，请阅读limma相关document并修改该脚本，在设计矩阵中纳入batch
+本次不涉及批次效应消除，若样本间含有批次效应，请阅读limma相关document并修改该脚本，在设计矩阵中纳入batch
 effect。
 这里针对FPKM/RPKM或芯片数据作为输入的情况，如果你的数据是read
 count，请参考FigureYa118MulticlassDESeq2
-##Application scenarios
+Application scenarios
 Based on Figure Ya109 subtype GSEA, analyze the differentially
 expressed genes between each group and other samples, and identify
 subtype specific enriched pathways;
 Using FigureYa116supervisedCluster, analyze the differentially
 expressed genes between each group and other samples, and identify
 subtype specific marker genes.
-**Note: * * This crowdfunding does not involve batch effect
-elimination. If there are batch effects between samples, please read the
-relevant documents of limma and modify the script to include batch
-effects in the design matrix.
+**Note: * * This time does not involve batch effect elimination. If
+there are batch effects between samples, please read the relevant
+documents of limma and modify the script to include batch effects in the
+design matrix.
 For the case where FPKM/RPKM or chip data is used as input,
 if your data is read count, please refer to
 FigureYa118MulticlassDESeq2
 环境设置
-使用国内镜像安装包
-##Environment settings
+Environment settings
 Use domestic image installation package
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 BiocManager::install("affy")
 BiocManager::install("affyPLM")
-加载包
-library packages
+source("install_dependencies.R")
 # 加载limma包 - 用于基因表达数据分析和差异表达分析
 # Load the limma package - for gene expression data analysis and differential expression analysis
 library(limma)
+
 # 加载affy包 - 用于Affymetrix基因芯片数据的预处理和分析
 # Load the affy package - for preprocessing and analysis of Affymetrix gene chip data
 library(affy)
@@ -160,7 +164,7 @@ twoclasslimma <- function(res.path=NULL, expr=NULL, prefix=NULL, complist=NULL, 
   
 }
 输入文件
-##Input file
+Input file
 # 读取表达矩阵 - 输入文件为制表符分隔的FPKM表达量矩阵
 # Read expression matrix - input file is a tab-separated FPKM expression matrix
 expr <- read.table("easy_input_FPKM.txt",sep = "\t",header = T,check.names = F,stringsAsFactors = F,row.names = 1)
@@ -178,7 +182,7 @@ n.sub <- length(table(subt$TCGA_Subtype)) # 计算亚型的数量 / Calculate nu
 # Number of distinct subtypes
 n.sub
 开始分析
-##Start analyzing
+Start analyzing
 在当前文件夹会生成3个文件，可以作为FigureYa116supervisedCluster的输入：
 SKCM_limma_test_result.immune_vs_Others.txt
 SKCM_limma_test_result.keratin_vs_Others.txt

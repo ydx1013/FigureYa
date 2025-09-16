@@ -6,6 +6,13 @@ Reviewer(s)
 : Ying Ge
 Date
 : 2025-05-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
 Demand description
 想众筹这篇文章的Figure S2；就是用4种机器学习来筛选生物标志物。
@@ -173,10 +180,8 @@ https://k.youshop10.com/7bYkTnXu
 .
 环境设置
 Requirements Description
-使用国内镜像安装包。
 Using domestic mirrors for package installation.
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
+source("install_dependencies.R")
 BiocManager::install("randomForest")
 # 显示英文报错信息
 # Show English error messages

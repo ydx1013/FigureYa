@@ -1,37 +1,64 @@
 FigureYa151pathifier
 FigureYa151pathifier
-小丫画图出品
+Xiaofan Lu
 2025-5-20
-Author: Xiaofan Lu
-Reviewer: Ying Ge, Junyi Shen
-需求描述 Description of requirements
-使用R package “pathifier”，根据样本基因表达水平，计算指定基因通路得分，并绘制热图。 Using the R package "pathifier", the specified gene pathway score is calculated based on the sample gene expression level and a heat map is plotted.
-出自 From
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
+需求描述
+Requirement
+使用R package
+“pathifier”，根据样本基因表达水平，计算指定基因通路得分，并绘制热图。
+Use the R package “pathifier” to calculate the pathway score of a
+specified gene based on the gene expression levels of the sample and
+draw a heatmap.
+出自
 https://www.thno.org/v08p6386.htm
-Figure 4. Identification of “non-luminal-like” subgroup from ER+PR-HER2- breast cancer. (B) Enriched pathways in the Kyoto Encyclopedia of Genes and Genomes (KEGG) collection of the non-luminal-like subgroup compared to the luminal-like subgroup of the TCGA cohort by
+From
+https://www.thno.org/v08p6386.htm
+Figure 4. Identification of “non-luminal-like” subgroup from
+ER+PR-HER2- breast cancer. (B) Enriched pathways in the Kyoto
+Encyclopedia of Genes and Genomes (KEGG) collection of the
+non-luminal-like subgroup compared to the luminal-like subgroup of the
+TCGA cohort by
 Pathifier algorithm
-. Heatmap showing the pathway scores of each ER+PR-HER2- tumor.
+. Heatmap showing the
+pathway scores of each ER+PR-HER2- tumor.
 The non-luminal-like subtype in the ER+PR-HER2- group presented
 higher Pathifier [29] scores in
-biosynthesis, metabolism and DNA replication (Figure 4B) and lower endocrine sensitivity scores (P<0.05, Figure 4C and Figure S7A).
-应用场景 Application scenarios
-用差异基因列表做富集分析，或做GSEA，有时会因为参数设置原因而看不到自己感兴趣的通路，这时可以把基因的表达矩阵转换为通路的表达矩阵，就可以直接观察自己感兴趣的通路的表达矩阵了。 Using the list of differential genes for enrichment analysis, or GSEA, sometimes you can't see the pathway you are interested in due to parameter setting, at this time, you can convert the expression matrix of the gene into the expression matrix of the pathway, and you can directly observe the expression matrix of the pathway you are interested in.
-另外，R包GSVA也能够实现类似的功能，用法可参考FigureYa61GSVA。 In addition, R package GSVA can also implement similar functions, please refer to FigureYa61GSVA for usage.
-环境设置 Environment settings
-使用国内镜像安装包 Use the domestic mirror installation package
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
+biosynthesis,
+metabolism and DNA replication (Figure 4B) and lower endocrine
+sensitivity scores (P<0.05, Figure 4C and Figure S7A).
+应用场景
+Application Scenarios
+用差异基因列表做富集分析，或做GSEA，有时会因为参数设置原因而看不到自己感兴趣的通路，这时可以把基因的表达矩阵转换为通路的表达矩阵，就可以直接观察自己感兴趣的通路的表达矩阵了。
+When performing enrichment analysis or GSEA using a differentially
+expressed gene list, pathways of interest may not be visible due to
+parameter settings. In such cases, converting the gene expression matrix
+to a pathway expression matrix allows direct visualization of the
+pathway of interest.
+另外，R包GSVA也能够实现类似的功能，用法可参考FigureYa61GSVA。
+Alternatively, the R package GSVA can also perform similar functions.
+For usage, see FigureYa61GSVA.
+环境设置
+Environment Setup
+Using a Chinese mirror to install the package
+source("install_dependencies.R")
 BiocManager::install("pathifier")
-加载包 Load the package
+Loading the package
 library(pathifier)
 library(data.table)
 library(pheatmap)
 library(gplots)
-Sys.setenv(LANGUAGE = "en") #显示英文报错信息 Displays the error message in English
-options(stringsAsFactors = FALSE) #禁止chr转成factor
-Prohibiting CHR from converting to factor
-自定义函数（来自cogena） Custom Functions (from Cogena)
-# 读取gmt文件为列表形式，满足pathifier的输入要求 Read the GMT file as a list to meet the input requirements of the pathifier
+Sys.setenv(LANGUAGE = "en") #显示英文报错信息 #Display English error messages
+options(stringsAsFactors = FALSE) #禁止chr转成factor #Disable conversion of chr to factor
+自定义函数（来自cogena） Custom function (from cogena)
+# 读取gmt文件为列表形式，满足pathifier的输入要求
+# Read the gmt file as a list to meet the pathifier input requirements
 gmt2list <- function(annofile){
   if (!file.exists(annofile)) {
     stop("There is no such gmt file.")
@@ -52,29 +79,52 @@ gmt2list <- function(annofile){
   
   annoList <- lapply(y, `[`, c(-1,-2))
 }
-感兴趣的通路 genelist Pathway of interest genelist
-运行pathifier时，gmt文件里的通路/基因越多，时间越长。 When running the pathifier, the more pathways/genes in the GMT file, the longer it takes.
-怎样获得感兴趣的通路的gmt文件？ How do I get GMT files for the channel of interest?
+感兴趣的通路genelist
+Genelist of pathways of interest
+运行pathifier时，gmt文件里的通路/基因越多，时间越长。 When running
+pathifier, the more pathways/genes in the gmt file, the longer it
+takes.
+怎样获得感兴趣的通路的gmt文件？ How can I obtain the gmt file for the
+pathway of interest?
 方法一：从GSEA网站下载gmt文件
 http://software.broadinstitute.org/gsea/downloads.jsp
-，可以直接用（运行时间长）； Method 1:Download gmt files from the GSEA website http://software.broadinstitute.org/gsea/downloads.jsp can be used directly (long running time);
-方法二：从方法一获得的gmt文件里提取感兴趣的通路； Method 2: Extract the pathway of interest from the GMT file obtained from Method 1;
+，可以直接用（运行时间长）；
+方法二：从方法一获得的gmt文件里提取感兴趣的通路；
 方法三：用已发表的文章里的差异基因，思路可参考这篇：
 https://mp.weixin.qq.com/s/O1xd5l5h33fXUWOvX3UBGw
-“如果我真的对其中某一个概念和Term很感兴趣与执着的话，我会重新找到发表相关功能或者通路的文章，重新构建Term的genelist。”类似的思路可参考FigureYa136fgsea。 Method 3: Using the differential genes in published articles, the idea can refer to this article: https://mp.weixin.qq.com/s/O1xd5l5h33fXUWOvX3UBGw "If I am really interested and persistent in one of the concepts and terms, I will re-find the published articles on related functions or pathways, and reconstruct the genelist of terms." For similar ideas, please refer to FigureYa136fgsea.
-方法一：直接用下载的gmt文件 Method 1: Use the downloaded GMT file directly
+“如果我真的对其中某一个概念和Term很感兴趣与执着的话，我会重新找到发表相关功能或者通路的文章，重新构建Term的genelist。”类似的思路可参考FigureYa136fgsea。
+Method 1: Download the gmt file from the GSEA website
+http://software.broadinstitute.org/gsea/downloads.jsp
+and use it directly (this process may take a long time).
+Method 2: Extract the pathway of interest from the gmt file obtained
+in Method 1.
+Method 3: Use differentially expressed genes from published
+articles. For ideas, refer to this article:
+https://mp.weixin.qq.com/s/O1xd5l5h33fXUWOvX3UBGw
+: “If
+I’m truly interested in and obsessed with a concept or term, I’ll find
+articles that publish related functions or pathways and rebuild the
+term’s genelist.” For similar ideas, refer to Figure Ya136fgsea.
+方法一：直接用下载的gmt文件
+Method 1: Use the downloaded gmt file directly
 gset <- gmt2list("customized.gmt") 
 gset[1]
-后面将以customized.gmt为例来展示分析和画图方法，也就是gset。 Later, we will use customized.gmt as an example to show the analysis and drawing method, that is, gset.
-方法二：从gmt文件提取感兴趣的通路 Method 2: Extract pathways of interest from GMT files
-# 例如提取带有`METABOLISM`字样的通路 For example, extract pathways with the word 'METABOLISM'
+后面将以customized.gmt为例来展示分析和画图方法，也就是gset。 The
+following will use customized.gmt as an example to demonstrate the
+analysis and drawing methods, that is, gset.
+方法二：从gmt文件提取感兴趣的通路
+Method 2: Extract pathways of interest from a gmt file
+# 例如提取带有`METABOLISM`字样的通路 # For example, extract pathways with the word `METABOLISM`
 gset_meta <- gset[names(gset) %like% "METABOLISM"]
 gset_meta
 #gset <- gset_meta
-方法三：用文章里的基因 Method 3: Use the genes in the article
+方法三：用文章里的基因
+Method 3: Use genes from the paper
 把感兴趣的基因名保存到文本文件里，每行一个基因，共一列，命名为
 gene_paper*.txt
-Save the gene names of interest to a text file, one gene per row, a column, named gene_paper*.txt
+Save the gene names of interest to a text file, one gene per line, one
+column, named
+gene_paper*.txt
 read.aschar <- function(filename){
   file <- read.table(filename)
   file <- file$V1
@@ -83,77 +133,100 @@ read.aschar <- function(filename){
 fnames <- list.files(pattern = "gene_paper")
 fnames
 gset_paper <- lapply(fnames, read.aschar)
-# 用文件名作为通路的名字 Use the file name as the name of the channel
+# 用文件名作为通路的名字 # Use the file name as the pathway name
 names(gset_paper) <- fnames
 gset_paper
-# 或者自己另外起通路的名字 Or come up with another channel name
+# 或者自己另外起通路的名字 # Or, you can create your own pathway names.
 names(gset_paper) <- c("author1_year1", "author2_year2", "author3_year3")
 gset_paper
 #gset <- gset_paper
-输入文件 Enter the file
-easy_input_expr.txt，基因表达矩阵。 easy_input_expr.txt, gene expression matrix.
-easy_input_info.txt，样本信息。 easy_input_info.txt, sample information.
-# 移除低表达的基因 Remove low-expressed genes
+输入文件
+Input files
+easy_input_expr.txt，基因表达矩阵。 easy_input_expr.txt, gene
+expression matrix.
+easy_input_info.txt，样本信息。 easy_input_info.txt, sample
+information.
+# 移除低表达的基因
+# Remove lowly expressed genes
 expr <- expr[rowSums(expr) > 1,]
 
-## 提取肿瘤和正常样本，用于计算pathway score Tumor and normal samples were extracted for the calculation of the pathway score
+## 提取肿瘤和正常样本，用于计算pathway score
+## Extract tumor and normal samples for pathway score calculation
 sinfo <- read.table("easy_input_info.txt",sep = "\t",check.names = F,stringsAsFactors = F,header = T,row.names = 1)
 head(sinfo)
-tum.sam <- intersect(colnames(expr)[grep("-01A",colnames(expr))],rownames(sinfo)) # 提取原发且符合要求的肿瘤（例文为ER+PR-HER2-） Extraction of primary and eligible tumors (e.g., ER+PR-HER2-)
-nor.sam <- colnames(expr)[grep("-11A",colnames(expr))] # 提取癌旁组织 Extract adjacent tissue
+tum.sam <- intersect(colnames(expr)[grep("-01A",colnames(expr))],rownames(sinfo)) # 提取原发且符合要求的肿瘤（例文为ER+PR-HER2-） # Extract primary tumors that meet the requirements (in this example, ER+PR-HER2-).
+nor.sam <- colnames(expr)[grep("-11A",colnames(expr))] # 提取癌旁组织 # Extract adjacent tissue
 
-expr <- expr[,c(tum.sam,nor.sam)] # 重新排序 Reorder
-tissue.logic <- rep(c(F,T),c(length(tum.sam),length(nor.sam))) # 构建样本是否为正常的指示变量 An indicator of whether the construct sample is normal or not
+expr <- expr[,c(tum.sam,nor.sam)] # 重新排序 # Reorder
+tissue.logic <- rep(c(F,T),c(length(tum.sam),length(nor.sam))) # 构建样本是否为正常的指示变量 # Construct an indicator variable for whether the sample is normal
 
-## 按luminal-like和Non-luminal-like分为两组，画图时要用到该分组 It is divided into two groups according to luminal-like and non-luminal-like, which are used when drawing
+## 按luminal-like和Non-luminal-like分为两组，画图时要用到该分组 
+## Divide into two groups based on luminal-like and non-luminal-like patterns. This grouping will be used when plotting.
 # luminal-like samples
 lum.sam <- intersect(rownames(sinfo[which(sinfo$PAM50 == "Luminal-like"),]),tum.sam)
 # Non-luminal-like samples
 nonlum.sam <- intersect(rownames(sinfo[which(sinfo$PAM50 == "Non-luminal-like"),]),tum.sam)
-运行pathifier Run pathifier
-用肿瘤和癌旁计算pathway score。 Pathway score was calculated using tumor and cancer.
+运行pathifier
+Run pathifier
+用肿瘤和癌旁计算pathway score。 Calculate pathway scores using tumor
+and adjacent adjacent regions.
 注意：
-这里用的是手动矫正过的gmt文件，如果用GSEA的通路（>1000），该算法运行速度会非常慢； Note: The manually corrected GMT file is used here, and if you use the GSEA pathway (>1000), the algorithm will run very slowly.
-粗略估计运行GSEA中的c5免疫相关通路可能需要10天以上。 A rough estimate may take more than 10 days to run the c5 immune-related pathway in GSEA.
+这里用的是手动矫正过的gmt文件，如果用GSEA的通路（>1000），该算法运行速度会非常慢；
+Note:
+This uses a manually corrected gmt file. If using
+GSEA pathways (>1000), the algorithm will run very slowly.
+粗略估计运行GSEA中的c5免疫相关通路可能需要10天以上。 A rough estimate
+is that running the c5 immune-related pathway in GSEA may take over 10
+days.
 indata <- as.matrix(log2(expr + 1))
 gname <- rownames(expr)
-path.res <- quantify_pathways_deregulation(data = indata, # 表达谱，行为基因，列为样本(必须为矩阵) Expression profile, behavioral genes, listed as samples (must be matrix)
-                                           allgenes = gname, # 表达谱的基因名 The gene name of the expression profile
-                                           syms = gset, # 感兴趣的通路列表 List of channels of interest
-                                           pathwaynames = names(gset), # 通路列表的通路名 The channel name of the channel list
-                                           normals = tissue.logic, # 指示变量，如为癌旁则为TRUE The indicator variable, if it is adjacent to cancer, is TRUE
-                                           attempts = 100, # 运行次数，默认为100，提高次数可增加稳定性 The default number of runs is 100, and increasing the number of times can increase stability
-                                           min_exp = 0, # 默认值为4，倘若表达值低于该阈值，则填补该阈值 The default value is 4, and if the expression value falls below this threshold, it will be filled
-                                           min_std = 0) # 默认值位0.4，倘若某基因的标准差低于该阈值，则标准化时除以该阈值，而不使用真实标准差
-The default value is 0.4, if the standard deviation of a gene is lower than this threshold, it is divided by this threshold when standardized without using the true standard deviation
-# 生成pathway score Generate a pathway score
+path.res <- quantify_pathways_deregulation(data = indata, # 表达谱，行为基因，列为样本(必须为矩阵) # Expression profiles, behavioral genes, listed as samples (must be a matrix)
+                                           allgenes = gname, # 表达谱的基因名 # Gene names for the expression profiles
+                                           syms = gset, # 感兴趣的通路列表 # List of pathways of interest
+                                           pathwaynames = names(gset), # 通路列表的通路名  # Pathway names for the pathway list
+                                           normals = tissue.logic, # 指示变量，如为癌旁则为TRUE # Indicator variable, TRUE if the value is adjacent to the cancer
+                                           attempts = 100, # 运行次数，默认为100，提高次数可增加稳定性 # Number of runs, defaults to 100; increasing the number may improve stability
+                                           min_exp = 0, # 默认值为4，倘若表达值低于该阈值，则填补该阈值 # Default is 4. If the expression value is below this threshold, the threshold is padded.
+                                           min_std = 0) # 默认值位0.4，倘若某基因的标准差低于该阈值，则标准化时除以该阈值，而不使用真实标准差 # Default is 0.4. If the standard deviation of a gene is below this threshold, the normalization is divided by the threshold instead of the true standard deviation.
+# 生成pathway score
+# Generate pathway score
 path.score <- as.data.frame(rbindlist(lapply(path.res$scores,as.data.frame))); dimnames(path.score) <- list(names(gset),colnames(expr))
-# 保存到文件 Save to file
+# 保存到文件
+# Save to file
 write.csv(path.score, "pathifier_output.csv", quote = F)
-下一步画出感兴趣的通路的热图； The next step is to draw a heat map of the pathways of interest;
-还可以算出所有通路的score，做差异表达分析，方法跟基因的差异表达分析类似，可参考FigureYa61GSVA。 The score of all pathways can also be calculated for differential expression analysis, and the method is similar to that of gene differential expression analysis, please refer to FigureYa61GSVA.
-开始画图 Start drawing
-这里复现原文里的画法，不聚类。 Here is the reproduction of the painting method in the original text, without clustering.
-更多聚类、排序的热图画法可参考FigureYa91cluster_heatmap。 For more heat mapping methods for clustering and sorting, please refer to FigureYa91cluster_heatmap.
-# 这里在图中用颜色画出样本信息 Here the sample information is drawn in color in the figure
-# 也可以像例文那样用illustrator打开pdf文件，添加横线 You can also open a PDF file with Illustrator and add a horizontal line as in the example
+下一步画出感兴趣的通路的热图； Next, plot a heatmap of the pathway of
+interest.
+还可以算出所有通路的score，做差异表达分析，方法跟基因的差异表达分析类似，可参考FigureYa61GSVA。
+You can also calculate the scores for all pathways and perform
+differential expression analysis. The method is similar to gene
+differential expression analysis, see Figure Ya61 GSVA.
+开始画图
+Start plotting
+这里复现原文里的画法，不聚类。 Here, we replicate the original
+method, without clustering.
+更多聚类、排序的热图画法可参考FigureYa91cluster_heatmap。 For more
+clustering and ranking heatmap plotting techniques, see Figure Ya91
+cluster_heatmap.
+# 这里在图中用颜色画出样本信息 Here, we use colors to plot sample information in the figure.
+# 也可以像例文那样用illustrator打开pdf文件，添加横线 # You can also open the PDF file in Illustrator and add horizontal lines as in the example.
 annCol <- data.frame(PAM50 = sinfo$PAM50,row.names = rownames(sinfo),stringsAsFactors = F)
 annColors <- list("PAM50" = c("Luminal-like" = "red","Non-luminal-like" = "blue"))
 
-# 热图数据标准化 Standardize heat map data
+# 热图数据标准化
+# Normalize the heatmap data
 plotdata <- t(scale(t(path.score[,c(nonlum.sam,lum.sam)])))
-plotdata[plotdata > 1]  <- 1 # 数值大于1赋1 The value is greater than 1 and gives 1
-plotdata[plotdata < -1] <- -1 # 数值小于-1赋-1 The value is less than -1 and -1
+plotdata[plotdata > 1]  <- 1 # 数值大于1赋1 # Values greater than 1 are assigned a value of 1.
+plotdata[plotdata < -1] <- -1 # 数值小于-1赋-1 # Values less than -1 are assigned a value of -1.
 
 #pdf("pathifier.pdf",width = 15,height = 3)
 pheatmap(plotdata,
-         border_color = NA, #不画边框 No borders
-         cluster_cols = F, cluster_rows = F, #不聚类 No clustering
-         #color = greenred(64), #原文的红绿配色 The red and green color scheme of the original text
-         annotation_col = annCol[c(nonlum.sam,lum.sam),,drop = F], #样本信息 Sample information
-         annotation_colors = annColors, #样本信息配色 Sample information color matching
-         show_rownames = T, #显示通路名 Displays the channel name
-         show_colnames = F) #不显示样本名
-The sample name is not displayed
+         border_color = NA, #不画边框 #no border
+         cluster_cols = F, cluster_rows = F, #不聚类  #no clustering
+         #color = greenred(64), #原文的红绿配色 #original red and green color scheme
+         annotation_col = annCol[c(nonlum.sam,lum.sam),,drop = F], #样本信息 #sample information
+         annotation_colors = annColors, #样本信息配色 #sample information color scheme
+         show_rownames = T, #显示通路名 #show pathway names
+         show_colnames = F) #不显示样本名 #do not show sample names
+#dev.off()
 #dev.off()
 sessionInfo()

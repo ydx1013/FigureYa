@@ -2,20 +2,27 @@ FigureYa112Plus_venn
 FigureYa112Plus_venn
 Yuhui Li, Taojun Ye
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
 vennyhttp://bioinfogp.cnb.csic.es/tools/venny/，新出来个选项，颜色填充by%。
 缺点：只能填充灰色，只能保存成png。
 我想要彩色，我想要pdf矢量图。
-众筹FigureYa112venn时还没有R包能直接实现这样按百分比填充颜色的效果，于是FigureYa112venn的作者李誉辉综合了VennDiagram和colorfulVennPlot等R包，实现了想要的效果。
+实现FigureYa112venn时还没有R包能直接实现这样按百分比填充颜色的效果，于是FigureYa112venn的作者李誉辉综合了VennDiagram和colorfulVennPlot等R包，实现了想要的效果。
 后来高春辉写了R包ggVennDiagram，方便好用，下面就展示一下用这个R包画venn图的用法。
 输入基因列表，画出按百分比填充颜色的venn图，并输出各个区域的基因名。
-#Requirement description
+Requirement description
 vennyhttp://bioinfogp.cnb.csic.es/tools/venny/ A new option has
 emerged, color filling by%.
 Disadvantage: It can only be filled in gray and can only be saved as
 PNG.
 I want color, I want PDF vector graphics.
-When crowdfunding FigureYa112venn, there was no R package that could
+When we wrote FigureYa112venn, there was no R package that could
 directly achieve the effect of filling colors by percentage. Therefore,
 the author of FigureYa112venn, Li Yuhui, integrated R packages such as
 VennDiagram and colorfulVennPlot to achieve the desired effect.
@@ -31,24 +38,14 @@ http://bioinfogp.cnb.csic.es/tools/venny/
 应用场景
 展示重叠关系，例如多个分组之间共有的、特异的差异表达基因。
 适用于2、3或4个list的overlap，超过4个用upsetR更合适。
-#Application scenarios
+Application scenarios
 Display overlapping relationships, such as shared and specific
 differentially expressed genes between multiple groups.
 Suitable for overlaps of 2, 3, or 4 lists, with upsetR being more
 appropriate for more than 4 lists.
 环境设置
-安装包
-#Environment settings
-Installation package
-# 安装ggVennDiagram包（从GitHub安装gaospecial用户的ggVennDiagram仓库）
-# Install the ggVennDiagram package (from the gaospecial/ggVennDiagram repository on GitHub)
-devtools::install_github("gaospecial/ggVennDiagram")
-
-# 安装export包（用于导出图形等功能）
-# Install the export package (used for exporting graphics, etc.)
-install.packages("export")
-加载包
-library packages
+Environment settings
+source("install_dependencies.R")
 # 加载stringr包 - 提供字符串处理函数
 # Load the stringr package - provides functions for string processing
 library(stringr)
@@ -133,7 +130,7 @@ FigureYa59Plus_GEO2DEG
 easy_input_limma.csv
 用FigureYa118MulticlassDESeq2、FigureYa119Multiclasslimma和FigureYa120MulticlassedgeR获得RNA-seq的差异表达分析结果。
 这里就以FigureYa118MulticlassDESeq2和FigureYa120MulticlassedgeR的输出文件作为输入，画出venn图展示不同对比的重叠情况。
-#Input file
+Input file
 SKCM_*_test_result.*.txt， The differential expression results can
 include all genes, and here FDR is used to screen for significantly
 differentially expressed genes.
@@ -152,7 +149,7 @@ overlap of different comparisons.
 可参考
 easy_input_info.txt
 文件的格式，自己在Excel里写这个文件，至少要有第一列文件名和最后一列condition。
-##Organizing file information
+Organizing file information
 You can refer to the format of the ‘easy_input_info. txt’ file and
 write this file yourself in Excel, with at least the first column of
 file names and the last column of conditions.
@@ -207,7 +204,7 @@ head(finfo)
 #   Text file containing file information
 write.table(finfo, "easy_input_info.txt", row.names = F,quote = F, sep = "\t")
 差异表达基因筛选
-##Differential expression gene screening
+Differential expression gene screening
 # 读入文件信息：从制表符分隔的文本文件中读取先前整理的文件信息
 # 参数：
 #   "easy_input_info.txt" - 输入文件路径，需包含表头
@@ -265,8 +262,8 @@ openxlsx::write.xlsx(fdataset, file = paste0("DEG_adj", adjcutoff, ".xlsx"), row
 两个圈
 对比两个文件
 以SKCM_deseq2_test_result.immune_vs_Others.txt和SKCM_edgeR_test_result.immune_vs_Others.txt为例，展示在两种方法中都被筛到的差异基因。
-#Start drawing
-##Two circles
+Start drawing
+Two circles
 Compare two files
 Taking SKCM_deseq2_test_desult.immune-vs_Others.txt and SKCM_
 edgeR_test_desult.immune-vs_Others.txt as examples, show the
@@ -364,7 +361,7 @@ write.xlsx(list(Intersect_1_2 = intersect_1_2), "venn_2.xlsx")
 四个圈
 对比四个文件
 以SKCM_deseq2_test_result.immune_vs_Others.txt和SKCM_edgeR_test_result.immune_vs_Others.txt为例，把上调和下调拆开，展示在两种方法中都被筛到的差异基因。
-##Four circles
+Four circles
 Compare four files
 Taking SKCM_deseq2_test_desult.immune-vs_Others.txt and SKCM_
 edgeR_test_desult.immune-vs_Others.txt as examples, the upregulation and
@@ -394,7 +391,7 @@ write.xlsx(list(Intersect_1_2 = intersect_1_2), "venn_4.xlsx")
 三个圈
 对比三个文件
 以DESeq2获得的三种差异表达基因为例，展示其overlap
-##Three circles
+Three circles
 Compare three files
 Taking the three differentially expressed genes obtained from DESeq2
 as an example, demonstrate their overlap

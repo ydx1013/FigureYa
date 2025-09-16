@@ -2,10 +2,17 @@ FigureYa122mut2expr
 FigureYa122mut2expr
 Long Zhao, Taojun Ye
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
 虽然原文附件给出了代码，但自己看着费劲，请高手带我们理解并复现原文的Figure
 1b建模。
-##Requirement description
+Requirement description
 Although the original attachment provides the code, it seems
 difficult for us to understand and reproduce the Figure 1b modeling in
 the original text. Please help us understand and reproduce it.
@@ -16,9 +23,9 @@ http://www.nature.com/articles/ncomms6901
 代码在原文补充材料中有提供，里面有很多东西值得学习。同时我自己写了一些比原文精简的代码（一些数据命名尽量和原文一致，确保小伙伴跑的时候能够理解不同做法的异曲同工）。
 小丫碎碎念：
 像这种附带代码的好文章越来越多，是非常好的学习资源。
-这类文章怎么找到呢？小丫的经验是：在感兴趣的期刊主页的高级搜索里，搜code或script，同时限定research
+这类文章怎么找到呢？在感兴趣的期刊主页的高级搜索里，搜code或script，同时限定research
 article和发表年份等信息。检索结果里会有上下文，一眼扫过去，就能看到哪些文章带代码。
-怎样学习这类代码？这次众筹就从这篇带代码的文章带你上手，以后你就可以自己去挖宝藏了。推荐路线：
+怎样学习这类代码？这次就从这篇带代码的文章带你上手，以后你就可以自己去挖宝藏了。推荐路线：
 先尝试自己写，或者至少在脑子里猜测作者是用什么方法哪个包实现的
 看原文代码，边看边实践
 记笔记，思考这段代码能应用到哪些场景上，可以尝试按照FigureYa的格式来写，或者干脆写成R包（Y叔说写R包要趁早）
@@ -32,14 +39,14 @@ text to ensure that my friends can understand the similarities of
 different approaches when running).
 **Xiaoya’s rambling: * * There are more and more good articles with
 accompanying code, which are very good learning resources.
-How can I find such articles? Xiaoya’s experience is to search for
-code or script on the advanced search page of the journal she is
-interested in, while limiting information such as research article and
-publication year. There will be context in the search results, and at a
-glance, you can see which articles have code.
-How to learn this type of code? This crowdfunding campaign will take
-you through this article with code, so you can dig for treasure on your
-own in the future. Recommended route:
+How can I find such articles? Search for code or script on the
+advanced search page of the journal, while limiting information such as
+research article and publication year. There will be context in the
+search results, and at a glance, you can see which articles have
+code.
+How to learn this type of code? This time campaign will take you
+through this article with code, so you can dig for treasure on your own
+in the future. Recommended route:
 -Try writing it yourself first, or at least guess in your mind what
 method and package the author used to implement it -Read the original
 code and practice while reading -Take notes and think about which
@@ -59,7 +66,7 @@ same article together.
 包含2种以上突变的个体，基因表达变化为两个或多个突变影响基因集合的并集；
 缺点：该模型忽略了基因间的相互调控。
 如果想要系统的研究基因之间的相互关系，就需要更多的基因样本容量，所以该线性模型方法是相对小样本量的很好的方式。
-##Application scenarios
+Application scenarios
 There is already genotype and transcription data available, and a
 linear model is used to analyze the contribution of mutations to gene
 expression, that is, how gene expression responds to different genotypes
@@ -76,20 +83,15 @@ If you want to systematically study the interrelationships between
 genes, you need more gene sample sizes, so this linear model method is a
 good way for relatively small sample sizes.
 环境设置
-使用国内镜像安装包
-##Environment settings
-Use domestic image installation package
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
-BiocManager::install("hgu133plus2.db")
-加载包
-library packages
+Environment settings
+source("install_dependencies.R")
 # 加载用于读取Excel文件的包
 # Load the package for reading Excel files
 library(openxlsx)
 # 加载用于芯片数据处理的包
 # Load the package for microarray data processing
-library(affy)
+library(GEOquery)
+library(affy) 
 # 加载用于芯片数据处理的包（GCRMA算法）
 # Load the package for microarray data processing (GCRMA algorithm)
 library(gcrma) 
@@ -119,7 +121,7 @@ http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE58831
 >，点击Download里的http下载（早上下载速度更快），解压缩到当前文件夹。
 genotype和表型数据：Supplementary Data
 1—ncomms6901-s2.xlsx，其中部分个体数据缺失。
-##Preprocessing of input data
+Preprocessing of input data
 Two types of input data are required: expression data and genotype
 data
 Expression data: Chip data from 159 mutants and 17 normal
@@ -132,16 +134,27 @@ ncomms6901-s2.xlsx, with some individual data missing.
 芯片数据处理：
 以下是芯片数据处理过程，主要用到affy，gcrma包
 下面这一步需要较长的运行时间，我把运行结果gset保存在文件里，便于再次运行时读取
-###Chip data processing:
+Chip data processing:
 The following is the chip data processing process, mainly using the
 affy and gcrma packages
 The following step requires a relatively long running time. I will
 save the running result gset in a file for easy retrieval when running
 again
-celFiles <- dir("GSE58831_RAW",full.names=T)  #读取文件夹下面文件
-affyBatch <- read.affybatch(filenames = celFiles)  #Read CEL files into an Affybatch
-gset <- gcrma(affyBatch)  #converts an AffyBatch into an ExpressionSet
-save(gset, file = "gset.RData")
+if (!file.exists("gset.RData")) {
+  cat("gset.RData not found. Downloading from GEO...\n")
+  
+  gset_list <- getGEO('GSE58831', destdir = ".", getGPL = FALSE)
+  
+  if (length(gset_list) > 0) {
+    gset <- gset_list[[1]]
+    save(gset, file = "gset.RData")
+    cat("Downloaded and saved gset.RData successfully.\n")
+  } else {
+    stop("Failed to download or parse data from GEO for GSE58831.")
+  }
+} else {
+  cat("Found existing gset.RData. Skipping download.\n")
+}
 # 加载基因表达数据集   Load gene expression dataset
 load("gset.RData")
 
@@ -223,7 +236,7 @@ result is a matrix. However, when extracting a certain column, the data
 obtained is usually a vector. If the drop=False parameter is added, even
 if one column is extracted, the matrix will still be obtained.
 genotype突变信息
-###Genotype mutation information
+Genotype mutation information
 # 从Excel文件中读取MDS数据，从第2行开始加载（跳过标题行）
 # Read MDS data from an Excel file starting from row 2 (skipping the header)
 mdsData <- read.xlsx("ncomms6901-s2.xlsx", startRow = 2, check.names = F)
@@ -301,7 +314,7 @@ for(j in 1:ncol(design))
 head(design)
 构建线性模型
 这里主要用到limma包，其中F.stat，是F-statistic检验，该值越大，一般p值越小，即差异显著。
-##Constructing a linear model
+Constructing a linear model
 The limma package is mainly used here, where F.stat is the
 F-statistical test. The larger the value, the smaller the p-value,
 indicating a significant difference.
@@ -321,7 +334,7 @@ F.stat <- classifyTestsF(glm[,-1], fstat.only = TRUE)
 开始画图-b
 b图里有三个小图，我们分别来画。
 定义颜色，主要定义19种颜色，每种颜色在之后会代表每一个design的列信息：
-##Start drawing - b
+Start drawing - b
 There are three small pictures in Figure B, let’s draw them
 separately.
 Define colors, mainly 19 colors, each representing column information
@@ -365,7 +378,7 @@ geneExpr <- geneExpr[, rownames(design)]
 b中间图：
 这是另外一种画heatmap的方法，也是最让我惊艳的一部分。
 大体思路就是：首先通过hclust对数据进行聚类，之后通过rasterImage按照聚类的顺序画heatmap。
-###B Middle image:
+B Middle image:
 This is another method of drawing heatmaps, and it is also the most
 stunning part for me.
 The general idea is to first cluster the data using HCluster, and
@@ -402,7 +415,7 @@ rasterImage(matrix_order, 0, 0, ncol(design), nrow(design), interpolate=FALSE)
 b左侧图：
 首先是把基因表达的大小分成12份，然后换成11个颜色，之后组成颜色的矩阵。通过rasterImage画出来。rasterImage还有其他有意思的用法，可以参考Y叔的
 https://guangchuangyu.github.io/cn/2017/04/ggimage/
-###Left side image:
+Left side image:
 Firstly, divide the size of gene expression into 12 parts, then
 replace them with 11 colors, and then form a matrix of colors. Draw it
 through RasterImage. RasterImage has other interesting uses, you can
@@ -433,7 +446,7 @@ j <- hclust(dist(t(z)))
 rasterImage(sapply(1:ncol(z), function(i) ifelse(z[,i] > 0, colMutations[i-1], "#FFFFFF"))[h$order, j$order], 
             0, 0, ncol(design), nrow(design), interpolate=FALSE)
 b右侧图：
-###Right side image:
+Right side image:
 # 设置绘图参数，包括无边框、坐标轴标签位置、边距等
 # Set plot parameters including no border, axis label positions, margins, etc.
 par(bty="n", mgp = c(2,.33,0), mar=rep(0,4), las=1, tcl=-.25, xpd=NA)
@@ -458,7 +471,7 @@ rasterImage(matrix(brewer.pal(11, "RdBu")[cut(glm$coefficients[w, -1][h$order, j
 c和d
 仅用b图的heatmap回答基因表达如何响应不同的genotype以及各种不同的突变如何影响基因表达还不够完美，作者又画了c和d图。
 原文代码用baseplot画c和d图，我自己用ggplot2复现了c和d图。
-##C and D
+C and D
 It is not perfect to answer how gene expression responds to different
 genotypes and how various mutations affect gene expression using only
 the heatmap in Figure B. The author has also drawn Figures C and D.

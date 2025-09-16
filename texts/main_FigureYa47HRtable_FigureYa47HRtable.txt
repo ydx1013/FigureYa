@@ -2,8 +2,15 @@ FigureYa47HR2table
 FigureYa47HR2table
 Yuan Tang; Ying Ge, Yijing Chen
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
-requirement description
+Requirement description
 计算coxHR，单因素cox和多因素cox，输出为表格
 Calculate coxHR, univariate cox and multivariate cox, output as
 table
@@ -12,7 +19,7 @@ https://jhoonline.biomedcentral.com/articles/10.1186/s13045-017-0445-8
 from
 https://jhoonline.biomedcentral.com/articles/10.1186/s13045-017-0445-8
 应用场景
-application scenario
+Application scenario
 对比和展示临床相关因素和基因表达对疾病发病或预后的影响。
 例如TCGA数据、大规模临床试验数据等等。
 Compare and demonstrate the impact of clinical-related factors and
@@ -24,6 +31,7 @@ Input data
 It contains the relevant factors studied in the example table, one
 column for each factor, and the last two columns are the expression
 matrices of the two genes; each row is a sample.
+source("install_dependencies.R")
 clin_mRNA_miRNA <- read.csv("easy_input.csv", as.is = T)
 head(clin_mRNA_miRNA)
 特别说明：

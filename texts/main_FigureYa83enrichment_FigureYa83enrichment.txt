@@ -2,6 +2,13 @@ FigureYa83enrichment
 FigureYa83enrichment
 Haitao Wang, Taojun Ye
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
 Requirement Description
 Enrichment for Molecular Concept Map, to identify significant
@@ -51,14 +58,10 @@ $up_regulated_genes [1] “ZBTB38” “SRA1” “IPO13” “ALX4” “EP300�
 “CREBBP” “IPO13”
 $ATAC-seq_peak [1] “esr2” “znf688” “banp” “isyna1” “tbc1d7”
 环境设置
-使用国内镜像安装包
 Environment settings
 Installation of packages using domestic mirrors
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 install.packages("rentrez")
-加载包
-library packages
+source("install_dependencies.R")
 # 加载rentrez包，用于访问NCBI数据库进行文献检索和数据获取
 # Load the rentrez package for accessing NCBI databases for literature retrieval and data acquisition
 library(rentrez)
@@ -262,7 +265,7 @@ r <- reorder(est, o)
 # Set lower triangle of the odds ratio matrix to NA to match the p-value matrix
 r[lower.tri(r)] <- NA
 画图
-plot
+Plot
 # 创建PDF文件用于保存热图，设置宽度为11英寸，高度为10英寸
 # Create a PDF file to save the heatmap with dimensions 11 inches wide and 10 inches tall
 pdf("Enrichment_baseplot.pdf", 11, 10)

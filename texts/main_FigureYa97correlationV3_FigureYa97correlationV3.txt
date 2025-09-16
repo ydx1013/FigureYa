@@ -34,7 +34,6 @@ If you want to simultaneously demonstrate the correlation between two
 genes and their relationship with immune infiltration, please refer to
 “FigureYa96R2”.
 环境设置
-加载包
 Environment settings
 Load Package
 source("install_dependencies.R")

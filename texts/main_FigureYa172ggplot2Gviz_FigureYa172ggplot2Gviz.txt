@@ -82,11 +82,7 @@ https://www.jianshu.com/p/c16c7095e4b2?from=singlemessage&isappinstalled=0
 Before drawing, the code needs to be run in a terminal. Refer to this
 method
 https://www.jianshu.com/p/c16c7095e4b2?from=singlemessage&isappinstalled=0
-使用国内镜像安装包 Use a domestic mirror to install the package
 source("install_dependencies.R")
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
-加载包 Load the package
 library(ggplot2)
 library(cowplot)
 Sys.setenv(LANGUAGE = "en") #显示英文报错信息
@@ -109,8 +105,6 @@ https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE107236
 ATAC-seq，GSE107242。作者提供了bigwig文件
 https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE107242
 ，需要先转换成bedgraph。
-以上数据已传到微云，便于下载，
-https://share.weiyun.com/55dfZPV
 如果你感兴趣的数据作者没有上传bedgraph或bw或wig文件，可以从SRA格式开始跑，方法可参考FigureYa155ATAC。
 ChIP-seq, GSE107236. The authors provided a bedgraph file
 https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE107236
@@ -118,8 +112,6 @@ ATAC-seq, GSE107242. The authors also provided a BigWig file
 https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE107242
 ,
 which needs to be converted to a bedgraph first.
-The above data has been uploaded to Weiyun for easy download
-https://share.weiyun.com/55dfZPV
 If the author of the data you are interested in did not upload a
 bedgraph, BW, or WIG file, you can start from the SRA format. The method
 can be found in FigureYa155ATAC.
@@ -157,8 +149,6 @@ Prepare the gene structure file
 gene exons can be found in the gtf file.
 小鼠和人通常用gencode的基因注释文件。mm9的gtf文件：
 https://www.gencodegenes.org/mouse/release_M9.html
-，已传到微云便于下载，
-https://share.weiyun.com/55dfZPV
 。人的
 https://www.gencodegenes.org/human/
 ，其他物种可以从ensembl下载
@@ -167,11 +157,8 @@ Mouse
 and human gene annotation files are typically generated using Gencode.
 The mm9 gtf file is available at:
 https://www.gencodegenes.org/mouse/release_M9.html
-, and
-has been uploaded to Weiyun for easy download:
-https://share.weiyun.com/55dfZPV
-. Human annotations are
-available at
+.
+Human annotations are available at
 https://www.gencodegenes.org/human/
 . Other species can
 be downloaded from Ensembl:

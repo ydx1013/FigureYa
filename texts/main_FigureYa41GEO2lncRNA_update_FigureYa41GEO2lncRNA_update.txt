@@ -2,8 +2,15 @@ FigureYa41GEO2lncRNA_update
 FigureYa41GEO2lncRNA_update
 Ying Ge, Yijing Chen
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
-requirement description
+Requirement description
 从GEO下载芯片数据，从基因表达矩阵分别提取lncRNA、mRNA、miRNA的表达矩阵
 这套代码使用三个相对独立的模块来解决上述需求，可根据自己的实际需要，灵活使用这三个模块：
 【模块一】从GEO下载microarray数据，不包括测序数据。
@@ -43,7 +50,7 @@ example, GSE113596, and download it with [Module 1]. If you use [Module
 2] and [Module 3] to extract miRNA from normal microarray data, it is
 actually hybridization signals of miRNA precursors.
 应用场景
-application scenario
+Application scenario
 场景一：想计算lncRNA、miRNA、mRNA间的相关性，用来找miRNA、lncRNA的靶基因，或者用功能已知的mRNA推测lncRNA的功能，首先就要获得lncRNA、miRNA跟mRNA的表达矩阵。需要从GEO下载芯片数据，就从【模块一】开始；以TCGA表达矩阵作为输入（FigureYa22、23、34的输出文件），就从【模块二】开始。
 场景二：打算做RNA-seq，正在设计实验，不知道该做哪种处理、选什么时间点。那就先看看别人的实验设计获得的数据效果如何，用【模块一】下载GEO的芯片数据。
 场景三：TCGA里感兴趣的癌症类型样本量太少或没有，或者想拿多个来源的数据验证，就用【模块一】下载GEO的芯片数据。
@@ -69,17 +76,12 @@ data belongs to the majority, you don’t need to read all the text, just
 replace the GSE and GPL or the “easy_input.csv” file with your own data
 and run the code.
 环境设置
-environment setting
-使用国内镜像安装包
-Use the domestic mirror installation package
-#使用国内镜像安装包
+Environment setting
 #use the domestic mirror installation package
-#options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-#options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 BiocManager::install("GEOquery")
 BiocManager::install("biomaRt")
-加载包
 load package
+source("install_dependencies.R")
 library(Biobase)
 library(GEOquery)
 library(biomaRt)

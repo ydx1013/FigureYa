@@ -6,6 +6,13 @@ Reviewer(s)
 : Ying Ge
 Date
 : 2025-05-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
 Requirements Description
 希望画出文章里面Figure2的a。
@@ -35,10 +42,8 @@ Reference: compSurv() function from MOVICS package
 https://github.com/xlucpu/MOVICS/blob/master/R/compSurv.R
 环境设置
 Environment Setup
-使用国内镜像安装包。
 Using domestic mirrors for package installation.
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
+source("install_dependencies.R")
 加载包
 Loading packages
 library(survival)
@@ -138,7 +143,7 @@ p <- ggsurvplot(fit               = fit,
                 risk.table.y.text = FALSE,
                 # 风险表的高度
                 # Risk table height
-                tables.height     = 0.3) 
+                tables.height     = 0.3)
 p
 # 输出图像
 # Save plot

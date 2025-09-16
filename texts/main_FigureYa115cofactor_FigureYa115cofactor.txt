@@ -60,9 +60,7 @@ https://www.anaconda.com/distribution/#download-section
 https://mp.weixin.qq.com/s/G-CQhNEJBmMRuDe2kxND_w
 通过bioconda安装intervene, python 2.7环境：
 注：
-下文以“```bash”开头的代码都要复制粘贴到Terminal里运行（Linux和MAC自带），Windows10用WSL。WSL的用法参考FigureYa111markerGene里的视频
-https://share.weiyun.com/56viiqa
-，一步一步跟着洲更的演示来操作，就能在Windows系统里用起linux了。
+下文以“```bash”开头的代码都要复制粘贴到Terminal里运行（Linux和MAC自带），Windows10用WSL。
 Environment settings
 Download and install the Anaconda distribution,
 https://www.anaconda.com/distribution/#download
@@ -75,20 +73,8 @@ https://mp.weixin.qq.com/s/G-CQhNEJBmMRuDe2kxND_w
 Install Interne through Bioconda, Python 2.7 environment:
 **Note: * * The code starting with ‘bash’ in the following text
 should be copied and pasted into Terminal to run (Linux and MAC
-built-in), Windows 10 uses WSI. Refer to the video in
-FigureYa111markerGene for the usage of WSLs<
-https://share.weiyun.com/56viiqa
->By following Zhou
-Geng’s demonstration step by step, you can start using Linux on the
-Windows system.
+built-in), Windows 10 uses WSI.
 conda install -c bioconda intervene
-安装R包
-install packages
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
-install.packages("corrplot")
-加载R包
-library packages
 source("install_dependencies.R")
 # 加载corrplot包，用于绘制相关系数矩阵图 | Load the corrplot package for visualizing correlation matrices
 library(corrplot)
@@ -303,4 +289,5 @@ pheatmap(intersection_matrix,
          
          filename = "Intervene_pairwise_frac_tree.pdf",  # 保存的文件名 | Output file name
          border_color = "NA")  # 不显示单元格边框 | No border around cells
+Session Info
 sessionInfo()

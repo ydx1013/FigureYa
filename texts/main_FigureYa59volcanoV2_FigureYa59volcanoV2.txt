@@ -28,10 +28,7 @@ groups.
 环境设置
 Environment setting
 source("install_dependencies.R")
-#使用国内镜像安装包
 #use the domestic mirror installation package
-#options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-#options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 
 library(ggplot2)
 library(ggrepel)

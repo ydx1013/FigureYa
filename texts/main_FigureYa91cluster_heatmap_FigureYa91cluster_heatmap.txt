@@ -37,14 +37,9 @@ as conducting survival analysis between clusters.
 Sort the samples in the heatmap in the order specified in the
 file, such as by subtype or phenotype.
 环境设置
-使用国内镜像安装包
 Environment settings
 Use domestic image installation package
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
 install.packages("ClassDiscovery")
-加载包
-library packages
 source("install_dependencies.R")
 # 加载用于外部聚类分析的R包
 # Load the R package for external clustering analysis

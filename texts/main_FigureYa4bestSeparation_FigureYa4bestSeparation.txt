@@ -2,15 +2,22 @@ FigureYa4 bestSeparation
 FigureYa4 bestSeparation
 Dekang Lv; Ying Ge, Yijing Chen
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
-requirement description
+Requirement description
 做生存分析，Best separation和Median
 separation，后者很简单，很想学前者，求Best separation的代码
 Do survival analysis, Best separation and Median separation. The
 latter is very simple. If you really want to learn the former, look for
 the code for Best separation.
 使用场景
-usage scenario
+Usage scenario
 在展示基因表达水平（连续变量）对生存期的影响时找到最佳分组
 Find the best grouping when showing the impact of gene expression
 level (continuous variables) on survival
@@ -19,6 +26,7 @@ Input
 包含基因表达水平、生存时间、追踪情况等三列的文件，测试用文件为dsg1.txt
 A file containing three columns of gene expression levels, survival
 time, and tracking, the file used for testing is dsg1.txt
+source("install_dependencies.R")
 #install.packages(c("survival","survminer","ggplot2"))
 library(survival)
 library("survminer")
@@ -32,7 +40,7 @@ head(svdata)
 #Sort the rows by gene expression levels, with the default order being from low to high
 sortsv<-svdata[order(svdata$expression),]
 输出
-output
+Output
 中位值分组的生存曲线、最佳分组生存曲线、遍历所有分组情况下的P值和Hazard
 Ratio的分布情况
 The survival curve of the median value group, the best group survival

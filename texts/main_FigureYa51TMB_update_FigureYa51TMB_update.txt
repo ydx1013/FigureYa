@@ -2,8 +2,15 @@ FigureYa51TMB_update
 FigureYa51TMB_update
 Jingze Gao; Ying Ge, Yijing Chen
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
-requirement description
+Requirement description
 用某个基因的表达量来分组，画出各组的TMB box plot，带散点，计算p
 value。
 Use the expression of a particular gene to group, draw a TMB box plot
@@ -13,7 +20,7 @@ https://www.nejm.org/doi/full/10.1056/NEJMoa1406498
 from
 https://www.nejm.org/doi/full/10.1056/NEJMoa1406498
 应用场景
-application scenario
+Application scenario
 借助突变数据TMB，把你的基因跟免疫治疗预后联系起来。
 可以用某个基因的表达量高低来分组（或根据其他信息分组），对比不同分组的TMB值。
 下一步，还可以用TMB值高低来分组，做生存分析。
@@ -25,9 +32,9 @@ different groups.
 In the next step, it is also possible to do survival analysis by
 grouping with high or low TMB values.
 环境设置
-environment setting
-加载R包
+Environment setting
 Load R package
+source("install_dependencies.R")
 library(TCGAbiolinks)
 library(dplyr)
 library(stringr)
