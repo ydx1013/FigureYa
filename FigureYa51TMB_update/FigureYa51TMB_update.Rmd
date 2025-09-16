@@ -10,7 +10,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -45,9 +44,6 @@ In the next step, it is also possible to do survival analysis by grouping with h
 
 # 环境设置
 # Environment setting
-
-
-Load R package
 
 ```{r}
 source("install_dependencies.R")
@@ -220,6 +216,8 @@ p + geom_point(aes(group = Expr_level),
              position="jitter") #分散 disperse
 ggsave("TMB_point.pdf")
 ```
+
+# Session Info
 
 ```{r}
 sessionInfo()
