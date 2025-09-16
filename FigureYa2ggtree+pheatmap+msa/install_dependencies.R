@@ -20,10 +20,12 @@ install_cran_package <- function(package_name) {
       cat("Successfully installed:", package_name, "\n")
     }, error = function(e) {
       cat("Failed to install", package_name, ":", e$message, "\n")
+      return(FALSE)
     })
   } else {
     cat("Package already installed:", package_name, "\n")
   }
+  return(TRUE)
 }
 
 # Function to install Bioconductor packages
@@ -38,24 +40,80 @@ install_bioc_package <- function(package_name) {
       cat("Successfully installed:", package_name, "\n")
     }, error = function(e) {
       cat("Failed to install", package_name, ":", e$message, "\n")
+      return(FALSE)
     })
   } else {
     cat("Package already installed:", package_name, "\n")
   }
+  return(TRUE)
 }
 
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
+# First install BiocManager if not present
+if (!is_package_installed("BiocManager")) {
+  install.packages("BiocManager")
+}
 
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("ape", "ggtree", "msa", "pheatmap", "seqinr")
+cran_packages <- c("ape", "ggtree", "pheatmap", "seqinr", "ggplot2", "tidyr", "dplyr")
 
 for (pkg in cran_packages) {
   install_cran_package(pkg)
 }
 
+# Installing Bioconductor packages
+cat("\nInstalling Bioconductor packages...\n")
+bioc_packages <- c("Biostrings", "msa", "ggtree", "treeio")
+
+for (pkg in bioc_packages) {
+  install_bioc_package(pkg)
+}
+
+# 特别注意：ggtree 既在CRAN也在Bioconductor，确保安装正确版本
+cat("\n确保 ggtree 正确安装...\n")
+if (!is_package_installed("ggtree")) {
+  install_bioc_package("ggtree")
+}
+
+# 验证关键包是否安装
 cat("\n===========================================\n")
-cat("Package installation completed!\n")
+cat("验证关键包安装...\n")
+
+critical_packages <- c("Biostrings", "msa", "ggtree", "ape", "pheatmap")
+for (pkg in critical_packages) {
+  if (is_package_installed(pkg)) {
+    cat("✓", pkg, "is installed\n")
+  } else {
+    cat("✗", pkg, "is NOT installed\n")
+  }
+}
+
+# 测试 Biostrings 包的功能
+cat("\n测试 Biostrings 包...\n")
+tryCatch({
+  if (is_package_installed("Biostrings")) {
+    library(Biostrings)
+    cat("✓ Biostrings 包加载成功\n")
+    cat("✓ readAAStringSet 函数可用\n")
+  } else {
+    cat("✗ Biostrings 包未安装\n")
+  }
+}, error = function(e) {
+  cat("✗ Biostrings 包测试失败:", e$message, "\n")
+})
+
+cat("\nPackage installation completed!\n")
 cat("You can now run your R scripts in this directory.\n")
+
+# 如果还有问题，尝试安装特定版本
+cat("\n如果仍有问题，尝试安装开发版本...\n")
+tryCatch({
+  if (!is_package_installed("Biostrings")) {
+    BiocManager::install("Biostrings", version = "devel")
+  }
+}, error = function(e) {
+  cat("开发版本安装尝试失败:", e$message, "\n")
+})
