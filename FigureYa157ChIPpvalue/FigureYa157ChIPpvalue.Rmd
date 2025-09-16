@@ -104,8 +104,8 @@ captureMethod = "security"
 需要bw文件和bed文件。
 You need a BW file and a BED file.
 
-bedgraph和bw文件已上传至微云：<https://share.weiyun.com/5aNaSWO>，可直接下载bw文件，跳过下载和转bw，直接进入“准备bed文件”。
-The BED graph and BW files have been uploaded to Weiyun: <https://share.weiyun.com/5aNaSWO>. You can directly download the BW file, skip the download and BW conversion, and proceed directly to "Prepare BED Files."
+bedgraph和bw文件，可直接下载bw文件，跳过下载和转bw，直接进入“准备bed文件”。
+The BED graph and BW files. You can directly download the BW file, skip the download and BW conversion, and proceed directly to "Prepare BED Files."
 
 ## 下载bedgraph文件
 ## Download the bedgraph file
