@@ -245,11 +245,11 @@ invisible(dev.off())
 # 后期处理
 # Post-processing
 
-底部饼图画法可参考FigureYa196PanPie <https://k.youshop10.com/cuTrQYIe>
+底部饼图画法可参考FigureYa196PanPie 
 
 前面生成的PDF文件是矢量图文件，可以用Adobe Illustrator等矢量图编辑器打开编辑。
 
-For bottom pie chart creation, refer to FigureYa196PanPie: <https://k.youshop10.com/cuTrQYYIe>
+For bottom pie chart creation, refer to FigureYa196PanPie: 
 
 The previously generated PDF files are vector graphics that can be edited with vector editors like Adobe Illustrator.
 

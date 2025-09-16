@@ -20,7 +20,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Requirement Description
 
-I want to crowdfund Figure 2 of this single-cell spatial transcriptome, and the author has provided all the original data.
+I want to crowdsource Figure 2 of this single-cell spatial transcriptome, and the author has provided all the original data.
 
 ![](example.png)
 

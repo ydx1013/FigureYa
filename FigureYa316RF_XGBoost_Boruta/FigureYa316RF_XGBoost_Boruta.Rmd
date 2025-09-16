@@ -87,7 +87,7 @@ Boruta
 
 Figure S2 displays the results of four algorithms (LASSO, XGBoost, Random Forest [RF], and Boruta), while the Methods section describes five algorithms (LASSO, SVM-RFE, XGBoost, RF, and Boruta).
 
-This represents our first crowdfunding initiative for XGBoost implementation. FigureYa65SVM has already covered the first two algorithms (LASSO and SVM-RFE), while this document implements the remaining three (XGBoost, RF, and Boruta).
+This represents our first crowdsourcing initiative for XGBoost implementation. FigureYa65SVM has already covered the first two algorithms (LASSO and SVM-RFE), while this document implements the remaining three (XGBoost, RF, and Boruta).
 
 For reference, FigureYas implementations of LASSO, SVM-RFE, RF, and Boruta (from different authors) are listed below for comparative study.
 
@@ -116,9 +116,9 @@ RF
 
 Boruta
 
-- FigureYa204PCAscore <https://k.youshop10.com/=bRTDwW7>，Unlike conventional methods that multiply LASSO/Cox regression coefficients with gene expression values, this study employs Boruta for feature selection combined with the first principal component from PCA to construct signature scores - an approach particularly well-suited for molecular subtyping analysis.
+- FigureYa204PCAscore ，Unlike conventional methods that multiply LASSO/Cox regression coefficients with gene expression values, this study employs Boruta for feature selection combined with the first principal component from PCA to construct signature scores - an approach particularly well-suited for molecular subtyping analysis.
 
-In addition, the FigureYa we have crowdfunded can realize several of the images mentioned in the figure:
+In addition, the FigureYa we have crowdsourced can realize several of the images mentioned in the figure:
 
 - Figure 1A, Use FigureYa161stemness to calculate mRNAsi and generate plots.
 - Figure 2A, Refer to FigureYa71ssGSEA
@@ -147,7 +147,7 @@ options(stringsAsFactors = FALSE)
 # 输入文件
 # Input Files
 
-easy_input.csv，带有分组信息的矩阵。来自FigureYa65 <https://k.youshop10.com/5RZm-I9h>。
+easy_input.csv，带有分组信息的矩阵。来自FigureYa65 。
 
 可自行准备，至少包含以下信息：
 
@@ -155,7 +155,7 @@ easy_input.csv，带有分组信息的矩阵。来自FigureYa65 <https://k.yoush
 - 第二列：样本分组信息，最好为二分类变量
 - 第三列之后：表达矩阵
 
-easy_input.csv, matrix with grouping information. From FigureYa65 <https://k.youshop10.com/5RZm-I9h>.
+easy_input.csv, matrix with grouping information. From FigureYa65 .
 
 Can be prepared by yourself, must contain at least:
 

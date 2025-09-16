@@ -64,7 +64,7 @@ The potential epigenetic differences among the subtypes might be further support
 
 接下来会继续实现Figure3a，欢迎添加小丫为好友（微信ID：epigenomics），查看朋友圈，关注后续实现进展。
 
-Many of the pictures in the article have been crowdfunded, such as:
+Many of the pictures in the article have been crowdsourced, such as:
 
 - For more information about Figure 1b, see FigureYa196PanPie
 - For Figure 2b, see FigureYa248MutLandscape
@@ -73,7 +73,7 @@ Many of the pictures in the article have been crowdfunded, such as:
 - Figure 5b can refer to FigureYa12box, and f can refer to FigureYa162boxViolin
 - For Figure 6, see FigureYa35batch_bestSeparation, FigureYa144DiagHeatmap, or <https://mp.weixin.qq.com/s/34WRZRBVPHUNRLlzNH2nzw>
 
-Next, we will continue to draw Figure3a, welcome to add Xiaoya as a friend (WeChat ID: epigenomics), check the circle of friends, and pay attention to the follow-up crowdfunding progress.
+Next, we will continue to draw Figure3a, welcome to add Xiaoya as a friend (WeChat ID: epigenomics), check the circle of friends, and pay attention to the follow-up crowdsourcing progress.
 
 # 环境设置
 

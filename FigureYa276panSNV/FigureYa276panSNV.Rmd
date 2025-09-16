@@ -47,11 +47,11 @@ FIGURE 2 Single nucleotide variation(SNV) frequency and variant types of melaton
 
 分析泛癌中特定通路基因的突变情况。
 
-更多pancancer分析和可视化看这里<https://k.youshop10.com/C8RkTgR3>
+更多pancancer分析和可视化看这里
 
 Analysis of mutation patterns in specific pathway genes across pan-cancer.
 
-For more pancancer analysis and visualization resources, visit: <https://k.youshop10.com/C8RkTgR3>
+For more pancancer analysis and visualization resources, visit: 
 
 # 环境设置
 # Environment Setup

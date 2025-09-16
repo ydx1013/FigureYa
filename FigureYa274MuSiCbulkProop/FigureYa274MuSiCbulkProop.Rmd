@@ -42,11 +42,11 @@ MuSic这个软件大概有三个功能：
 
 流程跟着教程跑就好，官方详细教程见：<https://xuranw.github.io/MuSiC/articles/MuSiC.html#sample-analysis-1>
 
-跟FigureYa71ssGSEA<https://k.youshop10.com/q7HAxIw2>的相似之处：核心理念都是用单细胞的数据算出来每种细胞类型的marker gene，然后看这些基因中的哪些在bulk中高表达。
+跟FigureYa71ssGSEA的相似之处：核心理念都是用单细胞的数据算出来每种细胞类型的marker gene，然后看这些基因中的哪些在bulk中高表达。
 
-同样用到单细胞和bulk的FigureYa272scBulkCCCI<https://k.youshop10.com/=fQQh=1T>，借助scRNA-seq找到的signature genes，推断bulk RNA-seq样本的细胞类群互作网络。
+同样用到单细胞和bulk的FigureYa272scBulkCCCI，借助scRNA-seq找到的signature genes，推断bulk RNA-seq样本的细胞类群互作网络。
 
-更多单细胞分析画图看这里<https://k.youshop10.com/McawGY6=>
+更多单细胞分析画图看这里
 
 The MuSiC software has approximately three main functions:
 
@@ -56,11 +56,11 @@ The MuSiC software has approximately three main functions:
 
 The workflow can be followed according to the tutorial. For the official detailed tutorial, see: <https://xuranw.github.io/MuSiC/articles/MuSiC.html#sample-analysis-1>
 
-Similarities with FigureYa71ssGSEA<https://k.youshop10.com/q7HAxIw2>: The core concept of both is to use single-cell data to calculate marker genes for each cell type and then identify which of these genes are highly expressed in bulk data.
+Similarities with FigureYa71ssGSEA: The core concept of both is to use single-cell data to calculate marker genes for each cell type and then identify which of these genes are highly expressed in bulk data.
 
-Another tool that also utilizes both single-cell and bulk data is FigureYa272scBulkCCCI<https://k.youshop10.com/=fQQh=1T>. It leverages signature genes identified from scRNA-seq to infer cell-cell interaction networks in bulk RNA-seq samples.
+Another tool that also utilizes both single-cell and bulk data is FigureYa272scBulkCCCI. It leverages signature genes identified from scRNA-seq to infer cell-cell interaction networks in bulk RNA-seq samples.
 
-For more single-cell analysis and visualization, check here: <https://k.youshop10.com/McawGY6=>
+For more single-cell analysis and visualization, check here: 
 
 > 比较难的就是构建数据集，本文档带大家解决这个问题。
 

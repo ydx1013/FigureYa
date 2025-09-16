@@ -66,7 +66,7 @@ The friend who raised the request requested to use Cellchat to implement it, whi
 
 单细胞RNA-seq数据，对比两组样本（例文的原发vs.转移、不同亚型、不同发育时期等）之间，基于“受体-配体”的差异，用cellchat来实现。
 
-另外，CellPhoneDB的用法可参考FigureYa178receptorLigand<https://k.youshop10.com/YICoy-XB>
+另外，CellPhoneDB的用法可参考FigureYa178receptorLigand
 
 # Application scenarios
 

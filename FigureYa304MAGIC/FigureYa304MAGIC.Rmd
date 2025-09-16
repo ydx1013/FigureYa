@@ -36,7 +36,7 @@ Top annotations include PLCG2 expression and SCLC subtype.
 
 # 应用场景
 
-MAGIC特别有利于找时序变化基因、度量基因间的关系。发表MAGIC算法的Cell是更加高级的应用，可参考FigureYa177RNAvelocity <https://k.youshop10.com/RNHFyO4a>，有讲解视频。强烈推荐拖到视频的32分，听Jarning讲解那篇Cell文章使用MAGIC的思路，帮你找单细胞的时序变化基因、度量基因间的关系<https://mp.weixin.qq.com/s/2HRXZicyzHmrsFWUJ9JKdQ>。
+MAGIC特别有利于找时序变化基因、度量基因间的关系。发表MAGIC算法的Cell是更加高级的应用，可参考FigureYa177RNAvelocity ，有讲解视频。强烈推荐拖到视频的32分，听Jarning讲解那篇Cell文章使用MAGIC的思路，帮你找单细胞的时序变化基因、度量基因间的关系<https://mp.weixin.qq.com/s/2HRXZicyzHmrsFWUJ9JKdQ>。
 
 # 环境设置
 

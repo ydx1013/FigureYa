@@ -20,7 +20,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Requirement Description
 
-I want to crowdfund FigA-C, find the most significant mutations in the high and low risk groups after the prognostic model is established, and calculate the correlation between riskscore and sense and missense mutations, thank you
+I want to crowdsource FigA-C, find the most significant mutations in the high and low risk groups after the prognostic model is established, and calculate the correlation between riskscore and sense and missense mutations, thank you
 
 ![](example.png)
 

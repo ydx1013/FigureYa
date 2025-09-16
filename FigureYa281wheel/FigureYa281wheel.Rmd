@@ -65,11 +65,11 @@ Figure 7. Single-Cell Analysis of Differentiated In Vitro Human ESC and iPSC Cul
 
 特别适合两种独立分组方式的数据：外围的角代表第一种分组，点的颜色形状代表第二种分组，点跟角的距离代表数值高低。
 
-另外，还可以参考FigureYa235scDEG<https://k.youshop10.com/m=E-yK5Z>的画法，第一种分组从左往右一字排开，第二种分组画到上下两侧（如果超过两组就要再引入颜色、形状等特征来加以区分），点跟横轴的距离代表数值高低。
+另外，还可以参考FigureYa235scDEG的画法，第一种分组从左往右一字排开，第二种分组画到上下两侧（如果超过两组就要再引入颜色、形状等特征来加以区分），点跟横轴的距离代表数值高低。
 
 Particularly suitable for data with two independent grouping methods: the peripheral angles represent the first grouping, the color and shape of points represent the second grouping, and the distance from points to angles represents the magnitude of values.
 
-Additionally, you can refer to the visualization method in FigureYa235scDEG<https://k.youshop10.com/m=E-yK5Z>, where the first grouping is arranged from left to right in a straight line, the second grouping is plotted on the upper and lower sides (if there are more than two groups, additional features like color and shape need to be introduced to differentiate them), and the distance from points to the horizontal axis represents the magnitude of values.
+Additionally, you can refer to the visualization method in FigureYa235scDEG, where the first grouping is arranged from left to right in a straight line, the second grouping is plotted on the upper and lower sides (if there are more than two groups, additional features like color and shape need to be introduced to differentiate them), and the distance from points to the horizontal axis represents the magnitude of values.
 
 # 环境设置
 # Environment Setup

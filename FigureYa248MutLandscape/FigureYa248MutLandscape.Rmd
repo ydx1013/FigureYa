@@ -18,11 +18,11 @@ knitr::opts_chunk$set(echo = TRUE)
 
 Xiaofan Lu写的MOVICS包很神奇，一个包几乎就画出了分子分型文章的大部分图。Xiaofan Lu写的这篇预印本最近已接收，刚好可以作为MOVICS包的应用案例。接下来会连续实现这篇文章里的几个图。
 
-Figure2b的突变综合性热图，看起来非常酷炫。里头涉及的分析可参考相应的FigureYa，包括TMB计算，突变signature，突变频数，拷贝数变异情况等等。如果大鱼老师可以随便拟定数据画图也可以！
+Figure2b的突变综合性热图，看起来非常酷炫。里头涉及的分析可参考相应的FigureYa，包括TMB计算，突变signature，突变频数，拷贝数变异情况等等。如果Xiaofan Lu可以随便拟定数据画图也可以！
 
 # Requirement Description
 
-The MOVICS package I wrote was amazing, and a single package almost drew most of the diagram of the molecular typing article. This preprint I wrote was recently received and could be used as an example of the use case for the MOVICS package. Next, we will continue to crowdfund several pictures in this article.
+The MOVICS package I wrote was amazing, and a single package almost drew most of the diagram of the molecular typing article. This preprint I wrote was recently received and could be used as an example of the use case for the MOVICS package. Next, we will continue to crowdsource several pictures in this article.
 
 Figure2b's comprehensive heatmap of mutations looks really cool. The analysis involved in it is also available in FigureYa, including TMB calculation, mutation signature, mutation frequency, copy number variation, and so on.
 

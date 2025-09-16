@@ -43,7 +43,7 @@ Source: <https://www.nature.com/articles/ncomms15107>
 
 适合同时展示多组数据的多个特征。
 
-一组数据多个特征或多组数据一个特征，可参考FigureYa8radar <https://k.youshop10.com/XJpd8V=R>，画成花瓣雷达图。
+一组数据多个特征或多组数据一个特征，可参考FigureYa8radar ，画成花瓣雷达图。
 
 Calculate the subtype enrichment scores (SSEA) for pathways and plot radar charts of SSEA scores for each subtype.
 
@@ -51,7 +51,7 @@ If you only want to draw the radar chart, you can format your data according to 
 
 Suitable for simultaneously displaying multiple features across multiple datasets.
 
-A single dataset with multiple features or multiple datasets with a single feature, you can refer to FigureYa8radar <https://k.youshop10.com/XJpd8V=R> to create petal-style radar charts.
+A single dataset with multiple features or multiple datasets with a single feature, you can refer to FigureYa8radar  to create petal-style radar charts.
 
 # 环境设置
 # Environment Setup

@@ -1298,9 +1298,9 @@ rs <- lapply(val_dd_list2, function(x){cbind(x[,1:2], RS = as.numeric(predict(fi
 
 ![](B_lasso.pdf)
 
-A_lasso.pdf可以把基因名标注在图上，方法可参考FigureYa31lasso<https://k.youshop10.com/BflugKvZ>
+A_lasso.pdf可以把基因名标注在图上，方法可参考FigureYa31lasso
 
-For A_lasso.pdf, gene names can be labeled on the plot. Refer to FigureYa31lasso for method: <https://k.youshop10.com/BflugKvZ>
+For A_lasso.pdf, gene names can be labeled on the plot. Refer to FigureYa31lasso for method: 
 
 ## 图A - C指数的热图
 ## Figure A - Heatmap of C-indices

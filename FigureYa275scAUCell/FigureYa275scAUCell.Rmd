@@ -54,7 +54,7 @@ Fig. 2. ISG score of SLE PBMC cell clusters.
 
 This tutorial demonstrates how to calculate customized gene set scores in single-cell data using the AUCell package and visualize the results.
 
-Below are our crowdfunded FigureYa projects utilizing the AUCell package:
+Below are our crowdsourced FigureYa projects utilizing the AUCell package:
 
 - FigureYa194pySCENIC
 Computes regulon activity score (RAS) per cell using AUCell
@@ -392,11 +392,11 @@ head(ISGs.DEGs.filter)
 write.csv(ISGs.DEGs.filter, "output_ISGs.type.DEGs.filter.list.csv")
 ```
 
-最后选取High.ISGs组的基因去做GO和pathway，可以用Y叔的clusterProfiler包或者各种在线包，更多富集分析展示方式看这里<https://k.youshop10.com/sm2p0xYn>
+最后选取High.ISGs组的基因去做GO和pathway，可以用Y叔的clusterProfiler包或者各种在线包，更多富集分析展示方式看这里
 
 最核心还是找到适合自己研究思路的基因集！
 
-Finally, select genes from the High.ISGs group for GO and pathway analysis. You can use Dr. Y's clusterProfiler package or various online tools. For more enrichment visualization methods, see: <https://k.youshop10.com/sm2p0xYn>
+Finally, select genes from the High.ISGs group for GO and pathway analysis. You can use Dr. Y's clusterProfiler package or various online tools. For more enrichment visualization methods, see: 
 
 The key is to identify gene sets that align with your research objectives!
 

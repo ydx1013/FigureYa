@@ -49,7 +49,7 @@ e Line chart showing tissue prevalence for each cell type estimated by Ro/e scor
 
 输出：折线图（Proportion.pdf）和Ro/e表格
 
-把多组Ro/e绘制成热图，可参考FigureYa312CellPreference<https://k.youshop10.com/2Pg4u-pL>。
+把多组Ro/e绘制成热图，可参考FigureYa312CellPreference。
 
 Calculate cell proportion distribution specificity (Ro/e) based on single-cell data and plot a line graph
 
@@ -57,7 +57,7 @@ Input: Seurat object containing sample origin (Group) and cell type (Celltypes) 
 
 Output: Line graph (Proportion.pdf) and Ro/e table
 
-Plot the Ro/e values of multiple groups as a heatmap, refer to FigureYa312CellPreference<https://k.youshop10.com/2Pg4u-pL> for guidance.
+Plot the Ro/e values of multiple groups as a heatmap, refer to FigureYa312CellPreference for guidance.
 
 # 环境设置
 # Environment Setup

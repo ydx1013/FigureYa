@@ -32,7 +32,7 @@ Calculate the correlation between immune infiltration and genes and draw a graph
 
 From< https://mp.weixin.qq.com/s/tWJkLVDt1mx5COduw7H35w >
 
-The original idea was due to the idea of Guozi, which showed the relationship between the two transcripts and immune infiltration in this way, and was published on the official account of Guozi Student Letter< https://mp.weixin.qq.com/s/tWJkLVDt1mx5COduw7H35w >The friends also wanted to draw when they saw it, so we crowdfunded. Later, a friend published an article using this image for reference:
+The original idea was due to the idea of Guozi, which showed the relationship between the two transcripts and immune infiltration in this way, and was published on the official account of Guozi Student Letter< https://mp.weixin.qq.com/s/tWJkLVDt1mx5COduw7H35w >The friends also wanted to draw when they saw it, so we crowdsourced. Later, a friend published an article using this image for reference:
 
 ![](example2.png)
 

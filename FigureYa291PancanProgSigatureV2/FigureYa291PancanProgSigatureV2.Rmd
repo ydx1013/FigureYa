@@ -43,7 +43,7 @@ Figure 2 Prognostic performance of the 19-gene NETs score.
 
 在泛癌中计算某感兴趣得分并计算该得分与预后的相关性；绘制得分分布于预后散点图。
 
-更多泛癌FigureYa看这里 <https://k.youshop10.com/C8RkTgR3>
+更多泛癌FigureYa看这里 
 
 可以用FigureYa实现例文多个Figure，例如：
 
@@ -52,12 +52,12 @@ Figure 2 Prognostic performance of the 19-gene NETs score.
 - Figure 4AB，可参考FigureYa30
 - Figure 4C，可参考FigureYa85timeROC
 - Figure 4D，可参考FigureYa33DCA
-- Figure 5相关性结果展示，可参考 <https://k.youshop10.com/Eig1YOB4>
-- Figure 2B、6FGH森林图，可参考 <https://k.youshop10.com/Bc4bKvk3>
+- Figure 5相关性结果展示，可参考 
+- Figure 2B、6FGH森林图，可参考 
 
 Pan-cancer analysis: Calculate a score of interest and evaluate its correlation with prognosis; generate scatter plots showing the distribution of the score against prognostic outcomes.
 
-For more pan-cancer FigureYa examples, visit: <https://k.youshop10.com/C8RkTgR3>
+For more pan-cancer FigureYa examples, visit: 
 
 FigureYa can be used to reproduce multiple figures from the example article, such as:
 
@@ -66,8 +66,8 @@ FigureYa can be used to reproduce multiple figures from the example article, suc
 - Figures 4AB → Refer to FigureYa30
 - Figure 4C → Refer to FigureYa85timeROC
 - Figure 4D → Refer to FigureYa33DCA
-- Figure 5 (correlation results) → See <https://k.youshop10.com/Eig1YOB4>
-- Figures 2B & 6FGH (forest plots) → See <https://k.youshop10.com/Bc4bKvk3>
+- Figure 5 (correlation results) → See 
+- Figures 2B & 6FGH (forest plots) → See 
 
 # 环境设置
 # Environment Setup

@@ -20,7 +20,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Requirement Description
 
-I want to crowdfund this algorithm, use the CRISPR database to screen out the genes that affect the growth of certain tumor cells, and then combine it with the TCGA database, which is of great significance for the guidance of wet experiments. Thank you
+I want to crowdsource this algorithm, use the CRISPR database to screen out the genes that affect the growth of certain tumor cells, and then combine it with the TCGA database, which is of great significance for the guidance of wet experiments. Thank you
 
 ![](Method.png)
 

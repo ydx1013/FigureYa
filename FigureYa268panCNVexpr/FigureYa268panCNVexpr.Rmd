@@ -43,7 +43,7 @@ The other figures from this pan-cancer ferroptosis study, mainly Figure 1. It se
 - 1D (methylation status dot plot of ferroptosis genes in tumor vs. normal tissues)
 - 1E (scatter plot of correlation between ferroptosis transcriptome expression and promoter methylation)
 
-All these figures are pan-cancer analyses. I wonder if Xiaofan Lu could create separate crowdfunding tutorials using the example data? (Feels like it could even be a column—iScience reproduction, haha!)
+All these figures are pan-cancer analyses. I wonder if Xiaofan Lu could create separate crowdsourcing tutorials using the example data? (Feels like it could even be a column—iScience reproduction, haha!)
 
 This time, we’re drawing Figure 1C: the scatter plot showing the correlation between somatic copy number and gene expression of ferroptosis genes."
 

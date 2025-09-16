@@ -59,16 +59,16 @@ Identification of potential drug targets for high PPS score HCCs
 
 例文几个Figure的画法可参考相应的FigureYa：
 
-- Figure 2DE、Fig. S6和Fig. S8C，可参考FigureYa85timeROC<https://k.youshop10.com/4fJSKDPh>
-- Figure 3ABC，可参考FigureYa161stemness<https://k.youshop10.com/RS8tccc6>
-- Figure 5BC，可参考FigureYa59volcano<https://k.youshop10.com/spa8oEli>
-- Fig. S3，可参考FigureYa141risk<https://k.youshop10.com/AV2klAIh>
-- Fig. S4B，可参考FigureYa92immune_gene<https://k.youshop10.com/vTNicJZs>，C可参考FigureYa68friends<https://k.youshop10.com/q6wMD-0q>，D可参考FigureYa165heatmapPvalue<https://k.youshop10.com/XxLAKutg>
-- Fig. S5，可参考FigureYa30nomogram<https://k.youshop10.com/oBlq8jMz>，FigureYa138NiceCalibration<https://k.youshop10.com/Yyz4NqZl>
+- Figure 2DE、Fig. S6和Fig. S8C，可参考FigureYa85timeROC
+- Figure 3ABC，可参考FigureYa161stemness
+- Figure 5BC，可参考FigureYa59volcano
+- Fig. S3，可参考FigureYa141risk
+- Fig. S4B，可参考FigureYa92immune_gene，C可参考FigureYa68friends，D可参考FigureYa165heatmapPvalue
+- Fig. S5，可参考FigureYa30nomogram，FigureYa138NiceCalibration
 
-- FigureYa227boxdensity<https://k.youshop10.com/C2UZUXzD>复现了Figure 5D，展示两组之间对于索拉菲尼药物治疗敏感性的差异。
-- FigureYa212drugTarget<https://k.youshop10.com/gYOKpSA5>复现了Figure 5FG，利用细胞系表达谱（CCLE）及药敏结果（PRISM和CTRP），预测癌症样本的药敏结果。
-- FigureYa213customizeHeatmap<https://k.youshop10.com/ERfoCk=->复现了Figure 6，实现CMap analysis及画图。
+- FigureYa227boxdensity复现了Figure 5D，展示两组之间对于索拉菲尼药物治疗敏感性的差异。
+- FigureYa212drugTarget复现了Figure 5FG，利用细胞系表达谱（CCLE）及药敏结果（PRISM和CTRP），预测癌症样本的药敏结果。
+- FigureYa213customizeHeatmap复现了Figure 6，实现CMap analysis及画图。
 
 Identification of potential drug targets for high PPS score HCCs
 The previous analysis screened PPS genes for molecular subtyping, and now aims to identify potential drugs for patients with high PPS scores.
@@ -76,18 +76,18 @@ For your own data, you can replace PPS genes with gene sets of interest.
 
 The following figures from the example paper can be reproduced using the corresponding FigureYa tools:
 
-- Figure 2DE, Fig. S6, and Fig. S8C: Refer to FigureYa85timeROC <https://k.youshop10.com/4fJSKDPh>
-- Figure 3ABC: Refer to FigureYa161stemness <https://k.youshop10.com/RS8tccc6>
-- Figure 5BC: Refer to FigureYa59volcano <https://k.youshop10.com/spa8oEli>
-- Fig. S3: Refer to FigureYa141risk <https://k.youshop10.com/AV2klAIh>
-- Fig. S4B: Refer to FigureYa92immune_gene <https://k.youshop10.com/vTNicJZs>;
-C: Refer to FigureYa68friends <https://k.youshop10.com/q6wMD-0q>;
-D: Refer to FigureYa165heatmapPvalue <https://k.youshop10.com/XxLAKutg>
-- Fig. S5: Refer to FigureYa30nomogram <https://k.youshop10.com/oBlq8jMz> and FigureYa138NiceCalibration<https://k.youshop10.com/Yyz4NqZl>
+- Figure 2DE, Fig. S6, and Fig. S8C: Refer to FigureYa85timeROC 
+- Figure 3ABC: Refer to FigureYa161stemness 
+- Figure 5BC: Refer to FigureYa59volcano 
+- Fig. S3: Refer to FigureYa141risk 
+- Fig. S4B: Refer to FigureYa92immune_gene ;
+C: Refer to FigureYa68friends ;
+D: Refer to FigureYa165heatmapPvalue 
+- Fig. S5: Refer to FigureYa30nomogram  and FigureYa138NiceCalibration
 
-- FigureYa227boxdensity<https://k.youshop10.com/C2UZUXzD> reproduces Figure 5D, showing differences in sensitivity to sorafenib treatment between two groups.
-- FigureYa212drugTarget<https://k.youshop10.com/gYOKpSA5> reproduces Figure 5FG, predicting drug sensitivity in cancer samples using cell line expression profiles (CCLE) and drug response data (PRISM and CTRP).
-- FigureYa213customizeHeatmap<https://k.youshop10.com/ERfoCk=-> reproduces Figure 6, performing CMap analysis and visualization.
+- FigureYa227boxdensity reproduces Figure 5D, showing differences in sensitivity to sorafenib treatment between two groups.
+- FigureYa212drugTarget reproduces Figure 5FG, predicting drug sensitivity in cancer samples using cell line expression profiles (CCLE) and drug response data (PRISM and CTRP).
+- FigureYa213customizeHeatmap reproduces Figure 6, performing CMap analysis and visualization.
 
 # 环境设置
 # Environment Setup

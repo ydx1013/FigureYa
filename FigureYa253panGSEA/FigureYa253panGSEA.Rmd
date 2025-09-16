@@ -45,15 +45,15 @@ For further expansion, you can replace the above "expression level of a certain 
 
 > 本文档将提供这两种情况的解决方案。
 
-更多富集分析展示方式看这里<https://k.youshop10.com/sm2p0xYn>
+更多富集分析展示方式看这里
 
-更多pancancer分析画图FigureYa看这里<https://k.youshop10.com/C8RkTgR3>
+更多pancancer分析画图FigureYa看这里
 
 > This document will provide solutions for both scenarios.
 
-For more enrichment analysis display methods, see here <https://k.youshop10.com/sm2p0xYn>
+For more enrichment analysis display methods, see here 
 
-For more pancancer analysis plotting FigureYa see here <https://k.youshop10.com/C8RkTgR3>
+For more pancancer analysis plotting FigureYa see here 
 
 # 环境设置
 

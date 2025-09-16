@@ -40,7 +40,7 @@ A, Overlay of metabolic profiles (inner ring) with PDAC expression subtypes (out
 
 The mapping (agreement) between subtypes (or other categorical variables) is presented as a circular heatmap annotation.
 
-We have also crowdfunded Figure 1ABC for example, which selects co-expressed gene sets through gene consensus clustering, and then divides four types of samples according to the median expression profile, as shown in 'FigureYa202consensusGene'
+We have also crowdsourced Figure 1ABC for example, which selects co-expressed gene sets through gene consensus clustering, and then divides four types of samples according to the median expression profile, as shown in 'FigureYa202consensusGene'
 
 # 环境设置
 

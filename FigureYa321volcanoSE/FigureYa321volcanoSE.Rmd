@@ -47,17 +47,17 @@ FIGURE 5 Transcriptional and post-transcriptional characteristics related to WM_
 
 使用火山图展示差异分析结果。也可以使用FigureYa其他作者绘制的更复杂的火山图：
 
-- 一组：FigureYa59volcano <https://k.youshop10.com/spa8oEli>，FigureYa75baseVolcano   <https://k.youshop10.com/74G9Hb6K>
-- 多组：FigureYa135multiVolcano <https://k.youshop10.com/e-HIhe8N>，
-- 更多散点图：<https://k.youshop10.com/PqTXapih>
+- 一组：FigureYa59volcano ，FigureYa75baseVolcano   
+- 多组：FigureYa135multiVolcano ，
+- 更多散点图：
 
 The example focuses on PAAD but can be adapted to other TCGA cancer types.
 
 Use a volcano plot to display differential analysis results. Alternatively, more complex volcano plots created by other authors (e.g., FigureYa) can also be utilized.
 
-- A group: FigureYa59volcano <https://k.youshop10.com/spa8oEli>，FigureYa75baseVolcano  <https://k.youshop10.com/74G9Hb6K>
-- Multiple group: FigureYa135multiVolcano <https://k.youshop10.com/e-HIhe8N>，
-- More scatter plots: <https://k.youshop10.com/PqTXapih>
+- A group: FigureYa59volcano ，FigureYa75baseVolcano  
+- Multiple group: FigureYa135multiVolcano ，
+- More scatter plots: 
 
 # 环境设置
 # Environment Setup

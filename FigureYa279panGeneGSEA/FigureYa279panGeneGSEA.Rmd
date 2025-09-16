@@ -24,9 +24,9 @@ knitr::opts_chunk$set(echo = TRUE)
 # 需求描述
 # Demand description
 
-想把FigureYa253panGSEA<https://k.youshop10.com/QbM6nwGB>中的单基因多通路的泛癌富集分析改成"多基因，单通路的泛癌富集分析"，即把下图中的Y轴变成了基因，X轴还是癌种。
+想把FigureYa253panGSEA中的单基因多通路的泛癌富集分析改成"多基因，单通路的泛癌富集分析"，即把下图中的Y轴变成了基因，X轴还是癌种。
 
-I want to modify the pan-cancer enrichment analysis in FigureYa253panGSEA<https://k.youshop10.com/QbM6nwGB> from "single-gene multi-pathway" to "multi-gene single-pathway" analysis. That is, changing the Y-axis in the figure to show genes while keeping the X-axis as cancer types.
+I want to modify the pan-cancer enrichment analysis in FigureYa253panGSEA from "single-gene multi-pathway" to "multi-gene single-pathway" analysis. That is, changing the Y-axis in the figure to show genes while keeping the X-axis as cancer types.
 
 ![](example.png)
 
@@ -45,11 +45,11 @@ Figure 3. Relationships between Ferroptosis and Signaling Pathways and Immunophe
 
 基于特定基因两组数据，对每个肿瘤进行单基因集富集分析(GSEA)，展示某特定通路的富集情况。
 
-更多pancancer分析画图FigureYa看这里<https://k.youshop10.com/C8RkTgR3>
+更多pancancer分析画图FigureYa看这里
 
 Based on two groups of specific gene data, single gene set enrichment analysis (GSEA) was performed for each tumor to demonstrate the enrichment of a particular pathway.
 
-For more pan-cancer analysis and visualization (FigureYa), check here<https://k.youshop10.com/C8RkTgR3>
+For more pan-cancer analysis and visualization (FigureYa), check here
 
 # 环境设置
 # Environment Setup

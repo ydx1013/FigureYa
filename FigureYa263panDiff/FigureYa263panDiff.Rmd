@@ -31,7 +31,7 @@ knitr::opts_chunk$set(echo = TRUE)
 - 1D（铁死亡基因肿瘤与正常组织甲基化状态点图）
 - 1E（铁死亡转录组表达与启动子甲基化相关性的点图）
 
-这些图都是泛癌的，不知道大鱼老师可不可以用例文数据分别实现个教程？（感觉都可以出一期专栏——iSicence复现了哈哈）
+这些图都是泛癌的，不知道Xiaofan Lu可不可以用例文数据分别实现个教程？（感觉都可以出一期专栏——iSicence复现了哈哈）
 
 这次实现Figure 1B，铁死亡基因在肿瘤与正常的差异表达，绘制拼接的点图和柱状图。
 
@@ -66,11 +66,11 @@ For which the positive and negative regulators are marked in red and blue, respe
 
 分析基因在肿瘤与正常组织中的差异表达情况并绘制拼接的点图与柱状图。
 
-更多pancancer分析画图FigureYa看这里<https://k.youshop10.com/C8RkTgR3>
+更多pancancer分析画图FigureYa看这里
 
 Analyze differential gene expression between tumor and normal tissues and generate composite dot plots with bar charts.
 
-For more pan-cancer analysis and visualization tools (FigureYa series), visit <https://k.youshop10.com/C8RkTgR3>
+For more pan-cancer analysis and visualization tools (FigureYa series), visit 
 
 # 环境设置
 # Environment Setup

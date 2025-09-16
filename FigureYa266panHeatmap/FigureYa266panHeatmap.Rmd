@@ -262,9 +262,9 @@ for (i in tumors) {
 write.table(degRes,file = "log2fc of m6a genes between tumor and normal samples in pancancer.txt",sep = "\t",row.names = T,col.names = NA,quote = F)
 ```
 
-上面“差异表达分析”输出的TCGA_\*_limma_test_result.tumor_vs_normal.txt文件可无缝对接FigureYa59volcano<https://k.youshop10.com/QFx3=Jj1>，绘制美丽火山图。
+上面“差异表达分析”输出的TCGA_\*_limma_test_result.tumor_vs_normal.txt文件可无缝对接FigureYa59volcano，绘制美丽火山图。
 
-The output file TCGA_*_limma_test_result.tumor_vs_normal.txt from the "Differential Expression Analysis" section can be directly used with FigureYa59volcano<https://k.youshop10.com/QFx3=Jj1> to create high-quality volcano plots.
+The output file TCGA_*_limma_test_result.tumor_vs_normal.txt from the "Differential Expression Analysis" section can be directly used with FigureYa59volcano to create high-quality volcano plots.
 
 # 开始画图
 # Plotting

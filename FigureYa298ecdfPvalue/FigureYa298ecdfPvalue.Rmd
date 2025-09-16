@@ -74,7 +74,7 @@ ECDF图具有两大核心优势：
 
 出自：<https://seaborn.pydata.org/tutorial/distributions.html#tutorial-ecdf>，里面有关于其他分布的介绍，推荐扩展阅读。
 
-我们在FigureYa278heatmapPoints<https://k.youshop10.com/IZWXWn32>中也有类似的一个需求，用的是 `kruskal.test`，这种统计方法也可用来计算两种分布的P值.
+我们在FigureYa278heatmapPoints中也有类似的一个需求，用的是 `kruskal.test`，这种统计方法也可用来计算两种分布的P值.
 
 Compare distributions using the empirical cumulative distribution function (ECDF) and calculate the p-value between the two distributions.
 
@@ -85,7 +85,7 @@ The ECDF plot has two key advantages.
 
 This is from <https://seaborn.pydata.org/tutorial/distributions.html#tutorial-ecdf>, which includes an introduction to other distributions—recommended for further reading.
 
-We had a similar requirement in FigureYa278heatmapPoints <https://k.youshop10.com/IZWXWn32>, where we used the `kruskal.test`. This statistical method can also be used to compute the p-value between two distributions.
+We had a similar requirement in FigureYa278heatmapPoints , where we used the `kruskal.test`. This statistical method can also be used to compute the p-value between two distributions.
 
 # 环境设置
 # Environment Setup

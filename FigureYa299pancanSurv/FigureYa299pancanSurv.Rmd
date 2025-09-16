@@ -44,11 +44,11 @@ FIGURE 3 | (A) Summary of the correlation between expression of PDIA3 with overa
 
 在泛癌中根据某感兴趣基因的表达计算该表达与预后的相关性；绘制预后热图。
 
-更多泛癌FigureYa看这里<https://k.youshop10.com/C8RkTgR3>
+更多泛癌FigureYa看这里
 
 In pan-cancer analysis, calculate the correlation between the expression of a gene of interest and prognosis based on its expression; plot a prognostic heatmap.
 
-For more pan-cancer FigureYa, check here<https://k.youshop10.com/C8RkTgR3>
+For more pan-cancer FigureYa, check here
 
 # 环境设置
 # Environment Setup
@@ -76,7 +76,7 @@ options(stringsAsFactors = FALSE)
 # 输入文件
 # Input Files
 
-跟FigureYa291PancanProgSigature<https://k.youshop10.com/OH-gnWgI>的输入文件相同，不用重复下载。
+跟FigureYa291PancanProgSigature的输入文件相同，不用重复下载。
 
 merged_sample_quality_annotations.tsv，肿瘤注释文件。下载自<https://gdc.cancer.gov/about-data/publications/pancanatlas>，下载地址<http://api.gdc.cancer.gov/data/1a7d7be8-675d-4e60-a105-19d4121bdebf>。
 
@@ -84,7 +84,7 @@ EBPlusPlusAdjustPANCAN_IlluminaHiSeq_RNASeqV2.geneExp.tsv，表达矩阵，第�
 
 Survival_SupplementalTable_S1_20171025_xena_sp，生存数据。来自<https://xenabrowser.net/datapages/?dataset=Survival_SupplementalTable_S1_20171025_xena_sp&host=https%3A%2F%2Fpancanatlas.xenahubs.net&removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443>。
 
-The input files are the same as those for FigureYa291PancanProgSignature <https://k.youshop10.com/OH-gnWgI>, so there is no need to download them again.
+The input files are the same as those for FigureYa291PancanProgSignature , so there is no need to download them again.
 
 merged_sample_quality_annotations.tsv: Tumor annotation file. Downloaded from <https://gdc.cancer.gov/about-data/publications/pancanatlas>, direct download link: <http://api.gdc.cancer.gov/data/1a7d7be8-675d-4e60-a105-19d4121bdebf>.
 
