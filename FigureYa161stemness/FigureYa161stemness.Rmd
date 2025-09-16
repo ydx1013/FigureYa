@@ -298,9 +298,6 @@ save_plot("mRNAsi.pdf", p,base_width = 10,base_height = 8)
 ## 输入文件
 ## Input File
 
-GSE文件已上传到微云，下载链接：<https://share.weiyun.com/5X52f08>
-The GSE file has been uploaded to Weiyun. Download link: <https://share.weiyun.com/5X52f08>
-
 ```{r}
 exprSet <- data.table::fread("GSE85212_Methylation_763samples_SubtypeStudy_TaylorLab_beta_values.txt.gz")
 exprSet[1:5,1:5]
