@@ -38,24 +38,94 @@ install_bioc_package <- function(package_name) {
       cat("Successfully installed:", package_name, "\n")
     }, error = function(e) {
       cat("Failed to install", package_name, ":", e$message, "\n")
+      # 对于特定的包，尝试其他安装方法
+      if (package_name == "CMScaller") {
+        install_cmscaller_alternative()
+      }
     })
   } else {
     cat("Package already installed:", package_name, "\n")
   }
 }
 
+# 特殊处理 CMScaller 的安装
+install_cmscaller_alternative <- function() {
+  cat("尝试替代方法安装 CMScaller...\n")
+  
+  # 方法1: 从 GitHub 安装
+  tryCatch({
+    if (!is_package_installed("remotes")) {
+      install.packages("remotes")
+    }
+    remotes::install_github("peterawe/CMScaller")
+    cat("成功从 GitHub 安装 CMScaller\n")
+    return(TRUE)
+  }, error = function(e) {
+    cat("GitHub 安装失败:", e$message, "\n")
+  })
+  
+  # 方法2: 安装旧版本
+  tryCatch({
+    if (!is_package_installed("BiocManager")) {
+      install.packages("BiocManager")
+    }
+    BiocManager::install("CMScaller", version = "3.16")  # 尝试旧版本
+    cat("成功安装旧版本 CMScaller\n")
+    return(TRUE)
+  }, error = function(e) {
+    cat("旧版本安装失败:", e$message, "\n")
+  })
+  
+  # 方法3: 从源码安装
+  tryCatch({
+    install.packages("https://bioconductor.org/packages/release/bioc/src/contrib/CMScaller_1.0.0.tar.gz", 
+                    repos = NULL, type = "source")
+    cat("成功从源码安装 CMScaller\n")
+    return(TRUE)
+  }, error = function(e) {
+    cat("源码安装失败:", e$message, "\n")
+  })
+  
+  return(FALSE)
+}
+
+# 安装必要的系统依赖（对于 Linux）
+install_system_dependencies <- function() {
+  if (Sys.info()["sysname"] == "Linux") {
+    cat("在 Linux 系统上，建议安装以下系统依赖:\n")
+    cat("sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev\n")
+  }
+}
+
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
+# 安装系统依赖
+install_system_dependencies()
+
+# 首先安装 remotes 和必要的工具包
+if (!is_package_installed("remotes")) {
+  install_cran_package("remotes")
+}
+
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("ClassDiscovery", "gplots", "tidyverse")
+cran_packages <- c("ClassDiscovery", "gplots", "tidyverse", "devtools")
 
 for (pkg in cran_packages) {
   install_cran_package(pkg)
 }
 
-# Installing Bioconductor packages (包括 CMScaller)
+# 特别处理 gplots 的依赖
+if (!is_package_installed("gplots")) {
+  cat("特别注意：安装 gplots 的依赖...\n")
+  install_cran_package("gtools")
+  install_cran_package("gdata")
+  install_cran_package("caTools")
+  install_cran_package("KernSmooth")
+}
+
+# Installing Bioconductor packages
 cat("\nInstalling Bioconductor packages...\n")
 bioc_packages <- c("CMScaller", "ComplexHeatmap", "clusterProfiler", "org.Hs.eg.db")
 
@@ -63,6 +133,28 @@ for (pkg in bioc_packages) {
   install_bioc_package(pkg)
 }
 
+# 如果 CMScaller 仍然无法安装，提供替代方案
+if (!is_package_installed("CMScaller")) {
+  cat("\n警告：CMScaller 安装失败\n")
+  cat("可以尝试以下替代方案:\n")
+  cat("1. 手动实现 CMS 分类算法\n")
+  cat("2. 使用其他分型工具\n")
+  cat("3. 联系包作者或查看最新安装说明\n")
+}
+
 cat("\n===========================================\n")
 cat("Package installation completed!\n")
+
+# 验证安装
+cat("\n验证包安装状态:\n")
+required_packages <- c("ClassDiscovery", "gplots", "tidyverse", "CMScaller", 
+                      "ComplexHeatmap", "clusterProfiler", "org.Hs.eg.db")
+for (pkg in required_packages) {
+  if (is_package_installed(pkg)) {
+    cat("✓", pkg, "is installed\n")
+  } else {
+    cat("✗", pkg, "is NOT installed\n")
+  }
+}
+
 cat("You can now run your R scripts in this directory.\n")
