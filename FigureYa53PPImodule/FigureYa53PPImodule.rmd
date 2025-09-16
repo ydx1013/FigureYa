@@ -4,6 +4,10 @@ author: "Yangzhige He; Ying Ge, Yijing Chen"
 date: "2025-5-20"
 output: html_document
 ---
+# Academic Citation
+If you use this code in your work or research, we kindly request that you cite our publication:
+
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -36,26 +40,9 @@ For example, differential expression genes obtained from RNA-seq, see which gene
 ## 环境设置
 ## environment setting
 
-安装需要的包
-
-Install the required packages
-
-```r
-#使用国内镜像安装包
-#use the domestic mirror installation package
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-install.packages("dynamicTreeCut")
-install.packages("openxlsx")
-install.packages("stringr")
-install.packages("Matrix")
-install.packages("WGCNA")
-```
-
-加载需要用到的包
-
-Load the required packages
-
 ```{r}
+source("install_dependencies.R")
+
 library(dynamicTreeCut)
 library(openxlsx)
 library(stringr)
@@ -316,6 +303,8 @@ This step generates two files that can be used as input for cytoscape:
 ## Reference
 
 Dong J, Horvath S (2007) Understanding Network Concepts in Modules, BMC Systems Biology 2007, 1:24 PMID: 17547772 PMCID: PMC3238286
+
+# Session Info
 
 ```{r}
 sessionInfo()
