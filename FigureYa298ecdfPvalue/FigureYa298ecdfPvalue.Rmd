@@ -269,11 +269,8 @@ p2
 ggsave("ecdf_add_Pvalue.pdf", p2, height = 7, width = 7, device = "pdf")
 ```
 
-# 会话信息
 # Session Info
 
 ```{r}
-# 显示会话信息
-# Show session information
 sessionInfo()
 ```
