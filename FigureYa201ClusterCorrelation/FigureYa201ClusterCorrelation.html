@@ -394,12 +394,12 @@ divided.</p>
 ConsensusClusterPlus for consensus clustering, which can be used for
 mutual reference and flexible use to design more interesting display
 methods.</p>
-<blockquote>
-<p>“小丫画图群-数据处理”里的小伙伴CR问：“什么叫非监督共识聚类？”</p>
-</blockquote>
+</div>
+<div id="问什么叫非监督共识聚类" class="section level1">
+<h1>问：“什么叫非监督共识聚类？”</h1>
 <p>ConsensusClusterPlus包的描述：ConsensusClusterPlus function for
 determing cluster number and class membership by stability evidence.</p>
-<p>大鱼海棠作出以下解答：</p>
+<p>Xiaofan Lu作出以下解答：</p>
 <ul>
 <li><strong>共识聚类</strong>是对原数据集重新抽样，对抽样子集做聚类。
 <ul>
@@ -434,11 +434,9 @@ clustering</strong>.</p>
 </div>
 <div id="环境设置" class="section level1">
 <h1>环境设置</h1>
-<p>使用国内镜像安装包</p>
 </div>
 <div id="environment-settings" class="section level1">
 <h1>Environment settings</h1>
-<p>Use the domestic mirror installation package</p>
 <pre class="r"><code>source(&quot;install_dependencies.R&quot;)</code></pre>
 <pre><code>## Starting R package installation...
 ## ===========================================
@@ -452,9 +450,6 @@ clustering</strong>.</p>
 ## ===========================================
 ## Package installation completed!
 ## You can now run your R scripts in this directory.</code></pre>
-<pre class="r"><code>options(&quot;repos&quot;= c(CRAN=&quot;https://mirrors.tuna.tsinghua.edu.cn/CRAN/&quot;))
-options(BioC_mirror=&quot;http://mirrors.tuna.tsinghua.edu.cn/bioconductor/&quot;)</code></pre>
-<p>加载包 load packages</p>
 <pre class="r"><code>library(ConsensusClusterPlus)
 library(pheatmap)
 
@@ -701,8 +696,8 @@ pheatmap(plotdata,
 ## [16] fastmap_1.2.0       yaml_2.3.10         lifecycle_1.0.4    
 ## [19] cluster_2.1.8.1     compiler_4.5.1      RColorBrewer_1.1-3 
 ## [22] farver_2.1.2        digest_0.6.37       R6_2.6.1           
-## [25] dichromat_2.0-0.1   bslib_0.9.0         tools_4.5.1        
-## [28] gtable_0.3.6        BiocGenerics_0.54.0 cachem_1.1.0</code></pre>
+## [25] bslib_0.9.0         tools_4.5.1         gtable_0.3.6       
+## [28] BiocGenerics_0.54.0 cachem_1.1.0</code></pre>
 </div>
 
 

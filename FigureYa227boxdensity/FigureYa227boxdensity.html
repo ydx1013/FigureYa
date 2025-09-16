@@ -405,11 +405,9 @@ and scatter plot.</p>
 </div>
 <div id="环境设置" class="section level1">
 <h1>环境设置</h1>
-<p>使用国内镜像安装包</p>
 </div>
 <div id="environment-settings" class="section level1">
 <h1>Environment settings</h1>
-<p>Use the domestic mirror installation package</p>
 <pre class="r"><code>source(&quot;install_dependencies.R&quot;)</code></pre>
 <pre><code>## Starting R package installation...
 ## ===========================================
@@ -424,13 +422,10 @@ and scatter plot.</p>
 ## ===========================================
 ## Package installation completed!
 ## You can now run your R scripts in this directory.</code></pre>
-<pre class="r"><code>options(&quot;repos&quot;= c(CRAN=&quot;https://mirrors.tuna.tsinghua.edu.cn/CRAN/&quot;))
-options(BioC_mirror=&quot;http://mirrors.tuna.tsinghua.edu.cn/bioconductor/&quot;)</code></pre>
-<p>加载包 load packages</p>
 <pre class="r"><code>library(ggplot2)
 library(data.table)
 library(aplot)</code></pre>
-<pre><code>## aplot v0.2.8 For help: https://github.com/YuLab-SMU/aplot/issues
+<pre><code>## aplot v0.2.9 For help: https://github.com/YuLab-SMU/aplot/issues
 ## 
 ## If you use aplot in published research, please cite the paper:
 ## 
@@ -597,7 +592,7 @@ invisible(dev.off())</code></pre>
 ## [1] stats     graphics  grDevices utils     datasets  methods   base     
 ## 
 ## other attached packages:
-## [1] dplyr_1.1.4       ggpubr_0.6.1      aplot_0.2.8       data.table_1.17.8
+## [1] dplyr_1.1.4       ggpubr_0.6.1      aplot_0.2.9       data.table_1.17.8
 ## [5] ggplot2_4.0.0    
 ## 
 ## loaded via a namespace (and not attached):
@@ -608,9 +603,9 @@ invisible(dev.off())</code></pre>
 ## [17] patchwork_1.3.2    generics_0.1.4     Formula_1.2-5      knitr_1.50        
 ## [21] backports_1.5.0    yulab.utils_0.2.1  tibble_3.3.0       car_3.1-3         
 ## [25] bslib_0.9.0        pillar_1.11.0      RColorBrewer_1.1-3 rlang_1.1.6       
-## [29] broom_1.0.9        cachem_1.1.0       xfun_0.53          fs_1.6.6          
+## [29] broom_1.0.10       cachem_1.1.0       xfun_0.53          fs_1.6.6          
 ## [33] sass_0.4.10        S7_0.2.0           cli_3.6.5          withr_3.0.2       
-## [37] magrittr_2.0.3     digest_0.6.37      grid_4.5.1         rappdirs_0.3.3    
+## [37] magrittr_2.0.4     digest_0.6.37      grid_4.5.1         rappdirs_0.3.3    
 ## [41] lifecycle_1.0.4    vctrs_0.6.5        rstatix_0.7.2      evaluate_1.0.5    
 ## [45] glue_1.8.0         farver_2.1.2       abind_1.4-8        carData_3.0-5     
 ## [49] purrr_1.1.0        rmarkdown_2.29     tools_4.5.1        pkgconfig_2.0.3   

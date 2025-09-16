@@ -395,7 +395,6 @@ base plot. You can also try to draw it using ggplot2.</p>
 </div>
 <div id="environment-setup" class="section level1">
 <h1>Environment Setup</h1>
-<p>使用国内镜像安装包 Use the domestic mirror installation package</p>
 <pre class="r"><code>source(&quot;install_dependencies.R&quot;)</code></pre>
 <pre><code>## Starting R package installation...
 ## ===========================================
@@ -406,9 +405,6 @@ base plot. You can also try to draw it using ggplot2.</p>
 ## ===========================================
 ## Package installation completed!
 ## You can now run your R scripts in this directory.</code></pre>
-<pre class="r"><code>options(&quot;repos&quot;= c(CRAN=&quot;https://mirrors.tuna.tsinghua.edu.cn/CRAN/&quot;))
-options(BioC_mirror=&quot;http://mirrors.ustc.edu.cn/bioc/&quot;)</code></pre>
-<p>加载包 Loading package</p>
 <pre class="r"><code>library(shape) #用于画箭头 # For drawing arrows
 
 Sys.setenv(LANGUAGE = &quot;en&quot;) #显示英文报错信息  # displays an English error message
