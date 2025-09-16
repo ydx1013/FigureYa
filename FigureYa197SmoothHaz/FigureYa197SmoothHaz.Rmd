@@ -10,7 +10,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -69,28 +68,9 @@ For extended implementations of this visualization approach in peer-reviewed stu
 # 环境设置
 # Environment settings
 
-
 ```{r}
 source("install_dependencies.R")
-```
 
-```{r eval=FALSE}
-install.packages("muhaz")
-install.packages("export")
-
-#下载export，https://cran.r-project.org/src/contrib/Archive/export/
-#Download export，https://cran.r-project.org/src/contrib/Archive/export/
-#安装依赖的包
-#Install the dependent packages
-install.packages(c("rvg", "flextable", "rgl", "stargazer"))
-#本地安装export
-#Install export locally
-install.packages("export_0.2.2.tar.gz", repos = NULL, type = "source")
-```
-
-load package
-
-```{r}
 library(survival)
 library(survminer)# 生存分析 # Survival analysis
 library(openxlsx) # 读取数据 # Read the data
