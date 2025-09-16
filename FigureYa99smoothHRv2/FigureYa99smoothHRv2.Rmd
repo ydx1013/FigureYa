@@ -11,10 +11,8 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-# 设置knitr的全局代码块选项 / Set global chunk options for knitr
 ```
 
 ## 需求描述
@@ -90,7 +88,7 @@ easy_input.csv，因为是生存分析的风险计算，所以生存状态（fst
 
 数据来源：smmothHR包自带数据whas500，选了4个变量保存到easy_input.csv文件，便于小伙伴模仿格式。该测试结果仅展示如何对连续变量进行RCS下的Cox回归，无任何临床意义。
 
-具体到实际问题，如果要控制其他因素对风险的影响，就要纳入更多的变量，这个没有固定的。这个实现只是实现如何利用三次样条量化连续变量对HR的影响，具体要多少变量，具体问题具体分析，毕竟这是一个统计问题，没有通解。
+具体到实际问题，如果要控制其他因素对风险的影响，就要纳入更多的变量，这个没有固定的。这次只是实现如何利用三次样条量化连续变量对HR的影响，具体要多少变量，具体问题具体分析，毕竟这是一个统计问题，没有通解。
 
 ## Input file
 
@@ -98,7 +96,7 @@ easy_input.csv， As it is a risk calculation for survival analysis, survival st
 
 Data source: The smmothHR package comes with the built-in data whas500. Four variables were selected and saved to the easy_input.csv file for easy imitation by users. The test results only demonstrate how to perform Cox regression under RCS for continuous variables and have no clinical significance.
 
-In practical terms, if we want to control the impact of other factors on risk, we need to include more variables, which is not fixed. This crowdfunding is just about how to use cubic spline to quantify the impact of continuous variables on HR, how many variables are needed, and how to analyze the specific problems. After all, this is a statistical problem and there is no general solution.
+In practical terms, if we want to control the impact of other factors on risk, we need to include more variables, which is not fixed. This time is just about how to use cubic spline to quantify the impact of continuous variables on HR, how many variables are needed, and how to analyze the specific problems. After all, this is a statistical problem and there is no general solution.
 
 ```{r}
 # 读取心脏病研究数据集 - 从CSV文件导入数据
@@ -269,6 +267,8 @@ invisible(dev.off()) # 关闭图形设备 - Close PDF device
 ```
 
 ![](smooth HR with RCS.pdf)
+
+# Session Info
 
 ```{r}
 sessionInfo()
