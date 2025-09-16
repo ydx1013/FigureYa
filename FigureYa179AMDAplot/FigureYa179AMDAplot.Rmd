@@ -50,7 +50,6 @@ You can also use your own data to draw such a heat map with local secondary labe
 
 # Environment Setup
 
-
 ```{r message=FALSE, warning=FALSE}
 source("install_dependencies.R")
 
@@ -92,9 +91,6 @@ The following takes a disease in Part-2 as an example to demonstrate the calcula
 
 实际应用时，如果已经准备好了基因表达矩阵，可跳过这步，直接进入“差异表达分析”。如果已经做好差异表达分析，就直接进入“输入文件”。
 In practical application, if the gene expression matrix has already been prepared, this step can be skipped and you can directly enter "Differential expression Analysis". If the differential expression analysis has been completed, directly enter the "Input File".
-
-中间文件已上传至微云<https://share.weiyun.com/c1ToPq7z>
-Cloud is a kind of intermediate files uploaded to < https://share.weiyun.com/c1ToPq7z >
 
 ## 清洗TCGA-BLCA数据
 
