@@ -11,7 +11,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -43,15 +42,9 @@ Use single-cell DNA sequencing data to calculate the diversity score to evaluate
 ## 环境设置
 ## Environment settings
 
-
 ```{r, eval = F}
 source("install_dependencies.R")
-install.packages('Seurat')
-```
 
-Load package
-
-```{r}
 library(Seurat)
 library(magrittr)
 library(ggplot2)
@@ -126,9 +119,6 @@ Set 1 contains scRNA-seq data of twelve samples, i.e., S16_P10_LCP18, S02_P01_LC
 - H37 - S21_P13_LCP37,
 - H38 - S15_P09_LCP38, 
 - C39 - S19_P11_LCP39. 
-
-> 担心你下载不顺利，小丫把这四个文件上传到微云，下载链接：<https://share.weiyun.com/54uouqH>，下载后解压缩是个文件夹`data`，放在跟`FigureYa150diversityScore.Rmd`文件同一级目录下。
-> Worried that you may not be able to download smoothly, Xiaoya uploaded these four files to Weiyun, download link: <https://share.weiyun.com/54uouqH>, after downloading and unzipping, there is a folder `data`, which is placed in the same directory as the `FigureYa150diversityScore.Rmd` file.
 
 ```{r}
 umi <- Read10X(data.dir = "data/")
@@ -222,6 +212,8 @@ ggplot(ggData,
   theme(legend.position = "none")
 ggsave("diversityScore.pdf", width = 2, height = 3)
 ```
+
+# Session Info
 
 ```{r}
 sessionInfo()
