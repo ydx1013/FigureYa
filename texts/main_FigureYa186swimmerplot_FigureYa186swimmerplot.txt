@@ -28,11 +28,7 @@ refer to FigureYa39bar.
 base plot. You can also try to draw it using ggplot2.
 环境设置
 Environment Setup
-使用国内镜像安装包 Use the domestic mirror installation package
 source("install_dependencies.R")
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
-加载包 Loading package
 library(shape) #用于画箭头 # For drawing arrows
 
 Sys.setenv(LANGUAGE = "en") #显示英文报错信息  # displays an English error message

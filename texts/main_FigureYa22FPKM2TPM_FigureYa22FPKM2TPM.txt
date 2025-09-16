@@ -2,12 +2,19 @@ FigureYa22 FPKM2TPM
 FigureYa22 FPKM2TPM
 Ying Ge; Yijing Chen
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
-requirement description
+Requirement description
 把RNA-seq的FPKM转换成TPM。
 Convert FPKM from RNA-seq to TPM
 应用场景
-application scenario
+Application scenario
 RNA-seq基因表达量是FPKM，想转变成TPM。不仅限于TCGA数据。
 FPKM跟TPM的计算都考虑了基因长度，因此相对于read
 count转TPM来说，从FPKM转TPM最方便快捷。
@@ -32,6 +39,7 @@ If you have saved your own RNA-seq data in
 easy_input.txt
 format, skip this step and go directly to
 “Input data”.
+source("install_dependencies.R")
 #source("https://bioconductor.org/biocLite.R")
 #biocLite("TCGAbiolinks")
 library(TCGAbiolinks)
@@ -90,4 +98,5 @@ colSums(tpms)
 #把TPM值保存到文件
 #save TPM values to file
 write.table(tpms,"TCGA_FPKM2TPM.genes.txt",quote = F)
+Session Info
 sessionInfo()

@@ -2,12 +2,19 @@ FigureYa245VarDecompose
 FigureYa245VarDecompose
 Jianing Gao
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
-我想众筹这篇文献的Fig.2b，使用RNA-seq来衡量基因的表达保守性。
+我想实现这篇文献的Fig.2b，使用RNA-seq来衡量基因的表达保守性。
 基因在物种之间表达量的保守性，想用来分析非编码RNA在不同物种之间的表达保守性。
 Requirement Description
-I would like to crowdfund Fig.2b of this article, using RNA-seq to
-measure the conserved expression of genes.
+I would like to draw Fig.2b of this article, using RNA-seq to measure
+the conserved expression of genes.
 The conservation of gene expression between species was intended to
 analyze the expression conservation of non-coding RNAs between
 species.
@@ -101,13 +108,8 @@ model for each gene, and the contribution of two random effects, species
 and tissue, to the variance of gene expression was calculated
 Drawing, reproduction Fig.2b
 环境设置
-使用国内镜像安装包
 Environment settings
-Use the domestic mirror installation package
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
-install.packages(c("foreach", "doParallel"))
-加载包 load packages
+source("install_dependencies.R")
 suppressPackageStartupMessages({
   library(tidyverse)
   library(lme4) # 用于实现linear mixed model (LMM) # Used to implement linear mixed model (LMM)
@@ -164,7 +166,7 @@ human <- human[orthologs$`Gene stable ID`, ] %>% as_tibble()
 mouse <- mouse[orthologs$`Mouse gene stable ID`, ] %>% as_tibble()
 data <- cbind(human, mouse)
 2) 数据重构，使之方便应用线性混合模型
-#2) Data reconstruction to facilitate the application of linear
+2) Data reconstruction to facilitate the application of linear
 hybrid models
 data <- data %>% 
   mutate(GenePairs = paste(Human_Gene.Name, Mouse_Gene.Name, sep = "_"), .before = 1) %>% 

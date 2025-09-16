@@ -57,13 +57,8 @@ calibration belt, I speculate that the author should have written it
 wrong, after consulting the literature, The discovery should be drawn
 through the givitiR package.
 环境设置
-使用国内镜像安装包
 Environment settings
-Use the domestic mirror installation package
 source("install_dependencies.R")
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
-加载包 load packages
 library(givitiR)  # 绘制GiViTI calibration belt # Draw the GiViTI calibration belt
 library(foreign)  # 读入sav格式文件 # Load the SAV file
 library(rms)      # 拟合模型 # Fitting the model

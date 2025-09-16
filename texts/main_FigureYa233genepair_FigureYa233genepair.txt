@@ -2,11 +2,18 @@ FigureYa233genepair
 FigureYa233genepair
 Xiaofan Lu
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
-想众筹按照文中的方法构建基因对预后模型
+想按照文中的方法构建基因对预后模型
 Requirement Description
-I want to crowdfund to construct a gene pair prognostic model
-according to the method in this paper
+I want to construct a gene pair prognostic model according to the
+method in this paper
 出自
 https://molecular-cancer.biomedcentral.com/articles/10.1186/s12943-017-0666-z
 from
@@ -119,14 +126,8 @@ independent datasets
 from different laboratories and platforms
 .
 环境设置
-使用国内镜像安装包
 Environment settings
-Use the domestic mirror installation package
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
-install.packages("matlab")
-install.packages("EnvStats")
-加载包 load packages
+source("install_dependencies.R")
 library(matlab)
 library(EnvStats)
 library(pheatmap)

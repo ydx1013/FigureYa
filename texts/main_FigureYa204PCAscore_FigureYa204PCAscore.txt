@@ -10,12 +10,12 @@ Framework for Enhancing Biomedical Data Interpretation and Research
 Efficiency. iMetaMed.
 https://doi.org/10.1002/imm3.70005
 需求描述
-想众筹下这个文章的建模方法，不同于常规的lasso,
+想实现下这个文章的建模方法，不同于常规的lasso,
 cox回归系数与基因表达量的乘积，这篇文章采用Boruta降维，联合主成分分析第一主成分构建
 signature score，特别适合做分子分型分析。
 Requirement Description
-I want to crowdfund the modeling method of this article, which is
-different from the conventional lasso, the product of the cox regression
+I want to try the modeling method of this article, which is different
+from the conventional lasso, the product of the cox regression
 coefficient and the gene expression, this article uses Boruta to reduce
 the dimension and combine the principal component analysis with the
 first principal component to construct a signature score, which is
@@ -33,14 +33,8 @@ the ICI signature results, the Boruta algorithm was used to reduce the
 dimensionality of AB signatures, and the single-sample ICI score was
 calculated by PCA.
 环境设置
-使用国内镜像安装包
 Environment settings
-Use the domestic mirror installation package
 source("install_dependencies.R")
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
-install.packages('Boruta')
-加载包 load package
 library(Boruta)
 library(ggplot2)
 library(ggpubr)

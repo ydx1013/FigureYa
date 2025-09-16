@@ -11,9 +11,9 @@ Efficiency. iMetaMed.
 https://doi.org/10.1002/imm3.70005
 需求描述
 Requirement
-求众筹Fig 2，输入seer数据，循环cox模型，lowess平滑并绘图。 Find the
-crowdfunding Fig 2, input the seer data, loop the cox model, smooth it
-with lowess and plot it.
+求实现Fig 2，输入seer数据，循环cox模型，lowess平滑并绘图。 To draw
+the Fig 2, input the seer data, loop the cox model, smooth it with
+lowess and plot it.
 出自
 https://ascopubs.org/doi/full/10.1200/JCO.2016.67.5140
 fromhttps://ascopubs.org/doi/full/10.1200/JCO.2016.67.5140
@@ -39,12 +39,7 @@ data from the SEER database as an example, which can also be used for
 our own data.
 环境设置
 Environment Setup
-使用国内镜像安装包 Use the domestic mirror installation package
 source("install_dependencies.R")
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
-install.packages("strucchange")
-加载包 Loading package
 library(survival)
 library(strucchange)
 Sys.setenv(LANGUAGE = "en") #显示英文报错信息   # Display an English error message

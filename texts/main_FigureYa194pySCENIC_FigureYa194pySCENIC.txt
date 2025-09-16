@@ -29,7 +29,6 @@ mouse
 and
 fly
 (Drosophila melanogaster)这三个物种。
-关注“小丫画图”微信公众号，回复“194”，查看作者对文章method的解读。
 下面开始复现文章中的Figure 1、2、3
 环境设置
 作者在发出文章的时候，pySCENIC还没有开发完成，作者应该是使用R-SCENIC分析的，R-SCENIC的性能远不如pySCENIC

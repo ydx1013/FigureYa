@@ -2,10 +2,17 @@ FigureYa230ImmuneLandscape
 FigureYa230ImmuneLandscape
 Xiaofan Lu
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
-我想众筹一个多种算法的风险值和免疫细胞相关性热图（文中Figure 7）
+我想实现一个多种算法的风险值和免疫细胞相关性热图（文中Figure 7）
 Requirement Description
-I would like to crowdfund a heat map of risk value and immune cell
+I would like to draw a heat map of risk value and immune cell
 correlation for multiple algorithms (Figure 7 in the article)
 出自
 https://www.ijbs.com/v17p0702.htm
@@ -21,15 +28,10 @@ group.
 原文使用了pheatmap的方式对不同的算法做了行注释，我这里提供两种方法；
 ①原文的pheatmap::pheatmap展示
 ②采用ComplexHeatmap::pheatmap对不同算法采用不同颜色的热图，后垂直衔接热图展示
-图中各种打分的计算方法可参考我们众筹过的FigureYa：
+图中各种打分的计算方法可参考我们实现过的FigureYa：
 计算CIBERSORT得分、ESTIMATE得分，可参考FigureYa211multiCohortImmSubtype
-https://k.youshop10.com/VwpAWxx0
 ssGSEA，可参考FigureYa71ssGSEA
-https://k.youshop10.com/hhH631te
-TIMER，从网站下载TIMER数据可参考FigureYa234panImmune
-https://k.youshop10.com/Qis-lxH=
-，用immunedeconv包进行TIMER打分可参考FigureYa264epiImmune
-https://k.youshop10.com/3FtJ=KyB
+TIMER，从网站下载TIMER数据可参考FigureYa234panImmune，用immunedeconv包进行TIMER打分可参考FigureYa264epiImmune
 Application Scenarios
 Multiple heat maps are drawn together.
 In this example, a comprehensive heat map of the results obtained
@@ -43,27 +45,16 @@ The original pheatmap: :p heatmap display
 ComplexHeatmap: :p heatmap uses different colors for different
 algorithms, and then vertically connects the heatmap to display
 The calculation methods of various scores in the figure can be
-referred to our crowdfunded FigureYa:
+referred to:
 To calculate the CIBERSORT score and ESTIMATE score, see
 FigureYa211multiCohortImmSubtype
-https://k.youshop10.com/VwpAWxx0
 ssGSEA, see FigureYa71ssGSEA
-https://k.youshop10.com/hhH631te
 TIMER, for downloading TIMER data from the website, please refer to
-FigureYa234panImmune
-https://k.youshop10.com/Qis-lxH=
-, and for TIMER scoring
-with the immunedeconv package, please refer to FigureYa264epiImmune
-https://k.youshop10.com/3FtJ=KyB
+FigureYa234panImmune, and for TIMER scoring with the immunedeconv
+package, please refer to FigureYa264epiImmune
 环境设置
-使用国内镜像安装包
 Environment settings
-Use the domestic mirror installation package
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
-BiocManager::install("ComplexHeatmap")
-BiocManager::install("pheatmap")
-加载包 load packages
+source("install_dependencies.R")
 library(RColorBrewer)
 library(circlize)
 library(gplots)

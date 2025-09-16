@@ -2,6 +2,13 @@ FigureYa219GMM
 FigureYa219GMM
 Xiaofan Lu
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
 这篇文章里用了高斯混合模型，从10个候选miRNA筛出了8个，并且获得了每个miRNA的系数，计算riskscore。
 Requirement Description
@@ -25,15 +32,8 @@ calculated, the optimal model cluster was determined by Gaussian mixture
 model clustering, and the final prediction model was obtained according
 to the highest AUC.
 环境设置
-使用国内镜像安装包
 Environment settings
-Use the domestic mirror installation package
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
-BiocManager::install("miRBaseVersions.db")
-BiocManager::install("miRBaseConverter")
-BiocManager::install("SimDesign")
-加载包 load packages
+source("install_dependencies.R")
 library(mclust)
 library(miRBaseVersions.db)
 library(miRBaseConverter)

@@ -2,6 +2,13 @@ FigureYa231scScore
 FigureYa231scScore
 Yi Xiong
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
 tsne降维，标记GO功能
 Requirement Description
@@ -60,12 +67,8 @@ can also be displayed in the form of violin diagram, and the
 significance of the difference of pathway between groups can be
 calculated, which can be referred to FigureYa160scGSVA.
 环境设置
-使用国内镜像安装包
 Environment settings
-Use the domestic mirror installation package
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
-加载包
+source("install_dependencies.R")
 library(tidyverse)
 library(Seurat)
 library(GO.db)

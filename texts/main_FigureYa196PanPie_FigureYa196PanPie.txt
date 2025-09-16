@@ -28,24 +28,13 @@ from the TCGA.
 LUAD（g）肿瘤样本中 PRE 临床病理因素的卡方检验。
 应用场景
 搞清楚输入数据跟图的对应关系、理解每部分代码所画的内容，就可以套用到更多类型的数据上。
-更多泛癌的图看这里
-https://k.koudai.com/Wi1xos9X
 Application Scenarios
 Once you understand the mapping between input data and visual
 outputs, as well as the role of each code block in generating plots, you
-can adapt this workflow to broader data types. Explore additional
-pan-cancer visualizations here:
-https://k.koudai.com/Wi1xos9X
+can adapt this workflow to broader data types.
 环境设置
-使用国内镜像安装包
 Environment Configuration
-Use domestic mirrors for package installation to accelerate downloads
-and bypass international network restrictions.
 source("install_dependencies.R")
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
-install.packages(c("dplyr", "ggplot2"))
-加载包 load package
 library(dplyr)
 library(ggplot2)
 Sys.setenv(LANGUAGE = "en") #显示英文报错信息 # error messages are displayed in English

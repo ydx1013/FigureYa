@@ -1,12 +1,18 @@
 FigureYa237circVenn
 FigureYa237circVenn
-Yandong Zheng
+Xiao Gu
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
-丫姐好，我想众筹这幅韦恩图，觉得蛮有意思的
+我想实现这幅韦恩图，觉得蛮有意思的
 Requirement Description
-Hello sister Ya, I want to crowdfund this Venn diagram, I think it’s
-quite interesting
+I want to draw this Venn diagram, I think it’s quite interesting
 出自
 https://www.mdpi.com/2073-4425/11/5/544
 from
@@ -30,13 +36,8 @@ FigureYa112venn
 and if there are too many groups to compare, you can draw a donut chart
 like the example text.
 环境设置
-使用国内镜像安装包
 Environment settings
-Use the domestic mirror installation package
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
-install.packages("ggVennDiagram")
-加载包 load packages
+source("install_dependencies.R")
 library(ggVennDiagram) # 找overlap基因 # Find overlap genes
 library(ggplot2)
 library(magrittr)

@@ -2,8 +2,15 @@ FigureYa198SignatureCombinationV2
 FigureYa198SignatureCombinationV2
 Xiaofan Lu
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
-我想众筹下文章figure 1c的计算方法，FigureYa182RFSurv挑出了importance
+我想实现下文章figure 1c的计算方法，FigureYa182RFSurv挑出了importance
 比较大的基因，后续常规用muticox等方法再缩减基因。这篇文章写的是用1023中组合按KM的
 logRank pvalue和基因数目挑选模型，不一样的风格。
 Requirement Description
@@ -38,11 +45,7 @@ combination with a significant p-value and a smaller number of genes is
 selected as the prognostic signature.
 环境设置
 Environment settings
-使用国内镜像安装包 Use the domestic mirror installation package
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
-install.packages("randomForestSRC")
-加载包 load package
+source("install_dependencies.R")
 library(survival)
 library(randomForestSRC)
 Sys.setenv(LANGUAGE = "en") #显示英文报错信息 # error messages are displayed in English
@@ -180,7 +183,7 @@ if(n.sum == 2^num.imp-1) { # 如果总和不等则报错 # If the sum is not equ
 开始画图
 绘制火山图
 Start drawing
-#Draw a volcano map
+Draw a volcano map
 sigpoints <- Coxoutput.OS[which(Coxoutput.OS$pvalue < cox.pcutoff),]
 unsigpoints <- Coxoutput.OS[which(Coxoutput.OS$pvalue >= cox.pcutoff),]
 

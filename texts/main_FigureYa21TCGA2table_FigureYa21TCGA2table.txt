@@ -2,13 +2,20 @@ FigureYa21TCGA2table
 FigureYa21TCGA2table
 Guangchuang Yu; Ying Ge, Yijing Chen
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
-requirement description
+Requirement description
 TCGA临床数据直接用R代码画出三线表。
 Draw a three-line table directly using R code for TCGA clinical
 data.
 使用场景
-usage scenario
+Usage scenario
 输入数据是临床样品信息，例如TCGA提供的clinical information。
 根据年龄、性别、种族、病毒感染、吸烟史等特征进行分类对比，可能发现疾病、癌症发病、转移、耐药跟这些特征的关系，例如发现亚洲非吸烟女性肺癌发病率高。
 如果还想加入某个基因的表达数据，计算单因素和多因素cox回归的HR，可参考FigureYa47HRtable，还能生成html、word、csv格式的表格。
@@ -24,15 +31,8 @@ calculate the HR of one-way and multi-factor cox regression, you can
 refer to FigureYa47HRtable, which can also generate tables in html, word
 and csv formats.
 环境设置
-environment setting
-使用国内镜像安装包
-use the domestic mirror installation package
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
-BiocManager::install("TCGAbiolinks")
-install.packages("kableExtra")
-加载包
-load package
+Environment setting
+source("install_dependencies.R")
 library(TCGAbiolinks)
 library(dplyr)
 library(kableExtra)
@@ -103,7 +103,7 @@ xx = x %>% filter(vital_status != "" & person_neoplasm_cancer_status != "")
 按项细分
 Breakdown by item
 性别
-gender
+Gender
 #还记得前面提取的x1是生存状态是“Alive”的行，把这些行按性别分组
 #remember the rows where x1 was extracted with the survival status "Alive" and group these rows by gender
 s1 = x1 %>% group_by(gender) %>% summarise(alive=n())
@@ -449,4 +449,5 @@ texi2pdf("FigureYa21TCGA2table_latex.tex")
 = F}”
 Note: If you want the form page to not show the code, replace line
 224 with this, “```{r eval=T, echo = F}”
+Session Info
 sessionInfo()

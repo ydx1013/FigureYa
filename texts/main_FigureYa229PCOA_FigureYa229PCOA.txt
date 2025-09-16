@@ -2,6 +2,13 @@ FigureYa229PCOA
 FigureYa229PCOA
 Xiaofan Lu
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
 把PCOA的散点图变成这样的：
 Requirement Description
@@ -45,9 +52,7 @@ in the validation cohort
 应用场景
 转录组的表达矩阵都有成千上万个基因，这类高维度数据很难直接进行可视化展示。
 为了能够在二维平面上展示，就需要对其进行降维，PCA分析是目前最常用的降维工具。
-实际应用时，想突出强调自己想要展示的特征，就需要变换展示方式。我们画过各种图来展示PCA结果
-https://k.koudai.com/MnKusbPT
-：
+实际应用时，想突出强调自己想要展示的特征，就需要变换展示方式：
 样本量不太大、区分比较好，可以画经典的带圈（置信区间）、带箭头的PCA，画法可参考FigureYa38PCA；
 大部分情况两个主成分就够了，有时你可能需要3个主成分才能区分开，就需要画3D
 PCA展示三个主成分，可参考FigureYa164PCA3D；
@@ -62,10 +67,7 @@ In order to be able to display it on a two-dimensional plane, it is
 necessary to reduce the dimensionality, and PCA analysis is the most
 commonly used dimensionality reduction tool at present.
 In practice, if you want to highlight the features you want to show,
-you need to change the way you display them. We have drawn various
-graphs to illustrate the PCA results
-https://k.koudai.com/MnKusbPT
-:
+you need to change the way you display them:
 If the sample size is not too large and the discrimination is good,
 you can draw the classic PCA with circles (confidence intervals) and
 arrows, and refer to FigureYa38PCA for the drawing method;
@@ -87,14 +89,8 @@ The authors used the PERMANOVA test to analyze the significance of
 differences between groups, as described in “Appendix: PERMANOVA test
 (2-way adonis)”.
 环境设置
-使用国内镜像安装包
 Environment settings
-Use the domestic mirror installation package
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
-install.packages("ape")
-install.packages("usedist")
-加载包 load packages
+source("install_dependencies.R")
 library(vegan)        #用于计算距离矩阵 # Used to calculate the distance matrix
 library(ape)          #做PCoA # Do PCoA
 library(RColorBrewer) #配色 # Color matching

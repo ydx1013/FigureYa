@@ -80,13 +80,8 @@ the shade of color to show specific values, or use shapes and colors to
 show HR and pvalue at the same time, you can refer to
 FigureYa97correlation.
 环境设置
-使用国内镜像安装包
 Environment settings
-Use the domestic mirror installation package
 source("install_dependencies.R")
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
-加载包 load package
 library(data.table)
 library(survival)
 library(pheatmap)
@@ -98,9 +93,7 @@ easy_input_gene.txt，例文中的m6A基因，用到
 Symbol
 列，将提取这些基因的表达矩阵。
 tcga_RSEM_gene_tpm和gencode.v23.annotation.gene.probemap，表达矩阵和Gene
-mapping，跟FigureYa208FPI的一样，微云链接：
-https://share.weiyun.com/c8GQyxR4
-。
+mapping，跟FigureYa208FPI的一样。
 建议自己动手，从xena网站下载
 ，下载方式：
 这里跟FigureYa55panCancer_violin保持一致，从
@@ -149,12 +142,8 @@ easy_input_gene.txt, the m6A gene in the example is used in the
 ‘Symbol’ column to extract the expression matrix of these
 genes.
 tcga_RSEM_gene_tpm and gencode.v23.annotation.gene.probemap,
-expression matrix and gene mapping, the same as FigureYa208FPI,
-microcloud link:
-https://share.weiyun.com/c8GQyxR4
-。
-It is
-recommended to do it yourself, download it from the Xena
+expression matrix and gene mapping, the same as FigureYa208FPI
+It is recommended to do it yourself, download it from the Xena
 website
 , download method:
 Consistent with FigureYa55panCancer_violin here, download UCSC

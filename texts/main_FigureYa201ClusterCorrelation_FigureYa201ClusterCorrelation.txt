@@ -33,10 +33,10 @@ FigureYa154immuneSubtypes and FigureYa202consensusGene also use
 ConsensusClusterPlus for consensus clustering, which can be used for
 mutual reference and flexible use to design more interesting display
 methods.
-“小丫画图群-数据处理”里的小伙伴CR问：“什么叫非监督共识聚类？”
+问：“什么叫非监督共识聚类？”
 ConsensusClusterPlus包的描述：ConsensusClusterPlus function for
 determing cluster number and class membership by stability evidence.
-大鱼海棠作出以下解答：
+Xiaofan Lu作出以下解答：
 共识聚类
 是对原数据集重新抽样，对抽样子集做聚类。
 多次重复
@@ -76,13 +76,8 @@ supervised
 clustering
 .
 环境设置
-使用国内镜像安装包
 Environment settings
-Use the domestic mirror installation package
 source("install_dependencies.R")
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
-加载包 load packages
 library(ConsensusClusterPlus)
 library(pheatmap)
 
