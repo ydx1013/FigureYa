@@ -11,15 +11,13 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-# 设置knitr代码块的全局选项 / Set global options for knitr code chunks
 ```
 
 # 需求描述
 
-小丫姐好，我还有很多小伙伴想实现这篇铁死亡泛癌的其他图片，主要是Figure 1。感觉这个套路只要换一个通路就可以测试，我看大鱼老师写了这篇文章的Figure 2A（铁死亡基因在泛癌肿瘤与正常的差异箱线图，FigureYa208FPI），Figure 3B（铁死亡与免疫通路的相关性，FigureYa253panGSEA），可否请大鱼老师详细写一下文章Figure 1的相关代码？
+想实现这篇铁死亡泛癌的其他图片，主要是Figure 1。感觉这个套路只要换一个通路就可以测试，我看Xiaofan Lu写了这篇文章的Figure 2A（铁死亡基因在泛癌肿瘤与正常的差异箱线图，FigureYa208FPI），Figure 3B（铁死亡与免疫通路的相关性，FigureYa253panGSEA），可否请Xiaofan Lu详细写一下文章Figure 1的相关代码？
 
 - 1A（铁死亡在泛癌中体细胞拷贝数变异情况，绘制条形图，可参考FigureYa265panCNV）
 - 1B（铁死亡基因在肿瘤与正常的差异表达，绘制拼接的点图和柱状图，可参考FigureYa263panDiff）
@@ -27,13 +25,13 @@ knitr::opts_chunk$set(echo = TRUE)
 - 1D（铁死亡基因肿瘤与正常组织甲基化状态点图，可参考FigureYa270panMeth）
 - 1E（铁死亡转录组表达与启动子甲基化相关性的点图）
 
-这些图都是泛癌的，不知道大鱼老师可不可以用例文数据分别实现个教程 [皱眉] ？（感觉都可以出一期专栏——iSicence复现了哈哈）
+这些图都是泛癌的，不知道Xiaofan Lu可不可以用例文数据分别实现个教程 [皱眉] ？（感觉都可以出一期专栏——iSicence复现了哈哈）
 
 这次实现Figure 1E，铁死亡转录组表达与启动子甲基化相关性的点图。
 
 # Requirement description
 
-Hello Xiaoya, I have many other friends who want to crowdfund for this iron death pan cancer image, mainly Figure 1. I feel that this routine can be tested by simply changing the pathway. I saw that Professor Dayu wrote Figure 2A (Box plot of differences in ferroptosis genes between pan cancer tumors and normal, Figure Ya208FPI) and Figure 3B (Correlation between ferroptosis and immune pathways) in this article, FigureYa253panGSEA）， Could you please ask Teacher Big Fish to write the relevant code for Figure 1 in detail?
+For Figure 1. I feel that this routine can be tested by simply changing the pathway. I saw that Xiaofan Lu wrote Figure 2A (Box plot of differences in ferroptosis genes between pan cancer tumors and normal, Figure Ya208FPI) and Figure 3B (Correlation between ferroptosis and immune pathways) in this article, FigureYa253panGSEA）， Could you please ask Xiaofan Lu to write the relevant code for Figure 1 in detail?
 
 -1A (Iron induced cell copy number variation in pan cancer, plot a bar chart, refer to FigureYa265panCNV)
 -1B (Differential expression of ferroptosis genes between tumors and normal, plot concatenated dot plots and bar charts, refer to FigureYa263panDiff)
@@ -41,9 +39,9 @@ Hello Xiaoya, I have many other friends who want to crowdfund for this iron deat
 -1D (Methylation status point map of iron death gene tumors and normal tissues, refer to Figure Ya270panMeth)
 -1E (Point plot of correlation between iron death transcriptome expression and promoter methylation)
 
-These images are all pan cancerous. Can Big Fish Teacher crowdfund a tutorial using example text data? (I feel like I could even publish a column - iSicence has reproduced it haha)
+These images are all pan cancerous. Can Xiaofan Lu write a tutorial using example text data? (I feel like I could even publish a column - iSicence has reproduced it haha)
 
-Figure 1E, a dot plot of the correlation between iron death transcriptome expression and promoter methylation, was raised for this crowdfunding campaign.
+Figure 1E, a dot plot of the correlation between iron death transcriptome expression and promoter methylation.
 
 ![](example.png)
 
@@ -64,20 +62,11 @@ Analyze the correlation between gene transcriptome expression and promoter methy
 
 # 环境设置
 
-
 # Environment settings
-
-Use domestic image installation package
 
 ```{r}
 source("install_dependencies.R")
 
-
-```
-
-
-
-```{r}
 # 加载数据分析与可视化所需的R包
 # Load R packages for data analysis and visualization
 library(ggplot2)            # 高级数据可视化包
