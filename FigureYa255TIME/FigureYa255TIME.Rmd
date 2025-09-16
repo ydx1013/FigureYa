@@ -11,7 +11,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -19,7 +18,7 @@ knitr::opts_chunk$set(echo = TRUE)
 # 需求描述# Requirement Description
 
 Figure3a的免疫landscape，包括免疫检查点的表达，免疫signature的富集，免疫/基质得分的估计还有甲基化淋巴细胞的定量（Xiaofan Lu老师真是热图高手！）这里主要就是这个DNA甲基化淋巴细胞的定量计算，不知道是怎么来的，所有TCGA数据都可以计算吗？
-The immune landscape of Figure 3a includes immune checkpoint expression, immune signature enrichment, immune/stromal score estimation, and methylated lymphocyte quantification (Dayu Haitang is truly a heatmap expert!). The main goal here is to calculate the quantification of DNA methylated lymphocytes. I'm not sure where this came from, but can this be performed on all TCGA data?
+The immune landscape of Figure 3a includes immune checkpoint expression, immune signature enrichment, immune/stromal score estimation, and methylated lymphocyte quantification (Xiaofan Lu is truly a heatmap expert!). The main goal here is to calculate the quantification of DNA methylated lymphocytes. I'm not sure where this came from, but can this be performed on all TCGA data?
 
 ![](example.png)
 
@@ -35,7 +34,7 @@ FIGURE 3 Differential immune profile across MIBC subtypes and its association wi
 # Application Scenarios
 
 Xiaofan Lu写了一个神奇的R包——[MOVICS](https://academic.oup.com/bioinformatics/article/36/22-23/5539/6033582)，用自己的数据跑一遍，文章里的key figure就出来了。怎么把这些图组织到一起讲故事呢？这篇文章是个很好的应用MOVICS的例子。
-Dayu Haitang wrote an amazing R package called [MOVICS](https://academic.oup.com/bioinformatics/article/36/22-23/5539/6033582). Run it with your own data, and you'll instantly see the key figures from your article. How can you organize these figures to tell a story? This article provides a great example of MOVICS.
+Xiaofan Lu wrote an amazing R package called [MOVICS](https://academic.oup.com/bioinformatics/article/36/22-23/5539/6033582). Run it with your own data, and you'll instantly see the key figures from your article. How can you organize these figures to tell a story? This article provides a great example of MOVICS.
 
 根据甲基化计算DNA methylation of tumour-infiltrating lymphocyte (MeTIL)得分，并根据免疫检查点表达和肿瘤免疫微环境富集绘制热图。
 We calculated DNA methylation of tumor-infiltrating lymphocyte (MeTIL) scores based on methylation, and created heatmaps based on immune checkpoint expression and tumor immune microenvironment enrichment.
@@ -44,19 +43,19 @@ We calculated DNA methylation of tumor-infiltrating lymphocyte (MeTIL) scores ba
 We previously used the estimate package in FigureYa170ImmuLncRNA to calculate tumor purity.
 
 例文中很多图我们都实现过，例如：
-Many of the figures in the example article were crowdfunded, for example:
+Many of the figures in the example article:
 
 - Figure 1b的画法可参考FigureYa196PanPie
 - Figure 2a的算法可参考FigureYa249Regulon，b的画法可参考FigureYa248MutLandscape
 - Figure 3de可产考FigureYa25sankey和FigureYa125Fishertest
-- Figure 4f可参考FigureYa106immunotherapy，4h可参考
+- Figure 4f可参考FigureYa106immunotherapy
 - Figure 5b可参考FigureYa12box，f可参考FigureYa162boxViolin
 - Figure 6可参考FigureYa35batch_bestSeparation，FigureYa144DiagHeatmap或<https://mp.weixin.qq.com/s/34WRZRBVPHUNRLlzNH2nzw>
 - Figure S4a可参考FigureYa251NPHSurv
 - For the plotting method of Figure 1b, refer to FigureYa196PanPie
 - For the algorithm of Figure 2a, refer to FigureYa249Regulon; for the plotting method of Figure 2b, refer to FigureYa248MutLandscape
 - For Figure 3d, refer to FigureYa25Sankey and FigureYa125Fishertest
-- For Figure 4f, refer to FigureYa106immunotherapy; for Figure 4h, refer to 
+- For Figure 4f, refer to FigureYa106immunotherapy
 - For Figure 5b, refer to FigureYa12box; for Figure 5f, refer to FigureYa162boxViolin
 - For Figure 6, refer to FigureYa35batch_bestSeparation, FigureYa144DiagHeatmap, or <https://mp.weixin.qq.com/s/34WRZRBVPHUNRLlzNH2nzw>
 - For Figure S4a, refer to FigureYa251NPHSurv
@@ -64,25 +63,10 @@ Many of the figures in the example article were crowdfunded, for example:
 # 环境设置
 # Environment Setup
 
-
 ```{r}
 source("install_dependencies.R")
-```
-
-```{r eval=FALSE}
-BiocManager::install("Biobase")
-BiocManager::install("GSVA")
-BiocManager::install("ComplexHeatmap")
 
 library(utils)
-rforge <- "http://r-forge.r-project.org"
-install.packages("estimate", repos=rforge, dependencies=TRUE)
-install.packages("R.utils")
-```
-
-加载包Load the package
-
-```{r}
 library(GSVA)
 library(ComplexHeatmap) # 用到里面的pheatmap画图然后拼图，需安装2.8以上版本的ComplexHeatmap # Use the pheatmap function to plot and then assemble the image. You must have ComplexHeatmap version 2.8 or later installed.
 source("pheatmap_translate.R") # 如果不想放弃较老版本的R及其对应的老ComplexHeatmap，可以只加载新版ComplexHeatmap里的这个函数，该脚本出自2.9.4版ComplexHeatmap # If you don't want to abandon an older version of R and its corresponding ComplexHeatmap, you can just load this function from the newer ComplexHeatmap version. This script is from ComplexHeatmap version 2.9.4.
