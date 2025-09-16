@@ -11,169 +11,269 @@ is_package_installed <- function(package_name) {
   return(package_name %in% rownames(installed.packages()))
 }
 
-# Function to install CRAN packages
-install_cran_package <- function(package_name) {
+# Function to install CRAN packages with better error handling
+install_cran_package <- function(package_name, max_attempts = 2) {
   if (!is_package_installed(package_name)) {
     cat("Installing CRAN package:", package_name, "\n")
-    tryCatch({
-      install.packages(package_name, dependencies = TRUE)
-      cat("Successfully installed:", package_name, "\n")
-    }, error = function(e) {
-      cat("Warning: Failed to install", package_name, ":", e$message, "\n")
-      cat("This might be available on Bioconductor instead\n")
-    })
+    
+    for (attempt in 1:max_attempts) {
+      tryCatch({
+        install.packages(package_name, dependencies = TRUE, quiet = FALSE)
+        if (is_package_installed(package_name)) {
+          cat("✅ Successfully installed:", package_name, "\n")
+          return(TRUE)
+        }
+      }, error = function(e) {
+        cat("Attempt", attempt, "failed:", e$message, "\n")
+        if (attempt == max_attempts) {
+          cat("❌ Failed to install", package_name, "\n")
+          return(FALSE)
+        }
+        Sys.sleep(2)
+      })
+    }
   } else {
-    cat("Package already installed:", package_name, "\n")
+    cat("✅ Package already installed:", package_name, "\n")
+    return(TRUE)
   }
 }
 
 # Function to install Bioconductor packages
-install_bioc_package <- function(package_name) {
+install_bioc_package <- function(package_name, max_attempts = 2) {
   if (!is_package_installed(package_name)) {
     cat("Installing Bioconductor package:", package_name, "\n")
-    tryCatch({
-      if (!is_package_installed("BiocManager")) {
-        install.packages("BiocManager")
-      }
-      BiocManager::install(package_name, update = FALSE, ask = FALSE)
-      cat("Successfully installed:", package_name, "\n")
-    }, error = function(e) {
-      cat("Warning: Failed to install", package_name, ":", e$message, "\n")
-    })
+    
+    if (!is_package_installed("BiocManager")) {
+      install_cran_package("BiocManager")
+    }
+    
+    for (attempt in 1:max_attempts) {
+      tryCatch({
+        BiocManager::install(package_name, update = FALSE, ask = FALSE, quiet = FALSE)
+        if (is_package_installed(package_name)) {
+          cat("✅ Successfully installed:", package_name, "\n")
+          return(TRUE)
+        }
+      }, error = function(e) {
+        cat("Attempt", attempt, "failed:", e$message, "\n")
+        if (attempt == max_attempts) {
+          cat("❌ Failed to install", package_name, "\n")
+          return(FALSE)
+        }
+        Sys.sleep(2)
+      })
+    }
   } else {
-    cat("Package already installed:", package_name, "\n")
+    cat("✅ Package already installed:", package_name, "\n")
+    return(TRUE)
   }
 }
 
-# Function to install kpmt from GitHub (since it's not on CRAN or Bioconductor)
-install_kpmt_from_github <- function() {
+# Function to install kpmt (critical dependency for ChAMP)
+install_kpmt <- function() {
   if (!is_package_installed("kpmt")) {
-    cat("Installing kpmt from GitHub...\n")
-    tryCatch({
-      if (!is_package_installed("remotes")) {
-        install.packages("remotes")
+    cat("Attempting to install kpmt (required for ChAMP)...\n")
+    
+    # Try multiple methods to install kpmt
+    methods <- c(
+      # Method 1: Try CRAN (unlikely but possible)
+      function() install_cran_package("kpmt"),
+      
+      # Method 2: Try Bioconductor
+      function() install_bioc_package("kpmt"),
+      
+      # Method 3: Try GitHub (most likely)
+      function() {
+        if (!is_package_installed("remotes")) {
+          install_cran_package("remotes")
+        }
+        tryCatch({
+          remotes::install_github("tpq/kpmt")
+          if (is_package_installed("kpmt")) {
+            cat("✅ Successfully installed kpmt from GitHub\n")
+            return(TRUE)
+          }
+        }, error = function(e) {
+          cat("GitHub installation failed:", e$message, "\n")
+          return(FALSE)
+        })
+      },
+      
+      # Method 4: Try installing from source
+      function() {
+        tryCatch({
+          install.packages("https://cran.r-project.org/src/contrib/Archive/kpmt/kpmt_0.1.0.tar.gz", 
+                          repos = NULL, type = "source")
+          if (is_package_installed("kpmt")) {
+            cat("✅ Successfully installed kpmt from source\n")
+            return(TRUE)
+          }
+        }, error = function(e) {
+          cat("Source installation failed:", e$message, "\n")
+          return(FALSE)
+        })
       }
-      remotes::install_github("tpq/kpmt")
-      cat("Successfully installed kpmt from GitHub\n")
-    }, error = function(e) {
-      cat("Warning: Failed to install kpmt from GitHub:", e$message, "\n")
-      cat("This will cause ChAMP installation to fail\n")
-    })
+    )
+    
+    # Try each method until one works
+    for (method in methods) {
+      if (method()) {
+        return(TRUE)
+      }
+    }
+    
+    cat("❌ All methods failed to install kpmt\n")
+    return(FALSE)
   } else {
-    cat("kpmt package already installed\n")
+    cat("✅ kpmt package already installed\n")
+    return(TRUE)
   }
 }
 
 # Function to install ChAMP with special handling
-install_champ_special <- function() {
+install_champ <- function() {
   if (!is_package_installed("ChAMP")) {
-    cat("Installing ChAMP with special handling...\n")
+    cat("Installing ChAMP package...\n")
     
-    # First install kpmt (critical dependency)
-    install_kpmt_from_github()
+    # First install kpmt
+    if (!install_kpmt()) {
+      cat("⚠️  kpmt installation failed - ChAMP may not work properly\n")
+    }
     
-    # Install other ChAMP dependencies
-    cat("Installing ChAMP dependencies...\n")
-    champ_dependencies <- c(
+    # Install ChAMP dependencies first
+    champ_deps <- c(
       "minfi", "limma", "sva", "impute", "preprocessCore", "DNAcopy", 
       "marray", "qvalue", "IlluminaHumanMethylation450kmanifest",
       "IlluminaHumanMethylation450kanno.ilmn12.hg19"
     )
     
-    for (pkg in champ_dependencies) {
+    cat("Installing ChAMP dependencies...\n")
+    for (dep in champ_deps) {
+      install_bioc_package(dep)
+    }
+    
+    # Try multiple methods to install ChAMP
+    methods <- c(
+      # Method 1: Standard Bioconductor installation
+      function() install_bioc_package("ChAMP"),
+      
+      # Method 2: Install specific version
+      function() {
+        tryCatch({
+          BiocManager::install("ChAMP@2.32.0", update = FALSE, ask = FALSE)  # Older version
+          if (is_package_installed("ChAMP")) {
+            cat("✅ Successfully installed ChAMP version 2.32.0\n")
+            return(TRUE)
+          }
+        }, error = function(e) {
+          cat("Version-specific installation failed:", e$message, "\n")
+          return(FALSE)
+        })
+      },
+      
+      # Method 3: Install from GitHub
+      function() {
+        if (!is_package_installed("remotes")) {
+          install_cran_package("remotes")
+        }
+        tryCatch({
+          remotes::install_github("YuanTian1991/ChAMP")
+          if (is_package_installed("ChAMP")) {
+            cat("✅ Successfully installed ChAMP from GitHub\n")
+            return(TRUE)
+          }
+        }, error = function(e) {
+          cat("GitHub installation failed:", e$message, "\n")
+          return(FALSE)
+        })
+      }
+    )
+    
+    # Try each method
+    for (method in methods) {
+      if (method()) {
+        return(TRUE)
+      }
+    }
+    
+    cat("❌ All methods failed to install ChAMP\n")
+    return(FALSE)
+  } else {
+    cat("✅ ChAMP package already installed\n")
+    return(TRUE)
+  }
+}
+
+# Alternative approach: use minfi instead of ChAMP if ChAMP fails
+setup_methylation_analysis <- function() {
+  if (!install_champ()) {
+    cat("\n⚠️  ChAMP installation failed. Setting up alternative methylation analysis...\n")
+    cat("Installing minfi and related packages for methylation analysis...\n")
+    
+    minfi_packages <- c(
+      "minfi", "limma", "sva", "impute", "preprocessCore", "IlluminaHumanMethylation450kmanifest",
+      "IlluminaHumanMethylation450kanno.ilmn12.hg19", "DMRcate", "missMethyl"
+    )
+    
+    for (pkg in minfi_packages) {
       install_bioc_package(pkg)
     }
     
-    # Now try to install ChAMP
-    tryCatch({
-      if (!is_package_installed("BiocManager")) {
-        install.packages("BiocManager")
-      }
-      BiocManager::install("ChAMP", update = FALSE, ask = FALSE)
-      if (is_package_installed("ChAMP")) {
-        cat("Successfully installed ChAMP\n")
-      } else {
-        cat("ChAMP installation may have failed\n")
-      }
-    }, error = function(e) {
-      cat("Warning: Failed to install ChAMP:", e$message, "\n")
-      
-      # Try alternative: install from GitHub
-      cat("Trying to install ChAMP from GitHub...\n")
-      tryCatch({
-        if (!is_package_installed("remotes")) {
-          install.packages("remotes")
-        }
-        remotes::install_github("YuanTian1991/ChAMP")
-        cat("GitHub installation attempt completed\n")
-      }, error = function(e2) {
-        cat("GitHub installation also failed:", e2$message, "\n")
-      })
-    })
-  } else {
-    cat("ChAMP package already installed\n")
+    cat("✅ Alternative methylation analysis packages installed\n")
+    cat("You may need to modify your code to use minfi instead of ChAMP\n")
   }
 }
 
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
-# First install BiocManager if not already installed
-if (!is_package_installed("BiocManager")) {
-  cat("Installing BiocManager...\n")
-  install.packages("BiocManager")
-}
+# Install basic utilities first
+cat("Installing basic utilities...\n")
+install_cran_package("BiocManager")
+install_cran_package("remotes")
 
-# Install remotes for GitHub packages
-if (!is_package_installed("remotes")) {
-  install.packages("remotes")
-}
-
-# Installing CRAN packages
+# Install CRAN packages
 cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("RColorBrewer", "survival", "tidyverse", "remotes")
-
+cran_packages <- c("RColorBrewer", "survival", "tidyverse", "ggplot2", "dplyr")
 for (pkg in cran_packages) {
   install_cran_package(pkg)
 }
 
-# Special handling for ChAMP and its dependencies
-cat("\nInstalling ChAMP and its dependencies...\n")
-install_champ_special()
+# Setup methylation analysis (ChAMP or alternative)
+cat("\nSetting up methylation analysis packages...\n")
+setup_methylation_analysis()
 
 # Install other Bioconductor packages
 cat("\nInstalling other Bioconductor packages...\n")
-other_bioc_packages <- c("minfi")  # minfi might already be installed as dependency
-
+other_bioc_packages <- c("minfi", "limma")  # Ensure these are installed
 for (pkg in other_bioc_packages) {
-  if (!is_package_installed(pkg)) {
-    install_bioc_package(pkg)
-  }
+  install_bioc_package(pkg)
 }
 
 cat("\n===========================================\n")
 cat("Package installation completed!\n")
 
-# Check if all required packages are installed
-cat("\nChecking installed packages:\n")
+# Final check
+cat("\nFinal package status:\n")
 required_packages <- c("RColorBrewer", "survival", "tidyverse", "minfi", "ChAMP")
-all_installed <- TRUE
-
 for (pkg in required_packages) {
   if (is_package_installed(pkg)) {
-    cat("✓", pkg, "is installed\n")
+    cat("✅", pkg, "\n")
   } else {
-    cat("✗", pkg, "is NOT installed\n")
-    all_installed <- FALSE
+    cat("❌", pkg, "(not installed)\n")
   }
 }
 
-# Provide troubleshooting advice if ChAMP failed
+# Provide guidance based on installation results
 if (!is_package_installed("ChAMP")) {
-  cat("\nChAMP installation failed. Troubleshooting options:\n")
-  cat("1. Try installing an older Bioconductor version: BiocManager::install(version = '3.16')\n")
-  cat("2. Install system dependencies: sudo apt-get install libcurl4-openssl-dev libxml2-dev\n")
-  cat("3. Use alternative methylation packages like minfi directly\n")
+  cat("\n⚠️  ChAMP was not installed. You have two options:\n")
+  cat("1. Use minfi package instead for methylation analysis\n")
+  cat("2. Manually install kpmt and ChAMP:\n")
+  cat("   - Install system dependencies: libcurl4-openssl-dev libxml2-dev\n")
+  cat("   - Try: remotes::install_github('tpq/kpmt')\n")
+  cat("   - Then: BiocManager::install('ChAMP')\n")
+} else {
+  cat("\n✅ All packages installed successfully!\n")
 }
 
 cat("You can now run your R scripts in this directory.\n")
