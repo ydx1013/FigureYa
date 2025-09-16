@@ -1,17 +1,17 @@
 #!/usr/bin/env Rscript
-# Auto-generated R dependency installation script
-# This script installs all required R packages for this project
+# 修复后的 R 依赖安装脚本
+# 专门针对 FigureYa19Lollipop.Rmd 的依赖
 
-# Set up mirrors for better download performance
+# 设置镜像
 options("repos" = c(CRAN = "https://cloud.r-project.org/"))
 options(BioC_mirror = "https://bioconductor.org/")
 
-# Function to check if a package is installed
+# 检查包是否已安装
 is_package_installed <- function(package_name) {
   return(package_name %in% rownames(installed.packages()))
 }
 
-# Function to install CRAN packages
+# 安装 CRAN 包
 install_cran_package <- function(package_name) {
   if (!is_package_installed(package_name)) {
     cat("Installing CRAN package:", package_name, "\n")
@@ -26,7 +26,7 @@ install_cran_package <- function(package_name) {
   }
 }
 
-# Function to install Bioconductor packages
+# 安装 Bioconductor 包
 install_bioc_package <- function(package_name) {
   if (!is_package_installed(package_name)) {
     cat("Installing Bioconductor package:", package_name, "\n")
@@ -44,26 +44,49 @@ install_bioc_package <- function(package_name) {
   }
 }
 
-cat("Starting R package installation...\n")
+cat("Starting R package installation for FigureYa19Lollipop...\n")
 cat("===========================================\n")
 
-
-# Installing CRAN packages
-cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("RColorBrewer", "trackViewer")
-
-for (pkg in cran_packages) {
-  install_cran_package(pkg)
+# 首先安装 BiocManager（如果尚未安装）
+if (!is_package_installed("BiocManager")) {
+  install.packages("BiocManager")
 }
 
-# Installing Bioconductor packages
+# 安装 Bioconductor 包（包括 trackViewer）
 cat("\nInstalling Bioconductor packages...\n")
-bioc_packages <- c("TCGAbiolinks", "maftools")
+bioc_packages <- c("trackViewer", "TCGAbiolinks", "maftools")
 
 for (pkg in bioc_packages) {
   install_bioc_package(pkg)
 }
 
+# 安装 CRAN 包
+cat("\nInstalling CRAN packages...\n")
+cran_packages <- c("RColorBrewer", "ggplot2", "grid", "grDevices")
+
+for (pkg in cran_packages) {
+  install_cran_package(pkg)
+}
+
+# trackViewer 可能需要额外的系统依赖（在 Linux 环境下）
+cat("\nChecking for system dependencies...\n")
+if (.Platform$OS.type == "unix") {
+  # trackViewer 可能需要的系统依赖
+  system("sudo apt-get update && sudo apt-get install -y libcairo2-dev libfreetype6-dev libpng-dev libtiff5-dev libjpeg-dev")
+}
+
 cat("\n===========================================\n")
 cat("Package installation completed!\n")
-cat("You can now run your R scripts in this directory.\n")
+
+# 验证安装
+cat("\nVerifying installation...\n")
+required_packages <- c("trackViewer", "RColorBrewer", "TCGAbiolinks", "maftools")
+for (pkg in required_packages) {
+  if (is_package_installed(pkg)) {
+    cat("✅", pkg, "installed successfully\n")
+  } else {
+    cat("❌", pkg, "installation failed\n")
+  }
+}
+
+cat("\nYou can now run FigureYa19Lollipop.Rmd script!\n")
