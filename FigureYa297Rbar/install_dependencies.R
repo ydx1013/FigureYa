@@ -20,15 +20,20 @@ install_cran_package <- function(package_name) {
       cat("Successfully installed:", package_name, "\n")
     }, error = function(e) {
       cat("Failed to install", package_name, ":", e$message, "\n")
+      return(FALSE)
     })
   } else {
     cat("Package already installed:", package_name, "\n")
   }
+  return(TRUE)
 }
 
 # Function to install from GitHub
-install_github_package <- function(repo) {
-  pkg_name <- basename(repo)
+install_github_package <- function(repo, pkg_name = NULL) {
+  if (is.null(pkg_name)) {
+    pkg_name <- basename(repo)
+  }
+  
   if (!is_package_installed(pkg_name)) {
     cat("Installing from GitHub:", repo, "\n")
     tryCatch({
@@ -39,10 +44,12 @@ install_github_package <- function(repo) {
       cat("Successfully installed from GitHub:", pkg_name, "\n")
     }, error = function(e) {
       cat("Failed to install from GitHub", repo, ":", e$message, "\n")
+      return(FALSE)
     })
   } else {
     cat("Package already installed:", pkg_name, "\n")
   }
+  return(TRUE)
 }
 
 cat("Starting R package installation...\n")
@@ -50,26 +57,63 @@ cat("===========================================\n")
 
 # First install basic dependencies
 cat("\nInstalling basic dependencies...\n")
-basic_packages <- c("ggplot2", "magick", "remotes")
+basic_packages <- c("ggplot2", "magick", "remotes", "devtools")
 for (pkg in basic_packages) {
   install_cran_package(pkg)
 }
 
-# Try to install problematic packages from GitHub if CRAN fails
-cat("\nInstalling pattern-related packages...\n")
-tryCatch({
-  # First try CRAN
-  install_cran_package("transformr")
-  install_cran_package("gridpattern")
-  install_cran_package("ggpattern")
-}, error = function(e) {
-  cat("CRAN installation failed, trying GitHub...\n")
-  # If CRAN fails, try GitHub
-  install_github_package("thomasp85/transformr")
-  install_github_package("trevorld/gridpattern")
-  install_github_package("coolbutuseless/ggpattern")
-})
+# Install system dependencies first (important for Linux environments)
+cat("\nInstalling system dependencies...\n")
+if (.Platform$OS.type == "unix") {
+  # Try to install system dependencies for transformr and other packages
+  system("sudo apt-get update && sudo apt-get install -y libudunits2-dev libgdal-dev libgeos-dev libproj-dev")
+}
 
+# Install transformr first (dependency for gganimate)
+cat("\nInstalling transformr...\n")
+if (!install_cran_package("transformr")) {
+  install_github_package("thomasp85/transformr")
+}
+
+# Install gridpattern (dependency for ggpattern)
+cat("\nInstalling gridpattern...\n")
+if (!install_cran_package("gridpattern")) {
+  install_github_package("trevorld/gridpattern")
+}
+
+# Install ggpattern
+cat("\nInstalling ggpattern...\n")
+if (!install_cran_package("ggpattern")) {
+  install_github_package("coolbutuseless/ggpattern")
+}
+
+# Install gganimate (if needed)
+cat("\nInstalling gganimate...\n")
+if (!install_cran_package("gganimate")) {
+  install_github_package("thomasp85/gganimate")
+}
+
+# Verify all packages are installed
 cat("\n===========================================\n")
-cat("Package installation completed!\n")
+cat("Verifying package installation...\n")
+
+required_packages <- c("transformr", "gridpattern", "ggpattern", "gganimate")
+for (pkg in required_packages) {
+  if (is_package_installed(pkg)) {
+    cat("✓", pkg, "is installed\n")
+  } else {
+    cat("✗", pkg, "is NOT installed\n")
+  }
+}
+
+cat("\nPackage installation completed!\n")
 cat("You can now run your R scripts in this directory.\n")
+
+# Try to load the problematic package to confirm it works
+cat("\nTesting ggpattern package...\n")
+tryCatch({
+  library(ggpattern)
+  cat("✓ ggpattern loaded successfully!\n")
+}, error = function(e) {
+  cat("✗ Failed to load ggpattern:", e$message, "\n")
+})
