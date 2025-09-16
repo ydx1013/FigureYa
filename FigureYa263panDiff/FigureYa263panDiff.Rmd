@@ -35,7 +35,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 这次实现Figure 1B，铁死亡基因在肿瘤与正常的差异表达，绘制拼接的点图和柱状图。
 
-Hi Xiaoya, many of us would like to draw other figures from this pan-cancer ferroptosis paper, especially Figure 1. This analytical framework seems easily adaptable - just switch the pathway for testing. I noticed Xiaofan Lu has already shared code for Figure 2A (boxplots showing differential expression of ferroptosis genes in tumors vs normals across cancers, FigureYa208FPI) and Figure 3B (correlation between ferroptosis and immune pathways, FigureYa253panGSEA). Could Xiaofan Lu please provide detailed code for Figure 1?
+I would like to draw other figures from this pan-cancer ferroptosis paper, especially Figure 1. This analytical framework seems easily adaptable - just switch the pathway for testing. I noticed Xiaofan Lu has already shared code for Figure 2A (boxplots showing differential expression of ferroptosis genes in tumors vs normals across cancers, FigureYa208FPI) and Figure 3B (correlation between ferroptosis and immune pathways, FigureYa253panGSEA). Could Xiaofan Lu please provide detailed code for Figure 1?
 
 - 1A (somatic copy number alterations of ferroptosis genes across cancers, bar plot)
 - 1B (differential expression of ferroptosis genes in tumors vs normals, composite dot and bar plots)
