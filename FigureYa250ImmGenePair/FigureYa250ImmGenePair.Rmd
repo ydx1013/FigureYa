@@ -10,7 +10,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -42,13 +41,13 @@ from<https://jamanetwork.com/journals/jamaoncology/fullarticle/2643120>
 
 采用较为传统的方式构建基因对。小伙伴可以后续继续运行lasso或者其他模型构建算法，可参考FigureYa31lasso或FigureYa65SVM。
 
-本文档作者参考例文的思路写了这篇文章，<https://onlinelibrary.wiley.com/doi/10.1002/ctm2.453>，小伙伴可参考。这篇文章里的多个图都可以用我们实现的FigureYa实现：
+本文档作者参考例文的思路写了这篇文章，<https://onlinelibrary.wiley.com/doi/10.1002/ctm2.453>，小伙伴可参考。这篇文章里的多个图都可以用FigureYa实现：
 
 - Figure 1E可参考FigureYa90subgroup，F可参考FigureYa35batch_bestSeparation；
 - Figure 3G画法可参考FigureYa227boxdensity；
 - Figure 4A可参考FigureYa187RMS，E可参考FigureYa173fancybar。
 
-小丫画图群里的小伙伴们也写过类似的文章，例如<https://www.frontiersin.org/articles/10.3389/fonc.2021.665870/full>，其中多个图也可以用我们实现的FigureYa实现：
+类似的文章，例如<https://www.frontiersin.org/articles/10.3389/fonc.2021.665870/full>，其中多个图也可以用FigureYa实现：
 
 - Figure 2B可参考FigureYa31lasso，C可参考FigureYa39bar；EG可参考FigureYa141risk；
 - Figure 3AC可参考FigureYa35batch_bestSeparation；
@@ -63,13 +62,13 @@ from<https://jamanetwork.com/journals/jamaoncology/fullarticle/2643120>
 
 Gene pairs were constructed in a more traditional way. You can continue to run lasso or other model construction algorithms in the future, please refer to FigureYa31lasso or FigureYa65SVM.
 
-The author of this document wrote this article with reference to the idea of example texts, <https://onlinelibrary.wiley.com/doi/10.1002/ctm2.453>, small partners can refer to. Many of the diagrams in this article can be implemented with our crowdfunded FigureYa:
+The author of this document wrote this article with reference to the idea of example texts, <https://onlinelibrary.wiley.com/doi/10.1002/ctm2.453>, small partners can refer to. Many of the diagrams in this article can be implemented with FigureYa:
 
 - Figure 1E can refer to FigureYa90subgroup, F can refer to FigureYa35batch_bestSeparation;
 - Figure 3G can be drawn by FigureYa227boxdensity;
 - For Figure 4A, see Figure Ya187RMS, and for E, see Figure Ya173fancybar.
 
-The friends in the Xiaoya drawing group have also written similar articles, such as <https://www.frontiersin.org/articles/10.3389/fonc.2021.665870/full>, multiple of which can also be implemented with our crowdfunded FigureYa:
+Similar articles, such as <https://www.frontiersin.org/articles/10.3389/fonc.2021.665870/full>, multiple of which can also be implemented with FigureYa:
 
 - Figure 2B can refer to FigureYa31lasso, C can refer to FigureYa39bar; For EG, please refer to FigureYa141risk;
 - Figure 3AC can be found in FigureYa35batch_bestSeparation;
@@ -82,18 +81,11 @@ Similar articles <https://www.sciencedirect.com/science/article/abs/pii/S0888754
 
 # 环境设置
 
-
 # Environment settings
-
 
 ```{r}
 source("install_dependencies.R")
 
-```
-
-load packages
-
-```{r}
 library(survival)
 
 Sys.setenv(LANGUAGE = "en") #显示英文报错信息 # error messaes are displayed in English
