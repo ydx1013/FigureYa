@@ -10,7 +10,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -43,7 +42,7 @@ FigureYa154immuneSubtypes和FigureYa202consensusGene也用到了ConsensusCluster
 
 FigureYa154immuneSubtypes and FigureYa202consensusGene also use ConsensusClusterPlus for consensus clustering, which can be used for mutual reference and flexible use to design more interesting display methods.
 
-> “小丫画图群-数据处理”里的小伙伴CR问：“什么叫非监督共识聚类？”
+# 问：“什么叫非监督共识聚类？”
 
 ConsensusClusterPlus包的描述：ConsensusClusterPlus function for determing cluster number and class membership by stability evidence.
 
@@ -71,18 +70,11 @@ When prior knowledge guides the analysis (e.g., a predefined cluster number in a
 
 # 环境设置
 
-
 # Environment settings
-
 
 ```{r}
 source("install_dependencies.R")
 
-```
-
-load packages
-
-```{r}
 library(ConsensusClusterPlus)
 library(pheatmap)
 
@@ -91,7 +83,6 @@ options(stringsAsFactors = FALSE) #禁止chr转成factor # Prohibit converting c
 ```
 
 # 输入文件
-
 
 easy_input_expr.txt，包含目标基因的表达矩阵，将从这里提取目标基因的表达矩阵。
 
@@ -112,7 +103,6 @@ Stores sample metadata for heatmap annotation (e.g., color-coding by clinical fe
 -easy_input_gene.txt
 
 Lists target genes for clustering and plotting.Derived from the union of differentially expressed genes (DEGs) across three subtypes in Table S2 of the original publication.
-
 
 
 ```{r}
