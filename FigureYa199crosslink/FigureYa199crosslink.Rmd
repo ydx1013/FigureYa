@@ -10,7 +10,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -57,27 +56,11 @@ For methods of connecting nodes (top, bottom, left, right), refer to FigureYa174
 
 # 环境设置
 
-.
 # Environment Setup
-
-Install packages using a domestic mirror.
-
-
 
 ```{r}
 source("install_dependencies.R")
-```
 
-```{r eval=FALSE}
-devtools::install_github("zzwch/crosslinks")
-# 或者本地安装
-# Or install it locally
-install.packages("crosslinks-master.tar.gz", repos = NULL, type = "source")
-```
-
-load package
-
-```{r}
 library(crosslinks)
 library(ggplot2)
 Sys.setenv(LANGUAGE = "en") #显示英文报错信息 # error messages are displayed in English
