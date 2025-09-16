@@ -1,22 +1,14 @@
 ---
 title: "FigureYa269scMetabolism"
-author: "小丫画图出品"
+author: "Xiao Gu"
 date: "2022-3-18"
 output: html_document
 ---
-欢迎关注“小丫画图”公众号，回复“小白”，看小视频，实现点鼠标跑代码。
-
-小丫微信: epigenomics  E-mail: figureya@126.com
-
-作者：古潇，他的更多作品看这里
-
-小丫编辑校验
 
 # Academic Citation
 If you use this code in your work or research, we kindly request that you cite our publication:
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
-
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -39,34 +31,11 @@ Mining metabolic activity at single-cell resolution，为了方便使用，例�
 
 本文档带你跑通R版本的scMetabolism，适用于scRNA-seq数据，友好对接seurat。
 
-另外，原文作者也在“小丫画图群-\*”里，如果您对该文章的其他图/分析过程感兴趣，欢迎找小丫提需求，下次请原文作者分享。
-
 # 环境设置
-
 
 ```{r}
 source("install_dependencies.R")
-```
 
-```{r eval=FALSE}
-install.packages("magrittr")
-install.packages("devtools")
-devtools::install_github('satijalab/seurat-data',force = TRUE)
-
-### 安装scMetabolism计算代谢通路
-# 如果安装不成功，先去升级R
-# 先安装依赖包
-install.packages("BiocManager")
-BiocManager::install(c("AUCell", "GSEABase", "GSVA"))
-install.packages("phangorn")
-devtools::install_github("YosefLab/VISION")
-devtools::install_github("wu-yc/scMetabolism")
-
-BiocManager::install("clusterProfiler")
-```
-
-
-```{r}
 library(Seurat)
 library(SeuratData)
 library(patchwork)
