@@ -16,7 +16,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -74,17 +73,9 @@ Additionally, you can refer to the visualization method in FigureYa235scDEG, whe
 # 环境设置
 # Environment Setup
 
-
-Using domestic mirrors for package installation.
-
 ```{r}
 source("install_dependencies.R")
-```
 
-# 加载包
-# Loading packages
-
-```{r}
 library(ggplot2)
 
 # 显示英文报错信息
@@ -240,11 +231,8 @@ ggplot(plot.data, aes(x = x, y = y)) +
 ggsave("wheelplot_plus.pdf", width = 8, height = 6) 
 ```
 
-# 会话信息
 # Session Info
 
 ```{r}
-# 显示会话信息
-# Show session information
 sessionInfo()
 ```
