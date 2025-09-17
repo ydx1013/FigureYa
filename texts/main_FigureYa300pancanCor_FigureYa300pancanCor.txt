@@ -6,6 +6,14 @@ Reviewer(s)
 : Ying Ge
 Date
 : 2025-05-20
+学术引用
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
 Demand description
 输入数据是Table S4中基因名称，使用z-score打分画出Figure
@@ -23,68 +31,37 @@ correlated with many malignant features of the tumor.
 应用场景
 Application scenarios
 在泛癌中计算某感兴趣得分并计算该得分与几种致癌通路的相关性。
-更多泛癌FigureYa看这里
-https://k.youshop10.com/C8RkTgR3
 相关性展示的8种情况
 https://mp.weixin.qq.com/s/D9wheY5QdnOh4JrjIc8-Cg
 ，相关FigureYa看这里
-https://k.youshop10.com/Eig1YOB4
 可以用FigureYa实现例文多个Figure，例如：
 Figure 1A，可参考FigureYa31lasso
-https://k.youshop10.com/BflugKvZ
 Figure 2，FigureYa291PancanProgSigature
-https://k.youshop10.com/OH-gnWgI
 已复现。泛癌中计算某感兴趣得分并计算该得分与预后的相关性；绘制得分分布于预后散点图。
 Figure 2CDE、3、6BCDE，可参考FigureYa35batch_bestSeparation
-https://k.youshop10.com/nesUttBS
 Figure 4AB，可参考FigureYa30
-https://k.youshop10.com/oBlq8jMz
 Figure 4C，可参考FigureYa85timeROC
-https://k.youshop10.com/oBlq8jMz
 Figure 4D，可参考FigureYa33DCA
-https://k.youshop10.com/XWimaUSt
-Figure 5相关性结果展示，可参考
-https://k.youshop10.com/Eig1YOB4
-Figure 2B、6FGH森林图，可参考
-https://k.youshop10.com/Bc4bKvk3
 Calculate a score of interest across pan-cancer and assess its
 correlation with several oncogenic pathways.
-For more pan-cancer FigureYa examples, see here:
-https://k.youshop10.com/C8RkTgR3
 Eight scenarios for correlation visualization:
 https://mp.weixin.qq.com/s/D9wheY5QdnOh4JrjIc8-Cg
 .
 Related FigureYa examples available here:
-https://k.youshop10.com/Eig1YOB4
 FigureYa can be used to create multiple figures as shown in the
 example article, such as:
 Figure 1A, refer to FigureYa31lasso:
-https://k.youshop10.com/BflugKvZ
-Figure 2, reproduced in FigureYa291PancanProgSignature:
-https://k.youshop10.com/OH-gnWgI
-. Calculate a score of
-interest across pan-cancer and evaluate its correlation with prognosis;
-plot score distribution and prognostic scatter plots.
-Figures 2CDE, 3, and 6BCDE, refer to FigureYa35batch_bestSeparation:
-https://k.youshop10.com/nesUttBS
+Figure 2, reproduced in FigureYa291PancanProgSignature: . Calculate
+a score of interest across pan-cancer and evaluate its correlation with
+prognosis; plot score distribution and prognostic scatter plots.
+Figures 2CDE, 3, and 6BCDE, refer to
+FigureYa35batch_bestSeparation:
 Figures 4AB, refer to FigureYa30:
-https://k.youshop10.com/oBlq8jMz
 Figure 4C, refer to FigureYa85timeROC:
-https://k.youshop10.com/oBlq8jMz
 Figure 4D, refer to FigureYa33DCA:
-https://k.youshop10.com/XWimaUSt
-Figure 5 correlation results display, refer to:
-https://k.youshop10.com/Eig1YOB4
-Figures 2B and 6FGH forest plots, refer to:
-https://k.youshop10.com/Bc4bKvk3
 环境设置
 Environment Setup
-使用国内镜像安装包。
-Using domestic mirrors for package installation.
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
-加载包
-Loading packages
+source("install_dependencies.R")
 library(ggplot2)
 library(data.table)
 library(cowplot)
@@ -124,9 +101,7 @@ gmt2list <- function(annofile){
 }
 输入文件
 Input Files
-跟FigureYa291PancanProgSigature
-https://k.youshop10.com/OH-gnWgI
-的输入文件相同，不用重复下载。
+跟FigureYa291PancanProgSigature的输入文件相同，不用重复下载。
 table s6 risk
 coefficients.txt，风险基因以及对应系数，来自原文补充材料表格Table
 S6。
@@ -142,10 +117,8 @@ Survival_SupplementalTable_S1_20171025_xena_sp，生存数据。来自
 https://xenabrowser.net/datapages/?dataset=Survival_SupplementalTable_S1_20171025_xena_sp&host=https%3A%2F%2Fpancanatlas.xenahubs.net&removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443
 .
 The input files are the same as those used in
-FigureYa291PancanProgSignature
-https://k.youshop10.com/OH-gnWgI
-, so there is no need to
-download them again.
+FigureYa291PancanProgSignature , so there is no need to download them
+again.
 table s6 risk coefficients.txt: Risk genes and their corresponding
 coefficients, sourced from the supplementary table Table S6 of the
 original paper.
