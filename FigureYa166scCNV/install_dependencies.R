@@ -49,7 +49,7 @@ cat("===========================================\n")
 
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("Dendritic", "Endothelial", "Fibroblast", "Macrophage", "Mast", "caTools", "dplyr", "magrittr", "myocyte", "pheatmap", "reshape2")
+cran_packages <- c("magrittr", "dplyr", "caTools", "pheatmap", "reshape2")
 
 for (pkg in cran_packages) {
   install_cran_package(pkg)
@@ -57,7 +57,7 @@ for (pkg in cran_packages) {
 
 # Installing Bioconductor packages
 cat("\nInstalling Bioconductor packages...\n")
-bioc_packages <- c("org.Hs.eg.db", "GEOquery")
+bioc_packages <- c("GEOquery", "org.Hs.eg.db")
 
 for (pkg in bioc_packages) {
   install_bioc_package(pkg)
