@@ -6,19 +6,20 @@ Reviewer(s)
 : Ying Ge
 Date
 : 2025-05-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
 Requirements Description
-想众筹这个a图，怎么去算单细胞某个细胞亚群对疾病贡献度，知道哪些细胞亚群最重要。
-We want to crowdfund this panel A figure, how to calculate the
-disease contribution score of single cell subsets and identify the most
+想实现这个a图，怎么去算单细胞某个细胞亚群对疾病贡献度，知道哪些细胞亚群最重要。
+We want to draw this panel A figure, how to calculate the disease
+contribution score of single cell subsets and identify the most
 important ones.
-出自：
-https://onlinelibrary.wiley.com/doi/10.1002/smtd.202100752
-图6.
-丹参酮IIA治疗通过抑制早期浸润的巨噬细胞亚群减轻病理性心肌梗死进展的效果验证
-A)
-不同巨噬细胞亚群对疾病的贡献度。半径大小与贡献分数成正比。具体方法详见实验方法部分。
-Source:
+出自
 https://onlinelibrary.wiley.com/doi/10.1002/smtd.202100752
 Figure 6. Tanshinone IIA treatment validates the effectiveness of
 early infiltrated macrophage subsets suppression in attenuating
@@ -28,38 +29,16 @@ score. Detailed information is described in the Experimental
 Section.
 应用场景
 Application Scenario
-根据单细胞数据，计算细胞亚群对疾病贡献度ContributionScore，绘制环形柱状图（图6A）
-例文中有几个有特点的图我们曾经众筹过：
-Figure 2B，可参考FigureYa235scDEG
-https://k.youshop10.com/m=E-yK5Z
-Figure 3D，可参考FigureYa285scRNA_monocle
-https://k.youshop10.com/ndalTqa=
-Figure 5F，可参考FigureYa178ReceptorLigand
-https://k.youshop10.com/YICoy-XB
-更多单细胞FigureYa看这里
-https://k.youshop10.com/McawGY6=
+根据单细胞数据，计算细胞亚群对疾病贡献度ContributionScore，绘制环形柱状图（Fig.
+6A）
 Calculate cell subset contribution scores from scRNA-seq data and
 plot circular barplot (Fig. 6A)
-Some featured figures from the example paper we previously
-crowdfunded:
-Figure 2B，Refer to FigureYa235scDEG
-https://k.youshop10.com/m=E-yK5Z
-Figure 3D，Refer to FigureYa285scRNA_monocle
-https://k.youshop10.com/ndalTqa=
-Figure 5F，Refer to FigureYa178ReceptorLigand
-https://k.youshop10.com/YICoy-XB
-More single-cell FigureYa see here
-https://k.youshop10.com/McawGY6=
+Figure 2B，refer to FigureYa235scDEG
+Figure 3D，refer to FigureYa285scRNA_monocle
+Figure 5F，refer to FigureYa178ReceptorLigand
 环境设置
 Environment Setup
-使用国内镜像安装包。
-Using domestic mirrors for package installation.
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
-install.packages("Seurat")
-BiocManager::install("SingleR")
-加载包
-Loading packages
+source("install_dependencies.R")
 library(Seurat)
 library(magrittr)
 library(GEOquery)
@@ -73,7 +52,7 @@ library(ggplot2)
 
 # 显示英文报错信息
 # Show English error messages
-Sys.setenv(LANGUAGE = "en")
+Sys.setenv(LANGUAGE = "en") 
 
 # 禁止chr转成factor
 # Prevent character-to-factor conversion
@@ -95,14 +74,9 @@ The Seurat object contains annotated cell subtypes (subtype) and
 grouping information (time). Input data should be downloaded from GEO at
 https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE163465
 ,
-which includes the
-GSE163465_RAW.tar
-file from
-Supplementary files and the
-Series Matrix File(s)
-from
-Download family. After downloading, please store all files in the
-InputData folder.
+which includes the GSE163465_RAW.tar file from Supplementary files and
+the Series Matrix File(s) from Download family. After downloading,
+please store all files in the InputData folder.
 smtd202100752-sup-0002-tables1.xlsx contains the marker genes
 provided in the original publication for annotating myeloid cell
 subtypes. Download link:
@@ -185,14 +159,13 @@ seu$Celltypes <- mapvalues(x = seu$seurat_clusters,
                            from = rownames(anno),
                            to = anno$pruned.labels)
 
-#提取髓系细胞
+# 提取髓系细胞
 # Subset myeloid cells
 seu <- subset(seu, Celltypes %in% c("Macrophages", "Monocytes"))
 # 重新聚类
 # Re-clustering
 seu <- FindVariableFeatures(seu) %>% NormalizeData() %>% ScaleData()
 seu <- RunPCA(seu)
-seu <- RunUMAP(seu, dims = 1:50)
 seu <- FindNeighbors(seu, dims = 1:50) %>% FindClusters()
 DimPlot(seu, group.by = "seurat_clusters", label = T)
 # GSVA分析
@@ -300,8 +273,5 @@ ggplot(plot.data, aes(x = subtypes, y = FCscore, fill = subtypes)) +
 # 保存图像
 # Save plot
 ggsave("ContributionScore.pdf", width = 6, height = 4)
-会话信息
 Session Info
-# 显示会话信息
-# Show session information
 sessionInfo()
