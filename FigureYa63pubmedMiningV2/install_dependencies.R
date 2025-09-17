@@ -22,6 +22,11 @@ install_package <- function(package_name, type = "cran") {
           install.packages("BiocManager", quiet = TRUE)
         }
         BiocManager::install(package_name, update = FALSE, ask = FALSE, quiet = TRUE)
+      } else if (type == "github") {
+        if (!is_package_installed("remotes")) {
+          install.packages("remotes", quiet = TRUE)
+        }
+        remotes::install_github(package_name, quiet = TRUE)
       }
       cat("✓ Successfully installed:", package_name, "\n")
     }, error = function(e) {
@@ -54,29 +59,9 @@ for (pkg in cran_packages) {
   install_package(pkg, "cran")
 }
 
-# 特别安装jiebaR（系统依赖已就绪）
-cat("\n3. Installing jiebaR (system dependencies ready)...\n")
-if (!is_package_installed("jiebaR")) {
-  cat("Installing jiebaR with system dependencies available...\n")
-  tryCatch({
-    # 直接安装，系统依赖已满足
-    install.packages("jiebaR", dependencies = TRUE, quiet = TRUE)
-    cat("✓ Successfully installed: jiebaR\n")
-  }, error = function(e) {
-    cat("✗ jiebaR installation failed:", e$message, "\n")
-    cat("Trying alternative approach...\n")
-    
-    # 备选方案：从GitHub安装
-    tryCatch({
-      remotes::install_github("qinwf/jiebaR")
-      cat("✓ Successfully installed jiebaR from GitHub\n")
-    }, error = function(e2) {
-      cat("✗ All jiebaR installation attempts failed\n")
-    })
-  })
-} else {
-  cat("✓ jiebaR already installed\n")
-}
+# 安装jiebaR - 从GitHub安装
+cat("\n3. Installing jiebaR from GitHub...\n")
+install_package("qinwf/jiebaR", "github")
 
 # 安装Bioconductor包
 cat("\n4. Installing Bioconductor packages...\n")
@@ -113,8 +98,6 @@ if (success_count == length(critical_packages)) {
   # 提供手动安装命令
   if (!is_package_installed("jiebaR")) {
     cat("\nFor manual jiebaR installation:\n")
-    cat("install.packages('jiebaR')\n")
-    cat("# Or from GitHub:\n")
     cat("remotes::install_github('qinwf/jiebaR')\n")
   }
 }
@@ -131,4 +114,6 @@ if (is_package_installed("jiebaR")) {
   }, error = function(e) {
     cat("jiebaR test failed:", e$message, "\n")
   })
+} else {
+  cat("jiebaR not available for testing\n")
 }
