@@ -1,4 +1,4 @@
-name: Knit Rmd Files (Single Run)
+name: Knit Rmd Files
 
 on:
   workflow_dispatch:
@@ -48,12 +48,12 @@ jobs:
       - name: 8. Identify Rmd files to knit
         id: identify_rmd
         run: |
-          # Read folder names from to_Knit file
-          TO_KNIT_FILE="to_Knit"
+          # Read folder names from to_Knit.txt file
+          TO_KNIT_FILE="./to_Knit.txt"
           if [ -f "$TO_KNIT_FILE" ]; then
             TARGET_DIRS=$(cat "$TO_KNIT_FILE" | xargs -I {} echo "./{}")
           else
-            echo "No to_Knit file found!"
+            echo "No to_Knit.txt file found!"
             exit 1
           fi
 
@@ -65,35 +65,34 @@ jobs:
           TOTAL_FILES=$(wc -l < .all_rmd_files.txt)
 
           if [ "$TOTAL_FILES" -eq 0 ]; then
-            echo "No .Rmd files found in the to_Knit directories."
+            echo "No .Rmd files found in the specified directories."
             exit 1
           fi
 
           echo "Found $TOTAL_FILES .Rmd files."
           cat .all_rmd_files.txt
 
-      - name: 9. Knit all Rmd files
+      - name: 9. Knit all Rmd files and commit results
         run: |
           echo "Starting knitting process..."
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
           while IFS= read -r rmd_file; do
             [ -z "$rmd_file" ] && continue
             echo "Processing $rmd_file..."
             rmd_dir=$(dirname "$rmd_file")
-
-            # Check if the file is in an LFS directory and skip if necessary
-            if grep -qxF "$rmd_dir" .lfs_dirs.txt; then
-              echo "[SKIPPED-LFS] - $rmd_file (In LFS directory)"
-              continue
-            fi
+            output_file="${rmd_file%.Rmd}.html"
 
             if [ -f "$rmd_dir/install_dependencies.R" ]; then
               echo "Installing dependencies for $rmd_file..."
               (cd "$rmd_dir" && Rscript install_dependencies.R > install.log 2>&1 || echo "WARNING: Dependency installation failed for $rmd_file.")
             fi
-            
+
             echo "Knitting $rmd_file..."
-            if Rscript -e "rmarkdown::render('$rmd_file', quiet=TRUE)" > rmd_render.log 2>&1; then
+            if Rscript -e "rmarkdown::render('$rmd_file', output_file='$output_file', quiet=TRUE)" > rmd_render.log 2>&1; then
               echo "[SUCCESS] - $rmd_file"
+              git add "$output_file"
             else
               echo "[FAILED] - $rmd_file"
               echo "--- Error Log for $rmd_file ---"
@@ -102,9 +101,10 @@ jobs:
             fi
           done < .all_rmd_files.txt
 
-      - name: 10. Upload Knit Results
-        uses: actions/upload-artifact@v4
-        with:
-          name: knit-results
-          path: "**/*.html"
-          
+          # Commit and push changes if there are any
+          if ! git diff --staged --quiet; then
+            git commit -m "docs: Auto-render Rmd files"
+            git push origin main
+          else
+            echo "No changes to commit."
+          fi
