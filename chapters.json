@@ -976,11 +976,11 @@
     "thumb": "gallery_compress/FigureYa121.webp"
   },
   {
-    "id": "main_FigureYa122mut2expr_20230822_223122_FigureYa122mut2expr",
-    "title": "FigureYa122mut2expr_20230822_223122/FigureYa122mut2expr.html",
-    "html": "FigureYa122mut2expr_20230822_223122/FigureYa122mut2expr.html",
-    "text": "texts/main_FigureYa122mut2expr_20230822_223122_FigureYa122mut2expr.txt",
-    "folder": "FigureYa122mut2expr_20230822_223122",
+    "id": "main_FigureYa122mut2expr_FigureYa122mut2expr",
+    "title": "FigureYa122mut2expr/FigureYa122mut2expr.html",
+    "html": "FigureYa122mut2expr/FigureYa122mut2expr.html",
+    "text": "texts/main_FigureYa122mut2expr_FigureYa122mut2expr.txt",
+    "folder": "FigureYa122mut2expr",
     "thumb": "gallery_compress/FigureYa122.webp"
   },
   {
@@ -2446,6 +2446,14 @@
     "text": "texts/main_FigureYa307CNVHeatmap_FigureYa307CNVHeatmap.txt",
     "folder": "FigureYa307CNVHeatmap",
     "thumb": "gallery_compress/FigureYa307.webp"
+  },
+  {
+    "id": "main_FigureYa308IHS_FigureYa308IHS",
+    "title": "FigureYa308IHS/FigureYa308IHS.html",
+    "html": "FigureYa308IHS/FigureYa308IHS.html",
+    "text": "texts/main_FigureYa308IHS_FigureYa308IHS.txt",
+    "folder": "FigureYa308IHS",
+    "thumb": "gallery_compress/FigureYa308.webp"
   },
   {
     "id": "main_FigureYa309cell2location_01_explore_space_transcriptome",

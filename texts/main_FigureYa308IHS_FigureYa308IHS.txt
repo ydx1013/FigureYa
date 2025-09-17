@@ -6,26 +6,29 @@ Reviewer(s)
 : Ying Ge
 Date
 : 2025-05-20
+学术引用
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
 Requirements Description
-我想众筹一下这篇文章里Figure5D，作者写了一个计算基因异质性的方法，然后用VIPER推断检查点蛋白活性以后计算了检查点蛋白的异质性，我想这个方法应该也可以用来计算其他种类蛋白的异质性，应该挺实用的。
-FigureYa296VIPER
-https://k.youshop10.com/CTEFqnpF
-跟这个不一样。这篇里面用的是新版的weighted
+我想实现一下这篇文章里Figure5D，作者写了一个计算基因异质性的方法，然后用VIPER推断检查点蛋白活性以后计算了检查点蛋白的异质性，我想这个方法应该也可以用来计算其他种类蛋白的异质性，应该挺实用的。
+FigureYa296VIPER跟这个不一样。这篇里面用的是新版的weighted
 VIPER，和之前的算法不一样，而且这个图重点是IHS分数的计算，不仅是蛋白活性的计算。
-I’d like to crowdfund Figure 5D from this article. The author
-developed a method to calculate gene heterogeneity, then used VIPER to
-infer checkpoint protein activity before calculating the heterogeneity
-of checkpoint proteins. I think this method could also be applied to
+I’d like to draw Figure 5D from this article. The author developed a
+method to calculate gene heterogeneity, then used VIPER to infer
+checkpoint protein activity before calculating the heterogeneity of
+checkpoint proteins. I think this method could also be applied to
 calculate heterogeneity for other types of proteins - it seems quite
 practical.
-FigureYa296VIPER
-https://k.youshop10.com/CTEFqnpF
-is different from this
-one. Here, they used the new weighted VIPER, which has a different
-algorithm from the previous version. Moreover, the focus of this figure
-is on the calculation of IHS scores, not just protein activity
-inference.
+FigureYa296VIPER is different from this one. Here, they used the new
+weighted VIPER, which has a different algorithm from the previous
+version. Moreover, the focus of this figure is on the calculation of IHS
+scores, not just protein activity inference.
 出自：
 https://genomemedicine.biomedcentral.com/articles/10.1186/s13073-022-01143-6
 图5. HCC中的免疫异质性。
@@ -39,8 +42,7 @@ IHS value across 5099 proteins
 应用场景
 Requirements Description
 通过weighted viper推断检查点蛋白活性并计算异质性。
-更多异质性FigureYa看这里
-https://k.youshop10.com/S-utnyI7
+更多异质性FigureYa
 FigureYa114ternaryCluster，在一组样本中某个geneset表达谱变异很大时，
 展示这个geneset的所有基因表达异质性
 。
@@ -67,8 +69,7 @@ meta分析
 的异质性检验，给出Q和pvalue。
 Infer checkpoint protein activity and calculate heterogeneity using
 weighted VIPER.
-For more heterogeneity figures, see here
-https://k.youshop10.com/S-utnyI7
+For more heterogeneity figures
 FigureYa114ternaryCluster: When the expression profile of a geneset
 varies significantly in a group of samples, it
 displays the
@@ -105,13 +106,7 @@ heterogeneity
 test, providing Q and p-value.
 环境设置
 Environment Setup
-使用国内镜像安装包
-Install packages using domestic mirror
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
-install.packages("optparse")
-加载包
-Load packages
+source("install_dependencies.R")
 library(viper)
 library(nlme)
 library(spatstat.explore)
@@ -349,8 +344,5 @@ ggplot(plot.data, aes(x = protein, y = IHS, label = label)) +
 # 保存图形
 # Save plot
 ggsave(file.path(res.path, "IHS.pdf"), width = 4, height = 4)
-会话信息
 Session Info
-# 显示会话信息
-# Show session information
 sessionInfo()

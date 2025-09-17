@@ -366,8 +366,5 @@ p3 <- ggplot(data = tmp2, aes(x = zscore, y = NETs)) +
 ggsave(filename = "correlation scatter plot of zscored EMT and NETs in pancancer.pdf", width = 15,height = 8)
 p <- plot_grid(p1,p2,p3, align = "v", ncol = 1)
 ggsave(filename = "combined correlation scatter plot of zscored oncogenic and NETs in pancancer.pdf", width = 15,height = 18)
-会话信息
 Session Info
-# 显示会话信息
-# Show session information
 sessionInfo()
