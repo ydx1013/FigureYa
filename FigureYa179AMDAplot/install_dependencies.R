@@ -56,7 +56,7 @@ for (pkg in cran_packages) {
 
 # 安装Bioconductor包
 cat("\nInstalling Bioconductor packages...\n")
-bioc_packages <- c("DESeq2", "S4Vectors", "BiocParallel")
+bioc_packages <- c("DESeq2", "S4Vectors")
 
 for (pkg in bioc_packages) {
   install_bioc_package(pkg)
