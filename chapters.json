@@ -704,6 +704,14 @@
     "thumb": "gallery_compress/FigureYa89.webp"
   },
   {
+    "id": "main_FigureYa90subgroup_FigureYa90subgroup",
+    "title": "FigureYa90subgroup/FigureYa90subgroup.html",
+    "html": "FigureYa90subgroup/FigureYa90subgroup.html",
+    "text": "texts/main_FigureYa90subgroup_FigureYa90subgroup.txt",
+    "folder": "FigureYa90subgroup",
+    "thumb": "gallery_compress/FigureYa90.webp"
+  },
+  {
     "id": "main_FigureYa91cluster_heatmap_FigureYa91cluster_heatmap",
     "title": "FigureYa91cluster_heatmap/FigureYa91cluster_heatmap.html",
     "html": "FigureYa91cluster_heatmap/FigureYa91cluster_heatmap.html",
