@@ -335,12 +335,8 @@ ggsave("Figure 1B differential expression of interested genes in pancancer.pdf",
 # Clean up memory
 rm(expr); gc()
 ```
-
-# 会话信息
 # Session Info
 
 ```{r}
-# 显示会话信息
-# Show session information
 sessionInfo()
 ```
