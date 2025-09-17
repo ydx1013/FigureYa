@@ -560,11 +560,8 @@ invisible(dev.off())
 
 ![](Metabolic landscape of tcga paired sample.pdf)
 
-# 会话信息
 # Session Info
 
 ```{r}
-# 显示会话信息
-# Show session information
 sessionInfo()
 ```
