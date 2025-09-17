@@ -1,7 +1,14 @@
 FigureYa235scDEG
 FigureYa235scDEG
-Yandong Zheng
-2025-5-20
+Xiao Gu
+2025-9-12
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
 单细胞测序分不同的cluster，然后在每个cluster上做DEGs的点图，最好是log2FC为负的标蓝。然后自定义显示想要的点。
 输入数据用seurat用的PBMC那个测试数据吧
@@ -28,12 +35,8 @@ displayed by category.
 Gene names that are significantly up- or down-regulated, or gene
 names involved in a pathway, can be labeled as in the original text.
 环境设置
-使用国内镜像安装包
 Environment settings
-Use the domestic mirror installation package
-options("repos" = c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror = "http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
-加载包 load packages
+source("install_dependencies.R")
 library(dplyr)
 library(Seurat)
 library(patchwork)
@@ -130,7 +133,7 @@ pbmc <- RunUMAP(pbmc, dims = 1:10)
 pA1 <- DimPlot(pbmc, reduction = "umap", label = T)+ NoLegend()
 ggsave("plotA_1_UMAP_cluster.pdf", plot = pA1, width = 6, height = 6)
 找cluster biomarkers
-find cluster biomarkers
+Find cluster biomarkers
 # Finding differentially expressed features (cluster biomarkers)
 
 # find markers for every cluster compared to all remaining cells
@@ -156,15 +159,15 @@ top10 <- pbmc.markers %>% group_by(cluster) %>% top_n(n = 10, wt = avg_log2FC)
 DoHeatmap(pbmc, features = top10$gene) + NoLegend()
 鉴定细胞类型
 如果只是为了复现文章中的图，可以不鉴定细胞类型，以下部分可不run，根据结合每个cluster的marker基因和生物学知识确定细胞类型。
-为了接近真实情况并结合众筹示例数据，这里不将细胞类型划分的这么详细，进行以下更改
+为了接近真实情况并结合示例数据，这里不将细胞类型划分的这么详细，进行以下更改
 Identify cell types
 If you don’t need to identify the cell types just to reproduce the
 diagram in the article, the following section can be done without
 running and determine the cell type based on the knowledge of the marker
 genes and biology that binds each cluster.
-In order to get close to the real situation and combine the
-crowdfunding example data, the cell types are not divided into such
-details here, and the following changes are made
+In order to get close to the real situation and combine the example
+data, the cell types are not divided into such details here, and the
+following changes are made
 # 给每个cluster标注细胞类型
 # Label each cluster with cell types
 new.cluster.ids <- c("T", "Mono", "T", "B", "T", "Mono", "NK", "DC", "Platelet")
