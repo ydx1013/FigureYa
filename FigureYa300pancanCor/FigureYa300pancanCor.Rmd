@@ -11,6 +11,7 @@ output: html_document
 **Reviewer(s)**: `r params$reviewer`  
 **Date**: `r params$date` 
 
+# 学术引用
 # Academic Citation
 If you use this code in your work or research, we kindly request that you cite our publication:
 
@@ -378,8 +379,11 @@ p <- plot_grid(p1,p2,p3, align = "v", ncol = 1)
 ggsave(filename = "combined correlation scatter plot of zscored oncogenic and NETs in pancancer.pdf", width = 15,height = 18)
 ```
 
+# 会话信息
 # Session Info
 
 ```{r}
+# 显示会话信息
+# Show session information
 sessionInfo()
 ```
