@@ -468,11 +468,8 @@ text(1.5, 2.3, paste0("p = ",round(wt$p.value, 3)))
 dev.copy2pdf(file = "FPI_GSE121689.pdf", width = 3, height = 3.8)
 ```
 
-# 会话信息
 # Session Info
 
 ```{r}
-# 显示会话信息
-# Show session information
 sessionInfo()
 ```
