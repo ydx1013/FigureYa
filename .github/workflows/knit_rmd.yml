@@ -50,11 +50,11 @@ jobs:
         id: identify_rmd
         run: |
           # 读取FigureYa/to_Knit.txt文件中的文件夹名称
-          TO_KNIT_FILE="./FigureYa/to_Knit.txt"
+          TO_KNIT_FILE="to_Knit.txt"
           if [ -f "$TO_KNIT_FILE" ]; then
-            TARGET_DIRS=$(cat "$TO_KNIT_FILE" | xargs -I {} echo "./FigureYa/{}")
+            TARGET_DIRS=$(cat "$TO_KNIT_FILE" | xargs -I {} echo "./{}")
           else
-            echo "No FigureYa/to_Knit.txt file found!"
+            echo "No to_Knit.txt file found!"
             exit 1
           fi
 
@@ -116,7 +116,7 @@ jobs:
           if [ -f summary.txt ]; then git add summary.txt; fi
           
           if ! git diff --staged --quiet; then
-            git commit -m "docs: Auto-render Rmd files from FigureYa/to_Knit.txt"
+            git commit -m "docs: Auto-render Rmd files from to_Knit.txt"
             
             # 尝试推送，如果失败则进行强制推送
             echo "Pushing changes to remote..."
