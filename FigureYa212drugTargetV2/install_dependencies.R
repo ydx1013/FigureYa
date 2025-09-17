@@ -44,44 +44,6 @@ install_bioc_package <- function(package_name) {
   }
 }
 
-# 特殊安装 pRRophetic 包
-install_pRRophetic <- function() {
-  if (!is_package_installed("pRRophetic")) {
-    cat("Installing pRRophetic package...\n")
-    tryCatch({
-      # 方法1: 从 CRAN 安装
-      install.packages("pRRophetic")
-      cat("Successfully installed pRRophetic from CRAN\n")
-    }, error = function(e) {
-      cat("CRAN installation failed, trying alternative methods...\n")
-      tryCatch({
-        # 方法2: 从 GitHub 安装
-        if (!is_package_installed("devtools")) {
-          install.packages("devtools")
-        }
-        devtools::install_github("paulgeeleher/pRRophetic")
-        cat("Successfully installed pRRophetic from GitHub\n")
-      }, error = function(e2) {
-        cat("GitHub installation failed, trying manual download...\n")
-        tryCatch({
-          # 方法3: 手动下载安装
-          download.file("https://cran.r-project.org/src/contrib/pRRophetic_0.5.tar.gz", 
-                       "pRRophetic.tar.gz")
-          install.packages("pRRophetic.tar.gz", repos = NULL, type = "source")
-          cat("Successfully installed pRRophetic from source\n")
-        }, error = function(e3) {
-          cat("All pRRophetic installation methods failed:\n")
-          cat("CRAN:", e$message, "\n")
-          cat("GitHub:", e2$message, "\n")
-          cat("Source:", e3$message, "\n")
-        })
-      })
-    })
-  } else {
-    cat("Package already installed: pRRophetic\n")
-  }
-}
-
 cat("Starting R package installation for FigureYa212drugTargetV2...\n")
 cat("===========================================\n")
 
@@ -92,36 +54,28 @@ if (!is_package_installed("BiocManager")) {
 
 # 安装 Bioconductor 包
 cat("\nInstalling Bioconductor packages...\n")
-bioc_packages <- c("impute", "preprocessCore", "sva")
+bioc_packages <- c("impute", "sva")  # sva 是 Bioconductor 包
 
 for (pkg in bioc_packages) {
   install_bioc_package(pkg)
 }
 
-# 安装 CRAN 包（使用正确的包名）
+# 安装 CRAN 包（您列出的必要包 + sva, ridge, car）
 cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("ISOpureR", "SimDesign", "cowplot", "ggplot2", "dplyr", "tidyr", "readr", "purrr")
+cran_packages <- c(
+  "tidyverse",    # 包含 dplyr, tidyr, readr, purrr, ggplot2 等
+  "ISOpureR",     # 用于纯化表达谱
+  "SimDesign",    # 用于禁止药敏预测过程输出的信息
+  "cowplot",      # 合并图像
+  "ridge",        # 岭回归分析
+  "car"           # companion to applied regression
+)
 
 for (pkg in cran_packages) {
   install_cran_package(pkg)
 }
 
-# 特殊安装 pRRophetic
-cat("\nInstalling pRRophetic (special handling required)...\n")
-install_pRRophetic()
-
-# 药物靶点分析常用的额外包
-cat("\nInstalling additional drug target analysis packages...\n")
-additional_packages <- c("oncoPredict", "PharmacoGx", "ggpubr", "reshape2")
-for (pkg in additional_packages) {
-  if (pkg %in% c("PharmacoGx")) {
-    install_bioc_package(pkg)
-  } else {
-    install_cran_package(pkg)
-  }
-}
-
-# 系统依赖检查
+# 系统依赖检查（可选）
 cat("\nChecking for system dependencies...\n")
 if (.Platform$OS.type == "unix") {
   # 编译依赖
@@ -133,7 +87,7 @@ cat("Package installation completed!\n")
 
 # 验证安装
 cat("\nVerifying installation...\n")
-required_packages <- c("pRRophetic", "impute", "ggplot2", "dplyr")
+required_packages <- c("tidyverse", "ISOpureR", "impute", "SimDesign", "cowplot", "sva", "ridge", "car")
 for (pkg in required_packages) {
   if (is_package_installed(pkg)) {
     cat("✅", pkg, "installed successfully\n")
@@ -142,18 +96,30 @@ for (pkg in required_packages) {
   }
 }
 
-# 测试 pRRophetic 包的功能
-cat("\nTesting pRRophetic package...\n")
-if (is_package_installed("pRRophetic")) {
+# 测试关键包的功能
+cat("\nTesting key packages...\n")
+test_packages <- function(pkg) {
   tryCatch({
-    library(pRRophetic)
-    cat("✅ pRRophetic package loaded successfully\n")
-    cat("pRRophetic package version:", packageVersion("pRRophetic"), "\n")
+    library(pkg, character.only = TRUE)
+    cat("✅", pkg, "package loaded successfully\n")
+    return(TRUE)
   }, error = function(e) {
-    cat("❌ Error loading pRRophetic:", e$message, "\n")
+    cat("❌ Error loading", pkg, ":", e$message, "\n")
+    return(FALSE)
   })
-} else {
-  cat("⚠️ pRRophetic not installed, consider using alternative packages\n")
 }
 
-cat("\nYou can now run FigureYa212drugTargetV2.Rmd script!\n")
+# 测试所有主要包
+key_packages <- c("dplyr", "ggplot2", "ISOpureR", "impute", "sva", "ridge", "car")
+sapply(key_packages, test_packages)
+
+cat("\nAll required packages installed! You can now run your analysis.\n")
+cat("Packages installed:\n")
+cat("- tidyverse (dplyr, ggplot2, tidyr, readr, purrr)\n")
+cat("- ISOpureR: 表达谱纯化\n")
+cat("- impute: KNN 数据填补\n") 
+cat("- SimDesign: 输出控制\n")
+cat("- cowplot: 图像排版\n")
+cat("- sva: 批次效应校正\n")
+cat("- ridge: 岭回归分析\n")
+cat("- car: 回归分析辅助\n")
