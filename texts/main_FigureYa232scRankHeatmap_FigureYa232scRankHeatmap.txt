@@ -2,17 +2,23 @@ FigureYa232scRankHeatmap
 FigureYa232scRankHeatmap
 Zongcheng Li
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
 这种图把富集的上调和下调的基因展示一下，常规用柱状图或点状图，太腻味了，热图要高大上一些，几乎用于所有差异分析的构图需求。
-跟FigureYa114ternaryCluster的图相似，这次是单细胞的，改动较大，还是发起众筹吧。
+跟FigureYa114ternaryCluster的图相似，这次是单细胞的，改动较大。
 Requirement Description
 This kind of diagram shows the up-regulated and down-regulated genes
 of enrichment, and the conventional histogram or dot plot is too
 conventional, and the heat map is more advanced, which can be used for
 all the compositional needs of differential analysis.
 Similar to the figure of FigureYa114ternaryCluster, this time it is
-single-celled, and the changes are large, so let’s launch
-crowdfunding.
+single-celled, and the changes are large.
 出自
 https://linkinghub.elsevier.com/retrieve/pii/S0092867420300568
 from
@@ -64,26 +70,19 @@ Compare and contrast the regulatory relationship between the two
 groups of cells to downregulate the core transcription factors. For
 Figure 5I in Example 2, see FigureYa199crosslink.
 环境设置
-使用国内镜像安装包
 Environment settings
-Use the domestic mirror installation packages
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
-加载包 load packages
+source("install_dependencies.R")
 library(Seurat)
 library(dplyr)
 library(pheatmap)
 Sys.setenv(LANGUAGE = "en") #显示英文报错信息 # error messages are displayed in English
 options(stringsAsFactors = FALSE) #禁止chr转成factor # chr is not allowed to be converted to factor
 输入文件
-sc.seurat.Rdata，单细胞RNA-seq预处理获得的文件。出自FigureYa206scHeatmap，文件较大，已上传至微云
-https://share.weiyun.com/vZiSM9pB
+sc.seurat.Rdata，单细胞RNA-seq预处理获得的文件。出自FigureYa206scHeatmap
 怎样获得这个文件？拖到文末看“附：单细胞RNA-seq数据预处理”
 Input files
-sc.seurat.Rdata, file obtained from single-cell RNA-seq pretreatment.
-From FigureYa206scHeatmap, the file size is large, and it has been
-uploaded to the Weiyun
-https://share.weiyun.com/vZiSM9pB
+sc.seurat.Rdata, file obtained from single-cell RNA-seq pretreatment
+from FigureYa206scHeatmap
 How do I get this document? Drag to the end of the article to see
 “Attached: Single-cell RNA-seq data preprocessing”
 (load("sc.seurat.Rdata"))
@@ -202,8 +201,8 @@ UMI count, download from NCBI
 GSE130664
 :
 ‘GSE130664_merge_UMI_count.txt.gz’ file.
-#
-{r download, eval=FALSE} download.file("https://www.ncbi.nlm.nih.gov/geo/download/?acc=GSE130664&format=file&file=GSE130664%5Fmerge%5FUMI%5Fcount%2Etxt%2Egz",                destfile = "GSE130664_merge_UMI_count.txt.gz")
+download.file("https://www.ncbi.nlm.nih.gov/geo/download/?acc=GSE130664&format=file&file=GSE130664%5Fmerge%5FUMI%5Fcount%2Etxt%2Egz", 
+              destfile = "GSE130664_merge_UMI_count.txt.gz")
 metadata，从
 例文的
 Supplementary
@@ -215,54 +214,90 @@ https://doi.org/10.1016/j.cell.2020.01.009
 Supplementary Tables in [example]:
 ‘1-s2.0-S0092867420300568-mmc1.xlsx’
 Read data
-#
-{r preprocessing, eval=FALSE} umi <- read.table(file = gzfile("GSE130664_merge_UMI_count.txt.gz"), header = T, row.names = 1, sep = "\t") qc <- readxl::read_excel("1-s2.0-S0092867420300568-mmc1.xlsx", sheet = 2) meta <- readxl::read_excel("1-s2.0-S0092867420300568-mmc1.xlsx", 3) %>%    column_to_rownames("cell")
+umi <- read.table(file = gzfile("GSE130664_merge_UMI_count.txt.gz"), header = T, row.names = 1, sep = "\t")
+qc <- readxl::read_excel("1-s2.0-S0092867420300568-mmc1.xlsx", sheet = 2)
+meta <- readxl::read_excel("1-s2.0-S0092867420300568-mmc1.xlsx", 3) %>% 
+  column_to_rownames("cell")
 数据预处理
 Data preprocessing
 See Methods:
 QUANTIFICATION AND STATISTICAL ANALYSIS -> Single-Cell RNA-Seq Data
 Processing
-#``
-{r, eval=FALSE} # QC of Cells cells <- qc %>%    filter(
-Mapping
-rate
->= 0.2 &
-Gene number` >= 700 & UMI >=
-3000) %>% pull(Rename)
-seurat object
-sc <- CreateSeuratObject(counts = umi[,cells], meta.data =
-meta)
-expression transformation
-sc@assays
-\(RNA@data <- sc@assays\)
-RNA@counts
-%>% apply(2,
-function(x){ log2(10^5*x/sum(x)+1) })
-remove other cells
-sc <- sc[,sc$cluster != “other”]
-给cluster改名
-Rename the cluster
-sc
-\(cluster_short <- factor(
-  plyr::mapvalues(sc\)
-cluster, c(“Oocyte”, “Natural killer T
-cell”, “Macrophage”, “Granulosa cell”, “Endothelial cell”, “Smooth
-muscle cell”, “Stromal cell”), c(“OO”, “NKT”, “M”, “GC”, “EC”, “SMC”,
-“SC”)), levels = c(“OO”, “NKT”, “M”, “GC”, “EC”, “SMC”, “SC”))
-给cluster自定义颜色
-Customize the color for the cluster
-cluster_colors <- setNames(brewer.pal(7, “Set1”),
-levels(sc$cluster_short))
-保存一下，便于停下来接着跑
-Save it so you can stop and run
-save(sc, cluster_colors, file = “sc.seurat.Rdata”)
-还可以把表达矩阵输出到文件
-It is also possible to output the expression matrix to a file
-#write.csv(
-sc@assays
-$
-RNA@data
-,
-“easy_input_expr.csv”, quote = F)
+# QC of Cells
+cells <- qc %>% 
+  filter(`Mapping rate` >= 0.2 &
+           `Gene number` >= 700 &
+           UMI >= 3000) %>%
+  pull(Rename)
+
+# seurat object
+sc <- CreateSeuratObject(counts = umi[,cells], meta.data = meta)
+
+# expression transformation
+sc@assays$RNA@data <- sc@assays$RNA@counts %>% 
+  apply(2, function(x){
+    log2(10^5*x/sum(x)+1)
+    })
+
+# remove other cells
+sc <- sc[,sc$cluster != "other"]
+
+# 给cluster改名
+# Rename the cluster
+sc$cluster_short <- factor(
+  plyr::mapvalues(sc$cluster, 
+                  c("Oocyte", "Natural killer T cell", "Macrophage",
+                    "Granulosa cell", "Endothelial cell", 
+                    "Smooth muscle cell", "Stromal cell"),
+                  c("OO", "NKT", "M", "GC", "EC", "SMC", "SC")),
+  levels = c("OO", "NKT", "M", "GC", "EC", "SMC", "SC"))
+
+# 给cluster自定义颜色
+# Customize the color for the cluster
+cluster_colors <- setNames(brewer.pal(7, "Set1"), levels(sc$cluster_short))
+
+# 保存一下，便于停下来接着跑
+# Save it so you can stop and run
+save(sc, cluster_colors, file = "sc.seurat.Rdata")
+
+# 还可以把表达矩阵输出到文件
+# It is also possible to output the expression matrix to a file
+#write.csv(sc@assays$RNA@data, "easy_input_expr.csv", quote = F)
+Seurat自带的无监督聚类
+以下代码出自
+FigureYa222PCAgene
+，获得cluster。
+Seurat’s built-in unsupervised clustering
+The following code is from ‘FigureYa222PCAgene’, which gets the
+cluster.
+library(magrittr)
+
+sc_oo_mnn <- batchelor::mnnCorrect(# mmnCorrect is no longer in scran 
+  as.SingleCellExperiment(sc_oo),
+  batch = sc_oo$individual,
+  k = 4, 
+  sigma = 0.1, cos.norm.in = T, cos.norm.out = T, 
+  var.adj = T
+)
+prData <- SummarizedExperiment::assay(sc_oo_mnn)
+
+# HVGs
+sc_oo %<>% FindVariableFeatures(selection.method = "mvp", mean.cutoff = c(1,8))
+VariableFeatures(sc_oo) %>% length()
+
+# unsupervised clustering based on mnn matrix
+sc_oo %<>% ScaleData 
+sc_oo@assays$RNA@scale.data <- prData[rownames(sc_oo@assays$RNA@scale.data), colnames(sc_oo@assays$RNA@scale.data)]
+sc_oo %<>% RunPCA
+ElbowPlot(sc_oo)
+
+sc_oo %<>% FindNeighbors(dims = 1:15) %>% FindClusters(resolution = 0.6)
+
+# 把seurat_clusters的名字0-3改为C1-C4
+# Change the name of the seurat_clusters 0-3 to C1-C4
+sc_oo@meta.data$seurat_clusters <- factor(sc_oo@meta.data$seurat_clusters, 
+                                          levels = c("0", "1", "2", "3"), 
+                                          labels = c("C1", "C2", "C3", "C4"))
+sc_oo@meta.data$seurat_clusters
 Session Info
 sessionInfo()
