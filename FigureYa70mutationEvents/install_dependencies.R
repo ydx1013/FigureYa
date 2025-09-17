@@ -8,7 +8,7 @@ options(BioC_mirror = "https://bioconductor.org/")
 
 # Function to check if a package is installed
 is_package_installed <- function(package_name) {
-  return(package_name %in% rownames(installed.packages()))
+  return(requireNamespace(package_name, quietly = TRUE))
 }
 
 # Function to install CRAN packages
@@ -16,46 +16,48 @@ install_cran_package <- function(package_name) {
   if (!is_package_installed(package_name)) {
     cat("Installing CRAN package:", package_name, "\n")
     tryCatch({
-      install.packages(package_name, dependencies = TRUE)
-      cat("Successfully installed:", package_name, "\n")
+      install.packages(package_name, dependencies = TRUE, quiet = TRUE)
+      cat("✓ Successfully installed:", package_name, "\n")
     }, error = function(e) {
-      cat("Failed to install", package_name, ":", e$message, "\n")
+      cat("✗ Failed to install", package_name, ":", e$message, "\n")
     })
   } else {
-    cat("Package already installed:", package_name, "\n")
+    cat("✓ Package already installed:", package_name, "\n")
   }
 }
 
-# Function to install Bioconductor packages
-install_bioc_package <- function(package_name) {
+# Function to install GitHub packages
+install_github_package <- function(repo) {
+  package_name <- basename(repo)
   if (!is_package_installed(package_name)) {
-    cat("Installing Bioconductor package:", package_name, "\n")
+    cat("Installing GitHub package:", repo, "\n")
     tryCatch({
-      if (!is_package_installed("BiocManager")) {
-        install.packages("BiocManager")
+      if (!is_package_installed("remotes")) {
+        install.packages("remotes", quiet = TRUE)
       }
-      BiocManager::install(package_name, update = FALSE, ask = FALSE)
-      cat("Successfully installed:", package_name, "\n")
+      remotes::install_github(repo, quiet = TRUE)
+      cat("✓ Successfully installed:", package_name, "\n")
     }, error = function(e) {
-      cat("Failed to install", package_name, ":", e$message, "\n")
+      cat("✗ Failed to install", package_name, ":", e$message, "\n")
     })
   } else {
-    cat("Package already installed:", package_name, "\n")
+    cat("✓ Package already installed:", package_name, "\n")
   }
 }
 
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
-# Install Bioconductor packages first
-cat("\nInstalling Bioconductor packages...\n")
-bioc_packages <- c("discover")
-
-for (pkg in bioc_packages) {
-  install_bioc_package(pkg)
+# 首先安装基础工具
+if (!is_package_installed("remotes")) {
+  install_cran_package("remotes")
 }
 
-# Installing CRAN packages
+# 安装discover从GitHub
+cat("\nInstalling discover package from GitHub...\n")
+install_github_package("parklab/discover")
+
+# 安装CRAN包
 cat("\nInstalling CRAN packages...\n")
 cran_packages <- c("Cairo", "RColorBrewer", "corrplot", "data.table", "openxlsx", "readr", "reshape2")
 
@@ -66,7 +68,7 @@ for (pkg in cran_packages) {
 cat("\n===========================================\n")
 cat("Package installation completed!\n")
 
-# Verify installation
+# 验证安装
 cat("\nVerifying package installation:\n")
 all_packages <- c("discover", "Cairo", "RColorBrewer", "corrplot", "data.table", "openxlsx", "readr", "reshape2")
 
@@ -76,6 +78,120 @@ for (pkg in all_packages) {
   } else {
     cat("✗", pkg, "is NOT installed\n")
   }
+}
+
+# 测试discover功能
+if (is_package_installed("discover")) {
+  cat("\nTesting discover package...\n")
+  tryCatch({
+    library(discover)
+    cat("✓ discover package loaded successfully\n")
+    
+    # 检查主要函数是否存在
+    if (exists("discover_matrix")) {
+      cat("✓ Main functions are available\n")
+    }
+  }, error = function(e) {
+    cat("✗ discover test failed:", e$message, "\n")
+  })
+}
+
+cat("\nYou can now run your R scripts in this directory.\n")#!/usr/bin/env Rscript
+# Auto-generated R dependency installation script
+# This script installs all required R packages for this project
+
+# Set up mirrors for better download performance
+options("repos" = c(CRAN = "https://cloud.r-project.org/"))
+options(BioC_mirror = "https://bioconductor.org/")
+
+# Function to check if a package is installed
+is_package_installed <- function(package_name) {
+  return(requireNamespace(package_name, quietly = TRUE))
+}
+
+# Function to install CRAN packages
+install_cran_package <- function(package_name) {
+  if (!is_package_installed(package_name)) {
+    cat("Installing CRAN package:", package_name, "\n")
+    tryCatch({
+      install.packages(package_name, dependencies = TRUE, quiet = TRUE)
+      cat("✓ Successfully installed:", package_name, "\n")
+    }, error = function(e) {
+      cat("✗ Failed to install", package_name, ":", e$message, "\n")
+    })
+  } else {
+    cat("✓ Package already installed:", package_name, "\n")
+  }
+}
+
+# Function to install GitHub packages
+install_github_package <- function(repo) {
+  package_name <- basename(repo)
+  if (!is_package_installed(package_name)) {
+    cat("Installing GitHub package:", repo, "\n")
+    tryCatch({
+      if (!is_package_installed("remotes")) {
+        install.packages("remotes", quiet = TRUE)
+      }
+      remotes::install_github(repo, quiet = TRUE)
+      cat("✓ Successfully installed:", package_name, "\n")
+    }, error = function(e) {
+      cat("✗ Failed to install", package_name, ":", e$message, "\n")
+    })
+  } else {
+    cat("✓ Package already installed:", package_name, "\n")
+  }
+}
+
+cat("Starting R package installation...\n")
+cat("===========================================\n")
+
+# 首先安装基础工具
+if (!is_package_installed("remotes")) {
+  install_cran_package("remotes")
+}
+
+# 安装discover从GitHub
+cat("\nInstalling discover package from GitHub...\n")
+install_github_package("parklab/discover")
+
+# 安装CRAN包
+cat("\nInstalling CRAN packages...\n")
+cran_packages <- c("Cairo", "RColorBrewer", "corrplot", "data.table", "openxlsx", "readr", "reshape2")
+
+for (pkg in cran_packages) {
+  install_cran_package(pkg)
+}
+
+cat("\n===========================================\n")
+cat("Package installation completed!\n")
+
+# 验证安装
+cat("\nVerifying package installation:\n")
+all_packages <- c("discover", "Cairo", "RColorBrewer", "corrplot", "data.table", "openxlsx", "readr", "reshape2")
+
+for (pkg in all_packages) {
+  if (is_package_installed(pkg)) {
+    cat("✓", pkg, "is installed\n")
+  } else {
+    cat("✗", pkg, "is NOT installed\n")
+  }
+}
+
+# 测试discover功能
+if (is_package_installed("discover")) {
+  cat("\nTesting discover package...\n")
+  tryCatch({
+    library(discover)
+    cat("✓ discover package loaded successfully\n")
+    
+    # 检查主要函数是否存在
+    if (exists("discover_matrix")) {
+      cat("✓ Main functions are available\n")
+    }
+  }, error = function(e) {
+    cat("✗ discover test failed:", e$message, "\n")
+  })
 }
 
 cat("\nYou can now run your R scripts in this directory.\n")
