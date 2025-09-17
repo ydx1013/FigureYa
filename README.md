@@ -32,6 +32,7 @@ All FigureYa folders are compressed as individual zip files for convenient downl
 1.  Navigate to the [`/compressed`](https://github.com/ying-ge/FigureYa/tree/main/compressed) directory.
 2.  Find the zip file with the name corresponding to the folder you want (e.g., `FigureYa123mutVSexpr.zip`).
 3.  Click on the zip file, then click the **Download** button.
+4.  Owing to GitHub's file size restrictions, larger files have been uploaded to [`Baidu Cloud`](https://pan.baidu.com). Please join group 967269198 to obtain the download links.
 
 ### 2. Browse Online on GitHub
 If you want to view the raw input or output files directly, you can browse them in the file browser at the top of this repository's main page.
