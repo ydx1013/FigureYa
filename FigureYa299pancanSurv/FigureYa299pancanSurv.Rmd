@@ -11,6 +11,7 @@ output: html_document
 **Reviewer(s)**: `r params$reviewer`  
 **Date**: `r params$date` 
 
+# 学术引用
 # Academic Citation
 If you use this code in your work or research, we kindly request that you cite our publication:
 
@@ -511,8 +512,11 @@ invisible(dev.off())
 
 ![](forestplot of os risk table in pancancer.pdf)
 
+# 会话信息
 # Session Info
 
 ```{r}
+# 显示会话信息
+# Show session information
 sessionInfo()
 ```
