@@ -73,11 +73,17 @@ library(scMetabolism)
 library(ggplot2)
 library(rsvd)
 
-Sys.setenv(LANGUAGE = "en") #显示英文报错信息
-options(stringsAsFactors = FALSE) #禁止chr转成factor
+# 显示英文报错信息
+# Show English error messages
+Sys.setenv(LANGUAGE = "en") 
+
+# 禁止chr转成factor
+# Prevent character-to-factor conversion
+options(stringsAsFactors = FALSE) 
 ```
 
 # 输入文件预处理
+# Input File Preprocessing
 
 跟FigureYa267scCellChat一样的处理，可以直接跳到“Metabolic genes”。
 
