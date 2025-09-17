@@ -6,18 +6,21 @@ Reviewer(s)
 : Ying Ge
 Date
 : 2025-05-20
+学术引用
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
 Demand description
-想把FigureYa253panGSEA
-https://k.youshop10.com/QbM6nwGB
-中的单基因多通路的泛癌富集分析改成”多基因，单通路的泛癌富集分析”，即把下图中的Y轴变成了基因，X轴还是癌种。
+想把FigureYa253panGSEA中的单基因多通路的泛癌富集分析改成”多基因，单通路的泛癌富集分析”，即把下图中的Y轴变成了基因，X轴还是癌种。
 I want to modify the pan-cancer enrichment analysis in
-FigureYa253panGSEA
-https://k.youshop10.com/QbM6nwGB
-from “single-gene
-multi-pathway” to “multi-gene single-pathway” analysis. That is,
-changing the Y-axis in the figure to show genes while keeping the X-axis
-as cancer types.
+FigureYa253panGSEA from “single-gene multi-pathway” to “multi-gene
+single-pathway” analysis. That is, changing the Y-axis in the figure to
+show genes while keeping the X-axis as cancer types.
 出自：
 https://www.cell.com/iscience/fulltext/S2589-0042(20)30489-2?_returnURL=https%3A%2F%2Flinkinghub.elsevier.com%2Fretrieve%2Fpii%2FS2589004220304892%3Fshowall%3Dtrue
 图3. 铁死亡与信号通路及免疫表型的关系。 (A和B)
@@ -32,22 +35,12 @@ algorithm.
 应用场景
 Application scenarios
 基于特定基因两组数据，对每个肿瘤进行单基因集富集分析(GSEA)，展示某特定通路的富集情况。
-更多pancancer分析画图FigureYa看这里
-https://k.youshop10.com/C8RkTgR3
 Based on two groups of specific gene data, single gene set enrichment
 analysis (GSEA) was performed for each tumor to demonstrate the
 enrichment of a particular pathway.
-For more pan-cancer analysis and visualization (FigureYa), check
-here
-https://k.youshop10.com/C8RkTgR3
 环境设置
 Environment Setup
-使用国内镜像安装包。
-Using domestic mirrors for package installation.
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
-加载包
-Loading packages
+source("install_dependencies.R")
 library(clusterProfiler)
 library(limma)
 library(ggplot2)
