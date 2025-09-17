@@ -6,13 +6,20 @@ Reviewer(s)
 : Ying Ge
 Date
 : 2025-05-20
+学术引用
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
 Demand description
-这个图信息量很大，非常高大上，热图和气泡图合用，展示差异富集信号通路信息，最好给众筹一下哈。
+这个图信息量很大，非常高大上，热图和气泡图合用，展示差异富集信号通路信息。
 This diagram is packed with information and looks very high-end. The
 combination of a heatmap and bubble chart effectively displays
-differential enrichment signaling pathways. It would be great to
-crowdfund this.
+differential enrichment signaling pathways.
 出自：
 https://linkinghub.elsevier.com/retrieve/pii/S0092867420300568
 图1. 猕猴卵巢单细胞RNA测序分析揭示具有独特转录特征的卵巢细胞亚群。
@@ -36,15 +43,7 @@ analysis results on the right, providing a more intuitive
 visualization.
 环境设置
 Environment Setup
-使用国内镜像安装包。
-Using domestic mirrors for package installation.
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
-BiocManager::install("batchelor")
-install.packages("Seurat")
-install.packages("Hmisc")
-加载包
-Loading packages
+source("install_dependencies.R")
 library(tidyverse)
 library(magrittr)
 library(Seurat) # v3.1.5
@@ -332,7 +331,7 @@ phres <- pheatmap(
   annotation_row = data.frame(cluster = degs_top50$cluster), 
   annotation_colors = list(cluster = cluster_colors))
 点图
-dotplot
+Dotplot
 原文：We selected GO terms representing the
 function of each
 cell type
@@ -417,7 +416,7 @@ dotplot <- ggplot(cbind(dotData, Order = nrow(dotData):1)) +
 
 dotplot
 合并
-combined
+Combined
 你可以使用Adobe Illustrator对以下图表进行修饰完善
 You can go to Adobe Illustrator to polish the following figures
 # 提取热图图形对象 
