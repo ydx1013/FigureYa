@@ -52,13 +52,13 @@ library(TxDb.Hsapiens.UCSC.hg38.knownGene)
 
 需要展示的区域loci.bed
 
-bigwig文件TAL1.bw，POLR2A.bw，文件链接： https://pan.baidu.com/s/1hUP8xf3zO2ybloflgyP73w?pwd=sp7y
+bigwig文件TAL1.bw，POLR2A.bw
 
 bigwig文件描述easy_input.txt
 
 Regions to be displayed loci.bed
 
-bigwig files TAL1.bw, POLR2A.bw, file link: https://pan.baidu.com/s/1hUP8xf3zO2ybloflgyP73w?pwd=sp7y
+bigwig files TAL1.bw, POLR2A.bw
 
 bigwig file description easy_input.txt
 
@@ -120,7 +120,7 @@ colpal<-rep(brewer.pal(12,"Paired"),20)
 coldf<-data.frame(col=colpal[1:nrow(bwInfo)],row.names = rownames(bwInfo),stringsAsFactors = F)
 
 for(index in rownames(bwInfo)){
-  bgFile<-file.path("D:/FigureYa/FigureYa3genomeView",paste(index,".bw",sep=""))
+  bgFile<-file.path(paste(index,".bw",sep=""))
   tracklist[[index]]<-DataTrack(range = bgFile,genome="hg38",type="histogram",
                                 name=chartr("_","\n",bwInfo[index,]),
                                 col.histogram=coldf[index,])#每个track颜色不同才好看 each track looks better with a different color
