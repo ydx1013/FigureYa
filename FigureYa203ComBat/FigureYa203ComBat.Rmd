@@ -191,11 +191,11 @@ write.csv(tpms.hugo, "easy_input_TCGA.csv", quote = FALSE)
 
 这里用sangerbox下载GEO表达谱数据及预处理，方法见`GEO_sangerbox.docx`文件。生成`gse41613.expr.txt`以及`gse65858.expr.txt`后进行如下处理。
 
-（还可以用`FigureYa59Plus_GEO2DEG`<https://www.yuque.com/figureya/figureyaplus/figureya59p>下载GEO芯片数据并预处理，获得表达矩阵easy_input_expr.csv文件）
+（还可以用`FigureYa59Plus_GEO2DEG`下载GEO芯片数据并预处理，获得表达矩阵easy_input_expr.csv文件）
 
 Here, we use SangerBox to download and preprocess GEO expression data, as detailed in the `GEO_sangerbox.docx` file. After generating `gse41613.expr.txt` and `gse65858.expr.txt`, proceed with the following steps.
 
-(Alternatively, you can use `FigureYa59Plus_GEO2DEG`<https://www.yuque.com/figureya/figureyaplus/figureya59p> to download and preprocess GEO microarray data, obtaining the expression matrix file easy_input_expr.csv)
+(Alternatively, you can use `FigureYa59Plus_GEO2DEG` to download and preprocess GEO microarray data, obtaining the expression matrix file easy_input_expr.csv)
 
 ```{r eval=FALSE}
 # GSE41613数据集处理
