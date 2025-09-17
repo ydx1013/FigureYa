@@ -81,9 +81,9 @@ options(stringsAsFactors = FALSE)
 # 输入文件
 # Input Files
 
-Seurat对象：这步跟FigureYa317RoeDot相同。包含样本来源（Group）和细胞类型（Celltypes）信息。从GEO下载输入数据，<https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE159677>，下载Supplementary file表格里的`GSE159677_RAW.tar`，和Download family里的`Series Matrix File(s)`，存放在InputData文件夹里。也可以从语雀下载<https://www.yuque.com/figureya/figureyaplus/easyinput>
+Seurat对象：这步跟FigureYa317RoeDot相同。包含样本来源（Group）和细胞类型（Celltypes）信息。从GEO下载输入数据，<https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE159677>，下载Supplementary file表格里的`GSE159677_RAW.tar`，和Download family里的`Series Matrix File(s)`，存放在InputData文件夹里。
 
-Seurat object: This step is the same as FigureYa317RoeDot. It contains sample source (Group) and cell type (Celltypes) information. Download input data from GEO, <https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE159677>, download `GSE159677_RAW.tar` from the Supplementary file table, and `Series Matrix File(s)` from Download family, and store them in the InputData folder. You can also download from Yuque<https://www.yuque.com/figureya/figureyaplus/easyinput>.
+Seurat object: This step is the same as FigureYa317RoeDot. It contains sample source (Group) and cell type (Celltypes) information. Download input data from GEO, <https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE159677>, download `GSE159677_RAW.tar` from the Supplementary file table, and `Series Matrix File(s)` from Download family, and store them in the InputData folder.
 
 ![](InputData.png)
 
