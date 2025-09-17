@@ -111,15 +111,13 @@ for (pkg in cran_packages) {
   install_cran_package(pkg)
 }
 
-# 安装Bioconductor包
-cat("\nInstalling Bioconductor packages...\n")
-bioc_packages <- c("MCPcounter")  # MCPcounter应该在Bioconductor中
-for (pkg in bioc_packages) {
-  install_bioc_package(pkg)
-}
+# 安装GitHub包 - MCPcounter 需要从GitHub安装
+cat("\nInstalling GitHub packages...\n")
+github_packages <- c("ebecht/MCPcounter")  # MCPcounter 在GitHub上
 
-# 如果有特定的GitHub包需要安装，请在这里添加
-# 例如：install_github_package("username/repositoryname")
+for (repo in github_packages) {
+  install_github_package(repo)
+}
 
 cat("\n===========================================\n")
 cat("Package installation completed!\n")
