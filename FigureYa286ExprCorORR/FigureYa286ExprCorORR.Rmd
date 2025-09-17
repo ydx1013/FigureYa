@@ -11,6 +11,7 @@ output: html_document
 **Reviewer(s)**: `r params$reviewer`  
 **Date**: `r params$date` 
 
+# 学术引用
 # Academic Citation
 If you use this code in your work or research, we kindly request that you cite our publication:
 
