@@ -2312,6 +2312,14 @@
     "thumb": "gallery_compress/FigureYa290.webp"
   },
   {
+    "id": "main_FigureYa291PancanProgSigatureV2_FigureYa291PancanProgSigatureV2",
+    "title": "FigureYa291PancanProgSigatureV2/FigureYa291PancanProgSigatureV2.html",
+    "html": "FigureYa291PancanProgSigatureV2/FigureYa291PancanProgSigatureV2.html",
+    "text": "texts/main_FigureYa291PancanProgSigatureV2_FigureYa291PancanProgSigatureV2.txt",
+    "folder": "FigureYa291PancanProgSigatureV2",
+    "thumb": "gallery_compress/FigureYa291.webp"
+  },
+  {
     "id": "main_FigureYa292HCCsubtype_FigureYa292HCCsubtype",
     "title": "FigureYa292HCCsubtype/FigureYa292HCCsubtype.html",
     "html": "FigureYa292HCCsubtype/FigureYa292HCCsubtype.html",
@@ -2326,14 +2334,6 @@
     "text": "texts/main_FigureYa293machineLearning_FigureYa293machineLearning.txt",
     "folder": "FigureYa293machineLearning",
     "thumb": "gallery_compress/FigureYa293.webp"
-  },
-  {
-    "id": "main_FigureYa294HCCdrug_FigureYa294HCCdrug",
-    "title": "FigureYa294HCCdrug/FigureYa294HCCdrug.html",
-    "html": "FigureYa294HCCdrug/FigureYa294HCCdrug.html",
-    "text": "texts/main_FigureYa294HCCdrug_FigureYa294HCCdrug.txt",
-    "folder": "FigureYa294HCCdrug",
-    "thumb": "gallery_compress/FigureYa294.webp"
   },
   {
     "id": "main_FigureYa295ClassDiscovery_FigureYa295ClassDiscovery",

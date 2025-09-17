@@ -6,6 +6,14 @@ Reviewer(s)
 : Ying Ge
 Date
 : 2025-05-20
+学术引用
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
 Demand description
 来自这篇A signature for pan-cancer prognosis based on neutrophil
@@ -29,22 +37,15 @@ Figure 2 Prognostic performance of the 19-gene NETs score.
 Application scenarios
 在泛癌中计算某感兴趣得分并计算该得分与预后的相关性；绘制得分分布于预后散点图。
 更多泛癌FigureYa看这里
-https://k.youshop10.com/C8RkTgR3
 可以用FigureYa实现例文多个Figure，例如：
 Figure 1A，可参考FigureYa31lasso
 Figure 2CDE、3、6BCDE，可参考FigureYa35batch_bestSeparation
 Figure 4AB，可参考FigureYa30
 Figure 4C，可参考FigureYa85timeROC
 Figure 4D，可参考FigureYa33DCA
-Figure 5相关性结果展示，可参考
-https://k.youshop10.com/Eig1YOB4
-Figure 2B、6FGH森林图，可参考
-https://k.youshop10.com/Bc4bKvk3
 Pan-cancer analysis: Calculate a score of interest and evaluate its
 correlation with prognosis; generate scatter plots showing the
 distribution of the score against prognostic outcomes.
-For more pan-cancer FigureYa examples, visit:
-https://k.youshop10.com/C8RkTgR3
 FigureYa can be used to reproduce multiple figures from the example
 article, such as:
 Figure 1A → Refer to FigureYa31lasso
@@ -53,18 +54,9 @@ FigureYa35batch_bestSeparation
 Figures 4AB → Refer to FigureYa30
 Figure 4C → Refer to FigureYa85timeROC
 Figure 4D → Refer to FigureYa33DCA
-Figure 5 (correlation results) → See
-https://k.youshop10.com/Eig1YOB4
-Figures 2B & 6FGH (forest plots) → See
-https://k.youshop10.com/Bc4bKvk3
 环境设置
 Environment Setup
-使用国内镜像安装包。
-Using domestic mirrors for package installation.
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
-加载包
-Loading packages
+source("install_dependencies.R")
 library(ggplot2)
 library(data.table)
 library(survival)
