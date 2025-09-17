@@ -2,11 +2,18 @@ FigureYa200pairwiseAUC
 FigureYa200pairwiseAUC
 Xiaofan Lu
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
-我想众筹Figure 1B，两个数据集里面看预后判断力都很好的基因。
+我想实现Figure 1B，两个数据集里面看预后判断力都很好的基因。
 Requirement Description
-I want to crowdfund Figure 1B, and look at the genes with good
-prognostic judgment in both datasets.
+I want to draw Figure 1B, and look at the genes with good prognostic
+judgment in both datasets.
 出自
 https://aasldpubs.onlinelibrary.wiley.com/doi/abs/10.1002/hep.30930
 from
@@ -29,12 +36,8 @@ Application Scenarios
 The training set defines the candidate genes, and then looks for the
 set of genes with good prognostic judgment in both test sets.
 环境设置
-使用国内镜像安装包
 Environment settings
-Use the domestic Mirror Installer
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
-加载包 load packages
+source("install_dependencies.R")
 library(limma) # 芯片差异表达 # Differential expression of chips
 library(impute) # 芯片缺失值多重填补 # Chip missing values are multi-filled
 library(dplyr)
@@ -42,7 +45,6 @@ library(pheatmap)
 library(gplots)
 library(pROC)
 library(ggplot2)
-
 Sys.setenv(LANGUAGE = "en") #显示英文报错信息 # error messages are displayed in English
 options(stringsAsFactors = FALSE) #禁止chr转成factor # It is forbidden to convert chr into factor
 自定义函数 Custom functions
@@ -68,8 +70,7 @@ standarize.fun <- function(indata=NULL, halfwidth=NULL, centerFlag=T, scaleFlag=
 GSE364.expr.txt
 GSE364.sinfo.txt
 测试集：
-LIHC.expr.txt (TCGA)，有点大，放到微云上
-https://share.weiyun.com/85eUvRBp
+LIHC.expr.txt (TCGA)
 LIHC.sinfo.txt (TCGA)
 GSE10186.expr.txt
 GSE10186.sinfo.txt
@@ -78,9 +79,7 @@ Multiple sets of expression data with prognostic information are
 required, serving as the training set and test set, respectively.
 Training Set: -GSE364.expr.txt
 -GSE364.sinfo.txt
-Test Set: -LIHC.expr.txt (TCGA) – Note: This file is large and has
-been uploaded to Weiyun:
-https://share.weiyun.com/85eUvRBp
+Test Set: -LIHC.expr.txt (TCGA)
 -LIHC.sinfo.txt (TCGA)
 -GSE10186.expr.txt
 -GSE10186.sinfo.txt
@@ -204,7 +203,7 @@ finalgene <- intersect(comgene[auc1 > auc1.cutoff & auc2 > auc2.cutoff], FAKE.pr
 avgauc <- c(auc1[finalgene] + auc2[finalgene])/2
 pickgene <- "B4GALNT1" # 因为和原文结果不同所以随便选的 # As it is different from the original result, I choose it willingly
 开始画图
-#start plot
+Start plot
 用base plot画图，从plot开始整段运行。 Draw with base plot and run the
 entire section from the plot
 xrange <- pretty(range(auc1))
