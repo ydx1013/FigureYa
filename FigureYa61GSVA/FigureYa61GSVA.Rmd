@@ -1,18 +1,14 @@
 ---
 title: "FigureYa61 GSVA"
-author: "小丫画图出品"
+author: "Yu Sun"
 date: "2018-12-17"
 output: html_document
 ---
-微信ID: epigenomics  E-mail: figureya@126.com
-
-作者：[Yu Sun](https://icannotendure.space/en/)，小丫
 
 # Academic Citation
 If you use this code in your work or research, we kindly request that you cite our publication:
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
-
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -36,14 +32,6 @@ knitr::opts_chunk$set(echo = TRUE)
 - 此处gsva_limma.csv文件是用**通路**做差异分析获得的。
 
 ## 环境设置
-
-### 安装包
-
-```r
-install.packages("msigdbr")
-```
-
-### 加载包
 
 ```{r}
 source("install_dependencies.R")
@@ -82,9 +70,6 @@ GSVA需要两个输入文件：基因表达矩阵和通路里的基因列表。
 在实际分析过程中，笔者留意到在单个的geneset中已经很少出现重复的基因，但在两个或更多个pathway中出现的基因则数目相对较多，读者可**酌情考虑，调整此处过滤的力度**。
 
 ```{r}
-#查看msigdbr包里自带的物种
-msigdbr_show_species()
-
 h <- msigdbr(species = "Homo sapiens", # 物种拉丁名
              category = "H") #此处以hallmark为例，你也可以选择MSigDB的其他注释
 
