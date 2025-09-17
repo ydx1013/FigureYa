@@ -47,10 +47,9 @@ install_bioc_package <- function(package_name) {
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
-
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("Gviz", "RColorBrewer", "data.table")
+cran_packages <- c("RColorBrewer", "data.table")  # 移除了 Gviz
 
 for (pkg in cran_packages) {
   install_cran_package(pkg)
@@ -58,7 +57,7 @@ for (pkg in cran_packages) {
 
 # Installing Bioconductor packages
 cat("\nInstalling Bioconductor packages...\n")
-bioc_packages <- c("TxDb.Hsapiens.UCSC.hg38.knownGene", "org.Hs.eg.db")
+bioc_packages <- c("Gviz", "TxDb.Hsapiens.UCSC.hg38.knownGene", "org.Hs.eg.db")  # 添加了 Gviz
 
 for (pkg in bioc_packages) {
   install_bioc_package(pkg)
@@ -66,4 +65,15 @@ for (pkg in bioc_packages) {
 
 cat("\n===========================================\n")
 cat("Package installation completed!\n")
+
+# Test if Gviz can be loaded
+cat("\nTesting Gviz package...\n")
+if (require("Gviz", quietly = TRUE)) {
+  cat("✅ Gviz package loaded successfully!\n")
+} else {
+  cat("❌ Gviz package could not be loaded.\n")
+  cat("You may need to install it manually:\n")
+  cat("BiocManager::install('Gviz')\n")
+}
+
 cat("You can now run your R scripts in this directory.\n")
