@@ -36,7 +36,7 @@ install_bioc_package <- function(package_name) {
       }
       BiocManager::install(package_name, update = FALSE, ask = FALSE)
       cat("Successfully installed:", package_name, "\n")
-    }, error function(e) {
+    }, error = function(e) {
       cat("Failed to install", package_name, ":", e$message, "\n")
     })
   } else {
@@ -110,4 +110,5 @@ for (pkg in bioc_packages) {
 
 cat("\n===========================================\n")
 cat("Package installation completed!\n")
+cat("Note: pRRophetic package is no longer required\n")
 cat("You can now run your R scripts in this directory.\n")
