@@ -47,7 +47,6 @@ install_bioc_package <- function(package_name) {
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
-
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
 cran_packages <- c("ClassDiscovery", "RColorBrewer", "gplots", "snow")
@@ -58,7 +57,7 @@ for (pkg in cran_packages) {
 
 # Installing Bioconductor packages
 cat("\nInstalling Bioconductor packages...\n")
-bioc_packages <- c("ComplexHeatmap")
+bioc_packages <- c("ComplexHeatmap", "RTN")  # 添加了 RTN 包
 
 for (pkg in bioc_packages) {
   install_bioc_package(pkg)
