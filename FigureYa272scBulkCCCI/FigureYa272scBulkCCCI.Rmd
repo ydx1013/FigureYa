@@ -50,10 +50,6 @@ Cell **subtype specific genes** were identified from the Smart-seq2 scRNA-seq da
 
 scBulkCCCI：correlative cell-cell interaction networks based on combining scRNA-seq and TCGA datasets
 
-R包下载地址：<https://www.yuque.com/figureya/figureyaplus/package>
-
-下载后解压缩，可以查看R包内容：
-
 - 包的自带描述文档，见ScBulkCCCI/README.md
 - 示例部分数据，储存在ScBulkCCCI/data，scRNA-seq数据太大，未内置在包中，根据说明去下载；
 - 数据经过预处理：数据预处理的code查看ScBulkCCCI包下ScBulkCCCI_DataPreprocess.R， 位于ScBulkCCCI/example；
@@ -64,10 +60,6 @@ Using signature genes identified from scRNA-seq, we inferred cell population int
 The author of this document developed an R package, scBulkCCCI, to help users run the workflow described in the example.
 
 scBulkCCCI: Correlative cell-cell interaction networks based on combining scRNA-seq and TCGA datasets
-
-R package download link: <https://www.yuque.com/figureya/figureyaplus/package>
-
-After downloading and extracting the package, you can view its contents:
 
 - Package documentation: See ScBulkCCCI/README.md.
 - Example datasets: Stored in ScBulkCCCI/data. Note that the scRNA-seq data is too large to be included in the package—please download it separately as instructed.
