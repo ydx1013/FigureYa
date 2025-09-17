@@ -11,7 +11,6 @@ output: html_document
 **Reviewer(s)**: `r params$reviewer`  
 **Date**: `r params$date` 
 
-# 学术引用
 # Academic Citation
 If you use this code in your work or research, we kindly request that you cite our publication:
 
@@ -234,11 +233,8 @@ ggsave(filename = paste0("correlation of ", geneOfInterest," and ORR in 21 tumor
 
 Here, I won't modify the boundary color of the confidence interval. The original author indicates that it is AI-modified.
 
-# 会话信息
 # Session Info
 
 ```{r}
-# 显示会话信息
-# Show session information
 sessionInfo()
 ```
