@@ -26,65 +26,42 @@ install_cran_package <- function(package_name) {
   }
 }
 
-# Function to install ggord from GitHub
-install_ggord <- function() {
-  if (!is_package_installed("ggord")) {
-    cat("Installing ggord from GitHub...\n")
+# Function to install GitHub packages
+install_github_package <- function(repo_name) {
+  package_name <- strsplit(repo_name, "/")[[1]][2]
+  if (!is_package_installed(package_name)) {
+    cat("Installing GitHub package:", repo_name, "\n")
     tryCatch({
       if (!is_package_installed("devtools")) {
         install.packages("devtools")
       }
-      devtools::install_github("fawda123/ggord")
-      cat("Successfully installed: ggord\n")
+      devtools::install_github(repo_name)
+      cat("Successfully installed:", package_name, "\n")
     }, error = function(e) {
-      cat("Failed to install ggord:", e$message, "\n")
-      cat("You may need to install it manually: devtools::install_github('fawda123/ggord')\n")
+      cat("Failed to install", package_name, ":", e$message, "\n")
     })
   } else {
-    cat("Package already installed: ggord\n")
-  }
-}
-
-# Function to install yyplot from GitHub (如果也需要的话)
-install_yyplot <- function() {
-  if (!is_package_installed("yyplot")) {
-    cat("Installing yyplot from GitHub...\n")
-    tryCatch({
-      if (!is_package_installed("devtools")) {
-        install.packages("devtools")
-      }
-      devtools::install_github("GuangchuangYu/yyplot")
-      cat("Successfully installed: yyplot\n")
-    }, error = function(e) {
-      cat("Failed to install yyplot:", e$message, "\n")
-      cat("You may need to install it manually: devtools::install_github('GuangchuangYu/yyplot')\n")
-    })
-  } else {
-    cat("Package already installed: yyplot\n")
+    cat("Package already installed:", package_name, "\n")
   }
 }
 
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
-# First install devtools for GitHub packages
-cat("\nInstalling devtools package...\n")
-install_cran_package("devtools")
-
-# Install ggord from GitHub
-cat("\nInstalling ggord...\n")
-install_ggord()
-
-# Install yyplot from GitHub (如果也需要)
-cat("\nInstalling yyplot...\n")
-install_yyplot()
-
-# Installing other CRAN packages
-cat("\nInstalling other CRAN packages...\n")
+# Installing CRAN packages
+cat("\nInstalling CRAN packages...\n")
 cran_packages <- c("dplyr", "ggplot2", "plyr")
 
 for (pkg in cran_packages) {
   install_cran_package(pkg)
+}
+
+# Installing GitHub packages
+cat("\nInstalling GitHub packages...\n")
+github_packages <- c("fawda123/ggord")  # ggord 在 GitHub 上
+
+for (pkg in github_packages) {
+  install_github_package(pkg)
 }
 
 cat("\n===========================================\n")
