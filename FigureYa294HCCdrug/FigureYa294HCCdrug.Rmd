@@ -11,7 +11,6 @@ output: html_document
 **Reviewer(s)**: `r params$reviewer`  
 **Date**: `r params$date` 
 
-# 学术引用
 # Academic Citation
 If you use this code in your work or research, we kindly request that you cite our publication:
 
@@ -568,11 +567,8 @@ ggsave(filename = "combined plot.pdf", width = 12, height = 5)
 
 ![](combined plot.pdf)
 
-# 会话信息
 # Session Info
 
 ```{r}
-# 显示会话信息
-# Show session information
 sessionInfo()
 ```
