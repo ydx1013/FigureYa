@@ -1,4 +1,4 @@
-name: Move Files Workflow
+name: Rename Folder Workflow
 
 on:
   workflow_dispatch: # 手动触发工作流
@@ -7,7 +7,7 @@ permissions:
   contents: write
 
 jobs:
-  move-files:
+  rename-folder:
     runs-on: ubuntu-latest
 
     steps:
@@ -15,20 +15,21 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      # 第二步：移动文件
-      - name: Move files to parent directory
+      # 第二步：重命名文件夹
+      - name: Rename folder
         run: |
-          # 定义源目录和目标目录
-          SRC_DIR="FigureYa90subgroup/FigureYa90subgroup"
-          DEST_DIR="FigureYa90subgroup"
+          # 定义旧文件夹名称和新文件夹名称
+          OLD_FOLDER="FigureYa122mut2expr_20230822_223122"
+          NEW_FOLDER="FigureYa122mut2expr"
 
-          # 检查源目录是否存在
-          if [ -d "$SRC_DIR" ]; then
-            echo "Moving files from $SRC_DIR to $DEST_DIR..."
-            mv -n "$SRC_DIR"/* "$DEST_DIR"/
-            echo "Files moved successfully."
+          # 检查旧文件夹是否存在
+          if [ -d "$OLD_FOLDER" ]; then
+            echo "Renaming $OLD_FOLDER to $NEW_FOLDER..."
+            mv "$OLD_FOLDER" "$NEW_FOLDER"
+            echo "Folder renamed successfully."
           else
-            echo "Source directory $SRC_DIR does not exist. No files to move."
+            echo "Folder $OLD_FOLDER does not exist. Nothing to rename."
+            exit 1
           fi
 
       # 第三步：配置 Git 用户信息
@@ -47,6 +48,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes to commit."
           else
-            git commit -m "chore: Move files from FigureYa90subgroup/FigureYa90subgroup to FigureYa90subgroup"
+            git commit -m "chore: Rename folder from FigureYa122mut2expr_20230822_223122 to FigureYa122mut2expr"
             git push origin main
           fi
