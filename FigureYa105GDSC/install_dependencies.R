@@ -1,5 +1,5 @@
 #!/usr/bin/env Rscript
-# 专门安装 pRRophetic 包的脚本
+# 安装必要依赖包的脚本
 
 # 设置下载选项
 options(repos = c(CRAN = "https://cloud.r-project.org/"))
@@ -60,9 +60,9 @@ install_cran_package <- function(pkg) {
   })
 }
 
-# 安装pRRophetic的依赖包
+# 安装必要的依赖包
 install_dependencies <- function() {
-  cat("安装 pRRophetic 的依赖包...\n")
+  cat("安装必要的依赖包...\n")
   
   # Bioconductor依赖
   bioc_deps <- c(
@@ -96,138 +96,18 @@ install_dependencies <- function() {
   }
 }
 
-# 尝试从Bioconductor安装pRRophetic
-install_pRRophetic_bioc <- function() {
-  cat("尝试从Bioconductor安装 pRRophetic...\n")
-  return(install_bioc_package("pRRophetic"))
-}
-
-# 尝试从GitHub安装pRRophetic
-install_pRRophetic_github <- function() {
-  cat("尝试从GitHub安装 pRRophetic...\n")
-  
-  if (!is_installed("remotes")) {
-    install.packages("remotes")
-  }
-  
-  tryCatch({
-    # 尝试不同的GitHub仓库
-    remotes::install_github("paulgeeleher/pRRophetic")
-    if (is_installed("pRRophetic")) {
-      cat("✓ 从GitHub安装 pRRophetic 成功\n")
-      return(TRUE)
-    }
-    
-    # 如果第一个仓库失败，尝试其他可能的仓库
-    remotes::install_github("geeleher/pRRophetic")
-    if (is_installed("pRRophetic")) {
-      cat("✓ 从GitHub安装 pRRophetic 成功\n")
-      return(TRUE)
-    }
-    
-    cat("❌ 所有GitHub仓库尝试都失败\n")
-    return(FALSE)
-    
-  }, error = function(e) {
-    cat("❌ GitHub安装失败:", e$message, "\n")
-    return(FALSE)
-  })
-}
-
-# 尝试安装旧版本
-install_pRRophetic_old_version <- function() {
-  cat("尝试安装旧版本 pRRophetic...\n")
-  
-  tryCatch({
-    # 使用BiocManager安装特定版本
-    if (!is_installed("BiocManager")) {
-      install.packages("BiocManager")
-    }
-    
-    # 尝试Bioconductor 3.14版本的pRRophetic
-    BiocManager::install("pRRophetic", version = "3.14", update = FALSE, ask = FALSE)
-    if (is_installed("pRRophetic")) {
-      cat("✓ 安装旧版本 pRRophetic 成功\n")
-      return(TRUE)
-    }
-    
-    cat("❌ 旧版本安装失败\n")
-    return(FALSE)
-    
-  }, error = function(e) {
-    cat("❌ 旧版本安装失败:", e$message, "\n")
-    return(FALSE)
-  })
-}
-
-# 验证安装
-verify_installation <- function() {
-  cat("验证 pRRophetic 安装...\n")
-  
-  if (is_installed("pRRophetic")) {
-    cat("✓ pRRophetic 已安装\n")
-    
-    # 尝试加载包
-    tryCatch({
-      library(pRRophetic, character.only = TRUE)
-      cat("✓ pRRophetic 加载成功\n")
-      return(TRUE)
-    }, error = function(e) {
-      cat("⚠ pRRophetic 加载有警告:", e$message, "\n")
-      return(TRUE)  # 即使有警告，也算安装成功
-    })
-  } else {
-    cat("❌ pRRophetic 未安装\n")
-    return(FALSE)
-  }
-}
-
 # 主安装函数
 main <- function() {
-  cat("开始安装 pRRophetic 包...\n")
+  cat("开始安装必要的依赖包...\n")
   cat("===========================================\n")
   
-  # 首先安装依赖包
+  # 安装依赖包
   install_dependencies()
   
-  # 尝试多种安装方法
-  installation_methods <- list(
-    install_pRRophetic_bioc,
-    install_pRRophetic_github,
-    install_pRRophetic_old_version
-  )
-  
-  success <- FALSE
-  for (method in installation_methods) {
-    if (method()) {
-      success <- TRUE
-      break
-    }
-    cat("等待5秒后尝试下一种方法...\n")
-    Sys.sleep(5)
-  }
-  
-  # 验证安装
-  is_verified <- verify_installation()
-  
   cat("\n===========================================\n")
-  if (is_verified) {
-    cat("✅ pRRophetic 安装成功！\n")
-    cat("你现在可以运行需要pRRophetic的R脚本了。\n")
-  } else {
-    cat("❌ pRRophetic 安装失败\n")
-    cat("请尝试以下替代方案：\n")
-    cat("1. 手动从Bioconductor安装: BiocManager::install(\"pRRophetic\")\n")
-    cat("2. 从GitHub安装: remotes::install_github(\"paulgeeleher/pRRophetic\")\n")
-    cat("3. 联系pRRophetic的作者获取帮助\n")
-  }
-  
-  # 确保其他需要的包也安装了
-  cat("\n确保其他必要包已安装...\n")
-  other_packages <- c("cowplot", "ggplot2")
-  for (pkg in other_packages) {
-    install_cran_package(pkg)
-  }
+  cat("✅ 依赖包安装完成！\n")
+  cat("注意：pRRophetic 包已不再需要安装\n")
+  cat("你现在可以运行相关的R脚本了。\n")
 }
 
 # 执行安装
