@@ -404,11 +404,8 @@ dev.off()
 
 ![](significance_metabolism pathway_pheatmap.pdf)
 
-# 会话信息
 # Session Info
 
 ```{r}
-# 显示会话信息
-# Show session information
 sessionInfo()
 ```
