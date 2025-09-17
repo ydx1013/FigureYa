@@ -61,20 +61,9 @@ GDSC数据库里的内容可以用R包pRRophetic来访问和计算。
 
 The content in the GDSC database can be accessed and calculated using the R package pRRophetic.
 
-<!-- 点击链接下载pRRophetic_0.5.tar.gz：<https://osf.io/dwzce/?action=download>，然后本地安装。 -->
-
-Click on the link to download pRRophetic_0.5.tar.gz:< https://osf.io/dwzce/?action=download >Then install it locally.
-
-这个R包有问题，请用果子公众号更新维护版本<https://github.com/ixxmu/mp_duty/issues/2691>
-
-The R package of the above link is incorrect. Please update the maintenance version with the fruit official account< https://github.com/ixxmu/mp_duty/issues/2691 >
-
 ```{r}
 source("install_dependencies.R")
-
-# 加载pRRophetic包，用于药物反应预测和分析
-# Load the pRRophetic package for drug response prediction and analysis
-library(pRRophetic)
+source("predict_from_cgp.R") # 出自pRRophetic，用于药物反应预测和分析
 
 # 加载ggplot2包，用于创建优雅的统计图形
 # Load the ggplot2 package for creating elegant statistical graphics
