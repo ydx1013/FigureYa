@@ -36,9 +36,50 @@ install_bioc_package <- function(package_name) {
       }
       BiocManager::install(package_name, update = FALSE, ask = FALSE)
       cat("Successfully installed:", package_name, "\n")
-    }, error = function(e) {
+    }, error function(e) {
       cat("Failed to install", package_name, ":", e$message, "\n")
     })
+  } else {
+    cat("Package already installed:", package_name, "\n")
+  }
+}
+
+# Function to install packages with system dependencies
+install_with_deps <- function(package_name) {
+  if (!is_package_installed(package_name)) {
+    cat("Installing package with system dependencies:", package_name, "\n")
+    
+    # For ridge package which requires GSL
+    if (package_name == "ridge") {
+      cat("Installing system dependencies for ridge package...\n")
+      
+      # Try to install GSL system dependency (this works on Ubuntu/Debian)
+      system_deps_installed <- tryCatch({
+        if (Sys.info()["sysname"] %in% c("Linux", "Darwin")) {
+          # For Linux systems
+          if (file.exists("/etc/debian_version")) {
+            system("sudo apt-get update && sudo apt-get install -y libgsl-dev")
+          } else if (file.exists("/etc/redhat-release")) {
+            system("sudo yum install -y gsl-devel")
+          }
+          TRUE
+        } else {
+          cat("Please install GSL library manually for your system\n")
+          FALSE
+        }
+      }, error = function(e) {
+        cat("Failed to install system dependencies:", e$message, "\n")
+        FALSE
+      })
+      
+      if (system_deps_installed) {
+        install_cran_package(package_name)
+      } else {
+        cat("Skipping ridge package installation due to missing system dependencies\n")
+      }
+    } else {
+      install_cran_package(package_name)
+    }
   } else {
     cat("Package already installed:", package_name, "\n")
   }
@@ -47,14 +88,17 @@ install_bioc_package <- function(package_name) {
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
-
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("car", "cowplot", "ggplot2", "glmnet", "oncoPredict", "preprocessCore", "ridge", "sva", "tidyverse")
+cran_packages <- c("car", "cowplot", "ggplot2", "glmnet", "oncoPredict", "preprocessCore", "sva", "tidyverse")
 
 for (pkg in cran_packages) {
   install_cran_package(pkg)
 }
+
+# Install ridge package separately with system dependencies
+cat("\nInstalling ridge package (requires system dependencies)...\n")
+install_with_deps("ridge")
 
 # Installing Bioconductor packages
 cat("\nInstalling Bioconductor packages...\n")
