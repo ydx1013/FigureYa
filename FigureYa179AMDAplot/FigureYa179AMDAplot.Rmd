@@ -61,7 +61,7 @@ source("install_dependencies.R")
 library(ggplot2)
 library(DESeq2)
 library(S4Vectors)
-library(BiocParallel)
+#library(BiocParallel) #SnowParam(6) 函数来自 BiocParallel 包，用于设置 DESeq2 的多线程并行计算
 
 Sys.setenv(LANGUAGE = "en") #显示英文报错信息 # Display an English error message
 options(stringsAsFactors = FALSE) #禁止chr转成factor  # prohibit chr from being converted to factor
