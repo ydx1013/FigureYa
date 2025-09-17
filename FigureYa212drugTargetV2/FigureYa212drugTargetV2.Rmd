@@ -1,6 +1,6 @@
 ---
 title: "FigureYa212drugTargetV2"
-author: "Xiaofan Lu"
+author: "Xiaofan Lu, Ying Ge"
 date: "2021-1-3"
 output: html_document
 ---
@@ -71,11 +71,10 @@ Chen Yang, Xiaowen Huang, Yan Li, Junfei Chen, Yuanyuan Lv, Shixue Dai, Prognosi
 
 ```{r}
 source("install_dependencies.R")
-
+source("predict_from_cgp.R") # 出自pRRophetic，用于药敏预测
 library(tidyverse) # 用于读取MAF文件
 library(ISOpureR) # 用于纯化表达谱
 library(impute) # 用于KNN填补药敏数据
-library(pRRophetic) # 用于药敏预测
 library(SimDesign) # 用于禁止药敏预测过程输出的信息
 library(ggplot2) # 绘图
 library(cowplot) # 合并图像
