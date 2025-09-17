@@ -6,6 +6,14 @@ Reviewer(s)
 : Ying Ge
 Date
 : 2025-05-20
+学术引用
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
 Requirements Description
 直接比较了泛癌里面paired的基因的表达差异。之前的FigureYa55panCancer_violin比较癌和normal，没有paired的数据。
@@ -38,8 +46,6 @@ Application Scenario
 根据barcode提取配对样本的方法同样适用于TCGA的其他类型数据，例如DNA甲基化等。
 配对样本的表达量还可以用来做更能多分析，画更多图。例如用来筛选配对间的差异表达基因，用FigureYa149rankHeatmap来展示。
 还可以把基因集换成你感兴趣的signature、biomarker。你在某个cohort里发现的差异基因，再来TCGA泛癌里看看异同。
-更多泛癌的图看这里
-https://k.koudai.com/Wi1xos9X
 Extract expression data from paired samples in TCGA pan-cancer, then
 select genes from pathways of interest, calculate pathway enrichment
 scores, and generate a connected-line plot.
@@ -53,17 +59,9 @@ You can also replace the gene sets with your own signatures or
 biomarkers of interest. For instance, DEGs identified in a specific
 cohort can be further examined in TCGA pan-cancer to compare
 similarities and differences.
-For more pan-cancer visualizations, check here
-https://k.koudai.com/Wi1xos9X
 环境设置
 Environment Setup
-使用国内镜像安装包。
-Using domestic mirrors for package installation.
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
-install.packages(c("data.table", "knitr"))
-加载包
-Loading packages
+source("install_dependencies.R")
 library(data.table)
 library(GSVA)
 
@@ -89,8 +87,6 @@ https://xenabrowser.net/datapages/
 EBPlusPlusAdjustPANCAN_IlluminaHiSeq_RNASeqV2.geneExp.tsv，表达矩阵，从TCGA
 PanCanAtlas下载：
 https://gdc.cancer.gov/about-data/publications/pancanatlas
-。太大，已上传微云
-https://share.weiyun.com/K5dlEurP
 This step only needs to be run once. You can go directly to
 “Obtaining Gene Sets of Interest”.
 The extracted paired samples and their expression matrices have been
@@ -104,8 +100,6 @@ EBPlusPlusAdjustPANCAN_IlluminaHiSeq_RNASeqV2.geneExp.tsv: Expression
 matrix, downloaded from TCGA PanCanAtlas
 https://gdc.cancer.gov/about-data/publications/pancanatlas
 .
-(File is too large; already uploaded to Weiyun
-https://share.weiyun.com/K5dlEurP
 # 载入样本信息
 # Load sample information
 pheno <- read.table("GDC-PANCAN.basic_phenotype.tsv",sep = "\t",row.names = 1,header = T,check.names = F,stringsAsFactors = F)
@@ -316,16 +310,13 @@ Input Files
 easy_input_gene.txt，代谢基因，来自例文补充材料41388_2019_1026_MOESM2_ESM.xlsx中Table
 S1。不局限于通路，还可以是某一群基因，例如前期研究筛选出的signature等。
 easy_input_pair.txt，配对样本信息。
-easy_input_expr.RDS，配对样本的表达矩阵。太大，已上传微云
-https://share.weiyun.com/K5dlEurP
+easy_input_expr.RDS，配对样本的表达矩阵。
 easy_input_gene.txt - Metabolic genes sourced from Supplementary
 Table S1 in the reference publication (41388_2019_1026_MOESM2_ESM.xlsx).
 Not limited to pathway genes, this may also include specific gene sets
 such as signatures identified in previous studies.
 easy_input_pair.txt - Paired sample information.
-easy_input_expr.RDS - Expression matrix of paired samples. Due to
-large file size, this has been uploaded to Weiyun
-https://share.weiyun.com/K5dlEurP
+easy_input_expr.RDS - Expression matrix of paired samples.
 # 加载感兴趣通路里的基因
 # Load genes from pathway of interest
 meta <- read.table("easy_input_gene.txt")$V1
