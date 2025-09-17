@@ -38,9 +38,13 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
-      # 第四步：提交更改
+      # 第四步：提交和推送更改
       - name: Commit and push changes
         run: |
+          # 拉取远程最新更改并进行合并
+          echo "Pulling latest changes from remote..."
+          git pull origin main --rebase --autostash
+
           # 添加更改到 Git
           git add .
           
@@ -49,5 +53,11 @@ jobs:
             echo "No changes to commit."
           else
             git commit -m "chore: Rename folder from FigureYa122mut2expr_20230822_223122 to FigureYa122mut2expr"
-            git push origin main
+            
+            # 尝试推送更改
+            echo "Pushing changes to remote..."
+            if ! git push origin main; then
+              echo "Push failed, attempting force push after rebase..."
+              git push origin main --force
+            fi
           fi
