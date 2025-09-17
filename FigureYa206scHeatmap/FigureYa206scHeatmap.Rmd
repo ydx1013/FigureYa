@@ -421,11 +421,8 @@ combined_plot <- wrap_elements(gh) + wrap_elements(gd) +
 ggsave("scHeatmap.pdf", combined_plot, width = 12, height = 8)
 ```
 
-# 会话信息
 # Session Info
 
 ```{r}
-# 显示会话信息
-# Show session information
 sessionInfo()
 ```
