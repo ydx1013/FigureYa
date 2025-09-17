@@ -42,7 +42,7 @@ Use single-cell DNA sequencing data to calculate the diversity score to evaluate
 ## 环境设置
 ## Environment settings
 
-```{r, eval = F}
+```{r}
 source("install_dependencies.R")
 
 library(Seurat)
