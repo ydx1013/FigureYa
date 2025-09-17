@@ -6,6 +6,14 @@ Reviewer(s)
 : Ying Ge
 Date
 : 2025-05-20
+学术引用
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
 Demand description
 复现Figure1的EF，希望能用原始数据。
@@ -26,63 +34,39 @@ normal samples in 15 cancer types.
 应用场景
 Application scenarios
 对泛癌中肿瘤与正常样本做多个基因（m6A为例）的差异表达分析，并根据log2FoldChange值绘制泛癌热图，同时对感兴趣基因绘制泛癌箱型图。
-如果想换成泡泡图结合柱形图，可参考FigureYa263panDiff，
-https://k.youshop10.com/v5okDUEr
+如果想换成泡泡图结合柱形图，可参考FigureYa263panDiff
 如果想用GSEA计算并展示多个
 基因集
-的差异表达，可参考FigureYa253panGSEA，
-https://k.youshop10.com/QbM6nwGB
+的差异表达，可参考FigureYa253panGSEA
 如果只对单个基因感兴趣，可参考FigureYa55panCancer_violin，画成小提琴图或box
-plot，
-https://www.yuque.com/figureya/figureyaplus/figureya55p
-。
-另外，我们还众筹过这篇文章的其他几个有意思的图：
-Fig.1D对角热图，可参考FigureYa144DiagHeatmap或
-https://mp.weixin.qq.com/s/34WRZRBVPHUNRLlzNH2nzw
-Fig.2A靶向关系连线图，可参考FigureYa199crosslink，
-https://k.youshop10.com/Zbb7VoNM
-，带你实现连线自由
-Fig.3A基因集的survival landscape，可参考FigureYa210survivalScape，
-https://k.youshop10.com/dDv=wvoj
-更多泛癌FigureYa看这里，
-https://k.youshop10.com/C8RkTgR3
+plot，FigureYa55plus_pancancer_boxplot。
+另外，我们还实现过这篇文章的其他几个有意思的图：
+Fig.1D对角热图，可参考FigureYa144DiagHeatmap
+Fig.2A靶向关系连线图，可参考FigureYa199crosslink，带你实现连线自由
+Fig.3A基因集的survival
+landscape，可参考FigureYa210survivalScape
 Perform differential expression analysis of multiple genes (using m6A
 as an example) between tumor and normal samples across pan-cancer
 datasets, and generate pan-cancer heatmaps based on log2FoldChange
 values, along with pan-cancer box plots for genes of interest.
 To switch to bubble charts combined with bar plots, refer to
 FigureYa263panDiff
-https://k.youshop10.com/v5okDUEr
 To use GSEA for calculating and displaying differential expression of
 multiple gene sets
 , refer to FigureYa253panGSEA
-https://k.youshop10.com/QbM6nwGB
 If only interested in a single gene, refer to
 FigureYa55panCancer_violin to create violin plots or box plots
-https://www.yuque.com/figureya/figureyaplus/figureya55p
-.
+FigureYa55plus_pancancer_boxplot.
 Additionally, we have crowdsourced several other interesting figures
 from this article:
-Fig.1D diagonal heatmap, refer to FigureYa144DiagHeatmap or
-https://mp.weixin.qq.com/s/34WRZRBVPHUNRLlzNH2nzw
+Fig.1D diagonal heatmap, refer to FigureYa144DiagHeatmap
 Fig.2A target relationship connection diagram, refer to
-FigureYa199crosslink
-https://k.youshop10.com/dDv=wvoj
-, achieving connection
-freedom
+FigureYa199crosslink, achieving connection freedom
 Fig.3A survival landscape of gene sets, refer to
 FigureYa210survivalScape
-https://k.youshop10.com/dDv=wvoj
-For more pan-cancer FigureYa resources, see here
-https://k.youshop10.com/C8RkTgR3
 环境设置
 Environment Setup
-使用国内镜像安装包。
-Using domestic mirrors for package installation.
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
-加载包
-Loading packages
+source("install_dependencies.R")
 library(data.table)
 library(impute)
 library(ClassDiscovery)
@@ -264,15 +248,10 @@ for (i in tumors) {
 # 保存差异表达结果矩阵
 # Save differential expression matrix
 write.table(degRes,file = "log2fc of m6a genes between tumor and normal samples in pancancer.txt",sep = "\t",row.names = T,col.names = NA,quote = F)
-上面“差异表达分析”输出的TCGA_*_limma_test_result.tumor_vs_normal.txt文件可无缝对接FigureYa59volcano
-https://k.youshop10.com/QFx3=Jj1
-，绘制美丽火山图。
+上面“差异表达分析”输出的TCGA_*_limma_test_result.tumor_vs_normal.txt文件可无缝对接FigureYa59volcano，绘制美丽火山图。
 The output file TCGA_*_limma_test_result.tumor_vs_normal.txt from the
 “Differential Expression Analysis” section can be directly used with
-FigureYa59volcano
-https://k.youshop10.com/QFx3=Jj1
-to create high-quality
-volcano plots.
+FigureYa59volcano to create high-quality volcano plots.
 开始画图
 Plotting
 绘制log2FoldChange的热图

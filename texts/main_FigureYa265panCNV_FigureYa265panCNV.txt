@@ -6,29 +6,37 @@ Reviewer(s)
 : Ying Ge
 Date
 : 2025-05-20
+学术引用
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
 Demand description
-小丫姐好，我还有很多小伙伴想众筹这篇铁死亡泛癌的其他图片，主要是Figure
-1。感觉这个套路只要换一个通路就可以测试，我看大鱼老师写了这篇文章的Figure
+想实现这篇铁死亡泛癌的其他图片，主要是Figure
+1。感觉这个套路只要换一个通路就可以测试，我看Xiaofan
+Lu写了这篇文章的Figure
 2A（铁死亡基因在泛癌肿瘤与正常的差异箱线图，FigureYa208FPI），Figure
-3B（铁死亡与免疫通路的相关性，FigureYa253panGSEA），可否请大鱼老师详细写一下文章Figure
-1的相关代码？
+3B（铁死亡与免疫通路的相关性，FigureYa253panGSEA），可否请Xiaofan
+Lu详细写一下文章Figure 1的相关代码？
 1A（铁死亡在泛癌中体细胞拷贝数变异情况，绘制条形图）
 1B（铁死亡基因在肿瘤与正常的差异表达，绘制拼接的点图和柱状图，可参考FigureYa263panDiff）
 1C（铁死亡基因体细胞拷贝数与基因表达的相关性点图）
 1D（铁死亡基因肿瘤与正常组织甲基化状态点图）
 1E（铁死亡转录组表达与启动子甲基化相关性的点图）
-这些图都是泛癌的，不知道大鱼老师可不可以用例文数据分别众筹个教程
+这些图都是泛癌的，不知道Xiaofan Lu可不可以用例文数据分别实现个教程
 [皱眉] ？（感觉都可以出一期专栏——iSicence复现了哈哈）
-这次众筹Figure 1A，铁死亡在泛癌中体细胞拷贝数变异情况。
-Hi Sister Xiaoya, I still have many friends who’d like to crowdfund
-the other figures from this pan-cancer ferroptosis paper, especially
+这次实现Figure 1A，铁死亡在泛癌中体细胞拷贝数变异情况。
+The other figures from this pan-cancer ferroptosis paper, especially
 Figure 1. It seems like this approach can be easily adapted by switching
-to a different pathway. I noticed that Teacher Dayu has already written
+to a different pathway. I noticed that Xiaofan Lu has already written
 code for:
 Figure 2A (Boxplot of ferroptosis gene expression differences between
 tumor and normal tissues, FigureYa208FPI) Figure 3B (Correlation between
-ferroptosis and immune pathways, FigureYa253panGSEA) Could Teacher Dayu
+ferroptosis and immune pathways, FigureYa253panGSEA) Could Xiaofan Lu
 please provide detailed code for Figure 1 as well? Specifically:
 1A (Somatic copy number alterations of ferroptosis genes in
 pan-cancer, bar plot)
@@ -41,45 +49,33 @@ tissues, dot plot)
 1E (Correlation between transcriptomic expression and promoter
 methylation, scatter plot)
 All these figures are pan-cancer analyses. Would Teacher Dayu be
-willing to create separate crowdfunding tutorials for each? [pleading
+willing to create separate crowdsourcing tutorials for each? [pleading
 face] (Feels like this could even become a dedicated column—iScience
 reproduction, haha!)
-For now, let’s crowdfund Figure 1A: Somatic copy number alterations
+For now, let’s crowdsource Figure 1A: Somatic copy number alterations
 of ferroptosis genes in pan-cancer.
 出自
 https://linkinghub.elsevier.com/retrieve/pii/S2589004220304892
 图1.
 铁死亡调控基因（FRGs）的失调情况。其中，正调控因子和负调控因子分别用红色和蓝色标注）。
 (A) 柱状图展示各癌种中每个FRG基因的体细胞拷贝数变异频率。
-接下来会陆续众筹Figure1CDE，敬请关注。
+接下来会陆续实现Figure1CDE，敬请关注。
 Source:
 https://linkinghub.elsevier.com/retrieve/pii/S2589004220304892
 Figure 1. The Dysregulation of Ferroptosis Regulator Genes (FRGs).
 For which the positive and negative regulators are marked in red and
 blue, respectively. (A) Histogram shows the frequency of somatic copy
 number alterations for each FRG in each cancer type.
-The crowdfunding for Figure1CDE will be launched successively. Stay
-tuned for updates.
+For Figure1CDE will be launched successively. Stay tuned for
+updates.
 应用场景
 Application scenarios
 分析铁死亡在泛癌中体细胞拷贝数变异情况并绘制条形图。
-更多pancancer分析画图FigureYa看这里
-https://k.youshop10.com/C8RkTgR3
-。
 Analyze somatic copy number variations (SCNAs) related to ferroptosis
 across pan-cancer and generate bar plots.
-For more pan-cancer analysis and visualization (FigureYa), visit:
-https://k.youshop10.com/C8RkTgR3
-.
 环境设置
 Environment Setup
-使用国内镜像安装包。
-Using domestic mirrors for package installation.
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
-install.packages("randomcoloR")
-加载包
-Loading packages
+source("install_dependencies.R")
 library(ggplot2)
 library(data.table)
 library(randomcoloR)
