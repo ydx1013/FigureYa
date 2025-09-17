@@ -6,13 +6,21 @@ Reviewer(s)
 : Ying Ge
 Date
 : 2025-05-20
+学术引用
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
 Requirements Description
-想众筹铁死亡指数（FPI）的计算方法，根据基因表达，算出ssGSEA富集分数，再计算FPI，并用GSE121689数据集验证。
-I want to crowdfund the calculation method of the Ferroptosis
-Potential Index (FPI), which involves calculating ssGSEA enrichment
-scores based on gene expression, then deriving the FPI, and validating
-it using the GSE121689 dataset.
+想实现铁死亡指数（FPI）的计算方法，根据基因表达，算出ssGSEA富集分数，再计算FPI，并用GSE121689数据集验证。
+I want to try the calculation method of the Ferroptosis Potential
+Index (FPI), which involves calculating ssGSEA enrichment scores based
+on gene expression, then deriving the FPI, and validating it using the
+GSE121689 dataset.
 图2. FPI与癌症组织学类型和分子亚型的关系。 (A)
 不同癌症类型中肿瘤组织与正常组织间FPI的差异比较。
 Figure 2. The Relations between FPI and Histological Types and
@@ -40,12 +48,7 @@ collections related to a specific function, users can define their own
 “XX Index” following the same approach.
 环境设置
 Environment Setup
-使用国内镜像安装包。
-Using domestic mirrors for package installation.
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
-加载包
-Loading packages=
+source("install_dependencies.R")
 library(data.table)
 library(GSVA)
 library(ggplot2)
@@ -59,10 +62,6 @@ Sys.setenv(LANGUAGE = "en")
 options(stringsAsFactors = FALSE)
 输入文件
 Input Files
-大文件已上传到微云：
-https://share.weiyun.com/c8GQyxR4
-Large files have been uploaded to Weiyun:
-https://share.weiyun.com/c8GQyxR4
 下载TCGA pan-cancer数据
 Download TCGA Pan-Cancer Data
 GSVA的输入数据可以是microarray data，也可以是RNA-seq
