@@ -53,6 +53,7 @@ You can also use your own data to draw such a heat map with local secondary labe
 ```{r message=FALSE, warning=FALSE}
 source("install_dependencies.R")
 
+library(ggplot2)
 library(DESeq2)
 library(S4Vectors)
 library(BiocParallel)
