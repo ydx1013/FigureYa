@@ -2,13 +2,20 @@ FigureYa240CRISPR
 FigureYa240CRISPR
 Xiaofan Lu
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
-小丫姐，想众筹下这个算法，利用CRISPR数据库，筛选出某种肿瘤细胞影响生长的基因，再结合TCGA数据库，对湿实验的指导意义非常大。谢谢啦
+想实现下这个算法，利用CRISPR数据库，筛选出某种肿瘤细胞影响生长的基因，再结合TCGA数据库，对湿实验的指导意义非常大。谢谢啦
 Requirement Description
-Sister Xiaoya, I want to crowdfund this algorithm, use the CRISPR
-database to screen out the genes that affect the growth of certain tumor
-cells, and then combine it with the TCGA database, which is of great
-significance for the guidance of wet experiments. Thank you
+I want to crowdsource this algorithm, use the CRISPR database to
+screen out the genes that affect the growth of certain tumor cells, and
+then combine it with the TCGA database, which is of great significance
+for the guidance of wet experiments. Thank you
 出自
 https://www.mdpi.com/2072-6694/13/9/2128
 from
@@ -19,14 +26,7 @@ screening技术，筛选出对数百种癌细胞生长必需的基因。例文�
 These findings may allow us to refine the preexisting subtype
 classification of LUAD, and also guide us in identifying tumors that may
 be vulnerable to specific treatments.
-Figure 1C相关性展示可参考我们之前众筹过的美图
-https://mp.weixin.qq.com/s/D9wheY5QdnOh4JrjIc8-Cg
-，
-https://k.koudai.com/Eig1YOB4
-Figure 1D候选基因功能富集分析结果的展示可参考
-https://k.koudai.com/sm2p0xYn
 Figure 2的Consensus clustering可参考FigureYa202consensusGene
-https://k.koudai.com/ze0XWeSL
 Application Scenarios
 The Cancer Dependency Atlas (DepMap) is based on CRISPR screening
 technology to screen out genes that are essential for the growth of
@@ -35,23 +35,11 @@ further combined to molecularly classify cancer.
 These findings may allow us to refine the preexisting subtype
 classification of LUAD, and also guide us in identifying tumors that may
 be vulnerable to specific treatments.
-Figure 1C correlation display can refer to our previous crowdfunded
-https://mp.weixin.qq.com/s/D9wheY5QdnOh4JrjIc8-Cg
-,
-https://k.koudai.com/Eig1YOB4
-Figure 1D can be found in Figure 1D for a presentation of the results
-of the candidate gene function enrichment assay, as shown in
-https://k.koudai.com/sm2p0xYn
 For details about the consensus clustering of Figure 2, see
 FigureYa202consensusGene
-https://k.koudai.com/ze0XWeSL
 环境设置
-使用国内镜像安装包
 Environment settings
-Use the domestic mirror installation package
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
-加载包 load packages
+source("install_dependencies.R")
 library(data.table)
 library(limma)
 library(ComplexHeatmap)
@@ -73,32 +61,26 @@ standarize.fun <- function(indata=NULL, halfwidth=NULL, centerFlag=T, scaleFlag=
 输入文件
 TCGA-LUAD.htseq_fpkm.tsv.gz，表达矩阵。根据原文从XENA数据平台下载LUAD的FPKM数据，
 https://xenabrowser.net/datapages/?dataset=TCGA-LUAD.htseq_fpkm.tsv&host=https%3A%2F%2Fgdc.xenahubs.net&removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443
-。跟FigureYa238corRiskMut为同一输入文件，也可以从微云下载
-https://share.weiyun.com/ks0OVM7a
+。跟FigureYa238corRiskMut为同一输入文件
 gencode.v22.annotation.gene.probeMap，表达数据对应的GENECODE22注释文件。
 CRISPR_gene_effect.csv，CRISPR相关信息。下载自DepMap，
 https://depmap.org/portal/download/
 ; CRISPR (DepMap 21Q2
-Public+Score, CERES)，也可以从微云下载
-https://share.weiyun.com/YTA8nmOE
+Public+Score, CERES)
 Input files
 TCGA-LUAD.htseq_fpkm.tsv.gz, the expression matrix. According to the
 original text, download the FPKM data of LUAD from the XENA data
 platform,
 https://xenabrowser.net/datapages/?dataset=TCGA-LUAD.htseq_fpkm.tsv&host=https://gdc.xenahubs.net&removeHub=https://xena.treehouse.gi.ucsc.edu:443
 。
-It is the same input file as FigureYa238corRiskMut, and you can also
-download
-https://share.weiyun.com/ks0OVM7a
-from weiyun
+It is the same input file as FigureYa238corRiskMut
 gencode.v22.annotation.gene.probeMap, the GENECODE22 annotation file
 corresponding to the expression data.
 CRISPR_gene_effect.csv, CRISPR-related information. Download from
 DepMap,
 https://depmap.org/portal/download/
 ; CRISPR (DepMap 21Q2
-Public Score, CERES), which can also be downloaded from Microcloud
-https://share.weiyun.com/YTA8nmOE
+Public Score, CERES)
 sample_info.csv，LUAD细胞系，数据来自
 https://depmap.org/portal/download/
 ; Cell Line Sample
