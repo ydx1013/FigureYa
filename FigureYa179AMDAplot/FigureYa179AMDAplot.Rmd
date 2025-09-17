@@ -5,6 +5,7 @@ reviewer: "Ying Ge, Junyi Shen"
 date: "2025-5-20"
 output: html_document
 ---
+
 # Academic Citation
 If you use this code in your work or research, we kindly request that you cite our publication:
 
@@ -22,6 +23,7 @@ knitr::opts_chunk$set(echo = TRUE,
 # Requirement
 
 重复文章中ageing-mediated disease alignment score (AMDA score)的算法，并复现原文的Figure3a。
+
 Repeat the algorithm of aging-mediated disease alignment score (AMDA score) in the article and reproduce Figure3a of the original text.
 
 ![](example1.jpg){width=45%}  
@@ -31,19 +33,22 @@ Repeat the algorithm of aging-mediated disease alignment score (AMDA score) in t
 Fig. 3 Association of ageing-associated gene expression changes with ageing diseases and lifespan. a Ageing-mediated disease alignment scores (AMDA scores) for different ageing (x axis) and disease data sets (y axis). Abbreviations: AD Alzheimer’s disease, CAD coronary artery disease, CPI cancer proliferation index, cross-cohort cross-cohort study of blood ageing, HMP human metabolic pathways, IR insulin resistance, LL longitudinal ageing data, MCI mild cognitive impairment; SAFHS, San Antonio Family Heart Study. 
 
 出自<https://www.nature.com/articles/s41467-017-02395-2>
-fromhttps://www.nature.com/articles/s41467-017-02395-2
+From<https://www.nature.com/articles/s41467-017-02395-2>
 
 # 应用场景
 
 # Application Scenarios
 
 把自己的数据跟衰老联系起来，肿瘤、非肿瘤领域都可以用起来。具体原理参考下文的“AMDA score算法讲解”。
+
 Linking one's own data to aging can be applied in both oncology and non-oncology fields. The specific principle can be referred to in the "Explanation of AMDA score Algorithm" below.
 
 适用于转录组数据，用文中的公式计算出样本的**AMDA score（量化衰老与疾病相关的指标）**，进行组间对比。
+
 Applicable to transcriptome data, calculate the **AMDA score (an indicator quantifying aging and disease-related indicators) ** of the samples using the formula in the text, and conduct inter-group comparisons.
 
 也可以用自己的数据画这种**带有局部二级标签**的热图。
+
 You can also use your own data to draw such a heat map with local secondary labels.
 
 # 环境设置
@@ -70,20 +75,25 @@ options(stringsAsFactors = FALSE) #禁止chr转成factor  # prohibit chr from be
 # Explanation of the AMDA score Algorithm
 
 要明白AMDA score得先看原文中的Figure 3a，其中分为两部分。
+
 To understand AMDA score, one must first look at Figure 3a in the original text, which is divided into two parts.
 
 - Part-1属于衰老基因集，是作者自己通过不同物种和组织经过年龄分层的多因素ANOVA进行计算所得的。衰老基因集包含了体现衰老信息的差异基因集，里面分为up和down（详见原文Supplementary Data）。衰老基因集是计算AMDA score的基础，但这个无法复现。因为衰老基因集是作者使用包括斑马鱼、非洲青鳉鱼、小鼠和人的各种组织以及纤维细胞系的基因组所计算得出的。所以，Part-1的基因集在Supplementary Data有提供，直接使用即可。
+
   Part-1 belongs to the aging gene set and was calculated by the author himself through multi-factor ANOVA with age stratification of different species and tissues. The aging gene set contains a set of differentially expressed genes that reflect aging information, which is divided into up and down (for details, see the original Supplementary Data). The aging gene set is the basis for calculating the AMDA score, but this cannot be reproduced. Because the aging gene set was calculated by the authors using the genomes of various tissues including zebrafish, African medaka, mice and humans, as well as fibroblast cell lines. So, the gene set of Part-1 is available in Supplementary Data and can be used directly.
 
 - Part-2是包括cancer、cvd等各种疾病的病人基因组数据，通过不同的分组策略（见原文Supplementary Table 5）后进行差异基因分析（Deseq2)。然后将差异结果里的log2 Foldchange（原文里描述的是Foldchange，其实实际上是log2FC）在进行normalization（详见下文**"计算AMDA score"**），最后得出取值范围为[-1,1]的log2FC值。
+
   Part-2 is genomic data of patients with various diseases including cancer and cvd, and differential gene analysis (Deseq2) was conducted after different grouping strategies (see Supplementary Table 5). Then, the log2 Foldchange in the difference results (described as Foldchange in the original text, but in fact it is log2FC) is subjected to normalization (for details, see below **" Calculating AMDA score"**). Finally, a log2FC value with a range of [-1,1] is obtained.
 
 **AMDA score公式的分子部分表示某个病种中匹配到某个基因集中up组的差异基因的rank normalization后的log2FC值的和，减去匹配到down组的差异基因的log2FC的和。分母则是这个基因集中up和down组基因的总数量。**
+
 The molecular part of the AMDA score formula represents the sum of log2FC values after rank normalization of the differentially expressed genes matched to the up group in a certain gene set in a certain disease, minus the sum of log2FC values of the differentially expressed genes matched to the down group. The denominator represents the total number of genes in the up and down groups of this gene set. 
 
 ![](example3.jpg){width=50%}
 
 下面以Part-2里的一种疾病为例，展示AMDA score 的计算过程。这里使用**TCGA-BLCA**的转录组数据进行计算（**为什么不用原文中所用的ICGC-BLCA数据，见文末 Q & A**）
+
 The following takes a disease in Part-2 as an example to demonstrate the calculation process of the AMDA score. Here, the transcriptome data of **TCGA-BLCA** is used for calculation (**Why not use the ICGC-BLCA data used in the original text, see Q&A at the end of the text** )
 
 # 输入数据预处理
@@ -91,6 +101,7 @@ The following takes a disease in Part-2 as an example to demonstrate the calcula
 # Input data preprocessing
 
 实际应用时，如果已经准备好了基因表达矩阵，可跳过这步，直接进入“差异表达分析”。如果已经做好差异表达分析，就直接进入“输入文件”。
+
 In practical application, if the gene expression matrix has already been prepared, this step can be skipped and you can directly enter "Differential expression Analysis". If the differential expression analysis has been completed, directly enter the "Input File".
 
 ## 清洗TCGA-BLCA数据
@@ -98,6 +109,7 @@ In practical application, if the gene expression matrix has already been prepare
 ## Clean the TCGA-BLCA data
 
 这里为了复现原文，因此提取与原文匹配的样本名，用到ICGC-BLCA的转录组数据，但不用里面的raw.count。因ICGC-BLCA数据过大（1.67G），这里不再运行。感兴趣的小伙伴可以自己下载数据放入当前目录内运行。
+
 Here, in order to reproduce the original text, sample names that match the original text are extracted, using the transcriptome data of ICGC-BLCA, but not the raw.count inside. Because the ICGC-BLCA data is too large (1.67G), it is no longer running here. Interested friends can download the data themselves and run it in the current directory.
 
 ```{r eval=F, echo=T,message=FALSE, warning=FALSE}
@@ -135,6 +147,7 @@ save(control,file='BLCA_control.Rdata')
 ```
 
 为了方便可以直接导入我整理好的与文章中匹配的17对BLCA样本
+
 For convenience, you can directly import the 17 pairs of BLCA samples that I have sorted out and match the article
 
 ```{r eval=F,echo=T, message=FALSE, warning=FALSE}
@@ -173,6 +186,7 @@ write.csv(control_tcga, "easy_input_control.csv", quote = F)
 ## Differential expression analysis
 
 使用DEseq2，与原文一致，对TCGA-BLCA转录组进行差异表达分析。其中基因的row.count数没有进行过滤（比如某基因row.count总和<1的剔除），因为不影响差异结果（已验证）。
+
 Using DEseq2, consistent with the original text, differential expression analysis of the TCGA-BLCA transcriptome was conducted. Among them, the row.count number of genes was not filtered (for example, the elimination of a certain gene whose row.count sum is less than 1), because it does not affect the difference result (verified).
 
 ```{r eval=F, echo=T, warning=FALSE}
@@ -231,8 +245,11 @@ write.csv(DEG, file = "easy_input_DEG.csv") #保存差异基因  # save the diff
 ## Standardize the log2FC and compare it with the standardized log2FC results provided in the original text
 
 这里使用上面计算的log2Foldchange(原文里描述的是Foldchange，实际上是log2FC(**已证实，详见 Q & A**))进行rank normalization
+
 **（原文里是先把所有disease的log2FC进行quantile normalization，再进行单个disease的rank normalization，因为这里只演示一个diseases所以无需进行quantile normalization）**
+
 Here, rank normalization is performed using the log2Foldchange calculated above (the original text describes Foldchange, but in fact, it is log2FC(** confirmed, see Q&A **))
+
 First, quantile normalization is performed on the log2FC of all diseases, and then rank normalization is carried out on individual diseases. Since only one disease is being demonstrated here, there is no need for quantile normalization
 
 - STEP1: 先取绝对值进行大小排列，然后经(r-1)/(R-1)变换得出取值范围为[0,1]的log2FC值（**为什么是(r-1)/(R-1)变换而不是r/R变化，详见Q & A**）。
@@ -241,6 +258,7 @@ First, quantile normalization is performed on the log2FC of all diseases, and th
   STEP2: Add the original sign of the log2FC value with a value range of [0,1] to change its value range to [-1,1].
 
 文章提供了一个包含3032个基因的几乎所有diseases（除了Cancer-CPI）的经标准化后的log2FC值（位于Supplementary Data S2）。这个文件与文中Figure3a中AMDA score无关，我们只用它来验证log2FC标准化的结果。
+
 The article provides a standardized log2FC value for almost all diseases (except Cancer-CPI) containing 3032 genes (located in Supplementary Data S2). This file has nothing to do with the AMDA score in Figure3a in the text. We only use it to verify the results of log2FC standardization.
 
 ```{r message=FALSE, warning=FALSE,cache=T}
@@ -261,6 +279,7 @@ all_DEG$rank=all_DEG$rank*all_DEG$log2FoldChange/abs(all_DEG$log2FoldChange) #�
 ```
 
 画图查看相关性
+
 Draw a graph to check the correlation
 
 ```{r fig.show=T}
@@ -279,6 +298,7 @@ cor.test(all_DEG$rank,all_DEG$val,method="pearson")
 # Input File
 
 需要用到差异表达分析结果和衰老基因集：
+
 The results of differential expression analysis and the aging gene set are needed:
 
 - 衰老基因集，用例文附件提供的多个文本文件，位于当前文件夹里的41467_2017_2395_MOESM5_ESM/Supplementary Data S2/DEGs/1-4+5/
@@ -291,6 +311,7 @@ The results of differential expression analysis and the aging gene set are neede
 ## Import all the aging gene sets provided in the original text
 
 可以把这套衰老基因集用到自己的paper里，记得引用原文哦～
+
 You can apply this aging gene set to your own paper. Remember to quote the original text
 
 ```{r fig.show=T}
@@ -330,6 +351,7 @@ head(DEG)
 # Calculate the AMDA score and P-value
 
 使用标准化后的log2FC值计算AMDA.score并计算p值。计算结果与原文的AMDA score基本吻合，偏差来源分析见Q & A。
+
 Calculate the AMDA.score using the standardized log2FC value and calculate the p-value. The calculation results are basically consistent with the AMDA score of the original text. The analysis of the source of deviation can be found in Q&A.
 
 ```{r}
@@ -592,11 +614,12 @@ dev.off()
 
 # Q & A
 
-## 1. 为什么确定原文用的log2FC标准化是(r-1)/(R-1)变换而不是r/R变换? 为什么说原文里描述的是Foldchange，实际上是log2FC？
+1. 为什么确定原文用的log2FC标准化是(r-1)/(R-1)变换而不是r/R变换? 为什么说原文里描述的是Foldchange，实际上是log2FC？
 
-## Why is it determined that the log2FC normalization used in the original text is the (r-1)/(r-1) transformation rather than the r/R transformation? Why is it said that what is described as Foldchange in the original text is actually log2FC?
+Why is it determined that the log2FC normalization used in the original text is the (r-1)/(r-1) transformation rather than the r/R transformation? Why is it said that what is described as Foldchange in the original text is actually log2FC?
 
 答：我们可以打开原文提供的包含3032个基因的经标准化后的FC值。
+
 Answer: We can open the standardized FC values provided in the original text, which contain 3,032 genes.
 
 ```{r}
@@ -604,6 +627,7 @@ ori <- read.csv("41467_2017_2395_MOESM5_ESM/Supplementary Data S2/DiseaseAlignme
 ```
 
 我们会发现，每一列是独立的disease，行是3032个基因，每一列按大小排列后值都是一样的
+
 We will find that each column represents an independent disease, with 3,032 genes in each row. After arranging each column by size, the values are all the same
 
 ```{r}
@@ -612,16 +636,20 @@ as.numeric(unlist(lapply(ori[,-1], min))) #最小值 # minimum value
 as.numeric(unlist(lapply(ori[,-1], median))) #中位数  # median
 lapply(ori[,2:5], function(x){table(x>0)}) #这里可以看到每个样本正负的数量都是一样的，这是quantile normalization的证据（为了减少篇幅只取前几列）  # Here it can be seen that the number of positive and negative samples for each sample is the same, which is evidence of quantile normalization (only the first few columns are taken to reduce space).
 ```
+
 这里证实了作者是先对所有disease进行quantile normalization，也**说明了作者不是用foldchange**。如果使用foldchange，所有负值将变成最小的正值，当进行绝对值的rank normalization后加上原有的正负号会出现**最显著的负的log2FC会变成最不显著的负的log2FC**，这个可以自己去试一下。
+
 This confirms that the author first performed quantile normalization on all diseases, and also indicates that the author did not use foldchange. If foldchange is used, all negative values will become the smallest positive values. After performing rank normalization of absolute values and adding the original plus or minus signs, the most significant negative log2FC will become the least significant negative log2FC. You can try this yourself.
 
 接下来取某一列乘以3032，还原r/R变换
+
 Next, multiply a certain column by 3032 to restore the r/R transformation
 
 ```{r}
 head(sort(abs(ori[,2])*3032,decreasing = F))
 ```
 这里发现*3032后最小值是0，而且其他数都不是整数，这与文章描述的不一致（原文：replaced fold-changes by their absolute ranks in the list of fold-changes）
+
 It is found here that the minimum value after *3032 is 0, and none of the other numbers are integers, which is inconsistent with the description in the article (original text: replaced fold-changes by their absolute ranks in the list of fold-changes)
 
 ```{r}
@@ -630,24 +658,28 @@ head(sort(abs(ori[,2])*3031,decreasing = F))
 #Replace it with *3031, and the results are all integers that fully conform to the (r-1)/(R-1) transformation
 ```
 
-## 2. 为什么不用原文中所用的ICGC-BLCA数据而用TCGA的？
+2. 为什么不用原文中所用的ICGC-BLCA数据而用TCGA的？
 
-## 2. Why use TCGA instead of the ICGC-BLCA data mentioned in the original text?
+2. Why use TCGA instead of the ICGC-BLCA data mentioned in the original text?
 
 答：ICGC-BLCA转录组数据中基因名是gene id和gene alias（基因别名）构成，这导致了很严重的问题。在基因ID转换的过程中（不管是用org.Hs.eg.db还是自己读取GTF进行匹配），会出现gene id与ensembl id多对多的情况。更严重的是，因为ICGC是gene id和gene alias混用，会导致某些gene alias匹配到其对应的gene id的ensembl id，也会出现一个ensembl id匹配到多个gene id和gene alias，导致多对多。这种结果会使得我们无法判断作者提供的normalizedFoldChanges.csv是属于ICGC里面的哪想基因（文中作者描述是使用Bimart进行转换，但Bimart同样也会遇到多对多转换，所以面临着随机性，可能某些gene id变成与其ensembl id下gene alias同名的gene id的ensembl id**（这也是复现这个图才发现的一个ID转换的坑！）**）。
+
 Answer: In the ICGC-BLCA transcriptome data, the gene names are composed of gene ids and gene aliases, which leads to very serious problems. During the process of gene id conversion (whether using org.Hs.eg.db or reading GTF by oneself for matching), there will be a many-to-many situation between Gene id and ensembl id. What is more serious is that since ICGC involves the mixed use of gene ids and gene Aliases, it may lead to certain gene aliases matching the ensembl ids of their corresponding gene ids, and also result in one ensembl id matching multiple gene ids and gene Aliases. This leads to a many-to-many situation. This result will make us unable to judge the author provide normalizedFoldChanges. The CSV which belongs to the inside of the led to gene (in this paper, the authors describe Bimart is used for conversion, but Bimart will also encounter a many-to-many conversion, so facing the randomness, It's possible that some gene ids have become the ensembl ids of gene ids with the same name as the gene alias under their ensembl ids ** (This is also an ID conversion pithole discovered only after reproducing this diagram!)" "**).
 
 因此，这次直接用TCGA-BLCA的数据，里面是ensembl id，直接使用即可，不过这也导致了下面的问题：计算结果偏差，**经对比发现，ICGC转录组的raw.count和TCGA的raw.count完全不一致（相同sample下）**。
+
 Therefore, this time we directly used the data from TCGA-BLCA, which contains the ensembl id, and could use it directly. However, this also led to the following problem: After comparison, it was found that the raw.count of the ICGC transcriptome and that of the TCGA are completely inconsistent (under the same sample).
 
-## 3. 计算结果与原文的AMDA score的偏差是什么导致的？
+3. 计算结果与原文的AMDA score的偏差是什么导致的？
 
-## 3.What causes the deviation between the calculation result and the original AMDA score?
+3. What causes the deviation between the calculation result and the original AMDA score?
 
 答：除了上面说的用了TCGA导致的偏差外，还有一个文章本身的原因。
+
 Answer: Besides the deviation caused by the use of TCGA mentioned above, there is also a reason related to the article itself.
 
 通过读取文章Supplementary Data S2中所有作者自己计算出的衰老基因集发现，大多数衰老基因集的up和down个数与文章中Supplementary Table 3列出的个数不一致（记得只有metabolism是一致的）。这可能是作者在处理数据时出现的差错。
+
 By reading the aging gene sets calculated by all the authors themselves in the Supplementary Data S2 of the article, it was found that the up and down numbers of most aging gene sets were inconsistent with the numbers listed in Supplementary Table 3 of the article (remember that only metabolism was consistent). This might be an error made by the author when handling the data.
 
 # Session Info
