@@ -26,15 +26,16 @@ install_cran_package <- function(package_name) {
   }
 }
 
-# Function to install Bioconductor packages
-install_bioc_package <- function(package_name) {
+# Function to install GitHub packages
+install_github_package <- function(repo_name) {
+  package_name <- strsplit(repo_name, "/")[[1]][2]
   if (!is_package_installed(package_name)) {
-    cat("Installing Bioconductor package:", package_name, "\n")
+    cat("Installing GitHub package:", repo_name, "\n")
     tryCatch({
-      if (!is_package_installed("BiocManager")) {
-        install.packages("BiocManager")
+      if (!is_package_installed("devtools")) {
+        install.packages("devtools")
       }
-      BiocManager::install(package_name, update = FALSE, ask = FALSE)
+      devtools::install_github(repo_name)
       cat("Successfully installed:", package_name, "\n")
     }, error = function(e) {
       cat("Failed to install", package_name, ":", e$message, "\n")
@@ -47,13 +48,20 @@ install_bioc_package <- function(package_name) {
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
-
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("factoextra", "ggConvexHull", "ggrepel", "tidyverse")
+cran_packages <- c("factoextra", "ggrepel", "tidyverse")
 
 for (pkg in cran_packages) {
   install_cran_package(pkg)
+}
+
+# Installing GitHub packages
+cat("\nInstalling GitHub packages...\n")
+github_packages <- c("kyledylanconway/ggConvexHull")  # ggConvexHull 在 GitHub 上
+
+for (pkg in github_packages) {
+  install_github_package(pkg)
 }
 
 cat("\n===========================================\n")
