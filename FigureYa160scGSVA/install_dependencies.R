@@ -116,7 +116,7 @@ test_gsva_functionality <- function() {
     
     # 提供调试信息
     cat("Debug information:\n")
-    cat("  GSVA version:", packageVersion("GSVA"), "\n")
+    cat("  GSVA version:", as.character(packageVersion("GSVA")), "\n")
     cat("  Available methods for gsva:\n")
     
     # 检查可用的方法
