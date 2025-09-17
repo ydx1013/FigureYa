@@ -2,7 +2,7 @@
 title: "FigureYa191bestLogistic"
 author: "Xiaofan Lu"
 reviewer: "Ying Ge, Junyi Shen"
-date: "2025-5-20"
+date: "2025-9-17"
 output: html_document
 ---
 # Academic Citation
@@ -39,7 +39,7 @@ ROC was used to find the best cutoff for continuous variables, and two groups we
 source("install_dependencies.R")
 
 library(SimDesign) # 用于沉默逐步回归的信息  # Information for silent stepwise regression
-library(tdROC) # 用于计算曲线下面积   # is used to calculate the area under the curve
+library(pROC) # 用于计算曲线下面积   # is used to calculate the area under the curve
 Sys.setenv(LANGUAGE = "en") #显示英文报错信息  # displays an English error message
 options(stringsAsFactors = FALSE) #禁止chr转成factor   # prohibit chr from being converted to factor
 ```
@@ -105,7 +105,9 @@ for (v in vname) {
     FPR.value <- c(FPR.value,FPR)
   }
   ROC.point <- data.frame(FPR = FPR.value, TPR = TPR.value)
-  auc <- round(calc.AUC(1-ROC.point$FPR,ROC.point$TPR),3)
+  roc_obj <- roc(subdat[,rname], subdat[,v])
+  auc <- round(auc(roc_obj), 3)
+
   if(auc < 0.5) { # 如果AUC小于0.5，反向绘制ROC  # If the AUC is less than 0.5, plot the ROC in reverse
     
     TP.value <- c()
@@ -134,7 +136,9 @@ for (v in vname) {
       FPR.value <- c(FPR.value,FPR)
     }
     ROC.point <- data.frame(FPR = FPR.value, TPR = TPR.value)
-    auc <- round(calc.AUC(1-ROC.point$FPR,ROC.point$TPR),3)
+    roc_obj <- roc(subdat[,rname], -subdat[,v])  # 使用负值进行反向计算
+    auc <- round(auc(roc_obj), 3)
+
   }
   
   # if(auc < auc.cutoff) { # 如果AUC低于阈值则跳过该变量 #If the AUC is below the threshold, skip this variable
