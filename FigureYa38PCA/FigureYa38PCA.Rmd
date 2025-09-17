@@ -5,8 +5,6 @@ date: "2025-5-20"
 output: html_document
 ---
 
-![](http://oex750gzt.bkt.clouddn.com/18-9-3/64881053.jpg)
-
 # Academic Citation
 If you use this code in your work or research, we kindly request that you cite our publication:
 
