@@ -287,11 +287,8 @@ ggsave("Figure 1A copy number variation rate of interested genes in pancancer.pd
 rm(cnv); gc()
 ```
 
-# 会话信息
 # Session Info
 
 ```{r}
-# 显示会话信息
-# Show session information
 sessionInfo()
 ```
