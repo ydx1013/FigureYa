@@ -94,15 +94,15 @@ clic$MetStatus <- dplyr::recode(clic$MetStatus, '1'="Metastatic", '0'="Non-metas
 ## Data preprocessing
 
 ```{r}
-names(GSMList(gse))[1:5] # sample names
-## check platforms
-gsmplatforms <- lapply(GSMList(gse),function(x) {Meta(x)$platform_id})
+names(gse@gsms)[1:5] # sample names
+gsmplatforms <- lapply(gse@gsms, function(x) {x@header$platform_id})
 gsmplatforms <- unlist(gsmplatforms)
 unique(gsmplatforms)
-# we have only one platform
+
+# We have only one platform
 
 ## Acquire expression set
-gsmlist = Filter(function(gse) {Meta(gse)$platform_id=='GPL22286'},GSMList(gse))
+gsmlist = Filter(function(gsm) {gsm@header$platform_id=='GPL22286'}, gse@gsms)
 Table(gsmlist[[1]])[1:5,]
 probesets <- Table(GPLList(gse)[[1]])$ID
 data.matrix <- do.call('cbind',lapply(gsmlist,function(x) 
