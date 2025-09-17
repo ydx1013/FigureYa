@@ -415,11 +415,8 @@ invisible(dev.off())
 
 ![](pancancer boxplot of IGF2BP3 expression between tumor and normal samples.pdf)
 
-# 会话信息
 # Session Info
 
 ```{r}
-# 显示会话信息
-# Show session information
 sessionInfo()
 ```
