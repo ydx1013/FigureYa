@@ -2,13 +2,20 @@ FigureYa238corRiskMut
 FigureYa238corRiskMut
 Xiaofan Lu
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
-小丫老师，想众筹下FigA-C，预后模型建立后寻找高低风险组中突变最显著的基因，并计算riskscore与有义和错义突变的相关性，谢谢啦
+想实现下FigA-C，预后模型建立后寻找高低风险组中突变最显著的基因，并计算riskscore与有义和错义突变的相关性，谢谢啦
 Requirement Description
-Teacher Xiaoya, I want to crowdfund FigA-C, find the most significant
-mutations in the high and low risk groups after the prognostic model is
-established, and calculate the correlation between riskscore and sense
-and missense mutations, thank you
+I want to crowdsource FigA-C, find the most significant mutations in
+the high and low risk groups after the prognostic model is established,
+and calculate the correlation between riskscore and sense and missense
+mutations, thank you
 出自
 https://www.nature.com/articles/s41388-021-01853-y
 from
@@ -62,14 +69,8 @@ Figure 4 Landscape of immune and stromal cell infiltrations, see
 FigureYa230immunelandscape
 For a pie chart compared to Figure 5D, see FigureYa196PanPie
 环境设置
-使用国内镜像安装包
 Environment settings
-Use the domestic mirror installation packages
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
-BiocManager::install("maftools")
-install.packages("ggplot2")
-加载包 load packages
+source("install_dependencies.R")
 library(data.table)
 library(maftools)
 library(tidyverse)
@@ -84,9 +85,6 @@ library(patchwork)
 Sys.setenv(LANGUAGE = "en") #显示英文报错信息 # error messages are displayed in English
 options(stringsAsFactors = FALSE) #禁止chr转成factor # chr is not allowed to be converted to factor
 输入文件
-以下两个文件较大，已上传至微云
-https://share.weiyun.com/ks0OVM7a
-。建议按以下方式直接从官网下载：
 表达数据：TCGA-LUAD.htseq_fpkm.tsv.gz，gene expression RNAseq -
 HTSeq - FPKM，下载自
 XENA
@@ -97,12 +95,6 @@ TCGA Lung Adenocarcinoma (LUAD) (15 datasets)
 cBioPortal
 ，下载luad_tcga_pan_can_atlas_2018.tar.gz文件，解压缩把其中的data_mutations_extended.txt文件移到当前文件夹。
 Input files
-The following two files are large and have been uploaded to the
-Weiyun
-https://share.weiyun.com/ks0OVM7a
-. It is recommended to
-download it directly from the official website in the following
-ways:
 Expression data :TCGA-LUAD.htseq_fpkm.tsv.gz, gene expression
 RNAseq - HTSeq - FPKM, downloaded from
 XENA
@@ -384,7 +376,7 @@ plot_grid(p1, p2,
           align = 'h',ncol = 2,scale = c(1,1), greedy = T)
 ggsave(filename = "scatter and boxplot for non-synonymous mutation counts.pdf", width = 5,height = 4)
 图B
-image B
+Image B
 Forest plot of genes mutating differentially in patients of the low-
 and the high-TMErisk groups.
 allMut.hrisk.ob <- read.maf("data_mutations_extended_HRisk_modified.txt", # 重新读取High TME的MAF文件 # Re-read the MAF file of High TME
@@ -403,7 +395,7 @@ pdf("forestplot.pdf", width = 8,height = 6)
 forestPlot(mafCompareRes = h.vs.l, pVal = 0.05) # 保留检验显著的结果 # Retain the results of the test
 invisible(dev.off())
 图C
-#image C
+Image C
 Interaction effect of genes mutating differentially in patients in
 the low- and the high-TMErisk groups.
 tmp <- as.data.frame(h.vs.l$results)
