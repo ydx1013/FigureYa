@@ -54,6 +54,9 @@ jobs:
             exit 1
           fi
 
+          # Read to_Knit.txt into a variable
+          TO_KNIT=$(<to_Knit.txt)
+
           # Process each .Rmd file
           ANY_FILE_FAILED=false
           echo "RMD Render Summary" > summary.txt
@@ -61,18 +64,27 @@ jobs:
           echo "" >> summary.txt
 
           find . -type f -name "*.Rmd" | while IFS= read -r rmd_file; do
+            rmd_dir=$(dirname "$rmd_file")
             rmd_basename=$(basename "$rmd_file")
-            
-            # Skip files not listed in to_Knit.txt
-            if ! grep -qxF "$rmd_basename" to_Knit.txt; then
+
+            # Check if any entry in to_Knit.txt matches the Rmd file path or name
+            MATCHED=false
+            for pattern in $TO_KNIT; do
+              if [[ "$rmd_file" == *"$pattern"* ]]; then
+                MATCHED=true
+                break
+              fi
+            done
+
+            if [ "$MATCHED" = false ]; then
               echo "[SKIPPED] - $rmd_file (Not listed in to_Knit.txt)" | tee -a summary.txt
               continue
             fi
 
             echo "========== START: $rmd_file =========="
 
-            if [ -f "$(dirname "$rmd_file")/install_dependencies.R" ]; then
-              (cd "$(dirname "$rmd_file")" && Rscript install_dependencies.R > install.log 2>&1 || echo "WARNING: Dependency installation failed for $rmd_file.")
+            if [ -f "$rmd_dir/install_dependencies.R" ]; then
+              (cd "$rmd_dir" && Rscript install_dependencies.R > install.log 2>&1 || echo "WARNING: Dependency installation failed for $rmd_file.")
             fi
 
             if Rscript -e "rmarkdown::render('$rmd_file', quiet=TRUE)" > rmd_render.log 2>&1; then
