@@ -6,6 +6,13 @@ Reviewer(s)
 : Ying Ge
 Date
 : 2025-05-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
 Requirements Description
 基于Ro/e分析对这些细胞亚群进行了组织富集分析，结果观察到肥大细胞和髓系细胞优先分布在动脉粥样硬化核心(AC)部位，而淋巴细胞优先分布在邻近部位。
@@ -26,26 +33,17 @@ Application Scenario
 根据单细胞数据，计算细胞比例分布特异度（Ro/e），并绘制折线图
 输入：Seurat对象，具有样本来源（Group）和细胞类型（Celltypes）信息
 输出：折线图（Proportion.pdf）和Ro/e表格
-把多组Ro/e绘制成热图，可参考FigureYa312CellPreference
-https://k.youshop10.com/2Pg4u-pL
-。
+把多组Ro/e绘制成热图，可参考FigureYa312CellPreference。
 Calculate cell proportion distribution specificity (Ro/e) based on
 single-cell data and plot a line graph
 Input: Seurat object containing sample origin (Group) and cell type
 (Celltypes) information
 Output: Line graph (Proportion.pdf) and Ro/e table
 Plot the Ro/e values of multiple groups as a heatmap, refer to
-FigureYa312CellPreference
-https://k.youshop10.com/2Pg4u-pL
-for guidance.
+FigureYa312CellPreference for guidance.
 环境设置
 Environment Setup
-使用国内镜像安装包。
-Using domestic mirrors for package installation.
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
-加载包
-Loading packages
+source("install_dependencies.R")
 library(Seurat)
 # 用于从GEO里的GSE159677_series_matrix.txt.gz文件读取样本信息
 # For reading sample information from GSE159677_series_matrix.txt.gz in GEO
@@ -207,8 +205,5 @@ ggplot(plot.data, aes(x = Celltype, y = Ratio, group = Group, color = Group))+
         axis.title = element_text(size = 10),
         axis.text = element_text(size = 10))
 ggsave("Roedot.pdf", width = 5, height = 4)
-会话信息
 Session Info
-# 显示会话信息
-# Show session information
 sessionInfo()
