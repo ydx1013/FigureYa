@@ -374,11 +374,8 @@ invisible(dev.off())
 
 ![](oncoprint.pdf)
 
-# 会话信息
 # Session Info
 
 ```{r}
-# 显示会话信息
-# Show session information
 sessionInfo()
 ```
