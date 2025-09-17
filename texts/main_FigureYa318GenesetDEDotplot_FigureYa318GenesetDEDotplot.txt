@@ -6,6 +6,13 @@ Reviewer(s)
 : Ying Ge
 Date
 : 2025-05-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
 Requirements Description
 代谢分析最后的f图，他是怎么算70多条代谢通路在单细胞里面跟其他基因集相关性的。
@@ -25,32 +32,17 @@ global cell type between AC and PA tissues
 Application Scenario
 根据单细胞数据，计算不同细胞类型中两组间通路活性得分，并绘制差异分析点图(Fig.1
 f)。点的大小表示显著性（padj或FDR等），点的颜色表示logFC。
-Figure 1e，细胞比例分布特异度（Ro/e）折线图，可参考FigureYa317RoeDot
-https://k.youshop10.com/Qn2Wb5MU
-。
+Figure
+1e，细胞比例分布特异度（Ro/e）折线图，可参考FigureYa317RoeDot。
 Based on single-cell data, pathway activity scores between the two
 groups were calculated across different cell types, and differential
 analysis dot plots were generated (Fig. 1f). Dot size represents
 significance (e.g., padj or FDR), while dot color indicates logFC.
 Figure 1e displays the cell proportion distribution specificity
-(Ro/e) line graph, which can be referenced to FigureYa317RoeDot
-https://k.youshop10.com/Qn2Wb5MU
-.
+(Ro/e) line graph, which can be referenced to FigureYa317RoeDot.
 环境设置
 Environment Setup
-使用国内镜像安装包。
-Using domestic mirrors for package installation.
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
-install.packages("BiocManager")
-install.packages("SeuratObject")
-BiocManager::install("GEOquery")
-BiocManager::install("AUCell")
-BiocManager::install("clusterProfiler")
-BiocManager::install("limma")
-BiocManager::install("GSVA")
-加载包
-Loading packages
+source("install_dependencies.R")
 library(Seurat)
 library(magrittr)
 library(GEOquery)
@@ -81,8 +73,7 @@ GSE159677_RAW.tar
 ，和Download
 family里的
 Series Matrix File(s)
-，存放在InputData文件夹里。也可以从语雀下载
-https://www.yuque.com/figureya/figureyaplus/easyinput
+，存放在InputData文件夹里。
 Seurat object: This step is the same as FigureYa317RoeDot. It
 contains sample source (Group) and cell type (Celltypes) information.
 Download input data from GEO,
@@ -94,9 +85,7 @@ from the Supplementary file
 table, and
 Series Matrix File(s)
 from Download family, and
-store them in the InputData folder. You can also download from Yuque
-https://www.yuque.com/figureya/figureyaplus/easyinput
-.
+store them in the InputData folder.
 h.all.v7.5.1.symbols.gmt，基因集文件，存放基因与通路的关联关系
 GenesetInfo.txt，通路信息文件，标识通路及其所属分类
 h.all.v7.5.1.symbols.gmt - Gene set file containing gene-pathway
@@ -268,8 +257,5 @@ Post-processing
 The output PDF file is a vector graphic that can be opened with
 vector editors like Illustrator for adjusting the positions of graphic
 elements or text.
-会话信息
 Session Info
-# 显示会话信息
-# Show session information
 sessionInfo()

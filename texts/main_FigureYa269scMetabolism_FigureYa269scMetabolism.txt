@@ -6,13 +6,7 @@ Reviewer(s)
 : Ying Ge
 Date
 : 2025-05-20
-学术引用
 Academic Citation
-如果您在工作或研究中使用了本代码，恳请您引用我们的出版物：
-Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
-Framework for Enhancing Biomedical Data Interpretation and Research
-Efficiency. iMetaMed.
-https://doi.org/10.1002/imm3.70005
 If you use this code in your work or research, we kindly request that
 you cite our publication:
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
@@ -206,6 +200,7 @@ signature_meta <- countexp.Seurat@meta.data[,c("stim", "seurat_annotations")]
 # Create combined dataframe with metabolic activity and metadata
 signature_df <- data.frame(signature_meta, t(signature_exp))
 colnames(signature_df)[3:nrow(signature_exp)] <- rownames(signature_exp)
+
 # 提取两组数据
 # Extract data for two groups
 signature_df_ctrl <- subset(signature_df, stim%in%"CTRL")[3:nrow(signature_exp)]
@@ -290,8 +285,5 @@ pheatmap(pathway_plot_df_clean,
 # 关闭图形设备
 # Close graphics device
 dev.off()
-会话信息
 Session Info
-# 显示会话信息
-# Show session information
 sessionInfo()
