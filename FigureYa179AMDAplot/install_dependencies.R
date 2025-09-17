@@ -1,6 +1,5 @@
 #!/usr/bin/env Rscript
-# Auto-generated R dependency installation script
-# This script installs all required R packages for this project
+# R dependency installation script for FigureYa179AMDAplot
 
 # Set up mirrors for better download performance
 options("repos" = c(CRAN = "https://cloud.r-project.org/"))
@@ -44,21 +43,20 @@ install_bioc_package <- function(package_name) {
   }
 }
 
-cat("Starting R package installation...\n")
+cat("Starting R package installation for FigureYa179AMDAplot...\n")
 cat("===========================================\n")
 
-
-# Installing CRAN packages
+# 安装CRAN包
 cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("Ageing", "BiocParallel", "Cardiovascular", "S4Vectors", "diseases", "fibroblasts", "kegg", "metabolic", "pacman", "signature")
+cran_packages <- c("ggplot2")
 
 for (pkg in cran_packages) {
   install_cran_package(pkg)
 }
 
-# Installing Bioconductor packages
+# 安装Bioconductor包
 cat("\nInstalling Bioconductor packages...\n")
-bioc_packages <- c("DESeq2")
+bioc_packages <- c("DESeq2", "S4Vectors", "BiocParallel")
 
 for (pkg in bioc_packages) {
   install_bioc_package(pkg)
@@ -66,4 +64,24 @@ for (pkg in bioc_packages) {
 
 cat("\n===========================================\n")
 cat("Package installation completed!\n")
-cat("You can now run your R scripts in this directory.\n")
+
+# 验证所有必需包是否安装成功
+cat("\nVerifying required packages...\n")
+required_packages <- c("ggplot2", "DESeq2", "S4Vectors", "BiocParallel")
+all_installed <- TRUE
+
+for (pkg in required_packages) {
+  if (is_package_installed(pkg)) {
+    cat("✓", pkg, "is installed\n")
+  } else {
+    cat("✗", pkg, "is NOT installed\n")
+    all_installed <- FALSE
+  }
+}
+
+if (all_installed) {
+  cat("\nAll required packages are installed successfully!\n")
+  cat("You can now run FigureYa179AMDAplot.Rmd\n")
+} else {
+  cat("\nSome packages failed to install. Please check the error messages above.\n")
+}
