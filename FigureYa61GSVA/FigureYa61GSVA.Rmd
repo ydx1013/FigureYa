@@ -1,6 +1,7 @@
 ---
-title: "FigureYa61 GSVA"
+title: "FigureYa61GSVA"
 author: "Yu Sun"
+reviser: "Ying Ge"
 date: "2018-12-17"
 output: html_document
 ---
@@ -109,7 +110,7 @@ gsym.expr <- read.csv("easy_input_expr.csv", row.names = 1)
 head(gsym.expr)
 
 # 这一句就完成了GSVA分析
-gsva_es <- gsva(as.matrix(gsym.expr), gs)
+gsva_es <- gsva(expr = as.matrix(gsym.expr), gset.idx.list = gs)
 
 # 预览GSVA分析返回的矩阵
 head(gsva_es)
