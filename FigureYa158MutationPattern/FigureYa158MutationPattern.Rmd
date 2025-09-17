@@ -67,10 +67,19 @@ Download mutation information and clinical data using TCGAbiolinks
 ```{r}
 ## 突变数据
 ## Mutation data
-maf_BLCA <- GDCquery_Maf("BLCA", save.csv = FALSE, directory = "GDCdata", pipelines = "mutect2") 
+query <- GDCquery(
+  project = "TCGA-BLCA", 
+  data.category = "Simple Nucleotide Variation",
+  data.type = "Masked Somatic Mutation",
+  workflow.type = "MuTect2 Variant Aggregation and Masking"
+)
+
+GDCdownload(query, method = "api", directory = "GDCdata")
+maf_BLCA <- GDCprepare(query, directory = "GDCdata")
+
 #下载一次就好，保存到文件，便于后面加载
 #Download once and save to a file for easy loading later
-save(maf_BLCA, "maf_BLCA.RData")
+save(maf_BLCA, file = "maf_BLCA.RData")
 
 ## clinical data 
 blca_clinical <- TCGAquery_subtype(tumor = "blca")
