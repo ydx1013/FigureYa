@@ -3,7 +3,7 @@ title: "FigureYa280TMEofSTS"
 params:
   author: "Xiaofan Lu; Yasi Zhang"  
   reviewer: "Ying Ge"
-  date: "2025-05-20"
+  date: "2025-9-17"
 output: html_document
 ---
 
@@ -53,8 +53,7 @@ We previously conducted FigureYa56immune_infiltration, which also used TCGA expr
 
 ```{r}
 source("install_dependencies.R")
-
-library(MCPcounter)
+source("MCPcounter.R") # From MCPcounter
 library(GSVA)
 library(ComplexHeatmap)
 library(ClassDiscovery)
