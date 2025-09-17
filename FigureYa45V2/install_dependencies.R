@@ -47,10 +47,9 @@ install_bioc_package <- function(package_name) {
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
-
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("gplots", "iClusterPlus", "lattice", "magrittr")
+cran_packages <- c("gplots", "lattice", "magrittr")  # 移除了 iClusterPlus
 
 for (pkg in cran_packages) {
   install_cran_package(pkg)
@@ -58,7 +57,7 @@ for (pkg in cran_packages) {
 
 # Installing Bioconductor packages
 cat("\nInstalling Bioconductor packages...\n")
-bioc_packages <- c("BiocManager", "DNAcopy", "GenomicRanges")
+bioc_packages <- c("iClusterPlus", "DNAcopy", "GenomicRanges")  # 添加了 iClusterPlus
 
 for (pkg in bioc_packages) {
   install_bioc_package(pkg)
@@ -66,4 +65,15 @@ for (pkg in bioc_packages) {
 
 cat("\n===========================================\n")
 cat("Package installation completed!\n")
+
+# Test if iClusterPlus can be loaded
+cat("\nTesting iClusterPlus package...\n")
+if (require("iClusterPlus", quietly = TRUE)) {
+  cat("✅ iClusterPlus package loaded successfully!\n")
+} else {
+  cat("❌ iClusterPlus package could not be loaded.\n")
+  cat("You may need to install it manually:\n")
+  cat("BiocManager::install('iClusterPlus')\n")
+}
+
 cat("You can now run your R scripts in this directory.\n")
