@@ -255,11 +255,11 @@ cpdb.chordgram <- function(seu, means, pvalues,
 
 先运行cellphoneDB，然后以cellphoneDB的结果文件作为输入画图。
 
-ifnb.rds，A Seurat object。可以从语雀下载：<https://www.yuque.com/figureya/figureyaplus/easyinput/>
+ifnb.rds，A Seurat object。
 
 First run CellPhoneDB, then use its output files as input for plotting
 
-ifnb.rds is a Seurat object. Can be downloaded from Yuque: <https://www.yuque.com/figureya/figureyaplus/easyinput/>
+ifnb.rds is a Seurat object. 
 
 ```{r}
 # 准备cellphoneDB所需表达数据
