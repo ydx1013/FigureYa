@@ -27,16 +27,29 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # 环境设置
 
-在终端(Terminal)安装Rmagic
 
-```{bash}
-git clone https://github.com/KrishnaswamyLab/MAGIC
-cd MAGIC/python
-python setup.py install --user
-cd ../Rmagic
-R CMD INSTALL .
+```{r}
+# Use system() function to execute commands one by one
+cat("Installing MAGIC...\n")
 
-pip install python-libmagic
+# Clone repository
+system("git clone https://github.com/KrishnaswamyLab/MAGIC", timeout = 300)
+
+# Install Python part
+setwd("MAGIC/python")
+system("python setup.py install --user", timeout = 300)
+
+# Install R part
+setwd("../Rmagic")
+system("R CMD INSTALL .", timeout = 300)
+
+# Return to original directory
+setwd("../../")
+
+# Install python-libmagic
+system("pip install python-libmagic", timeout = 300)
+
+cat("MAGIC installation completed!\n")
 ```
 
 ```{r}
