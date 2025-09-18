@@ -76,7 +76,7 @@ for (pkg in cran_packages) {
 
 # Installing GitHub packages
 cat("\nInstalling GitHub packages...\n")
-github_packages <- c("icbi-lab/immunedeconv")  # immunedeconv is on GitHub
+github_packages <- c("omnideconv/immunedeconv")  # immunedeconv is on GitHub
 
 for (pkg in github_packages) {
   install_github_package(pkg)
