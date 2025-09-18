@@ -3,7 +3,7 @@
 # This script installs all required R packages for this project
 
 # Set up mirrors for better download performance
-options("repos" = c(CRAN = "https://cloud.r-project.org/"))
+options(repos = c(CRAN = "https://cloud.r-project.org/"))
 options(BioC_mirror = "https://bioconductor.org/")
 
 # Function to check if a package is installed
@@ -17,31 +17,30 @@ install_cran_package <- function(package_name) {
     cat("Installing CRAN package:", package_name, "\n")
     tryCatch({
       install.packages(package_name, dependencies = TRUE)
-      cat("Successfully installed:", package_name, "\n")
+      cat("✅ Successfully installed:", package_name, "\n")
     }, error = function(e) {
-      cat("Failed to install", package_name, ":", e$message, "\n")
+      cat("❌ Failed to install", package_name, ":", e$message, "\n")
     })
   } else {
-    cat("Package already installed:", package_name, "\n")
+    cat("✅ Package already installed:", package_name, "\n")
   }
 }
 
-# Function to install GitHub packages
-install_github_package <- function(repo_name) {
-  package_name <- strsplit(repo_name, "/")[[1]][2]
+# Function to install Bioconductor packages
+install_bioc_package <- function(package_name) {
   if (!is_package_installed(package_name)) {
-    cat("Installing GitHub package:", repo_name, "\n")
+    cat("Installing Bioconductor package:", package_name, "\n")
     tryCatch({
-      if (!is_package_installed("devtools")) {
-        install.packages("devtools")
+      if (!is_package_installed("BiocManager")) {
+        install.packages("BiocManager")
       }
-      devtools::install_github(repo_name)
-      cat("Successfully installed:", package_name, "\n")
+      BiocManager::install(package_name, update = FALSE)
+      cat("✅ Successfully installed:", package_name, "\n")
     }, error = function(e) {
-      cat("Failed to install", package_name, ":", e$message, "\n")
+      cat("❌ Failed to install", package_name, ":", e$message, "\n")
     })
   } else {
-    cat("Package already installed:", package_name, "\n")
+    cat("✅ Package already installed:", package_name, "\n")
   }
 }
 
@@ -50,31 +49,45 @@ cat("===========================================\n")
 
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("dplyr", "ggplot2", "plyr")
+cran_packages <- c("dplyr", "ggplot2", "plyr", "ggord", "devtools", "reshape2", "tidyr")
 
 for (pkg in cran_packages) {
   install_cran_package(pkg)
 }
 
-# Installing GitHub packages
-cat("\nInstalling GitHub packages...\n")
-github_packages <- c("fawda123/ggord")  # ggord 在 GitHub 上
+# 安装其他可能需要的包
+cat("\nInstalling additional useful packages...\n")
+additional_packages <- c("tidyverse", "data.table", "RColorBrewer", "pheatmap", "survival", "survminer")
 
-for (pkg in github_packages) {
-  install_github_package(pkg)
+for (pkg in additional_packages) {
+  install_cran_package(pkg)
 }
 
 cat("\n===========================================\n")
 cat("Package installation completed!\n")
 
-# Test if ggord can be loaded
-cat("\nTesting ggord package...\n")
-if (require("ggord", quietly = TRUE)) {
-  cat("✅ ggord package loaded successfully!\n")
-} else {
-  cat("❌ ggord package could not be loaded.\n")
-  cat("You may need to install it manually:\n")
-  cat("devtools::install_github('fawda123/ggord')\n")
+# Test if key packages can be loaded
+cat("\nTesting key packages...\n")
+test_packages <- c("dplyr", "ggplot2", "ggord", "reshape2", "tidyr")
+
+for (pkg in test_packages) {
+  if (require(pkg, quietly = TRUE, character.only = TRUE)) {
+    cat("✅", pkg, "package loaded successfully!\n")
+  } else {
+    cat("❌", pkg, "package could not be loaded.\n")
+  }
 }
 
-cat("You can now run your R scripts in this directory.\n")
+cat("\nInstallation summary:\n")
+cat("===========================================\n")
+
+# 检查所有包的安装状态
+all_packages <- unique(c(cran_packages, additional_packages))
+for (pkg in all_packages) {
+  status <- ifelse(is_package_installed(pkg), "✅", "❌")
+  cat(status, pkg, "\n")
+}
+
+cat("\nYou can now run your R scripts in this directory.\n")
+cat("If any packages failed to install, try installing them manually:\n")
+cat("install.packages('package_name')\n")
