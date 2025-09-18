@@ -52,11 +52,58 @@ tumor <- "UCEC"
 expquery <- GDCquery(project = paste0("TCGA-", tumor),
                      data.category = "Transcriptome Profiling",
                      data.type = "Gene Expression Quantification",
-                     workflow.type = "HTSeq - FPKM" # 下载FPKM数据 / Download FPKM data
+                     workflow.type = "STAR - Counts" # 获取counts数据 / Get counts data
 )
-GDCdownload(expquery,directory = "GDCdata")
-expquery2 <- GDCprepare(expquery,directory = "GDCdata",summarizedExperiment = T)
-fpkm <- TCGAanalyze_Preprocessing(expquery2) # 获取表达谱（FPKM值） / Get expression profile (FPKM values)
+GDCdownload(expquery, directory = "GDCdata")
+expquery2 <- GDCprepare(expquery, directory = "GDCdata", summarizedExperiment = T)
+
+# 获取counts矩阵 / Get counts matrix
+counts <- assay(expquery2)
+
+# 获取基因长度信息 / Get gene length information
+# 首先尝试从rowData获取 / First try to get from rowData
+gene_lengths <- NULL
+if ("gene_length" %in% colnames(rowData(expquery2))) {
+  gene_lengths <- rowData(expquery2)$gene_length
+} else if ("length" %in% colnames(rowData(expquery2))) {
+  gene_lengths <- rowData(expquery2)$length
+}
+
+# 如果无法从数据中获取基因长度，使用biomaRt获取 / If gene length cannot be obtained from data, use biomaRt
+if (is.null(gene_lengths) || all(is.na(gene_lengths))) {
+  cat("Getting gene lengths from biomaRt...\n")
+  
+  # 连接到Ensembl数据库 / Connect to Ensembl database
+  ensembl <- useMart("ensembl", dataset = "hsapiens_gene_ensembl")
+  
+  # 获取基因长度信息 / Get gene length information
+  gene_info <- getBM(attributes = c("ensembl_gene_id", "start_position", "end_position"),
+                    filters = "ensembl_gene_id", 
+                    values = rownames(counts),
+                    mart = ensembl)
+  
+  # 计算基因长度 / Calculate gene length
+  gene_info$length <- abs(gene_info$end_position - gene_info$start_position)
+  
+  # 匹配到counts矩阵的顺序 / Match to the order of counts matrix
+  gene_lengths <- gene_info$length[match(rownames(counts), gene_info$ensembl_gene_id)]
+  
+  # 对于没有长度信息的基因，使用中位数长度 / For genes without length information, use median length
+  median_length <- median(gene_lengths, na.rm = TRUE)
+  gene_lengths[is.na(gene_lengths)] <- median_length
+  
+  cat("Successfully obtained gene lengths from biomaRt\n")
+}
+
+# 使用edgeR计算FPKM / Calculate FPKM using edgeR
+cat("Calculating FPKM using edgeR...\n")
+
+# 创建DGEList对象 / Create DGEList object
+dge <- DGEList(counts = counts)
+dge$genes <- data.frame(Length = gene_lengths, row.names = rownames(counts))
+
+# 计算FPKM / Calculate FPKM
+fpkm <- rpkm(dge, gene.length = dge$genes$Length, log = FALSE)
 
 # 取出FPKM中的gene / Extract genes from FPKM
 comgene <- intersect(rownames(fpkm),rownames(Ginfo)) # 取出共有基因 / Extract common genes
