@@ -1,21 +1,27 @@
 FigureYa59Plus_GEO2DEG
 FigureYa59Plus_GEO2DEG
 Haitao Wang; Ying Ge, Yijing Chen
-2025-5-20
+2025-9-18
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
-requirement description
+Requirement description
 从GEO数据库下载芯片数据，筛选差异表达基因，无缝对接FigureYa59volcano画火山图。
 Download chip data from the GEO database, screen for differentially
 expressed genes, and seamlessly connect with FigureYa59volcano to plot a
 volcano map.
 应用场景
-application scenario
+Application scenario
 适用于GEO数据库里的芯片数据。
 Applicable to chip data in the GEO database.
 环境设置
-environment setting
-加载包
-load package
+Environment setting
+source("install_dependencies.R")
 library(GEOquery)
 library(limma)
 library(ggplot2)
@@ -224,10 +230,9 @@ express <- log2(express)
 par(mfrow=c(2,1))
 boxplot(express,outline = F) #均一化前 pre-normalization
 
-# 均一化数据分位数
-# Normalise data quantiles
-library(preprocessCore)
-express.norm <- normalize.quantiles(as.matrix(express))
+# 使用limma包进行分位数标准化
+# Normalise data quantiles using limma
+express.norm <- normalizeQuantiles(as.matrix(express))
 
 colnames(express.norm) <- colnames(express)
 rownames(express.norm) <- rownames(express)
@@ -298,4 +303,5 @@ easy_input_limma.csv
 obtained above as the input
 file and continue to run the code in FigureYa59volcano to draw the most
 beautiful volcano map.
+Session Info
 sessionInfo()
