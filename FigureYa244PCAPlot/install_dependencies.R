@@ -58,7 +58,7 @@ for (pkg in cran_packages) {
 
 # Installing GitHub packages
 cat("\nInstalling GitHub packages...\n")
-github_packages <- c("kyledylanconway/ggConvexHull")  # ggConvexHull 在 GitHub 上
+github_packages <- c("cmartin/ggConvexHull")  # ggConvexHull 在 GitHub 上
 
 for (pkg in github_packages) {
   install_github_package(pkg)
