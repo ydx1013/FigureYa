@@ -48,14 +48,14 @@ install_bioc_package <- function(package_name, version = NULL) {
   }
 }
 
-# Function to install package from source
-install_source_package <- function(package_url) {
-  cat("Installing package from source:", package_url, "\n")
+# Function to install package from local source
+install_local_package <- function(package_path) {
+  cat("Installing package from local source:", package_path, "\n")
   tryCatch({
-    install.packages(package_url, repos = NULL, type = "source")
-    cat("Successfully installed package from source\n")
+    install.packages(package_path, repos = NULL, type = "source")
+    cat("Successfully installed package from local source\n")
   }, error = function(e) {
-    cat("Failed to install from source:", e$message, "\n")
+    cat("Failed to install from local source:", e$message, "\n")
   })
 }
 
@@ -84,7 +84,7 @@ for (pkg in cran_packages) {
 cat("\nInstalling older version of GEOquery...\n")
 tryCatch({
   if (!is_package_installed("GEOquery")) {
-    remotes::install_version("GEOquery", version = "2.58.0")  # 选择一个较旧的版本
+    remotes::install_version("GEOquery", version = "2.58.0")  # Choose an older version
   }
 }, error = function(e) {
   cat("Failed to install older GEOquery:", e$message, "\n")
@@ -98,17 +98,47 @@ for (pkg in bioc_packages) {
   install_bioc_package(pkg)
 }
 
-# Install DealGPL570 from source
-cat("\nInstalling DealGPL570 from source...\n")
-deal_gpl570_url <- "https://cran.r-project.org/src/contrib/Archive/DealGPL570/DealGPL570_0.0.1.tar.gz"
-install_source_package(deal_gpl570_url)
+# Install DealGPL570 from local source
+cat("\nInstalling DealGPL570 from local source...\n")
+deal_gpl570_path <- "DealGPL570_0.0.1.tar.gz"  # Local file in current directory
 
-# 如果上面的方法不行，尝试手动修复 DealGPL570 包
+# Check if local file exists
+if (file.exists(deal_gpl570_path)) {
+  install_local_package(deal_gpl570_path)
+} else {
+  cat("Local DealGPL570 package not found:", deal_gpl570_path, "\n")
+  cat("Please make sure DealGPL570_0.0.1.tar.gz is in the current directory\n")
+}
+
+# If DealGPL570 installation fails, provide alternative solutions
 if (!is_package_installed("DealGPL570")) {
-  cat("\n尝试替代方案：手动处理 GPL570 数据...\n")
-  # 这里可以添加替代 DealGPL570 功能的代码
+  cat("\nDealGPL570 installation failed. Trying alternative approaches...\n")
+  
+  # Alternative 1: Try to install from CRAN archive
+  cat("Trying to install from CRAN archive...\n")
+  tryCatch({
+    install.packages("https://cran.r-project.org/src/contrib/Archive/DealGPL570/DealGPL570_0.0.1.tar.gz", 
+                    repos = NULL, type = "source")
+  }, error = function(e) {
+    cat("CRAN archive installation also failed:", e$message, "\n")
+  })
+  
+  # Alternative 2: Manual data processing approach
+  if (!is_package_installed("DealGPL570")) {
+    cat("\nManual alternative: You may need to process GPL570 data manually\n")
+    cat("or use alternative packages for microarray data processing.\n")
+  }
 }
 
 cat("\n===========================================\n")
 cat("Package installation completed!\n")
+
+# Final verification
+if (is_package_installed("DealGPL570")) {
+  cat("✅ DealGPL570 successfully installed!\n")
+} else {
+  cat("❌ DealGPL570 installation failed\n")
+  cat("You may need to manually install it or use alternative methods\n")
+}
+
 cat("You can now run your R scripts in this directory.\n")
