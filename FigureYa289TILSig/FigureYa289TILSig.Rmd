@@ -84,18 +84,14 @@ options(stringsAsFactors = FALSE)
 
 ## 数据收集
 
-文章所使用的大型数据均上传到百度网盘，链接：<https://pan.baidu.com/s/1mpYgfy1cCZPQPzmkv4VQDA>，提取码：ibzk。
-
-包括19种免疫细胞系表达谱数据，GENECODE注释文件，RefSeq注释文件。
+文章所使用的大型数据包括19种免疫细胞系表达谱数据，GENECODE注释文件，RefSeq注释文件。
 CCLE表达谱数据，TCGA胃癌表达谱数据和临床数据，count数据转换为TPM数据的参考数据集。
 
 # Input file
 
 ## Data collection
 
-The large data used in the article has been uploaded to Baidu Cloud, link:< https://pan.baidu.com/s/1mpYgfy1cCZPQPzmkv4VQDA >Extract code: ibzk.
-
-Including expression profile data of 19 immune cell lines, GENECODE annotation files, and RefSeq annotation files.
+The large data used in the article including expression profile data of 19 immune cell lines, GENECODE annotation files, and RefSeq annotation files.
 The reference dataset for converting CCLE expression profile data, TCGA gastric cancer expression profile data, clinical data, and count data into TPM data.
 
 ## 来自GEO的表达数据处理
