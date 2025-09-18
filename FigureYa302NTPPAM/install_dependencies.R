@@ -163,7 +163,7 @@ tryCatch({
 
 # If CMScaller installation fails completely, provide detailed instructions
 if (!is_package_installed("CMScaller")) {
-  cat("\n" + strrep("=", 60) + "\n")
+  cat("\n", strrep("=", 60), "\n", sep = "")
   cat("MANUAL INSTALLATION INSTRUCTIONS FOR CMScaller:\n")
   cat("1. Install system dependencies (Ubuntu/Debian):\n")
   cat("   sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev\n")
@@ -174,8 +174,9 @@ if (!is_package_installed("CMScaller")) {
   cat("   remotes::install_github('LotteN/CMScaller')\n")
   cat("4. If that fails, download and install from source:\n")
   cat("   devtools::install_url('https://github.com/LotteN/CMScaller/archive/master.tar.gz')\n")
-  cat("\n", strrep("=", 60), "\n", sep = "")
+  cat(strrep("=", 60), "\n", sep = "")
 }
+
 
 cat("\nPackage installation completed!\n")
 cat("You can now run your R scripts in this directory.\n")
