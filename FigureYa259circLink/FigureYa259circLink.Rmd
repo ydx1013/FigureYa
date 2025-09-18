@@ -71,11 +71,14 @@ To create this visualization, we enhanced the crosslink R package, which will co
 
 ```{r}
 source("install_dependencies.R")
+source("crosslink.R") # From R package crosslink
+source("layout.R") # From R package crosslink
+source("transfromation.R") # From R package crosslink
+source("utils.R") # From R package crosslink
 
 library(magrittr)
 library(tidyverse)
 library(ggplot2)
-library(crosslink) 
 
 # 显示英文报错信息
 # Show English error messages
