@@ -33,12 +33,14 @@ install_github_package <- function(repo, max_retries = 3) {
     cat("Installing GitHub package:", repo, "\n")
     
     for (attempt in 1:max_retries) {
+      success <- FALSE
       tryCatch({
         if (!is_package_installed("remotes")) {
           install.packages("remotes")
         }
         remotes::install_github(repo)
         cat("Successfully installed:", pkg_name, "\n")
+        success <- TRUE
         return(TRUE)
       }, error = function(e) {
         cat("Attempt", attempt, "failed:", e$message, "\n")
@@ -56,6 +58,8 @@ install_github_package <- function(repo, max_retries = 3) {
           return(FALSE)
         }
       })
+      
+      if (success) break
     }
   } else {
     cat("Package already installed:", pkg_name, "\n")
@@ -69,7 +73,12 @@ install_cgdsr <- function() {
     cat("Attempting to install cgdsr package...\n")
     
     # 方法1: 从GitHub安装（主要方法）
-    success <- install_github_package("cBioPortal/cgdsr")
+    success <- FALSE
+    tryCatch({
+      success <- install_github_package("cBioPortal/cgdsr")
+    }, error = function(e) {
+      cat("GitHub installation attempt failed:", e$message, "\n")
+    })
     
     if (!success) {
       # 方法2: 尝试从CRAN安装旧版本（如果可用）
@@ -88,6 +97,9 @@ install_cgdsr <- function() {
       # 方法3: 尝试安装开发版本
       cat("Trying development version of cgdsr...\n")
       tryCatch({
+        if (!is_package_installed("remotes")) {
+          install.packages("remotes")
+        }
         remotes::install_github("cBioPortal/cgdsr@develop")
         if (is_package_installed("cgdsr")) {
           cat("Successfully installed development version of cgdsr\n")
@@ -101,12 +113,13 @@ install_cgdsr <- function() {
       cat("Trying manual download and installation...\n")
       tryCatch({
         # 下载源代码
+        temp_file <- tempfile(fileext = ".zip")
         download.file("https://github.com/cBioPortal/cgdsr/archive/master.zip", 
-                     "cgdsr-master.zip")
+                     temp_file)
         # 安装
-        install.packages("cgdsr-master.zip", repos = NULL, type = "source")
+        install.packages(temp_file, repos = NULL, type = "source")
         # 清理
-        file.remove("cgdsr-master.zip")
+        file.remove(temp_file)
         
         if (is_package_installed("cgdsr")) {
           cat("Successfully installed cgdsr from manual download\n")
