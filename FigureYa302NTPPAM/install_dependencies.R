@@ -174,7 +174,7 @@ if (!is_package_installed("CMScaller")) {
   cat("   remotes::install_github('LotteN/CMScaller')\n")
   cat("4. If that fails, download and install from source:\n")
   cat("   devtools::install_url('https://github.com/LotteN/CMScaller/archive/master.tar.gz')\n")
-  cat(strrep("=", 60) + "\n")
+  cat("\n", strrep("=", 60), "\n", sep = "")
 }
 
 cat("\nPackage installation completed!\n")
