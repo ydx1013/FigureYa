@@ -24,7 +24,6 @@ jobs:
             libfontconfig1-dev libharfbuzz-dev libfribidi-dev libgdal-dev \
             libfreetype6-dev libtiff5-dev libudunits2-dev 
           git lfs install
-
       - name: 3. Set up R
         uses: r-lib/actions/setup-r@v2
         with:
@@ -53,20 +52,16 @@ jobs:
             echo "to_Knit.txt file not found. Please provide this file to specify which Rmd files to knit."
             exit 1
           fi
-
           # Read to_Knit.txt into a variable
           TO_KNIT=$(<to_Knit.txt)
-
           # Process each .Rmd file
           ANY_FILE_FAILED=false
           echo "RMD Render Summary" > summary.txt
           echo "===================" >> summary.txt
           echo "" >> summary.txt
-
           find . -type f -name "*.Rmd" | while IFS= read -r rmd_file; do
             rmd_dir=$(dirname "$rmd_file")
             rmd_basename=$(basename "$rmd_file")
-
             # Check if any entry in to_Knit.txt matches the Rmd file path or name
             MATCHED=false
             for pattern in $TO_KNIT; do
@@ -75,41 +70,25 @@ jobs:
                 break
               fi
             done
-
             if [ "$MATCHED" = false ]; then
               echo "[SKIPPED] - $rmd_file (Not listed in to_Knit.txt)" | tee -a summary.txt
               continue
             fi
-
             echo "========== START: $rmd_file =========="
-
             if [ -f "$rmd_dir/install_dependencies.R" ]; then
               (cd "$rmd_dir" && Rscript install_dependencies.R > install.log 2>&1 || echo "WARNING: Dependency installation failed for $rmd_file.")
             fi
-
-            # First attempt: try to render normally
             if Rscript -e "rmarkdown::render('$rmd_file', quiet=TRUE)" > rmd_render.log 2>&1; then
-              echo "[SUCCESS] - $rmd_file (Normal render)" | tee -a summary.txt
+              echo "[SUCCESS] - $rmd_file" | tee -a summary.txt
             else
-              # If normal render fails, try to render as HTML-only without executing code
-              echo "Normal render failed, attempting HTML-only render..." | tee -a summary.txt
-              
-              if Rscript -e "rmarkdown::render('$rmd_file', output_format = 'html_document', runtime = 'static', quiet = TRUE)" > rmd_render2.log 2>&1; then
-                echo "[SUCCESS] - $rmd_file (HTML-only render)" | tee -a summary.txt
-              else
-                ANY_FILE_FAILED=true
-                echo "[FAILED] - $rmd_file (Both normal and HTML-only render failed)" | tee -a summary.txt
-                echo "--- Error Log for $rmd_file ---" | tee -a summary.txt
-                tail -n 20 rmd_render.log | tee -a summary.txt
-                echo "--- HTML-only Error Log ---" | tee -a summary.txt
-                tail -n 20 rmd_render2.log | tee -a summary.txt
-                echo "-----------------------------------" | tee -a summary.txt
-              fi
+              ANY_FILE_FAILED=true
+              echo "[FAILED] - $rmd_file" | tee -a summary.txt
+              echo "--- Error Log for $rmd_file ---" | tee -a summary.txt
+              tail -n 20 rmd_render.log | tee -a summary.txt
+              echo "-----------------------------------" | tee -a summary.txt
             fi
-
             echo "=========== END: $rmd_file ==========="; echo ""
           done
-
           # Output job status
           echo "job_failed=$ANY_FILE_FAILED" >> $GITHUB_OUTPUT
         continue-on-error: true
@@ -125,17 +104,13 @@ jobs:
           # 配置 Git 用户信息
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-
           # 确保拉取最新的更改
           echo "Pulling latest changes from remote..."
           git pull origin main --rebase --autostash
-
           # 添加生成的 HTML 文件
           find . -name "*.html" -not -path "./.git/*" | xargs git add 2>/dev/null || true
-
           # 添加 summary 文件（如果存在）
           if [ -f summary.txt ]; then git add summary.txt; fi
-
           # 检查是否有任何更改
           if ! git diff --staged --quiet; then
             git commit -m "chore: Auto-render selected Rmd files"
@@ -149,7 +124,6 @@ jobs:
           else
             echo "No new files or changes to commit."
           fi
-
       - name: 11. Report Final Status
         if: always()
         run: |
