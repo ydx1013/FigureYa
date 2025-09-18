@@ -1,7 +1,7 @@
 ---
 title: "FigureYa59Plus_GEO2DEG"
 author: "Haitao Wang; Ying Ge, Yijing Chen"
-date: "2025-5-20"
+date: "2025-9-18"
 output: html_document
 ---
 
@@ -240,10 +240,9 @@ express <- log2(express)
 par(mfrow=c(2,1))
 boxplot(express,outline = F) #均一化前 pre-normalization
 
-# 均一化数据分位数
-# Normalise data quantiles
-library(preprocessCore)
-express.norm <- normalize.quantiles(as.matrix(express))
+# 使用limma包进行分位数标准化
+# Normalise data quantiles using limma
+express.norm <- normalizeQuantiles(as.matrix(express))
 
 colnames(express.norm) <- colnames(express)
 rownames(express.norm) <- rownames(express)
