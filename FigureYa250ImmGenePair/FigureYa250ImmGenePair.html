@@ -356,6 +356,14 @@ display: none;
 </div>
 
 
+<div id="academic-citation" class="section level1">
+<h1>Academic Citation</h1>
+<p>If you use this code in your work or research, we kindly request that
+you cite our publication:</p>
+<p>Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed. <a href="https://doi.org/10.1002/imm3.70005" class="uri">https://doi.org/10.1002/imm3.70005</a></p>
+</div>
 <div id="需求描述" class="section level1">
 <h1>需求描述</h1>
 <p>希望复现第一段构建的算法。只要第一段的计算就行，后面lasso的FigureYa也都有。</p>
@@ -405,14 +413,14 @@ from<a href="https://jamanetwork.com/journals/jamaoncology/fullarticle/2643120" 
 <div id="应用场景" class="section level1">
 <h1>应用场景</h1>
 <p>采用较为传统的方式构建基因对。小伙伴可以后续继续运行lasso或者其他模型构建算法，可参考FigureYa31lasso或FigureYa65SVM。</p>
-<p>本文档作者参考例文的思路写了这篇文章，<a href="https://onlinelibrary.wiley.com/doi/10.1002/ctm2.453" class="uri">https://onlinelibrary.wiley.com/doi/10.1002/ctm2.453</a>，小伙伴可参考。这篇文章里的多个图都可以用我们众筹的FigureYa实现：</p>
+<p>本文档作者参考例文的思路写了这篇文章，<a href="https://onlinelibrary.wiley.com/doi/10.1002/ctm2.453" class="uri">https://onlinelibrary.wiley.com/doi/10.1002/ctm2.453</a>，小伙伴可参考。这篇文章里的多个图都可以用FigureYa实现：</p>
 <ul>
 <li>Figure
 1E可参考FigureYa90subgroup，F可参考FigureYa35batch_bestSeparation；</li>
 <li>Figure 3G画法可参考FigureYa227boxdensity；</li>
 <li>Figure 4A可参考FigureYa187RMS，E可参考FigureYa173fancybar。</li>
 </ul>
-<p>小丫画图群里的小伙伴们也写过类似的文章，例如<a href="https://www.frontiersin.org/articles/10.3389/fonc.2021.665870/full" class="uri">https://www.frontiersin.org/articles/10.3389/fonc.2021.665870/full</a>，其中多个图也可以用我们众筹的FigureYa实现：</p>
+<p>类似的文章，例如<a href="https://www.frontiersin.org/articles/10.3389/fonc.2021.665870/full" class="uri">https://www.frontiersin.org/articles/10.3389/fonc.2021.665870/full</a>，其中多个图也可以用FigureYa实现：</p>
 <ul>
 <li>Figure
 2B可参考FigureYa31lasso，C可参考FigureYa39bar；EG可参考FigureYa141risk；</li>
@@ -434,7 +442,7 @@ future, please refer to FigureYa31lasso or FigureYa65SVM.</p>
 <p>The author of this document wrote this article with reference to the
 idea of example texts, <a href="https://onlinelibrary.wiley.com/doi/10.1002/ctm2.453" class="uri">https://onlinelibrary.wiley.com/doi/10.1002/ctm2.453</a>,
 small partners can refer to. Many of the diagrams in this article can be
-implemented with our crowdfunded FigureYa:</p>
+implemented with FigureYa:</p>
 <ul>
 <li>Figure 1E can refer to FigureYa90subgroup, F can refer to
 FigureYa35batch_bestSeparation;</li>
@@ -442,10 +450,8 @@ FigureYa35batch_bestSeparation;</li>
 <li>For Figure 4A, see Figure Ya187RMS, and for E, see Figure
 Ya173fancybar.</li>
 </ul>
-<p>The friends in the Xiaoya drawing group have also written similar
-articles, such as <a href="https://www.frontiersin.org/articles/10.3389/fonc.2021.665870/full" class="uri">https://www.frontiersin.org/articles/10.3389/fonc.2021.665870/full</a>,
-multiple of which can also be implemented with our crowdfunded
-FigureYa:</p>
+<p>Similar articles, such as <a href="https://www.frontiersin.org/articles/10.3389/fonc.2021.665870/full" class="uri">https://www.frontiersin.org/articles/10.3389/fonc.2021.665870/full</a>,
+multiple of which can also be implemented with FigureYa:</p>
 <ul>
 <li>Figure 2B can refer to FigureYa31lasso, C can refer to
 FigureYa39bar; For EG, please refer to FigureYa141risk;</li>
@@ -467,14 +473,19 @@ FigureYa131CMap, FigureYa30nomogram</p>
 </div>
 <div id="环境设置" class="section level1">
 <h1>环境设置</h1>
-<p>使用国内镜像安装包</p>
 </div>
 <div id="environment-settings" class="section level1">
 <h1>Environment settings</h1>
-<p>Use the domestic mirror installation package</p>
-<pre class="r"><code>options(&quot;repos&quot;= c(CRAN=&quot;https://mirrors.tuna.tsinghua.edu.cn/CRAN/&quot;))
-options(BioC_mirror=&quot;http://mirrors.tuna.tsinghua.edu.cn/bioconductor/&quot;)</code></pre>
-<p>加载包 load packages</p>
+<pre class="r"><code>source(&quot;install_dependencies.R&quot;)</code></pre>
+<pre><code>## Starting R package installation...
+## ===========================================
+## 
+## Installing CRAN packages...
+## Package already installed: survival 
+## 
+## ===========================================
+## Package installation completed!
+## You can now run your R scripts in this directory.</code></pre>
 <pre class="r"><code>library(survival)
 
 Sys.setenv(LANGUAGE = &quot;en&quot;) #显示英文报错信息 # error messaes are displayed in English
@@ -519,14 +530,13 @@ IRGP.generator &lt;- function(expr = NULL, immuneGene = NULL) {
 </div>
 <div id="输入文件" class="section level1">
 <h1>输入文件</h1>
-<p>easyinput_tcga_tpm.txt，表达矩阵，文件较大，已上传至微云<a href="https://share.weiyun.com/Idkrb3Xu" class="uri">https://share.weiyun.com/Idkrb3Xu</a>。</p>
-<p>easyinput_tcga_surv.txt，样本生存信息。</p>
+<p>easyinput_tcga_tpm.txt，表达矩阵</p>
+<p>easyinput_tcga_surv.txt，样本生存信息</p>
 <p>InnateDB_genes_IRIS.txt，免疫基因，来自IRIS <a href="https://innatedb.com/redirect.do?go=resourcesGeneLists" class="uri">https://innatedb.com/redirect.do?go=resourcesGeneLists</a>，原文使用ImmPort，这里也提供了list，但是我电脑内存比较小，生成不了那么大的基因对矩阵，所以换用IRIS。</p>
 </div>
 <div id="input-files" class="section level1">
 <h1>Input files</h1>
-<p>easyinput_tcga_tpm.txt, the expression matrix has a large file and
-has been uploaded to the Weiyun <a href="https://share.weiyun.com/Idkrb3Xu" class="uri">https://share.weiyun.com/Idkrb3Xu</a>.</p>
+<p>easyinput_tcga_tpm.txt, the expression matrix.</p>
 <p>easyinput_tcga_surv.txt, sample survival information.</p>
 <p>InnateDB_genes_IRIS.txt, immune genes, from IRIS <a href="https://innatedb.com/redirect.do?go=resourcesGeneLists" class="uri">https://innatedb.com/redirect.do?go=resourcesGeneLists</a>,
 the original text uses ImmPort, and a list is also provided here, but my
@@ -630,7 +640,7 @@ write.table(outTab,file = &quot;output_km screening of gene pair.txt&quot;,sep =
 ## 
 ## loaded via a namespace (and not attached):
 ##  [1] digest_0.6.37     R6_2.5.1          fastmap_1.2.0     Matrix_1.7-0     
-##  [5] xfun_0.49         lattice_0.22-6    splines_4.4.1     cachem_1.1.0     
+##  [5] xfun_0.53         lattice_0.22-6    splines_4.4.1     cachem_1.1.0     
 ##  [9] knitr_1.49        htmltools_0.5.8.1 rmarkdown_2.29    lifecycle_1.0.4  
 ## [13] cli_3.6.3         grid_4.4.1        sass_0.4.9        jquerylib_0.1.4  
 ## [17] compiler_4.4.1    rstudioapi_0.17.1 tools_4.4.1       evaluate_1.0.1   
