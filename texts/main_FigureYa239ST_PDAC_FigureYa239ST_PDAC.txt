@@ -2,13 +2,19 @@ FigureYa239ST_PDAC
 FigureYa239ST_PDAC
 Houshi Xu
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
-丫姐好，我想众筹这篇单细胞空间转录组的Figure
+我想实现这篇单细胞空间转录组的Figure
 2，作者已经把原始数据都提供了。
 Requirement Description
-Hello Xiaoya, I want to crowdfund Figure 2 of this single-cell
-spatial transcriptome, and the author has provided all the original
-data.
+I want to crowdsource Figure 2 of this single-cell spatial
+transcriptome, and the author has provided all the original data.
 出自
 https://www.nature.com/articles/s41587-019-0392-8
 from
@@ -62,12 +68,8 @@ Because the original text does not point out some important
 parameters, the final graph is different from the original text, but the
 algorithm must be accurate and can be used in its own data.
 环境设置
-使用国内镜像安装包
 Environment settings
-Use the domestic mirror installation package
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
-加载包 load packages
+source("install_dependencies.R")
 library(data.table)
 library(Seurat)
 library(tidyverse)
