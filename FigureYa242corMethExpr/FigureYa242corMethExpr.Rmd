@@ -29,11 +29,13 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r}
 source("install_dependencies.R")
-
-library(TCGAbiolinks)
-library(ChAMPdata)
-library(data.table)
-data(probe.features) # 加载450甲基化探针注释文件 / Load 450k methylation probe annotation file
+library(TCGAbiolinks)    # TCGA数据访问 / TCGA data access
+library(SummarizedExperiment) # 数据对象处理 / Data object handling  
+library(biomaRt)         # 基因长度信息 / Gene length information
+library(edgeR)           # FPKM计算 / FPKM calculation
+library(data.table)      # 数据读写 / Data I/O
+library(ChAMP)           # 甲基化数据分析主流程 / Main pipeline for methylation data analysis
+data(probe.features)     # 加载450甲基化探针注释文件 / Load 450k methylation probe annotation file
 
 Sys.setenv(LANGUAGE = "en") #显示英文报错信息 / Display error messages in English
 options(stringsAsFactors = FALSE) #禁止chr转成factor / Prevent chr from converting to factor
