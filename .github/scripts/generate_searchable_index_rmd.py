@@ -304,9 +304,254 @@ with open(os.path.join(PUBLISH_DIR, "chapters.json"), "w", encoding="utf-8") as 
     json.dump(chapters_meta, jf, ensure_ascii=False, indent=2)
 print("✅ Created chapters.json")
 
-# 生成index.html（保持之前的HTML内容不变）
-# [这里插入之前提供的完整HTML内容]
+# 生成index.html的HTML内容
+html_output = """
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>FigureYa Results Browser</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.6.2/fuse.min.js"></script>
+  <script>
+    // 加载搜索数据
+    let fuse;
+    let chaptersData = [];
 
+    fetch('chapters.json')
+      .then(response => response.json())
+      .then(data => {
+        chaptersData = data;
+        // 为搜索准备文本内容
+        return Promise.all(data.map(item => 
+          fetch(item.text)
+            .then(response => response.text())
+            .then(text => {
+              item.text_content = text;
+              return item;
+            })
+            .catch(() => {
+              item.text_content = '';
+              return item;
+            })
+        ));
+      })
+      .then(dataWithContent => {
+        // 配置Fuse.js进行模糊搜索
+        fuse = new Fuse(dataWithContent, {
+          keys: ['title', 'text_content', 'description', 'folder'],
+          includeScore: true,
+          threshold: 0.4,
+          ignoreLocation: true,
+          minMatchCharLength: 2
+        });
+        renderTOC();
+      });
+
+    function getFileLink(item) {
+      if (item.file_type === 'rmd') {
+        // 对于Rmd文件，链接到专门的查看页面
+        const safeName = item.file.replace('.', '_').replace(' ', '_');
+        return `rmd_viewers/${item.folder}_${safeName}.html`;
+      }
+      return item.file;
+    }
+
+    function getLinkText(item) {
+      return item.file_type === 'rmd' ? 'View RMD Online' : 'View HTML';
+    }
+
+    function doSearch() {
+      const query = document.getElementById('searchBox').value.trim();
+      const resultsContainer = document.getElementById('searchResults');
+      
+      if (!query) {
+        resultsContainer.innerHTML = '<p>Please enter a search term.</p>';
+        return;
+      }
+
+      if (!fuse) {
+        resultsContainer.innerHTML = '<p>Search index loading...</p>';
+        return;
+      }
+
+      const results = fuse.search(query);
+      
+      if (results.length === 0) {
+        resultsContainer.innerHTML = '<p>No results found for "' + query + '"</p>';
+        return;
+      }
+
+      let html = '<h2>Search Results (' + results.length + ' found)</h2>';
+      results.slice(0, 20).forEach(result => {
+        const item = result.item;
+        const highlightedTitle = highlightText(item.title, query);
+        const preview = item.text_content ? highlightText(item.text_content.substring(0, 150), query) + '...' : '';
+        
+        html += `
+          <div class="result" style="border: 1px solid #eee; padding: 15px; margin: 10px 0; border-radius: 5px;">
+            <div class="result-title" style="font-size: 1.2em; margin-bottom: 8px;">${highlightedTitle}</div>
+            ${item.description ? `<div style="color: #666; margin-bottom: 8px;">${item.description}</div>` : ''}
+            <div style="color: #888; font-family: monospace; margin-bottom: 10px;">${preview}</div>
+            <div>
+              <a href="${getFileLink(item)}" target="_blank" style="color: #0066cc; text-decoration: none;">
+                ${getLinkText(item)}
+              </a> 
+              <span style="color: #ccc;">|</span>
+              <a href="${item.file}" download style="color: #0066cc; text-decoration: none;">
+                Download ${item.file_type.toUpperCase()}
+              </a>
+              ${item.file_type === 'rmd' ? `<span style="color: #ccc;">|</span>
+              <a href="${item.text}" target="_blank" style="color: #0066cc; text-decoration: none;">
+                View Text
+              </a>` : ''}
+            </div>
+          </div>
+        `;
+      });
+      
+      if (results.length > 20) {
+        html += `<p>... and ${results.length - 20} more results</p>`;
+      }
+      
+      resultsContainer.innerHTML = html;
+    }
+
+    function highlightText(text, query) {
+      if (!text) return '';
+      const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+      return text.replace(regex, '<span class="highlight" style="background: yellow; padding: 2px 0;">$1</span>');
+    }
+
+    function clearSearch() {
+      document.getElementById('searchBox').value = '';
+      document.getElementById('searchResults').innerHTML = '';
+      document.getElementById('tocGrid').style.display = 'flex';
+    }
+
+    // 生成目录网格
+    function renderTOC() {
+      if (!chaptersData.length) return;
+      
+      const grid = document.getElementById('tocGrid');
+      let html = '';
+      
+      chaptersData.forEach(item => {
+        const thumb = item.thumb ? `<img src="${item.thumb}" alt="${item.title}" style="max-height: 100px;">` : 
+          `<div style="height:100px; background:#f0f0f0; display:flex; align-items:center; justify-content:center; color:#666; font-size:0.9em;">
+            ${item.file_type.toUpperCase()} File
+          </div>`;
+        
+        html += `
+          <div class="card">
+            ${thumb}
+            <div class="card-title">${item.title}</div>
+            ${item.description ? `<div style="font-size:0.9em; color:#666; margin:5px 0; text-align:center;">${item.description}</div>` : ''}
+            <div class="card-links">
+              <a href="${getFileLink(item)}" target="_blank" style="display:block; margin:2px 0;">
+                ${getLinkText(item)}
+              </a>
+              <a href="${item.file}" download style="display:block; margin:2px 0; color:#666;">
+                Download
+              </a>
+            </div>
+          </div>
+        `;
+      });
+      
+      grid.innerHTML = html;
+    }
+
+    // 页面加载完成后
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('searchBox').addEventListener('keydown', function(e){
+        if (e.key === 'Enter') doSearch();
+      });
+      
+      document.getElementById('searchBox').addEventListener('input', function(e) {
+        if (this.value.trim() === '') {
+          clearSearch();
+        }
+      });
+    });
+  </script>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; margin: 40px; background: #fafafa; }
+    #searchBox { 
+      padding: 12px; 
+      font-size: 16px; 
+      border: 2px solid #ddd; 
+      border-radius: 8px; 
+      width: 70%; 
+      margin-right: 10px;
+    }
+    button { 
+      padding: 12px 20px; 
+      font-size: 16px; 
+      border: none; 
+      border-radius: 8px; 
+      cursor: pointer; 
+      background: #007bff; 
+      color: white; 
+    }
+    button:hover { background: #0056b3; }
+    #searchResults { margin-top: 2em; }
+    .grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 22px;
+      margin: 40px 0;
+      padding: 0;
+    }
+    .card {
+      flex: 1 0 250px;
+      background: white;
+      border-radius: 12px;
+      padding: 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    }
+    .card-title {
+      font-weight: 600;
+      font-size: 1.1em;
+      margin: 12px 0;
+      text-align: center;
+      color: #333;
+    }
+    .card-links a {
+      color: #007bff;
+      text-decoration: none;
+    }
+    .card-links a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+<div style="max-width: 1000px; margin: 0 auto;">
+    <h1 style="text-align: center; color: #333; margin-bottom: 30px;">FigureYa Results Browser</h1>
+    
+    <div style="text-align: center; margin-bottom: 30px;">
+        <input type="text" id="searchBox" placeholder="🔍 Search across all FigureYa reports...">
+        <button onclick="doSearch()">Search</button>
+        <button onclick="clearSearch()" style="background: #6c757d;">Clear</button>
+    </div>
+
+    <div id="searchResults"></div>
+    
+    <h2 style="margin-top: 40px;">Browse All Reports</h2>
+    <div id="tocGrid" class="grid"></div>
+</div>
+
+</body>
+</html>
+"""
+
+# 写入index.html文件
 with open(os.path.join(PUBLISH_DIR, "index.html"), "w", encoding="utf-8") as f:
     f.write(html_output)
 
