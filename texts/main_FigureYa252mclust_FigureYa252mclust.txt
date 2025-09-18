@@ -1,12 +1,18 @@
 FigureYa252mclust
 FigureYa252mclust
 Zongcheng Li
-2025-5-20
+2025-9-12
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
-求众筹这篇文章的Fig4A，好看的聚类图
+求实现这篇文章的Fig4A，好看的聚类图
 Requirement Description
-Ask for crowdfunding for this article Fig4A, a good-looking cluster
-map
+Fig4A, a good-looking cluster map
 出自
 https://link.springer.com/article/10.1007%2Fs00497-018-00357-2
 from
@@ -27,13 +33,8 @@ variation of gene expression in each cluster over time.
 For more time series data results, see FigureYa16fitting,
 FigureYa94STEMbox, and FigureYa98STEMheatmap.
 环境设置
-使用国内镜像安装包
 Environment settings
-Use the domestic mirror installation package
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
-install.packages("ggnewscale")
-加载包 load packages
+source("install_dependencies.R")
 library(tidyverse)
 library(magrittr)
 library(mclust)
@@ -45,7 +46,7 @@ options(stringsAsFactors = FALSE) #禁止chr转成factor # chr is not allowed to
 https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE121236
 Input file obtained
 If your data has been organized into easy_input.csv format, you can
-skip this step and go straight to “McLust”.
+skip this step and go straight to “mcLust”.
 Download the GSE121236_RAW.tar archive from the GEO database of NCBI
 and
 https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE121236
