@@ -135,13 +135,15 @@ tryCatch({
     reticulate::install_python()
   }
   
-  # Install Python packages
-  reticulate::py_install("anndata", pip = TRUE)
+  # Install Python packages with specific versions to avoid conflicts
+  cat("Installing Python packages with version constraints...\n")
+  reticulate::py_install("pandas>=2.1.0", pip = TRUE)  # 确保pandas版本兼容
+  reticulate::py_install("anndata>=0.10.0", pip = TRUE)
   reticulate::py_install("magic-impute", pip = TRUE)
-  cat("Successfully installed Python packages: anndata, magic-impute\n")
+  cat("Successfully installed Python packages: pandas, anndata, magic-impute\n")
 }, error = function(e) {
   cat("Failed to install Python packages:", e$message, "\n")
-  cat("You can install them manually with: pip install anndata magic-impute\n")
+  cat("You can install them manually with: pip install pandas>=2.1.0 anndata magic-impute\n")
 })
 
 cat("\n===========================================\n")
@@ -175,7 +177,9 @@ tryCatch({
 
 # If SeuratDisk installation fails completely, provide detailed instructions
 if (!is_package_installed("SeuratDisk")) {
-  cat("\n" + strrep("=", 60) + "\n")
+  cat("\n")
+  cat(paste0(rep("=", 60), collapse = ""))
+  cat("\n")
   cat("MANUAL INSTALLATION INSTRUCTIONS FOR SeuratDisk:\n")
   cat("1. Make sure hdf5r is installed and working\n")
   cat("2. Install SeuratDisk manually:\n")
@@ -185,7 +189,8 @@ if (!is_package_installed("SeuratDisk")) {
     cat("   Ubuntu/Debian: sudo apt-get install libhdf5-dev\n")
     cat("   CentOS/RHEL: sudo yum install hdf5-devel\n")
   }
-  cat(strrep("=", 60) + "\n")
+  cat(paste0(rep("=", 60), collapse = ""))
+  cat("\n")
 }
 
 cat("\nYou can now run your R scripts in this directory.\n")
