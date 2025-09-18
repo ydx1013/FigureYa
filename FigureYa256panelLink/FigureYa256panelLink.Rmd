@@ -1,6 +1,7 @@
 ---
 title: "FigureYa256panelLink"
-author: "Zongcheng Li, Ying Ge"
+author: "Zongcheng Li"
+reviewer: "Ying Ge"
 date: "2025-9-18"
 output: html_document
 ---
