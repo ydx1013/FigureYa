@@ -1,0 +1,40 @@
+# Academic Citation
+# 设置knitr的全局代码块选项 / Set global chunk options for knitr
+## 需求描述
+## Requirement Description
+## 应用场景
+## Application Scenarios
+## 环境设置
+## Environment Setup
+# 加载Seurat包 - 用于单细胞RNA测序数据分析
+# Load the Seurat package - for single-cell RNA sequencing data analysis
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+source("install_dependencies.R")
+library(Seurat)
+
+library(dplyr)
+
+library(data.table)
+
+library(cowplot)
+
+Sys.setenv(LANGUAGE = "en")
+
+options(stringsAsFactors = FALSE)
+```
+
+```{r}
+df <- fread("GSE123818_Root_single_cell_wt_datamatrix.csv.gz",
+            data.table = FALSE)
+
+expression_matrix <- as.matrix(df[,-1])
+
+row.names(expression_matrix) <- df$V1
+
+rm(df)
+```

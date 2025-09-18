@@ -1,0 +1,45 @@
+# Academic Citation
+# 需求描述
+# 环境设置
+# 加载 Seurat 和 SeuratDisk 用于数据转换
+# 输入文件
+# 1. 下载 H5AD 文件
+# 检查文件是否已下载，如果未下载则执行下载
+# 2. 将 .h5ad 转换为 .h5seurat 格式
+# 3. 将 .h5seurat 文件加载为 Seurat 对象
+# 查看加载后的 Seurat 对象
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+source("install_dependencies.R")
+
+library(SeuratDisk)
+library(Seurat)
+library(tidyverse)
+library(ComplexHeatmap)
+
+Sys.setenv(LANGUAGE = "en") #显示英文报错信息
+options(stringsAsFactors = FALSE) #禁止chr转成factor
+```
+
+```{r}
+h5ad_url <- "https://datasets.cellxgene.cziscience.com/79f80e59-97e7-4f95-b1e9-9767a24b85b0.h5ad"
+h5ad_file <- "SCLC_epithelial_cells.h5ad"
+
+if (!file.exists(h5ad_file)) {
+  download.file(h5ad_url, destfile = h5ad_file, mode = "wb")
+}
+
+h5seurat_file <- "SCLC_epithelial_cells.h5seurat"
+Convert(h5ad_file, dest = h5seurat_file, overwrite = TRUE)
+
+seu <- LoadH5Seurat(h5seurat_file)
+
+print(seu)
+
+dir.create("tmp.data", showWarnings = FALSE)
+saveRDS(seu@meta.data, "tmp.data/SCLC_epithelial_cells.cellmeta.rds")
+head(rea
