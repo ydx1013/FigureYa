@@ -1,32 +1,20 @@
 # Academic Citation
+```{r setup, include=FALSE}
 # 需求描述
 # 应用场景
 # 环境设置
+```{r}
+```{r}
 # 输入文件
+```{r}
 # 加载表达谱和生存数据
 # 1. 根据情况对表达谱做对数转换
 # 2. 取方差大于1的基因
 # 3. 取表达量为0的样本数目小于总样本数pct%的样本，这里pct默认为0.1，即10%
 # 4. 防止基因名出错
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
+# 加载免疫基因集
+# 取出基因和样本
+# 单变量cox模型筛选基因
 ```{r}
-source("install_dependencies.R")
-
-library(caret)
-library(survival)
-library(shape)
-Sys.setenv(LANGUAGE = "en") #显示英文报错信息
-options(stringsAsFactors = FALSE) #禁止chr转成factor
-```
-
+# 随机森林筛选过程
 ```{r}
-display.progress = function (index, totalN, breakN=20) {
-  if ( index %% ceiling(totalN/breakN)  ==0  ) {
-    cat(paste(round(index*100/totalN), "% ", sep=""))
-  }
-}
-```

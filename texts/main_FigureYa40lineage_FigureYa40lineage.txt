@@ -1,4 +1,5 @@
 # Academic Citation
+```{r setup, include=FALSE}
 # 使用knitr包设置全局代码块选项
 # Set global chunk options using knitr package
 ## 需求描述
@@ -7,23 +8,13 @@
 ## Application scenarios
 ## 软件安装
 ## Software installation
+```{r}
 ## 输入数据
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
+## Input data
 ```{r}
-source("install_dependencies.R")
-```
-
-```{r}
-exprs_file <- 'easy_input_TPM.txt'  # 表达矩阵文件路径 | Path to expression matrix file
-metadata_file <- 'easy_input_sample_sheet.txt'  # 样本元数据文件路径 | Path to sample metadata file
-
-exprs_df <- read.table(file=exprs_file, sep='\t', header = TRUE, 
-                 stringsAsFactors = FALSE, check.names = FALSE)
-
-sample_sheet <- read.table(file = metadata_file, header = TRUE,
-                           stringsAsFactors = FALSE)
-```
+# 输入文件路径设置 | Input file path settings
+# 读取表达矩阵数据 | Read expression matrix data
+# 参数说明 | Parameter explanation:
+# file: 输入文件路径 | Input file path
+# sep: 字段分隔符，制表符 | Field separator, tab character
+# header: 是否将第一行作为列名 | Whether to treat the first row as column names

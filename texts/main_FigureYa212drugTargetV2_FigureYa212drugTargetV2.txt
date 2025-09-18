@@ -1,36 +1,20 @@
 # Academic Citation
+```{r setup, include=FALSE}
 # 需求描述
 # 应用场景
 # 环境设置
+```{r}
+```{r}
 # 输入文件
+```{r}
 # 1.读取肝癌TPM表达谱
 # 2.读取maf突变文件(于cBioPortal下载)
 # 提取既有表达数据又有突变数据的肿瘤样本
 # 3.提取TP53突变信息，并创建样本注释
 # 取出有TP53突变的患者
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
+# 计算PPS得分
 ```{r}
-source("install_dependencies.R")
-source("predict_from_cgp.R") # 出自pRRophetic，用于药敏预测
-library(tidyverse) # 用于读取MAF文件
-library(ISOpureR) # 用于纯化表达谱
-library(impute) # 用于KNN填补药敏数据
-library(SimDesign) # 用于禁止药敏预测过程输出的信息
-library(ggplot2) # 绘图
-library(cowplot) # 合并图像
-
-Sys.setenv(LANGUAGE = "en") #显示英文报错信息
-options(stringsAsFactors = FALSE) #禁止chr转成factor
-```
-
-```{r}
-display.progress = function (index, totalN, breakN=20) {
-  if ( index %% ceiling(totalN/breakN)  ==0  ) {
-    cat(paste(round(index*100/totalN), "% ", sep=""))
-  }
-}  
-```
+# 1.读取17-gene signature，计算PPS得分(原文Table S3)
+# 计算pps，用到TP53突变患者的17个基因的表达矩阵
+# 2.标准化，把pps处理到0-1之间
+# 3.创建样本信息
