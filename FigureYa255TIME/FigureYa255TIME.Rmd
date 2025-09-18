@@ -135,7 +135,9 @@ Reference: Xiao Y, Ma D, Zhao S, et al. [Multi-Omics Profiling Reveals Distinct 
 ```{r}
 # 加载表达数据
 # Load expression data
-tpm <- read.table("tcga.mibc.tpm.txt",sep = "\t",row.names = 1,check.names = F,stringsAsFactors = F,header = T)
+tpm <- read.table(gzfile("tcga.mibc.tpm.txt.gz"), sep = "\t", row.names = 1, 
+                  check.names = FALSE, stringsAsFactors = FALSE, header = TRUE)
+
 immune.signature <- read.table("Curated_Immune_Cell_Signature.txt",sep = "\t",check.names = F,stringsAsFactors = F,header = T,row.names = NULL)
 
 # 构建计算GSVA的列表 Construct a list for calculating GSVA
