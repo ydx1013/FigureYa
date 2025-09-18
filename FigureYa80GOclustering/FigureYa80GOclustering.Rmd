@@ -288,58 +288,61 @@ p
 
 ```{r, fig.width=12, fig.height=8}
 # 根据系统发生树结构和生物学知识，手动定义4个主要分类节点
-#           这些节点编号对应之前树形图中的内部节点
-# Define 4 major classification nodes manually based on phylogenetic tree structure and biological knowledge
-#                  These node numbers correspond to internal nodes in the previous tree visualization
-node <- c(22,21,27,25)
+# 这些节点编号对应之前树形图中的内部节点
+node <- c(22, 21, 27, 25)
 
 # 基于指定节点将GO term划分为不同的进化分支组
-# Group GO terms into different evolutionary clades based on specified nodes
-gtree <- groupClade(tree, .node=node)
+# 使用正确的参数名称 'node' 而不是 '.node'
+gtree <- groupClade(tree, node = node)
 
 # 使用ggtree绘制分组后的树形图，不同分支组用不同颜色区分
-# Plot the grouped tree using ggtree, coloring different clades with distinct colors
-pbase <- ggtree(gtree, 
-                aes(color=group)) # Color branches by group
+pbase <- ggtree(gtree, aes(color = as.factor(group))) + # 将group转换为因子
+  scale_color_manual(values = hue_pal()(length(node) + 1)[-1]) # 手动设置颜色
 
 # 设置注释文本大小和位置参数
-# Set parameters for annotation text size and position
-fontsize <- 4 # Font size for clade labels
-offset <- .9 # Horizontal offset for clade labels (adjust to position labels relative to heatmap)
+fontsize <- 4
+offset <- 0.9
 
 # 构建完整的树形图，添加分类标签和GO term名称
-# Construct the complete tree visualization with clade labels and GO term names
 pnode <- pbase + 
-  # 如果不想显示每个GO term名称，注释掉此行并将offset设小（如0.3）
-  # If you want to hide individual GO term names, comment this line and reduce offset (e.g., 0.3)
-  geom_tiplab(size=4, align=TRUE) + # Align and display GO term names
+  geom_tiplab(size = 4, align = TRUE) +
   
-  # 为每个分类组添加描述性标签，颜色与对应分支匹配
-  # Add descriptive labels for each clade, colored to match corresponding branches
-  geom_cladelabel(node=node[1], align=TRUE, 
-                  color = hue_pal()(length(node)+1)[2], 
-                  fontsize = fontsize, offset=offset, label="pathway1") +
-  geom_cladelabel(node=node[2], align=TRUE, color = hue_pal()(length(node)+1)[3], fontsize = fontsize, offset=offset, label="pathway2") +
-  geom_cladelabel(node=node[3], align=TRUE, color = hue_pal()(length(node)+1)[4], fontsize = fontsize, offset=offset, label="pathway3") +
-  geom_cladelabel(node=node[4], align=TRUE, color = hue_pal()(length(node)+1)[5], fontsize = fontsize, offset=offset, label="pathway4") +
-  # 如果有更多分类组，继续添加类似的geom_cladelabel语句
-  # Add more geom_cladelabel statements for additional clades if needed
+  # 为每个分类组添加描述性标签
+  geom_cladelabel(node = node[1], align = TRUE, 
+                  color = hue_pal()(length(node) + 1)[2], 
+                  fontsize = fontsize, offset = offset, label = "pathway1") +
+  geom_cladelabel(node = node[2], align = TRUE, 
+                  color = hue_pal()(length(node) + 1)[3], 
+                  fontsize = fontsize, offset = offset, label = "pathway2") +
+  geom_cladelabel(node = node[3], align = TRUE, 
+                  color = hue_pal()(length(node) + 1)[4], 
+                  fontsize = fontsize, offset = offset, label = "pathway3") +
+  geom_cladelabel(node = node[4], align = TRUE, 
+                  color = hue_pal()(length(node) + 1)[5], 
+                  fontsize = fontsize, offset = offset, label = "pathway4") +
   
-  coord_cartesian(xlim=c(-.1,1.5)) # Adjust x-axis limits for better visualization
+  coord_cartesian(xlim = c(-0.1, 1.5)) +
+  theme(legend.position = "none") # 移除图例
 
-# 在树形图右侧添加热图，展示各组的p.adjust值
-#           热图颜色从红色（高值）到白色（低值），表示富集显著性
-# Add a heatmap to the right of the tree to show p.adjust values for each group
-#                  Heatmap colors range from red (high values) to white (low values), indicating enrichment significance
-gheatmap(pnode, ego.m, 
-         offset=.7, # Horizontal offset of the heatmap
-         width=0.3, # Width of the heatmap
-         colnames_angle=90, hjust=0, # Rotate column names vertically
-         low = "red", high = "white") # Color gradient for the heatmap
+# 确保热图数据格式正确
+# ego.m 应该是一个数据框，行名与树的tip标签匹配
+if (!is.data.frame(ego.m)) {
+  ego.m <- as.data.frame(ego.m)
+}
 
-# 将最终可视化结果保存为PDF文件
-# Save the final visualization as a PDF file
-ggsave("GOclustering.pdf", width = 12, height = 8)
+# 在树形图右侧添加热图
+p_final <- gheatmap(pnode, ego.m, 
+         offset = 0.7,
+         width = 0.3,
+         colnames_angle = 90, 
+         colnames_position = "top",
+         hjust = 0,
+         low = "red", 
+         high = "white") +
+  scale_fill_gradient(low = "red", high = "white", name = "p.adjust")
+
+# 保存结果
+ggsave("GOclustering.pdf", p_final, width = 12, height = 8)
 ```
 
 最后生成的pdf文件是矢量图，可以在Illustrator或Inkscape中打开、编辑。
