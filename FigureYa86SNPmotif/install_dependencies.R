@@ -1,198 +1,256 @@
 #!/usr/bin/env Rscript
-# R Package Installation Script for motifbreakR and dependencies
-# This script handles the specific dependency chain issues
+# 修正版的 motifBreakR 安装脚本
+# 根据官方 GitHub 说明和错误信息调整
 
-# Set up repositories
+# 设置镜像
 options(repos = c(CRAN = "https://cloud.r-project.org/"))
 options(BioC_mirror = "https://bioconductor.org/")
+options(timeout = 600)
 
-# Function to check if package is installed
+# 检查包是否已安装
 is_installed <- function(pkg) {
   pkg %in% rownames(installed.packages())
 }
 
-# Function to install with error handling
-safe_install <- function(install_func, pkg, type = "Bioconductor") {
-  cat("Installing", type, "package:", pkg, "\n")
+# 安装CRAN包
+install_cran <- function(pkg, max_retries = 3) {
+  if (is_installed(pkg)) {
+    cat("✓", pkg, "已经安装\n")
+    return(TRUE)
+  }
+  
+  for (attempt in 1:max_retries) {
+    cat("安装CRAN包:", pkg, "(尝试", attempt, "/", max_retries, ")\n")
+    tryCatch({
+      install.packages(pkg, dependencies = TRUE, quiet = TRUE)
+      if (is_installed(pkg)) {
+        cat("✓", pkg, "安装成功\n")
+        return(TRUE)
+      }
+    }, error = function(e) {
+      cat("尝试", attempt, "失败:", e$message, "\n")
+      Sys.sleep(5)
+    })
+  }
+  return(FALSE)
+}
+
+# 安装Bioconductor包
+install_bioc <- function(pkg, max_retries = 3) {
+  if (is_installed(pkg)) {
+    cat("✓", pkg, "已经安装\n")
+    return(TRUE)
+  }
+  
+  if (!is_installed("BiocManager")) {
+    install_cran("BiocManager")
+  }
+  
+  for (attempt in 1:max_retries) {
+    cat("安装Bioconductor包:", pkg, "(尝试", attempt, "/", max_retries, ")\n")
+    tryCatch({
+      BiocManager::install(pkg, update = FALSE, ask = FALSE, quiet = TRUE)
+      if (is_installed(pkg)) {
+        cat("✓", pkg, "安装成功\n")
+        return(TRUE)
+      }
+    }, error = function(e) {
+      cat("尝试", attempt, "失败:", e$message, "\n")
+      Sys.sleep(5)
+    })
+  }
+  return(FALSE)
+}
+
+# 安装系统依赖（针对Linux）
+install_system_deps <- function() {
+  if (.Platform$OS.type == "unix") {
+    cat("安装系统依赖...\n")
+    try({
+      # ghostscript 是 motifStack 的关键依赖
+      system("sudo apt-get update && sudo apt-get install -y ghostscript libghc-zlib-dev libcurl4-openssl-dev libssl-dev libxml2-dev")
+    }, silent = TRUE)
+  }
+}
+
+# 按照正确的顺序安装依赖
+install_dependencies <- function() {
+  cat("开始安装依赖包...\n")
+  cat("=============================================\n")
+  
+  # 1. 首先安装系统依赖
+  install_system_deps()
+  
+  # 2. 安装基础工具
+  install_cran("devtools")
+  install_cran("remotes")
+  
+  # 3. 安装BiocManager
+  install_cran("BiocManager")
+  
+  # 4. 安装Bioconductor基础包（按照依赖顺序）
+  bioc_base <- c(
+    "BiocGenerics",
+    "S4Vectors",
+    "IRanges",
+    "GenomicRanges",
+    "Biostrings",
+    "rtracklayer",
+    "GenomeInfoDb"
+  )
+  
+  for (pkg in bioc_base) {
+    install_bioc(pkg)
+  }
+  
+  # 5. 安装其他Bioconductor包
+  bioc_other <- c(
+    "BiocParallel",
+    "Gviz",
+    "VariantAnnotation",
+    "matrixStats",
+    "MotifDb",
+    "BSgenome"
+  )
+  
+  for (pkg in bioc_other) {
+    install_bioc(pkg)
+  }
+  
+  # 6. 安装TFBSTools（关键依赖）
+  cat("安装 TFBSTools...\n")
+  if (!install_bioc("TFBSTools")) {
+    # 如果标准安装失败，尝试从源码安装
+    cat("尝试从源码安装 TFBSTools...\n")
+    try({
+      remotes::install_bioc("TFBSTools", dependencies = TRUE, upgrade = "never")
+    }, silent = TRUE)
+  }
+  
+  # 7. 安装motifStack
+  cat("安装 motifStack...\n")
+  if (!install_bioc("motifStack")) {
+    # 如果标准安装失败，尝试从源码安装
+    cat("尝试从源码安装 motifStack...\n")
+    try({
+      remotes::install_bioc("motifStack", dependencies = TRUE, upgrade = "never")
+    }, silent = TRUE)
+  }
+  
+  # 8. 安装CRAN包
+  cran_pkgs <- c(
+    "TFMPvalue",
+    "knitr",
+    "rmarkdown",
+    "curl",
+    "httr",
+    "xml2"
+  )
+  
+  for (pkg in cran_pkgs) {
+    install_cran(pkg)
+  }
+  
+  # 9. 安装基因组数据包
+  genome_pkgs <- c(
+    "BSgenome.Hsapiens.UCSC.hg19",
+    "SNPlocs.Hsapiens.dbSNP142.GRCh37",
+    "SNPlocs.Hsapiens.dbSNP155.GRCh37"
+  )
+  
+  for (pkg in genome_pkgs) {
+    install_bioc(pkg)
+  }
+}
+
+# 安装motifBreakR（从GitHub）
+install_motifbreakR <- function() {
+  cat("安装 motifBreakR...\n")
+  
+  if (is_installed("motifbreakR")) {
+    cat("✓ motifbreakR 已经安装\n")
+    return(TRUE)
+  }
+  
+  # 确保所有依赖都已安装
+  required_deps <- c("TFBSTools", "motifStack", "BiocParallel", "BSgenome")
+  for (pkg in required_deps) {
+    if (!is_installed(pkg)) {
+      install_bioc(pkg)
+    }
+  }
+  
+  # 从GitHub安装
+  cat("从GitHub安装 motifBreakR...\n")
   tryCatch({
-    install_func(pkg)
-    if (is_installed(pkg)) {
-      cat("✓ Successfully installed:", pkg, "\n")
+    devtools::install_github("Simon-Coetzee/motifBreakR")
+    if (is_installed("motifbreakR")) {
+      cat("✓ motifbreakR 安装成功\n")
       return(TRUE)
     } else {
-      cat("✗ Installation may have failed:", pkg, "\n")
-      return(FALSE)
+      cat("尝试备选安装方法...\n")
+      remotes::install_github("Simon-Coetzee/motifBreakR")
+      return(is_installed("motifbreakR"))
     }
   }, error = function(e) {
-    cat("✗ Error installing", pkg, ":", e$message, "\n")
+    cat("GitHub安装失败:", e$message, "\n")
     return(FALSE)
   })
 }
 
-# Install BiocManager if not available
-if (!is_installed("BiocManager")) {
-  install.packages("BiocManager", quiet = TRUE)
-}
-library(BiocManager)
-
-cat("Starting installation of required packages...\n")
-cat("=============================================\n")
-
-# Install system dependencies first
-cat("\n1. Installing system dependencies...\n")
-system_deps <- c(
-  "libcurl4-openssl-dev",
-  "libssl-dev",
-  "libxml2-dev",
-  "zlib1g-dev"
-)
-
-# Try to install system dependencies (may require sudo)
-try({
-  if (Sys.info()["sysname"] == "Linux") {
-    cat("Attempting to install system dependencies...\n")
-    system(paste("sudo apt-get update && sudo apt-get install -y", 
-                paste(system_deps, collapse = " ")))
-  }
-}, silent = TRUE)
-
-# Install CRAN dependencies
-cat("\n2. Installing CRAN dependencies...\n")
-cran_packages <- c(
-  "devtools",
-  "curl",
-  "httr",
-  "xml2",
-  "BiocManager"
-)
-
-for (pkg in cran_packages) {
-  if (!is_installed(pkg)) {
-    install.packages(pkg, quiet = TRUE)
-  }
-}
-
-# Install Bioconductor packages in correct order
-cat("\n3. Installing Bioconductor packages...\n")
-
-# First install basic Bioc dependencies
-bioc_base <- c(
-  "BiocGenerics",
-  "S4Vectors",
-  "IRanges",
-  "GenomicRanges",
-  "Biostrings",
-  "rtracklayer",
-  "BSgenome"
-)
-
-for (pkg in bioc_base) {
-  if (!is_installed(pkg)) {
-    BiocManager::install(pkg, update = FALSE, ask = FALSE, quiet = TRUE)
-  }
-}
-
-# Install TFBSTools with specific configuration
-cat("\n4. Installing TFBSTools (critical dependency)...\n")
-if (!is_installed("TFBSTools")) {
-  # Try standard installation first
-  success <- safe_install(function(pkg) {
-    BiocManager::install("TFBSTools", update = FALSE, ask = FALSE, quiet = TRUE)
-  }, "TFBSTools")
+# 验证安装
+verify_installation <- function() {
+  cat("验证安装...\n")
   
-  # If failed, try alternative approach
-  if (!success) {
-    cat("Trying alternative installation method for TFBSTools...\n")
-    try({
-      devtools::install_bioc("TFBSTools", dependencies = TRUE)
-    }, silent = TRUE)
-  }
-}
-
-# Install motifStack
-cat("\n5. Installing motifStack...\n")
-if (!is_installed("motifStack")) {
-  success <- safe_install(function(pkg) {
-    BiocManager::install("motifStack", update = FALSE, ask = FALSE, quiet = TRUE)
-  }, "motifStack")
+  required <- c("motifbreakR", "TFBSTools", "motifStack", "BSgenome.Hsapiens.UCSC.hg19")
+  missing <- c()
   
-  if (!success) {
-    cat("Trying alternative installation for motifStack...\n")
-    try({
-      devtools::install_bioc("motifStack", dependencies = TRUE)
-    }, silent = TRUE)
+  for (pkg in required) {
+    if (is_installed(pkg)) {
+      cat("✓", pkg, "已安装\n")
+      # 测试加载
+      tryCatch({
+        library(pkg, character.only = TRUE, quietly = TRUE)
+        cat("  ", pkg, "加载成功\n")
+      }, error = function(e) {
+        cat("  ⚠", pkg, "加载警告:", e$message, "\n")
+      })
+    } else {
+      cat("❌", pkg, "未安装\n")
+      missing <- c(missing, pkg)
+    }
   }
-}
-
-# Install motifbreakR
-cat("\n6. Installing motifbreakR...\n")
-if (!is_installed("motifbreakR")) {
-  success <- safe_install(function(pkg) {
-    BiocManager::install("motifbreakR", update = FALSE, ask = FALSE, quiet = TRUE)
-  }, "motifbreakR")
   
-  if (!success) {
-    cat("Trying alternative installation for motifbreakR...\n")
-    try({
-      devtools::install_bioc("motifbreakR", dependencies = TRUE)
-    }, silent = TRUE)
-  }
+  return(length(missing) == 0)
 }
 
-# Install genome data packages
-cat("\n7. Installing genome data packages...\n")
-genome_packages <- c(
-  "BSgenome.Hsapiens.UCSC.hg19",
-  "SNPlocs.Hsapiens.dbSNP142.GRCh37"
-)
-
-for (pkg in genome_packages) {
-  if (!is_installed(pkg)) {
-    safe_install(function(pkg) {
-      BiocManager::install(pkg, update = FALSE, ask = FALSE, quiet = TRUE)
-    }, pkg)
-  }
-}
-
-# Verify installations
-cat("\n8. Verifying installations...\n")
-required_packages <- c("TFBSTools", "motifStack", "motifbreakR", 
-                      "BSgenome.Hsapiens.UCSC.hg19", "SNPlocs.Hsapiens.dbSNP142.GRCh37")
-
-all_installed <- TRUE
-for (pkg in required_packages) {
-  if (is_installed(pkg)) {
-    cat("✓", pkg, "is installed\n")
+# 主函数
+main <- function() {
+  cat("开始安装 motifBreakR 及其依赖...\n")
+  cat("=============================================\n")
+  
+  # 安装依赖
+  install_dependencies()
+  
+  # 安装motifBreakR
+  success <- install_motifbreakR()
+  
+  # 验证
+  verified <- verify_installation()
+  
+  cat("\n=============================================\n")
+  if (verified) {
+    cat("✅ 所有包安装成功！\n")
+  } else if (success) {
+    cat("⚠ motifBreakR 已安装但某些依赖可能有问题\n")
   } else {
-    cat("✗", pkg, "is NOT installed\n")
-    all_installed <- FALSE
+    cat("❌ 安装失败\n")
+    cat("建议：\n")
+    cat("1. 确保系统已安装 ghostscript: sudo apt-get install ghostscript\n")
+    cat("2. 手动安装: BiocManager::install(c('TFBSTools', 'motifStack'))\n")
+    cat("3. 然后: devtools::install_github('Simon-Coetzee/motifBreakR')\n")
   }
 }
 
-cat("\n=============================================\n")
-if (all_installed) {
-  cat("All required packages installed successfully!\n")
-  cat("You can now run your R scripts.\n")
-} else {
-  cat("Some packages failed to install. You may need to:\n")
-  cat("1. Check system dependencies\n")
-  cat("2. Try manual installation: BiocManager::install('package_name')\n")
-  cat("3. Consult package documentation for specific requirements\n")
-}
-
-# Test loading the critical packages
-cat("\n9. Testing package loading...\n")
-try({
-  library(TFBSTools)
-  cat("✓ TFBSTools loaded successfully\n")
-}, silent = TRUE)
-
-try({
-  library(motifStack)
-  cat("✓ motifStack loaded successfully\n")
-}, silent = TRUE)
-
-try({
-  library(motifbreakR)
-  cat("✓ motifbreakR loaded successfully\n")
-}, silent = TRUE)
+# 执行安装
+main()
