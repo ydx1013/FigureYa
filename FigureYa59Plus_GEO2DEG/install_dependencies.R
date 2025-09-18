@@ -63,7 +63,7 @@ for (pkg in cran_packages) {
 
 # Installing Bioconductor packages
 cat("\nInstalling Bioconductor packages...\n")
-bioc_packages <- c("GEOquery", "limma", "preprocessCore")  # preprocessCore 移到Bioconductor
+bioc_packages <- c("GEOquery", "limma")
 
 for (pkg in bioc_packages) {
   install_bioc_package(pkg)
@@ -73,7 +73,7 @@ for (pkg in bioc_packages) {
 cat("\n===========================================\n")
 cat("Verifying package installation...\n")
 
-required_packages <- c("ggplot2", "ggrepel", "ggthemes", "GEOquery", "limma", "preprocessCore")
+required_packages <- c("ggplot2", "ggrepel", "ggthemes", "GEOquery", "limma")
 all_installed <- TRUE
 
 for (pkg in required_packages) {
@@ -97,5 +97,5 @@ if (all_installed) {
   cat("install.packages(c('ggplot2', 'ggrepel', 'ggthemes', 'dplyr', 'tidyr', 'readr'))\n")
   cat("if (!require('BiocManager', quietly = TRUE))\n")
   cat("    install.packages('BiocManager')\n")
-  cat("BiocManager::install(c('GEOquery', 'limma', 'preprocessCore'))\n")
+  cat("BiocManager::install(c('GEOquery', 'limma'))\n")
 }
