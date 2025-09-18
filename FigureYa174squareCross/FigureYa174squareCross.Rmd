@@ -2,7 +2,7 @@
 title: "FigureYa174squareCross"
 author: "Zongcheng Li"
 reviewer: "Ying Ge, Junyi Shen"
-date: "2025-5-20"
+date: "2025-9-18"
 output: html_document
 ---
 # Academic Citation
@@ -52,11 +52,14 @@ Arrange the order of each node based on the biological significance of your own 
 
 ```{r}
 source("install_dependencies.R")
+source("crosslink.R") # From R package crosslink
+source("layout.R") # From R package crosslink
+source("transfromation.R") # From R package crosslink
+source("utils.R") # From R package crosslink
 
 library(ggplot2)
 library(aplot)
 library(dplyr)
-library(crosslink)
 
 Sys.setenv(LANGUAGE = "en") #显示英文报错信息
 options(stringsAsFactors = FALSE) #禁止chr转成factor
