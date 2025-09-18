@@ -91,7 +91,7 @@ metadata_file <- 'easy_input_sample_sheet.txt'  # 样本元数据文件路径 | 
 # header: 是否将第一行作为列名 | Whether to treat the first row as column names
 # stringsAsFactors: 是否将字符串转换为因子 | Whether to convert strings to factors
 # check.names: 是否检查列名有效性 | Whether to check the validity of column names
-exprs_df <- read.table(file=exprs_file, sep='\t', header = TRUE, 
+exprs_df <- read.table(file=gzfile(exprs_file), sep='\t', header = TRUE, 
                  stringsAsFactors = FALSE, check.names = FALSE)
 
 # 读取样本元数据 | Read sample metadata
