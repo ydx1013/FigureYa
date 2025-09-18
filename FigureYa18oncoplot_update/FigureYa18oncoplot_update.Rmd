@@ -99,7 +99,7 @@ colnames(cliquery)[1] <- "Tumor_Sample_Barcode"
 # 理论上，每一列都可以作为分类信息画出来。
 # use View to see what items are in the clinical data, different cancers are different, and each person is interested in different traits, select the columns of interest according to your needs
 # theoretically, each column can be drawn as classified information.
-View(cliquery)
+#View(cliquery)
 
 # 加载自定义分组，例如risk高低等信息，后面就可以像其他临床信息一样，按risk分组了
 # load custom grouping, such as high and low risk and other information, and then you can group by risk like other clinical information
