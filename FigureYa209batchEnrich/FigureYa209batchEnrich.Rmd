@@ -2,7 +2,7 @@
 title: "FigureYa209batchEnrich"
 author: "Erqiang Hu"
 reviewers: "Ying Ge,Hui Huang"
-date: "2025-5-20"
+date: "2025-9-18"
 output: html_document
 ---
 # Academic Citation
@@ -197,14 +197,20 @@ The simplest and most commonly used
 # See which species are supported by MSIGDBR
 # What should I do if I don't have the species I want here? Look at method three
 
-msigdbr_species()
+# 查看支持的物种 / View supported species
+supported_species <- msigdbr::msigdbr_species()
+print(supported_species)
 
-# 以人为例
-# Take human as an example
-gmt <- msigdbr(species = "Homo sapiens") 
-gmt2 <- gmt%>%
-   dplyr::select(gs_name, entrez_gene)
-gmts <- split(gmt2, gmt$gs_cat)
+# 获取人类基因集 / Get human gene sets
+target_species <- "Homo sapiens"  # 可修改为其他物种 / Can be modified to other species
+gmt <- msigdbr::msigdbr(species = target_species) 
+
+# 选择需要的列并分组 / Select required columns and group
+gmt2 <- gmt %>%
+  dplyr::select(gs_name, entrez_gene)  # 基因集名称和Entrez ID / Gene set name and Entrez ID
+
+gmts <- split(gmt2, gmt$gs_cat)  # 按基因集类别分组 / Group by gene set category
+cat("创建了", length(gmts), "个基因集类别 / Created", length(gmts), "gene set categories\n")
 ```
 
 ## 方法二：使用本地gmt文件
