@@ -315,11 +315,8 @@ ggsave("epiImmune.pdf", width = 6, height = 4)
 
 The output PDF file is a vector graphic, which can be opened in vector editing software like Illustrator. You can modify the text in the figure to italics and adjust the positions of gene names on both sides. Alternatively, you can manually add the desired gene names.
 
-# 会话信息
 # Session Info
 
 ```{r}
-# 显示会话信息
-# Show session information
 sessionInfo()
 ```
