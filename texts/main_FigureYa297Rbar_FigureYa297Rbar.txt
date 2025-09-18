@@ -1,17 +1,24 @@
 FigureYa297Rbar
 FigureYa297Rbar
 Author(s)
-: Yandong Zheng; Yasi Zhang
+: Xiao Gu; Yasi Zhang
 Reviewer(s)
 : Ying Ge
 Date
 : 2025-05-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
 Demand description
-我想从形式上众筹这个图，这个柱状图是填充色的，看上去比较好看。想看看大神们是怎么复现出来的，学习一下，想学习用R实现。
-I want to recreate this figure in form. This bar chart has gradient
-fills and looks visually appealing. I’d like to see how experts
-reproduce it and learn how to implement it in R.
+这个柱状图是填充色的，看上去比较好看。想看看大神们是怎么复现出来的，学习一下，想学习用R实现。
+This bar chart has gradient fills and looks visually appealing. I’d
+like to see how experts reproduce it and learn how to implement it in
+R.
 出自
 https://www.nature.com/articles/s41585-021-00442-8
 图4 |
@@ -27,46 +34,26 @@ this time period.
 应用场景
 Application scenarios
 R默认的简约严肃版柱形图就挺好看了。不过，如果你（或许是你老板）喜欢办公软件的审美，不妨试一下本文档的操作。
-我们也画过花哨一点的柱状图：
-FigureYa39bar
-https://k.youshop10.com/P75DHMrs
-FigureYa170ImmuLncRNA
-https://k.youshop10.com/Zkj985gv
-FigureYa173fancybar
-https://k.youshop10.com/wCHBYmko
-FigureYa180FGAplot
-https://k.youshop10.com/FdC5u=Yd
-FigureYa209batchEnrich
-https://k.youshop10.com/dXk-kWCX
 R’s default minimalist bar charts are quite good-looking. However, if
 you (or perhaps your supervisor) prefer the aesthetic of office
 software, you might want to try the approach in this document.
+我们也画过花哨一点的柱状图：
 We’ve also created some fancier bar charts:
 FigureYa39bar
-https://k.youshop10.com/P75DHMrs
 FigureYa170ImmuLncRNA
-https://k.youshop10.com/Zkj985gv
 FigureYa173fancybar
-https://k.youshop10.com/wCHBYmko
 FigureYa180FGAplot
-https://k.youshop10.com/FdC5u=Yd
 FigureYa209batchEnrich
-https://k.youshop10.com/dXk-kWCX
 环境设置
 Environment Setup
-使用国内镜像安装包。
-Using domestic mirrors for package installation.
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
+加载包
+Loading packages
+source("install_dependencies.R")
 # 渐变柱状图用到了ggpattern包中的pattern_fill参数，共两个参数
 # pattern_fill和pattern_fill2，只能设置两个渐变色
 # The gradient bar chart uses the pattern_fill parameter from the ggpattern package
 # There are two parameters: pattern_fill and pattern_fill2, allowing only two gradient colors
-install.packages("remotes")
-remotes::install_github("coolbutuseless/ggpattern")
-install.packages("magick")
-加载包
-Loading packages
+
 library(ggpattern)
 library(ggplot2)
 
@@ -266,8 +253,5 @@ plot2 <- ggplot() +
         panel.border = element_blank())
 plot2
 ggsave("bar_horizontal.pdf", width = 7, height = 5)
-会话信息
 Session Info
-# 显示会话信息
-# Show session information
 sessionInfo()

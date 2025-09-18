@@ -2,8 +2,15 @@ FigureYa19 Lollipop
 FigureYa19 Lollipop
 Dekang Lv; Ying Ge, Yijing Chen
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
-requirement description
+Requirement description
 用R代码画出paper里的Lollipop，棒棒糖🍭。
 Draw the Lollipop in the paper using R code, lollipop 🍭.
 出自
@@ -11,7 +18,7 @@ https://www.nature.com/articles/nature22973
 from
 https://www.nature.com/articles/nature22973
 应用场景
-application scenario
+Application scenario
 某个基因的突变发生在哪个重要的结构域？推测该位点的突变影响了蛋白质功能。
 场景一：展示TCGA某个癌症类型里某个基因的突变位点。
 场景二：对比不同癌症/亚型的突变位点。
@@ -23,18 +30,8 @@ TCGA.
 Scenario 2: Compare the mutation sites of different
 cancers/subtypes.
 环境设置
-environment setting
-#使用国内镜像安装包
-#use the domestic mirror installation package
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
-install.packages("BiocManager")
-library(BiocManager)
-install("trackViewer")
-install("TCGAbiolinks")
-
-Sys.setenv(LANGUAGE = "en") #显示英文报错信息 display English error messages
-options(stringsAsFactors = FALSE) #禁止chr转成factor prohibit the conversion of chr to factor
+Environment setting
+source("install_dependencies.R")
 library(TCGAbiolinks)
 library(maftools)
 library(trackViewer)
@@ -206,4 +203,5 @@ sample.gr$color[torb=="bottom"] <- sample.gr$border[torb=="bottom"] <- brewer.pa
 pdf("test5.pdf",width=21)
 lolliplot(sample.gr, features,xaxis = c(protein_inform$Start,protein_inform$End),yaxis = F, ylab = F,type="circle")
 dev.off()
+Session Info
 sessionInfo()
