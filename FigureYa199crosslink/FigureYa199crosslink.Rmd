@@ -65,7 +65,6 @@ source("layout.R") # From R package crosslink
 source("transfromation.R") # From R package crosslink
 source("utils.R") # From R package crosslink
 
-library(crosslinks)
 library(ggplot2)
 Sys.setenv(LANGUAGE = "en") #显示英文报错信息 # error messages are displayed in English
 options(stringsAsFactors = FALSE) #禁止chr转成factor # It is forbidden to convert chr into factor
