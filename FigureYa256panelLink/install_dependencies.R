@@ -1,34 +1,40 @@
 #!/usr/bin/env Rscript
-# 简化版R包安装脚本 - 仅安装magrittr, tidyverse, ggplot2
+# 简化版R包安装脚本 - 安装magrittr, tidyverse, ggplot2, ggnewscale
+# Simplified R package installation script - installs magrittr, tidyverse, ggplot2, ggnewscale
 
-# 设置CRAN镜像
+# 设置CRAN镜像 / Set CRAN mirror
 options("repos" = c(CRAN = "https://cloud.r-project.org/"))
 
-# 检查包是否已安装的函数
+# 检查包是否已安装的函数 / Function to check if a package is installed
 is_package_installed <- function(package_name) {
   return(package_name %in% rownames(installed.packages()))
 }
 
-# 安装CRAN包的函数
+# 安装CRAN包的函数 / Function to install CRAN packages
 install_cran_package <- function(package_name) {
   if (!is_package_installed(package_name)) {
     cat("正在安装包:", package_name, "\n")
+    cat("Installing package:", package_name, "\n")
     tryCatch({
       install.packages(package_name, dependencies = TRUE, quiet = TRUE)
       cat("成功安装:", package_name, "\n")
+      cat("Successfully installed:", package_name, "\n")
     }, error = function(e) {
       cat("安装失败", package_name, ":", e$message, "\n")
+      cat("Failed to install", package_name, ":", e$message, "\n")
     })
   } else {
     cat("包已安装:", package_name, "\n")
+    cat("Package already installed:", package_name, "\n")
   }
 }
 
 cat("开始安装R包...\n")
+cat("Starting R package installation...\n")
 cat("===========================================\n")
 
-# 只安装这三个包
-packages_to_install <- c("magrittr", "tidyverse", "ggplot2")
+# 安装这四个包 / Install these four packages
+packages_to_install <- c("magrittr", "tidyverse", "ggplot2", "ggnewscale")
 
 for (pkg in packages_to_install) {
   install_cran_package(pkg)
@@ -36,26 +42,34 @@ for (pkg in packages_to_install) {
 
 cat("\n===========================================\n")
 
-# 验证安装结果
+# 验证安装结果 / Verify installation results
 cat("验证安装结果:\n")
+cat("Verifying installation results:\n")
 all_installed <- TRUE
 for (pkg in packages_to_install) {
   if (is_package_installed(pkg)) {
     cat("✓", pkg, "已成功安装\n")
+    cat("✓", pkg, "installed successfully\n")
   } else {
     cat("✗", pkg, "安装失败\n")
+    cat("✗", pkg, "installation failed\n")
     all_installed <- FALSE
   }
 }
 
 if (all_installed) {
-  cat("\n所有三个包已成功安装！\n")
+  cat("\n所有四个包已成功安装！\n")
+  cat("\nAll four packages installed successfully!\n")
   cat("您现在可以使用以下代码加载这些包：\n")
+  cat("You can now load these packages with the following code:\n")
   cat("library(magrittr)\n")
   cat("library(tidyverse)\n")
   cat("library(ggplot2)\n")
+  cat("library(ggnewscale)\n")
 } else {
   cat("\n部分包安装失败，请检查网络连接或手动安装。\n")
+  cat("\nSome packages failed to install, please check your network connection or install manually.\n")
 }
 
 cat("安装完成！\n")
+cat("Installation completed!\n")
