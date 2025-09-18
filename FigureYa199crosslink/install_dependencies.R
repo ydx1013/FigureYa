@@ -1,88 +1,42 @@
 #!/usr/bin/env Rscript
-# Auto-generated R dependency installation script
-# This script installs all required R packages for this project
+# 简化版R包安装脚本 - 仅安装ggplot2
 
-# Set up mirrors for better download performance
+# 设置CRAN镜像
 options("repos" = c(CRAN = "https://cloud.r-project.org/"))
-options(BioC_mirror = "https://bioconductor.org/")
 
-# Function to check if a package is installed
+# 检查包是否已安装的函数
 is_package_installed <- function(package_name) {
   return(package_name %in% rownames(installed.packages()))
 }
 
-# Function to install CRAN packages
+# 安装CRAN包的函数
 install_cran_package <- function(package_name) {
   if (!is_package_installed(package_name)) {
-    cat("Installing CRAN package:", package_name, "\n")
+    cat("正在安装包:", package_name, "\n")
     tryCatch({
-      install.packages(package_name, dependencies = TRUE)
-      cat("Successfully installed:", package_name, "\n")
+      install.packages(package_name, dependencies = TRUE, quiet = TRUE)
+      cat("成功安装:", package_name, "\n")
     }, error = function(e) {
-      cat("Failed to install", package_name, ":", e$message, "\n")
+      cat("安装失败", package_name, ":", e$message, "\n")
     })
   } else {
-    cat("Package already installed:", package_name, "\n")
+    cat("包已安装:", package_name, "\n")
   }
 }
 
-# Function to install Bioconductor packages
-install_bioc_package <- function(package_name) {
-  if (!is_package_installed(package_name)) {
-    cat("Installing Bioconductor package:", package_name, "\n")
-    tryCatch({
-      if (!is_package_installed("BiocManager")) {
-        install.packages("BiocManager")
-      }
-      BiocManager::install(package_name, update = FALSE, ask = FALSE)
-      cat("Successfully installed:", package_name, "\n")
-    }, error = function(e) {
-      cat("Failed to install", package_name, ":", e$message, "\n")
-    })
-  } else {
-    cat("Package already installed:", package_name, "\n")
-  }
-}
-
-# Function to install GitHub packages
-install_github_package <- function(repo) {
-  package_name <- basename(repo)
-  if (!is_package_installed(package_name)) {
-    cat("Installing GitHub package:", repo, "\n")
-    tryCatch({
-      if (!is_package_installed("devtools")) {
-        install.packages("devtools")
-      }
-      devtools::install_github(repo)
-      cat("Successfully installed:", package_name, "\n")
-    }, error = function(e) {
-      cat("Failed to install", package_name, ":", e$message, "\n")
-    })
-  } else {
-    cat("Package already installed:", package_name, "\n")
-  }
-}
-
-cat("Starting R package installation...\n")
+cat("开始安装R包...\n")
 cat("===========================================\n")
 
-
-# Installing CRAN packages
-cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("ggplot2", "devtools")
-
-for (pkg in cran_packages) {
-  install_cran_package(pkg)
-}
-
-# Installing GitHub packages
-cat("\nInstalling GitHub packages...\n")
-github_packages <- c("zzwch/crosslink")
-
-for (repo in github_packages) {
-  install_github_package(repo)
-}
+# 只安装ggplot2包
+install_cran_package("ggplot2")
 
 cat("\n===========================================\n")
-cat("Package installation completed!\n")
-cat("You can now run your R scripts in this directory.\n")
+
+# 验证安装结果
+if (is_package_installed("ggplot2")) {
+  cat("✓ ggplot2 已成功安装\n")
+  cat("\n安装完成！您现在可以使用：library(ggplot2)\n")
+} else {
+  cat("✗ ggplot2 安装失败\n")
+  cat("请检查网络连接或手动安装：install.packages(\"ggplot2\")\n")
+}
