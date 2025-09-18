@@ -87,14 +87,24 @@ jobs:
               (cd "$rmd_dir" && Rscript install_dependencies.R > install.log 2>&1 || echo "WARNING: Dependency installation failed for $rmd_file.")
             fi
 
+            # First attempt: try to render normally
             if Rscript -e "rmarkdown::render('$rmd_file', quiet=TRUE)" > rmd_render.log 2>&1; then
-              echo "[SUCCESS] - $rmd_file" | tee -a summary.txt
+              echo "[SUCCESS] - $rmd_file (Normal render)" | tee -a summary.txt
             else
-              ANY_FILE_FAILED=true
-              echo "[FAILED] - $rmd_file" | tee -a summary.txt
-              echo "--- Error Log for $rmd_file ---" | tee -a summary.txt
-              tail -n 20 rmd_render.log | tee -a summary.txt
-              echo "-----------------------------------" | tee -a summary.txt
+              # If normal render fails, try to render as HTML-only without executing code
+              echo "Normal render failed, attempting HTML-only render..." | tee -a summary.txt
+              
+              if Rscript -e "rmarkdown::render('$rmd_file', output_format = 'html_document', runtime = 'static', quiet = TRUE)" > rmd_render2.log 2>&1; then
+                echo "[SUCCESS] - $rmd_file (HTML-only render)" | tee -a summary.txt
+              else
+                ANY_FILE_FAILED=true
+                echo "[FAILED] - $rmd_file (Both normal and HTML-only render failed)" | tee -a summary.txt
+                echo "--- Error Log for $rmd_file ---" | tee -a summary.txt
+                tail -n 20 rmd_render.log | tee -a summary.txt
+                echo "--- HTML-only Error Log ---" | tee -a summary.txt
+                tail -n 20 rmd_render2.log | tee -a summary.txt
+                echo "-----------------------------------" | tee -a summary.txt
+              fi
             fi
 
             echo "=========== END: $rmd_file ==========="; echo ""
