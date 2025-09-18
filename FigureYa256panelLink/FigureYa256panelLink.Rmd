@@ -39,11 +39,14 @@ Bar plots in right panel indicate the number of cancer types with positive corre
 
 ```{r}
 source("install_dependencies.R")
+source("crosslink.R") # From R package crosslink
+source("layout.R") # From R package crosslink
+source("transfromation.R") # From R package crosslink
+source("utils.R") # From R package crosslink
 
 library(magrittr)
 library(tidyverse)
 library(ggplot2)
-library(crosslink) 
 
 Sys.setenv(LANGUAGE = "en") #显示英文报错信息
 options(stringsAsFactors = FALSE) #禁止chr转成factor
