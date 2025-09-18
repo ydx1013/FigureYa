@@ -2,6 +2,13 @@ FigureYa250ImmGenePair
 FigureYa250ImmGenePair
 Xiaofan Lu
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
 希望复现第一段构建的算法。只要第一段的计算就行，后面lasso的FigureYa也都有。
 Requirement Description
@@ -56,14 +63,14 @@ https://jamanetwork.com/journals/jamaoncology/fullarticle/2643120
 采用较为传统的方式构建基因对。小伙伴可以后续继续运行lasso或者其他模型构建算法，可参考FigureYa31lasso或FigureYa65SVM。
 本文档作者参考例文的思路写了这篇文章，
 https://onlinelibrary.wiley.com/doi/10.1002/ctm2.453
-，小伙伴可参考。这篇文章里的多个图都可以用我们众筹的FigureYa实现：
+，小伙伴可参考。这篇文章里的多个图都可以用FigureYa实现：
 Figure
 1E可参考FigureYa90subgroup，F可参考FigureYa35batch_bestSeparation；
 Figure 3G画法可参考FigureYa227boxdensity；
 Figure 4A可参考FigureYa187RMS，E可参考FigureYa173fancybar。
-小丫画图群里的小伙伴们也写过类似的文章，例如
+类似的文章，例如
 https://www.frontiersin.org/articles/10.3389/fonc.2021.665870/full
-，其中多个图也可以用我们众筹的FigureYa实现：
+，其中多个图也可以用FigureYa实现：
 Figure
 2B可参考FigureYa31lasso，C可参考FigureYa39bar；EG可参考FigureYa141risk；
 Figure 3AC可参考FigureYa35batch_bestSeparation；
@@ -88,18 +95,16 @@ idea of example texts,
 https://onlinelibrary.wiley.com/doi/10.1002/ctm2.453
 ,
 small partners can refer to. Many of the diagrams in this article can be
-implemented with our crowdfunded FigureYa:
+implemented with FigureYa:
 Figure 1E can refer to FigureYa90subgroup, F can refer to
 FigureYa35batch_bestSeparation;
 Figure 3G can be drawn by FigureYa227boxdensity;
 For Figure 4A, see Figure Ya187RMS, and for E, see Figure
 Ya173fancybar.
-The friends in the Xiaoya drawing group have also written similar
-articles, such as
+Similar articles, such as
 https://www.frontiersin.org/articles/10.3389/fonc.2021.665870/full
 ,
-multiple of which can also be implemented with our crowdfunded
-FigureYa:
+multiple of which can also be implemented with FigureYa:
 Figure 2B can refer to FigureYa31lasso, C can refer to
 FigureYa39bar; For EG, please refer to FigureYa141risk;
 Figure 3AC can be found in FigureYa35batch_bestSeparation;
@@ -123,30 +128,21 @@ FigureYa used: FigureYa69cancerSubtype, FigureYa66 one-factor cox,
 FigureYa141risk, FigureYa35batch_bestSeparation, FigureYa162boxViolin,
 FigureYa131CMap, FigureYa30nomogram
 环境设置
-使用国内镜像安装包
 Environment settings
-Use the domestic mirror installation package
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
-加载包 load packages
+source("install_dependencies.R")
 library(survival)
 
 Sys.setenv(LANGUAGE = "en") #显示英文报错信息 # error messaes are displayed in English
 options(stringsAsFactors = FALSE) #禁止chr转成factor # chr is not allowed to be converted to factor
 加载自定义函数 Load custom functions
 输入文件
-easyinput_tcga_tpm.txt，表达矩阵，文件较大，已上传至微云
-https://share.weiyun.com/Idkrb3Xu
-。
-easyinput_tcga_surv.txt，样本生存信息。
+easyinput_tcga_tpm.txt，表达矩阵
+easyinput_tcga_surv.txt，样本生存信息
 InnateDB_genes_IRIS.txt，免疫基因，来自IRIS
 https://innatedb.com/redirect.do?go=resourcesGeneLists
 ，原文使用ImmPort，这里也提供了list，但是我电脑内存比较小，生成不了那么大的基因对矩阵，所以换用IRIS。
 Input files
-easyinput_tcga_tpm.txt, the expression matrix has a large file and
-has been uploaded to the Weiyun
-https://share.weiyun.com/Idkrb3Xu
-.
+easyinput_tcga_tpm.txt, the expression matrix.
 easyinput_tcga_surv.txt, sample survival information.
 InnateDB_genes_IRIS.txt, immune genes, from IRIS
 https://innatedb.com/redirect.do?go=resourcesGeneLists
