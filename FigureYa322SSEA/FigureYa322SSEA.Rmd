@@ -108,13 +108,13 @@ EnrichScore <- function(scores, group){
 # 输入文件
 # Input Files
 
-TCGA-READ.htseq_counts.tsv.gz，TCGA-COAD.htseq_counts.tsv.gz，表达谱eset。文件较大，从百度网盘下载<https://pan.baidu.com/s/1po6FP_uDR-tgybedFBGqAg?pwd=hrzw>。TCGA其他癌症类型表达数据可以到XENA下载<https://xenabrowser.net/datapages/>
+TCGA-READ.htseq_counts.tsv.gz，TCGA-COAD.htseq_counts.tsv.gz，表达谱eset。TCGA其他癌症类型表达数据可以到XENA下载<https://xenabrowser.net/datapages/>
 
 41467_2017_BFncomms15107_MOESM425_ESM.xlsx，样本分组信息subtype。
 
 signature.xlsx，基因集signature【包含up和down两个列表】
 
-TCGA-READ.htseq_counts.tsv.gz, TCGA-COAD.htseq_counts.tsv.gz - Expression profiles (eset). Large files available for download at: <https://pan.baidu.com/s/1po6FP_uDR-tgybedFBGqAg?pwd=hrzw>. For other TCGA cancer type expression data, visit XENA: <https://xenabrowser.net/datapages/>
+TCGA-READ.htseq_counts.tsv.gz, TCGA-COAD.htseq_counts.tsv.gz - Expression profiles (eset). For other TCGA cancer type expression data, visit XENA: <https://xenabrowser.net/datapages/>
 
 41467_2017_BFncomms15107_MOESM425_ESM.xlsx - Sample subtype classification information.
 
@@ -158,7 +158,8 @@ rownames(subtype) <- subtype$Sample.ID
 ### 整理样本信息
 ### Process sample information
 comsam <- intersect(colnames(eset), subtype$Sample.ID)
-eset <- eset[, comsam]; subtype <- subtype[comsam, "CRIS.Assignment"]
+eset <- eset[, comsam]
+subtype <- subtype[comsam, "CRIS.Assignment"]
 ```
 
 # 计算通路得分
