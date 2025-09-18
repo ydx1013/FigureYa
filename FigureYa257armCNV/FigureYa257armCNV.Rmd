@@ -164,9 +164,10 @@ Plot a histogram with ggplot2
 Draw the missing parts below first
 
 ```{r}
+# 使用 reshape2::melt() 来明确指定使用 reshape2 包中的 melt 函数
 wide <- outTab.arm[,1:4]
-df <- as.data.frame(melt(wide, measure.vars = c("loss.C1", "loss.C2")))
-df$variable <- gsub("loss.","",df$variable,fixed = T)
+df <- as.data.frame(reshape2::melt(wide, measure.vars = c("loss.C1", "loss.C2")))
+df$variable <- gsub("loss.","",df$variable,fixed = TRUE)
 df$arm <- factor(df$arm, levels = c("1p","1q","2p","2q","3p","3q","4p","4q","5p","5q","6p","6q","7p","7q","8p","8q","9p","9q","10p","10q","11p","11q","12p","12q","13p","13q","14p","14q","15p","15q","16p","16q","17p","17q","18p","18q","19p","19q","20p","20q","21p","21q","22p","22q"))
 
 p_bot <- ggplot(df, aes(arm, value)) +   
