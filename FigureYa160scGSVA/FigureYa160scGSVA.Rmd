@@ -172,90 +172,111 @@ How do you identify the cell type of each cluster? The classic approach is to id
 Select two cell subpopulations (clusters) of interest, calculate pathway expression using GSVA, compare them, and plot the pathway of interest.
 
 ```{r}
-# 加载 STEP 1 获得的pbmc # Load the PBMC file obtained in Step 1
-# Load the PBMC file obtained in Step 1
+# 加载 STEP 1 获得的pbmc / Load PBMC obtained in Step 1
 pbmc <- readRDS("PBMC_pc10_res0.6.rds")
 
-# 导入gmt文件，这里以MsigDB中的Hallmark为例
-# MsigDB链接(https://www.gsea-msigdb.org/gsea/msigdb/)
-# 下载文件时，注意选择对应的gene格式吗，一般10X的结果，都是gene symbol格式的。
-genesets <- getGmt("h.all.v7.0.symbols.gmt")
-# Import the gmt file. Here, we use the Hallmark file from MsigDB as an example.
-# MsigDB link (https://www.gsea-msigdb.org/gsea/msigdb/)
-# When downloading the file, be sure to select the corresponding gene format. Generally, 10X results are in gene symbol format.
+# 导入gmt文件 / Import gmt file
 genesets <- getGmt("h.all.v7.0.symbols.gmt")
 
-### 1. 找到感兴趣的细胞组别，两者间进行比较
-# 这里以cluster6和cluster8为例
-### 1. Find the cell groups of interest and compare them.
-# Here, we use cluster 6 and cluster 8 as examples.
-subcluster = c(6, 8)
+### 1. 找到感兴趣的细胞组别，两者间进行比较 / Find cell groups of interest and compare them
+subcluster <- c(6, 8)
 sub <- subset(pbmc, idents = subcluster)
 df.data <- GetAssayData(object = sub, slot = "data")
 
-# 将细胞所属的group信息保存起来
-# Save the cell group information.
-df.group <- data.frame(umi = names(Idents(sub)), 
-                       cluster = as.character(sub@meta.data$RNA_snn_res.0.6), 
-                       stringsAsFactors = F)
-# 查看一下结果是什么样子的
-# Check the results.
-head(df.group)
+# 将细胞所属的group信息保存起来 / Save cell group information
+df.group <- data.frame(
+  umi = names(Idents(sub)), 
+  cluster = as.character(sub@meta.data$RNA_snn_res.0.6), 
+  stringsAsFactors = FALSE
+)
 
-### 2. 做gsva
-# 因为是normalized后的数据，所以使用默认参数就可以了。根据自己的电脑cpu来调整parallel.sz
-gsvascore <- gsva(data.matrix(df.data), genesets, parallel.sz = 2)
-# 因为单细胞数据中有很多基因表达值为0，所以会出现红色的warning信息，没有关系。
-### 2. Perform gsva analysis.
-# Since the data is normalized, the default parameters are sufficient. Adjust parallel.sz according to your computer's CPU.
-gsvascore <- gsva(data.matrix(df.data), genesets, parallel.sz = 2)
-# Because many gene expression values in the single-cell data are 0, a red warning message will appear. This is not a problem.
+### 2. 做gsva - 修复参数传递问题 / Perform GSVA - fix parameter passing issues
+# 确保数据格式正确 / Ensure correct data format
+expr_data <- as.matrix(df.data)
 
-# 查看一下结果
-# Check the results
-gsvascore[1:5, 1:5]
+# 使用正确的参数格式调用gsva / Call gsva with correct parameter format
+gsvascore <- gsva(
+  expr = expr_data, 
+  gset.idx.list = genesets, 
+  method = "gsva",
+  parallel.sz = 2,
+  verbose = TRUE
+)
 
-# 先用热图展示一下hallmarker中全部的50个geneset得到的结果
-# First use a heatmap to display the results for all 50 genesets in hallmarker
-ha.t <- HeatmapAnnotation(Cluster = df.group$cluster)
-Heatmap(as.matrix(gsvascore), 
-        show_column_names = F, 
-        cluster_rows = T, 
-        cluster_columns = T, 
-        top_annotation = ha.t, 
-        column_split = df.group$cluster, 
-        row_names_gp = gpar(fontsize = 8), 
-        row_names_max_width = max_text_width(rownames(gsvascore), 
-                                             gp = gpar(fontsize = 8)))
+# 查看结果 / Check results
+print("GSVA score dimensions: / GSVA得分维度:")
+print(dim(gsvascore))
+print(gsvascore[1:5, 1:5])
 
-### 3. 挑选出要使用小提琴图展示的通路
-### 3. Select pathways to display using violin plots
-# 使用limma包进行差异分析，然后根据差异分析结果，对通路进行选择。
-# Use the limma package to perform differential analysis and then select pathways based on the results.
-cluster.group <- as.numeric(df.group$cluster) 
-# 确定分组信息
-# Determine grouping information
-group2 <- 6 
-# 根据子集中细胞类型的名称来定
-# Determine based on the cell type name in the subset
-# 这里cluster6作为实验组（group2)，cluster8作为对照组（group1)
-# Here, cluster6 is the experimental group (group2), and cluster8 is the control group (group1)
-cluster.group[which(cluster.group != group2)] <- 0
-cluster.group[which(cluster.group == group2)] <- 1
-design <- cbind(sampleGroup1=1, sampleGroup2vs1=cluster.group)
+### 3. 绘制热图 / Draw heatmap
+# 确保分组信息与列名匹配 / Ensure group information matches column names
+if (ncol(gsvascore) == nrow(df.group)) {
+  ha.t <- HeatmapAnnotation(
+    Cluster = df.group$cluster,
+    col = list(Cluster = c("6" = "red", "8" = "blue"))
+  )
+  
+  # 绘制热图 / Draw heatmap
+  heatmap_plot <- Heatmap(
+    as.matrix(gsvascore), 
+    show_column_names = FALSE, 
+    cluster_rows = TRUE, 
+    cluster_columns = TRUE, 
+    top_annotation = ha.t, 
+    column_split = df.group$cluster, 
+    row_names_gp = gpar(fontsize = 8), 
+    row_names_max_width = max_text_width(
+      rownames(gsvascore), 
+      gp = gpar(fontsize = 8)
+    ),
+    name = "GSVA Score / GSVA得分"
+  )
+  
+  print(heatmap_plot)
+} else {
+  print("Warning: GSVA score dimensions don't match group information / 警告: GSVA得分维度与分组信息不匹配")
+  print(paste("GSVA columns: / GSVA列数:", ncol(gsvascore)))
+  print(paste("Group rows: / 分组行数:", nrow(df.group)))
+}
 
-# 利用limma包进行差异分析
-# Perform differential analysis using the limma package
-fit <- lmFit(gsvascore, design)    
+### 4. 差异分析 / Differential analysis
+cluster.group <- as.numeric(df.group$cluster)
+group2 <- 6
+cluster.group[cluster.group != group2] <- 0
+cluster.group[cluster.group == group2] <- 1
+
+design <- model.matrix(~ cluster.group)
+colnames(design) <- c("Intercept", "Group2vs1")
+
+# 使用limma进行差异分析 / Perform differential analysis using limma
+fit <- lmFit(gsvascore, design)
 fit <- eBayes(fit)
-sigPathways <- topTable(fit, coef="sampleGroup2vs1", 
-                        number=Inf, p.value=0.05, adjust="BH")
-# 添加一下分组信息，方便导出的数据区分实验组和对照组。
-# Add grouping information to facilitate distinguishing experimental and control groups in the exported data.
-sigPathways$celltype <- rep(group2, length(nrow(sigPathways))) 
-# 保存到文件
-# Save to file
-write.csv(sigPathways, file = "PBMC_DE_genesets_hallmarker_cluster6_vs_8.csv")
+
+# 获取显著通路 / Get significant pathways
+sigPathways <- topTable(
+  fit, 
+  coef = "Group2vs1", 
+  number = Inf, 
+  p.value = 0.05, 
+  adjust.method = "BH"
+)
+
+# 添加分组信息 / Add grouping information
+if (nrow(sigPathways) > 0) {
+  sigPathways$celltype <- rep(group2, nrow(sigPathways))
+  
+  # 保存结果 / Save results
+  write.csv(
+    sigPathways, 
+    file = "PBMC_DE_genesets_hallmarker_cluster6_vs_8.csv",
+    row.names = TRUE
+  )
+  
+  print(paste("Found / 发现", nrow(sigPathways), "significant pathways / 个显著通路"))
+  print(head(sigPathways))
+} else {
+  print("No significant pathways found with p.value < 0.05 / 未发现p值<0.05的显著通路")
+}
 ```
 
 # STEP 3：根据已经得到的分组信息，挑选出需要的通路，画图
