@@ -5,6 +5,15 @@ date: "2025-9-12"
 output: html_document
 ---
 
+# Academic Citation
+If you use this code in your work or research, we kindly request that you cite our publication:
+
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
+
+If you use RIdeogram package in a published paper, please cite this paper:
+
+Hao Z, Lv D, Ge Y, Shi J, Weijers D, Yu G, Chen J. 2020. RIdeogram: drawing SVG graphics to visualize and map genome-wide data on the idiograms. PeerJ Comput. Sci. 6:e251 http://doi.org/10.7717/peerj-cs.251
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -27,19 +36,7 @@ From<https://academic.oup.com/brain/article/138/3/616/333368>
 
 差异表达基因（RNA-seq）、开放染色质（DNase/ATAC-seq）、CTCF结合位点（ChIP-seq）、突变位点（WGS）或DNA甲基化（WGBS）在染色体上的分布，或者只是画Ideogram
 
-在“小丫画图”微信公众号回复“染色体”查看这套代码的来历
-
-如果您在发表的论文中使用此软件包，请引用本文：
-
-Hao Z, Lv D, Ge Y, Shi J, Weijers D, Yu G, Chen J. 2020. RIdeogram: drawing SVG graphics to visualize and map genome-wide data on the idiograms. PeerJ Comput. Sci. 6:e251 http://doi.org/10.7717/peerj-cs.251
-
 Distribution of differentially expressed genes (RNA-seq), open chromatin (DNase/ATAC-seq), CTCF binding sites (ChIP-seq), mutation sites (WGS), or DNA methylation (WGBS) on chromosomes, or just drawing Ideograms
-
-Reply to “Chromosome” in “Xiaoya Drawing” WeChat Official Account to see the origin of this code
-
-If you use this package in a published paper, please cite this paper:
-
-Hao Z, Lv D, Ge Y, Shi J, Weijers D, Yu G, Chen J. 2020. RIdeogram: drawing SVG graphics to visualize and map genome-wide data on the idiograms. PeerJ Comput. Sci. 6:e251 http://doi.org/10.7717/peerj-cs.251
 
 # 环境设置
 # Environment setting
@@ -139,6 +136,8 @@ svg2pdf("chromosome.svg",
 ```
 
 ![](chromosome.pdf)
+
+# Session Info
 
 ```{r}
 sessionInfo()
