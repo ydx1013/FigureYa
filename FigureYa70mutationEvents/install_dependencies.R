@@ -1,10 +1,9 @@
 #!/usr/bin/env Rscript
 # Auto-generated R dependency installation script
-# This script installs all required R packages for this project
+# This script installs required R packages for this project
 
 # Set up mirrors for better download performance
 options("repos" = c(CRAN = "https://cloud.r-project.org/"))
-options(BioC_mirror = "https://bioconductor.org/")
 
 # Function to check if a package is installed
 is_package_installed <- function(package_name) {
@@ -26,42 +25,22 @@ install_cran_package <- function(package_name) {
   }
 }
 
-# Function to install GitHub packages
-install_github_package <- function(repo) {
-  package_name <- basename(repo)
-  if (!is_package_installed(package_name)) {
-    cat("Installing GitHub package:", repo, "\n")
-    tryCatch({
-      if (!is_package_installed("remotes")) {
-        install.packages("remotes", quiet = TRUE)
-      }
-      remotes::install_github(repo, quiet = TRUE)
-      cat("✓ Successfully installed:", package_name, "\n")
-    }, error = function(e) {
-      cat("✗ Failed to install", package_name, ":", e$message, "\n")
-    })
-  } else {
-    cat("✓ Package already installed:", package_name, "\n")
-  }
-}
-
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
-# 首先安装基础工具
-if (!is_package_installed("remotes")) {
-  install_cran_package("remotes")
-}
-
-# 安装discover从GitHub
-cat("\nInstalling discover package from GitHub...\n")
-install_github_package("parklab/discover")
-
 # 安装CRAN包
-cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("Cairo", "RColorBrewer", "corrplot", "data.table", "openxlsx", "readr", "reshape2")
+cat("\nInstalling required CRAN packages...\n")
+required_packages <- c(
+  "reshape2",       # 数据重塑包：用于数据结构转换（宽表/长表）
+  "RColorBrewer",   # 颜色调色板包：提供科学配色方案
+  "Cairo",          # 高质量图形输出包：支持多种格式输出
+  "readr",          # 数据读取包：高效读取结构化数据
+  "corrplot",       # 相关性可视化包：绘制相关矩阵图
+  "openxlsx",       # Excel文件操作包：读写Excel文件
+  "data.table"      # 高效数据处理包
+)
 
-for (pkg in cran_packages) {
+for (pkg in required_packages) {
   install_cran_package(pkg)
 }
 
@@ -70,128 +49,87 @@ cat("Package installation completed!\n")
 
 # 验证安装
 cat("\nVerifying package installation:\n")
-all_packages <- c("discover", "Cairo", "RColorBrewer", "corrplot", "data.table", "openxlsx", "readr", "reshape2")
-
-for (pkg in all_packages) {
+all_installed <- TRUE
+for (pkg in required_packages) {
   if (is_package_installed(pkg)) {
     cat("✓", pkg, "is installed\n")
   } else {
     cat("✗", pkg, "is NOT installed\n")
+    all_installed <- FALSE
   }
 }
 
-# 测试discover功能
-if (is_package_installed("discover")) {
-  cat("\nTesting discover package...\n")
+# 测试包加载
+cat("\nTesting package loading...\n")
+test_packages <- function() {
   tryCatch({
-    library(discover)
-    cat("✓ discover package loaded successfully\n")
-    
-    # 检查主要函数是否存在
-    if (exists("discover_matrix")) {
-      cat("✓ Main functions are available\n")
-    }
+    library(reshape2)
+    cat("✓ reshape2 loaded successfully\n")
   }, error = function(e) {
-    cat("✗ discover test failed:", e$message, "\n")
+    cat("✗ reshape2 loading failed:", e$message, "\n")
+  })
+  
+  tryCatch({
+    library(RColorBrewer)
+    cat("✓ RColorBrewer loaded successfully\n")
+  }, error = function(e) {
+    cat("✗ RColorBrewer loading failed:", e$message, "\n")
+  })
+  
+  tryCatch({
+    library(Cairo)
+    cat("✓ Cairo loaded successfully\n")
+  }, error = function(e) {
+    cat("✗ Cairo loading failed:", e$message, "\n")
+  })
+  
+  tryCatch({
+    library(readr)
+    cat("✓ readr loaded successfully\n")
+  }, error = function(e) {
+    cat("✗ readr loading failed:", e$message, "\n")
+  })
+  
+  tryCatch({
+    library(corrplot)
+    cat("✓ corrplot loaded successfully\n")
+  }, error = function(e) {
+    cat("✗ corrplot loading failed:", e$message, "\n")
+  })
+  
+  tryCatch({
+    library(openxlsx)
+    cat("✓ openxlsx loaded successfully\n")
+  }, error = function(e) {
+    cat("✗ openxlsx loading failed:", e$message, "\n")
+  })
+  
+  tryCatch({
+    library(data.table)
+    cat("✓ data.table loaded successfully\n")
+  }, error = function(e) {
+    cat("✗ data.table loading failed:", e$message, "\n")
   })
 }
 
-cat("\nYou can now run your R scripts in this directory.\n")#!/usr/bin/env Rscript
-# Auto-generated R dependency installation script
-# This script installs all required R packages for this project
-
-# Set up mirrors for better download performance
-options("repos" = c(CRAN = "https://cloud.r-project.org/"))
-options(BioC_mirror = "https://bioconductor.org/")
-
-# Function to check if a package is installed
-is_package_installed <- function(package_name) {
-  return(requireNamespace(package_name, quietly = TRUE))
-}
-
-# Function to install CRAN packages
-install_cran_package <- function(package_name) {
-  if (!is_package_installed(package_name)) {
-    cat("Installing CRAN package:", package_name, "\n")
-    tryCatch({
-      install.packages(package_name, dependencies = TRUE, quiet = TRUE)
-      cat("✓ Successfully installed:", package_name, "\n")
-    }, error = function(e) {
-      cat("✗ Failed to install", package_name, ":", e$message, "\n")
-    })
-  } else {
-    cat("✓ Package already installed:", package_name, "\n")
-  }
-}
-
-# Function to install GitHub packages
-install_github_package <- function(repo) {
-  package_name <- basename(repo)
-  if (!is_package_installed(package_name)) {
-    cat("Installing GitHub package:", repo, "\n")
-    tryCatch({
-      if (!is_package_installed("remotes")) {
-        install.packages("remotes", quiet = TRUE)
-      }
-      remotes::install_github(repo, quiet = TRUE)
-      cat("✓ Successfully installed:", package_name, "\n")
-    }, error = function(e) {
-      cat("✗ Failed to install", package_name, ":", e$message, "\n")
-    })
-  } else {
-    cat("✓ Package already installed:", package_name, "\n")
-  }
-}
-
-cat("Starting R package installation...\n")
-cat("===========================================\n")
-
-# 首先安装基础工具
-if (!is_package_installed("remotes")) {
-  install_cran_package("remotes")
-}
-
-# 安装discover从GitHub
-cat("\nInstalling discover package from GitHub...\n")
-install_github_package("parklab/discover")
-
-# 安装CRAN包
-cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("Cairo", "RColorBrewer", "corrplot", "data.table", "openxlsx", "readr", "reshape2")
-
-for (pkg in cran_packages) {
-  install_cran_package(pkg)
-}
+test_packages()
 
 cat("\n===========================================\n")
-cat("Package installation completed!\n")
-
-# 验证安装
-cat("\nVerifying package installation:\n")
-all_packages <- c("discover", "Cairo", "RColorBrewer", "corrplot", "data.table", "openxlsx", "readr", "reshape2")
-
-for (pkg in all_packages) {
-  if (is_package_installed(pkg)) {
-    cat("✓", pkg, "is installed\n")
-  } else {
-    cat("✗", pkg, "is NOT installed\n")
-  }
-}
-
-# 测试discover功能
-if (is_package_installed("discover")) {
-  cat("\nTesting discover package...\n")
-  tryCatch({
-    library(discover)
-    cat("✓ discover package loaded successfully\n")
-    
-    # 检查主要函数是否存在
-    if (exists("discover_matrix")) {
-      cat("✓ Main functions are available\n")
-    }
-  }, error = function(e) {
-    cat("✗ discover test failed:", e$message, "\n")
-  })
+if (all_installed) {
+  cat("✅ All required packages installed successfully!\n")
+  cat("You can now use these packages in your R scripts:\n")
+  cat("library(reshape2)      # 数据重塑\n")
+  cat("library(RColorBrewer)  # 颜色调色板\n")
+  cat("library(Cairo)         # 高质量图形输出\n")
+  cat("library(readr)         # 数据读取\n")
+  cat("library(corrplot)      # 相关性可视化\n")
+  cat("library(openxlsx)      # Excel文件操作\n")
+  cat("library(data.table)    # 高效数据处理\n")
+} else {
+  cat("⚠️  Some packages failed to install. You can try:\n")
+  cat("1. Manual installation: install.packages('package_name')\n")
+  cat("2. Check your internet connection\n")
+  cat("3. Try a different CRAN mirror\n")
 }
 
 cat("\nYou can now run your R scripts in this directory.\n")
