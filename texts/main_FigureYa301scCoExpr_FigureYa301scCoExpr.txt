@@ -1,11 +1,18 @@
 FigureYa301scCoExpr
 FigureYa301scCoExpr
 Author(s)
-: Yandong Zheng; Yasi Zhang
+: Xiao Gu; Yasi Zhang
 Reviewer(s)
 : Ying Ge
 Date
 : 2025-05-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
 Demand description
 用来展示单细胞的基因共表达。用2种颜色分别映射2个基因的表达量/连续变量，然后merge展示，有点像免疫荧光实验的merge效果，颜色不是固定值，映射到连续性表达量的也是渐变色。
@@ -51,25 +58,11 @@ note, only a minority of CAFs co-express high THBS2 and FAP.
 应用场景
 Application scenarios
 展示单细胞的基因共表达，以及共表达基因相关性。
-更多单细胞FigureYa看这里
-https://k.youshop10.com/McawGY6=
-相关性展示FigureYa看这里
-https://k.youshop10.com/Eig1YOB4
 Displaying gene co-expression in single cells and the correlation of
 co-expressed genes.
-For more single-cell FigureYa, check here
-https://k.youshop10.com/McawGY6=
-For correlation visualization FigureYa, check here
-https://k.youshop10.com/Eig1YOB4
 环境设置
 Environment Setup
-使用国内镜像安装包。
-Using domestic mirrors for package installation.
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
-# devtools::install_github('satijalab/seurat-data')
-加载包
-Loading packages
+source("install_dependencies.R")
 library(Seurat)
 library(SeuratData)
 library(ggplot2)
@@ -208,8 +201,5 @@ ggsave("correlation_dotplot.pdf")
 getScatterplot(pbmc3k, gene1 = "CD3G", gene2 = "CD247", 
                jitter.num = 0, pos = FALSE) +
   theme(aspect.ratio = 1)
-会话信息
 Session Info
-# 显示会话信息
-# Show session information
 sessionInfo()
