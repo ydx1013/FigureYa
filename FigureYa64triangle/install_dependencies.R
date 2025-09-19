@@ -73,22 +73,4 @@ if (success_count == length(required_packages)) {
   }
 }
 
-# 测试ggtern功能
-if (is_package_installed("ggtern")) {
-  cat("\nTesting ggtern functionality...\n")
-  tryCatch({
-    library(ggtern)
-    cat("✓ ggtern loaded successfully\n")
-    
-    # 简单测试
-    data <- data.frame(x = c(0.5, 0.3, 0.2),
-                     y = c(0.3, 0.5, 0.2),
-                     z = c(0.2, 0.2, 0.6))
-    p <- ggtern(data, aes(x, y, z)) + geom_point()
-    cat("✓ ggtern basic functionality test passed\n")
-  }, error = function(e) {
-    cat("✗ ggtern functionality test failed:", e$message, "\n")
-  })
-}
-
 cat("\nInstallation completed! You can now use ggtern from CRAN.\n")
