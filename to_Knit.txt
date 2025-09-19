@@ -1,6 +1,6 @@
-FigureYa304MAGIC
-FigureYa40lineage
-FigureYa174squareCross
+FigureYa193RiskTable
+FigureYa141risk
+FigureYa302NTPPAM
 FigureYa259circLink
 FigureYa256panelLink
 FigureYa199crosslink
