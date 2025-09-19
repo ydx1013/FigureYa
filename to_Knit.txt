@@ -1,4 +1,3 @@
-FigureYa10chromosomeV2_update
 FigureYa92immune_gene_update
 FigureYa66单因素cox
 FigureYa295ClassDiscovery
@@ -9,7 +8,6 @@ FigureYa110mutationSignature
 FigureYa302NTPPAM
 FigureYa228linkCor
 FigureYa86SNPmotif
-FigureYa256panelLink
 FigureYa160scGSVA
 FigureYa80GOclustering
 FigureYa197SmoothHaz FigureYa38PCA
