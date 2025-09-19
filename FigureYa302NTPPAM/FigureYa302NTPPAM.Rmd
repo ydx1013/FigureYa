@@ -77,9 +77,8 @@ References available in the "Literatures" folder.
 
 ```{r}
 source("install_dependencies.R")
-
+source("CMScaller.R") # From CMScaller package
 library(GEOquery)
-library(CMScaller)
 library(pamr)
 library(cluster)
 
