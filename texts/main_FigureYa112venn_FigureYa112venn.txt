@@ -1,12 +1,19 @@
 FigureYa112venn
 FigureYa112venn
 Yuhui Li, Taojun Ye
-2025-5-20
+2025-9-12
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
 venny
 http://bioinfogp.cnb.csic.es/tools/venny/
 ，新出来个选项，颜色填充by%，然而只能填充灰色，我想要彩色，而且venny只能保存成png，我想要pdf矢量图。没有现成的R包能直接实现这样的按百分比填充颜色的效果。输入四个基因列表，画出venn图。
-##Requirement description
+Requirement description
 venny<
 http://bioinfogp.cnb.csic.es/tools/venny/
 >A new
@@ -21,26 +28,17 @@ from
 http://bioinfogp.cnb.csic.es/tools/venny/
 应用场景
 展示4组元素（例如差异表达基因）数量重叠，数量多颜色深，数量少颜色浅，一目了然。
-##Application scenarios
+Application scenarios
 Display 4 groups of elements (such as differentially expressed genes)
 with overlapping quantities, with darker colors for larger quantities
 and lighter colors for smaller quantities, making it clear at a
 glance.
 环境设置
-使用国内镜像安装包
-##Environment settings
-Use domestic image installation package
-# 设置CRAN镜像为清华大学镜像源（Set CRAN mirror to Tsinghua University mirror source）
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-
-# 设置Bioconductor镜像为中国科学技术大学镜像源（Set Bioconductor mirror to University of Science and Technology of China mirror source）
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
-加载包
-library packages
+Environment settings
+source("install_dependencies.R")
+source("plotVenn4d.R") # from colorfulVennPlot package
 # 加载Venn图绘制包（Load package for drawing Venn diagrams）
 library(VennDiagram)
-# 加载彩色Venn图绘制包（Load package for colorful Venn diagrams）
-library(colorfulVennPlot)
 # 加载数据可视化包（Load data visualization package）
 library(ggplot2)
 # 加载数据处理包（Load data processing package）
@@ -70,7 +68,7 @@ Sys.setenv(LANGUAGE = "en")
 options(stringsAsFactors = FALSE)
 输入文件
 四个基因列表文件，每个文件中是这组内的所有基因名。
-##Input file
+Input file
 Four gene list files, each containing the names of all genes within
 this group.
 # 生成文件名列表（Generate a list of file names）
@@ -185,7 +183,7 @@ elements in each subregion based on the subregion number. Calculate the
 percentage of the number of subregions to the sum of all regions.
 Construct color vectors based on percentages.
 计算子区域元素数量、百分比
-##Calculate the number and percentage of elements in the
+Calculate the number and percentage of elements in the
 subregion
 # 计算子区域数量（Calculate the number of sub-regions）
 # 公式为2^n - 1，n为数据集数量（Formula: 2^n - 1, where n is the number of datasets）
@@ -249,7 +247,7 @@ percent_area <- (percent_area * 100) %>% paste0("%")  # 转换为百分比格式
 使用
 RColorBrewer
 中的色板构造颜色向量。
-##Calculate the color of each region
+Calculate the color of each region
 Construct color vectors using the palette in RColorBrewer.
 # 计算色板长度（Calculate the length of the color palette）
 # 基于元素数量的范围确定（Determined by the range of element counts）
@@ -274,7 +272,7 @@ nest1 <- tibble(quantity = quantity_area, percent = percent_area, area = x_area)
   arrange(quantity) %>% 
   unnest()
 开始画图
-##Start drawing
+Start drawing
 # 准备Venn图数据：显示数量（Prepare Venn diagram data: Show quantities）
 regions <- nest1$quantity
 names(regions) <- nest1$area
@@ -315,7 +313,7 @@ R语言基础绘图——韦恩图
 colorfulVennPlot
 colorfulVennPlot源代码
 数字转二进制
-##Post processing
+Post processing
 The output PDF is a vector image, which can be opened with software
 such as Illustrator and adjusted for font size.
 Reference source:
@@ -345,4 +343,5 @@ https://github.com/cran/colorfulVennPlot/tree/master/R
 [Convert numbers to binary]（
 https://stackoverflow.com/questions/12088080/how-to-convert-integer-number-into-binary-vector
 )
+Session Info
 sessionInfo()
