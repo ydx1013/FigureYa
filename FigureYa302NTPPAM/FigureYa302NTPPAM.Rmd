@@ -3,7 +3,7 @@ title: "FigureYa302NTPPAM"
 params:
   author: "Xiaofan Lu; Yasi Zhang"  
   reviewer: "Ying Ge"
-  date: "2025-05-20"
+  date: "2025-9-19"
 output: html_document
 ---
 
@@ -78,6 +78,7 @@ References available in the "Literatures" folder.
 ```{r}
 source("install_dependencies.R")
 
+library(GEOquery)
 library(CMScaller)
 library(pamr)
 library(cluster)
@@ -94,21 +95,33 @@ options(stringsAsFactors = FALSE)
 # 输入文件
 # Input Files
 
-gse17536.expr.txt - GEO结直肠癌表达谱文件。可前往百度网盘下载<https://pan.baidu.com/s/1THBHtvrR0mEgA79xcf877w?pwd=wz7w>
+gse17536.expr.txt - GEO结直肠癌表达谱文件。
 
 gse17536.expr.txt – A GEO colorectal cancer expression profile file.
-Download available at <https://pan.baidu.com/s/1THBHtvrR0mEgA79xcf877w?pwd=wz7w>
 
 ```{r}
-# 读取GEO结直肠癌表达谱文件
-# Read GEO colorectal cancer expression profile file
-expr <- read.delim(file = "gse17536.expr.txt",sep = "\t",row.names = 1,check.names = F,stringsAsFactors = F,header = T)
+# 下载GSE17536数据集
+# Download GSE17536 dataset
+gse <- getGEO(GEO = "GSE17536", destdir = ".", getGPL = FALSE)
 
-# 对行名进行标准化，重复基因取均值
-# Standardize row names - take mean for duplicate genes
-expr$gene <- sapply(strsplit(rownames(expr)," /// "), "[",1)
-expr <- apply(expr[,setdiff(colnames(expr), "gene")], 2, function(x) tapply(x, INDEX=factor(expr$gene), FUN=mean, na.rm=TRUE))
+# 提取表达矩阵
+# Extract expression matrix
+expr <- exprs(gse[[1]])
+
+# 转换为数据框
+# Convert to data frame
 expr <- as.data.frame(expr)
+
+# 对行名进行标准化，重复基因取均值（如果需要）
+# Standardize row names - take mean for duplicate genes (if needed)
+# 注意：GEO数据集通常已经处理好了行名，可能不需要这一步
+# Note: GEO datasets usually have pre-processed row names, this step may not be necessary
+if(any(duplicated(rownames(expr)))) {
+  expr$gene <- rownames(expr)
+  expr <- apply(expr[, setdiff(colnames(expr), "gene")], 2, 
+                function(x) tapply(x, INDEX = factor(expr$gene), FUN = mean, na.rm = TRUE))
+  expr <- as.data.frame(expr)
+}
 ```
 
 # 利用PAM算法筛选特异性marker
