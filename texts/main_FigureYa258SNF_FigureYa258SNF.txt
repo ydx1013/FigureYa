@@ -6,6 +6,13 @@ Reviewer(s)
 : Ying Ge
 Date
 : 2025-05-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
 Demand description
 用多组学数据，比如DNA甲基化和基因表达数据，一起识别疾病亚组，像这篇文章用相似网络融合
@@ -29,14 +36,7 @@ same dataset, whereas this time, it is applied to multi-omics data
 clustering.
 环境设置
 Environment Setup
-使用国内镜像安装包。
-Using domestic mirrors for package installation.
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
-install.packages("SNFtool")
-BiocManager::install("wateRmelon")
-加载包
-Loading packages
+source("install_dependencies.R")
 library(SNFtool)
 library(data.table)
 library(pheatmap)
@@ -54,11 +54,12 @@ Sys.setenv(LANGUAGE = "en")
 options(stringsAsFactors = FALSE)
 输入文件
 Input Files
-文件较大，已上传微云
+文件较大，已上传微云：
 https://share.weiyun.com/9BYhu2QF
 easy_input_expr.txt: 表达谱矩阵。
 easy_input_beta.txt: 甲基化数据，beta值。
-The file is large and has been uploaded to Weiyun
+The file is relatively large and has been uploaded to Weiyun at the
+link:
 https://share.weiyun.com/9BYhu2QF
 easy_input_expr.txt: Expression profile matrix.
 easy_input_beta.txt: Methylation data (beta values).
@@ -169,8 +170,5 @@ indata <- indata + t(indata)
 # 把样本顺序保存到sam_order
 # Save sample order to sam_order
 sam_order <- row.names(indata[ind, ind])
-会话信息
 Session Info
-# 显示会话信息
-# Show session information
 sessionInfo()
