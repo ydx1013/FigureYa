@@ -135,8 +135,9 @@ Reference: Xiao Y, Ma D, Zhao S, et al. [Multi-Omics Profiling Reveals Distinct 
 ```{r}
 # 加载表达数据
 # Load expression data
-tpm <- read.table(gzfile("tcga.mibc.tpm.txt.gz"), sep = "\t", row.names = 1, 
-                  check.names = FALSE, stringsAsFactors = FALSE, header = TRUE)
+tpm <- read.table(unz("tcga.mibc.tpm.txt.zip", "tcga.mibc.tpm.txt"),
+                  sep = "\t", header = TRUE, row.names = 1, 
+                  check.names = FALSE, stringsAsFactors = FALSE)
 
 immune.signature <- read.table("Curated_Immune_Cell_Signature.txt",sep = "\t",check.names = F,stringsAsFactors = F,header = T,row.names = NULL)
 
