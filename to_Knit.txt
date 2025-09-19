@@ -1,9 +1,8 @@
-FigureYa86SNPmotif
-FigureYa256panelLink
-FigureYa160scGSVA
-FigureYa80GOclustering
-FigureYa197SmoothHaz FigureYa38PCA
-FigureYa257armCNV
-FigureYa61GSVA
-FigureYa88DAVIDkappa
-FigureYa255TIME
+FigureYa161stemness
+FigureYa158MutationPattern
+FigureYa295ClassDiscovery
+FigureYa89ggplotCirco
+FigureYa94STEMbox_update
+FigureYa112venn
+FigureYa92immune_gene_update
+FigureYa78gganatogram
