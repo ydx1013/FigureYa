@@ -44,11 +44,9 @@ Display 4 groups of elements (such as differentially expressed genes) with overl
 
 ```{r}
 source("install_dependencies.R")
-
+source("plotVenn4d.R") # from colorfulVennPlot package
 # 加载Venn图绘制包（Load package for drawing Venn diagrams）
 library(VennDiagram)
-# 加载彩色Venn图绘制包（Load package for colorful Venn diagrams）
-library(colorfulVennPlot)
 # 加载数据可视化包（Load data visualization package）
 library(ggplot2)
 # 加载数据处理包（Load data processing package）
