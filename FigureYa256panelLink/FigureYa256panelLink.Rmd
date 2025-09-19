@@ -48,6 +48,7 @@ source("utils.R") # From R package crosslink
 library(magrittr)
 library(tidyverse)
 library(ggplot2)
+source("new-scale.R") # From R package ggnewscale
 library(rlang)
 library(patchwork)
 
@@ -156,7 +157,7 @@ ggplot(
      mutate(drug = drug %>% revLevels()) %>%
      gather(key = "cat", value = "value", -drug)
 ) +
-  ggnewscale::new_scale_fill() +
+  new_scale_fill() +
   geom_rect(
     mapping = aes(xmin = -2, xmax = 12, ymin = min-0.5, ymax= max+0.5, fill = therapy),
     data = rectData,
@@ -165,7 +166,7 @@ ggplot(
   scale_color_manual(values = mycolor) +
   scale_fill_manual(values = mycolor) +
   
-  ggnewscale::new_scale_fill() +
+  new_scale_fill() +
   geom_bar(
     mapping = aes(fill = cat),
     stat = "identity"
