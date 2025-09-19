@@ -1,7 +1,8 @@
 ---
 title: "FigureYa228linkCor"
 author: "Xiaofan Lu"
-date: "2021-4-16"
+reviewer: "Ying Ge"
+date: "2025-9-19"
 output: html_document
 ---
 
@@ -96,8 +97,12 @@ gmt2list <- function(annofile){
 
 ```{r}
 # 加载TCGA-BLCA表达谱FPKM
-expr <- read.table("tcga_blca_fpkm.txt",sep = "\t",row.names = 1,check.names = F,stringsAsFactors = F,header = T)
+unzipped_file <- unzip('tcga_blca_fpkm.txt.zip', exdir = tempdir())
+expr <- as.data.frame(fread(unzipped_file, sep = "\t", header = TRUE, check.names = FALSE))
+rownames(expr) <- expr[, 1]
+expr <- expr[, -1]
 tumsam <- colnames(expr)[substr(colnames(expr),11,13) == "01A"] # 取出肿瘤样本
+
 # 取出SIGLEC15表达量
 siglec15 <- log2(expr["SIGLEC15",tumsam] + 1)
 write.csv(siglec15, "easy_input_gene.csv")
