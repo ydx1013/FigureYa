@@ -1,16 +1,23 @@
 FigureYa3genomeView
 FigureYa3genomeView
 Dekang Lv; Ying Ge, Yijing Chen
-2025-5-20
+2025-9-15
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
-requirement description
+Requirement description
 想展示我感兴趣的基因附近的ChIP-seq、DNase/ATAC-seq或RNA-seq的bigwig信号图，不想用IGV或UCSC
 genome browser那种截图，我想要矢量图。
 I want to display bigwig signal plots of ChIP-seq, DNase/ATAC-seq, or
 RNA-seq near the gene I am interested in, without using screenshots from
 IGV or UCSC genome browser. I want vector plots.
 使用场景
-usage scenario
+Usage scenario
 场景一：用DNase/ATAC-seq或H3K4me3、H3K4me1、H3K27ac等组蛋白修饰的ChIP-seq数据证实基因启动子、增强子的位置。
 场景二：展示ChIP-seq数据，证实哪些转录因子调控我的基因。
 场景三：展示RNA-seq和ChIP-seq的信号，证实转录因子结合对基因转录的影响。
@@ -21,26 +28,22 @@ Scenario 2: Show ChIP-seq data to confirm which transcription factors
 regulate my genes.
 Scenario 3: Show RNA-seq and ChIP-seq signals to confirm the effect
 of transcription factor binding on gene transcription.
-输入数据
-Input data
-需要展示的区域loci.bed
-bigwig文件TAL1.bw，POLR2A.bw，文件链接：
-https://pan.baidu.com/s/1hUP8xf3zO2ybloflgyP73w?pwd=sp7y
-bigwig文件描述easy_input.txt
-Regions to be displayed loci.bed
-bigwig files TAL1.bw, POLR2A.bw, file link:
-https://pan.baidu.com/s/1hUP8xf3zO2ybloflgyP73w?pwd=sp7y
-bigwig file description easy_input.txt
-开始画图
-Start drawing
-#source("http://bioconductor.org/biocLite.R")
-#biocLite("Gviz","RColorBrewer")
-#biocLite("TxDb.Hsapiens.UCSC.hg38.knownGene")
-#biocLite("org.Hs.eg.db")
+环境设置
+source("install_dependencies.R")
 library(data.table)
 library(Gviz)
 library(RColorBrewer)
 library(TxDb.Hsapiens.UCSC.hg38.knownGene)
+输入数据
+Input data
+需要展示的区域loci.bed
+bigwig文件TAL1.bw，POLR2A.bw
+bigwig文件描述easy_input.txt
+Regions to be displayed loci.bed
+bigwig files TAL1.bw, POLR2A.bw
+bigwig file description easy_input.txt
+开始画图
+Start drawing
 txdb_hg38 <- TxDb.Hsapiens.UCSC.hg38.knownGene
 grt <- GeneRegionTrack(txdb_hg38, genome="hg38",showId=TRUE, geneSymbol=TRUE, name="UCSC")
 library(org.Hs.eg.db)
@@ -95,7 +98,7 @@ colpal<-rep(brewer.pal(12,"Paired"),20)
 coldf<-data.frame(col=colpal[1:nrow(bwInfo)],row.names = rownames(bwInfo),stringsAsFactors = F)
 
 for(index in rownames(bwInfo)){
-  bgFile<-file.path("D:/FigureYa/FigureYa3genomeView",paste(index,".bw",sep=""))
+  bgFile<-file.path(paste(index,".bw",sep=""))
   tracklist[[index]]<-DataTrack(range = bgFile,genome="hg38",type="histogram",
                                 name=chartr("_","\n",bwInfo[index,]),
                                 col.histogram=coldf[index,])#每个track颜色不同才好看 each track looks better with a different color
@@ -121,4 +124,5 @@ plotTracks(tracklist, from = startpoint, to = endpoint,
            rot.title=0,cex.title=0.9,margin=38,title.width=1.5,
            collapseTranscripts = "longest")#同一个基因的多个transcript压缩成最长的一个 multiple transcripts of the same gene compress into the longest one
 dev.off()
+Session Info
 sessionInfo()
