@@ -228,6 +228,18 @@ https://pan.baidu.com/s/18_Q329zr_33edK2TSJYYnQ?pwd=a6hx
 。下载后删除扩展名
 .txt
 ，存入Result文件夹，即可继续往下运行。
+An
+out_unPruned.rds
+file will be generated here, which
+is used for the next step of calculation. The
+out_unPruned.rds
+file has been uploaded to Baidu Netdisk
+for testing purposes. Download link:
+https://pan.baidu.com/s/18_Q329zr_33edK2TSJYYnQ?pwd=a6hx
+.
+After downloading, delete the .txt file extension, save the file to the
+“Result” folder, and then you can continue to run the subsequent
+processes.
 # 读取ARACNe网络推断结果
 # Read ARACNe network results 
 out_unPruned <- readRDS(file.path(res.path, "out_unPruned.rds")) 

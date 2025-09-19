@@ -2,6 +2,13 @@ FigureYa244PCAPlot
 FigureYa244PCAPlot
 Jianing Gao
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
 基因聚类，然后在图上标注出来。不用说要跟原文一个数据吧，只要输入数据得出类似的图就行。
 Requirement Description
@@ -26,18 +33,11 @@ https://mp.weixin.qq.com/s/kNHM5teMRtL2dSZXzm4m8w
 here
 to take you to understand the PCA diagram in the article
 环境设置
-使用国内镜像安装包
 Environment settings
-Use the domestic mirror installation package
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
-install.packages("factoextra")
-devtools::install_github("cmartin/ggConvexHull")
-install.packages("ggrepel")
-加载包 load packages
+source("install_dependencies.R")
+source("geom_convexhull.R") # from ggConvexHull package
 library(tidyverse)
 library(factoextra)
-library(ggConvexHull)
 Sys.setenv(LANGUAGE = "en") #显示英文报错信息 # error messages are displayed in English
 options(stringsAsFactors = FALSE) #禁止chr转成factor # chr is not allowed to be converted to factor
 输入文件
@@ -90,7 +90,7 @@ colors.use <- c("red", "blue")
 画图 Drawing
 ggplot(data.use, aes(PC1, PC2, shape=cluster, color=cluster)) + 
   geom_point(size = 2.5) + 
-  ggConvexHull::geom_convexhull(aes(fill=cluster), alpha = 0.15) + 
+  geom_convexhull(aes(fill=cluster), alpha = 0.15) + 
   ggrepel::geom_text_repel(
     aes(label=name), 
     size = 3, 
