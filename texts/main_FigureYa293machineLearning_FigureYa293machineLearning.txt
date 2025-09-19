@@ -6,6 +6,13 @@ Reviewer(s)
 : Ying Ge
 Date
 : 2025-05-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
 Demand description
 这个文章里比较不同的模型放在一个图，以及比较不同的算法放在一个图。
@@ -38,7 +45,7 @@ Application scenarios
 基于这10种算法的组合去构建模型，会受到输入数据集的基因数目和质量的影响。
 因此，基于不同的基因，有些模型可能得不到特征而出现报错的现象，这属于正常现象。
 最后的result都会有结果，但是得到结果会有变化，以及有些模型（指单一模型）或模型组合（指组合模型）预测效能的C指数为0.5，这些模型都是未得到结果的模型（根本原因是输入数据中基因的问题），所以可以调整输入数据的基因来获取更多有结果的模型组合结果。
-例文当中有些Figure的画法可参考我们之前众筹过的FigureYa：
+例文当中有些Figure的画法可参考FigureYa：
 Figure
 1，FigureYa69cancerSubtype、FigureYa71ssGSEA、FigureYa55panCancer_violin、FigureYa15WGCNA、FigureYa170ImmuLncRNA
 Figure
@@ -58,8 +65,7 @@ Additionally, some models (single models) or model combinations
 failed to produce meaningful results (primarily due to issues with the
 input gene data). To obtain more valid model combinations, adjusting the
 input gene set may help.
-For reference on figure design, you may consult our previously
-crowdsourced FigureYa:
+For reference on figure design, you may consult FigureYa:
 Figure
 1，FigureYa69cancerSubtype、FigureYa71ssGSEA、FigureYa55panCancer_violin、FigureYa15WGCNA、FigureYa170ImmuLncRNA
 Figure
@@ -70,18 +76,7 @@ Figure 6，FigureYa105GDSC
 Figure 7，FigureYa71ssGSEA、FigureYa152DouleCorPlotexamples.
 环境设置
 Environment Setup
-使用国内镜像安装包。
-Using domestic mirrors for package installation.
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
-BiocManager::install("mixOmics")
-install.packages("plsRcox")
-BiocManager::install("survcomp")
-install.packages("rlang")
-library(devtools)
-install_github("binderh/CoxBoost")
-加载包
-Loading packages
+source("install_dependencies.R")
 library(survival)
 library(randomForestSRC)
 library(glmnet)
@@ -108,14 +103,11 @@ Sys.setenv(LANGUAGE = "en")
 options(stringsAsFactors = FALSE)
 输入文件
 Input Files
-TCGA.txt，GSE57303.txt，GSE62254.txt，数据集。行为样本，第一列为样本名，第二三列为生存时间和生存状态，后面的列均为基因。文件较大，已上传至微云
-https://share.weiyun.com/y3qYgKCK
+TCGA.txt，GSE57303.txt，GSE62254.txt，数据集。行为样本，第一列为样本名，第二三列为生存时间和生存状态，后面的列均为基因。
 TCGA.txt, GSE57303.txt, GSE62254.txt, datasets. Rows represent
 samples, with the first column being sample names, the second and third
 columns being survival time and survival status, and the remaining
-columns all being genes. The files are large and have been uploaded to
-Weiyun
-https://share.weiyun.com/y3qYgKCK
+columns all being genes.
 # 加载数据集
 # Load datasets
 tcga <- read.table("TCGA.txt", header = T,sep = "\t", quote = "", check.names = F)
@@ -1111,10 +1103,8 @@ fit = cv.glmnet(x1, x2,
 ### Calculate risk scores for each sample in three datasets using StepCox[forward] + lasso
 rs <- lapply(val_dd_list2, function(x){cbind(x[,1:2], RS = as.numeric(predict(fit, type = 'response', newx = as.matrix(x[,-c(1,2)]), s = fit$lambda.min)))})
 A_lasso.pdf可以把基因名标注在图上，方法可参考FigureYa31lasso
-https://k.youshop10.com/BflugKvZ
 For A_lasso.pdf, gene names can be labeled on the plot. Refer to
 FigureYa31lasso for method:
-https://k.youshop10.com/BflugKvZ
 图A - C指数的热图
 Figure A - Heatmap of C-indices
 library(ComplexHeatmap)
@@ -1369,8 +1359,5 @@ ggplot(dd, aes(Cindex, reorder(ID, Cindex))) +
   geom_text(aes(x = 0.89, y = ID, label = ll), color = 'black', size = 3, vjust = 0.76) +
   scale_x_continuous(breaks = c(0.5,0.7,0.9), limits = c(0.4,0.94))
 ggsave("GSE62254_model_compare.pdf", width = 6, height = 8)
-会话信息
 Session Info
-# 显示会话信息
-# Show session information
 sessionInfo()
