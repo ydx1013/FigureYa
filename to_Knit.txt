@@ -1,5 +1,9 @@
-FigureYa209batchEnrich
-FigureYa110mutationSignature
-FigureYa302NTPPAM
-FigureYa140mosaicpie
-FigureYa228linkCor
+FigureYa86SNPmotif
+FigureYa256panelLink
+FigureYa160scGSVA
+FigureYa80GOclustering
+FigureYa197SmoothHaz FigureYa38PCA
+FigureYa257armCNV
+FigureYa61GSVA
+FigureYa88DAVIDkappa
+FigureYa255TIME
