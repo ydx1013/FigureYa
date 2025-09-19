@@ -46,7 +46,7 @@ Figure 1. Identification of Two Hepatoblas- toma Subclasses by Expression Profil
 # 应用场景
 # Application scenarios
 
-类似一种共识聚类吧，只是太复杂了。算法流程写在`Readme.txt`文件里，这是我和一个计算机专业的师弟写的，非常偏统计+计算机。
+类似一种共识聚类吧，只是太复杂了。算法流程写在`Readme.md`文件里，这是我和一个计算机专业的师弟写的，非常偏统计+计算机。
 
 It's somewhat like consensus clustering, just overly complex. The algorithmic workflow is documented in the `Readme.txt` file—this was written by me and a computer science junior student, heavily leaning toward statistics + computing.
 
