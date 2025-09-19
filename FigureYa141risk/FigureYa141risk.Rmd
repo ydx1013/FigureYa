@@ -66,7 +66,7 @@ easy_input_sig.txt，signature。可以通过lasso、SVM等方法筛选获得，
 easy_input_sig.txt, signature. It can be obtained by screening through lasso, SVM and other methods, please refer to FigureYa31lasso or FigureYa65SVM-RFE.
 
 ```{r}
-data <- read.csv("easy_input_risk.csv", row.names = 1)
+data <- read.csv("easy_input_risk.csv.gz", row.names = 1)
 data[1:2, 1:4]
 
 bestvars <- read.table("easy_input_sig.txt")$V1
