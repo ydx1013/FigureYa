@@ -18,11 +18,14 @@ install_cran_package <- function(package_name) {
     tryCatch({
       install.packages(package_name, dependencies = TRUE)
       cat("Successfully installed:", package_name, "\n")
+      return(TRUE)
     }, error = function(e) {
       cat("Warning: Failed to install CRAN package '", package_name, "': ", e$message, "\n")
+      return(FALSE)
     })
   } else {
     cat("Package already installed:", package_name, "\n")
+    return(TRUE)
   }
 }
 
@@ -57,10 +60,12 @@ install_github_package <- function(repo, max_retries = 3) {
           cat("Warning: Failed to install GitHub package '", repo, "' after", max_retries, "attempts: ", e$message, "\n")
           return(FALSE)
         }
+        return(FALSE)
       })
       
       if (success) break
     }
+    return(success)
   } else {
     cat("Package already installed:", pkg_name, "\n")
     return(TRUE)
@@ -69,72 +74,77 @@ install_github_package <- function(repo, max_retries = 3) {
 
 # Function to install cgdsr with alternative methods
 install_cgdsr <- function() {
-  if (!is_package_installed("cgdsr")) {
-    cat("Attempting to install cgdsr package...\n")
-    
-    # 方法1: 从GitHub安装（主要方法）
-    success <- FALSE
-    tryCatch({
-      success <- install_github_package("cBioPortal/cgdsr")
-    }, error = function(e) {
-      cat("GitHub installation attempt failed:", e$message, "\n")
-    })
-    
-    if (!success) {
-      # 方法2: 尝试从CRAN安装旧版本（如果可用）
-      cat("Trying alternative installation methods for cgdsr...\n")
-      tryCatch({
-        # 检查是否有可用的CRAN版本
-        install.packages("cgdsr")
-        if (is_package_installed("cgdsr")) {
-          cat("Successfully installed cgdsr from CRAN\n")
-          return(TRUE)
-        }
-      }, error = function(e) {
-        cat("CRAN installation also failed:", e$message, "\n")
-      })
-      
-      # 方法3: 尝试安装开发版本
-      cat("Trying development version of cgdsr...\n")
-      tryCatch({
-        if (!is_package_installed("remotes")) {
-          install.packages("remotes")
-        }
-        remotes::install_github("cBioPortal/cgdsr@develop")
-        if (is_package_installed("cgdsr")) {
-          cat("Successfully installed development version of cgdsr\n")
-          return(TRUE)
-        }
-      }, error = function(e) {
-        cat("Development version installation failed:", e$message, "\n")
-      })
-      
-      # 方法4: 手动下载安装
-      cat("Trying manual download and installation...\n")
-      tryCatch({
-        # 下载源代码
-        temp_file <- tempfile(fileext = ".zip")
-        download.file("https://github.com/cBioPortal/cgdsr/archive/master.zip", 
-                     temp_file)
-        # 安装
-        install.packages(temp_file, repos = NULL, type = "source")
-        # 清理
-        file.remove(temp_file)
-        
-        if (is_package_installed("cgdsr")) {
-          cat("Successfully installed cgdsr from manual download\n")
-          return(TRUE)
-        }
-      }, error = function(e) {
-        cat("Manual installation failed:", e$message, "\n")
-      })
-    }
-    
-    return(is_package_installed("cgdsr"))
-  } else {
+  if (is_package_installed("cgdsr")) {
     cat("cgdsr package already installed\n")
     return(TRUE)
   }
+  
+  cat("Attempting to install cgdsr package...\n")
+  
+  # 方法1: 从GitHub安装（主要方法）
+  success <- FALSE
+  tryCatch({
+    success <- install_github_package("cBioPortal/cgdsr")
+  }, error = function(e) {
+    cat("GitHub installation attempt failed:", e$message, "\n")
+    success <- FALSE
+  })
+  
+  # 修复这里：确保 success 是逻辑值
+  if (!is.logical(success)) {
+    success <- FALSE
+  }
+  
+  if (!success) {
+    # 方法2: 尝试从CRAN安装旧版本（如果可用）
+    cat("Trying alternative installation methods for cgdsr...\n")
+    tryCatch({
+      install.packages("cgdsr")
+      if (is_package_installed("cgdsr")) {
+        cat("Successfully installed cgdsr from CRAN\n")
+        return(TRUE)
+      }
+    }, error = function(e) {
+      cat("CRAN installation also failed:", e$message, "\n")
+    })
+    
+    # 方法3: 尝试安装开发版本
+    cat("Trying development version of cgdsr...\n")
+    tryCatch({
+      if (!is_package_installed("remotes")) {
+        install.packages("remotes")
+      }
+      remotes::install_github("cBioPortal/cgdsr@develop")
+      if (is_package_installed("cgdsr")) {
+        cat("Successfully installed development version of cgdsr\n")
+        return(TRUE)
+      }
+    }, error = function(e) {
+      cat("Development version installation failed:", e$message, "\n")
+    })
+    
+    # 方法4: 手动下载安装
+    cat("Trying manual download and installation...\n")
+    tryCatch({
+      # 下载源代码
+      temp_file <- tempfile(fileext = ".zip")
+      download.file("https://github.com/cBioPortal/cgdsr/archive/master.zip", 
+                   temp_file, quiet = TRUE)
+      # 安装
+      install.packages(temp_file, repos = NULL, type = "source")
+      # 清理
+      file.remove(temp_file)
+      
+      if (is_package_installed("cgdsr")) {
+        cat("Successfully installed cgdsr from manual download\n")
+        return(TRUE)
+      }
+    }, error = function(e) {
+      cat("Manual installation failed:", e$message, "\n")
+    })
+  }
+  
+  return(is_package_installed("cgdsr"))
 }
 
 cat("Starting R package installation...\n")
