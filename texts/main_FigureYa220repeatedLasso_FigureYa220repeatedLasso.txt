@@ -2,6 +2,13 @@ FigureYa220repeatedLasso
 FigureYa220repeatedLasso
 Xiaofan Lu
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
 FigureYa182RFSurv和FigureYa198SignatureComb都是根据基因的重要性筛选的。直接根据随机森林的准确度或cox模型的frequency筛选，又是另一种不同的展示方式。
 Requirement Description
@@ -26,13 +33,8 @@ Here is a 10-fold cross-validation of the COX model
 Using Cox proportional hazards model (iteration = 1000) with an lasso
 penalty to find the best gene model.
 环境设置
-使用国内镜像安装包
 Environment settings
-Use the domestic mirror installation package
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
-BiocManager::install("survcomp")
-加载包 load packages
+source("install_dependencies.R")
 library(survival)
 library(glmnet)
 library(pbapply)
@@ -47,8 +49,7 @@ display.progress = function (index, totalN, breakN=20) {
   }
 }
 输入文件
-表达谱文件较大，已上传至微云
-https://share.weiyun.com/0esnGlCh
+表达谱文件
 InnateDB_genes.csv，免疫基因集。数据来自
 https://www.innatedb.com/redirect.do?go=resourcesGeneLists
 Immunogenetic Related Information Source (IRIS)
@@ -59,9 +60,7 @@ easy_input_surv.txt，生存数据
 easy_validation_expr.txt，表达谱
 easy_validation_surv.txt，生存数据
 Input files
-The expression profile file is large and has been uploaded to the
-Weiyun
-https://share.weiyun.com/0esnGlCh
+The expression profile file
 InnateDB_genes.csv, immune gene set. Data from
 https://www.innatedb.com/redirect.do?go=resourcesGeneLists
 Immunogenetic Related Information Source (IRIS)

@@ -2,6 +2,13 @@ FigureYa249Regulon
 FigureYa249Regulon
 Xiaofan Lu
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
 Figure2a中regulon的计算方法（看起来上半部分是癌种特异性的，下半部分是通用的，随便哪个都行）。
 Requirement Description
@@ -56,41 +63,33 @@ differential methylation analysis
 which demonstrated that iLS3 (265 vs. 45 in iLS2) and iBS4 (191 vs. 26
 in iBS1) had more hypermethylated promoters (296 unique loci) than the
 21 adjacent normal bladder samples had (Figure 2a).
-文中很多图我们都众筹过，例如：
+文中很多图我们都实现过，例如：
 Figure 1b的画法可参考FigureYa196PanPie
 Figure 2b的画法可参考FigureYa248MutLandscape
 Figure 3de可产考FigureYa25sankey和FigureYa125Fishertest
-Figure 4f可参考FigureYa106immunotherapy，4h可参考
-https://k.koudai.com/Eig1YOB4
+Figure 4f可参考FigureYa106immunotherapy
 Figure 5b可参考FigureYa12box，f可参考FigureYa162boxViolin
 Figure
 6可参考FigureYa35batch_bestSeparation，FigureYa144DiagHeatmap或
 https://mp.weixin.qq.com/s/34WRZRBVPHUNRLlzNH2nzw
-接下来会继续众筹Figure3a，欢迎添加小丫为好友（微信ID：epigenomics），查看朋友圈，关注后续众筹进展。
-Many of the pictures in the article have been crowdfunded, such
+接下来会继续实现Figure3a，欢迎添加小丫为好友（微信ID：epigenomics），查看朋友圈，关注后续实现进展。
+Many of the pictures in the article have been crowdsourced, such
 as:
 For more information about Figure 1b, see FigureYa196PanPie
 For Figure 2b, see FigureYa248MutLandscape
 Figure 3de see FigureYa25sankey and FigureYa125Fishertest
-Figure 4f can refer to Figure Ya106 immunotherapy, and 4h can refer
-to
-https://k.koudai.com/Eig1YOB4
+Figure 4f can refer to Figure Ya106 immunotherapy
 Figure 5b can refer to FigureYa12box, and f can refer to
 FigureYa162boxViolin
 For Figure 6, see FigureYa35batch_bestSeparation,
 FigureYa144DiagHeatmap, or
 https://mp.weixin.qq.com/s/34WRZRBVPHUNRLlzNH2nzw
-Next, we will continue to crowdfund Figure3a, welcome to add Xiaoya
-as a friend (WeChat ID: epigenomics), check the circle of friends, and
-pay attention to the follow-up crowdfunding progress.
+Next, we will continue to draw Figure3a, welcome to add Xiaoya as a
+friend (WeChat ID: epigenomics), check the circle of friends, and pay
+attention to the follow-up crowdsourcing progress.
 环境设置
-使用国内镜像安装包
 Environment settings
-Use the domestic mirror installation package
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
-BiocManager::install("RTN")
-加载包 load packages
+source("install_dependencies.R")
 library(RTN)
 library(snow)
 library(ComplexHeatmap)
@@ -109,9 +108,7 @@ standarize.fun <- function(indata=NULL, halfwidth=NULL, centerFlag=T, scaleFlag=
   return(outdata)
 }
 输入文件
-easyinput_tcga_tpm.txt，表达矩阵，文件较大，已上传至微云
-https://share.weiyun.com/fMyfAzSg
-。
+easyinput_tcga_tpm.txt，表达矩阵
 easyinput_tcga_phenotype.txt，每个样本对应的亚型信息，这里有四个亚型。
 easyinput_regulon.txt，运行regulon分析只需要基因的名字。
 热图上中下三部分各对应一类基因（转录因子、chromatin remodelling
@@ -127,10 +124,7 @@ and the transcription factors FOXA1, FOXM1, GATA3/6, HIF1A, KLF4 and
 STAT3 and TP63
 对于自己的数据，可以自己挖掘或从文献中获取感兴趣的组织、疾病甚至发育时期特异的调控因子。
 Input files
-easyinput_tcga_tpm.txt, the expression matrix has a large file and
-has been uploaded to the Weiyun
-https://share.weiyun.com/fMyfAzSg
-。
+easyinput_tcga_tpm.txt, the expression matrix。
 easyinput_tcga_phenotype.txt, the subtype information corresponding
 to each sample, there are four subtypes here.
 easyinput_regulon.txt, only the name of the gene is required to run
