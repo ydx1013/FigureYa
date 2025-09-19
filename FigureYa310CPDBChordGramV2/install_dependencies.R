@@ -97,7 +97,7 @@ cat("Package installation completed!\n")
 cat("\nTesting ktplots package...\n")
 if (require("ktplots", quietly = TRUE)) {
   cat("✅ ktplots package loaded successfully!\n")
-  cat("Package version:", packageVersion("ktplots"), "\n")
+  cat("Package version:", as.character(packageVersion("ktplots")), "\n")
 } else {
   cat("❌ ktplots package could not be loaded.\n")
   cat("You may need to install it manually:\n")
