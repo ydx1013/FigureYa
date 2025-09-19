@@ -87,6 +87,10 @@ if (!is_package_installed("BiocManager")) {
   install.packages("BiocManager")
 }
 
+# Install GEOquery for GEO data download
+cat("\nInstalling GEOquery for GEO data access...\n")
+install_bioc_package("GEOquery")
+
 # Install CMScaller dependencies first
 cat("\nInstalling CMScaller dependencies...\n")
 cms_dependencies <- c("limma", "Biobase", "preprocessCore")
@@ -116,13 +120,25 @@ for (pkg in other_packages) {
 cat("\n===========================================\n")
 cat("Verifying package installation...\n")
 
-required_packages <- c("CMScaller", "limma", "Biobase")
+required_packages <- c("CMScaller", "limma", "Biobase", "GEOquery")
 for (pkg in required_packages) {
   if (is_package_installed(pkg)) {
     cat("✓", pkg, "is installed\n")
   } else {
     cat("✗", pkg, "is NOT installed\n")
   }
+}
+
+# Test GEOquery functionality
+cat("\nTesting GEOquery functionality...\n")
+if (is_package_installed("GEOquery")) {
+  tryCatch({
+    library(GEOquery)
+    cat("✓ GEOquery loaded successfully\n")
+    cat("✓ GEOquery version:", packageVersion("GEOquery"), "\n")
+  }, error = function(e) {
+    cat("✗ Failed to load GEOquery:", e$message, "\n")
+  })
 }
 
 cat("\nPackage installation completed!\n")
