@@ -44,35 +44,16 @@ install_bioc_package <- function(package_name) {
   }
 }
 
-# Function to install PMAPscore from GitHub
-install_pmapscore <- function() {
-  if (!is_package_installed("PMAPscore")) {
-    cat("Installing PMAPscore from GitHub...\n")
-    tryCatch({
-      if (!is_package_installed("remotes")) {
-        install.packages("remotes")
-      }
-      remotes::install_github("Jiaxin-Fan/PMAPscore")
-      cat("Successfully installed: PMAPscore\n")
-    }, error = function(e) {
-      cat("Failed to install PMAPscore:", e$message, "\n")
-      cat("You may need to install it manually: remotes::install_github('Jiaxin-Fan/PMAPscore')\n")
-    })
-  } else {
-    cat("Package already installed: PMAPscore\n")
-  }
-}
-
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
-# First install remotes for GitHub packages
-cat("\nInstalling remotes package...\n")
-install_cran_package("remotes")
+# Installing CRAN packages including PMAPscore
+cat("\nInstalling CRAN packages...\n")
+cran_packages <- c("PMAPscore", "remotes")
 
-# Install PMAPscore from GitHub
-cat("\nInstalling PMAPscore...\n")
-install_pmapscore()
+for (pkg in cran_packages) {
+  install_cran_package(pkg)
+}
 
 # Installing Bioconductor packages
 cat("\nInstalling Bioconductor packages...\n")
