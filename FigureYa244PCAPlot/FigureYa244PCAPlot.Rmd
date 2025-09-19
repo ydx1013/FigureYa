@@ -44,10 +44,9 @@ Take a look at the <https://mp.weixin.qq.com/s/kNHM5teMRtL2dSZXzm4m8w> here to t
 
 ```{r}
 source("install_dependencies.R")
-
+source("geom_convexhull") # from ggConvexHull package
 library(tidyverse)
 library(factoextra)
-library(ggConvexHull)
 Sys.setenv(LANGUAGE = "en") #显示英文报错信息 # error messages are displayed in English
 options(stringsAsFactors = FALSE) #禁止chr转成factor # chr is not allowed to be converted to factor
 ```
@@ -137,7 +136,7 @@ Drawing
 ```{r, fig.width=5, fig.height=5}
 ggplot(data.use, aes(PC1, PC2, shape=cluster, color=cluster)) + 
   geom_point(size = 2.5) + 
-  ggConvexHull::geom_convexhull(aes(fill=cluster), alpha = 0.15) + 
+  geom_convexhull(aes(fill=cluster), alpha = 0.15) + 
   ggrepel::geom_text_repel(
     aes(label=name), 
     size = 3, 
