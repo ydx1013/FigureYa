@@ -2,16 +2,23 @@ FigureYa234panImmune
 FigureYa234panImmune
 Houshi Xu
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
-小丫姐，能众筹利用USCS上的pan-cancer数据分别通过EPIC和Cibersort算法，计算各个肿瘤的免疫细胞浸润信息，并输出结果，同时计算某个指定基因在各个肿瘤中分别与免疫细胞的相关性，并分别输出相关性热图和相关性信息的excel表？
+实现利用USCS上的pan-cancer数据分别通过EPIC和Cibersort算法，计算各个肿瘤的免疫细胞浸润信息，并输出结果，同时计算某个指定基因在各个肿瘤中分别与免疫细胞的相关性，并分别输出相关性热图和相关性信息的excel表
 例文只使用了一种方法，我想用多种方法来证明相关性
 Requirement Description
-Sister Xiaoya, can you use the pan-cancer data on USCS to calculate
-the immune cell infiltration information of each tumor through the EPIC
-and Cibersort algorithms, and output the results, and at the same time
-calculate the correlation between a specified gene and immune cells in
-each tumor, and output the correlation heat map and correlation
-information in the excel sheet?
+Use the pan-cancer data on USCS to calculate the immune cell
+infiltration information of each tumor through the EPIC and Cibersort
+algorithms, and output the results, and at the same time calculate the
+correlation between a specified gene and immune cells in each tumor, and
+output the correlation heat map and correlation information in the excel
+sheet.
 The example uses only one method, and I want to use multiple methods
 to prove correlation
 出自
@@ -39,38 +46,8 @@ respectively (TIMER 2.0 is used in the example). The cells of the three
 methods are different, and they can be cross-referenced, combined with
 research interests, and discuss their own results.
 环境设置
-使用国内镜像安装包
 Environment settings
-Use the domestic mirror installation package
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
-install.packages("showtext")
-
-# 安装IOBR，参照https://github.com/IOBR/IOBR
-# Install the IOBR, refer to https://github.com/IOBR/IOBR
-if (!requireNamespace("BiocManager", quietly = TRUE)) install.packages("BiocManager")
-depens <- c('tibble', 'survival', 'survminer', 'sva', 'limma', "DESeq2","devtools",
-          'limSolve', 'GSVA', 'e1071', 'preprocessCore', 'ggplot2', "biomaRt",
-          'ggpubr', "devtools", "tidyHeatmap", "caret", "glmnet", "ppcor", "timeROC","pracma")
-for(i in 1:length(depens)){
-  depen<-depens[i]
-  if (!requireNamespace(depen, quietly = TRUE))
-    BiocManager::install(depen,update = FALSE)
-}
-if (!requireNamespace("remotes", quietly = TRUE)) install("remotes")
-if (!requireNamespace("EPIC", quietly = TRUE))
-  remotes::install_github("GfellerLab/EPIC", build_vignettes=TRUE)
-if (!requireNamespace("MCPcounter", quietly = TRUE))
-  remotes::install_github("ebecht/MCPcounter",ref="master", subdir="Source")
-if (!requireNamespace("estimate", quietly = TRUE)){
-  rforge <- "http://r-forge.r-project.org"
-  install.packages("estimate", repos=rforge, dependencies=TRUE)
-}
-devtools::install_github("IOBR/IOBR")
-# 如果网络不好，可以从github下载后本地安装，安装包已上传至https://share.weiyun.com/g2BTNgVX
-# If the network is not good, you can download it from github and install it locally, and the installation package has been uploaded to the https://share.weiyun.com/g2BTNgVX
-install.packages("IOBR-master.tar.gz", repos = NULL, type = "source")
-加载包 load packages
+source("install_dependencies.R")
 library(ggplot2)
 library(ggpubr)
 library(patchwork)
@@ -253,7 +230,7 @@ expr_pancancer.Rda，表达矩阵，取自pancancer_mRNA_exprSet.Rdata。
 数据来源于UCSC xena
 Pan-cancer，从数据下载到获得以上两个文件的过程见
 TCGA_pan.R
-（位于当前文件夹）。文件太大，已上传微云https://share.weiyun.com/g2BTNgVX
+（位于当前文件夹）
 Enter data
 pancancer_mRNA_exprSet.Rdata, expression matrix and cancer name
 type
@@ -261,9 +238,7 @@ expr_pancancer. Rda, Expression Matrix, taken from
 pancancer_mRNA_exprSet.Rdata.
 The data is from UCSC xena Pan-cancer, and the process from data
 download to obtaining the above two files is described in ‘TCGA_pan. R’
-(located in the current folder). The file is too large and has been
-uploaded to Weiyun
-https://share.weiyun.com/g2BTNgVX
+(located in the current folder).
 # 载入数据
 # Load data
 (load("expr_pancancer.Rda"))
