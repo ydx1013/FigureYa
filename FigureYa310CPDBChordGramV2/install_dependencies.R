@@ -44,19 +44,19 @@ install_bioc_package <- function(package_name) {
   }
 }
 
-# Function to install ktplots from GitHub
+# Function to install ktplots from GitHub with zktuong repository
 install_ktplots <- function() {
   if (!is_package_installed("ktplots")) {
-    cat("Installing ktplots from GitHub...\n")
+    cat("Installing ktplots from GitHub (zktuong repository)...\n")
     tryCatch({
-      if (!is_package_installed("remotes")) {
-        install.packages("remotes")
+      if (!is_package_installed("devtools")) {
+        install.packages("devtools")
       }
-      remotes::install_github("kendomaniac/ktplots")
+      devtools::install_github('zktuong/ktplots', dependencies = TRUE)
       cat("Successfully installed: ktplots\n")
     }, error = function(e) {
       cat("Failed to install ktplots:", e$message, "\n")
-      cat("You may need to install it manually: remotes::install_github('kendomaniac/ktplots')\n")
+      cat("You may need to install it manually: devtools::install_github('zktuong/ktplots', dependencies = TRUE)\n")
     })
   } else {
     cat("Package already installed: ktplots\n")
@@ -66,17 +66,16 @@ install_ktplots <- function() {
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
-# First install remotes for GitHub packages
-cat("\nInstalling remotes package...\n")
-install_cran_package("remotes")
+# First install devtools for GitHub packages
+cat("\nInstalling devtools package...\n")
+install_cran_package("devtools")
 
-# Install ktplots from GitHub
-cat("\nInstalling ktplots...\n")
+# Install ktplots from GitHub (zktuong repository)
+cat("\nInstalling ktplots from zktuong repository...\n")
 install_ktplots()
 
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
-# Removed items that seem like data objects rather than package names
 cran_packages <- c("RColorBrewer", "Seurat", "ggraph", "ggrepel", "grid", "igraph", "reshape2")
 
 for (pkg in cran_packages) {
@@ -98,10 +97,11 @@ cat("Package installation completed!\n")
 cat("\nTesting ktplots package...\n")
 if (require("ktplots", quietly = TRUE)) {
   cat("✅ ktplots package loaded successfully!\n")
+  cat("Package version:", packageVersion("ktplots"), "\n")
 } else {
   cat("❌ ktplots package could not be loaded.\n")
   cat("You may need to install it manually:\n")
-  cat("remotes::install_github('kendomaniac/ktplots')\n")
+  cat("devtools::install_github('zktuong/ktplots', dependencies = TRUE)\n")
 }
 
 cat("You can now run your R scripts in this directory.\n")
