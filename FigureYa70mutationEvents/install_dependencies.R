@@ -112,24 +112,4 @@ test_packages <- function() {
   })
 }
 
-test_packages()
-
-cat("\n===========================================\n")
-if (all_installed) {
-  cat("✅ All required packages installed successfully!\n")
-  cat("You can now use these packages in your R scripts:\n")
-  cat("library(reshape2)      # 数据重塑\n")
-  cat("library(RColorBrewer)  # 颜色调色板\n")
-  cat("library(Cairo)         # 高质量图形输出\n")
-  cat("library(readr)         # 数据读取\n")
-  cat("library(corrplot)      # 相关性可视化\n")
-  cat("library(openxlsx)      # Excel文件操作\n")
-  cat("library(data.table)    # 高效数据处理\n")
-} else {
-  cat("⚠️  Some packages failed to install. You can try:\n")
-  cat("1. Manual installation: install.packages('package_name')\n")
-  cat("2. Check your internet connection\n")
-  cat("3. Try a different CRAN mirror\n")
-}
-
 cat("\nYou can now run your R scripts in this directory.\n")
