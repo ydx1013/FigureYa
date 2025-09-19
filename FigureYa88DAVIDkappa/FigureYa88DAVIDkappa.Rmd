@@ -1,7 +1,7 @@
 ---
 title: "FigureYa88DAVIDkappa"
 author: "Ying Ge, Taojun Ye"
-date: "2025-5-20"
+date: "2025-9-19"
 output: html_document
 ---
 
@@ -91,6 +91,11 @@ library(scales)
 # 加载ggplot2包，用于创建优雅的数据可视化
 # Load the ggplot2 package for creating elegant data visualizations
 library(ggplot2)
+
+# 拼图
+# Combing
+library(patchwork)
+library(ggplotify)
 
 # 设置环境变量，使R显示英文错误信息
 # Set environment variable to display error messages in English
@@ -375,25 +380,62 @@ if (!is.null(tree$tip.label)) {
   ego.m <- ego.m[tree$tip.label, ]
 }
 
-# 在树形图右侧添加热图，展示每个注释类别的统计数据
-# Add a heatmap to the right of the tree to show statistical data for each annotation
-final_plot <- gheatmap(pnode, ego.m, 
-         offset = 0.7,        # 热图向右偏移量 / Heatmap horizontal offset
-         width = 0.12,       # 热图宽度 / Heatmap width
-         colnames_angle = 90, 
-         colnames_offset_y = 0.1,  # 列名垂直偏移
-         hjust = 0,          # 水平对齐方式
-         low = "red",        # 低值颜色
-         high = "white",     # 高值颜色
-         color = "grey50") + # 格子边框颜色
-  theme(legend.position = "right")
+# 在添加热图之前，先检查并修复可能的S7对象问题
+# Check and fix potential S7 object issues before adding heatmap
 
-# 显示图形
-print(final_plot)
-
-# 将最终可视化结果保存为PDF文件
-# Save the final visualization as a PDF file
-ggsave("DAVIDkappa.pdf", plot = final_plot, width = 12, height = 8)
+# 方法1：尝试使用不同的方式添加热图
+tryCatch({
+  # 在树形图右侧添加热图，展示每个注释类别的统计数据
+  # Add a heatmap to the right of the tree to show statistical data for each annotation
+  final_plot <- gheatmap(pnode, ego.m, 
+           offset = 0.7,        # 热图向右偏移量 / Heatmap horizontal offset
+           width = 0.12,       # 热图宽度 / Heatmap width
+           colnames_angle = 90, 
+           colnames_offset_y = 0.1,  # 列名垂直偏移
+           hjust = 0,          # 水平对齐方式
+           low = "red",        # 低值颜色
+           high = "white",     # 高值颜色
+           color = "grey50") + # 格子边框颜色
+    theme(legend.position = "right")
+  
+  # 显示图形
+  print(final_plot)
+  
+  # 将最终可视化结果保存为PDF文件
+  # Save the final visualization as a PDF file
+  ggsave("DAVIDkappa.pdf", plot = final_plot, width = 12, height = 8)
+  
+}, error = function(e) {
+  
+  # 如果方法1失败，尝试替代方法
+  cat("方法1失败，尝试替代方法...\n")
+  cat("错误信息:", e$message, "\n")
+  
+  # 方法2：分别绘制树和热图，然后组合
+  
+  # 绘制树图
+  tree_plot <- pnode
+  
+  # 绘制热图
+  heatmap_data <- as.data.frame(ego.m)
+  heatmap_data$term <- rownames(heatmap_data)
+  heatmap_data_long <- reshape2::melt(heatmap_data, id.vars = "term")
+  
+  heatmap_plot <- ggplot(heatmap_data_long, aes(x = variable, y = term, fill = value)) +
+    geom_tile() +
+    scale_fill_gradient(low = "red", high = "white") +
+    theme_minimal() +
+    theme(axis.text.x = element_text(angle = 90, hjust = 1),
+          axis.text.y = element_blank(),
+          axis.title = element_blank())
+  
+  # 组合图形
+  combined_plot <- tree_plot + heatmap_plot + 
+    plot_layout(widths = c(3, 1))
+  
+  print(combined_plot)
+  ggsave("DAVIDkappa_alternative.pdf", plot = combined_plot, width = 12, height = 8)
+})
 ```
 
 # Session Info
