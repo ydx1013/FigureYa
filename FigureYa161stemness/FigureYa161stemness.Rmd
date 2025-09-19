@@ -2,7 +2,7 @@
 title: "FigureYa161stemness"
 author: "Yi Xiong"
 reviewer: "Ying Ge, Junyi Shen"
-date: "2025-9-17"
+date: "2025-9-19"
 output: html_document
 ---
 
@@ -98,33 +98,36 @@ clic$MetStatus <- dplyr::recode(clic$MetStatus, '1'="Metastatic", '0'="Non-metas
 ## Data preprocessing
 
 ```{r}
-names(gse@gsms)[1:5] # sample names
-gsmplatforms <- lapply(gse@gsms, function(x) {x@header$platform_id})
-gsmplatforms <- unlist(gsmplatforms)
+# 首先检查gse对象的结构
+class(gse)
+names(gse)
+
+# 查看gse对象的所有slot
+slotNames(gse)
+
+# 根据GEOquery包的新版本，样本信息可能在phenoData中
+# 获取样本名称
+sample_names <- sampleNames(gse)[1:5]
+print(sample_names)
+
+# 获取平台信息
+gsmplatforms <- pData(gse)$platform_id
 unique(gsmplatforms)
 
 # We have only one platform
 
 ## Acquire expression set
-gsmlist = Filter(function(gsm) {gsm@header$platform_id=='GPL22286'}, gse@gsms)
-Table(gsmlist[[1]])[1:5,]
-probesets <- Table(GPLList(gse)[[1]])$ID
-data.matrix <- do.call('cbind',lapply(gsmlist,function(x) 
-{tab <- Table(x)
-mymatch <- match(probesets,tab$ID_REF)
-return(tab$VALUE[mymatch])
-}))
-data.matrix <- apply(data.matrix,2,function(x) {as.numeric(as.character(x))})
-data.matrix[1:5,1:5]
-rownames(data.matrix) <- probesets
-colnames(data.matrix) <- names(gsmlist)
-data.matrix[1:5,1:5]
+# 根据平台ID筛选样本
+selected_samples <- pData(gse)$platform_id == 'GPL22286'
+expr_data <- exprs(gse)[, selected_samples]
 
-GPL_anno <-  Table(GPLList(gse)[[1]])
+# 获取平台注释信息
+GPL_anno <- Table(gse@featureData)
 head(GPL_anno)
-# we used Entrez ID here
-exprSet <- data.matrix
-rownames(exprSet) <- GPL_anno$SPOT_ID
+
+# 使用Entrez ID或其他合适的ID
+exprSet <- expr_data
+rownames(exprSet) <- GPL_anno$SPOT_ID  # 根据实际的列名调整
 exprSet[1:5,1:5]
 
 ## Check data distribution
@@ -138,37 +141,43 @@ LogC <- (qx[5] > 100) ||
   (qx[6]-qx[1] > 50 && qx[2] > 0) ||
   (qx[2] > 0 && qx[2] < 1 && qx[4] > 1 && qx[4] < 2)
 
-if (LogC) { ex[which(ex <= 0)] <- NaN
-exprSet <- log2(ex)
-print("log2 transform finished")}else{print("log2 transform not needed")}
+if (LogC) { 
+  ex[which(ex <= 0)] <- NaN
+  exprSet <- log2(ex)
+  print("log2 transform finished")
+} else {
+  print("log2 transform not needed")
+}
 
 ## background correction and normalization
 exprSet_processed <- backgroundCorrect(exprSet, method = "normexp", verbose = F)
 exprSet_processed <- normalizeBetweenArrays(exprSet_processed, method="quantile")
 
 ## merge with clinical data
-b <- data.frame()
-for (i in 1:763){
-  a <- c(GSMList(gse)[[i]]@header[['title']],GSMList(gse)[[i]]@header[['geo_accession']])
-  b <- rbind(b,a)
-  names(b) <- c('title','geo_accession')
-}
-c <- match(colnames(exprSet_processed),b$geo_accession)
-colnames(exprSet_processed) <- b$title[c]
+# 直接从phenoData中获取样本信息
+b <- pData(gse)
+b <- b[, c("title", "geo_accession")]
+colnames(exprSet_processed) <- b$title[match(colnames(exprSet_processed), b$geo_accession)]
 exprSet_processed_back <- exprSet_processed
 
 ## Convert IDs
+# 确保org.Hs.eg.db包已安装
+if (!requireNamespace("org.Hs.eg.db", quietly = TRUE)) {
+  BiocManager::install("org.Hs.eg.db")
+}
+library(org.Hs.eg.db)
+
 idmap <- bitr(geneID = rownames(exprSet_processed), fromType = "ENSEMBL", toType = "SYMBOL", OrgDb="org.Hs.eg.db", drop = TRUE)
 exprSet_processed <- as.data.frame(exprSet_processed)
 exprSet_processed <- exprSet_processed %>% 
   rownames_to_column(var="ENSEMBL") %>% 
-  inner_join(idmap,by="ENSEMBL") %>% 
+  inner_join(idmap, by="ENSEMBL") %>% 
   dplyr::select(-ENSEMBL) %>% 
-  dplyr::select(SYMBOL,everything()) %>%
-  dplyr::mutate(rowMean =rowMeans(.[grep("MB_", names(.))])) %>% 
+  dplyr::select(SYMBOL, everything()) %>%
+  dplyr::mutate(rowMean = rowMeans(.[grep("MB_", names(.))], na.rm = TRUE)) %>% 
   dplyr::filter(SYMBOL != "NA") %>% 
   dplyr::arrange(desc(rowMean)) %>% 
-  dplyr::distinct(SYMBOL,.keep_all = T) %>% 
+  dplyr::distinct(SYMBOL, .keep_all = T) %>% 
   dplyr::select(-rowMean) %>% 
   column_to_rownames(var = "SYMBOL")
 exprSet_processed[1:5,1:5]
