@@ -61,6 +61,7 @@ for (pkg in cran_packages) {
 
 # 安装jiebaR - 从GitHub安装
 cat("\n3. Installing jiebaR from GitHub...\n")
+install_package("qinwf/jiebaRD", "github")
 install_package("qinwf/jiebaR", "github")
 
 # 安装Bioconductor包
