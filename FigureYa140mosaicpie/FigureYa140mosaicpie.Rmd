@@ -2,7 +2,7 @@
 title: "FigureYa140mosaicPie"
 author: "Zongcheng Li"
 reviewer: "Ying Ge, Junyi Shen"
-date: "2025-5-20"
+date: "2025-9-19"
 output: html_document
 ---
 
@@ -59,12 +59,12 @@ Use pie charts to show percentages, and then arrange the pie charts into a matri
 
 ```{r}
 source("install_dependencies.R")
-setRepositories(ind=1:6)
+source("cgdsr.R") # from cgdsr package
 
+setRepositories(ind=1:6)
 library(readxl)
 library(ggplot2)
 library(reshape2)
-library(cgdsr)
 
 Sys.setenv(LANGUAGE = "en") #显示英文报错信息 #Display English error message
 options(stringsAsFactors = FALSE) #禁止chr转成factor #Disable conversion of chr to factor
