@@ -6,6 +6,13 @@ Reviewer(s)
 : Ying Ge
 Date
 : 2025-05-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
 Demand description
 基于细胞类型signature识别细胞-细胞互作
@@ -54,9 +61,6 @@ RNA-seq样本的细胞类群互作网络，最后用igraph（静态）和network
 本文档作者写了个R包scBulkCCCI，以便小伙伴运行例文的workflow。
 scBulkCCCI：correlative cell-cell interaction networks based on
 combining scRNA-seq and TCGA datasets
-R包下载地址：
-https://www.yuque.com/figureya/figureyaplus/package
-下载后解压缩，可以查看R包内容：
 包的自带描述文档，见ScBulkCCCI/README.md
 示例部分数据，储存在ScBulkCCCI/data，scRNA-seq数据太大，未内置在包中，根据说明去下载；
 数据经过预处理：数据预处理的code查看ScBulkCCCI包下ScBulkCCCI_DataPreprocess.R，
@@ -70,10 +74,6 @@ The author of this document developed an R package, scBulkCCCI, to
 help users run the workflow described in the example.
 scBulkCCCI: Correlative cell-cell interaction networks based on
 combining scRNA-seq and TCGA datasets
-R package download link:
-https://www.yuque.com/figureya/figureyaplus/package
-After downloading and extracting the package, you can view its
-contents:
 Package documentation: See ScBulkCCCI/README.md.
 Example datasets: Stored in ScBulkCCCI/data. Note that the scRNA-seq
 data is too large to be included in the package—please download it
@@ -84,19 +84,7 @@ Example execution code: ScBulkCCCI.R, located in
 ScBulkCCCI/example
 环境设置
 Environment Setup
-使用国内镜像安装包。
-Using domestic mirrors for package installation.
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
-install.packages("ggthemes")
-
-# 下载后本地安装
-# 下载地址：https://www.yuque.com/figureya/figureyaplus/package
-# Download and install locally
-# Download link: https://www.yuque.com/figureya/figureyaplus/package
-install.packages("ScBulkCCCI_0.1.3.tar.gz", repos = NULL, type = "source")
-加载包
-Loading packages
+source("install_dependencies.R")
 library("ScBulkCCCI")
 library("pheatmap")
 library("RColorBrewer")
@@ -510,8 +498,5 @@ Q, Huang JY, Konno H, Guo X, Ye Y, Gao S, Wang S, Hu X, Ren X, Shen Z,
 Ouyang W, Zhang Z. Lineage tracking reveals dynamic relationships of T
 cells in colorectal cancer. Nature. 2018 Dec;564(7735):268-272. doi:
 10.1038/s41586-018-0694-x. Epub 2018 Oct 29. PMID: 30479382.
-会话信息
 Session Info
-# 显示会话信息
-# Show session information
 sessionInfo()
