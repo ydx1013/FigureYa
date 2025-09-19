@@ -2,7 +2,7 @@
 title: "FigureYa158MutationPattern"
 author: "Rongfang Shen"
 reviewer: "Ying Ge, Junyi Shen"
-date: "2025-5-20"
+date: "2025-9-19"
 output: html_document
 ---
 
@@ -71,7 +71,7 @@ query <- GDCquery(
   project = "TCGA-BLCA", 
   data.category = "Simple Nucleotide Variation",
   data.type = "Masked Somatic Mutation",
-  workflow.type = "MuTect2 Variant Aggregation and Masking"
+  workflow.type = "Aliquot Ensemble Somatic Variant Merging and Masking"
 )
 
 GDCdownload(query, method = "api", directory = "GDCdata")
