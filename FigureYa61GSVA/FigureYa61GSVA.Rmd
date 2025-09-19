@@ -139,12 +139,19 @@ load("hallmark.gs.RData") # 保存在当前文件夹 / Saved in current folder
 gsym.expr <- read.csv("easy_input_expr.csv", row.names = 1)
 head(gsym.expr)
 
+# 确保输入数据格式正确
+# 转换表达矩阵为数值矩阵
+expr_matrix <- as.matrix(gsym.expr)
+mode(expr_matrix) <- "numeric"  # 确保所有值为数值型
+
 # 新版本 GSVA 需要明确指定参数名称 / New GSVA version requires explicit parameter names
-gsva_es <- gsva(
-  expr = as.matrix(gsym.expr),      # 表达矩阵 / Expression matrix
-  gset.idx.list = gs,               # 基因集列表 / Gene set list
-  method = "gsva",                  # 明确指定方法 / Specify method explicitly
-  verbose = FALSE                   # 减少输出信息 / Reduce output information
+gsva_es <- GSVA::gsva(
+  expr = expr_matrix,              # 表达矩阵 / Expression matrix
+  gset.idx.list = gs,              # 基因集列表 / Gene set list
+  method = "gsva",                 # 明确指定方法 / Specify method explicitly
+  verbose = FALSE,                 # 减少输出信息 / Reduce output information
+  kcdf = "Gaussian",               # 明确指定核函数 / Specify kernel function
+  parallel.sz = 1                  # 单线程运行 / Single thread
 )
 
 # 预览GSVA分析返回的矩阵 / Preview GSVA result matrix
