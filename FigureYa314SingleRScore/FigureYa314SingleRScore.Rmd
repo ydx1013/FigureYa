@@ -263,11 +263,8 @@ ggplot(plot.data, aes(x = M04_cDC2_CD1C - M03_cDC1_CLEC9A,
 ggsave("ScoreVisual.pdf", width = 6, height = 6)
 ```
 
-# 会话信息
 # Session Info
 
 ```{r}
-# 显示会话信息
-# Show session information
 sessionInfo()
 ```
