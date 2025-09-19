@@ -1,23 +1,9 @@
-#!/bin/bash
-# 修复后的安装脚本 - install_packages.sh
+# install_dependencies.R - 修复后的纯 R 版本
 
-echo "==========================================="
-echo "安装 FigureYa197SmoothHaz.Rmd 所需依赖"
-echo "==========================================="
+cat("===========================================\n")
+cat("安装 FigureYa197SmoothHaz.Rmd 所需依赖\n")
+cat("===========================================\n")
 
-# 安装系统依赖
-echo "安装系统依赖..."
-sudo apt-get update
-sudo apt-get install -y \
-    libfreetype6-dev \
-    libpng-dev \
-    libtiff5-dev \
-    libjpeg-dev \
-    ghostscript
-
-# 安装 R 包
-echo "安装 R 包..."
-Rscript --vanilla -e '
 # 设置镜像
 options(repos = c(CRAN = "https://cloud.r-project.org/"))
 
@@ -97,8 +83,7 @@ if (is_package_installed("extrafont")) {
     cat("字体初始化失败:", e$message, "\n")
   })
 }
-'
 
-echo "==========================================="
-echo "安装完成！"
-echo "==========================================="
+cat("===========================================\n")
+cat("安装完成！\n")
+cat("===========================================\n")
