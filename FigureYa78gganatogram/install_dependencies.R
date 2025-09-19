@@ -25,8 +25,36 @@ install_cran_package <- function(package_name) {
   }
 }
 
+# Function to install GitHub packages
+install_github_package <- function(repo) {
+  package_name <- basename(repo)
+  if (!is_package_installed(package_name)) {
+    cat("Installing GitHub package:", repo, "\n")
+    tryCatch({
+      if (!is_package_installed("devtools")) {
+        install.packages("devtools", quiet = TRUE)
+      }
+      devtools::install_github(repo, quiet = TRUE)
+      cat("✓ Successfully installed:", package_name, "\n")
+    }, error = function(e) {
+      cat("✗ Failed to install", repo, ":", e$message, "\n")
+    })
+  } else {
+    cat("✓ Package already installed:", package_name, "\n")
+  }
+}
+
 cat("Starting R package installation...\n")
 cat("===========================================\n")
+
+# 首先安装devtools（用于GitHub安装）
+if (!is_package_installed("devtools")) {
+  install_cran_package("devtools")
+}
+
+# 安装gganatogram从GitHub
+cat("\nInstalling gganatogram from GitHub...\n")
+install_github_package("jespermaag/gganatogram")
 
 # 安装CRAN包
 cat("\nInstalling CRAN packages...\n")
@@ -49,7 +77,7 @@ cat("Package installation completed!\n")
 
 # 验证安装
 cat("\nVerifying package installation:\n")
-required_packages <- c("stringr", "gridExtra")
+required_packages <- c("stringr", "gridExtra", "gganatogram")
 
 all_installed <- TRUE
 for (pkg in required_packages) {
@@ -77,16 +105,16 @@ tryCatch({
   cat("✗ gridExtra loading failed:", e$message, "\n")
 })
 
-if (all_installed) {
-  cat("\n✅ All required packages installed successfully!\n")
-  cat("You can now use these packages in your R scripts:\n")
-  cat("library(stringr)    # 字符串处理工具\n")
-  cat("library(gridExtra)  # 网格图形布局工具\n")
-} else {
-  cat("\n⚠️  Some packages failed to install. You can try:\n")
-  cat("1. Manual installation: install.packages('package_name')\n")
-  cat("2. Check your internet connection\n")
-  cat("3. Try a different CRAN mirror\n")
-}
+tryCatch({
+  library(gganatogram)
+  cat("✓ gganatogram package loaded successfully\n")
+  
+  # 测试gganatogram的内置数据
+  if (exists("hgMale_key") && exists("hgFemale_key")) {
+    cat("✓ gganatogram内置数据可用\n")
+  }
+}, error = function(e) {
+  cat("✗ gganatogram loading failed:", e$message, "\n")
+})
 
 cat("\nYou can now run your R scripts in this directory.\n")
