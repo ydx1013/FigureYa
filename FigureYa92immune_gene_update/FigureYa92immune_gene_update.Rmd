@@ -279,22 +279,18 @@ The picture looks good, but the speed is very slow.
 # 使用ggscatterstats绘制基因表达与免疫细胞相关性散点图（含统计信息）
 # Plot a scatter plot with statistical information between gene expression and immune cell enrichment
 ggscatterstats(
-  data = plot_df,                # 指定数据源为之前创建的绘图数据框
-                               # Specify the data source as the previously created plotting data frame
-  x = gene,                      # x轴：基因表达量
-                               # x-axis: Gene expression level
-  y = imucell,                   # y轴：免疫细胞富集度
-                               # y-axis: Immune cell enrichment score
-  centrality.para = "mean",      # 显示均值作为中心趋势统计量
-                               # Display mean as the central tendency statistic
-  margins = "both",              # 在x轴和y轴边缘添加分布统计图表
-                               # Add distribution plots to both x and y axes margins
-  xfill = "#CC79A7",             # x轴边缘图表填充色（紫色系）
-                               # Fill color for x-axis marginal plot (purple)
-  yfill = "#009E73",             # y轴边缘图表填充色（绿色系）
-                               # Fill color for y-axis marginal plot (green)
-  marginal.type = "histogram"    # 边缘分布图表类型：直方图
-                               # Type of marginal distribution plot: histogram
+  data = plot_df,
+  x = gene,
+  y = imucell,
+  marginal = TRUE,
+  xsidehistogram.args = list(fill = "#CC79A7", color = "black"),
+  ysidehistogram.args = list(fill = "#009E73", color = "black"),
+  smooth.line.args = list(
+    method = "lm",
+    formula = y ~ x,
+    color = "blue",
+    linewidth = 1.5
+  )
 )
 #dev.off
 ```
