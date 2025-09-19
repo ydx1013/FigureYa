@@ -34,7 +34,7 @@ cat("Starting R package installation...\n")
 cat("===========================================\n")
 
 # 安装这五个包 / Install these five packages
-packages_to_install <- c("magrittr", "tidyverse", "ggplot2", "ggnewscale", "rlang")
+packages_to_install <- c("magrittr", "tidyverse", "ggplot2", "ggnewscale", "rlang", "patchwork")
 
 for (pkg in packages_to_install) {
   install_cran_package(pkg)
