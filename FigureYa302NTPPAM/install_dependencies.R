@@ -48,30 +48,6 @@ install_bioc_package <- function(package_name) {
   return(TRUE)
 }
 
-# Function to install from GitHub using devtools
-install_github_package <- function(repo, pkg_name = NULL) {
-  if (is.null(pkg_name)) {
-    pkg_name <- basename(repo)
-  }
-  
-  if (!is_package_installed(pkg_name)) {
-    cat("Installing from GitHub:", repo, "\n")
-    tryCatch({
-      if (!is_package_installed("devtools")) {
-        install.packages("devtools")
-      }
-      devtools::install_github(repo)
-      cat("Successfully installed from GitHub:", pkg_name, "\n")
-    }, error = function(e) {
-      cat("Failed to install from GitHub", repo, ":", e$message, "\n")
-      return(FALSE)
-    })
-  } else {
-    cat("Package already installed:", pkg_name, "\n")
-  }
-  return(TRUE)
-}
-
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
@@ -91,36 +67,25 @@ if (!is_package_installed("BiocManager")) {
 cat("\nInstalling GEOquery for GEO data access...\n")
 install_bioc_package("GEOquery")
 
-# Install CMScaller dependencies first
-cat("\nInstalling CMScaller dependencies...\n")
-cms_dependencies <- c("limma", "Biobase", "preprocessCore")
-for (pkg in cms_dependencies) {
+# Install pamr and cluster packages
+cat("\nInstalling pamr and cluster packages...\n")
+cran_packages <- c("pamr", "cluster", "RColorBrewer", "pheatmap", "survival", "survminer")
+for (pkg in cran_packages) {
+  install_cran_package(pkg)
+}
+
+# Install other useful Bioconductor packages
+cat("\nInstalling other useful Bioconductor packages...\n")
+bioc_packages <- c("limma", "Biobase", "preprocessCore")
+for (pkg in bioc_packages) {
   install_bioc_package(pkg)
-}
-
-# Install CRAN dependencies for CMScaller
-cat("\nInstalling additional CRAN dependencies...\n")
-cran_deps <- c("cluster", "e1071", "RColorBrewer")
-for (pkg in cran_deps) {
-  install_cran_package(pkg)
-}
-
-# Install CMScaller from GitHub using devtools
-cat("\nInstalling CMScaller from GitHub...\n")
-install_github_package("Lothelab/CMScaller", "CMScaller")
-
-# Install other required packages
-cat("\nInstalling other required packages...\n")
-other_packages <- c("pheatmap", "survival", "survminer")
-for (pkg in other_packages) {
-  install_cran_package(pkg)
 }
 
 # Verify installation
 cat("\n===========================================\n")
 cat("Verifying package installation...\n")
 
-required_packages <- c("CMScaller", "limma", "Biobase", "GEOquery")
+required_packages <- c("GEOquery", "pamr", "cluster", "limma", "Biobase")
 for (pkg in required_packages) {
   if (is_package_installed(pkg)) {
     cat("✓", pkg, "is installed\n")
@@ -129,16 +94,19 @@ for (pkg in required_packages) {
   }
 }
 
-# Test GEOquery functionality
-cat("\nTesting GEOquery functionality...\n")
-if (is_package_installed("GEOquery")) {
-  tryCatch({
-    library(GEOquery)
-    cat("✓ GEOquery loaded successfully\n")
-    cat("✓ GEOquery version:", packageVersion("GEOquery"), "\n")
-  }, error = function(e) {
-    cat("✗ Failed to load GEOquery:", e$message, "\n")
-  })
+# Test package functionality
+cat("\nTesting package functionality...\n")
+test_packages <- c("GEOquery", "pamr", "cluster")
+for (pkg in test_packages) {
+  if (is_package_installed(pkg)) {
+    tryCatch({
+      library(pkg, character.only = TRUE)
+      cat("✓", pkg, "loaded successfully\n")
+      cat("  Version:", packageVersion(pkg), "\n")
+    }, error = function(e) {
+      cat("✗ Failed to load", pkg, ":", e$message, "\n")
+    })
+  }
 }
 
 cat("\nPackage installation completed!\n")
