@@ -67,9 +67,10 @@ library(reshape2)
 library(ComplexHeatmap)
 library(limma)
 
-# BRB ArrayTools 软件的R语言版本，需要windows系统
+# BRB ArrayTools 软件的R语言版本
 # an R version of BRB ArrayTools software, requires Windows system
-library(classpredict) 
+library(classpredict)
+source("classPredict.R") # shell to system
 
 # 显示英文报错信息
 # Show English error messages
