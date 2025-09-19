@@ -1,6 +1,6 @@
 #!/usr/bin/env Rscript
-# 简化版R包安装脚本 - 安装ggplot2和scales包
-# Simplified R package installation script - Install ggplot2 and scales packages
+# 简化版R包安装脚本 - 安装ggplot2、scales和dplyr包
+# Simplified R package installation script - Install ggplot2, scales and dplyr packages
 
 # 设置CRAN镜像 / Set CRAN mirror
 options("repos" = c(CRAN = "https://cloud.r-project.org/"))
@@ -33,8 +33,8 @@ cat("开始安装R包...\n")
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
-# 安装这两个包 / Install these two packages
-packages_to_install <- c("ggplot2", "scales")
+# 安装这些包 / Install these packages
+packages_to_install <- c("ggplot2", "scales", "dplyr")
 
 for (pkg in packages_to_install) {
   install_cran_package(pkg)
@@ -65,6 +65,7 @@ if (all_installed) {
   cat("You can now load these packages with the following code:\n")
   cat("library(ggplot2)\n")
   cat("library(scales)  # 提供数据缩放和颜色调整功能 / Provides data scaling and color adjustment functions\n")
+  cat("library(dplyr)   # 提供数据操作和管道操作符 %>% / Provides data manipulation and pipe operator %>%\n")
 } else {
   cat("\n部分包安装失败，请检查网络连接或手动安装。\n")
   cat("\nSome packages failed to install, please check your network connection or install manually.\n")
