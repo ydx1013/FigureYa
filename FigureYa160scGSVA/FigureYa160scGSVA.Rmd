@@ -194,10 +194,17 @@ df.group <- data.frame(
 # 确保数据格式正确 / Ensure correct data format
 expr_data <- as.matrix(df.data)
 
+# 转换genesets为gsva需要的格式 / Convert genesets to the format required by gsva
+# GSEABase::getGmt()返回的是GeneSetCollection对象，需要转换为列表
+geneset_list <- lapply(genesets, function(gs) {
+  GSEABase::geneIds(gs)
+})
+names(geneset_list) <- names(genesets)
+
 # 使用正确的参数格式调用gsva / Call gsva with correct parameter format
-gsvascore <- gsva(
+gsvascore <- GSVA::gsva(
   expr = expr_data, 
-  gset.idx.list = genesets, 
+  gset.idx.list = geneset_list,  # 使用转换后的列表
   method = "gsva",
   parallel.sz = 2,
   verbose = TRUE
@@ -211,6 +218,12 @@ print(gsvascore[1:5, 1:5])
 ### 3. 绘制热图 / Draw heatmap
 # 确保分组信息与列名匹配 / Ensure group information matches column names
 if (ncol(gsvascore) == nrow(df.group)) {
+  # 确保安装了ComplexHeatmap包
+  if (!require(ComplexHeatmap)) {
+    install.packages("ComplexHeatmap")
+    library(ComplexHeatmap)
+  }
+  
   ha.t <- HeatmapAnnotation(
     Cluster = df.group$cluster,
     col = list(Cluster = c("6" = "red", "8" = "blue"))
@@ -249,6 +262,11 @@ design <- model.matrix(~ cluster.group)
 colnames(design) <- c("Intercept", "Group2vs1")
 
 # 使用limma进行差异分析 / Perform differential analysis using limma
+if (!require(limma)) {
+  install.packages("limma")
+  library(limma)
+}
+
 fit <- lmFit(gsvascore, design)
 fit <- eBayes(fit)
 
