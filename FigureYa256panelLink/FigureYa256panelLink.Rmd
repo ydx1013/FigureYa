@@ -48,6 +48,7 @@ source("utils.R") # From R package crosslink
 library(magrittr)
 library(tidyverse)
 library(ggplot2)
+library(rlang)
 
 Sys.setenv(LANGUAGE = "en") #显示英文报错信息
 options(stringsAsFactors = FALSE) #禁止chr转成factor
