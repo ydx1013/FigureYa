@@ -197,20 +197,60 @@ The simplest and most commonly used
 # See which species are supported by MSIGDBR
 # What should I do if I don't have the species I want here? Look at method three
 
-# 查看支持的物种 / View supported species
+# 查看msigdbr所支持的物种
 supported_species <- msigdbr::msigdbr_species()
 print(supported_species)
 
-# 获取人类基因集 / Get human gene sets
-target_species <- "Homo sapiens"  # 可修改为其他物种 / Can be modified to other species
+# 获取人类基因集
+target_species <- "Homo sapiens"
 gmt <- msigdbr::msigdbr(species = target_species) 
 
-# 选择需要的列并分组 / Select required columns and group
-gmt2 <- gmt %>%
-  dplyr::select(gs_name, entrez_gene)  # 基因集名称和Entrez ID / Gene set name and Entrez ID
+# 首先检查gmt数据框的列名
+cat("gmt数据框的列名:\n")
+print(colnames(gmt))
+cat("\n")
 
-gmts <- split(gmt2, gmt$gs_cat)  # 按基因集类别分组 / Group by gene set category
+# 检查所需的列是否存在
+required_cols <- c("gs_name", "entrez_gene", "gs_cat")
+missing_cols <- setdiff(required_cols, colnames(gmt))
+
+if (length(missing_cols) > 0) {
+  cat("以下列不存在:", paste(missing_cols, collapse = ", "), "\n")
+  cat("可用的列:", paste(colnames(gmt), collapse = ", "), "\n")
+  
+  # 尝试找到可能的列名变体
+  possible_gs_name <- grep("gs.*name", colnames(gmt), ignore.case = TRUE, value = TRUE)
+  possible_entrez <- grep("entrez", colnames(gmt), ignore.case = TRUE, value = TRUE)
+  possible_gs_cat <- grep("gs.*cat", colnames(gmt), ignore.case = TRUE, value = TRUE)
+  
+  cat("可能的gs_name列:", ifelse(length(possible_gs_name) > 0, possible_gs_name[1], "未找到"), "\n")
+  cat("可能的entrez_gene列:", ifelse(length(possible_entrez) > 0, possible_entrez[1], "未找到"), "\n")
+  cat("可能的gs_cat列:", ifelse(length(possible_gs_cat) > 0, possible_gs_cat[1], "未找到"), "\n")
+  
+  # 使用找到的列名或停止执行
+  gs_name_col <- ifelse(length(possible_gs_name) > 0, possible_gs_name[1], stop("找不到gs_name列"))
+  entrez_col <- ifelse(length(possible_entrez) > 0, possible_entrez[1], stop("找不到entrez_gene列"))
+  gs_cat_col <- ifelse(length(possible_gs_cat) > 0, possible_gs_cat[1], stop("找不到gs_cat列"))
+  
+} else {
+  gs_name_col <- "gs_name"
+  entrez_col <- "entrez_gene"
+  gs_cat_col <- "gs_cat"
+}
+
+# 选择需要的列并分组（使用安全的列选择方式）
+gmt2 <- gmt[, c(gs_name_col, entrez_col)]
+
+# 重命名列以便后续使用
+colnames(gmt2) <- c("gs_name", "entrez_gene")
+
+# 按基因集类别分组
+gmts <- split(gmt2, gmt[[gs_cat_col]])
 cat("创建了", length(gmts), "个基因集类别 / Created", length(gmts), "gene set categories\n")
+
+# 显示创建的类别
+cat("基因集类别:\n")
+print(names(gmts))
 ```
 
 ## 方法二：使用本地gmt文件
