@@ -677,33 +677,78 @@ Here we use the 'grid' package for puzzles.
 
 ```{r, fig.width=6, fig.height=14}
 # 使用CairoPDF设备创建高质量PDF输出
-# Create high-quality PDF output using CairoPDF device
 CairoPDF(file = "STEMbox.pdf", width = 6, height = 14)
 
 # 创建新的绘图页面
-# Create a new plotting page
 grid.newpage() 
 
 # 定义1行6列的网格布局，设置各列宽度比例
-# Define a 1x6 grid layout with column width ratios
 layout_1 <- grid.layout(nrow = 1, ncol = 6, 
                         widths = c(0.3, 0.2, 1, 0.2, 1, 0.5)) 
 
 # 应用定义的布局
-# Apply the defined layout
 pushViewport(viewport(layout = layout_1)) 
 
-# 将各个子图按布局排列并打印
-# Arrange and print each subplot according to the layout
-print(plot_text_1, vp = viewport(layout.pos.col = 1))  # 显示Profile编号和基因数量标签 / Display Profile IDs and gene count labels
-print(plot_text_2, vp = viewport(layout.pos.col = 2))  # 显示折线图y轴标题 / Display line plot y-axis title
-print(plot_line, vp = viewport(layout.pos.col = 3))    # 显示基因表达趋势折线图 / Display gene expression trend line plot
-print(plot_text_3, vp = viewport(layout.pos.col = 4))  # 显示箱线图y轴标题 / Display box plot y-axis title
-print(plot_box, vp = viewport(layout.pos.col = 5))     # 显示基因表达箱线图 / Display gene expression box plot
-print(plot_text_4, vp = viewport(layout.pos.col = 6))  # 显示随机选择的基因名称（可选） / Display randomly selected gene names (optional)
+# 安全地打印各个子图，添加错误检查
+tryCatch({
+  # 显示Profile编号和基因数量标签
+  if(exists("plot_text_1")) {
+    print(plot_text_1, vp = viewport(layout.pos.col = 1))
+  } else {
+    warning("plot_text_1 not found")
+  }
+  
+  # 显示折线图y轴标题
+  if(exists("plot_text_2")) {
+    print(plot_text_2, vp = viewport(layout.pos.col = 2))
+  } else {
+    warning("plot_text_2 not found")
+  }
+  
+  # 显示基因表达趋势折线图 - 这里最可能出现问题
+  if(exists("plot_line")) {
+    # 检查plot_line是否是ggplot对象
+    if(inherits(plot_line, "ggplot")) {
+      print(plot_line, vp = viewport(layout.pos.col = 3))
+    } else {
+      warning("plot_line is not a ggplot object")
+    }
+  } else {
+    warning("plot_line not found")
+  }
+  
+  # 显示箱线图y轴标题
+  if(exists("plot_text_3")) {
+    print(plot_text_3, vp = viewport(layout.pos.col = 4))
+  } else {
+    warning("plot_text_3 not found")
+  }
+  
+  # 显示基因表达箱线图
+  if(exists("plot_box")) {
+    if(inherits(plot_box, "ggplot")) {
+      print(plot_box, vp = viewport(layout.pos.col = 5))
+    } else {
+      warning("plot_box is not a ggplot object")
+    }
+  } else {
+    warning("plot_box not found")
+  }
+  
+  # 显示随机选择的基因名称（可选）
+  if(exists("plot_text_4")) {
+    print(plot_text_4, vp = viewport(layout.pos.col = 6))
+  } else {
+    warning("plot_text_4 not found")
+  }
+  
+}, error = function(e) {
+  message("Error occurred while printing plots: ", e$message)
+  # 创建简单的错误信息图
+  grid.text("Plotting Error", gp = gpar(col = "red", fontsize = 20))
+})
 
 # 关闭PDF设备，完成绘图
-# Close the PDF device to finalize the plot
 dev.off()
 ```
 
