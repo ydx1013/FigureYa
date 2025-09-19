@@ -1,5 +1,5 @@
 ---
-title: "FigureYa28 color"
+title: "FigureYa28color"
 author: "Ying Ge; Yijing Chen"
 date: "2025-5-20"
 output: html_document
@@ -55,14 +55,15 @@ If you need a lot of colors, then pick a colorful paper.
 ## 环境设置
 ## Environment setting
 
-用到Y叔推荐的`rPlotter`包<https://mp.weixin.qq.com/s/ZrS8IQOMSwx9R3006HYryA>，先安装它
+用到Guangchuang Yu推荐的`rPlotter`包<https://mp.weixin.qq.com/s/ZrS8IQOMSwx9R3006HYryA>，先安装它
 
-Use the `rPlotter` package recommended by Uncle Y <https://mp.weixin.qq.com/s/ZrS8IQOMSwx9R3006HYryA>, install it first
+Use the `rPlotter` package recommended by Guangchuang Yu <https://mp.weixin.qq.com/s/ZrS8IQOMSwx9R3006HYryA>, install it first
 
 ```{r}
 source("install_dependencies.R")
 library(rPlotter)
 library(scales)
+library(rgl)
 
 Sys.setenv(LANGUAGE = "en") #显示英文报错信息 display English error messages
 options(stringsAsFactors = FALSE) #禁止chr转成factor prohibit the conversion of chr to factor
@@ -94,7 +95,6 @@ mycol
 
 #展示颜色
 #show colors
-library("scales")
 show_col(mycol)
 
 #保存颜色和代码到PDF文件，制作配色卡
@@ -162,8 +162,6 @@ Have fun!
 allcol_rgb<-data.frame(t(col2rgb(allcol)))
 allcol_rgb$col<-allcol
 
-#install.packages("rgl")
-library(rgl)
 plot3d(allcol_rgb$red,allcol_rgb$green,allcol_rgb$blue,
        xlab = "red",ylab = "green",zlab = "blue",
        col = allcol_rgb$col,
