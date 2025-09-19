@@ -356,6 +356,14 @@ display: none;
 </div>
 
 
+<div id="academic-citation" class="section level1">
+<h1>Academic Citation</h1>
+<p>If you use this code in your work or research, we kindly request that
+you cite our publication:</p>
+<p>Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed. <a href="https://doi.org/10.1002/imm3.70005" class="uri">https://doi.org/10.1002/imm3.70005</a></p>
+</div>
 <div id="需求描述" class="section level1">
 <h1>需求描述</h1>
 <p>FigureYa182RFSurv和FigureYa198SignatureComb都是根据基因的重要性筛选的。直接根据随机森林的准确度或cox模型的frequency筛选，又是另一种不同的展示方式。</p>
@@ -388,15 +396,24 @@ penalty to find the best gene model.</p>
 </div>
 <div id="环境设置" class="section level1">
 <h1>环境设置</h1>
-<p>使用国内镜像安装包</p>
 </div>
 <div id="environment-settings" class="section level1">
 <h1>Environment settings</h1>
-<p>Use the domestic mirror installation package</p>
-<pre class="r"><code>options(&quot;repos&quot;= c(CRAN=&quot;https://mirrors.tuna.tsinghua.edu.cn/CRAN/&quot;))
-options(BioC_mirror=&quot;http://mirrors.tuna.tsinghua.edu.cn/bioconductor/&quot;)
-BiocManager::install(&quot;survcomp&quot;)</code></pre>
-<p>加载包 load packages</p>
+<pre class="r"><code>source(&quot;install_dependencies.R&quot;)</code></pre>
+<pre><code>## 开始安装R包...
+## ===========================================
+## 
+## 安装CRAN包...
+## 包已安装: glmnet 
+## 包已安装: pbapply 
+## 包已安装: survival 
+## 
+## 安装Bioconductor包...
+## 包已安装: survcomp 
+## 
+## ===========================================
+## 包安装完成！
+## 现在可以运行此目录中的R脚本了。</code></pre>
 <pre class="r"><code>library(survival)
 library(glmnet)</code></pre>
 <pre><code>## 载入需要的程序包：Matrix</code></pre>
@@ -416,7 +433,7 @@ options(stringsAsFactors = FALSE) #禁止chr转成factor # chr is not allowed to
 </div>
 <div id="输入文件" class="section level1">
 <h1>输入文件</h1>
-<p>表达谱文件较大，已上传至微云<a href="https://share.weiyun.com/0esnGlCh" class="uri">https://share.weiyun.com/0esnGlCh</a></p>
+<p>表达谱文件</p>
 <ul>
 <li><p>InnateDB_genes.csv，免疫基因集。数据来自<a href="https://www.innatedb.com/redirect.do?go=resourcesGeneLists" class="uri">https://www.innatedb.com/redirect.do?go=resourcesGeneLists</a>
 Immunogenetic Related Information Source (IRIS)</p></li>
@@ -434,8 +451,7 @@ Immunogenetic Related Information Source (IRIS)</p></li>
 </div>
 <div id="input-files" class="section level1">
 <h1>Input files</h1>
-<p>The expression profile file is large and has been uploaded to the
-Weiyun <a href="https://share.weiyun.com/0esnGlCh" class="uri">https://share.weiyun.com/0esnGlCh</a></p>
+<p>The expression profile file</p>
 <ul>
 <li><p>InnateDB_genes.csv, immune gene set. Data from <a href="https://www.innatedb.com/redirect.do?go=resourcesGeneLists" class="uri">https://www.innatedb.com/redirect.do?go=resourcesGeneLists</a>
 Immunogenetic Related Information Source (IRIS)</p></li>
@@ -469,7 +485,6 @@ expr &lt;- expr[,apply(expr, 2, function(x) sum(x == 0) &lt; pct * nrow(expr))]
 # 4. 防止基因名出错
 # 4. Prevent gene name errors
 colnames(expr) &lt;- make.names(colnames(expr))
-
 
 
 ## 加载免疫基因集
@@ -33778,7 +33793,7 @@ plot(NULL, NULL,
 ## [13] R6_2.5.1            shape_1.4.6.1       knitr_1.49         
 ## [16] iterators_1.0.14    future_1.34.0       bslib_0.8.0        
 ## [19] SuppDists_1.1-9.8   rlang_1.1.4         cachem_1.1.0       
-## [22] xfun_0.49           survivalROC_1.0.3.1 sass_0.4.9         
+## [22] xfun_0.53           survivalROC_1.0.3.1 sass_0.4.9         
 ## [25] cli_3.6.3           digest_0.6.37       foreach_1.5.2      
 ## [28] grid_4.4.1          rmeta_3.0           rstudioapi_0.17.1  
 ## [31] lifecycle_1.0.4     lava_1.8.0          KernSmooth_2.23-24 
