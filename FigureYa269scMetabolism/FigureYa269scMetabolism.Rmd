@@ -47,7 +47,7 @@ C, The heat map of average metabolic gene expression and median metabolic pathwa
 # 应用场景
 # Application scenarios
 
-Mining metabolic activity at single-cell resolution，为了方便使用，例文作者把整个pipeline写成了R包scMetabolism。还开发了在线版<http://www. cancerdiversity.asia/scMetabolism/>。
+Mining metabolic activity at single-cell resolution，为了方便使用，例文作者把整个pipeline写成了R包scMetabolism。还开发了在线版<http://www.cancerdiversity.asia/scMetabolism/>。
 
 本文档带你跑通R版本的scMetabolism，适用于scRNA-seq数据，友好对接seurat。
 
