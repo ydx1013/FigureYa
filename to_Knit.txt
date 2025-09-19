@@ -7,3 +7,4 @@ FigureYa86SNPmotif
 FigureYa140mosaicpie
 FigureYa244PCAPlot
 FigureYa228linkCor
+FigureYa193RiskTable
