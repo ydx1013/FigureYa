@@ -222,7 +222,7 @@ saveDb(maize.db, "Zmays.AH66225.sqlite")
 
 Obtain ENTREZ ID based on gene symbol of gene name
 
-```{r}
+```r
 # 读入差异基因数据 | Read differentially expressed genes data
 gsym.fc <- read.csv("easy_input_Zm.csv")
 # 查看数据前几行 | View the first few rows of the data
