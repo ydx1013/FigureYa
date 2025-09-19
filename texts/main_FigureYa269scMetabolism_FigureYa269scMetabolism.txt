@@ -32,10 +32,9 @@ genes highlighted with red represent the potential druggable genes
 应用场景
 Application scenarios
 Mining metabolic activity at single-cell
-resolution，为了方便使用，例文作者把整个pipeline写成了R包scMetabolism。还开发了在线版<
-http://www
-.
-cancerdiversity.asia/scMetabolism/>。
+resolution，为了方便使用，例文作者把整个pipeline写成了R包scMetabolism。还开发了在线版
+http://www.cancerdiversity.asia/scMetabolism/
+。
 本文档带你跑通R版本的scMetabolism，适用于scRNA-seq数据，友好对接seurat。
 Mining metabolic activity at single-cell resolution. For ease of use,
 the authors of the example have packaged the entire pipeline into an R
@@ -200,7 +199,6 @@ signature_meta <- countexp.Seurat@meta.data[,c("stim", "seurat_annotations")]
 # Create combined dataframe with metabolic activity and metadata
 signature_df <- data.frame(signature_meta, t(signature_exp))
 colnames(signature_df)[3:nrow(signature_exp)] <- rownames(signature_exp)
-
 # 提取两组数据
 # Extract data for two groups
 signature_df_ctrl <- subset(signature_df, stim%in%"CTRL")[3:nrow(signature_exp)]
