@@ -510,11 +510,8 @@ draw(hm.expr + hm.corExprMeth + hm.ampFreq + hm.delFreq,
 invisible(dev.off())
 ```
 
-# 会话信息
 # Session Info
 
 ```{r}
-# 显示会话信息
-# Show session information
 sessionInfo()
 ```
