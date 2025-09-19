@@ -2,13 +2,20 @@ FigureYa211multiCohortImmSubtype
 FigureYa211multiCohortImmSubtype
 Xiaofan Lu
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
-以往的分子分型都是基于基因表达来做的，这有一个是基于多数据集免疫细胞的，能众筹吗？输出Fig.1
+以往的分子分型都是基于基因表达来做的，这有一个是基于多数据集免疫细胞的，输出Fig.1
 A和B。
 Requirement Description
 In the past, molecular typing was based on gene expression, but one
-of them is based on multiple datasets of immune cells, can it be
-crowdfunded? Outputs Fig.1 A and B.
+of them is based on multiple datasets of immune cell. Outputs Fig.1 A
+and B.
 出自
 https://www.cell.com/molecular-therapy-family/nucleic-acids/fulltext/S2162-2531(20)30259-6
 from
@@ -35,13 +42,8 @@ Original: We performed the CIBERSORT and ESTIMATE algorithms to
 quantify the activity or enrichment levels of immune cells in HNSC tumor
 tissues.
 环境设置
-使用国内镜像安装包
 Environment settings
-Use the domestic mirror installation package
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
-install.packages("estimate", repos="http://r-forge.r-project.org", dependencies=TRUE)
-加载包
+source("install_dependencies.R")
 library(sva)
 library(ConsensusClusterPlus)
 library(survminer)
@@ -63,20 +65,15 @@ standarize.fun <- function(indata=NULL, halfwidth=NULL, centerFlag=T, scaleFlag=
   return(outdata)
 }
 输入文件
-表达矩阵文件较大，已上传微云
-https://share.weiyun.com/kvInGjRq
-，数据下载和预处理可参考FigureYa203ComBat。
+表达矩阵文件，数据下载和预处理可参考FigureYa203ComBat。
 TCGA
 hnsc的表达数据和生存信息：tcga_hnsc.expr.txt和tcga_hnsc.surv.txt。可以用TCGAbiolinks下载，或从
 xena
 下载。
 来自GEO的芯片数据和生存信息：gse41613.expr.txt和gse41613.surv.txt，gse65858.expr.txt和gse65858.surv.txt
 Input files
-The expression matrix file is large, and the microcloud
-https://share.weiyun.com/kvInGjRq
-has been uploaded, and
-the data download and preprocessing can be found in
-FigureYa203ComBat.
+The expression matrix file, the data download and preprocessing can
+be found in FigureYa203ComBat.
 Expression data and survival information :tcga_hnsc.expr.txt and
 tcga_hnsc.surv.txt of TCGA hnsc. It can be downloaded with TCGAbiolinks,
 or from
@@ -153,7 +150,7 @@ https://cibersort.stanford.edu
 ，查看教程
 http://cibersort.stanford.edu/tutorial.php
 LM22.txt，注册后即可下载。
-run CIBERSORT
+Run CIBERSORT
 original paper:Infiltration levels for distinct immune cells in HNSC
 were quantified by using “CIBERSORT” R package and employing the LM22
 signature and 1,000 permutations.
