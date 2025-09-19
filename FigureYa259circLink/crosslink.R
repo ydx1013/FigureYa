@@ -623,15 +623,11 @@ cl_plot <- function(object, layout = NULL,
     scale_x_continuous(expand = expansion(mult = 0.1)) +
     scale_y_continuous(expand = expansion(mult = 0.1))
 
-  # add
-  # if(is.ggproto(add)){
-  #  p <- ggplot_add(add, p)
-  # }
-  if(class(add) == "list"){
-    for(i in length(add)){
+  if(inherits(add, "list")){
+    for(i in seq_along(add)){
       p <- ggplot_add(add[[i]], p)
     }
-  }else{
+  }else if(!is.null(add)){
     p <- ggplot_add(add, p)
   }
 
