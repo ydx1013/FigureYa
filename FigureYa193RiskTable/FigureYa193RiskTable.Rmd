@@ -124,29 +124,76 @@ for(i in 1:nrow(tcga.expr)){
                     futime = tcga.surv$OS.time,
                     fustat = tcga.surv$OS,
                     stringsAsFactors = F)
-  cox <- coxph(Surv(futime, fustat) ~ expr, data = tmp)
-  coxSummary <- summary(cox)
-  unicox <- rbind.data.frame(unicox,
-                             data.frame(gene = gene,
-                                        HR = as.numeric(coxSummary$coefficients[,"exp(coef)"])[1],
-                                        z = as.numeric(coxSummary$coefficients[,"z"])[1],
-                                        pvalue = as.numeric(coxSummary$coefficients[,"Pr(>|z|)"])[1],
-                                        lower = as.numeric(coxSummary$conf.int[,3][1]),
-                                        upper = as.numeric(coxSummary$conf.int[,4][1]),
-                                        stringsAsFactors = F),
-                             stringsAsFactors = F)
+  
+  # 移除缺失值 | Remove missing values
+  tmp <- na.omit(tmp)
+  
+  # 检查是否有足够的数据进行cox分析 | Check if there is enough data for cox analysis
+  if (nrow(tmp) < 10) {  # 至少需要10个观测值 | Need at least 10 observations
+    cat("跳过基因", gene, ": 观测值不足\n")
+    cat("Skipping gene", gene, ": insufficient observations\n")
+    next
+  }
+  
+  # 检查表达值是否都是常数 | Check if expression values are all constant
+  if (sd(tmp$expr, na.rm = TRUE) == 0) {
+    cat("跳过基因", gene, ": 表达值为常数\n")
+    cat("Skipping gene", gene, ": constant expression values\n")
+    next
+  }
+  
+  # 检查是否有事件发生 | Check if any events occurred
+  if (sum(tmp$fustat) == 0) {
+    cat("跳过基因", gene, ": 无事件发生\n")
+    cat("Skipping gene", gene, ": no events occurred\n")
+    next
+  }
+  
+  tryCatch({
+    cox <- coxph(Surv(futime, fustat) ~ expr, data = tmp)
+    coxSummary <- summary(cox)
+    unicox <- rbind.data.frame(unicox,
+                               data.frame(gene = gene,
+                                          HR = as.numeric(coxSummary$coefficients[,"exp(coef)"])[1],
+                                          z = as.numeric(coxSummary$coefficients[,"z"])[1],
+                                          pvalue = as.numeric(coxSummary$coefficients[,"Pr(>|z|)"])[1],
+                                          lower = as.numeric(coxSummary$conf.int[,3][1]),
+                                          upper = as.numeric(coxSummary$conf.int[,4][1]),
+                                          stringsAsFactors = F),
+                               stringsAsFactors = F)
+  }, error = function(e) {
+    cat("跳过基因", gene, ": Cox分析错误 -", e$message, "\n")
+    cat("Skipping gene", gene, ": Cox analysis error -", e$message, "\n")
+  })
+}
+
+# 检查是否有成功的cox分析结果 | Check if any Cox analysis was successful
+if (nrow(unicox) == 0) {
+  stop("没有基因成功完成Cox分析，请检查数据质量\nNo genes successfully completed Cox analysis, please check data quality")
 }
 
 # 多变量cox+LASSO惩罚
 # Multivariate cox+LASSO punishment
 set.seed(2020821)
 selgene <- unicox[which(unicox$pvalue < 0.05), "gene"]
+
+# 检查是否有显著基因 | Check if there are significant genes
+if (length(selgene) == 0) {
+  stop("没有显著基因（p < 0.05），无法进行LASSO分析\nNo significant genes (p < 0.05), cannot perform LASSO analysis")
+}
+
 cvfit = cv.glmnet(t(tcga.expr[selgene,]), 
-                  Surv(tcga.surv$OS.time,tcga.surv$OS),
+                  Surv(tcga.surv$OS.time, tcga.surv$OS),
                   family = "cox",
                   nfold = 10) 
+
 myCoefs <- coef(cvfit, s="lambda.min");
 lasso_fea <- myCoefs@Dimnames[[1]][which(myCoefs != 0 )]
+
+# 检查LASSO是否选择了特征 | Check if LASSO selected any features
+if (length(lasso_fea) == 0) {
+  stop("LASSO没有选择任何特征，请调整参数\nLASSO did not select any features, please adjust parameters")
+}
 
 # 计算训练集riskscore（rs）
 # Calculate the riskscore (rs) of the Training Set
@@ -164,7 +211,11 @@ rs.geo <- apply(t(geo.expr[lasso_fea,]), 1, function(x) {x %*% myCoefs@x})
 # Training set prognostic independence
 tcga.surv$riskscore <- rs.tcga[rownames(tcga.surv)]
 head(tcga.surv)
-mulcox.tcga <- summary(coxph(Surv(OS.time, OS) ~ ., data = tcga.surv))
+
+# 移除缺失值 | Remove missing values
+tcga.surv_complete <- na.omit(tcga.surv)
+
+mulcox.tcga <- summary(coxph(Surv(OS.time, OS) ~ ., data = tcga.surv_complete))
 mulcox.tcga <- data.frame(variable = rownames(mulcox.tcga$conf.int),
                           HR = mulcox.tcga$conf.int[,1],
                           lower.95CI = mulcox.tcga$conf.int[,3],
@@ -178,9 +229,13 @@ head(mulcox.tcga)
 # Test set prognostic independence
 geo.surv$riskscore <- rs.geo[rownames(geo.surv)]
 head(geo.surv)
-geo.surv <- geo.surv[,c("Age","Sex","Stage","OS","OS.time","riskscore")] # 保持和训练集一样的顺序（只是为了好看）
-# Keep the same order as the training set (just for the sake of looking good)
-mulcox.geo <- summary(coxph(Surv(OS.time, OS) ~ ., data = geo.surv))
+geo.surv <- geo.surv[,c("Age","Sex","Stage","OS","OS.time","riskscore")] # 保持和训练集一样的顺序
+# Keep the same order as the training set
+
+# 移除缺失值 | Remove missing values
+geo.surv_complete <- na.omit(geo.surv)
+
+mulcox.geo <- summary(coxph(Surv(OS.time, OS) ~ ., data = geo.surv_complete))
 mulcox.geo <- data.frame(variable = rownames(mulcox.geo$conf.int),
                          HR = mulcox.geo$conf.int[,1],
                          lower.95CI = mulcox.geo$conf.int[,3],
@@ -188,7 +243,8 @@ mulcox.geo <- data.frame(variable = rownames(mulcox.geo$conf.int),
                          p = mulcox.geo$coefficients[,5],
                          stringsAsFactors = F)
 rownames(mulcox.geo) <- NULL
-head(mulcox.geo) # 该死，这个riskscore在测试集里不是独立预后因素，但nobody cares，继续画图  # Damn it, this riskscore is not an independent prognostic factor in the test set, but nobody cares, keep plotting
+head(mulcox.geo) # 该死，这个riskscore在测试集里不是独立预后因素，但nobody cares，继续画图
+# Damn it, this riskscore is not an independent prognostic factor in the test set, but nobody cares, keep plotting
 ```
 
 # 绘制森林图
