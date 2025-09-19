@@ -96,11 +96,10 @@ meta <- readxl::read_excel("1-s2.0-S0092867420300568-mmc1.xlsx", 3) %>%
   column_to_rownames("cell")
 数据预处理
 Data Preprocessing
-看方法学部分： QUANTIFICATION AND STATISTICAL ANALYSIS ->
+看方法学部分：QUANTIFICATION AND STATISTICAL ANALYSIS ->
 Single-Cell RNA-Seq Data Processing
-See Methods:
-QUANTIFICATION AND STATISTICAL ANALYSIS -> Single-Cell RNA-Seq Data
-Processing
+See Methods: QUANTIFICATION AND STATISTICAL ANALYSIS ->
+Single-Cell RNA-Seq Data Processing
 # 细胞质量控制 
 # Cell Quality Control
 cells <- qc %>% 
@@ -238,8 +237,8 @@ box. The
 Background Gene Set
 box can be left empty.
 例文选了GO的MF、BP和CC，你也可以尝试其他注释
-The example paper selected GO terms for MF, BP, and CC. You may
-also try other annotations.
+The example paper selected GO terms for MF, BP, and CC. You may also
+try other annotations.
 点击Download下载，把下载到的文件命名为
 ouput_enrich_[cluster的名字].txt
 ，用于画dotplot。
