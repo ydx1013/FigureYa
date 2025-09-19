@@ -67,10 +67,9 @@ Scenario 2: Multiple subgroups, sent for sequencing in three batches. Do PCA, do
 
 ```{r}
 source("install_dependencies.R")
-
+source("ggord.R") # from ggord packge
 library(ggplot2)
 library(plyr)
-library(ggord)
 library(yyplot)
 library(ggplot2)
 library(dplyr)
