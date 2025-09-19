@@ -136,80 +136,95 @@ bracketData <- drugAnn %>%
   select(drug, therapy, signaling) %>%
   unique() %>%
   arrange(desc(drug), signaling) %$%
-  data.frame(min = duplicated(signaling) %>% not %>% which,
-             max = c((duplicated(signaling) %>% not %>% which)[-1] -1, length(signaling)),
-             signaling = signaling[duplicated(signaling) %>% not],
-             therapy = therapy[duplicated(signaling) %>% not]
-             )
+  data.frame(
+    min = !duplicated(signaling) %>% which(),
+    max = c((!duplicated(signaling) %>% which())[-1] - 1, length(signaling)),
+    signaling = signaling[!duplicated(signaling)],
+    therapy = therapy[!duplicated(signaling)]
+  )
+
 rectData <- drugAnn %>%
   select(drug, therapy) %>%
   unique() %>%
   arrange(desc(drug)) %$%
-  data.frame(min = duplicated(therapy) %>% not %>% which,
-             max = c((duplicated(therapy) %>% not %>% which)[-1] -1, length(therapy)),
-             therapy = therapy[duplicated(therapy) %>% not]
-             )
+  data.frame(
+    min = !duplicated(therapy) %>% which(),
+    max = c((!duplicated(therapy) %>% which())[-1] - 1, length(therapy)),
+    therapy = therapy[!duplicated(therapy)]
+  )
 
-ggplot(
+# 创建基础图形
+base_plot <- ggplot(
   mapping = aes(value, drug),
-    data = drugAnn %>%
-     select(drug, n_sensitive, n_resistant) %>%
-     mutate(drug = drug %>% revLevels()) %>%
-     gather(key = "cat", value = "value", -drug)
-) +
-  new_scale_fill() +
+  data = drugAnn %>%
+    select(drug, n_sensitive, n_resistant) %>%
+    mutate(drug = revLevels(drug)) %>%
+    gather(key = "cat", value = "value", -drug)
+)
+
+# 添加第一个填充层（矩形背景）
+p_right <- base_plot +
   geom_rect(
-    mapping = aes(xmin = -2, xmax = 12, ymin = min-0.5, ymax= max+0.5, fill = therapy),
+    mapping = aes(xmin = -2, xmax = 12, ymin = min - 0.5, ymax = max + 0.5, fill = therapy),
     data = rectData,
-    alpha = 0.2, inherit.aes = F
+    alpha = 0.2, inherit.aes = FALSE
   ) +
-  scale_color_manual(values = mycolor) +
-  scale_fill_manual(values = mycolor) +
-  
+  scale_fill_manual(values = mycolor, name = "Therapy")
+
+# 添加新的填充尺度（条形图）
+p_right <- p_right +
   new_scale_fill() +
   geom_bar(
     mapping = aes(fill = cat),
-    stat = "identity"
+    stat = "identity",
+    position = position_dodge(width = 0.8)
   ) +
-  scale_fill_manual(values = c("magenta", "green")) + # bar的颜色
-  
+  scale_fill_manual(values = c("magenta", "green"), name = "Category")
+
+# 添加其他图层（颜色尺度）
+p_right <- p_right +
   # 画方括号
   geom_segment(
     mapping = aes(x = 9, xend = 9, y = min, yend = max, color = therapy),
-    data = bracketData, inherit.aes = F
+    data = bracketData, inherit.aes = FALSE
   ) +
   geom_segment(
-    mapping = aes(x = 9-0.1, xend = 9, y = min, yend = min, color = therapy),
-    data = bracketData, inherit.aes = F
+    mapping = aes(x = 9 - 0.1, xend = 9, y = min, yend = min, color = therapy),
+    data = bracketData, inherit.aes = FALSE
   ) +
   geom_segment(
-    mapping = aes(x = 9-0.1, xend = 9, y = max, yend = max, color = therapy),
-    data = bracketData, inherit.aes = F
+    mapping = aes(x = 9 - 0.1, xend = 9, y = max, yend = max, color = therapy),
+    data = bracketData, inherit.aes = FALSE
   ) +
+  scale_color_manual(values = mycolor, guide = "none") +
   
   # 写右侧文字
   geom_text(
-    mapping = aes(x = 9, y = (max+min)/2, label = signaling
-                  #, color = therapy # pathway的文字颜色
-                  ),
+    mapping = aes(x = 9, y = (max + min) / 2, label = signaling),
     data = bracketData,
-    hjust = -0.1, inherit.aes = F
+    hjust = -0.1, inherit.aes = FALSE, size = 3
   ) +
   
   # 写左侧文字
   geom_text(
-    mapping = aes(x = -1, drug %>% revLevels(), label = drug, color = therapy),
-    data = drugAnn, inherit.aes = F
+    mapping = aes(x = -1, y = drug, label = drug, color = therapy),
+    data = drugAnn %>% mutate(drug = revLevels(drug)),
+    inherit.aes = FALSE, hjust = 1
   ) +
   
-  #xlim(-2, 12) + 
   theme_void() + 
-  theme(axis.text.x = element_text(),
-        axis.ticks.x = element_line(), 
-        axis.title.x = element_text(),
-        axis.line.x = element_line()) +
-  labs(x = "# Cancers") -> p_right
-p_right
+  theme(
+    axis.text.x = element_text(),
+    axis.ticks.x = element_line(), 
+    axis.title.x = element_text(),
+    axis.line.x = element_line(),
+    legend.position = "bottom"
+  ) +
+  labs(x = "# Cancers") +
+  coord_cartesian(xlim = c(-2, 12))  # 使用 coord_cartesian 而不是 xlim
+
+# 显示图形
+print(p_right)
 ```
 
 ## 3. crosslink combining left and right panels
