@@ -4,128 +4,20 @@ RMD Render Summary
 [SKIPPED] - ./FigureYa205immunophenoscore_update/FigureYa205immunophenoscore_update.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa144DiagHeatmap/FigureYa144DiagHeatmap.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa162boxViolin/FigureYa162boxViolin.Rmd (Not listed in to_Knit.txt)
-[FAILED] - ./FigureYa86SNPmotif/FigureYa86SNPmotif.Rmd
---- Error Log for ./FigureYa86SNPmotif/FigureYa86SNPmotif.Rmd ---
-* removing ‘/home/runner/work/_temp/Library/DirichletMultinomial’
-ERROR: dependency ‘DirichletMultinomial’ is not available for package ‘TFBSTools’
-Perhaps try a variation of:
-install.packages('DirichletMultinomial')
-* removing ‘/home/runner/work/_temp/Library/TFBSTools’
-
-The downloaded source packages are in
-	'/tmp/RtmpYDj73B/downloaded_packages'
-ERROR: dependency ‘TFBSTools’ is not available for package ‘motifStack’
-Perhaps try a variation of:
-install.packages('TFBSTools')
-* removing ‘/home/runner/work/_temp/Library/motifStack’
-Error in `library()`:
-! there is no package called 'motifbreakR'
-Backtrace:
-    ▆
- 1. └─base::library(motifbreakR)
-
-Quitting from FigureYa86SNPmotif.Rmd:88-112 [unnamed-chunk-4]
-Execution halted
------------------------------------
+[SKIPPED] - ./FigureYa86SNPmotif/FigureYa86SNPmotif.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa20mortality/FigureYa20mortalityV2.Rmd (Not listed in to_Knit.txt)
-[FAILED] - ./FigureYa304MAGIC/FigureYa304MAGIC_lowMemory.Rmd
---- Error Log for ./FigureYa304MAGIC/FigureYa304MAGIC_lowMemory.Rmd ---
-Requirement already satisfied: kiwisolver>=1.3.1 in /home/runner/.virtualenvs/r-reticulate/lib/python3.11/site-packages (from matplotlib->magic-impute) (1.4.9)
-Requirement already satisfied: pillow>=8 in /home/runner/.virtualenvs/r-reticulate/lib/python3.11/site-packages (from matplotlib->magic-impute) (11.3.0)
-Requirement already satisfied: pyparsing>=2.3.1 in /home/runner/.virtualenvs/r-reticulate/lib/python3.11/site-packages (from matplotlib->magic-impute) (3.2.4)
-Using cached pandas-2.0.3-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (12.2 MB)
-Installing collected packages: pandas
-  Attempting uninstall: pandas
-    Found existing installation: pandas 2.3.2
-    Uninstalling pandas-2.3.2:
-      Successfully uninstalled pandas-2.3.2
-ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
-anndata 0.12.2 requires pandas!=2.1.2,>=2.1.0, but you have pandas 2.0.3 which is incompatible.
-Successfully installed pandas-2.0.3
-Error in `library()`:
-! there is no package called 'SeuratDisk'
-Backtrace:
-    ▆
- 1. └─base::library(SeuratDisk)
-
-Quitting from FigureYa304MAGIC_lowMemory.Rmd:55-66 [unnamed-chunk-2]
-Execution halted
------------------------------------
-[FAILED] - ./FigureYa304MAGIC/FigureYa304MAGIC.Rmd
---- Error Log for ./FigureYa304MAGIC/FigureYa304MAGIC.Rmd ---
-Requirement already satisfied: kiwisolver>=1.3.1 in /home/runner/.virtualenvs/r-reticulate/lib/python3.11/site-packages (from matplotlib->magic-impute) (1.4.9)
-Requirement already satisfied: pillow>=8 in /home/runner/.virtualenvs/r-reticulate/lib/python3.11/site-packages (from matplotlib->magic-impute) (11.3.0)
-Requirement already satisfied: pyparsing>=2.3.1 in /home/runner/.virtualenvs/r-reticulate/lib/python3.11/site-packages (from matplotlib->magic-impute) (3.2.4)
-Using cached pandas-2.0.3-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (12.2 MB)
-Installing collected packages: pandas
-  Attempting uninstall: pandas
-    Found existing installation: pandas 2.3.2
-    Uninstalling pandas-2.3.2:
-      Successfully uninstalled pandas-2.3.2
-ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
-anndata 0.12.2 requires pandas!=2.1.2,>=2.1.0, but you have pandas 2.0.3 which is incompatible.
-Successfully installed pandas-2.0.3
-Error in `library()`:
-! there is no package called 'SeuratDisk'
-Backtrace:
-    ▆
- 1. └─base::library(SeuratDisk)
-
-Quitting from FigureYa304MAGIC.Rmd:43-54 [unnamed-chunk-1]
-Execution halted
------------------------------------
+[SKIPPED] - ./FigureYa304MAGIC/FigureYa304MAGIC_lowMemory.Rmd (Not listed in to_Knit.txt)
+[SKIPPED] - ./FigureYa304MAGIC/FigureYa304MAGIC.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa181multiCorrelation/FigureYa181multiCorrelation.Rmd (Not listed in to_Knit.txt)
-[FAILED] - ./FigureYa289TILSig/FigureYa289TILSig.Rmd
---- Error Log for ./FigureYa289TILSig/FigureYa289TILSig.Rmd ---
-Perhaps try a variation of:
-install.packages('GEOquery')
-* removing ‘/home/runner/work/_temp/Library/DealGPL570’
-trying URL 'https://cran.r-project.org/src/contrib/Archive/DealGPL570/DealGPL570_0.0.1.tar.gz'
-Content type 'application/x-gzip' length 285680 bytes (278 KB)
-==================================================
-downloaded 278 KB
-
-ERROR: dependency ‘GEOquery’ is not available for package ‘DealGPL570’
-Perhaps try a variation of:
-install.packages('GEOquery')
-* removing ‘/home/runner/work/_temp/Library/DealGPL570’
-Error in `library()`:
-! there is no package called 'DealGPL570'
-Backtrace:
-    ▆
- 1. └─base::library(DealGPL570)
-
-Quitting from FigureYa289TILSig.Rmd:48-81 [unnamed-chunk-1]
-Execution halted
------------------------------------
+[SKIPPED] - ./FigureYa289TILSig/FigureYa289TILSig.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa252mclust/FigureYa252mclust.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa129TCGAbox/FigureYa129TCGAbox.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa288MutualExclusivity/FigureYa288MutualExclusivity.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa235scDEG/FigureYa235scDEG.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa248MutLandscape/FigureYa248MutLandscape.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa118MulticlassDESeq2/FigureYa118MulticlassDESeq2.Rmd (Not listed in to_Knit.txt)
-[FAILED] - ./FigureYa242corMethExpr/FigureYa242corMethExpr.Rmd
---- Error Log for ./FigureYa242corMethExpr/FigureYa242corMethExpr.Rmd ---
-Error in `library()`:
-! there is no package called 'ChAMP'
-Backtrace:
-    ▆
- 1. └─base::library(ChAMP)
-
-Quitting from FigureYa242corMethExpr.Rmd:30-42 [unnamed-chunk-1]
-Execution halted
------------------------------------
-[FAILED] - ./FigureYa274MuSiCbulkProop/FigureYa274MuSiCbulkProop.Rmd
---- Error Log for ./FigureYa274MuSiCbulkProop/FigureYa274MuSiCbulkProop.Rmd ---
-Error in `library()`:
-! there is no package called 'SeuratData'
-Backtrace:
-    ▆
- 1. └─base::library(SeuratData)
-
-Quitting from FigureYa274MuSiCbulkProop.Rmd:78-99 [unnamed-chunk-1]
-Execution halted
------------------------------------
+[SKIPPED] - ./FigureYa242corMethExpr/FigureYa242corMethExpr.Rmd (Not listed in to_Knit.txt)
+[SKIPPED] - ./FigureYa274MuSiCbulkProop/FigureYa274MuSiCbulkProop.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa154immuneSubtypes/FigureYa154immuneSubtypes.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa271panMethExpr/FigureYa271panMethExpr.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa119Multiclasslimma/FigureYa119Multiclasslimma.Rmd (Not listed in to_Knit.txt)
@@ -134,118 +26,44 @@ Execution halted
 [SKIPPED] - ./FigureYa120MulticlassedgeR/FigureYa120MulticlassedgeR.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa155ATAC/FigureYa155ATAC.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa71ssGSEA_update/FigureYa71ssGSEA_update.Rmd (Not listed in to_Knit.txt)
-[FAILED] - ./FigureYa315SingleRFraction/FigureYa315SingleRFraction.Rmd
---- Error Log for ./FigureYa315SingleRFraction/FigureYa315SingleRFraction.Rmd ---
-Error:
-! error in evaluating the argument 'x' in selecting a method for function 'merge': subscript out of bounds
-Backtrace:
-    ▆
- 1. ├─base::merge(seu.objs[[1]], seu.objs[-1])
- 2. └─base (local) `<fn>`(`<sbscOOBE>`)
-
-Quitting from FigureYa315SingleRFraction.Rmd:100-131 [unnamed-chunk-2]
-Execution halted
------------------------------------
+[SKIPPED] - ./FigureYa315SingleRFraction/FigureYa315SingleRFraction.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa143survCor/FigureYa143survCor.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa200pairwiseAUC/FigureYa200pairwiseAUC.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa186swimmerplot/FigureYa186swimmerplot.Rmd (Not listed in to_Knit.txt)
 [FAILED] - ./FigureYa256panelLink/FigureYa256panelLink.Rmd
 --- Error Log for ./FigureYa256panelLink/FigureYa256panelLink.Rmd ---
-Error in `loadNamespace()`:
-! there is no package called 'ggnewscale'
+Error in `is_quosure()`:
+! could not find function "is_quosure"
 Backtrace:
     ▆
- 1. └─base::loadNamespace(x)
- 2.   └─base::withRestarts(stop(cond), retry_loadNamespace = function() NULL)
- 3.     └─base (local) withOneRestart(expr, restarts[[1L]])
- 4.       └─base (local) doWithOneRestart(return(expr), restart)
+ 1. └─global cl_plot(...)
+ 2.   └─p_layer(...)
+ 3.     └─global override_aes(list$mapping, default_aes)
+ 4.       └─base::lapply(x, new_aesthetic, env = parent.frame())
+ 5.         └─FUN(X[[i]], ...)
 
-Quitting from FigureYa256panelLink.Rmd:131-210 [unnamed-chunk-5]
+Quitting from FigureYa256panelLink.Rmd:214-240 [unnamed-chunk-6]
 Execution halted
 -----------------------------------
 [SKIPPED] - ./FigureYa261circGene/FigureYa261circGene.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa251NPHSurv/FigureYa251NPHSurv.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa278heatmapPoints/FigureYa278heatmapPoints.Rmd (Not listed in to_Knit.txt)
-[SUCCESS] - ./FigureYa59Plus_GEO2DEG/FigureYa59Plus_GEO2DEG.Rmd
+[SKIPPED] - ./FigureYa59Plus_GEO2DEG/FigureYa59Plus_GEO2DEG.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa114ternaryCluster/FigureYa114ternaryCluster.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa12box/FigureYa12box.Rmd (Not listed in to_Knit.txt)
-[FAILED] - ./FigureYa243scMarkerGroupHeatmap/FigureYa243scMarkerGroupHeatmap.Rmd
---- Error Log for ./FigureYa243scMarkerGroupHeatmap/FigureYa243scMarkerGroupHeatmap.Rmd ---
-Error in `library()`:
-! there is no package called 'SeuratData'
-Backtrace:
-    ▆
- 1. └─base::library(SeuratData)
-
-Quitting from FigureYa243scMarkerGroupHeatmap.Rmd:37-50 [unnamed-chunk-1]
-Execution halted
------------------------------------
+[SKIPPED] - ./FigureYa243scMarkerGroupHeatmap/FigureYa243scMarkerGroupHeatmap.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa103coAbundant/FigureYa103coAbundant.Rmd (Not listed in to_Knit.txt)
-[FAILED] - ./FigureYa209batchEnrich/FigureYa209batchEnrich.Rmd
---- Error Log for ./FigureYa209batchEnrich/FigureYa209batchEnrich.Rmd ---
-  4. │ └─tidyselect::eval_select(expr(c(...)), data = .data, error_call = error_call)
-  5. │   └─tidyselect:::eval_select_impl(...)
-  6. │     ├─tidyselect:::with_subscript_errors(...)
-  7. │     │ └─base::withCallingHandlers(...)
-  8. │     └─tidyselect:::vars_select_eval(...)
-  9. │       └─tidyselect:::walk_data_tree(expr, data_mask, context_mask)
- 10. │         └─tidyselect:::eval_c(expr, data_mask, context_mask)
- 11. │           └─tidyselect:::reduce_sels(node, data_mask, context_mask, init = init)
- 12. │             └─tidyselect:::walk_data_tree(new, data_mask, context_mask)
- 13. │               └─tidyselect:::as_indices_sel_impl(...)
- 14. │                 └─tidyselect:::as_indices_impl(...)
- 15. │                   └─tidyselect:::chr_as_locations(x, vars, call = call, arg = arg)
- 16. │                     └─vctrs::vec_as_location(...)
- 17. └─vctrs (local) `<fn>`()
- 18.   └─vctrs:::stop_subscript_oob(...)
- 19.     └─vctrs:::stop_subscript(...)
- 20.       └─rlang::abort(...)
-
-Quitting from FigureYa209batchEnrich.Rmd:193-214 [unnamed-chunk-3]
-Execution halted
------------------------------------
+[SKIPPED] - ./FigureYa209batchEnrich/FigureYa209batchEnrich.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa96R2/FigureYa96R2.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa254scViolin/FigureYa254scViolin.Rmd (Not listed in to_Knit.txt)
-[FAILED] - ./FigureYa302NTPPAM/FigureYa302NTPPAM.Rmd
---- Error Log for ./FigureYa302NTPPAM/FigureYa302NTPPAM.Rmd ---
-Error in `library()`:
-! there is no package called 'CMScaller'
-Backtrace:
-    ▆
- 1. └─base::library(CMScaller)
-
-Quitting from FigureYa302NTPPAM.Rmd:78-92 [unnamed-chunk-1]
-Execution halted
------------------------------------
+[SKIPPED] - ./FigureYa302NTPPAM/FigureYa302NTPPAM.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa321volcanoSE/FigureYa321volcanoSE.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa266panHeatmap/FigureYa266panHeatmap.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa24ROC/FigureYa24ROC.Rmd (Not listed in to_Knit.txt)
-[FAILED] - ./FigureYa322SSEA/FigureYa322SSEA.Rmd
---- Error Log for ./FigureYa322SSEA/FigureYa322SSEA.Rmd ---
-Error in `colnames<-`:
-! attempt to set 'colnames' on an object with less than two dimensions
-Backtrace:
-    ▆
- 1. ├─base::`colnames<-`(`*tmp*`, value = `<chr>`)
- 2. └─base::`colnames<-`(`*tmp*`, value = `<chr>`)
-
-Quitting from FigureYa322SSEA.Rmd:123-163 [unnamed-chunk-3]
-Execution halted
------------------------------------
+[SKIPPED] - ./FigureYa322SSEA/FigureYa322SSEA.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa286ExprCorORR/FigureYa286ExprCorORR.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa312CellPreference/FigureYa312CellPreference.Rmd (Not listed in to_Knit.txt)
-[FAILED] - ./FigureYa277Immunomodulator/FigureYa277Immunomodulator.Rmd
---- Error Log for ./FigureYa277Immunomodulator/FigureYa277Immunomodulator.Rmd ---
-Error in `file()`:
-! cannot open the connection
-Backtrace:
-    ▆
- 1. └─utils::read.table(...)
- 2.   └─base::file(file, "rt")
-
-Quitting from FigureYa277Immunomodulator.Rmd:131-237 [unnamed-chunk-2]
-Execution halted
------------------------------------
+[SKIPPED] - ./FigureYa277Immunomodulator/FigureYa277Immunomodulator.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa189timeCindex/FigureYa189timeCindex.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa6rHRs/FigureYa6rHRs.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa55panCancer_violinV2/FigureYa55panCancer_violinV2.Rmd (Not listed in to_Knit.txt)
@@ -258,98 +76,21 @@ Execution halted
 [SKIPPED] - ./FigureYa282CMAP_XSum/FigureYa282CMAP_XSum.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa138NiceCalibration/FigureYa138NiceCalibration.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa238corRiskMut/FigureYa238corRiskMut.Rmd (Not listed in to_Knit.txt)
-[FAILED] - ./FigureYa166scCNV/FigureYa166scCNV.Rmd
---- Error Log for ./FigureYa166scCNV/FigureYa166scCNV.Rmd ---
-Error in `h()`:
-! error in evaluating the argument 'x' in selecting a method for function 'as.data.frame': error in evaluating the argument 'x' in selecting a method for function 't': cannot open the connection
-Backtrace:
-    ▆
- 1. ├─BiocGenerics::as.data.frame(...)
- 2. ├─base::t(...)
- 3. ├─utils::read.table(...)
- 4. │ ├─base::open(file, "rt")
- 5. │ └─base::open.connection(file, "rt")
- 6. ├─base::.handleSimpleError(...)
- 7. │ └─base (local) h(simpleError(msg, call))
- 8. └─base::.handleSimpleError(...)
- 9.   └─base (local) h(simpleError(msg, call))
-
-Quitting from FigureYa166scCNV.Rmd:81-103 [unnamed-chunk-3]
-Execution halted
------------------------------------
+[SKIPPED] - ./FigureYa166scCNV/FigureYa166scCNV.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa76corrgram/FigureYa76corrgram.Rmd (Not listed in to_Knit.txt)
-[FAILED] - ./FigureYa150diversityScore/FigureYa150diversityScore.Rmd
---- Error Log for ./FigureYa150diversityScore/FigureYa150diversityScore.Rmd ---
-Error in `Read10X()`:
-! Expression matrix file missing. Expecting matrix.mtx
-Backtrace:
-    ▆
- 1. └─Seurat::Read10X(data.dir = "data/")
-
-Quitting from FigureYa150diversityScore.Rmd:123-146 [unnamed-chunk-3]
-Execution halted
------------------------------------
+[SKIPPED] - ./FigureYa150diversityScore/FigureYa150diversityScore.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa11bubble/FigureYa11bubbles.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa230immunelandscape/FigureYa230immunelandscape.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa30nomogram_update/FigureYa30nomogram_update.Rmd (Not listed in to_Knit.txt)
-[FAILED] - ./FigureYa57profile_1bw/FigureYa57profile_1bw.Rmd
---- Error Log for ./FigureYa57profile_1bw/FigureYa57profile_1bw.Rmd ---
-Error in `scan()`:
-! line 1 did not have 18 elements
-Backtrace:
-    ▆
- 1. ├─BiocGenerics::rbind(...)
- 2. │ └─BiocGenerics (local) standardGeneric("rbind")
- 3. │   ├─BiocGenerics::eval(quote(list(...)), env)
- 4. │   └─base::eval(quote(list(...)), env)
- 5. │     └─base::eval(quote(list(...)), env)
- 6. └─global signal_caputer_around_sites(...)
- 7.   └─utils::read.table("temp_signal_rev.txt")
- 8.     └─base::scan(...)
-
-Quitting from FigureYa57profile_1bw.Rmd:124-162 [unnamed-chunk-2]
-Execution halted
------------------------------------
+[SKIPPED] - ./FigureYa57profile_1bw/FigureYa57profile_1bw.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa194pySCENIC/FigureYa194pySCENIC.Rmd (Not listed in to_Knit.txt)
-[FAILED] - ./FigureYa140mosaicpie/FigureYa140mosaicpie.Rmd
---- Error Log for ./FigureYa140mosaicpie/FigureYa140mosaicpie.Rmd ---
-Error in `!success`:
-! invalid argument type
-Backtrace:
-    ▆
- 1. └─global install_cgdsr()
-
-Quitting from FigureYa140mosaicpie.Rmd:60-71 [unnamed-chunk-1]
-Execution halted
------------------------------------
-[FAILED] - ./FigureYa244PCAPlot/FigureYa244PCAPlot.Rmd
---- Error Log for ./FigureYa244PCAPlot/FigureYa244PCAPlot.Rmd ---
-Error in `library()`:
-! there is no package called 'ggConvexHull'
-Backtrace:
-    ▆
- 1. └─base::library(ggConvexHull)
-
-Quitting from FigureYa244PCAPlot.Rmd:45-53 [unnamed-chunk-1]
-Execution halted
------------------------------------
+[SKIPPED] - ./FigureYa140mosaicpie/FigureYa140mosaicpie.Rmd (Not listed in to_Knit.txt)
+[SKIPPED] - ./FigureYa244PCAPlot/FigureYa244PCAPlot.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa147interaction/FigureYa147interaction.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa300pancanCor/FigureYa300pancanCor.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa13GSEA_Java_update/FigureYa13GSEA_Java_update.Rmd (Not listed in to_Knit.txt)
-[SUCCESS] - ./FigureYa18oncoplot_update/FigureYa18oncoplot_update.Rmd
-[FAILED] - ./FigureYa255TIME/FigureYa255TIME.Rmd
---- Error Log for ./FigureYa255TIME/FigureYa255TIME.Rmd ---
-Error in `open.connection()`:
-! cannot open the connection
-Backtrace:
-    ▆
- 1. └─utils::read.table(...)
- 2.   ├─base::open(file, "rt")
- 3.   └─base::open.connection(file, "rt")
-
-Quitting from FigureYa255TIME.Rmd:135-197 [unnamed-chunk-4]
-Execution halted
------------------------------------
+[SKIPPED] - ./FigureYa18oncoplot_update/FigureYa18oncoplot_update.Rmd (Not listed in to_Knit.txt)
+[SKIPPED] - ./FigureYa255TIME/FigureYa255TIME.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa299pancanSurv/FigureYa299pancanSurv.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa31lasso_update/FigureYa31lasso_update.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa25Sankey_update/FigureYa25Sankey_update.Rmd (Not listed in to_Knit.txt)
@@ -361,177 +102,51 @@ Execution halted
 [SKIPPED] - ./FigureYa227boxdensity/FigureYa227boxdensity.Rmd (Not listed in to_Knit.txt)
 [FAILED] - ./FigureYa174squareCross/FigureYa174squareCross.Rmd
 --- Error Log for ./FigureYa174squareCross/FigureYa174squareCross.Rmd ---
-Error in `columnCross()`:
-! could not find function "columnCross"
+Error in `rescale()`:
+! could not find function "rescale"
+Backtrace:
+    ▆
+ 1. └─global columnCross(edges, columns, height = 10, flank_mult = 0.1, segment_shrink = 0.2)
+ 2.   └─base::mapply(newCoord, cols, rep(height, length(columns)), flank_mult)
+ 3.     └─global `<fn>`(dots[[1L]][[1L]], dots[[2L]][[1L]], dots[[3L]][[1L]])
 
-Quitting from FigureYa174squareCross.Rmd:119-128 [unnamed-chunk-4]
+Quitting from FigureYa174squareCross.Rmd:120-129 [unnamed-chunk-4]
 Execution halted
 -----------------------------------
-[SKIPPED] - ./FigureYa259circLink/FigureYa259circLink.Rmd (Not listed in to_Knit.txt)
+[FAILED] - ./FigureYa259circLink/FigureYa259circLink.Rmd
+--- Error Log for ./FigureYa259circLink/FigureYa259circLink.Rmd ---
+Error in `library()`:
+! there is no package called 'crosslink'
+Backtrace:
+    ▆
+ 1. └─base::library(crosslink)
+
+Quitting from FigureYa259circLink.Rmd:72-87 [unnamed-chunk-1]
+Execution halted
+-----------------------------------
 [SKIPPED] - ./FigureYa231scScore/FigureYa231scScore.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa116supervisedCluster/FigureYa116supervisedCluster.Rmd (Not listed in to_Knit.txt)
-[FAILED] - ./FigureYa69cancerSubtype/FigureYa69cancerSubtype.Rmd
---- Error Log for ./FigureYa69cancerSubtype/FigureYa69cancerSubtype.Rmd ---
-Error in `library()`:
-! there is no package called 'CancerSubtypes'
-Backtrace:
-    ▆
- 1. └─base::library(CancerSubtypes)
-
-Quitting from FigureYa69cancerSubtype.Rmd:55-65 [unnamed-chunk-1]
-Execution halted
------------------------------------
-[FAILED] - ./FigureYa69cancerSubtype/How to get easy input from xena pan-cancer file.Rmd
---- Error Log for ./FigureYa69cancerSubtype/How to get easy input from xena pan-cancer file.Rmd ---
-Error in `file()`:
-! cannot open the connection
-Backtrace:
-    ▆
- 1. └─utils::read.delim(...)
- 2.   └─utils::read.table(...)
- 3.     └─base::file(file, "rt")
-
-Quitting from How-to-get-easy-input-from-xena-pan-cancer-file.Rmd:63-84 [unnamed-chunk-3]
-Execution halted
------------------------------------
-[FAILED] - ./FigureYa111markerGene/FigureYa111markerGene_step1.Rmd
---- Error Log for ./FigureYa111markerGene/FigureYa111markerGene_step1.Rmd ---
-Error in `Read10X()`:
-! could not find function "Read10X"
-
-Quitting from FigureYa111markerGene_step1.Rmd:93-110 [unnamed-chunk-1]
-Execution halted
------------------------------------
+[SKIPPED] - ./FigureYa69cancerSubtype/FigureYa69cancerSubtype.Rmd (Not listed in to_Knit.txt)
+[SKIPPED] - ./FigureYa69cancerSubtype/How to get easy input from xena pan-cancer file.Rmd (Not listed in to_Knit.txt)
+[SKIPPED] - ./FigureYa111markerGene/FigureYa111markerGene_step1.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa101PCA/FigureYa101PCA.Rmd (Not listed in to_Knit.txt)
-[FAILED] - ./FigureYa280TMEofSTS/FigureYa280TMEofSTS.Rmd
---- Error Log for ./FigureYa280TMEofSTS/FigureYa280TMEofSTS.Rmd ---
-Error in `file()`:
-! cannot open the connection
-Backtrace:
-    ▆
- 1. └─utils::read.table(...)
- 2.   └─base::file(file, "rt")
-
-Quitting from FigureYa280TMEofSTS.Rmd:102-150 [unnamed-chunk-2]
-Execution halted
------------------------------------
+[SKIPPED] - ./FigureYa280TMEofSTS/FigureYa280TMEofSTS.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa239ST_PDAC/FigureYa239ST_PDAC.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa308IHS/FigureYa308IHS.Rmd (Not listed in to_Knit.txt)
-[FAILED] - ./FigureYa88DAVIDkappa/FigureYa88DAVIDkappa.Rmd
---- Error Log for ./FigureYa88DAVIDkappa/FigureYa88DAVIDkappa.Rmd ---
-  1. └─S7:::Ops.S7_object(...)
-  2.   ├─base::tryCatch(return(base_ops[[.Generic]](e1, e2)), S7_error_method_not_found = function(cnd) cnd)
-  3.   │ └─base (local) tryCatchList(expr, classes, parentenv, handlers)
-  4.   │   └─base (local) tryCatchOne(expr, names, parentenv, handlers[[1L]])
-  5.   │     └─base (local) doTryCatch(return(expr), name, parentenv, handler)
-  6.   └─base_ops[[.Generic]](e1, e2)
-  7.     ├─S7::S7_dispatch()
-  8.     └─ggplot2 (local) `method(+, list(ggplot2::ggplot, class_any))`(...)
-  9.       └─ggplot2:::add_ggplot(e1, e2, e2name)
- 10.         ├─ggplot2::ggplot_add(object, p, objectname)
- 11.         └─ggplot2:::ggplot_add.default(object, p, objectname)
- 12.           └─ggplot2::update_ggplot(object = object, plot = plot, ...)
- 13.             ├─S7::S7_dispatch()
- 14.             └─ggplot2 (local) `method(update_ggplot, list(ggplot2::theme, ggplot2::ggplot))`(...)
- 15.               └─S7::set_props(plot, theme = add_theme(plot@theme, object))
- 16.                 └─S7::`props<-`(`*tmp*`, value = list(...))
- 17.                   └─S7::validate(object)
-
-Quitting from FigureYa88DAVIDkappa.Rmd:304-397 [unnamed-chunk-5]
-Execution halted
------------------------------------
-[FAILED] - ./FigureYa61GSVA/FigureYa61GSVA.Rmd
---- Error Log for ./FigureYa61GSVA/FigureYa61GSVA.Rmd ---
-Error:
-! unable to find an inherited method for function 'gsva' for signature 'param = "missing"'
-Backtrace:
-    ▆
- 1. └─GSVA::gsva(...)
- 2.   └─methods (local) `<fn>`(`<list>`, `<stndrdGn>`, `<env>`)
-
-Quitting from FigureYa61GSVA.Rmd:134-155 [unnamed-chunk-3]
-Execution halted
------------------------------------
-[FAILED] - ./FigureYa270panMeth/FigureYa270panMeth.Rmd
---- Error Log for ./FigureYa270panMeth/FigureYa270panMeth.Rmd ---
-Error in `readChar()`:
-! cannot open the connection
-Backtrace:
-    ▆
- 1. └─base::load(file.path("tcga_methy450", paste0("TCGA-", i, "_methy450.RData")))
- 2.   └─base::readChar(con, 5L, useBytes = TRUE)
-
-Quitting from FigureYa270panMeth.Rmd:134-203 [unnamed-chunk-2]
-Execution halted
------------------------------------
+[SKIPPED] - ./FigureYa88DAVIDkappa/FigureYa88DAVIDkappa.Rmd (Not listed in to_Knit.txt)
+[SKIPPED] - ./FigureYa61GSVA/FigureYa61GSVA.Rmd (Not listed in to_Knit.txt)
+[SKIPPED] - ./FigureYa270panMeth/FigureYa270panMeth.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa81immune_network/FigureYa81immune_network.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa169sigHeatmap/FigureYa169sigHeatmap.Rmd (Not listed in to_Knit.txt)
-[FAILED] - ./FigureYa257armCNV/FigureYa257armCNV.Rmd
---- Error Log for ./FigureYa257armCNV/FigureYa257armCNV.Rmd ---
-Error in `melt.default()`:
-! The melt generic in data.table has been passed a data.frame and will attempt to redirect to the relevant reshape2 method; please note that reshape2 is superseded and is no longer actively developed, and this redirection is now deprecated. To continue using melt methods from reshape2 while both packages are attached, e.g. melt.list, you can prepend the namespace, i.e. reshape2::melt(wide). In the next version, this warning will become an error.
-Backtrace:
-    ▆
- 1. ├─base::as.data.frame(melt(wide, measure.vars = c("amp.C1", "amp.C2")))
- 2. ├─data.table::melt(wide, measure.vars = c("amp.C1", "amp.C2"))
- 3. └─data.table:::melt.default(wide, measure.vars = c("amp.C1", "amp.C2"))
- 4.   └─data.table:::stopf(...)
- 5.     └─data.table:::raise_condition(...)
-
-Quitting from FigureYa257armCNV.Rmd:204-234 [unnamed-chunk-5]
-Execution halted
------------------------------------
+[SKIPPED] - ./FigureYa257armCNV/FigureYa257armCNV.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa306slingshot/FigureYa306slingshot.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa90subgroup/FigureYa90subgroup.Rmd (Not listed in to_Knit.txt)
-[FAILED] - ./FigureYa38PCA/FigureYa38PCA.Rmd
---- Error Log for ./FigureYa38PCA/FigureYa38PCA.Rmd ---
-Error in `library()`:
-! there is no package called 'ggord'
-Backtrace:
-    ▆
- 1. └─base::library(ggord)
-
-Quitting from FigureYa38PCA.Rmd:68-78 [unnamed-chunk-1]
-Execution halted
------------------------------------
-[FAILED] - ./FigureYa40lineage/FigureYa40lineage.Rmd
---- Error Log for ./FigureYa40lineage/FigureYa40lineage.Rmd ---
-Error in `file()`:
-! cannot open the connection
-Backtrace:
-    ▆
- 1. └─utils::read.table(...)
- 2.   └─base::file(file, "rt")
-
-Quitting from FigureYa40lineage.Rmd:82-104 [unnamed-chunk-2]
-Execution halted
------------------------------------
+[SKIPPED] - ./FigureYa38PCA/FigureYa38PCA.Rmd (Not listed in to_Knit.txt)
+[SKIPPED] - ./FigureYa40lineage/FigureYa40lineage.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa222PCAgene/FigureYa222PCAgene.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa159LR_RF_V2/FigureYa159LR_RF_V2.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa182RFSurvV2/FigureYa182RFSurvV2.Rmd (Not listed in to_Knit.txt)
-[FAILED] - ./FigureYa212drugTargetV2/FigureYa212drugTargetV2.Rmd
---- Error Log for ./FigureYa212drugTargetV2/FigureYa212drugTargetV2.Rmd ---
-Hit:5 http://azure.archive.ubuntu.com/ubuntu noble-security InRelease
-Reading package lists...
-Reading package lists...
-Building dependency tree...
-Reading state information...
-libblas-dev is already the newest version (3.12.0-3build1.1).
-liblapack-dev is already the newest version (3.12.0-3build1.1).
-gfortran is already the newest version (4:13.2.0-7ubuntu1).
-libcurl4-openssl-dev is already the newest version (8.5.0-2ubuntu10.6).
-libssl-dev is already the newest version (3.0.13-0ubuntu3.5).
-0 upgraded, 0 newly installed, 0 to remove and 44 not upgraded.
-Error in `file()`:
-! cannot open the connection
-Backtrace:
-    ▆
- 1. └─utils::read.table(...)
- 2.   └─base::file(file, "rt")
-
-Quitting from FigureYa212drugTargetV2.Rmd:110-139 [unnamed-chunk-3]
-Execution halted
------------------------------------
+[SKIPPED] - ./FigureYa212drugTargetV2/FigureYa212drugTargetV2.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa247oncoPredict/FigureYa247oncoPredict.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa7PSM/FigureYa7PSM.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa208FPI/FigureYa208FPI.Rmd (Not listed in to_Knit.txt)
@@ -549,117 +164,28 @@ Execution halted
 [SKIPPED] - ./FigureYa263panDiff/FigureYa263panDiff.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa23count2TPM/FigureYa23count2TPMv2.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa253panGSEA/FigureYa253panGSEA.Rmd (Not listed in to_Knit.txt)
-[FAILED] - ./FigureYa197SmoothHaz/FigureYa197SmoothHaz.Rmd
---- Error Log for ./FigureYa197SmoothHaz/FigureYa197SmoothHaz.Rmd ---
-Error in `source()`:
-! install_dependencies.R:4:6: unexpected string constant
-3: 
-4: echo "==========================================="
-        ^
-Backtrace:
-    ▆
- 1. └─base::source("install_dependencies.R")
-
-Quitting from FigureYa197SmoothHaz.Rmd:71-83 [unnamed-chunk-1]
-Execution halted
------------------------------------
+[SKIPPED] - ./FigureYa197SmoothHaz/FigureYa197SmoothHaz.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa260CNV/FigureYa260CNV.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa245VarDecompose/FigureYa245VarDecompose.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa74OmicCircos/FigureYa74OmicCircos.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa62twoAxis/FigureYa62twoAxis.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa41GEO2lncRNA_update/FigureYa41GEO2lncRNA_update.Rmd (Not listed in to_Knit.txt)
-[FAILED] - ./FigureYa223scNMF/FigureYa223scNMF.Rmd
---- Error Log for ./FigureYa223scNMF/FigureYa223scNMF.Rmd ---
-Error in `file()`:
-! cannot open the connection
-Backtrace:
-    ▆
- 1. └─utils::read.table("GSE150430Malignant.txt", header = T, sep = "\t")
- 2.   └─base::file(file, "rt")
-
-Quitting from FigureYa223scNMF.Rmd:177-186 [unnamed-chunk-4]
-Execution halted
------------------------------------
+[SKIPPED] - ./FigureYa223scNMF/FigureYa223scNMF.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa73batchCorrelation/FigureYa73batchCorrelation.Rmd (Not listed in to_Knit.txt)
-[FAILED] - ./FigureYa80GOclustering/FigureYa80GOclustering.Rmd
---- Error Log for ./FigureYa80GOclustering/FigureYa80GOclustering.Rmd ---
-Error in `groupClade.phylo()`:
-! argument ".node" is missing, with no default
-Backtrace:
-    ▆
- 1. ├─tidytree::groupClade(tree, node = node)
- 2. └─tidytree:::groupClade.phylo(tree, node = node)
-
-Quitting from FigureYa80GOclustering.Rmd:289-346 [unnamed-chunk-6]
-Execution halted
------------------------------------
+[SKIPPED] - ./FigureYa80GOclustering/FigureYa80GOclustering.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa153ccgraph/FigureYa153ccgraph.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa276panSNV/FigureYa276panSNV.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa221tenFoldRF/FigureYa221tenFoldRF.Rmd (Not listed in to_Knit.txt)
-[FAILED] - ./FigureYa72biomarker/FigureYa72biomarker.Rmd
---- Error Log for ./FigureYa72biomarker/FigureYa72biomarker.Rmd ---
-Error in `open.connection()`:
-! cannot open the connection
-Backtrace:
-    ▆
- 1. └─utils::read.table(...)
- 2.   ├─base::open(file, "rt")
- 3.   └─base::open.connection(file, "rt")
-
-Quitting from FigureYa72biomarker.Rmd:122-174 [unnamed-chunk-3]
-Execution halted
------------------------------------
-[FAILED] - ./FigureYa160scGSVA/FigureYa160scGSVA.Rmd
---- Error Log for ./FigureYa160scGSVA/FigureYa160scGSVA.Rmd ---
-[----|----|----|----|----|----|----|----|----|----|
-**************************************************|
-Calculating gene variance to mean ratios
-0%   10   20   30   40   50   60   70   80   90   100%
-[----|----|----|----|----|----|----|----|----|----|
-**************************************************|
-  |                                                                              |                                                                      |   0%  |                                                                              |                                                                      |   1%  |                                                                              |=                                                                     |   1%  |                                                                              |=                                                                     |   2%  |                                                                              |==                                                                    |   2%  |                                                                              |==                                                                    |   3%  |                                                                              |==                                                                    |   4%  |                                                                              |===                                                                   |   4%  |                                                                              |===                                                                   |   5%  |                                                                              |====                                                                  |   5%  |                                                                              |====                                                                  |   6%  |                                                                              |=====                                                                 |   6%  |                                                                              |=====                                                                 |   7%  |                                                                              |=====                                                                 |   8%  |                                                                              |======                                                                |   8%  |                                                                              |======                                                                |   9%  |                                                                              |=======                                                               |   9%  |                                                                              |=======                                                               |  10%  |                                                                              |=======                                                               |  11%  |                                                                              |========                                                              |  11%  |                                                                              |========                                                              |  12%  |                                                                              |=========                                                             |  12%  |                                                                              |=========                                                             |  13%  |                                                                              |=========                                                             |  14%  |                                                                              |==========                                                            |  14%  |                                                                              |==========                                                            |  15%  |                                                                              |===========                                                           |  15%  |                                                                              |===========                                                           |  16%  |                                                                              |============                                                          |  16%  |                                                                              |============                                                          |  17%  |                                                                              |============                                                          |  18%  |                                                                              |=============                                                         |  18%  |                                                                              |=============                                                         |  19%  |                                                                              |==============                                                        |  19%  |                                                                              |==============                                                        |  20%  |                                                                              |==============                                                        |  21%  |                                                                              |===============                                                       |  21%  |                                                                              |===============                                                       |  22%  |                                                                              |================                                                      |  22%  |                                                                              |================                                                      |  23%  |                                                                              |================                                                      |  24%  |                                                                              |=================                                                     |  24%  |                                                                              |=================                                                     |  25%  |                                                                              |==================                                                    |  25%  |                                                                              |==================                                                    |  26%  |                                                                              |===================                                                   |  26%  |                                                                              |===================                                                   |  27%  |                                                                              |===================                                                   |  28%  |                                                                              |====================                                                  |  28%  |                                                                              |====================                                                  |  29%  |                                                                              |=====================                                                 |  29%  |                                                                              |=====================                                                 |  30%  |                                                                              |=====================                                                 |  31%  |                                                                              |======================                                                |  31%  |                                                                              |======================                                                |  32%  |                                                                              |=======================                                               |  32%  |                                                                              |=======================                                               |  33%  |                                                                              |=======================                                               |  34%  |                                                                              |========================                                              |  34%  |                                                                              |========================                                              |  35%  |                                                                              |=========================                                             |  35%  |                                                                              |=========================                                             |  36%  |                                                                              |==========================                                            |  36%  |                                                                              |==========================                                            |  37%  |                                                                              |==========================                                            |  38%  |                                                                              |===========================                                           |  38%  |                                                                              |===========================                                           |  39%  |                                                                              |============================                                          |  39%  |                                                                              |============================                                          |  40%  |                                                                              |============================                                          |  41%  |                                                                              |=============================                                         |  41%  |                                                                              |=============================                                         |  42%  |                                                                              |==============================                                        |  42%  |                                                                              |==============================                                        |  43%  |                                                                              |==============================                                        |  44%  |                                                                              |===============================                                       |  44%  |                                                                              |===============================                                       |  45%  |                                                                              |================================                                      |  45%  |                                                                              |================================                                      |  46%  |                                                                              |=================================                                     |  46%  |                                                                              |=================================                                     |  47%  |                                                                              |=================================                                     |  48%  |                                                                              |==================================                                    |  48%  |                                                                              |==================================                                    |  49%  |                                                                              |===================================                                   |  49%  |                                                                              |===================================                                   |  50%  |                                                                              |===================================                                   |  51%  |                                                                              |====================================                                  |  51%  |                                                                              |====================================                                  |  52%  |                                                                              |=====================================                                 |  52%  |                                                                              |=====================================                                 |  53%  |                                                                              |=====================================                                 |  54%  |                                                                              |======================================                                |  54%  |                                                                              |======================================                                |  55%  |                                                                              |=======================================                               |  55%  |                                                                              |=======================================                               |  56%  |                                                                              |========================================                              |  56%  |                                                                              |========================================                              |  57%  |                                                                              |========================================                              |  58%  |                                                                              |=========================================                             |  58%  |                                                                              |=========================================                             |  59%  |                                                                              |==========================================                            |  59%  |                                                                              |==========================================                            |  60%  |                                                                              |==========================================                            |  61%  |                                                                              |===========================================                           |  61%  |                                                                              |===========================================                           |  62%  |                                                                              |============================================                          |  62%  |                                                                              |============================================                          |  63%  |                                                                              |============================================                          |  64%  |                                                                              |=============================================                         |  64%  |                                                                              |=============================================                         |  65%  |                                                                              |==============================================                        |  65%  |                                                                              |==============================================                        |  66%  |                                                                              |===============================================                       |  66%  |                                                                              |===============================================                       |  67%  |                                                                              |===============================================                       |  68%  |                                                                              |================================================                      |  68%  |                                                                              |================================================                      |  69%  |                                                                              |=================================================                     |  69%  |                                                                              |=================================================                     |  70%  |                                                                              |=================================================                     |  71%  |                                                                              |==================================================                    |  71%  |                                                                              |==================================================                    |  72%  |                                                                              |===================================================                   |  72%  |                                                                              |===================================================                   |  73%  |                                                                              |===================================================                   |  74%  |                                                                              |====================================================                  |  74%  |                                                                              |====================================================                  |  75%  |                                                                              |=====================================================                 |  75%  |                                                                              |=====================================================                 |  76%  |                                                                              |======================================================                |  76%  |                                                                              |======================================================                |  77%  |                                                                              |======================================================                |  78%  |                                                                              |=======================================================               |  78%  |                                                                              |=======================================================               |  79%  |                                                                              |========================================================              |  79%  |                                                                              |========================================================              |  80%  |                                                                              |========================================================              |  81%  |                                                                              |=========================================================             |  81%  |                                                                              |=========================================================             |  82%  |                                                                              |==========================================================            |  82%  |                                                                              |==========================================================            |  83%  |                                                                              |==========================================================            |  84%  |                                                                              |===========================================================           |  84%  |                                                                              |===========================================================           |  85%  |                                                                              |============================================================          |  85%  |                                                                              |============================================================          |  86%  |                                                                              |=============================================================         |  86%  |                                                                              |=============================================================         |  87%  |                                                                              |=============================================================         |  88%  |                                                                              |==============================================================        |  88%  |                                                                              |==============================================================        |  89%  |                                                                              |===============================================================       |  89%  |                                                                              |===============================================================       |  90%  |                                                                              |===============================================================       |  91%  |                                                                              |================================================================      |  91%  |                                                                              |================================================================      |  92%  |                                                                              |=================================================================     |  92%  |                                                                              |=================================================================     |  93%  |                                                                              |=================================================================     |  94%  |                                                                              |==================================================================    |  94%  |                                                                              |==================================================================    |  95%  |                                                                              |===================================================================   |  95%  |                                                                              |===================================================================   |  96%  |                                                                              |====================================================================  |  96%  |                                                                              |====================================================================  |  97%  |                                                                              |====================================================================  |  98%  |                                                                              |===================================================================== |  98%  |                                                                              |===================================================================== |  99%  |                                                                              |======================================================================|  99%  |                                                                              |======================================================================| 100%
-  |                                                                              |                                                                      |   0%  |                                                                              |=====                                                                 |   7%  |                                                                              |==========                                                            |  14%  |                                                                              |===============                                                       |  21%  |                                                                              |====================                                                  |  29%  |                                                                              |=========================                                             |  36%  |                                                                              |==============================                                        |  43%  |                                                                              |===================================                                   |  50%  |                                                                              |========================================                              |  57%  |                                                                              |=============================================                         |  64%  |                                                                              |==================================================                    |  71%  |                                                                              |=======================================================               |  79%  |                                                                              |============================================================          |  86%  |                                                                              |=================================================================     |  93%  |                                                                              |======================================================================| 100%
-0%   10   20   30   40   50   60   70   80   90   100%
-[----|----|----|----|----|----|----|----|----|----|
-**************************************************|
-Error:
-! unable to find an inherited method for function 'gsva' for signature 'param = "missing"'
-Backtrace:
-    ▆
- 1. └─GSVA::gsva(...)
- 2.   └─methods (local) `<fn>`(`<list>`, `<stndrdGn>`, `<env>`)
-
-Quitting from FigureYa160scGSVA.Rmd:174-280 [unnamed-chunk-5]
-Execution halted
------------------------------------
+[SKIPPED] - ./FigureYa72biomarker/FigureYa72biomarker.Rmd (Not listed in to_Knit.txt)
+[SKIPPED] - ./FigureYa160scGSVA/FigureYa160scGSVA.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa75bubble_volcano/FigureYa75bubble_volcano.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa8radar/FigureYa8radarChart.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa198SignatureCombinationV2/FigureYa198SignatureCombinationV2.Rmd (Not listed in to_Knit.txt)
-[FAILED] - ./FigureYa272scBulkCCCI/FigureYa272scBulkCCCI.Rmd
---- Error Log for ./FigureYa272scBulkCCCI/FigureYa272scBulkCCCI.Rmd ---
-Error in `library()`:
-! there is no package called 'ScBulkCCCI'
-Backtrace:
-    ▆
- 1. └─base::library("ScBulkCCCI")
-
-Quitting from FigureYa272scBulkCCCI.Rmd:72-93 [unnamed-chunk-1]
-Execution halted
------------------------------------
+[SKIPPED] - ./FigureYa272scBulkCCCI/FigureYa272scBulkCCCI.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa250ImmGenePair/FigureYa250ImmGenePair.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa317RoeDot/FigureYa317RoeDot.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa176BlandAltman/FigureYa176BlandAltman.Rmd (Not listed in to_Knit.txt)
-[FAILED] - ./FigureYa264epiImmune/FigureYa264epiImmune.Rmd
---- Error Log for ./FigureYa264epiImmune/FigureYa264epiImmune.Rmd ---
-Error in `library()`:
-! there is no package called 'immunedeconv'
-Backtrace:
-    ▆
- 1. └─base::library(immunedeconv)
-
-Quitting from FigureYa264epiImmune.Rmd:68-92 [unnamed-chunk-1]
-Execution halted
------------------------------------
+[SKIPPED] - ./FigureYa264epiImmune/FigureYa264epiImmune.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa172ggplot2Gviz/FigureYa172ggplot2Gviz.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa1survivalCurve_update/FigureYa1survivalCurve_update.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa102multipanelROC/FigureYa102multipanelROC.Rmd (Not listed in to_Knit.txt)
@@ -708,17 +234,25 @@ Execution halted
 [SKIPPED] - ./FigureYa319ContribScore/FigureYa319ContribScore.Rmd (Not listed in to_Knit.txt)
 [FAILED] - ./FigureYa228linkCor/FigureYa228linkCor.Rmd
 --- Error Log for ./FigureYa228linkCor/FigureYa228linkCor.Rmd ---
-ERROR: dependencies ‘tidygraph’, ‘vegan’ are not available for package ‘ggcor’
-Perhaps try a variation of:
-install.packages(c('tidygraph', 'vegan'))
-* removing ‘/home/runner/work/_temp/Library/ggcor’
-Error in `try()`:
-! unused argument (error = function(e) {
-    cat("✗ ggcor包加载失败:", e$message, "\n")
-    all_installed <- FALSE
-})
+** using staged installation
+** R
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+*** copying figures
+** building package indices
+** testing if installed package can be loaded from temporary location
+** testing if installed package can be loaded from final location
+** testing if installed package keeps a record of temporary installation path
+* DONE (ggcor)
+Error in `file()`:
+! cannot open the connection
+Backtrace:
+    ▆
+ 1. └─utils::read.table(...)
+ 2.   └─base::file(file, "rt")
 
-Quitting from FigureYa228linkCor.Rmd:47-56 [unnamed-chunk-1]
+Quitting from FigureYa228linkCor.Rmd:97-124 [unnamed-chunk-3]
 Execution halted
 -----------------------------------
 [SKIPPED] - ./FigureYa35batch_bestSeparationV3_update/FigureYa35batch_bestSeparationV3_update.Rmd (Not listed in to_Knit.txt)
@@ -742,7 +276,7 @@ Execution halted
 [SKIPPED] - ./FigureYa273BAPC/FigureYa273BAPC.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa135multiVolcano/FigureYa135multiVolcano.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa115cofactor/FigureYa115cofactor.Rmd (Not listed in to_Knit.txt)
-[SUCCESS] - ./FigureYa48Adonis/FigureYa48Adonis.Rmd
+[SKIPPED] - ./FigureYa48Adonis/FigureYa48Adonis.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa127HeatmapPie/FigureYa127HeatmapPie.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa233genepair/FigureYa233genepair.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa291PancanProgSigatureV2/FigureYa291PancanProgSigatureV2.Rmd (Not listed in to_Knit.txt)
@@ -796,24 +330,7 @@ Execution halted
 [SKIPPED] - ./FigureYa206scHeatmap/FigureYa206scHeatmap.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa19Lollipop/FigureYa19Lollipop.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa93UMAP/FigureYa93UMAP.Rmd (Not listed in to_Knit.txt)
-[FAILED] - ./FigureYa3genomeView/FigureYa3genomeView.Rmd
---- Error Log for ./FigureYa3genomeView/FigureYa3genomeView.Rmd ---
-Error in `validObject()`:
-! invalid class "ReferenceDataTrack" object: The referenced file 'POLR2A.bw' does not exist
-Backtrace:
-    ▆
- 1. └─Gviz::DataTrack(...)
- 2.   └─methods::new(...)
- 3.     ├─methods::initialize(value, ...)
- 4.     └─Gviz::initialize(value, ...)
- 5.       └─Gviz (local) .local(.Object, ...)
- 6.         └─selectMethod("initialize", "ReferenceTrack")(...)
- 7.           └─Gviz (local) .local(.Object, ...)
- 8.             └─methods::validObject(.Object)
-
-Quitting from FigureYa3genomeView.Rmd:68-150 [unnamed-chunk-2]
-Execution halted
------------------------------------
+[SKIPPED] - ./FigureYa3genomeView/FigureYa3genomeView.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa241scRNA_NMI/FigureYa241scRNA_NMI.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa298ecdfPvalue/FigureYa298ecdfPvalue.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa17WGCNA_heatmap/FigureYa17WGCNA_heatmap.Rmd (Not listed in to_Knit.txt)
@@ -838,25 +355,20 @@ Execution halted
 [SKIPPED] - ./FigureYa171subgroupSurv/FigureYa171subgroupSurv.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa15WGCNA/FigureYa15WGCNA.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa67phastCons/FigureYa67phastCons.Rmd (Not listed in to_Knit.txt)
-[FAILED] - ./FigureYa110mutationSignature/FigureYa110mutationSignature.Rmd
---- Error Log for ./FigureYa110mutationSignature/FigureYa110mutationSignature.Rmd ---
-Error in `library()`:
-! there is no package called 'deconstructSigs'
-Backtrace:
-    ▆
- 1. └─base::library(deconstructSigs)
-
-Quitting from FigureYa110mutationSignature.Rmd:60-94 [unnamed-chunk-1]
-Execution halted
------------------------------------
+[SKIPPED] - ./FigureYa110mutationSignature/FigureYa110mutationSignature.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa113MutSigCV/FigureYa113MutSigCV.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa193RiskTable/FigureYa193RiskTable.Rmd (Not listed in to_Knit.txt)
 [FAILED] - ./FigureYa199crosslink/FigureYa199crosslink.Rmd
 --- Error Log for ./FigureYa199crosslink/FigureYa199crosslink.Rmd ---
-Error in `columnCross2()`:
-! could not find function "columnCross2"
+Error in `rescale()`:
+! could not find function "rescale"
+Backtrace:
+    ▆
+ 1. └─global columnCross2(...)
+ 2.   └─base::mapply(newCoord, cols, rep(height, length(columns)), flank_mult)
+ 3.     └─global `<fn>`(dots[[1L]][[1L]], dots[[2L]][[1L]], dots[[3L]][[1L]])
 
-Quitting from FigureYa199crosslink.Rmd:126-145 [unnamed-chunk-3]
+Quitting from FigureYa199crosslink.Rmd:127-146 [unnamed-chunk-3]
 Execution halted
 -----------------------------------
 [SKIPPED] - ./FigureYa161stemness/FigureYa161stemness.Rmd (Not listed in to_Knit.txt)
