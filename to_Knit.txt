@@ -1,8 +1,5 @@
-FigureYa161stemness
-FigureYa158MutationPattern
-FigureYa295ClassDiscovery
-FigureYa89ggplotCirco
-FigureYa94STEMbox_update
-FigureYa112venn
-FigureYa92immune_gene_update
-FigureYa78gganatogram
+FigureYa64triangle
+FigureYa63pubmedMiningV2
+FigureYa52GOplot
+FigureYa28color
+FigureYa66单因素cox
