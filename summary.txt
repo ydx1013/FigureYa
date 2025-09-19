@@ -6,52 +6,8 @@ RMD Render Summary
 [SKIPPED] - ./FigureYa162boxViolin/FigureYa162boxViolin.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa86SNPmotif/FigureYa86SNPmotif.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa20mortality/FigureYa20mortalityV2.Rmd (Not listed in to_Knit.txt)
-[FAILED] - ./FigureYa304MAGIC/FigureYa304MAGIC_lowMemory.Rmd
---- Error Log for ./FigureYa304MAGIC/FigureYa304MAGIC_lowMemory.Rmd ---
-Requirement already satisfied: kiwisolver>=1.3.1 in /home/runner/.virtualenvs/r-reticulate/lib/python3.11/site-packages (from matplotlib->magic-impute) (1.4.9)
-Requirement already satisfied: pillow>=8 in /home/runner/.virtualenvs/r-reticulate/lib/python3.11/site-packages (from matplotlib->magic-impute) (11.3.0)
-Requirement already satisfied: pyparsing>=2.3.1 in /home/runner/.virtualenvs/r-reticulate/lib/python3.11/site-packages (from matplotlib->magic-impute) (3.2.4)
-Using cached pandas-2.0.3-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (12.2 MB)
-Installing collected packages: pandas
-  Attempting uninstall: pandas
-    Found existing installation: pandas 2.3.2
-    Uninstalling pandas-2.3.2:
-      Successfully uninstalled pandas-2.3.2
-ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
-anndata 0.12.2 requires pandas!=2.1.2,>=2.1.0, but you have pandas 2.0.3 which is incompatible.
-Successfully installed pandas-2.0.3
-Error in `library()`:
-! there is no package called 'SeuratDisk'
-Backtrace:
-    ▆
- 1. └─base::library(SeuratDisk)
-
-Quitting from FigureYa304MAGIC_lowMemory.Rmd:55-66 [unnamed-chunk-2]
-Execution halted
------------------------------------
-[FAILED] - ./FigureYa304MAGIC/FigureYa304MAGIC.Rmd
---- Error Log for ./FigureYa304MAGIC/FigureYa304MAGIC.Rmd ---
-Requirement already satisfied: kiwisolver>=1.3.1 in /home/runner/.virtualenvs/r-reticulate/lib/python3.11/site-packages (from matplotlib->magic-impute) (1.4.9)
-Requirement already satisfied: pillow>=8 in /home/runner/.virtualenvs/r-reticulate/lib/python3.11/site-packages (from matplotlib->magic-impute) (11.3.0)
-Requirement already satisfied: pyparsing>=2.3.1 in /home/runner/.virtualenvs/r-reticulate/lib/python3.11/site-packages (from matplotlib->magic-impute) (3.2.4)
-Using cached pandas-2.0.3-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (12.2 MB)
-Installing collected packages: pandas
-  Attempting uninstall: pandas
-    Found existing installation: pandas 2.3.2
-    Uninstalling pandas-2.3.2:
-      Successfully uninstalled pandas-2.3.2
-ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
-anndata 0.12.2 requires pandas!=2.1.2,>=2.1.0, but you have pandas 2.0.3 which is incompatible.
-Successfully installed pandas-2.0.3
-Error in `library()`:
-! there is no package called 'biomaRt'
-Backtrace:
-    ▆
- 1. └─base::library(biomaRt)
-
-Quitting from FigureYa304MAGIC.Rmd:43-54 [unnamed-chunk-1]
-Execution halted
------------------------------------
+[SKIPPED] - ./FigureYa304MAGIC/FigureYa304MAGIC_lowMemory.Rmd (Not listed in to_Knit.txt)
+[SKIPPED] - ./FigureYa304MAGIC/FigureYa304MAGIC.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa181multiCorrelation/FigureYa181multiCorrelation.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa289TILSig/FigureYa289TILSig.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa252mclust/FigureYa252mclust.Rmd (Not listed in to_Knit.txt)
@@ -76,8 +32,8 @@ Execution halted
 [SKIPPED] - ./FigureYa186swimmerplot/FigureYa186swimmerplot.Rmd (Not listed in to_Knit.txt)
 [FAILED] - ./FigureYa256panelLink/FigureYa256panelLink.Rmd
 --- Error Log for ./FigureYa256panelLink/FigureYa256panelLink.Rmd ---
-Error in `if (class(add) == "list") ...`:
-! the condition has length > 1
+Error in `plot_spacer()`:
+! could not find function "plot_spacer"
 Backtrace:
     ▆
  1. └─global cl_plot(...)
@@ -96,7 +52,17 @@ Execution halted
 [SKIPPED] - ./FigureYa209batchEnrich/FigureYa209batchEnrich.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa96R2/FigureYa96R2.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa254scViolin/FigureYa254scViolin.Rmd (Not listed in to_Knit.txt)
-[SKIPPED] - ./FigureYa302NTPPAM/FigureYa302NTPPAM.Rmd (Not listed in to_Knit.txt)
+[FAILED] - ./FigureYa302NTPPAM/FigureYa302NTPPAM.Rmd
+--- Error Log for ./FigureYa302NTPPAM/FigureYa302NTPPAM.Rmd ---
+Error in `library()`:
+! there is no package called 'CMScaller'
+Backtrace:
+    ▆
+ 1. └─base::library(CMScaller)
+
+Quitting from FigureYa302NTPPAM.Rmd:78-93 [unnamed-chunk-1]
+Execution halted
+-----------------------------------
 [SKIPPED] - ./FigureYa321volcanoSE/FigureYa321volcanoSE.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa266panHeatmap/FigureYa266panHeatmap.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa24ROC/FigureYa24ROC.Rmd (Not listed in to_Knit.txt)
@@ -140,20 +106,16 @@ Execution halted
 [SKIPPED] - ./FigureYa268panCNVexpr/FigureYa268panCNVexpr.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa283vennyPvalue/FigureYa283vennyPvalue.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa227boxdensity/FigureYa227boxdensity.Rmd (Not listed in to_Knit.txt)
-[SUCCESS] - ./FigureYa174squareCross/FigureYa174squareCross.Rmd
+[SKIPPED] - ./FigureYa174squareCross/FigureYa174squareCross.Rmd (Not listed in to_Knit.txt)
 [FAILED] - ./FigureYa259circLink/FigureYa259circLink.Rmd
 --- Error Log for ./FigureYa259circLink/FigureYa259circLink.Rmd ---
-Error in `is_quosure()`:
-! could not find function "is_quosure"
+Error in `plot_spacer()`:
+! could not find function "plot_spacer"
 Backtrace:
     ▆
  1. └─global cl_plot(toy)
- 2.   └─p_layer(...)
- 3.     └─global override_aes(list$mapping, default_aes)
- 4.       └─base::lapply(x, new_aesthetic, env = parent.frame())
- 5.         └─FUN(X[[i]], ...)
 
-Quitting from FigureYa259circLink.Rmd:144-158 [unnamed-chunk-3]
+Quitting from FigureYa259circLink.Rmd:145-159 [unnamed-chunk-3]
 Execution halted
 -----------------------------------
 [SKIPPED] - ./FigureYa231scScore/FigureYa231scScore.Rmd (Not listed in to_Knit.txt)
@@ -174,19 +136,7 @@ Execution halted
 [SKIPPED] - ./FigureYa306slingshot/FigureYa306slingshot.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa90subgroup/FigureYa90subgroup.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa38PCA/FigureYa38PCA.Rmd (Not listed in to_Knit.txt)
-[FAILED] - ./FigureYa40lineage/FigureYa40lineage.Rmd
---- Error Log for ./FigureYa40lineage/FigureYa40lineage.Rmd ---
-Error in `open.connection()`:
-! cannot open the connection
-Backtrace:
-    ▆
- 1. └─utils::read.table(...)
- 2.   ├─base::open(file, "rt")
- 3.   └─base::open.connection(file, "rt")
-
-Quitting from FigureYa40lineage.Rmd:82-104 [unnamed-chunk-2]
-Execution halted
------------------------------------
+[SKIPPED] - ./FigureYa40lineage/FigureYa40lineage.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa222PCAgene/FigureYa222PCAgene.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa159LR_RF_V2/FigureYa159LR_RF_V2.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa182RFSurvV2/FigureYa182RFSurvV2.Rmd (Not listed in to_Knit.txt)
@@ -278,6 +228,8 @@ Execution halted
 [SKIPPED] - ./FigureYa319ContribScore/FigureYa319ContribScore.Rmd (Not listed in to_Knit.txt)
 [FAILED] - ./FigureYa228linkCor/FigureYa228linkCor.Rmd
 --- Error Log for ./FigureYa228linkCor/FigureYa228linkCor.Rmd ---
+** using staged installation
+** R
 ** byte-compile and prepare package for lazy loading
 ** help
 *** installing help indices
@@ -287,16 +239,14 @@ Execution halted
 ** testing if installed package can be loaded from final location
 ** testing if installed package keeps a record of temporary installation path
 * DONE (ggcor)
-Error in `fread()`:
-! input= must be a single character string containing a file name, a system command containing at least one space, a URL starting 'http[s]://', 'ftp[s]://' or 'file://', or, the input data itself containing at least one \n or \r
+Error:
+! unable to find an inherited method for function 'gsva' for signature 'param = "list"'
 Backtrace:
     ▆
- 1. ├─base::as.data.frame(...)
- 2. └─data.table::fread(unzipped_file, sep = "\t", header = TRUE, check.names = FALSE)
- 3.   └─data.table:::stopf("input= must be a single character string containing a file name, a system command containing at least one space, a URL starting 'http[s]://', 'ftp[s]://' or 'file://', or, the input data itself containing at least one \\n or \\r")
- 4.     └─data.table:::raise_condition(...)
+ 1. └─GSVA::gsva(...)
+ 2.   └─methods (local) `<fn>`(`<list>`, `<stndrdGn>`, `<env>`)
 
-Quitting from FigureYa228linkCor.Rmd:98-129 [unnamed-chunk-3]
+Quitting from FigureYa228linkCor.Rmd:139-153 [unnamed-chunk-4]
 Execution halted
 -----------------------------------
 [SKIPPED] - ./FigureYa35batch_bestSeparationV3_update/FigureYa35batch_bestSeparationV3_update.Rmd (Not listed in to_Knit.txt)
@@ -337,7 +287,7 @@ Execution halted
 [SKIPPED] - ./FigureYa303panCircos/FigureYa303panCircos.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa16fitting/FigureYa16WGCNA_fitting.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa217RMR/FigureYa217RMR.Rmd (Not listed in to_Knit.txt)
-[SKIPPED] - ./FigureYa141risk/FigureYa141risk.Rmd (Not listed in to_Knit.txt)
+[SUCCESS] - ./FigureYa141risk/FigureYa141risk.Rmd
 [SKIPPED] - ./FigureYa63pubmedMiningV2/FigureYa63pubmedMiningV2.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa27tSNE_update/FIgureYa27tSNE_update.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa294HCCdrug/FigureYa294HCCdrug.Rmd (Not listed in to_Knit.txt)
@@ -401,21 +351,16 @@ Execution halted
 [SKIPPED] - ./FigureYa67phastCons/FigureYa67phastCons.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa110mutationSignature/FigureYa110mutationSignature.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa113MutSigCV/FigureYa113MutSigCV.Rmd (Not listed in to_Knit.txt)
-[SKIPPED] - ./FigureYa193RiskTable/FigureYa193RiskTable.Rmd (Not listed in to_Knit.txt)
-[FAILED] - ./FigureYa199crosslink/FigureYa199crosslink.Rmd
---- Error Log for ./FigureYa199crosslink/FigureYa199crosslink.Rmd ---
-Error in `data.frame(x = colSums(sapply(edges$source, function(x) mapply(function(l, r)
-    l %in% r, x, columns)) * column_x), y = edges$source_coord, xend = colSums(
-    sapply(edges$target, function(x) mapply(function(l, r) l %in% r, x, columns)) *
-      column_x), yend = edges$target_coord) %>% na.omit()`:
-! could not find function "%>%"
-Backtrace:
-    ▆
- 1. └─global columnCross2(...)
+[FAILED] - ./FigureYa193RiskTable/FigureYa193RiskTable.Rmd
+--- Error Log for ./FigureYa193RiskTable/FigureYa193RiskTable.Rmd ---
+Error:
+! 没有基因成功完成Cox分析，请检查数据质量
+No genes successfully completed Cox analysis, please check data quality
 
-Quitting from FigureYa199crosslink.Rmd:128-147 [unnamed-chunk-3]
+Quitting from FigureYa193RiskTable.Rmd:115-248 [unnamed-chunk-4]
 Execution halted
 -----------------------------------
+[SUCCESS] - ./FigureYa199crosslink/FigureYa199crosslink.Rmd
 [SKIPPED] - ./FigureYa161stemness/FigureYa161stemness.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa240CRISPR/FigureYa240CRISPR.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa136fgsea/FigureYa136fgsea.Rmd (Not listed in to_Knit.txt)
