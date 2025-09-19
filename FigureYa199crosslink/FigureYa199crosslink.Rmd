@@ -66,6 +66,7 @@ source("transfromation.R") # From R package crosslink
 source("utils.R") # From R package crosslink
 source("crossplot.R") # From R package crosslink
 
+library(dplyr)
 library(ggplot2)
 library(scales)
 Sys.setenv(LANGUAGE = "en") #显示英文报错信息 # error messages are displayed in English
