@@ -2,6 +2,13 @@ FigureYa257armCNV
 FigureYa257armCNV
 Xiaofan Lu
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
 比较Im-H和Im-L两个组臂级扩增和缺失频率和焦点级扩增和缺失水平，画出图4B的最后两个图。示例数据随便就行。
 Requirement Description
@@ -32,28 +39,21 @@ levels
 between Im-H and Im-L melanomas.
 应用场景
 循环计算不同组别的扩增和缺失比例，对臂水平扩增和缺失做检验，并绘图。
-更多基因组相关FigureYa看这里
-https://k.youshop10.com/gZBI0YzR
 另外，Figure
 5E、7D、9这种分布图的画法可参考FigureYa227boxdensity。
 Application Scenarios
 The amplification and deletion ratios of different groups were
 calculated in cycles, and the horizontal amplification and deletion of
 the arm were tested and plotted.
-For more genome-related FigureYa see here
-https://k.youshop10.com/gZBI0YzR
 In addition, for the distribution chart of Figure 5E, 7D, and 9,
 please refer to FigureYa227boxdensity.
 环境设置
-使用国内镜像安装包
 Environment settings
-Use the domestic mirror installation package
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
-加载包 load packages
+source("install_dependencies.R")
 library(ggplot2)
 library(patchwork)
 library(data.table)
+
 Sys.setenv(LANGUAGE = "en") #显示英文报错信息 # error messages are displayed in English
 options(stringsAsFactors = FALSE) #禁止chr转成factor # chr is not allowed to be converted to factor
 输入文件
@@ -144,9 +144,10 @@ write.table(outTab.arm, file = "output_percentage and fisher test of cnv in two 
 先绘制下面的缺失部分
 Plot a histogram with ggplot2
 Draw the missing parts below first
+# 使用 reshape2::melt() 来明确指定使用 reshape2 包中的 melt 函数
 wide <- outTab.arm[,1:4]
-df <- as.data.frame(melt(wide, measure.vars = c("loss.C1", "loss.C2")))
-df$variable <- gsub("loss.","",df$variable,fixed = T)
+df <- as.data.frame(reshape2::melt(wide, measure.vars = c("loss.C1", "loss.C2")))
+df$variable <- gsub("loss.","",df$variable,fixed = TRUE)
 df$arm <- factor(df$arm, levels = c("1p","1q","2p","2q","3p","3q","4p","4q","5p","5q","6p","6q","7p","7q","8p","8q","9p","9q","10p","10q","11p","11q","12p","12q","13p","13q","14p","14q","15p","15q","16p","16q","17p","17q","18p","18q","19p","19q","20p","20q","21p","21q","22p","22q"))
 
 p_bot <- ggplot(df, aes(arm, value)) +   
@@ -176,7 +177,7 @@ p_bot <- ggplot(df, aes(arm, value)) +
 p_bot
 然后绘制上面的扩增部分 Then plot the amplification section above
 wide <- outTab.arm[,c(1,5:7)]
-df <- as.data.frame(melt(wide, measure.vars = c("amp.C1", "amp.C2")))
+df <- as.data.frame(reshape2::melt(wide, measure.vars = c("amp.C1", "amp.C2")))
 df$variable <- gsub("amp.","",df$variable,fixed = T)
 df$arm <- factor(df$arm, levels = c("1p","1q","2p","2q","3p","3q","4p","4q","5p","5q","6p","6q","7p","7q","8p","8q","9p","9q","10p","10q","11p","11q","12p","12q","13p","13q","14p","14q","15p","15q","16p","16q","17p","17q","18p","18q","19p","19q","20p","20q","21p","21q","22p","22q"))
 
