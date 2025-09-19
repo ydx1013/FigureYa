@@ -5,7 +5,14 @@ Author(s)
 Reviewer(s)
 : Ying Ge
 Date
-: 2025-05-20
+: 2025-9-17
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
 Demand description
 软组织肉瘤（STSs）
@@ -29,25 +36,17 @@ values.
 应用场景
 Application scenarios
 用MCPcounter计算免疫富集得分，根据MCPcounter结果进行分型。
-我们曾众筹过FigureYa56immune_inflitration，也是用TCGA的表达数据计算免疫浸润，并画热图。我们这次画的图信息更丰富。
+我们曾实现过FigureYa56immune_inflitration，也是用TCGA的表达数据计算免疫浸润，并画热图。我们这次画的图信息更丰富。
 The immune enrichment scores were calculated using MCP-counter, and
 subtyping was performed based on the MCP-counter results.
-We previously conducted a crowdfunding project
-(FigureYa56immune_infiltration), which also used TCGA expression data to
-compute immune infiltration and generate heatmaps. However, the current
-visualization provides more comprehensive analytical dimensions.
+We previously conducted FigureYa56immune_infiltration, which also
+used TCGA expression data to compute immune infiltration and generate
+heatmaps. However, the current visualization provides more comprehensive
+analytical dimensions.
 环境设置
 Environment Setup
-使用国内镜像安装包。
-Using domestic mirrors for package installation.
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
-install.packages("devtools")
-library(devtools)
-install_github("ebecht/MCPcounter",ref="master", subdir="Source")
-加载包
-Loading packages
-library(MCPcounter)
+source("install_dependencies.R")
+source("MCPcounter.R") # From MCPcounter
 library(GSVA)
 library(ComplexHeatmap)
 library(ClassDiscovery)
@@ -364,8 +363,5 @@ draw(hm1 %v% hm2 %v% hm3,
      heatmap_legend_side = "left", 
      annotation_legend_side = "left")
 invisible(dev.off())
-会话信息
 Session Info
-# 显示会话信息
-# Show session information
 sessionInfo()
