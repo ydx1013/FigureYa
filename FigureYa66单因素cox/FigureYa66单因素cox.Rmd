@@ -2,7 +2,7 @@
 title: "FigureYa66单因素cox"
 author: "Yin Li, Taojun Ye"
 reviewer: "Ying Ge"
-date: "2025-5-20"
+date: "2025-9-19"
 output:
   pdf_document: default
   html_document: default
@@ -65,10 +65,10 @@ Cox analysis can be used for transcriptome, methylation, miRNA, LncRNA, variable
 
 ```{r, message=FALSE}
 source("install_dependencies.R")
+source("ggscatterstats.R") # from ggstatsplot package https://github.com/IndrajeetPatil/ggstatsplot
 
 library(tidyverse)
 library(ggplot2)
-library(ggstatsplot)
 library(survival)
 library(stringr)
 library(viridis)
