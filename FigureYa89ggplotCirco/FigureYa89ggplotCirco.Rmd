@@ -332,35 +332,43 @@ p4
 ```{r}
 # 在原有图形(p4)基础上添加各数据层的文本标签
 # Add text labels for each data layer to the existing plot (p4)
+
+# First, ensure 'h' is properly defined (this should be defined earlier in your code)
+# If not, you'll need to calculate or define an appropriate value for h
+# h <- [appropriate value based on your data]
+
 p5 <- p4 + 
   # 添加GBM TCGA层标签
   # Label for GBM TCGA layer
-  geom_text(x = -2.1, y = h + 4.5, label = "GBM TCGA", size = 3, color = "black") + 
+  geom_text(aes(x = -2.1, y = h + 4.5, label = "GBM TCGA"), 
+            size = 3, color = "black", inherit.aes = FALSE) + 
   
   # 添加GSCs层标签
   # Label for GSCs layer
-  geom_text(x = -1.1, y = h + 2.5, label = "GSCs", size = 3, color = "black") + 
+  geom_text(aes(x = -1.1, y = h + 2.5, label = "GSCs"), 
+            size = 3, color = "black", inherit.aes = FALSE) + 
   
   # 添加Survival Reduction层标签（支持换行）
   # Label for Survival Reduction layer (with line break)
-  geom_text(x = -1.8, y = h + .5, label = "Survival\nReduction", size = 2.5, color = "black") + 
+  geom_text(aes(x = -1.8, y = h + 0.5, label = "Survival\nReduction"), 
+            size = 2.5, color = "black", inherit.aes = FALSE) + 
   
   # 添加Log2FC坐标轴标签（旋转90度）
   # Label for Log2FC axis (rotated 90 degrees)
-  geom_text(x = -2.1, y = h - 2.4, 
-            label = expression('Log'[2]*'FC'),  
-            angle = 90, size = 2.2, color = "black") + 
+  geom_text(aes(x = -2.1, y = h - 2.4, label = "Log[2]~FC"), 
+            angle = 90, size = 2.2, color = "black", parse = TRUE, inherit.aes = FALSE) + 
   
   # 添加p-value热图层标签（旋转90度）
   # Label for p-value heatmap (rotated 90 degrees)
-  geom_text(x = -3.3, y = h - 5, label = "p-value", 
-            angle = 90, size = 1.5, color = "black") + 
+  geom_text(aes(x = -3.3, y = h - 5, label = "p-value"), 
+            angle = 90, size = 1.5, color = "black", inherit.aes = FALSE) + 
   
   # 添加中心标题（支持换行）
   # Add center title (with line break)
-  geom_text(x = 0, y = -5, label = "Upregulated\nRBPs", size = 2.5, color = "black")
+  geom_text(aes(x = 0, y = -5, label = "Upregulated\nRBPs"), 
+            size = 2.5, color = "black", inherit.aes = FALSE)
 
-p5  \
+p5
 ```
 
 ### 画P value的图例 
