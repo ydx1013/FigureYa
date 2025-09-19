@@ -3,7 +3,7 @@ title: "FigureYa295ClassDiscovery"
 params:
   author: "Xiaofan Lu; Yasi Zhang"  
   reviewer: "Ying Ge"
-  date: "2025-05-20"
+  date: "2025-9-19"
 output: html_document
 ---
 
@@ -53,12 +53,9 @@ It's somewhat like consensus clustering, just overly complex. The algorithmic wo
 # 环境设置
 # Requirements Description
 
-运行classpredict包，建议使用**Windows系统**。其他系统上可以用替代方案。
-
-To run the classpredict package, **Windows OS** is recommended. Other systems are available with Plan B.
-
 ```{r}
 source("install_dependencies.R")
+source("classPredict.R") # from classpredict package, an R version of BRB ArrayTools software
 
 library(cluster)
 library(phangorn) 
@@ -66,11 +63,6 @@ library(ape)
 library(reshape2)
 library(ComplexHeatmap)
 library(limma)
-
-# BRB ArrayTools 软件的R语言版本
-# an R version of BRB ArrayTools software, requires Windows system
-library(classpredict)
-source("classPredict.R") # shell to system
 
 # 显示英文报错信息
 # Show English error messages
