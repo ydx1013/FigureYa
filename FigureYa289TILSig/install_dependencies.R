@@ -27,18 +27,14 @@ install_cran_package <- function(package_name) {
 }
 
 # Function to install Bioconductor packages
-install_bioc_package <- function(package_name, version = NULL) {
+install_bioc_package <- function(package_name) {
   if (!is_package_installed(package_name)) {
     cat("Installing Bioconductor package:", package_name, "\n")
     tryCatch({
       if (!is_package_installed("BiocManager")) {
         install.packages("BiocManager")
       }
-      if (is.null(version)) {
-        BiocManager::install(package_name, update = FALSE, ask = FALSE)
-      } else {
-        BiocManager::install(paste0(package_name, "@", version), update = FALSE, ask = FALSE)
-      }
+      BiocManager::install(package_name, update = FALSE, ask = FALSE)
       cat("Successfully installed:", package_name, "\n")
     }, error = function(e) {
       cat("Failed to install", package_name, ":", e$message, "\n")
@@ -48,97 +44,64 @@ install_bioc_package <- function(package_name, version = NULL) {
   }
 }
 
-# Function to install package from local source
-install_local_package <- function(package_path) {
-  cat("Installing package from local source:", package_path, "\n")
+# Function to install package from local tar.gz file
+install_local_tar_gz <- function(package_path) {
+  cat("Installing package from local tar.gz file:", package_path, "\n")
   tryCatch({
     install.packages(package_path, repos = NULL, type = "source")
-    cat("Successfully installed package from local source\n")
+    cat("Successfully installed package from local file\n")
   }, error = function(e) {
-    cat("Failed to install from local source:", e$message, "\n")
+    cat("Failed to install from local file:", e$message, "\n")
   })
-}
-
-# Function to install remotes package
-install_remotes_package <- function() {
-  if (!is_package_installed("remotes")) {
-    install_cran_package("remotes")
-  }
 }
 
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
-# Install remotes first
-install_remotes_package()
+# First install DealGPL570 from local tar.gz file
+cat("\nInstalling DealGPL570 from local file...\n")
+deal_gpl570_file <- "DealGPL570_0.0.1.tar.gz"
+
+if (file.exists(deal_gpl570_file)) {
+  install_local_tar_gz(deal_gpl570_file)
+} else {
+  cat("❌ Local file not found:", deal_gpl570_file, "\n")
+  cat("Please make sure DealGPL570_0.0.1.tar.gz is in the current directory\n")
+}
+
+# Install BiocManager if not present
+if (!is_package_installed("BiocManager")) {
+  install.packages("BiocManager")
+}
 
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("dplyr", "stringr", "survival", "sva", "tibble", "tidyverse")
+cran_packages <- c("dplyr", "stringr", "survival", "tibble", "tidyverse")
 
 for (pkg in cran_packages) {
   install_cran_package(pkg)
 }
 
-# First install an older version of GEOquery that has gunzip function
-cat("\nInstalling older version of GEOquery...\n")
-tryCatch({
-  if (!is_package_installed("GEOquery")) {
-    remotes::install_version("GEOquery", version = "2.58.0")  # Choose an older version
-  }
-}, error = function(e) {
-  cat("Failed to install older GEOquery:", e$message, "\n")
-})
-
-# Installing other Bioconductor packages
-cat("\nInstalling other Bioconductor packages...\n")
-bioc_packages <- c("GenomicFeatures", "limma", "rtracklayer", "affy")
+# Installing Bioconductor packages
+cat("\nInstalling Bioconductor packages...\n")
+bioc_packages <- c("GEOquery", "limma", "sva", "affy")
 
 for (pkg in bioc_packages) {
   install_bioc_package(pkg)
-}
-
-# Install DealGPL570 from local source
-cat("\nInstalling DealGPL570 from local source...\n")
-deal_gpl570_path <- "DealGPL570_0.0.1.tar.gz"  # Local file in current directory
-
-# Check if local file exists
-if (file.exists(deal_gpl570_path)) {
-  install_local_package(deal_gpl570_path)
-} else {
-  cat("Local DealGPL570 package not found:", deal_gpl570_path, "\n")
-  cat("Please make sure DealGPL570_0.0.1.tar.gz is in the current directory\n")
-}
-
-# If DealGPL570 installation fails, provide alternative solutions
-if (!is_package_installed("DealGPL570")) {
-  cat("\nDealGPL570 installation failed. Trying alternative approaches...\n")
-  
-  # Alternative 1: Try to install from CRAN archive
-  cat("Trying to install from CRAN archive...\n")
-  tryCatch({
-    install.packages("https://cran.r-project.org/src/contrib/Archive/DealGPL570/DealGPL570_0.0.1.tar.gz", 
-                    repos = NULL, type = "source")
-  }, error = function(e) {
-    cat("CRAN archive installation also failed:", e$message, "\n")
-  })
-  
-  # Alternative 2: Manual data processing approach
-  if (!is_package_installed("DealGPL570")) {
-    cat("\nManual alternative: You may need to process GPL570 data manually\n")
-    cat("or use alternative packages for microarray data processing.\n")
-  }
 }
 
 cat("\n===========================================\n")
 cat("Package installation completed!\n")
 
 # Final verification
-if (is_package_installed("DealGPL570")) {
-  cat("✅ DealGPL570 successfully installed!\n")
-} else {
-  cat("❌ DealGPL570 installation failed\n")
-  cat("You may need to manually install it or use alternative methods\n")
+cat("\nVerifying installation...\n")
+required_packages <- c("DealGPL570", "GEOquery", "limma", "sva")
+for (pkg in required_packages) {
+  if (is_package_installed(pkg)) {
+    cat("✅", pkg, "installed successfully\n")
+  } else {
+    cat("❌", pkg, "installation failed\n")
+  }
 }
 
 cat("You can now run your R scripts in this directory.\n")
