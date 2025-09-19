@@ -80,6 +80,7 @@ library(magrittr)
 library(tidyverse)
 library(ggplot2)
 library(rlang)
+library(patchwork)
 
 # 显示英文报错信息
 # Show English error messages
