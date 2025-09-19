@@ -3,8 +3,15 @@ FigureYa55panCancer_violinV2
 Yi Xiong, Zhougeng Xu, Ying Ge; Ying Ge, Yijing
 Chen
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
-requirement description
+Requirement description
 TCGA里的正常组织太少，把GTEx的正常组织加进去，用分裂小提琴图展示某个基因在TCGA肿瘤和正常组织中的表达差异。
 There is too little normal tissue in TCGA, add normal tissue from
 GTEx and use split violin plots to show the difference in expression of
@@ -18,7 +25,7 @@ https://www.sciencedirect.com/science/article/pii/S0896627318308481
 ,
 Supplemental material, Figure 3b
 应用场景
-application scenario
+Application scenario
 适用于：
 对比某一基因在TCGA肿瘤组织和正常组织(TCGA的normal和GTEx)基因表达量TPM值
 用分裂小提琴图展示表达量数据
@@ -27,23 +34,8 @@ compare gene expression TPM values for a gene in TCGA tumor
 tissue and normal tissue (TCGA’s normal and GTEx)
 Display expression data using split violin plots
 环境设置
-environment setting
-安装需要用到的包
-Install the required packages
-#使用国内镜像安装包
-#use the domestic mirror installation package
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
-if (!requireNamespace("BiocManager", quietly = TRUE))
-    install.packages("BiocManager")
-BiocManager::install("TCGAbiolinks", version = "3.8")
-
-install.packages("stringr")
-install.packages("dplyr")
-install.packages("ggplot2")
-install.packages("RColorBrewer")
-加载需要用到的包
-Load the required packages
+Environment setting
+source("install_dependencies.R")
 library(stringr)
 library(dplyr)
 library(ggplot2)
@@ -52,7 +44,7 @@ source("read_part.R") # autor: 徐洲更 autor: Zhougeng Xu
 Sys.setenv(LANGUAGE = "en") #显示英文报错信息 display English error messages
 options(stringsAsFactors = FALSE) #禁止chr转成factor prohibit the conversion of chr to factor
 参数设置
-parameter setting
+Parameter setting
 targetGene <- "TP53" # 想要画的目标基因 target gene you want to draw
 输入文件下载
 Input file download
@@ -326,4 +318,5 @@ p + geom_split_violin(data = tcga_gtex_MESO,
                     position ="identity") +
   scale_x_discrete(limits = levels(tcga_gtex$tissue))
 ggsave(paste0(targetGene, "expression.pdf"),width = 20, height = 6)
+Session Info
 sessionInfo()
