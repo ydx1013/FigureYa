@@ -4,7 +4,6 @@
 
 # Set up mirrors for better download performance
 options("repos" = c(CRAN = "https://cloud.r-project.org/"))
-options(BioC_mirror = "https://bioconductor.org/")
 
 # Function to check if a package is installed
 is_package_installed <- function(package_name) {
@@ -26,45 +25,19 @@ install_cran_package <- function(package_name) {
   }
 }
 
-# Function to install GitHub packages
-install_github_package <- function(repo) {
-  package_name <- basename(repo)
-  if (!is_package_installed(package_name)) {
-    cat("Installing GitHub package:", repo, "\n")
-    tryCatch({
-      if (!is_package_installed("remotes")) {
-        install.packages("remotes", quiet = TRUE)
-      }
-      remotes::install_github(repo, quiet = TRUE)
-      cat("✓ Successfully installed:", package_name, "\n")
-    }, error = function(e) {
-      cat("✗ Failed to install", package_name, ":", e$message, "\n")
-    })
-  } else {
-    cat("✓ Package already installed:", package_name, "\n")
-  }
-}
-
 cat("Starting R package installation for ternary plots...\n")
 cat("===========================================\n")
 
-# 安装基础工具
-if (!is_package_installed("remotes")) {
-  install.packages("remotes", quiet = TRUE)
-}
+# 安装所有CRAN包（包括ggtern）
+cat("\nInstalling CRAN packages...\n")
+cran_packages <- c(
+  "directlabels", "ggplot2", "proto", "scales", "tidyverse", 
+  "dplyr", "grid", "gtable", "plyr", "MASS", "compositions", "ggtern"
+)
 
-# 安装其他CRAN包
-cat("\nInstalling other CRAN packages...\n")
-other_packages <- c("directlabels", "ggplot2", "proto", "scales", "tidyverse", 
-                   "dplyr", "grid", "gtable", "plyr", "MASS", "compositions")
-
-for (pkg in other_packages) {
+for (pkg in cran_packages) {
   install_cran_package(pkg)
 }
-
-# 安装ggtern - 从GitHub安装
-cat("\nInstalling ggtern from GitHub...\n")
-install_github_package("nicholasehamilton/ggtern")
 
 # 验证安装
 cat("\n===========================================\n")
@@ -93,10 +66,10 @@ if (success_count == length(required_packages)) {
   
   # 提供备选方案
   if (!is_package_installed("ggtern")) {
-    cat("\nAlternative ternary plot packages:\n")
-    cat("1. Try: install.packages('Ternary') - for base R ternary plots\n")
-    cat("2. Try: install.packages('plotly') - for interactive ternary plots\n")
-    cat("3. Manual ggtern install: remotes::install_github('nicholasehamilton/ggtern')\n")
+    cat("\nAlternative installation methods for ggtern:\n")
+    cat("1. Try: install.packages('ggtern')\n")
+    cat("2. Check CRAN availability: https://cran.r-project.org/package=ggtern\n")
+    cat("3. Alternative ternary plot package: install.packages('Ternary')\n")
   }
 }
 
@@ -117,3 +90,5 @@ if (is_package_installed("ggtern")) {
     cat("✗ ggtern functionality test failed:", e$message, "\n")
   })
 }
+
+cat("\nInstallation completed! You can now use ggtern from CRAN.\n")
