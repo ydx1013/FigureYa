@@ -75,9 +75,10 @@ library(stringr)
 # 因子处理包
 # Factor processing package
 library(forcats)
-# 突变特征分析包
-# Mutation signature analysis package
-library(deconstructSigs)
+# 突变特征分析包deconstructSigs里的函数
+# Functions from Mutation signature analysis package deconstructSigs
+source("mut.to.sigs.input.R")
+source("whichSignatures")
 # 人类基因组参考包（hg19）
 # Human genome reference package (hg19)
 library(BSgenome.Hsapiens.UCSC.hg19)
