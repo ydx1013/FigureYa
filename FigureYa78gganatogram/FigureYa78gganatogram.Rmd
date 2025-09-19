@@ -45,9 +45,7 @@ Reply to "organ" on Xiaoya Pictorial official account for more information.
 
 ```{r}
 source("install_dependencies.R")
-
-# 加载gganatogram包，用于绘制器官图 | Load the gganatogram package for plotting anatomical diagrams
-library(gganatogram)
+source("gganatogram.R") # from gganatogram package, https://github.com/jespermaag/gganatogram
 
 # 加载stringr包，提供字符串处理函数 | Load the stringr package for string manipulation functions
 library(stringr)
