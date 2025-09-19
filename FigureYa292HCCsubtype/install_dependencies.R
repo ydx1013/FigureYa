@@ -52,40 +52,69 @@ install_bioc_package <- function(package_name) {
 install_cmscaller_alternative <- function() {
   cat("尝试替代方法安装 CMScaller...\n")
   
-  # 方法1: 从 GitHub 安装
+  # 方法1: 从正确的 GitHub 仓库安装
   tryCatch({
     if (!is_package_installed("remotes")) {
       install.packages("remotes")
     }
-    remotes::install_github("peterawe/CMScaller")
-    cat("成功从 GitHub 安装 CMScaller\n")
-    return(TRUE)
+    cat("尝试从 GitHub 安装 CMScaller: Lothelab/CMScaller\n")
+    remotes::install_github("Lothelab/CMScaller")
+    if (is_package_installed("CMScaller")) {
+      cat("成功从 GitHub 安装 CMScaller\n")
+      return(TRUE)
+    }
   }, error = function(e) {
     cat("GitHub 安装失败:", e$message, "\n")
   })
   
-  # 方法2: 安装旧版本
+  # 方法2: 尝试其他可能的 GitHub 仓库
+  tryCatch({
+    cat("尝试从其他 GitHub 仓库安装: peterawe/CMScaller\n")
+    remotes::install_github("peterawe/CMScaller")
+    if (is_package_installed("CMScaller")) {
+      cat("成功从备用 GitHub 仓库安装 CMScaller\n")
+      return(TRUE)
+    }
+  }, error = function(e) {
+    cat("备用 GitHub 仓库安装失败:", e$message, "\n")
+  })
+  
+  # 方法3: 安装旧版本
   tryCatch({
     if (!is_package_installed("BiocManager")) {
       install.packages("BiocManager")
     }
-    BiocManager::install("CMScaller", version = "3.16")  # 尝试旧版本
-    cat("成功安装旧版本 CMScaller\n")
-    return(TRUE)
+    cat("尝试安装旧版本 CMScaller\n")
+    BiocManager::install("CMScaller", version = "3.16", update = FALSE, ask = FALSE)
+    if (is_package_installed("CMScaller")) {
+      cat("成功安装旧版本 CMScaller\n")
+      return(TRUE)
+    }
   }, error = function(e) {
     cat("旧版本安装失败:", e$message, "\n")
   })
   
-  # 方法3: 从源码安装
+  # 方法4: 从源码安装
   tryCatch({
-    install.packages("https://bioconductor.org/packages/release/bioc/src/contrib/CMScaller_1.0.0.tar.gz", 
-                    repos = NULL, type = "source")
-    cat("成功从源码安装 CMScaller\n")
-    return(TRUE)
+    cat("尝试从源码安装 CMScaller\n")
+    # 获取最新版本的下载链接
+    bioc_url <- "https://bioconductor.org/packages/release/bioc/src/contrib/"
+    available_pkgs <- available.packages(repos = bioc_url)
+    
+    if ("CMScaller" %in% rownames(available_pkgs)) {
+      pkg_version <- available_pkgs["CMScaller", "Version"]
+      pkg_url <- paste0(bioc_url, "CMScaller_", pkg_version, ".tar.gz")
+      install.packages(pkg_url, repos = NULL, type = "source")
+      if (is_package_installed("CMScaller")) {
+        cat("成功从源码安装 CMScaller\n")
+        return(TRUE)
+      }
+    }
   }, error = function(e) {
     cat("源码安装失败:", e$message, "\n")
   })
   
+  cat("所有安装方法都失败了\n")
   return(FALSE)
 }
 
@@ -108,9 +137,14 @@ if (!is_package_installed("remotes")) {
   install_cran_package("remotes")
 }
 
+# 安装 devtools（用于 GitHub 安装）
+if (!is_package_installed("devtools")) {
+  install_cran_package("devtools")
+}
+
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("ClassDiscovery", "gplots", "tidyverse", "devtools")
+cran_packages <- c("ClassDiscovery", "gplots", "tidyverse")
 
 for (pkg in cran_packages) {
   install_cran_package(pkg)
@@ -137,9 +171,10 @@ for (pkg in bioc_packages) {
 if (!is_package_installed("CMScaller")) {
   cat("\n警告：CMScaller 安装失败\n")
   cat("可以尝试以下替代方案:\n")
-  cat("1. 手动实现 CMS 分类算法\n")
-  cat("2. 使用其他分型工具\n")
-  cat("3. 联系包作者或查看最新安装说明\n")
+  cat("1. 手动从 GitHub 安装: devtools::install_github('Lothelab/CMScaller')\n")
+  cat("2. 手动实现 CMS 分类算法\n")
+  cat("3. 使用其他分型工具\n")
+  cat("4. 联系包作者或查看最新安装说明\n")
 }
 
 cat("\n===========================================\n")
