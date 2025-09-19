@@ -61,6 +61,7 @@ source("crossplot.R") # From R package crosslink
 library(ggplot2)
 library(aplot)
 library(dplyr)
+library(scales)
 
 Sys.setenv(LANGUAGE = "en") #显示英文报错信息
 options(stringsAsFactors = FALSE) #禁止chr转成factor
