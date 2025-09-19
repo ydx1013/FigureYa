@@ -1,6 +1,3 @@
-FigureYa64triangle
-FigureYa63pubmedMiningV2
-FigureYa52GOplot
-FigureYa28color
+FigureYa92immune_gene_update
 FigureYa66单因素cox
-FigureYa78gganatogram
+FigureYa295ClassDiscovery
