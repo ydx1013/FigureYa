@@ -44,7 +44,7 @@ Take a look at the <https://mp.weixin.qq.com/s/kNHM5teMRtL2dSZXzm4m8w> here to t
 
 ```{r}
 source("install_dependencies.R")
-source("geom_convexhull") # from ggConvexHull package
+source("geom_convexhull.R") # from ggConvexHull package
 library(tidyverse)
 library(factoextra)
 Sys.setenv(LANGUAGE = "en") #显示英文报错信息 # error messages are displayed in English
