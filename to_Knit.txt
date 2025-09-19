@@ -10,7 +10,8 @@ FigureYa228linkCor
 FigureYa86SNPmotif
 FigureYa160scGSVA
 FigureYa80GOclustering
-FigureYa197SmoothHaz FigureYa38PCA
+FigureYa197SmoothHaz
+FigureYa38PCA
 FigureYa257armCNV
 FigureYa61GSVA
 FigureYa88DAVIDkappa
