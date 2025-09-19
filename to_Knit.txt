@@ -1,7 +1,9 @@
-FigureYa193RiskTable
-FigureYa141risk
-FigureYa302NTPPAM
+FigureYa209batchEnrich
+FigureYa110mutationSignature
 FigureYa259circLink
 FigureYa256panelLink
-FigureYa199crosslink
+FigureYa302NTPPAM
+FigureYa86SNPmotif
+FigureYa140mosaicpie
+FigureYa244PCAPlot
 FigureYa228linkCor
