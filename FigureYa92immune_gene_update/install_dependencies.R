@@ -1,6 +1,5 @@
 #!/usr/bin/env Rscript
-# R Package Installation Script for ggstatsplot and dependencies
-# Special handling for PMCMRplus which is not on CRAN
+# R Package Installation Script for essential data processing and visualization packages
 
 # Set up repositories
 options(repos = c(CRAN = "https://cloud.r-project.org/"))
@@ -11,10 +10,10 @@ is_installed <- function(pkg) {
 }
 
 # Function to install with error handling
-safe_install <- function(install_func, pkg, type = "CRAN") {
-  cat("Installing", type, "package:", pkg, "\n")
+safe_install <- function(pkg) {
+  cat("Installing package:", pkg, "\n")
   tryCatch({
-    install_func(pkg)
+    install.packages(pkg, quiet = TRUE)
     if (is_installed(pkg)) {
       cat("✓ Successfully installed:", pkg, "\n")
       return(TRUE)
@@ -31,148 +30,45 @@ safe_install <- function(install_func, pkg, type = "CRAN") {
 cat("Starting installation of required packages...\n")
 cat("=============================================\n")
 
-# Install remotes for GitHub installations
-if (!is_installed("remotes")) {
-  install.packages("remotes", quiet = TRUE)
-}
-
-# Install system dependencies first (for PMCMRplus)
-cat("\n1. Installing system dependencies...\n")
-try({
-  if (Sys.info()["sysname"] == "Linux") {
-    system_deps <- c(
-      "gfortran",
-      "g++",
-      "libblas-dev",
-      "liblapack-dev"
-    )
-    system(paste("sudo apt-get update && sudo apt-get install -y", 
-                paste(system_deps, collapse = " ")))
-  }
-}, silent = TRUE)
-
-# Install basic dependencies
-cat("\n2. Installing basic dependencies...\n")
-basic_packages <- c(
-  "dplyr",
-  "ggplot2",
-  "tidyr",
-  "purrr",
-  "rlang",
-  "vctrs",
-  "Matrix"
+# Install core packages
+cat("\n1. Installing core data processing and visualization packages...\n")
+core_packages <- c(
+  "data.table",   # 高性能数据处理
+  "dplyr",        # 数据操作工具
+  "tidyr",        # 数据整理工具
+  "ggplot2"       # 强大的绘图系统
 )
 
-for (pkg in basic_packages) {
+# Install each package
+for (pkg in core_packages) {
   if (!is_installed(pkg)) {
-    install.packages(pkg, quiet = TRUE)
+    safe_install(pkg)
+  } else {
+    cat("✓", pkg, "is already installed\n")
   }
 }
 
-# Install PMCMRplus from GitHub (the problematic dependency)
-cat("\n3. Installing PMCMRplus from GitHub...\n")
-if (!is_installed("PMCMRplus")) {
-  tryCatch({
-    # Try installing from GitHub mirror
-    remotes::install_github("cran/PMCMRplus", dependencies = TRUE)
-    cat("✓ PMCMRplus installed from GitHub\n")
-  }, error = function(e) {
-    cat("Failed to install PMCMRplus from GitHub:", e$message, "\n")
-    
-    # Alternative: install from source
-    cat("Trying alternative installation method...\n")
-    try({
-      # Download and install from source
-      temp_file <- tempfile(fileext = ".tar.gz")
-      download.file("https://cran.r-project.org/src/contrib/Archive/PMCMRplus/PMCMRplus_1.9.0.tar.gz", 
-                   temp_file, quiet = TRUE)
-      install.packages(temp_file, repos = NULL, type = "source")
-      unlink(temp_file)
-    }, silent = TRUE)
-  })
-}
-
-# Install statsExpressions dependencies first
-cat("\n4. Installing statsExpressions dependencies...\n")
-statsExpressions_deps <- c(
-  "correlation",
-  "parameters",
-  "effectsize",
-  "insight",
-  "bayestestR",
-  "performance"
-)
-
-for (pkg in statsExpressions_deps) {
-  if (!is_installed(pkg)) {
-    install.packages(pkg, quiet = TRUE)
-  }
-}
-
-# Install statsExpressions
-cat("\n5. Installing statsExpressions...\n")
-if (!is_installed("statsExpressions")) {
-  safe_install(function(pkg) install.packages(pkg), "statsExpressions")
-  
-  # If failed, try from GitHub
-  if (!is_installed("statsExpressions")) {
-    cat("Trying to install statsExpressions from GitHub...\n")
-    try({
-      remotes::install_github("indrajeetpatil/statsExpressions")
-    }, silent = TRUE)
-  }
-}
-
-# Install ggstatsplot dependencies
-cat("\n6. Installing ggstatsplot dependencies...\n")
-ggstatsplot_deps <- c(
-  "ggcorrplot",
-  "ggsignif",
-  "ggside",
-  "ggExtra",
-  "patchwork",
-  "rcompanion"
-)
-
-for (pkg in ggstatsplot_deps) {
-  if (!is_installed(pkg)) {
-    install.packages(pkg, quiet = TRUE)
-  }
-}
-
-# Install ggstatsplot
-cat("\n7. Installing ggstatsplot...\n")
-if (!is_installed("ggstatsplot")) {
-  safe_install(function(pkg) install.packages(pkg), "ggstatsplot")
-  
-  # If failed, try from GitHub
-  if (!is_installed("ggstatsplot")) {
-    cat("Trying to install ggstatsplot from GitHub...\n")
-    try({
-      remotes::install_github("indrajeetpatil/ggstatsplot")
-    }, silent = TRUE)
-  }
-}
-
-# Install additional packages that might be needed
-cat("\n8. Installing additional utility packages...\n")
+# Install additional utility packages that complement the core set
+cat("\n2. Installing additional utility packages...\n")
 utility_packages <- c(
-  "data.table",
-  "readr",
-  "stringr",
-  "forcats",
-  "scales"
+  "purrr",        # 函数式编程工具
+  "readr",        # 数据读取工具
+  "stringr",      # 字符串处理
+  "forcats",      # 因子处理
+  "scales"        # 图形标度调整
 )
 
 for (pkg in utility_packages) {
   if (!is_installed(pkg)) {
-    install.packages(pkg, quiet = TRUE)
+    safe_install(pkg)
+  } else {
+    cat("✓", pkg, "is already installed\n")
   }
 }
 
 # Verify installations
-cat("\n9. Verifying installations...\n")
-required_packages <- c("PMCMRplus", "statsExpressions", "ggstatsplot")
+cat("\n3. Verifying installations...\n")
+required_packages <- c("data.table", "dplyr", "tidyr", "ggplot2")
 
 all_installed <- TRUE
 for (pkg in required_packages) {
@@ -180,42 +76,44 @@ for (pkg in required_packages) {
     cat("✓", pkg, "is installed\n")
   } else {
     cat("✗", pkg, "is NOT installed\n")
-    all_installed <- FALSE
+    all_installed = FALSE
   }
 }
 
 cat("\n=============================================\n")
 if (all_installed) {
   cat("All required packages installed successfully!\n")
-  cat("You can now run your R scripts.\n")
+  cat("You can now run your R scripts with:\n")
+  cat("library(data.table)\n")
+  cat("library(dplyr)\n")
+  cat("library(tidyr)\n")
+  cat("library(ggplot2)\n")
 } else {
   cat("Some packages failed to install. You may need to:\n")
-  cat("1. Install system dependencies manually\n")
-  cat("2. Try manual installation from GitHub\n")
-  cat("3. Use alternative packages if available\n")
+  cat("1. Check your internet connection\n")
+  cat("2. Try manual installation: install.packages('package_name')\n")
 }
 
-# Test loading the critical packages
-cat("\n10. Testing package loading...\n")
+# Test loading the core packages
+cat("\n4. Testing package loading...\n")
 try({
-  library(PMCMRplus)
-  cat("✓ PMCMRplus loaded successfully\n")
+  library(data.table)
+  cat("✓ data.table loaded successfully\n")
 }, silent = TRUE)
 
 try({
-  library(statsExpressions)
-  cat("✓ statsExpressions loaded successfully\n")
+  library(dplyr)
+  cat("✓ dplyr loaded successfully\n")
 }, silent = TRUE)
 
 try({
-  library(ggstatsplot)
-  cat("✓ ggstatsplot loaded successfully\n")
+  library(tidyr)
+  cat("✓ tidyr loaded successfully\n")
 }, silent = TRUE)
 
-# Provide alternative if PMCMRplus fails
-if (!is_installed("PMCMRplus")) {
-  cat("\nNote: PMCMRplus installation failed.\n")
-  cat("You might want to try installing it manually:\n")
-  cat("remotes::install_github('cran/PMCMRplus')\n")
-  cat("Or use alternative non-parametric test functions\n")
-}
+try({
+  library(ggplot2)
+  cat("✓ ggplot2 loaded successfully\n")
+}, silent = TRUE)
+
+cat("\nInstallation completed!\n")
