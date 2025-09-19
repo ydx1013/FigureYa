@@ -6,6 +6,13 @@ Reviewer(s)
 : Ying Ge
 Date
 : 2025-05-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
 Demand description
 FigureS5B是怎么实现的？这个计算公式要如何实现？
@@ -50,10 +57,8 @@ S5C), we confirmed the two potential origins of the LAMP3+ cDCs among
 various cancer types.
 环境设置
 Environment Setup
-使用国内镜像安装包。
 Using domestic mirrors for package installation.
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
+source("install_dependencies.R")
 install.packages("Matrix")
 加载包
 Loading packages
@@ -207,8 +212,5 @@ ggplot(plot.data, aes(x = M04_cDC2_CD1C - M03_cDC1_CLEC9A,
         axis.title = element_text(size = 10),
         axis.text = element_text(size = 10))
 ggsave("ScoreVisual.pdf", width = 6, height = 6)
-会话信息
 Session Info
-# 显示会话信息
-# Show session information
 sessionInfo()
