@@ -6,6 +6,13 @@ Reviewer(s)
 : Ying Ge
 Date
 : 2025-05-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
 Requirements Description
 不同细胞类型间的共享克隆热图。
@@ -30,12 +37,7 @@ and plot a heatmap where color represents the logarithmic value of
 shared clonotypes between cell types.
 环境设置
 Environment Setup
-使用国内镜像安装包。
-Using domestic mirrors for package installation.
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
-加载包
-Loading packages
+source("install_dependencies.R")
 library(openxlsx)
 library(ComplexHeatmap)
 # 显示英文报错信息
@@ -50,9 +52,7 @@ Input Files
 cell.info.txt，应当包含barcode列(barcode)，细胞类型列(celltype)，克隆型列(clonaltype)。
 细胞类型的获得需要识别细胞簇并进行细胞类型注释。由于目前对细胞亚型的注释未有通用工具，且注释结果受个人影响差异较大，因此本部分假设使用者已经完成了细胞分群和细胞注释。
 克隆型可由cellranger
-VDJ分析模块生成，一般储存在*all_contig_annotations.csv中，克隆型根据使用者的偏好也可由其他软件进行再校准，有较高的自由度，因此本部分假设使用者已从cellranger或其他软件中获得克隆型数据。FigureYa177RNAvelocity
-https://k.youshop10.com/RNHFyO4a
-用过cellranger。
+VDJ分析模块生成，一般储存在*all_contig_annotations.csv中，克隆型根据使用者的偏好也可由其他软件进行再校准，有较高的自由度，因此本部分假设使用者已从cellranger或其他软件中获得克隆型数据。
 cell.info.txt should contain barcode column (barcode), cell type
 column (celltype), and clonotype column (clonaltype).
 Obtaining cell types requires identifying cell clusters and
@@ -65,9 +65,6 @@ usually stored in *all_contig_annotations.csv. Clonotypes can also be
 recalibrated using other software according to user preferences,
 offering high flexibility. Therefore, this section assumes that the user
 has obtained clonotype data from cellranger or other software.
-FigureYa177RNAvelocity
-https://k.youshop10.com/RNHFyO4a
-used cellranger.
 # 读取细胞信息文件
 # Read cell information file
 cell.info <- read.table("cell.info.txt", sep = "\t", header = T)
@@ -160,8 +157,5 @@ hm
 pdf(file = "count_heatmap.pdf", width = 8, height = 8)
 draw(hm)
 invisible(dev.off())
-会话信息
 Session Info
-# 显示会话信息
-# Show session information
 sessionInfo()
