@@ -1,6 +1,5 @@
 #!/usr/bin/env Rscript
 # Auto-generated R dependency installation script
-# This script installs required R packages including classpredict
 
 # Set up mirrors for better download performance
 options("repos" = c(CRAN = "https://cloud.r-project.org/"))
@@ -44,38 +43,12 @@ install_bioc_package <- function(package_name) {
   }
 }
 
-# Function to install classpredict from URL
-install_classpredict <- function() {
-  if (!is_package_installed("classpredict")) {
-    cat("Installing classpredict package from URL...\n")
-    
-    # Check if devtools is installed
-    if (!is_package_installed("devtools")) {
-      cat("Installing devtools first...\n")
-      install_cran_package("devtools")
-    }
-    
-    # Install classpredict from URL using devtools
-    tryCatch({
-      devtools::install_url("https://brb.nci.nih.gov/BRB-ArrayTools/RPackagesAndManuals/classpredict_0.2.tar.gz")
-      cat("✓ Successfully installed: classpredict\n")
-      return(TRUE)
-    }, error = function(e) {
-      cat("✗ Failed to install classpredict:", e$message, "\n")
-      return(FALSE)
-    })
-  } else {
-    cat("✓ Package already installed: classpredict\n")
-    return(TRUE)
-  }
-}
-
 cat("Starting package installation...\n")
 cat("===========================================\n")
 
 # 1. 安装CRAN包
 cat("\n1. Installing CRAN packages...\n")
-cran_packages <- c("cluster", "phangorn", "ape", "reshape2", "devtools")
+cran_packages <- c("cluster", "phangorn", "ape", "reshape2")
 for (pkg in cran_packages) {
   install_cran_package(pkg)
 }
@@ -87,13 +60,9 @@ for (pkg in bioc_packages) {
   install_bioc_package(pkg)
 }
 
-# 3. 安装classpredict
-cat("\n3. Installing classpredict from URL...\n")
-classpredict_success <- install_classpredict()
-
 # 验证安装
-cat("\n4. Verifying installation...\n")
-required_packages <- c("cluster", "phangorn", "ape", "reshape2", "ComplexHeatmap", "limma", "classpredict")
+cat("\n3. Verifying installation...\n")
+required_packages <- c("cluster", "phangorn", "ape", "reshape2", "ComplexHeatmap", "limma")
 
 all_installed <- TRUE
 for (pkg in required_packages) {
@@ -106,7 +75,7 @@ for (pkg in required_packages) {
 }
 
 # 测试包加载
-cat("\n5. Testing package loading...\n")
+cat("\n4. Testing package loading...\n")
 test_packages <- function() {
   tryCatch({
     library(cluster)
@@ -149,13 +118,8 @@ test_packages <- function() {
   }, error = function(e) {
     cat("✗ limma loading failed:", e$message, "\n")
   })
-  
-  tryCatch({
-    library(classpredict)
-    cat("✓ classpredict package loaded successfully\n")
-  }, error = function(e) {
-    cat("✗ classpredict loading failed:", e$message, "\n")
-  })
 }
+
+test_packages()
 
 cat("\nInstallation completed!\n")
