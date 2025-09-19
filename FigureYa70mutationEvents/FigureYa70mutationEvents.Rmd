@@ -54,6 +54,8 @@ More ways of displaying correlation by the package corrplot can be found at <htt
 
 ```{r}
 source("install_dependencies.R")
+source("data.R") # from discover package https://ccb.nki.nl/software/discover/
+source("analysis.R") # from discover package https://ccb.nki.nl/software/discover/
 
 # 数据重塑包：用于数据结构转换（宽表/长表）
 # Data reshaping package: for data structure transformation (wide/long format)
@@ -67,10 +69,6 @@ library(RColorBrewer)
 # High-quality graphics package: supports multiple output formats
 library(Cairo)
 
-# 差异分析包：用于发现差异特征
-# Differential analysis package: for discovering differential features
-library(discover)
-
 # 数据读取包：高效读取结构化数据
 # Data reading package: efficient reading of structured data
 library(readr)
@@ -82,6 +80,10 @@ library(corrplot)
 # Excel文件操作包：读写Excel文件
 # Excel file manipulation package: read/write Excel files
 library(openxlsx)
+
+# 加载data.table包用于高效数据处理
+# Load data.table package for efficient data manipulation
+library(data.table)
 
 # 设置系统语言环境为英文（保证报错信息是英文）
 # Set system language to English (to ensure error messages in English)
@@ -107,7 +109,7 @@ target_tumor <- "BRCA"
 
 如果只为画图，就直接进入“开始画图”。
 
-例文没有提供基因层面的突变数据，此处以TCGA的BRCA为例，用DISCOVERY method进行co-occurrence和mutual exclusivity分析。
+例文没有提供基因层面的突变数据，此处以TCGA的BRCA为例，用DISCOVER method进行co-occurrence和mutual exclusivity分析。
 
 # Input file preparation
 
@@ -115,7 +117,7 @@ If your data has been saved as “easy_input_mutation.csv”, you can skip this 
 
 If you only want to draw a picture, you can go directly to “Start Drawing”.
 
-The example paper does not provide mutation data at the gene level, so here we take the BRCA of TCGA as an example, and use the DISCOVERY method to analyze the co-occurrence and mutual exclusivity.
+The example paper does not provide mutation data at the gene level, so here we take the BRCA of TCGA as an example, and use the DISCOVER method to analyze the co-occurrence and mutual exclusivity.
 
 # 基因层面的突变数据下载
 
@@ -143,7 +145,6 @@ TCGA Pan-Cancer (PANCAN) from UCSC xena (39 datasets)<https://xenabrowser.net/da
 
 # 读取突变信息数据（大数据文件，可能需要较长时间）
 # Read mutation information data (large file, may take time)
-# library(readr)  
 mutationinfo <- read_tsv(file = "mc3.v0.2.8.PUBLIC.nonsilentGene.xena")
 mutationinfo[1:5,1:5]  # 预览前5行5列数据 / Preview first 5 rows and columns
 
@@ -214,10 +215,6 @@ head(tcgatable)  # 预览结果 / Preview result
 # Extract mutation data for your cancer of interest
 
 ```{r}
-# 加载data.table包用于高效数据处理
-# Load data.table package for efficient data manipulation
-library(data.table)
-
 # ====================== 筛选目标样本 ======================
 # ====================== Filter Target Samples ======================
 
@@ -310,10 +307,6 @@ Literature to be cited: <https://genomebiology.biomedcentral.com/articles/10.118
 # ====================== 互斥突变分析 ======================
 # ====================== Mutual Exclusivity Analysis ======================
 
-# 加载discover包（用于分析基因突变模式）
-# Load discover package (for analyzing gene mutation patterns)
-library(discover)
-
 # Step1: 构建背景突变模型（计算密集型步骤）
 # Step1: Build background mutation model (computationally intensive)
 events <- discover.matrix(target_mutationinfo)
@@ -400,10 +393,6 @@ Input Data Source: Source Data for Example Fig.
 ```{r}
 # ====================== Excel数据读取与预处理 ======================
 # ====================== Excel Data Import and Preprocessing ======================
-
-# 加载openxlsx包用于处理Excel文件
-# Load openxlsx package for Excel file manipulation
-library(openxlsx)
 
 # 从Excel文件中读取特定工作表的数据
 # Read data from specific sheet in Excel file
