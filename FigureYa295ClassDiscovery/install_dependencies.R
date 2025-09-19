@@ -1,10 +1,9 @@
 #!/usr/bin/env Rscript
 # Auto-generated R dependency installation script
-# This script installs all required R packages for this project
+# This script installs classpredict package from URL
 
 # Set up mirrors for better download performance
 options("repos" = c(CRAN = "https://cloud.r-project.org/"))
-options(BioC_mirror = "https://bioconductor.org/")
 
 # Function to check if a package is installed
 is_package_installed <- function(package_name) {
@@ -16,31 +15,13 @@ install_cran_package <- function(package_name) {
   if (!is_package_installed(package_name)) {
     cat("Installing CRAN package:", package_name, "\n")
     tryCatch({
-      install.packages(package_name, dependencies = TRUE)
-      cat("Successfully installed:", package_name, "\n")
+      install.packages(package_name, dependencies = TRUE, quiet = TRUE)
+      cat("✓ Successfully installed:", package_name, "\n")
     }, error = function(e) {
-      cat("Failed to install", package_name, ":", e$message, "\n")
+      cat("✗ Failed to install", package_name, ":", e$message, "\n")
     })
   } else {
-    cat("Package already installed:", package_name, "\n")
-  }
-}
-
-# Function to install Bioconductor packages
-install_bioc_package <- function(package_name) {
-  if (!is_package_installed(package_name)) {
-    cat("Installing Bioconductor package:", package_name, "\n")
-    tryCatch({
-      if (!is_package_installed("BiocManager")) {
-        install.packages("BiocManager")
-      }
-      BiocManager::install(package_name, update = FALSE, ask = FALSE)
-      cat("Successfully installed:", package_name, "\n")
-    }, error = function(e) {
-      cat("Failed to install", package_name, ":", e$message, "\n")
-    })
-  } else {
-    cat("Package already installed:", package_name, "\n")
+    cat("✓ Package already installed:", package_name, "\n")
   }
 }
 
@@ -52,78 +33,68 @@ install_classpredict <- function() {
     # Check if devtools is installed
     if (!is_package_installed("devtools")) {
       cat("Installing devtools first...\n")
-      install.packages("devtools")
+      install_cran_package("devtools")
     }
     
-    # Install classpredict from URL
+    # Install classpredict from URL using devtools
     tryCatch({
       devtools::install_url("https://brb.nci.nih.gov/BRB-ArrayTools/RPackagesAndManuals/classpredict_0.2.tar.gz")
-      cat("Successfully installed: classpredict\n")
+      cat("✓ Successfully installed: classpredict\n")
       return(TRUE)
     }, error = function(e) {
-      cat("Failed to install classpredict:", e$message, "\n")
-      
-      # Fallback: try alternative installation method
-      cat("Trying alternative installation method...\n")
-      tryCatch({
-        # Download the package file
-        temp_file <- tempfile(fileext = ".tar.gz")
-        download.file("https://brb.nci.nih.gov/BRB-ArrayTools/RPackagesAndManuals/classpredict_0.2.tar.gz", 
-                      temp_file, quiet = TRUE)
-        
-        # Install from local file
-        install.packages(temp_file, repos = NULL, type = "source")
-        cat("Successfully installed: classpredict (alternative method)\n")
-        return(TRUE)
-      }, error = function(e2) {
-        cat("Alternative installation also failed:", e2$message, "\n")
-        return(FALSE)
-      })
+      cat("✗ Failed to install classpredict:", e$message, "\n")
+      return(FALSE)
     })
   } else {
-    cat("Package already installed: classpredict\n")
+    cat("✓ Package already installed: classpredict\n")
     return(TRUE)
   }
 }
 
-cat("Starting R package installation...\n")
+cat("Starting classpredict package installation...\n")
 cat("===========================================\n")
 
-# Installing CRAN packages
-cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("ape", "cluster", "phangorn", "reshape2", "plyr")
+# 首先安装devtools
+cat("\n1. Installing devtools...\n")
+install_cran_package("devtools")
 
-for (pkg in cran_packages) {
-  install_cran_package(pkg)
-}
-
-# Installing Bioconductor packages
-cat("\nInstalling Bioconductor packages...\n")
-bioc_packages <- c("ComplexHeatmap", "ConsensusClusterPlus", "limma")
-
-for (pkg in bioc_packages) {
-  install_bioc_package(pkg)
-}
-
-# Install classpredict from URL
-cat("\nInstalling classpredict package...\n")
+# 安装classpredict
+cat("\n2. Installing classpredict from URL...\n")
 classpredict_success <- install_classpredict()
+
+# 验证安装
+cat("\n3. Verifying installation...\n")
+if (is_package_installed("classpredict")) {
+  cat("✓ classpredict is installed\n")
+} else {
+  cat("✗ classpredict is NOT installed\n")
+}
+
+# 测试包加载
+cat("\n4. Testing package loading...\n")
+tryCatch({
+  library(classpredict)
+  cat("✓ classpredict package loaded successfully\n")
+  
+  # 检查主要函数是否存在
+  if (exists("classpredict") || exists("predict.class")) {
+    cat("✓ Main functions are available\n")
+  }
+}, error = function(e) {
+  cat("✗ classpredict loading failed:", e$message, "\n")
+})
 
 cat("\n===========================================\n")
 if (classpredict_success) {
-  cat("✅ All packages installed successfully!\n")
-  cat("You can now run your R scripts in this directory.\n")
+  cat("✅ classpredict package installed successfully!\n")
+  cat("You can now use classpredict in your R scripts:\n")
+  cat("library(classpredict)\n")
 } else {
-  cat("⚠️  Package installation completed with warnings.\n")
-  cat("classpredict package may not be available.\n")
-  cat("You may need to manually install it or use a Windows system.\n")
+  cat("⚠️  classpredict installation failed. You may need to:\n")
+  cat("1. Check your internet connection\n")
+  cat("2. Try manual installation:\n")
+  cat("   devtools::install_url(\"https://brb.nci.nih.gov/BRB-ArrayTools/RPackagesAndManuals/classpredict_0.2.tar.gz\")\n")
+  cat("3. Download the package file and install from local file\n")
 }
 
-# Test if classpredict can be loaded
-cat("\nTesting classpredict package...\n")
-if (require("classpredict", quietly = TRUE)) {
-  cat("✅ classpredict package loaded successfully!\n")
-} else {
-  cat("❌ classpredict package could not be loaded.\n")
-  cat("Please check the installation and try again.\n")
-}
+cat("\nInstallation completed!\n")
