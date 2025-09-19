@@ -3,9 +3,7 @@ title: "FigureYa66单因素cox"
 author: "Yin Li, Taojun Ye"
 reviewer: "Ying Ge"
 date: "2025-9-19"
-output:
-  pdf_document: default
-  html_document: default
+output: html_document: default
 ---
 
 # Academic Citation
