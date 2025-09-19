@@ -149,21 +149,23 @@ Calculate enrichment scores, save to files for easy reuse
 # Calculate enrichment scores for immunotherapy-predicted pathways
 immPath.score <- GSVA::gsva(
   expr = as.matrix(log2(expr[,tumsam] + 1)),
-  gset.idx.list = immPath.list,  # 明确指定参数名 / Explicitly specify parameter name
-  method = "ssgsea"
+  gset.idx.list = immPath.list,
+  method = "ssgsea",
+  verbose = FALSE  # 添加verbose参数以减少输出
 )
 # 保存到文件，便于套用 / Save to file for easy reuse
-write.table(immPath.score, "easy_input_immPath.txt",sep = "\t",row.names = T,col.names = NA,quote = F)
+write.table(immPath.score, "easy_input_immPath.txt", sep = "\t", row.names = TRUE, col.names = NA, quote = FALSE)
 
 # 计算膀胱癌相关签名的富集得分
 # Calculate enrichment scores for bladder cancer related signatures
 blcaPath.score <- GSVA::gsva(
   expr = as.matrix(log2(expr[,tumsam] + 1)),
-  gset.idx.list = blcaPath.list,  # 明确指定参数名 / Explicitly specify parameter name
-  method = "ssgsea"
+  gset.idx.list = blcaPath.list,
+  method = "ssgsea",
+  verbose = FALSE  # 添加verbose参数以减少输出
 )
 # 保存到文件，便于套用 / Save to file for easy reuse
-write.table(blcaPath.score, "easy_input_blcaPath.txt",sep = "\t",row.names = T,col.names = NA,quote = F)
+write.table(blcaPath.score, "easy_input_blcaPath.txt", sep = "\t", row.names = TRUE, col.names = NA, quote = FALSE)
 ```
 
 > 对于自己的数据，你可能想提取自己感兴趣的通路计算通路的富集得分。可以从[msigdb](http://www.gsea-msigdb.org/gsea/downloads.jsp)下载gmt文件`c5.all.v7.4.symbols.gmt`，提取自己感兴趣的通路及其对应的基因，计算富集得分。
@@ -174,16 +176,31 @@ write.table(blcaPath.score, "easy_input_blcaPath.txt",sep = "\t",row.names = T,c
 # 从gmt文件提取感兴趣的通路 / Extract pathways of interest from gmt file
 # 例如提取带有`METABOLISM`字样的通路 / For example, extract pathways containing `METABOLISM`
 gset <- gmt2list("c5.all.v7.4.symbols.gmt") 
+
+# 使用data.table的%like%操作符提取包含METABOLISM的通路
+# Use data.table's %like% operator to extract pathways containing METABOLISM
 gset.list <- gset[names(gset) %like% "METABOLISM"]
+
+# 检查基因集是否为空
+if (length(gset.list) == 0) {
+  stop("No pathways found containing 'METABOLISM'. Please check your gmt file and filter criteria.")
+}
+
+cat("Found", length(gset.list), "pathways containing 'METABOLISM'\n")
 
 # 计算通路富集得分 / Calculate pathway enrichment scores
 gset.score <- GSVA::gsva(
-  expr = as.matrix(log2(expr[,tumsam] + 1)),
-  gset.idx.list = gset.list,  # 明确指定参数名 / Explicitly specify parameter name
-  method = "ssgsea"
+  expr = as.matrix(log2(expr[, tumsam] + 1)),
+  gset.idx.list = gset.list,
+  method = "ssgsea",
+  verbose = FALSE,  # 减少输出信息
+  parallel.sz = 1   # 单线程运行，避免并行问题
 )
+
 # 保存到文件 / Save to file
-write.table(gset.score, "easy_input_gset.txt",sep = "\t",row.names = T,col.names = NA,quote = F)
+write.table(gset.score, "easy_input_gset.txt", sep = "\t", row.names = TRUE, col.names = NA, quote = FALSE)
+
+cat("Pathway enrichment scores saved to 'easy_input_gset.txt'\n")
 ```
 
 # 开始画图 / Start Plotting
