@@ -126,6 +126,31 @@ additional_packages <- c(
 )
 install_cran_packages(additional_packages)
 
+# --- 新增: 安装 bioconductor 相关包 ---
+cat("\nInstalling Bioconductor packages...\n")
+
+# 首先安装 BiocManager
+if (!requireNamespace("BiocManager", quietly = TRUE)) {
+  install.packages("BiocManager")
+}
+
+# 安装 biomaRt
+bioc_packages <- c("biomaRt", "AnnotationDbi", "org.Hs.eg.db")
+
+for (pkg in bioc_packages) {
+  if (!is_package_installed(pkg)) {
+    cat("Installing Bioconductor package:", pkg, "\n")
+    tryCatch({
+      BiocManager::install(pkg, ask = FALSE, update = FALSE)
+      cat("Successfully installed:", pkg, "\n")
+    }, error = function(e) {
+      cat("Failed to install Bioconductor package", pkg, ":", e$message, "\n")
+    })
+  } else {
+    cat("Package already installed:", pkg, "\n")
+  }
+}
+
 # --- Step 7: Install Python dependencies ---
 cat("\nInstalling Python packages for reticulate...\n")
 tryCatch({
@@ -151,7 +176,7 @@ cat("Package installation completed!\n")
 
 # Final check
 cat("\nFinal package availability check:\n")
-required_packages <- c("Seurat", "SeuratDisk", "hdf5r", "reticulate", "ggplot2", "dplyr", "Rmagic")
+required_packages <- c("Seurat", "SeuratDisk", "hdf5r", "reticulate", "ggplot2", "dplyr", "Rmagic", "biomaRt")
 
 for (pkg in required_packages) {
   if (requireNamespace(pkg, quietly = TRUE)) {
