@@ -1,11 +1,18 @@
 FigureYa274MuSiCbulkProop
 FigureYa274MuSiCbulkProop
 Author(s)
-: Yandong Zheng; Yasi Zhang
+: Xiao Gu; Yasi Zhang
 Reviewer(s)
 : Ying Ge
 Date
-: 2025-05-20
+: 2025-09-12
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
 Demand description
 用MuSic反卷积推算bulk组的细胞类型。
@@ -23,16 +30,10 @@ list做，感觉主观性强
 第三个是两个单细胞数据集进行相互验证，参考意义不大
 流程跟着教程跑就好，官方详细教程见：
 https://xuranw.github.io/MuSiC/articles/MuSiC.html#sample-analysis-1
-跟FigureYa71ssGSEA
-https://k.youshop10.com/q7HAxIw2
-的相似之处：核心理念都是用单细胞的数据算出来每种细胞类型的marker
+跟FigureYa71ssGSEA的相似之处：核心理念都是用单细胞的数据算出来每种细胞类型的marker
 gene，然后看这些基因中的哪些在bulk中高表达。
-同样用到单细胞和bulk的FigureYa272scBulkCCCI
-https://k.youshop10.com/=fQQh=1T
-，借助scRNA-seq找到的signature
+同样用到单细胞和bulk的FigureYa272scBulkCCCI，借助scRNA-seq找到的signature
 genes，推断bulk RNA-seq样本的细胞类群互作网络。
-更多单细胞分析画图看这里
-https://k.youshop10.com/McawGY6=
 The MuSiC software has approximately three main functions:
 The first is to directly predict which cell types identified from
 single-cell data are likely present in bulk data, based on both
@@ -45,20 +46,14 @@ though its reference value is relatively limited.
 The workflow can be followed according to the tutorial. For the
 official detailed tutorial, see:
 https://xuranw.github.io/MuSiC/articles/MuSiC.html#sample-analysis-1
-Similarities with FigureYa71ssGSEA
-https://k.youshop10.com/q7HAxIw2
-: The core concept of
-both is to use single-cell data to calculate marker genes for each cell
-type and then identify which of these genes are highly expressed in bulk
+Similarities with FigureYa71ssGSEA: The core concept of both is to
+use single-cell data to calculate marker genes for each cell type and
+then identify which of these genes are highly expressed in bulk
 data.
 Another tool that also utilizes both single-cell and bulk data is
-FigureYa272scBulkCCCI
-https://k.youshop10.com/=fQQh=1T
-. It leverages signature
-genes identified from scRNA-seq to infer cell-cell interaction networks
-in bulk RNA-seq samples.
-For more single-cell analysis and visualization, check here:
-https://k.youshop10.com/McawGY6=
+FigureYa272scBulkCCCI. It leverages signature genes identified from
+scRNA-seq to infer cell-cell interaction networks in bulk RNA-seq
+samples.
 比较难的就是构建数据集，本文档带大家解决这个问题。
 The most challenging part is constructing the dataset, and this
 document will guide you through solving this issue.
@@ -79,15 +74,7 @@ based on pre-grouped cell types
 .
 环境设置
 Environment Setup
-使用国内镜像安装包。
-Using domestic mirrors for package installation.
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
-install.packages('devtools')
-devtools::install_github('xuranw/MuSiC')
-BiocManager::install("glmGamPoi")
-加载包
-Loading packages
+source("install_dependencies.R")
 library(Seurat)
 library(SeuratData)
 library(patchwork)
@@ -522,8 +509,5 @@ pheatmap(plot.df2,
 预测结果：该bulk数据中PT占据比例最大
 Prediction results: PT (Proximal Tubule) cells account for the
 highest proportion in this bulk data.
-会话信息
 Session Info
-# 显示会话信息
-# Show session information
 sessionInfo()
