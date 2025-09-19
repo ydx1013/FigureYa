@@ -292,8 +292,8 @@ p
 node <- c(22, 21, 27, 25)
 
 # 基于指定节点将GO term划分为不同的进化分支组
-# 使用正确的参数名称 'node' 而不是 '.node'
-gtree <- groupClade(tree, node = node)
+# 使用正确的参数名称 '.node' 而不是 'node'
+gtree <- groupClade(tree, .node = node)
 
 # 使用ggtree绘制分组后的树形图，不同分支组用不同颜色区分
 pbase <- ggtree(gtree, aes(color = as.factor(group))) + # 将group转换为因子
