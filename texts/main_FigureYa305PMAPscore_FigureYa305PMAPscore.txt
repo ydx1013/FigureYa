@@ -6,6 +6,13 @@ Reviewer(s)
 : Ying Ge
 Date
 : 2025-05-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
 Demand description
 计算PMAPscore。这篇文章只计算了120+个信号通路，如果用全外数据，代谢等相关的基因也可能是会有突变的，所以能否把KEGG的所有通路都包含进去，这样用WES的话，能计算的信号通路就会增加到200+。
@@ -36,15 +43,7 @@ download kgml files, read them as R objects, and apply them to PMAP
 calculations.
 环境设置
 Environment Setup
-使用国内镜像安装包。
-Using domestic mirrors for package installation.
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
-install.packages("PMAPscore")
-browseVignettes("PMAPscore")
-BiocManager::install("SPIA")
-加载包
-Loading packages
+source("install_dependencies.R")
 library(PMAPscore)
 library(ComplexHeatmap)
 library(KEGGREST)
@@ -159,8 +158,5 @@ dev.copy2pdf(file = "km_curve.pdf", width = 5, height = 5)
 dev.copy2pdf(file = "roc_curve.pdf", width = 5, height = 5)
 dev.copy2pdf(file = "Oncoplots.pdf", width = 8, height = 6)
 dev.copy2pdf(file = "PFSscore.Heatmap.pdf", width = 10, height = 6)
-会话信息
 Session Info
-# 显示会话信息
-# Show session information
 sessionInfo()

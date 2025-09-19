@@ -2304,14 +2304,6 @@
     "thumb": "gallery_compress/FigureYa291.webp"
   },
   {
-    "id": "main_FigureYa292HCCsubtype_FigureYa292HCCsubtype",
-    "title": "FigureYa292HCCsubtype/FigureYa292HCCsubtype.html",
-    "html": "FigureYa292HCCsubtype/FigureYa292HCCsubtype.html",
-    "text": "texts/main_FigureYa292HCCsubtype_FigureYa292HCCsubtype.txt",
-    "folder": "FigureYa292HCCsubtype",
-    "thumb": "gallery_compress/FigureYa292.webp"
-  },
-  {
     "id": "main_FigureYa293machineLearning_FigureYa293machineLearning",
     "title": "FigureYa293machineLearning/FigureYa293machineLearning.html",
     "html": "FigureYa293machineLearning/FigureYa293machineLearning.html",
@@ -2398,6 +2390,14 @@
     "text": "texts/main_FigureYa303panCircos_FigureYa303panCircos.txt",
     "folder": "FigureYa303panCircos",
     "thumb": "gallery_compress/FigureYa303.webp"
+  },
+  {
+    "id": "main_FigureYa305PMAPscore_FigureYa305PMAPscore",
+    "title": "FigureYa305PMAPscore/FigureYa305PMAPscore.html",
+    "html": "FigureYa305PMAPscore/FigureYa305PMAPscore.html",
+    "text": "texts/main_FigureYa305PMAPscore_FigureYa305PMAPscore.txt",
+    "folder": "FigureYa305PMAPscore",
+    "thumb": "gallery_compress/FigureYa305.webp"
   },
   {
     "id": "main_FigureYa306slingshot_FigureYa306slingshot",
