@@ -2,7 +2,7 @@
 title: "FigureYa92immune_gene_update"
 author: "Shipeng Guo, Taojun Ye"
 reviewer: "Ying Ge"
-date: "2025-5-20"
+date: "2025-9-19"
 output: html_document
 ---
 
@@ -67,10 +67,8 @@ Not limited to the relationship between genes and immune infiltration, the immun
 
 ```{r}
 source("install_dependencies.R")
+source("ggscatterstats.R") # from ggstatsplot package https://github.com/IndrajeetPatil/ggstatsplot
 
-# 加载数据可视化和统计分析相关的包  
-# Load packages for data visualization and statistical analysis  
-library(ggstatsplot)  # 用于ggplot2扩展的统计可视化  
 # Package for extended statistical visualization based on ggplot2  
 library(data.table)   # 高性能数据处理  
 # Package for high-performance data processing  
@@ -261,11 +259,11 @@ plot_df <- data.frame(gene = y, imucell = tcga_gsva[, imucell])
 head(plot_df)
 ```
 
-## 用ggscatterstats包画图
+## 用ggscatterstats画图
 
 图好看，但是速度很慢。
 
-## Drawing with ggscatterstats package
+## Drawing with ggscatterstats function
 
 The picture looks good, but the speed is very slow.
 
