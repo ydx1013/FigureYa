@@ -1,6 +1,6 @@
 #!/usr/bin/env Rscript
-# Auto-generated R dependency installation script
-# This script installs all required R packages for this project
+# Auto-generated R dependency installation script for rPlotter
+# This script installs all required R packages for rPlotter
 
 # Set up mirrors for better download performance
 options("repos" = c(CRAN = "https://cloud.r-project.org/"))
@@ -16,119 +16,159 @@ install_cran_package <- function(package_name) {
   if (!is_package_installed(package_name)) {
     cat("Installing CRAN package:", package_name, "\n")
     tryCatch({
-      install.packages(package_name, dependencies = TRUE)
-      cat("Successfully installed:", package_name, "\n")
+      install.packages(package_name, dependencies = TRUE, quiet = TRUE)
+      cat("✓ Successfully installed:", package_name, "\n")
     }, error = function(e) {
-      cat("Failed to install", package_name, ":", e$message, "\n")
+      cat("✗ Failed to install", package_name, ":", e$message, "\n")
     })
   } else {
-    cat("Package already installed:", package_name, "\n")
+    cat("✓ Package already installed:", package_name, "\n")
+  }
+}
+
+# Function to install Bioconductor packages
+install_bioc_package <- function(package_name) {
+  if (!is_package_installed(package_name)) {
+    cat("Installing Bioconductor package:", package_name, "\n")
+    tryCatch({
+      if (!is_package_installed("BiocManager")) {
+        install.packages("BiocManager", quiet = TRUE)
+      }
+      BiocManager::install(package_name, ask = FALSE, quiet = TRUE)
+      cat("✓ Successfully installed:", package_name, "\n")
+    }, error = function(e) {
+      cat("✗ Failed to install", package_name, ":", e$message, "\n")
+    })
+  } else {
+    cat("✓ Package already installed:", package_name, "\n")
   }
 }
 
 # Function to install packages from GitHub
 install_github_package <- function(repo) {
-  package_name <- strsplit(repo, "/")[[1]][2]
+  package_name <- basename(repo)
   if (!is_package_installed(package_name)) {
     cat("Installing GitHub package:", repo, "\n")
     tryCatch({
-      if (!is_package_installed("remotes")) {
-        install.packages("remotes")
+      if (!is_package_installed("devtools")) {
+        install.packages("devtools", quiet = TRUE)
       }
-      remotes::install_github(repo)
-      cat("Successfully installed:", package_name, "\n")
+      devtools::install_github(repo, quiet = TRUE)
+      cat("✓ Successfully installed:", package_name, "\n")
     }, error = function(e) {
-      cat("Failed to install", repo, ":", e$message, "\n")
-      # 提供替代方案
-      suggest_alternatives(package_name)
+      cat("✗ Failed to install", repo, ":", e$message, "\n")
     })
   } else {
-    cat("Package already installed:", package_name, "\n")
+    cat("✓ Package already installed:", package_name, "\n")
   }
 }
 
-# 提供替代的颜色方案包
-suggest_alternatives <- function(package_name) {
-  if (package_name == "rPlotter") {
-    cat("\n尝试安装替代的颜色方案包...\n")
-    alternative_packages <- c("RColorBrewer", "viridis", "ggsci", "paletteer", "colorspace")
-    
-    for (pkg in alternative_packages) {
-      if (!is_package_installed(pkg)) {
-        install_cran_package(pkg)
-      }
-    }
-    cat("这些包提供了丰富的颜色方案，可以替代 rPlotter 的功能\n")
-  }
-}
-
-# 尝试不同的 rPlotter 仓库地址
-try_different_rplotter_repos <- function() {
-  repos_to_try <- c(
-    "tomwhoooo/rPlotter",
-    "tomwhooo/rPlotter",  # 可能的拼写变体
-    "tomsing1/rPlotter",   # 另一个可能的用户名
-    "r-lib/rPlotter"       # 官方仓库（如果存在）
-  )
-  
-  for (repo in repos_to_try) {
-    cat("尝试仓库:", repo, "\n")
-    tryCatch({
-      if (!is_package_installed("remotes")) {
-        install.packages("remotes")
-      }
-      remotes::install_github(repo)
-      cat("成功从", repo, "安装 rPlotter\n")
-      return(TRUE)
-    }, error = function(e) {
-      cat("无法从", repo, "安装:", e$message, "\n")
-      return(FALSE)
-    })
-  }
-  return(FALSE)
-}
-
-cat("Starting R package installation...\n")
+cat("Starting R package installation for rPlotter...\n")
 cat("===========================================\n")
 
-# 首先安装 remotes
-if (!is_package_installed("remotes")) {
-  install_cran_package("remotes")
-}
-
-# Installing CRAN packages
-cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("scales")
-
+# 1. 安装CRAN包（包括scales和rgl）
+cat("\n1. Installing CRAN packages...\n")
+cran_packages <- c("ggplot2", "stringr", "reshape2", "dichromat", "scales", "rgl")
 for (pkg in cran_packages) {
   install_cran_package(pkg)
 }
 
-# 尝试安装 rPlotter
-cat("\n尝试安装 rPlotter...\n")
-if (!is_package_installed("rPlotter")) {
-  success <- try_different_rplotter_repos()
-  
-  if (!success) {
-    cat("\nrPlotter 包无法安装，安装替代的颜色方案包...\n")
-    suggest_alternatives("rPlotter")
-  }
-} else {
-  cat("rPlotter 已经安装\n")
+# 2. 安装EBImage (Bioconductor)
+cat("\n2. Installing EBImage from Bioconductor...\n")
+install_bioc_package("EBImage")
+
+# 3. 安装GitHub包
+cat("\n3. Installing packages from GitHub...\n")
+
+# 首先安装devtools
+if (!is_package_installed("devtools")) {
+  install_cran_package("devtools")
 }
+
+# 安装rblocks
+install_github_package("ramnathv/rblocks")
+
+# 4. 最后安装rPlotter
+cat("\n4. Installing rPlotter from GitHub...\n")
+install_github_package("woobe/rPlotter")
 
 cat("\n===========================================\n")
 cat("Package installation completed!\n")
 
-# 检查最终安装状态
-cat("\n检查安装状态:\n")
-required_packages <- c("scales", "rPlotter", "RColorBrewer", "viridis")
+# 验证安装
+cat("\nVerifying package installation:\n")
+required_packages <- c(
+  "ggplot2", "stringr", "reshape2", "dichromat", "scales", "rgl", # CRAN包
+  "EBImage",                                     # Bioconductor包
+  "rblocks",                                     # GitHub包
+  "rPlotter"                                     # 目标包
+)
+
+all_installed <- TRUE
 for (pkg in required_packages) {
   if (is_package_installed(pkg)) {
     cat("✓", pkg, "is installed\n")
   } else {
     cat("✗", pkg, "is NOT installed\n")
+    all_installed <- FALSE
   }
 }
 
-cat("You can now run your R scripts in this directory.\n")
+# 测试scales包功能
+if (is_package_installed("scales")) {
+  cat("\nTesting scales package...\n")
+  tryCatch({
+    library(scales)
+    cat("✓ scales package loaded successfully\n")
+    # 测试一些常用函数
+    if (exists("percent") && exists("comma") && exists("scientific")) {
+      cat("✓ scales main functions are available\n")
+    }
+  }, error = function(e) {
+    cat("✗ scales test failed:", e$message, "\n")
+  })
+}
+
+# 测试rgl包功能
+if (is_package_installed("rgl")) {
+  cat("\nTesting rgl package...\n")
+  tryCatch({
+    library(rgl)
+    cat("✓ rgl package loaded successfully\n")
+    # 检查主要函数是否存在
+    if (exists("plot3d") && exists("rgl.open") && exists("rgl.points")) {
+      cat("✓ rgl main functions are available\n")
+    }
+  }, error = function(e) {
+    cat("✗ rgl test failed:", e$message, "\n")
+  })
+}
+
+# 测试rPlotter功能
+if (is_package_installed("rPlotter")) {
+  cat("\nTesting rPlotter package...\n")
+  tryCatch({
+    library(rPlotter)
+    cat("✓ rPlotter package loaded successfully\n")
+    # 检查主要函数是否存在
+    if (exists("plot_colors") || exists("rPlotter")) {
+      cat("✓ Main functions are available\n")
+    }
+  }, error = function(e) {
+    cat("✗ rPlotter test failed:", e$message, "\n")
+  })
+}
+
+cat("\n===========================================\n")
+if (all_installed) {
+  cat("✅ All required packages installed successfully!\n")
+  cat("You can now use rPlotter, scales, and rgl in your R scripts.\n")
+} else {
+  cat("⚠️  Some packages failed to install. You may need to:\n")
+  cat("1. Check your internet connection\n")
+  cat("2. Install missing packages manually\n")
+  cat("3. For Bioconductor packages: BiocManager::install('package_name')\n")
+  cat("4. For GitHub packages: devtools::install_github('user/repo')\n")
+}
+
+cat("\nYou can now run your R scripts with rPlotter, scales, and rgl.\n")
