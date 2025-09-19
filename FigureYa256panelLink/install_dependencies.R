@@ -1,6 +1,6 @@
 #!/usr/bin/env Rscript
-# 简化版R包安装脚本 - 安装magrittr, tidyverse, ggplot2, ggnewscale, rlang
-# Simplified R package installation script - installs magrittr, tidyverse, ggplot2, ggnewscale, rlang
+# 简化版R包安装脚本 - 安装magrittr, tidyverse, ggplot2, rlang, patchwork
+# Simplified R package installation script - installs magrittr, tidyverse, ggplot2, rlang, patchwork
 
 # 设置CRAN镜像 / Set CRAN mirror
 options("repos" = c(CRAN = "https://cloud.r-project.org/"))
@@ -34,7 +34,7 @@ cat("Starting R package installation...\n")
 cat("===========================================\n")
 
 # 安装这五个包 / Install these five packages
-packages_to_install <- c("magrittr", "tidyverse", "ggplot2", "ggnewscale", "rlang", "patchwork")
+packages_to_install <- c("magrittr", "tidyverse", "ggplot2", "rlang", "patchwork")
 
 for (pkg in packages_to_install) {
   install_cran_package(pkg)
@@ -58,15 +58,15 @@ for (pkg in packages_to_install) {
 }
 
 if (all_installed) {
-  cat("\n所有五个包已成功安装！\n")
-  cat("\nAll five packages installed successfully!\n")
+  cat("\n所有包已成功安装！\n")
+  cat("\nAll packages installed successfully!\n")
   cat("您现在可以使用以下代码加载这些包：\n")
   cat("You can now load these packages with the following code:\n")
   cat("library(magrittr)\n")
   cat("library(tidyverse)\n")
   cat("library(ggplot2)\n")
-  cat("library(ggnewscale)\n")
   cat("library(rlang)    # 提供is_quosure等函数 / Provides is_quosure and other functions\n")
+  cat("library(patchwork) # 图形组合 / Plot composition\n")
 } else {
   cat("\n部分包安装失败，请检查网络连接或手动安装。\n")
   cat("\nSome packages failed to install, please check your network connection or install manually.\n")
