@@ -158,9 +158,6 @@ main <- function() {
     cat("⚠ Some packages failed to install, please check your network connection or install manually.\n")
   }
   
-  # 提供使用示例 / Provide usage examples
-  provide_usage_examples()
-  
   cat("\n安装完成！ / Installation completed!\n")
 }
 
