@@ -1,43 +1,66 @@
 FigureYa166scCNV
 FigureYa166scCNV
-Date：2025-5-20
-Author：Zongcheng Li
-Reviewer：Ying Ge、Junyi Shen
-需求描述Description of requirements
-单细胞CNV的计算和画图。Calculation and mapping of single-cell CNVs
-Figure 1. Characterizing Intra-tumoral Expression Heterogeneity in HNSCC by Single-Cell RNA-Seq. (B) Heatmap shows large-scale CNVs for individual cells (rows) from a representative tumor (MEEI5), inferred based on the average expression of 100 genes surrounding each chromosomal position (columns). Red: amplifications; blue: deletions.
-出自From
+Zongcheng Li
+2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
+需求描述
+Requirement Description
+单细胞CNV的计算和画图。 Calculate and plot single-cell CNVs.
+Figure 1. Characterizing Intra-tumoral Expression Heterogeneity in
+HNSCC by Single-Cell RNA-Seq. (B) Heatmap shows large-scale CNVs for
+individual cells (rows) from a representative tumor (MEEI5), inferred
+based on the average expression of 100 genes surrounding each
+chromosomal position (columns). Red: amplifications; blue:
+deletions.
+出自
 https://www.cell.com/cell/fulltext/S0092-8674(17)31270-9
-其他文章里类似的图Similar pictures in other articles：
-Fig. 1. Dissection of melanoma with single-cell RNA-seq. (B) Chromosomal landscape of inferred large-scale CNVs allows us to distinguish malignant from nonmalignant cells. The Mel80 tumor is shown with individual cells (y axis) and chromosomal regions (x axis). Amplifications (red) or deletions (blue) were inferred by averaging expression over 100-gene stretches on the respective chromosomes.
-出自From
+From
+https://www.cell.com/cell/fulltext/S0092-8674(17)31270-9
+其他文章里类似的图： Similar pictures from other articles:
+Fig. 1. Dissection of melanoma with single-cell RNA-seq. (B)
+Chromosomal landscape of inferred large-scale CNVs allows us to
+distinguish malignant from nonmalignant cells. The Mel80 tumor is shown
+with individual cells (y axis) and chromosomal regions (x axis).
+Amplifications (red) or deletions (blue) were inferred by averaging
+expression over 100-gene stretches on the respective chromosomes.
+出自
 https://science.sciencemag.org/content/352/6282/189
-应用场景Application scenarios
-用单细胞RNA-seq数据计算CNV，对比展示多组之间的差异。CNV was calculated using single-cell RNA-seq data to compare and show differences between multiple groups
-环境设置Environment settings
-使用国内镜像安装包Use the domestic mirror installation package
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
-加载包Load the package
+应用场景
+Application Scenarios
+用单细胞RNA-seq数据计算CNV，对比展示多组之间的差异。 Calculate CNVs
+using single-cell RNA-seq data and compare differences between multiple
+groups.
+环境设置
+Environment Setup
+source("install_dependencies.R")
 library(org.Hs.eg.db)
 library(magrittr)
 library(dplyr)
 library(caTools)
 library(pheatmap)
-Sys.setenv(LANGUAGE = "en") #显示英文报错信息Displays the error message in English
-options(stringsAsFactors = FALSE) #禁止chr转成factor  Prohibiting CHR from converting to factor
-自定义函数Custom functions
+Sys.setenv(LANGUAGE = "en") #显示英文报错信息 # Display English error messages
+options(stringsAsFactors = FALSE) #禁止chr转成factor # Disable conversion of chr to factor
+自定义函数 Custom Function
 minmax <- function(x, min, max ){
   x[x > max] <- max
   x[x < min] <- min
   return(x)
 }
-输入文件Enter the file
-GSE103322_HNSCC_all_data.txt.gz，这里以原文的数据为例，其他单细胞RNA-seq数据与此类似，包含表达矩阵和样品分组等信息Here is an example of the original data, and other single-cell RNA-seq data are similar, including information such as expression matrix and sample grouping meta data。
+输入文件
+Input file
+GSE103322_HNSCC_all_data.txt.gz，这里以原文的数据为例，其他单细胞RNA-seq数据与此类似，包含表达矩阵和样品分组等信息meta
+data。
+GSE103322_HNSCC_all_data.txt.gz. This example uses the original data.
+Other single-cell RNA-seq datasets are similar and include metadata such
+as expression matrix and sample grouping.
 Download GSE103322_HNSCC_all_data.txt.gz from
 https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE103322
-，已上传到微云，下载链接It has been uploaded to Weiyun, download link
-https://share.weiyun.com/5gsuteR
 # read cell annotation information
 annodata <- as.data.frame(t(
   read.table(file = gzfile("GSE103322_HNSCC_all_data.txt.gz"),
@@ -96,7 +119,7 @@ reladata <- sweep(exprdata, 1, rowMeans(exprdata))
 
 # bound data into [-3, 3]
 reladata <- minmax(reladata, -3, 3)
-calc initial CNVs
+Calc initial CNVs
 window_length <- 100
 
 # initial CNVs
@@ -116,7 +139,7 @@ for (chr in chr_used) {
 which(is.na(initial_cnv)) # check inistal_cnv
 # re-centering data across chromosome after smoothing, see (Patel et al., 2014)
 initial_cnv <- sweep(initial_cnv, 2, apply(initial_cnv, 2, median), FUN = "-")
-get initial CNV scores and CNV correlations
+Get initial CNV scores and CNV correlations
 # initial CNV score of each single-cell
 initial_cnv_score <- colMeans(initial_cnv^2)
 
@@ -129,7 +152,7 @@ initial_cnv_score_tumor_profile <- sapply(unique(cell_in_which_tumor), function(
 initial_cnv_corr <- sapply(colnames(initial_cnv), function(x) {
   cor(x = as.numeric(initial_cnv[, x, drop = T]), y = initial_cnv_score_tumor_profile[,annodata[x,"tumor"]])
 })
-get putative maglignant and non-maglignant cells
+Get putative maglignant and non-maglignant cells
 initial_cnv_score_threshold <- 0.05
 initial_cnv_corr_threshold <- 0.5
 
@@ -147,7 +170,7 @@ initital_putative_non_maglignant <- names(which(
 
 table(annodata[initital_putative_maglignant, "classified  as cancer cell"])
 table(annodata[initital_putative_non_maglignant, "classified as non-cancer cells"])
-get baselines
+Get baselines
 annodata_base <- annodata[initital_putative_non_maglignant, c("non-cancer cell type"), drop = F]
 table(annodata_base$`non-cancer cell type`)
 types_used <- c("B cell", "Dendritic", "Endothelial", "Fibroblast", "Macrophage", "Mast", "myocyte", "T cell")
@@ -157,7 +180,7 @@ annodata_base <- annodata_base[annodata_base$`non-cancer cell type` %in% types_u
 baseline_cnv <- as.matrix(t(apply(initial_cnv[,rownames(annodata_base)], 1, function(x) {
   tapply(x, annodata_base$`non-cancer cell type`, mean)
 })))
-calc final CNVs using baseline
+Calc final CNVs using baseline
 baseline_max <- matrix(rowMax(baseline_cnv), 
                        nrow = nrow(initial_cnv), 
                        ncol = ncol(initial_cnv),
@@ -174,8 +197,10 @@ final_cnv[initial_cnv < baseline_min - 0.2] <- (initial_cnv - baseline_min)[init
 
 # re-centering data across chromosome after smoothing
 # final_cnv <- sweep(final_cnv, 2, apply(final_cnv, 2, median), FUN = "-")
-开始画图Start drawing
-用pheatmap画图Draw with pheatmap
+开始画图
+用pheatmap画图
+Start plotting
+Use pheatmap to plot
 annodata$type <- factor(ifelse(annodata$`classified as non-cancer cells` == 1, 
                         "Non-malignant",
                         ifelse(annodata$`classified  as cancer cell` == 1 & annodata$`Lymph node` == 0,
@@ -202,8 +227,13 @@ pheatmap(phData,
          cluster_rows = F, cluster_cols = F, 
          show_colnames = F, show_rownames = F,
          filename = "scCNV.pdf")
-you can also sample randomly some of Non-malignant cells for display, just like the authors did.
-后期处理Post-processing
-输出的PDF文件是矢量图The output PDF file is a vector image。You may use Adobe Illustrator to prettify the heatmap plot after saving it into a pdf file.
+you can also sample randomly some of Non-malignant cells for display,
+just like the authors did.
+后期处理
+输出的PDF文件是矢量图。You may use Adobe Illustrator to prettify the
+heatmap plot after saving it into a pdf file.
+Post-Processing
+The output PDF file is a vector image. You may use Adobe Illustrator
+to pretttify the heatmap plot after saving it to a PDF file.
 Session Info
 sessionInfo()
