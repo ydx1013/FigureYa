@@ -46,7 +46,7 @@ This graph frequently appears in articles on gene transcriptional regulation mec
 通常在IGV里查看测序信号分布（bam、bw、wig、bedgraph），这样能够直观地看到基因在哪里转录（RNA-seq）、蛋白质结合在哪里（ChIP-seq）或染色质开放的区域（ATAC-seq）。同样可以看m6A、RIP-seq等数据。
 Sequencing signal distribution (bam, bw, wig, bedgraph) is commonly viewed in IGV. This allows for a visual understanding of gene transcription (RNA-seq), protein binding (ChIP-seq), and chromatin access (ATAC-seq). m6A and RIP-seq data can also be viewed.
 
-想把这种图作为Figure放到文章里，有人喜欢用IGV，有人喜欢用WashU brower。群里的小伙伴喜欢自己用代码画图，例如用Gviz画，可参考FigureYa3genomeView；用sushi画，可参考FigureYa82IGVzoom。小丫曾看过作者用ggplot2画这种图，于是请他来分享这套代码。
+想把这种图作为Figure放到文章里，有人喜欢用IGV，有人喜欢用WashU brower。群里的小伙伴喜欢自己用代码画图，例如用Gviz画，可参考FigureYa3genomeView；用sushi画，可参考FigureYa82IGVzoom。作者用ggplot2画过这种图，于是请他来分享这套代码。
 I'd like to include this type of graph as a figure in my paper. Some people prefer using IGV, while others prefer using the WashU browser. Friends in my group like to create their own graphs using code. For example, if you use Gviz, see FigureYa3genomeView; if you use sushi, see FigureYa82IGVzoom. I've seen the author create this type of graph using ggplot2, so I asked him to share the code.
 
 用ggplot2画图，不仅方便修改细节，还可以很方便的用cowplot把画好的峰图跟其他图拼在一起，cowplot用法可参考这篇<https://mp.weixin.qq.com/s/O9zWCgIgz75Qo7cE6bSZCA>。
