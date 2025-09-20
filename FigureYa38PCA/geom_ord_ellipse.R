@@ -1,7 +1,7 @@
 ##' add confidence ellipse to ordinary plot produced by ggord
 ##'
 ##' 
-##' @title geom_ord_ellipse 
+##' @title add confidence ellipse to ordinary plot
 ##' @param mapping aes mapping 
 ##' @param ellipse_pro confidence value for the ellipse
 ##' @param fill color to fill the ellipse, NA by default
@@ -12,7 +12,17 @@
 ##' @importFrom utils modifyList
 ##' @export
 ##' @author Guangchuang Yu
-##' @references \url{http://lchblogs.netlify.com/post/2017-12-22-r-addconfellipselda/}
+##' @examples
+##' \dontrun{
+##' library(MASS)
+##' ord <- lda(Species ~ ., iris, prior = rep(1, 3)/3)
+##' ## devtools::install_github('fawda123/ggord')
+##' library(ggord)
+##' p <- ggord(ord, iris$Species)
+##' p + geom_ord_ellipse(ellipse_pro = .96, color='firebrick', size=1, lty=3) +
+##' geom_ord_ellipse(ellipse_pro = .99, lty=2)
+##' }
+## @references \url{https://lchblogs.netlify.com/post/2017-12-22-r-addconfellipselda/}
 geom_ord_ellipse <- function(mapping = NULL, ellipse_pro = 0.97, fill = NA, ...) {
     default_aes <- aes_(color = ~Groups, group = ~Groups)
     if (is.null(mapping)) {
@@ -41,7 +51,15 @@ geom_ord_ellipse <- function(mapping = NULL, ellipse_pro = 0.97, fill = NA, ...)
 ##' @importFrom grDevices chull
 StatOrdEllipse <- ggproto("StatOrdEllipse", Stat,
                           compute_group = function(self, data, scales, params, ellipse_pro) {
-                              names(data)[1:2] <- c('one', 'two')
+                              # Fix: Replace hardcoded column indexing with precise column name targeting
+                              # This prevents errors when data contains additional columns like Groups
+                              if (!all(c("x", "y") %in% names(data))) {
+                                  stop("Required aesthetics: x and y")
+                              }
+                              # Rename coordinate columns while preserving other columns
+                              colnames(data)[colnames(data) == "x"] <- "one"
+                              colnames(data)[colnames(data) == "y"] <- "two"
+                              
                               theta <- c(seq(-pi, pi, length = 50), seq(pi, -pi, length = 50))
                               circle <- cbind(cos(theta), sin(theta))
                               ell <- ddply(data, .(group), function(x) {
@@ -62,7 +80,9 @@ StatOrdEllipse <- ggproto("StatOrdEllipse", Stat,
                           )
 
 
+globalVariables('.')
+
 ## . function was from plyr package
-. <- function (..., .env = parent.frame()) {
-    structure(as.list(match.call()[-1]), env = .env, class = "quoted")
-}
+## . <- function (..., .env = parent.frame()) {
+##    structure(as.list(match.call()[-1]), env = .env, class = "quoted")
+##}
