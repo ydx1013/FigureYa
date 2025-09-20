@@ -28,8 +28,8 @@ jobs:
       run: |
         find . -type f -iname "*.rmd" | while read file; do
           echo "Processing $file"
-          sed -i -e 's/Uncle Y/Guangchuang Yu/g' "$file"
-          sed -i -e 's/Y叔/Guangchuang Yu/g' "$file"
+          sed -i -e 's/丫/Ying/g' "$file"
+          sed -i -e 's/ya/Ying/g' "$file"
         done
 
     - name: Debug - Show Changes
