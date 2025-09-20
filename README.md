@@ -27,15 +27,20 @@ Alternatively, you can manually browse the reports by clicking on the thumbnails
 You have two options for accessing the files.
 
 ### 1. Download for Offline Use
-All FigureYa folders are compressed as individual zip files for convenient downloading. To download a specific folder:
 
-1.  Navigate to the [`/compressed`](https://github.com/ying-ge/FigureYa/tree/main/compressed) directory.
-2.  Find the zip file with the name corresponding to the folder you want (e.g., `FigureYa123mutVSexpr.zip`).
-3.  Click on the zip file, then click the **Download** button.
-4.  Owing to GitHub's file size restrictions, larger files have been uploaded to [`Baidu Cloud`](https://pan.baidu.com). Please join group 967269198 to obtain the download links.
+All FigureYa modules are available as individually compressed zip files for convenient offline use. To download a specific module:
+
+1.  Navigate to the [`/compressed`](https://github.com/ying-ge/FigureYa/tree/main/compressed) directory in this repository.
+2.  Locate the zip file corresponding to the module you need (e.g., `FigureYa123mutVSexpr.zip`).
+3.  Click on the file, then select the **Download** button.
+
+**Note on File Availability:**
+- The file `Auto_Knit_Online.txt` contains a list of FigureYa modules with all of the files.
+- If a particular module is not listed in `Auto_Knit_Online.txt`, this indicates that its input files exceed GitHub's file size limitations.
+- For these larger files, please visit our [`Baidu Cloud`](https://pan.baidu.com) storage. To access the download links, join the group: **967269198**.
 
 ### 2. Browse Online on GitHub
-If you want to view the raw input or output files directly, you can browse them in the file browser at the top of this repository's main page.
+If you want to view the code, input or output files directly, you can browse them in the file browser at the top of this repository's main page.
 
 ---
 
@@ -65,6 +70,8 @@ FigureYa59volcanoV2/
 ├── Volcano_advanced.pdf             # Vector graphic (PDF)
 └── example.png                      # Style reference for plots
 ```
+
+---
 
 ## ✍️ Usage and Citation
 
