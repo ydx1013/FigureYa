@@ -2,8 +2,15 @@ FigureYa44 profile
 FigureYa44 profile
 Wen Wang; Ying Ge, Yijing Chen
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
-requirement description
+Requirement description
 用R画出两个样品对比的profile。
 Use R to draw a profile comparing the two samples.
 图 3 | DP 胸腺细胞中 Cxxc1 结合和 H3K4me3 修饰的全基因组图谱。
@@ -32,7 +39,7 @@ regions.
 from
 https://www.nature.com/articles/ncomms11687
 应用场景
-application scenario
+Application scenario
 对比不同的样品在某一区域的信号特征，不仅限于ChIP-seq、DNase-seq、ATAC-seq数据。
 对比IP实验和input对照的信号强度，例如需求描述里的图：
 把基因压缩到统一长度，观察转录起始位点（TSS）、转录终止位点（TTS）、gene
@@ -65,10 +72,11 @@ are
 needed, saved in the
 corelib.R
 file
+source("install_dependencies.R")
 #install.packages("rtracklayer")
-source("./corelib.R") #位于当前文件夹 it is located in the current folder
+source("corelib.R") #位于当前文件夹 it is located in the current folder
 参数设置
-parameter setting
+Parameter setting
 在这里修改常见的需要调整的参数
 Modify common parameters that need to be adjusted here
 outputName <- "geneBodyProfiler_example.pdf" #输出的pdf文件名 output pdf file name
@@ -198,7 +206,7 @@ signal_caputer_around_sites
 .
 source("./corelib.R") #位于当前文件夹 it is located in the current folder
 参数设置
-parameter setting
+Parameter setting
 在这里修改常见的需要调整的参数
 Modify common parameters that need to be adjusted here
 outputName <- "sitepro_example.pdf"
