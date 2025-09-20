@@ -35,9 +35,9 @@ All FigureYa modules are available as individually compressed zip files for conv
 3.  Click on the file, then select the **Download** button.
 
 **Note on File Availability:**
-- The file `Auto_Knit_Online.txt` contains a list of FigureYa modules with all of the files.
+- The file [`/Auto_Knit_Online.txt`](https://github.com/ying-ge/FigureYa/blob/main/Auto_Knit_Online.txt) contains a complete list of all available FigureYa modules.
 - If a particular module is not listed in `Auto_Knit_Online.txt`, this indicates that its input files exceed GitHub's file size limitations.
-- For these larger files, please visit our [`Baidu Cloud`](https://pan.baidu.com) storage. To access the download links, join the group: **967269198**.
+- For these larger files: some Rmd files include direct download links for the required data files. For files without direct download links, please visit our [`Baidu Cloud`](https://pan.baidu.com) storage. Join the baidu group: **967269198** to access the download links.
 
 ### 2. Browse Online on GitHub
 If you want to view the code, input or output files directly, you can browse them in the file browser at the top of this repository's main page.
