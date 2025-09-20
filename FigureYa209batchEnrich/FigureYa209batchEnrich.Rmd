@@ -16,13 +16,13 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # 需求描述
 
-[enrichr](https://maaYingnlab.cloud/Enrichr/)的优点是批量获得各个数据库里的富集结果。如果用clusterprofiler做富集分析，也能一次性把各数据库的结果输出一个报告，就会很方便。
+[enrichr](https://maayanlab.cloud/Enrichr/)的优点是批量获得各个数据库里的富集结果。如果用clusterprofiler做富集分析，也能一次性把各数据库的结果输出一个报告，就会很方便。
 
 输入一个基因列表（gene symbol和foldchange）和msigdb里的所有gmt文件，用clusterprofiler做富集分析，输出表格和barplot。
 
 # Requirement Description
 
-[enrichr](https://maaYingnlab.cloud/Enrichr/) has the advantage of obtaining enrichment results in each database in batches. If you use ClusterProfiler for enrichment analysis, you can also output a report of the results of each database at once, which is very convenient.
+[enrichr](https://maayanlab.cloud/Enrichr/) has the advantage of obtaining enrichment results in each database in batches. If you use ClusterProfiler for enrichment analysis, you can also output a report of the results of each database at once, which is very convenient.
 
 Enter a list of genes (gene symbol and foldchange) and all GMT files in MSIGDB, use ClusterProfiler for enrichment analysis, and output tables and barplots.
 
@@ -306,11 +306,11 @@ gmts$my_anno <- as_tibble(anno_data)
 ## 输入文件
 ## Input files
 
-easy_input_limma.csv，差异表达分析结果。是[FigureYa59Plus_GEO2DEG](https://www.yuque.com/figureYing/figureYingplus/figureYing59p)的输出文件，可无缝对接。
+easy_input_limma.csv，差异表达分析结果。是FigureYa59Plus_GEO2DEG的输出文件，可无缝对接。
 
 需要两列：基因名和Foldchange（或其他有意义的连续变量，例如ChIP/ATAC-seq的peak分数）。
 
-easy_input_limma.csv, the results of differential expression analysis. is the output file of [FigureYa59Plus_GEO2DEG](https://www.yuque.com/figureYing/figureYingplus/figureYing59p), which can be seamlessly connected.
+easy_input_limma.csv, the results of differential expression analysis. is the output file of FigureYa59Plus_GEO2DEG, which can be seamlessly connected.
 
 Two columns are required: gene name and Foldchange (or other meaningful continuous variable, such as the peak score of ChIP/ATAC-seq).
 
@@ -464,7 +464,7 @@ DT::datatable(file_out, escape = F, rownames=F)
 
 考虑到差异基因的筛选参数决定了筛出哪些差异表达基因，进而影响ORA的结果。因此，这里从差异表达基因开始，一气呵成，方便调整筛基因的参数。
 
-easy_input_limma.csv，同上，差异表达分析结果。是[FigureYa59Plus_GEO2DEG](https://www.yuque.com/figureYing/figureYingplus/figureYing59p)的输出文件，可无缝对接
+easy_input_limma.csv，同上，差异表达分析结果。是FigureYa59Plus_GEO2DEG的输出文件，可无缝对接
 
 ## Input file
 
@@ -472,7 +472,7 @@ In fact, all you need is a gene name file. If you already have the gene name 'ea
 
 Considering the screening parameters of differentially expressed genes, which differentially expressed genes are screened out, which in turn affects the results of ORA. Therefore, starting with differentially expressed genes, it is convenient to adjust the parameters of sieve genes in one go.
 
-easy_input_limma.csv, as above, differential expression analysis results. is the output file of [FigureYa59Plus_GEO2DEG](https://www.yuque.com/figureYing/figureYingplus/figureYing59p), which can be seamlessly connected
+easy_input_limma.csv, as above, differential expression analysis results. is the output file of FigureYa59Plus_GEO2DEG, which can be seamlessly connected
 
 ```{r}
 # 加载差异表达分析结果
