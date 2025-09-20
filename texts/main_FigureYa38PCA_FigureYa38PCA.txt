@@ -1,9 +1,16 @@
-FigureYa38 PCA
-FigureYa38 PCA
+FigureYa38PCA
+FigureYa38PCA
 Zhougeng Xu; Ying Ge, Yijing Chen
-2025-5-20
+2025-9-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
-requirement description
+Requirement description
 用TCGA数据画主成分分析(pricinple components analysis，PCA)的图。
 例如：
 画个小圈圈
@@ -22,7 +29,7 @@ http://clincancerres.aacrjournals.org/content/23/8/2105.figures-only
 from
 http://clincancerres.aacrjournals.org/content/23/8/2105.figures-only
 应用场景
-application scenario
+Application scenario
 通常我们拿到的数据集，例如转录组的表达量矩阵都有成千上万个基因，这类高维度数据很难直接进行可视化展示。
 为了能够在二维平面上展示，就需要对其进行降维，而PCA分析是目前最常用的降维工具。
 然后你就能在图上一眼看出哪些样品之间更像，哪些样品属于/不属于同一组。不仅适用于测序数据。
@@ -43,6 +50,16 @@ in the group, what’s wrong with it?
 Scenario 2: Multiple subgroups, sent for sequencing in three batches.
 Do PCA, don’t see a pattern in the grouping, but see samples in the same
 batch closer to each other, batch effect?
+环境设置
+Environment Setup
+source("install_dependencies.R")
+source("ggord.R") # from ggord packge, https://github.com/fawda123/ggord
+source("geom_ord_ellipse.R") # from gglayer package, https://github.com/GuangchuangYu/gglayer
+library(ggplot2)
+library(plyr)
+library(ggplot2)
+library(dplyr)
+library(plyr)
 输入数据
 Input data
 两个输入文件:
@@ -102,10 +119,10 @@ Method 1: Automatic drawing
 ggord
 ，优点是能用背景色展示置信区间，缺点是没有画圈功能。
 Y叔对ggord进行了加强，放在R包
-yyplot
+gglayer
 里，详情看这篇：
 https://mp.weixin.qq.com/s/iA0IuyRx_Ojk639sxenmvg
-。yyplot包里提供的
+。
 geom_ord_ellipse
 能画出多个圆圈，用来展示不同的置信区间，并且可以反复叠加，想画几个圈就画几个圈。
 The R package
@@ -115,31 +132,16 @@ displaying confidence intervals with background color, but the
 disadvantage is that it does not have the function of drawing
 circles.
 Uncle Y enhanced ggord and put it in the R package
-yyplot
+gglayer
 , see this article for details:
 https://mp.weixin.qq.com/s/iA0IuyRx_Ojk639sxenmvg
 .
-yyplot package provides
 geom_ord_ellipse
-which can draw
-multiple circles to show different confidence intervals, and can be
-stacked over and over again to draw as many circles as you want.
+which can draw multiple circles to show
+different confidence intervals, and can be stacked over and over again
+to draw as many circles as you want.
 经典版
 Classic version
-#install.packages("devtools")
-#library(devtools)
-#devtools::install_github("GuangchuangYu/yyplot")
-#devtools::install_github('fawda123/ggord')
-library(ggplot2)
-library(plyr)
-library(ggord)
-library(yyplot)
-#有可能你的网络在安装yyplot时遇到困难，我把geom_ord_ellipse函数单独下载，通过本地进行加载。
-#调用yyplot包里的geom_ord_ellipse函数
-#It is possible that your network encountered difficulties when installing yyplot, so I downloaded the geom_ord_ellipse function separately and loaded it locally.
-#call the geom_ord_ellipse function in the yyplot package
-#source('./geom_ord_ellipse.R') #该文件位于当前文件夹 the file is located in the current folder
-
 #用ggord画基本PCA图
 #draw basic PCA graph with ggord
 ggord(pca.results, grp_in = meta_df$group, repel=TRUE,
@@ -152,8 +154,8 @@ ggord(pca.results, grp_in = meta_df$group, repel=TRUE,
       arrow = NULL,txt = NULL) + #不画箭头和箭头上的文字 no drawing of arrows and text on arrows
   theme(panel.grid =element_blank()) + #去除网格线 remove gridlines
   
-  #用yyplot添加置信区间圆圈
-  #add confidence interval circles with yyplot
+  #用gglayer添加置信区间圆圈
+  #add confidence interval circles with gglayer
   geom_ord_ellipse(ellipse_pro = .95, #设置置信区间 set confidence interval
                    size=1.5, #线的粗细 thickness of the line
                    lty=1 ) #实线 solid line
@@ -180,8 +182,8 @@ ggord(pca.results, grp_in = meta_df$group, repel=TRUE,
       txt=3) + #箭头指向的基因名的字体大小 font size of the gene name pointed to by the arrow
   theme(panel.grid =element_blank()) + 
   
-  #用yyplot继续添加虚线的置信区间
-  #continue to add dashed confidence intervals with yyplot
+  #用gglayer继续添加虚线的置信区间
+  #continue to add dashed confidence intervals with gglayer
   geom_ord_ellipse(ellipse_pro = .95, #先画个.95的圆圈 draw a .95 circle first
                    color='darkgrey', #圈圈的颜色 color of the circle
                    size=0.5, 
@@ -206,13 +208,6 @@ prcomp
 , obtain the principal
 component values corresponding to each sample after dimensionality
 reduction and the variance explained by each principal component.
-#install.packages("ggplot2")
-#install.packages("dplyr")
-#install.packages("plyr")
-library(ggplot2)
-library(dplyr)
-library(plyr)
-
 pca.rotation <- pca.results$rotation
 pca.rotation
 pca.pv <- summary(pca.results)$importance[2,]
@@ -327,7 +322,7 @@ p <- ggplot(low_dim_df) +
   #调整坐标轴标签
   #adjust axis labels
   xlab(paste0("PC1 ( ", pc1.pv," variance )")) + 
-  ylab(paste0("PC2 ( ", pc2.pv," variance )"))
+  ylab(paste0("PC2 ( ", pc2.pv," variance )")) 
 p
 #画圈圈
 #draw circles
@@ -355,4 +350,5 @@ Full names of the three previously mentioned cancers
 BRCA: Breast invasive carcinoma
 OV: Ovarian serous cystadenocarcinoma
 LUSC: Lung squamous cell carcinoma
+Session Info
 sessionInfo()
