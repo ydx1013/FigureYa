@@ -1,5 +1,5 @@
 ---
-title: "FigureYa63 PubmedMiningV2"
+title: "FigureYa63PubmedMiningV2"
 author: "Haitao Wang, Melvin L.K. Chua; Ying Ge, Yijing Chen"
 date: "2025-5-20"
 output: html_document
@@ -60,7 +60,6 @@ source("install_dependencies.R")
 library(data.table)
 library(stringr)
 library(ggplot2)
-library(jiebaR)
 library(rentrez) 
 library(pubmed.mineR)
 library(bibliometrix)
