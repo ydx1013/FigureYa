@@ -115,7 +115,7 @@ easy_input.txt，前4列是富集分析结果，最后一列是上调/下调，�
 The pathway map identifier takes the form of:<prefix><five-digit number>
 where the number is uniquely assigned to each pathway map and the prefix is for a different version of the same pathway map, such as "map" for the manually drawn reference pathway and the three- or four-letter organism code for a computationally generated organism specific pathway.
 
-做KEGG富集分析，有很多方式来实现，只要把上下调的显著条目合并，整理成“easy_input.txt”的格式就好。在“小丫画图”公众号回复“214”，查看用clusterprofiler做KEGG的富集分析的代码。超几何分布（ORA）或GSEA，方法可参考：<https://yulab-smu.top/clusterProfiler-book/chapter6.html#kegg-gene-set-enrichment-analysis>。例文用的是超几何分布（ORA）：KEGG pathway enrichment analysis was performed using the function phyper from the R package “stats”。
+做KEGG富集分析，有很多方式来实现，只要把上下调的显著条目合并，整理成“easy_input.txt”的格式就好。超几何分布（ORA）或GSEA，方法可参考：<https://yulab-smu.top/clusterProfiler-book/chapter6.html#kegg-gene-set-enrichment-analysis>。例文用的是超几何分布（ORA）：KEGG pathway enrichment analysis was performed using the function phyper from the R package “stats”。
 
 # Input files
 
@@ -126,7 +126,7 @@ easy_input.txt, the first 4 columns are the results of the enrichment analysis, 
 The pathway map identifier takes the form of:<prefix><five-digit number>
 where the number is uniquely assigned to each pathway map and the prefix is for a different version of the same pathway map, such as "map" for the manually drawn reference pathway and the three- or four-letter organism code for a computationally generated organism specific pathway.
 
-There are many ways to do KEGG enrichment analysis, as long as the significant items up and down are merged and organized into a "easy_input.txt" format. Reply "214" to the official account of "Xiaoya Drawing" to view the code of using clusterprofiler for KEGG enrichment analysis. Hypergeometric Distribution (ORA) or GSEA, for the method can be found at: <https://yulab-smu.top/clusterProfiler-book/chapter6.html#kegg-gene-set-enrichment-analysis>。 The example is a hypergeometric distribution (ORA): KEGG pathway enrichment analysis was performed using the function phyper from the R package "stats".
+There are many ways to do KEGG enrichment analysis, as long as the significant items up and down are merged and organized into a "easy_input.txt" format. Hypergeometric Distribution (ORA) or GSEA, for the method can be found at: <https://yulab-smu.top/clusterProfiler-book/chapter6.html#kegg-gene-set-enrichment-analysis>。 The example is a hypergeometric distribution (ORA): KEGG pathway enrichment analysis was performed using the function phyper from the R package "stats".
 
 ```{r}
 # 加载富集分析结果
