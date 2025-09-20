@@ -36,7 +36,7 @@ install_bioc_package <- function(package_name) {
       }
       BiocManager::install(package_name, update = FALSE, ask = FALSE)
       cat("Successfully installed:", package_name, "\n")
-    }, error = function(e) {
+    }, error function(e) {
       cat("Failed to install", package_name, ":", e$message, "\n")
     })
   } else {
@@ -53,7 +53,7 @@ install_with_deps <- function(package_name) {
     if (package_name == "ridge") {
       cat("Installing system dependencies for ridge package...\n")
       
-      # Try to install GSL system dependency (this works on Ubuntu/Debian)
+      # Try to install GSL system dependency
       system_deps_installed <- tryCatch({
         if (Sys.info()["sysname"] %in% c("Linux", "Darwin")) {
           # For Linux systems
@@ -61,6 +61,8 @@ install_with_deps <- function(package_name) {
             system("sudo apt-get update && sudo apt-get install -y libgsl-dev")
           } else if (file.exists("/etc/redhat-release")) {
             system("sudo yum install -y gsl-devel")
+          } else if (Sys.info()["sysname"] == "Darwin") {
+            system("brew install gsl")
           }
           TRUE
         } else {
@@ -88,9 +90,26 @@ install_with_deps <- function(package_name) {
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
+# First install BiocManager if not present
+if (!is_package_installed("BiocManager")) {
+  install.packages("BiocManager")
+}
+
+# Installing Bioconductor packages
+cat("\nInstalling Bioconductor packages...\n")
+bioc_packages <- c(
+  "sva", 
+  "preprocessCore", 
+  "impute"
+)
+
+for (pkg in bioc_packages) {
+  install_bioc_package(pkg)
+}
+
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("car", "cowplot", "ggplot2", "glmnet", "oncoPredict", "preprocessCore", "sva", "tidyverse")
+cran_packages <- c("car", "cowplot", "ggplot2", "glmnet", "tidyverse")
 
 for (pkg in cran_packages) {
   install_cran_package(pkg)
@@ -100,15 +119,30 @@ for (pkg in cran_packages) {
 cat("\nInstalling ridge package (requires system dependencies)...\n")
 install_with_deps("ridge")
 
-# Installing Bioconductor packages
-cat("\nInstalling Bioconductor packages...\n")
-bioc_packages <- c("impute")
-
-for (pkg in bioc_packages) {
-  install_bioc_package(pkg)
-}
-
 cat("\n===========================================\n")
 cat("Package installation completed!\n")
-cat("Note: pRRophetic package is no longer required\n")
+
+# Verify installation
+cat("\nVerifying package installation:\n")
+required_packages <- c(
+  "sva", "preprocessCore", "impute", "car", "cowplot", 
+  "ggplot2", "glmnet", "ridge"
+)
+
+all_installed <- TRUE
+for (pkg in required_packages) {
+  if (is_package_installed(pkg)) {
+    cat("✓", pkg, "is installed\n")
+  } else {
+    cat("✗", pkg, "is NOT installed\n")
+    all_installed <- FALSE
+  }
+}
+
+if (all_installed) {
+  cat("\n✅ All required packages installed successfully!\n")
+} else {
+  cat("\n⚠️ Some packages failed to install. You may need to install them manually.\n")
+}
+
 cat("You can now run your R scripts in this directory.\n")
