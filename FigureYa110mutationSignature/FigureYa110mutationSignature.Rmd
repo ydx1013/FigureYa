@@ -2,7 +2,7 @@
 title: "FigureYa110mutationSignature"
 author: "Xiaofan Lu, Taojun Ye"
 reviewer: "Ying Ge"
-date: "2025-9-12"
+date: "2025-9-20"
 output: html_document
 ---
 
@@ -59,6 +59,8 @@ Gaujoux R , Seoighe C . A flexible R package for nonnegative matrix factorizatio
 
 ```{r}
 source("install_dependencies.R")
+source("mut.to.sigs.input.R") # from deconstructSigs package, https://github.com/raerose01/deconstructSigs
+source("whichSignatures.R") # from deconstructSigs package, https://github.com/raerose01/deconstructSigs
 
 # 加载数据分析常用工具包
 # Load commonly used data analysis toolkits
@@ -75,10 +77,6 @@ library(stringr)
 # 因子处理包
 # Factor processing package
 library(forcats)
-# 突变特征分析包deconstructSigs里的函数
-# Functions from Mutation signature analysis package deconstructSigs
-source("mut.to.sigs.input.R")
-source("whichSignatures.R")
 # 人类基因组参考包（hg19）
 # Human genome reference package (hg19)
 library(BSgenome.Hsapiens.UCSC.hg19)
