@@ -1,7 +1,3 @@
-FigureYa197SmoothHaz
-FigureYa38PCA
+FigureYa64triangle
 FigureYa256panelLink
-FigureYa66单因素cox
-FigureYa28color 
-FigureYa63pubmedMiningV2
-FigureYa78gganatogram
+FigureYa28color
