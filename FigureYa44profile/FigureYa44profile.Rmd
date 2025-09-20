@@ -69,7 +69,7 @@ In order to extract the signals in the bw file, 2 functions `regionCapture`, `si
 ```{r}
 source("install_dependencies.R")
 #install.packages("rtracklayer")
-source("./corelib.R") #位于当前文件夹 it is located in the current folder
+source("corelib.R") #位于当前文件夹 it is located in the current folder
 ```
 
 ### 参数设置
