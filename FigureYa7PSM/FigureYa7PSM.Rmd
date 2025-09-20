@@ -1,5 +1,5 @@
 ---
-title: "FigureYa7 PSM"
+title: "FigureYa7PSM"
 author: "Ying Ge; Yijing Chen"
 date: "2025-5-20"
 output: html_document
@@ -36,7 +36,7 @@ R packages have already accounted for various scenarios, making it easy for us t
 
 然而，如果没有任何参照，直接对数据进行解释是很困难的。幸运的是，EORTC QLQ-C30问卷也在一些一般人群调查中使用，我们可以对比患者的得分和一般人群的得分差异，从而判断患者的负担症状和一些功能障碍是否能归因于癌症治疗。PSM在这里可以以年龄和性别等特征，将相似的患者和一般人群进行匹配。
 
-代码和说明信息来源于以下资料，小丫重新编辑整理：
+代码和说明信息来源于以下资料：
 
 原文：https://datascienceplus.com/how-to-use-r-for-matching-samples-propensity-score/
 
@@ -46,7 +46,7 @@ Health-related quality of life (HRQOL) is considered one of the important outcom
 
 However, interpreting data directly without any reference is challenging. Fortunately, the EORTC QLQ-C30 questionnaire is also used in some general population surveys, which allows us to compare the scores between patients and the general population. This comparison helps determine whether the burden of symptoms and certain functional impairments in patients can be attributed to cancer treatment. PSM can match similar patients with the general population based on characteristics such as age and gender.
 
-The code and description information is taken from the following sources and re-edited and organized by Xiaoya:
+The code and description information is taken from the following sources:
 
 original text: https://datascienceplus.com/how-to-use-r-for-matching-samples-propensity-score/
 
