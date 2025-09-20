@@ -10,7 +10,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -20,13 +19,9 @@ knitr::opts_chunk$set(echo = TRUE)
 
 已经用[Java版GSEA](http://software.broadinstitute.org/gsea/index.jsp)做出了GSEA分析结果，想自己画图。
 
-在小丫画图公众号回复“GSEA”查看GSEA结果在更多文章中的展示方式。
-
 图一：点图 + 条码
 
 I have already made GSEA analysis results with [GSEA for Java](http://software.broadinstitute.org/gsea/index.jsp) and would like to draw my own plots.
-
-Reply “GSEA” in Xiaoya's official Account to see how GSEA results are displayed in more articles.
 
 Figure 1: Dot Map + Barcode
 
@@ -70,17 +65,9 @@ If you do GSEA analysis with clusterProfiler and want to DIY the result plots, p
 ## 环境设置
 ## Environment setting
 
-
-use the domestic mirror installation package
-
 ```{r}
 source("install_dependencies.R")
-```
 
-
-load package
-
-```{r}
 library(plyr)
 library(ggplot2)
 library(RColorBrewer)
@@ -312,6 +299,8 @@ pbar[[4]] <- pheat
 plot_grid(plotlist=pbar, ncol=1,rel_heights = c(2,2,2,1))
 ggsave("prettyGSEAbar.pdf")
 ```
+
+# Session Info
 
 ```{r}
 sessionInfo()
