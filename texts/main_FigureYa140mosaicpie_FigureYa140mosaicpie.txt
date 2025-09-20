@@ -1,7 +1,7 @@
 FigureYa140mosaicPie
 FigureYa140mosaicPie
 Zongcheng Li
-2025-9-19
+2025-5-20
 Academic Citation
 If you use this code in your work or research, we kindly request that
 you cite our publication:
@@ -62,12 +62,12 @@ matrix to correspond to multiple sets of data.
 环境设置
 Environment settings
 source("install_dependencies.R")
-source("cgdsr.R") # from cgdsr package
 setRepositories(ind=1:6)
+
 library(readxl)
 library(ggplot2)
 library(reshape2)
-
+library(cgdsr)
 Sys.setenv(LANGUAGE = "en") #显示英文报错信息 #Display English error message
 options(stringsAsFactors = FALSE) #禁止chr转成factor #Disable conversion of chr to factor
 自定义画图函数 Custom drawing function
