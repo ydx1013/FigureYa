@@ -1,3 +1,5 @@
-FigureYa64triangle
-FigureYa256panelLink
-FigureYa28color
+FigureYa247oncoPredict
+FigureYa105GDSC
+FigureYa112Plus_venn
+FigureYa122mut2expr
+FigureYa283vennyPvalue
