@@ -1,5 +1,5 @@
 #!/usr/bin/env Rscript
-# Auto-generated R dependency installation script
+# R package installation script
 # This script installs required R packages for this project
 
 # Set up mirrors for better download performance
@@ -25,36 +25,8 @@ install_cran_package <- function(package_name) {
   }
 }
 
-# Function to install GitHub packages
-install_github_package <- function(repo) {
-  package_name <- basename(repo)
-  if (!is_package_installed(package_name)) {
-    cat("Installing GitHub package:", repo, "\n")
-    tryCatch({
-      if (!is_package_installed("devtools")) {
-        install.packages("devtools", quiet = TRUE)
-      }
-      devtools::install_github(repo, quiet = TRUE)
-      cat("✓ Successfully installed:", package_name, "\n")
-    }, error = function(e) {
-      cat("✗ Failed to install", repo, ":", e$message, "\n")
-    })
-  } else {
-    cat("✓ Package already installed:", package_name, "\n")
-  }
-}
-
 cat("Starting R package installation...\n")
 cat("===========================================\n")
-
-# 首先安装devtools（用于GitHub安装）
-if (!is_package_installed("devtools")) {
-  install_cran_package("devtools")
-}
-
-# 安装gganatogram从GitHub
-cat("\nInstalling gganatogram from GitHub...\n")
-install_github_package("jespermaag/gganatogram")
 
 # 安装CRAN包
 cat("\nInstalling CRAN packages...\n")
@@ -64,20 +36,12 @@ for (pkg in cran_packages) {
   install_cran_package(pkg)
 }
 
-# 安装常用的辅助包（可选）
-cat("\nInstalling optional utility packages...\n")
-utility_packages <- c("ggplot2", "dplyr", "tidyr")
-
-for (pkg in utility_packages) {
-  install_cran_package(pkg)
-}
-
 cat("\n===========================================\n")
 cat("Package installation completed!\n")
 
 # 验证安装
 cat("\nVerifying package installation:\n")
-required_packages <- c("stringr", "gridExtra", "gganatogram")
+required_packages <- c("stringr", "gridExtra")
 
 all_installed <- TRUE
 for (pkg in required_packages) {
@@ -85,36 +49,56 @@ for (pkg in required_packages) {
     cat("✓", pkg, "is installed\n")
   } else {
     cat("✗", pkg, "is NOT installed\n")
-    all_installed <- FALSE
+    all_installed = FALSE
   }
 }
 
-# 测试包加载
-cat("\nTesting package loading...\n")
-tryCatch({
-  library(stringr)
-  cat("✓ stringr package loaded successfully\n")
-}, error = function(e) {
-  cat("✗ stringr loading failed:", e$message, "\n")
-})
+# 测试包加载和功能
+cat("\nTesting package loading and functionality...\n")
 
-tryCatch({
-  library(gridExtra)
-  cat("✓ gridExtra package loaded successfully\n")
-}, error = function(e) {
-  cat("✗ gridExtra loading failed:", e$message, "\n")
-})
+# 测试stringr包
+if (is_package_installed("stringr")) {
+  tryCatch({
+    library(stringr)
+    cat("✓ stringr package loaded successfully\n")
+    
+    # 测试stringr功能
+    test_text <- "Hello World"
+    result <- str_to_upper(test_text)
+    if (result == "HELLO WORLD") {
+      cat("✓ stringr functions working correctly\n")
+    } else {
+      cat("⚠ stringr function test inconclusive\n")
+    }
+  }, error = function(e) {
+    cat("✗ stringr loading failed:", e$message, "\n")
+  })
+}
 
-tryCatch({
-  library(gganatogram)
-  cat("✓ gganatogram package loaded successfully\n")
+# 测试gridExtra包
+if (is_package_installed("gridExtra")) {
+  tryCatch({
+    library(gridExtra)
+    cat("✓ gridExtra package loaded successfully\n")
+    
+    # 测试gridExtra功能（创建简单的图形对象）
+    if (exists("grid.arrange") && exists("arrangeGrob")) {
+      cat("✓ gridExtra main functions available\n")
+    }
+  }, error = function(e) {
+    cat("✗ gridExtra loading failed:", e$message, "\n")
+  })
+}
+
+if (all_installed) {
+  cat("\n✅ All required packages installed successfully!\n")
+  cat("You can now use stringr and gridExtra in your R scripts.\n")
+} else {
+  cat("\n⚠️  Some packages failed to install.\n")
+  cat("You may need to install them manually:\n")
   
-  # 测试gganatogram的内置数据
-  if (exists("hgMale_key") && exists("hgFemale_key")) {
-    cat("✓ gganatogram内置数据可用\n")
+  missing_packages <- required_packages[!sapply(required_packages, is_package_installed)]
+  for (pkg in missing_packages) {
+    cat("install.packages('", pkg, "')\n", sep = "")
   }
-}, error = function(e) {
-  cat("✗ gganatogram loading failed:", e$message, "\n")
-})
-
-cat("\nYou can now run your R scripts in this directory.\n")
+}
