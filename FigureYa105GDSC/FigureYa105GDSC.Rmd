@@ -67,6 +67,7 @@ The content in the GDSC database can be accessed and calculated using the R pack
 
 ```{r}
 source("install_dependencies.R")
+load("drugAndPhenoCgp.RData") # from pRRophetic package ./data
 source("predict_from_cgp.R") # from pRRophetic, https://github.com/paulgeeleher/pRRophetic2
 
 # 加载ggplot2包，用于创建优雅的统计图形
