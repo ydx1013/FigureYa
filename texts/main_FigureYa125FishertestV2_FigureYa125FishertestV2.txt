@@ -2,6 +2,13 @@ FigureYa125FishertestV2
 FigureYa125FishertestV2
 Xiaofan Lu, Enyu Lin, Taojun Ye
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
 两个指标（miRNA和FAP蛋白）按照高低分为四组，计算两个指标的相关性和p
 value，用热图展示。
@@ -21,15 +28,12 @@ exact test; F).
 本质上就是把连续型因素分类后，研究两种因素间的相关性，用列联表热图展示，同时做Fisher’s
 exact test。
 可用于计算和展示miRNA跟靶基因，或转录因子跟靶基因之间的相关关系。
-在“小丫画图”微信公众号回复“相关性”，查看更多相关性展示方式。
 Application scenarios
 Essentially, it is to classify continuous factors, study the
 correlation between two factors, display it using a contingency table
 heatmap, and conduct Fisher’s exact test.
 Can be used to calculate and display the correlation between miRNA
 and target genes, or transcription factors and target genes.
-Reply to “Relevance” on “Xiaoya Pictorial” WeChat official account to
-see more ways to display relevance.
 环境设置
 Environment settings
 # 设置系统环境变量，使R显示英文报错信息 (Set system environment variable to display error messages in English)
@@ -109,4 +113,5 @@ drawing to avoid mapping errors.
 下面用base plot一笔一笔画图：
 Start drawing
 Below is a stroke by stroke plot using the base plot:
+Session Info
 sessionInfo()

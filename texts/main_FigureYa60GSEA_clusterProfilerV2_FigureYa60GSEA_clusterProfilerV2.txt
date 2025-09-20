@@ -12,11 +12,8 @@ https://doi.org/10.1002/imm3.70005
 需求描述
 Requirement description
 clusterProfiler的GSEA结果作为输入，画出像paper里这样美的GSEA结果图。
-关注“小丫画图”公众号（微信ID：FigureYa），回复“GSEA”，查看GSEA在paper里的高级用法。
 Use the GSEA results from clusterProfiler as input to draw a GSEA
 result plot as beautiful as those in paper.
-Follow the “Xiaoya drawing” official account (WeChat ID: FigureYa),
-reply with “GSEA” to see advanced usage of GSEA in paper.
 出自
 https://www.nature.com/articles/s41467-018-06944-1
 from

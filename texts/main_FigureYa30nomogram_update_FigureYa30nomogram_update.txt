@@ -49,20 +49,14 @@ FigureYa33DCA_update
 Application scenario
 列线图（nomogram，诺莫图）是在平面直角坐标系中用一簇互不相交的线段表示多个独立变量之间函数关系的图。
 将Logistic回归或Cox回归的结果进行可视化呈现，给出其发病风险或比例风险。
-关注“小丫画图”微信公众号，回复“30”查看这两个图在更多文章中的应用。
 A nomogram is a graph that represents a functional relationship
 between multiple independent variables in a plane rectangular coordinate
 system using a cluster of disjointed line segments.
 It visualizes the results of a Logistic regression or Cox regression,
 giving the risk or proportional risk of developing a disease.
-Follow “Xiaoya Drawing” WeChat Official Account, reply “30” to see
-the application of these two graphs in more articles.
 环境设置
 Environment setting
-use the domestic mirror installation package
 source("install_dependencies.R")
-install.packages(c("rms", "nomogramEx", "regplot", "vioplot", "sm", "beanplot"))
-load package
 library(survival)
 library(regplot)
 library(rms)
@@ -254,4 +248,5 @@ legend("topleft", #图例的位置 location of the legend
        cex = 1.2,#图例字体大小 legend font size
        bty = "n")#不显示图例边框 legend border not displayed
 dev.off()
+Session Info
 sessionInfo()

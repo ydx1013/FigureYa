@@ -34,7 +34,6 @@ Usage scenario
 后面可以接
 FigureYa36双因子生存分析
 ，对比两个基因的高低组合对预后的影响。
-关注“小丫画图”微信公众号，回复“35”，看这两个图怎样配合应用在文章中，以及小伙伴对这个图的统计方法的讨论。
 Find the best grouping when showing the effect of gene expression
 levels (continuous variables) on survival, multiple genes, one graph at
 a time
@@ -43,17 +42,9 @@ FigureYa36 two-factor survival analysis
 to compare the
 effect of the combination of high and low levels of two genes on the
 prognosis.
-Follow “Xiaoya drawing” WeChat official account, reply “35”, to see
-how these two graphs are used in the article, as well as partners on the
-statistical method of the graph of the discussion.
 环境设置
 Environment setting
-use the domestic mirror installation package
 source("install_dependencies.R")
-install.packages("survival")
-install.packages("survminer")
-install.packages("KMsurv")
-load package
 library(survival)
 library(survminer)
 Sys.setenv(LANGUAGE = "en") #显示英文报错信息 display English error messages
@@ -246,5 +237,5 @@ res <- arrange_ggsurvplots(pl2,
 #保存到pdf文件
 #save to pdf file
 ggsave("bestSurvPlot_event.pdf",res,width = 12,height = 16)
-#source("rcode.R")
+Session Info
 sessionInfo()

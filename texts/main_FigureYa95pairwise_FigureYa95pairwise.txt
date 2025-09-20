@@ -44,18 +44,15 @@ Sys.setenv(LANGUAGE = "en")
 options(stringsAsFactors = FALSE)
 输入数据预处理
 需要三种文件：
-easy_input_expr1.csv，easy_input_expr2.csv，TCGA的表达数据。数据下载可参考“小丫画图”微店“TCGA”分类中以前的代码，例如FigureYa34count2FPKMv2。
-easy_input_maf1.txt，easy_input_maf2.txt，TCGA的突变数据。数据下载可参考“小丫画图”微店“TCGA”分类中以前的代码，例如FigureYa18oncoplot。
+easy_input_expr1.csv，easy_input_expr2.csv，TCGA的表达数据。数据下载可参考FigureYa34count2FPKMv2。
+easy_input_maf1.txt，easy_input_maf2.txt，TCGA的突变数据。数据下载可参考FigureYa18oncoplot。
 immunitygene.csv，免疫细胞marker基因，这里用GSVA。还可以用MCPcounter，可参考FigureYa56immune_inflitration，或FigureYa71ssGSEA。
 Input data preprocessing
 Three files are needed:
 easy_input_expr1.csv, easy_input_expr2.csv, TCGA expression data.
-For data download, please refer to the previous code in the “TCGA”
-category of “Xiaoya Drawing” microstore, for example,
-FigureYa34count2FPKMv2.
+For data download, please refer to FigureYa34count2FPKMv2.
 easy_input_maf1.txt, easy_input_maf2.txt, TCGA mutation data. For
-data download, please refer to the previous codes in the “TCGA” category
-of “Xiaoya’s Drawing” microstore, e.g. FigureYa18oncoplot.
+data download, please refer to FigureYa18oncoplot.
 immunitygene.csv, immunity cell marker gene, here we use GSVA, we
 can also use MCPcounter, please refer to FigureYa56immune_inflitration,
 or FigureYa71ssGSEA.
