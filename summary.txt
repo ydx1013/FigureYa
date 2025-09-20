@@ -32,23 +32,11 @@ RMD Render Summary
 [SKIPPED] - ./FigureYa186swimmerplot/FigureYa186swimmerplot.Rmd (Not listed in to_Knit.txt)
 [FAILED] - ./FigureYa256panelLink/FigureYa256panelLink.Rmd
 --- Error Log for ./FigureYa256panelLink/FigureYa256panelLink.Rmd ---
-     ▆
-  1. └─S7:::Ops.S7_object(p_right, new_scale_fill())
-  2.   ├─base::tryCatch(return(base_ops[[.Generic]](e1, e2)), S7_error_method_not_found = function(cnd) cnd)
-  3.   │ └─base (local) tryCatchList(expr, classes, parentenv, handlers)
-  4.   │   └─base (local) tryCatchOne(expr, names, parentenv, handlers[[1L]])
-  5.   │     └─base (local) doTryCatch(return(expr), name, parentenv, handler)
-  6.   └─base_ops[[.Generic]](e1, e2)
-  7.     ├─S7::S7_dispatch()
-  8.     └─ggplot2 (local) `method(+, list(ggplot2::ggplot, class_any))`(...)
-  9.       └─ggplot2:::add_ggplot(e1, e2, e2name)
- 10.         ├─ggplot2::ggplot_add(object, p, objectname)
- 11.         └─ggplot2:::ggplot_add.default(object, p, objectname)
- 12.           └─ggplot2::update_ggplot(object = object, plot = plot, ...)
- 13.             ├─S7::S7_dispatch()
- 14.             └─ggplot2 (local) `method(update_ggplot, list(class_any, ggplot2::ggplot))`(object = `<new_aes>`, plot = `<ggplt2::>`, ...)
- 15.               └─cli::cli_abort("Can't add {.var {object_name}} to a {.cls ggplot} object.")
- 16.                 └─rlang::abort(...)
+Error in `library()`:
+! there is no package called 'ggnewscale'
+Backtrace:
+    ▆
+ 1. └─base::library(ggnewscale)
 
 Quitting from FigureYa256panelLink.Rmd:134-228 [unnamed-chunk-5]
 Execution halted
@@ -127,17 +115,7 @@ Execution halted
 [SKIPPED] - ./FigureYa257armCNV/FigureYa257armCNV.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa306slingshot/FigureYa306slingshot.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa90subgroup/FigureYa90subgroup.Rmd (Not listed in to_Knit.txt)
-[FAILED] - ./FigureYa38PCA/FigureYa38PCA.Rmd
---- Error Log for ./FigureYa38PCA/FigureYa38PCA.Rmd ---
-Error in `library()`:
-! there is no package called 'yyplot'
-Backtrace:
-    ▆
- 1. └─base::library(yyplot)
-
-Quitting from FigureYa38PCA.Rmd:68-77 [unnamed-chunk-1]
-Execution halted
------------------------------------
+[SKIPPED] - ./FigureYa38PCA/FigureYa38PCA.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa40lineage/FigureYa40lineage.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa222PCAgene/FigureYa222PCAgene.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa159LR_RF_V2/FigureYa159LR_RF_V2.Rmd (Not listed in to_Knit.txt)
@@ -160,7 +138,7 @@ Execution halted
 [SKIPPED] - ./FigureYa263panDiff/FigureYa263panDiff.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa23count2TPM/FigureYa23count2TPMv2.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa253panGSEA/FigureYa253panGSEA.Rmd (Not listed in to_Knit.txt)
-[SUCCESS] - ./FigureYa197SmoothHaz/FigureYa197SmoothHaz.Rmd
+[SKIPPED] - ./FigureYa197SmoothHaz/FigureYa197SmoothHaz.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa260CNV/FigureYa260CNV.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa245VarDecompose/FigureYa245VarDecompose.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa74OmicCircos/FigureYa74OmicCircos.Rmd (Not listed in to_Knit.txt)
@@ -189,7 +167,7 @@ Execution halted
 [SKIPPED] - ./FigureYa279panGeneGSEA/FigureYa279panGeneGSEA.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa145target/FigureYa145target.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa146TMEbox/FigureYa146TMEbox.Rmd (Not listed in to_Knit.txt)
-[SUCCESS] - ./FigureYa66单因素cox/FigureYa66单因素cox.Rmd
+[SKIPPED] - ./FigureYa66单因素cox/FigureYa66单因素cox.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa149rankHeatmap/FigureYa149rankHeatmap.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa183condSurv/FigureYa183condSurv.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa265panCNV/FigureYa265panCNV.Rmd (Not listed in to_Knit.txt)
@@ -256,7 +234,17 @@ Execution halted
 [SKIPPED] - ./FigureYa291PancanProgSigatureV2/FigureYa291PancanProgSigatureV2.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa224scMarker/FigureYa224scMarker.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa192breakpoint/FigureYa192breakpoint.Rmd (Not listed in to_Knit.txt)
-[SKIPPED] - ./FigureYa28color/FigureYa28color.Rmd (Not listed in to_Knit.txt)
+[FAILED] - ./FigureYa28color/FigureYa28color.Rmd
+--- Error Log for ./FigureYa28color/FigureYa28color.Rmd ---
+Error in `readImage()`:
+! could not find function "readImage"
+Backtrace:
+    ▆
+ 1. └─global extract_colours("nature22973-f2.jpg", num_col = 30)
+
+Quitting from FigureYa28color.Rmd:91-110 [unnamed-chunk-2]
+Execution halted
+-----------------------------------
 [SKIPPED] - ./FigureYa112venn/FigureYa112venn.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa124AssociationHeatmap/FigureYa124AssociationHeatmap.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa207Randomization/FigureYa207Randomization.Rmd (Not listed in to_Knit.txt)
@@ -268,7 +256,7 @@ Execution halted
 [SKIPPED] - ./FigureYa16fitting/FigureYa16WGCNA_fitting.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa217RMR/FigureYa217RMR.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa141risk/FigureYa141risk.Rmd (Not listed in to_Knit.txt)
-[SUCCESS] - ./FigureYa63pubmedMiningV2/FigureYa63pubmedMiningV2.Rmd
+[SKIPPED] - ./FigureYa63pubmedMiningV2/FigureYa63pubmedMiningV2.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa27tSNE_update/FIgureYa27tSNE_update.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa294HCCdrug/FigureYa294HCCdrug.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa125FishertestV2/FigureYa125FishertestV2.Rmd (Not listed in to_Knit.txt)
@@ -311,17 +299,7 @@ Execution halted
 [SKIPPED] - ./FigureYa123mutVSexpr/FigureYa123mutVSexpr.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa285scRNA_monocle/FigureYa285scRNA_monocle.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa180FGAplotV2/FigureYa180FGAplotV2.Rmd (Not listed in to_Knit.txt)
-[FAILED] - ./FigureYa78gganatogram/FigureYa78gganatogram.Rmd
---- Error Log for ./FigureYa78gganatogram/FigureYa78gganatogram.Rmd ---
-Error in `library()`:
-! there is no package called 'gganatogram'
-Backtrace:
-    ▆
- 1. └─base::library(gganatogram)
-
-Quitting from FigureYa78gganatogram.Rmd:46-63 [unnamed-chunk-1]
-Execution halted
------------------------------------
+[SKIPPED] - ./FigureYa78gganatogram/FigureYa78gganatogram.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa21TCGA2table/FigureYa21TCGA2table_latex.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa21TCGA2table/FigureYa21TCGA2table.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa219GMM/FigureYa219GMM.Rmd (Not listed in to_Knit.txt)
@@ -362,4 +340,16 @@ Execution halted
 [SKIPPED] - ./FigureYa87fish/FigureYa87fish.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa39bar/FigureYa39bar.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa151pathifier/FigureYa151pathifier.Rmd (Not listed in to_Knit.txt)
-[SKIPPED] - ./FigureYa64triangle/FigureYa64triangle.Rmd (Not listed in to_Knit.txt)
+[FAILED] - ./FigureYa64triangle/FigureYa64triangle.Rmd
+--- Error Log for ./FigureYa64triangle/FigureYa64triangle.Rmd ---
+Error in `coord_tern()`:
+! could not find function "coord_tern"
+Backtrace:
+    ▆
+ 1. └─global ggtern(...)
+ 2.   └─base::suppressMessages(...)
+ 3.     └─base::withCallingHandlers(...)
+
+Quitting from FigureYa64triangle.Rmd:89-96 [unnamed-chunk-2]
+Execution halted
+-----------------------------------
