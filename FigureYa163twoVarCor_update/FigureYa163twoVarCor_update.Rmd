@@ -45,8 +45,8 @@ From <https://clinicalepigeneticsjournal.biomedcentral.com/articles/10.1186/s131
 展示两个基因/性状之间的相关性，2组/3组/多组都可以画一起。
 Show the correlation between two genes/traits. Two, three, or more groups can be plotted together.
 
-- 这里用颜色区分每个分组，如果太多怕区分不开，可参考FigureYa125Fishertest、FigureYa76corrgram或FigureYa97correlationV3，再多的话可以用FigureYa73batchCorrelation做批量相关性分析和画图。可进入“微店——分类——相关性”，查看更多相关性的展示方式。
-- Here, each group is distinguished by color. If there are too many groups to distinguish, refer to FigureYa125 Fishertest, FigureYa76 corrgram, or FigureYa97 correlationV3. For even more, use FigureYa73 batchCorrelation for batch correlation analysis and plotting. Go to "WeChat Store - Category - Correlation" to view more ways to display correlations.
+- 这里用颜色区分每个分组，如果太多怕区分不开，可参考FigureYa125Fishertest、FigureYa76corrgram或FigureYa97correlationV3，再多的话可以用FigureYa73batchCorrelation做批量相关性分析和画图。
+- Here, each group is distinguished by color. If there are too many groups to distinguish, refer to FigureYa125 Fishertest, FigureYa76 corrgram, or FigureYa97 correlationV3. For even more, use FigureYa73 batchCorrelation for batch correlation analysis and plotting.
 
 - 这里要求两组数据的横纵坐标一致，如果你的两组数据横纵坐标不一致，可参考FigureYa62twoAxis和FigureYa96R2的画法
 - This requires the two data sets to have consistent horizontal and vertical coordinates. If your two data sets do not, refer to FigureYa62twoAxis and FigureYa96R2 for more information.
