@@ -24,8 +24,8 @@ Use a fgsea-like graph in the paper to display the results of GSEA enrichment an
 1. Java版GSEA的输出结果作为输入，到画图；
 1. Use the output of Java version of GSEA as input to draw a graph;
 
-2. 用clusterProfiler做GSEA，到画图。这里重点在画DIYpaper里的这幅图，如果有关于clusterProfiler做富集分析的问题，建议在“小丫画图群”或“小丫画图群-医学统计”里发红包提问。
-2. Use clusterProfiler to do GSEA and then draw a graph. The focus here is on drawing the graph in DIYpaper. If you have any questions about clusterProfiler enrichment analysis, it is recommended to send a red envelope to ask questions in "Xiaoya Drawing Group" or "Xiaoya Drawing Group-Medical Statistics".
+2. 用clusterProfiler做GSEA，到画图。这里重点在画DIYpaper里的这幅图。
+2. Use clusterProfiler to do GSEA and then draw a graph. The focus here is on drawing the graph in DIYpaper.
 
 ![](example.jpg)
 
