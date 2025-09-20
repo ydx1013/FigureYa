@@ -10,7 +10,6 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -47,34 +46,16 @@ from<https://www.frontiersin.org/articles/10.3389/fonc.2019.00488/full>
 
 后面可以接`FigureYa36双因子生存分析`，对比两个基因的高低组合对预后的影响。
 
-关注“小丫画图”微信公众号，回复“35”，看这两个图怎样配合应用在文章中，以及小伙伴对这个图的统计方法的讨论。
-
 Find the best grouping when showing the effect of gene expression levels (continuous variables) on survival, multiple genes, one graph at a time
 
 Later, you can take the `FigureYa36 two-factor survival analysis` to compare the effect of the combination of high and low levels of two genes on the prognosis.
 
-Follow “Xiaoya drawing” WeChat official account, reply “35”, to see how these two graphs are used in the article, as well as partners on the statistical method of the graph of the discussion.
-
 # 环境设置
 # Environment setting
 
-
-use the domestic mirror installation package
-
 ```{r}
 source("install_dependencies.R")
-```
 
-```{r eval=FALSE}
-install.packages("survival")
-install.packages("survminer")
-install.packages("KMsurv")
-```
-
-
-load package
-
-```{r}
 library(survival)
 library(survminer)
 
@@ -294,7 +275,8 @@ res <- arrange_ggsurvplots(pl2,
 ggsave("bestSurvPlot_event.pdf",res,width = 12,height = 16)
 ```
 
+# Session Info
+
 ```{r}
-#source("rcode.R")
 sessionInfo()
 ```
