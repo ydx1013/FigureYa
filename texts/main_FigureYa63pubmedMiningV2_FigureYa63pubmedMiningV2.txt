@@ -1,16 +1,23 @@
-FigureYa63 PubmedMiningV2
-FigureYa63 PubmedMiningV2
+FigureYa63PubmedMiningV2
+FigureYa63PubmedMiningV2
 Haitao Wang, Melvin L.K. Chua; Ying Ge, Yijing
 Chen
-2025-5-20
+2025-9-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
-requirement description
+Requirement description
 通过API检索NCBI的Pubmed数据库，批量获得文章信息，整理出摘要里基因的词频。
 NCBI’s Pubmed database is searched through the API to obtain article
 information in bulk and organize the word frequencies of the genes in
 the abstracts.
 应用场景
-application scenario
+Application scenario
 老板交给我的这个基因好陌生，用这套代码跑出表格，一眼望去，发现它的好朋友我都很熟，于是，熟悉的思路、方法都能用上了。
 文章做到第三部分卡住了，我的基因到底调控了谁，或者谁调控了它，或者它跟谁是好朋友一同发挥作用？用这套代码跑出表格，一眼望去，发现目的基因跟我熟悉的一类分子一同出现在某篇文章的摘要里，我们实验室有非常完善的研究这类分子的实验体系，接下来就瞄准这个分子了。
 只要设置好检索词，就可以批量检索并整理文献和摘要，让你的头脑风暴比别人快10倍。
@@ -41,29 +48,13 @@ of the target gene.
 [Module 3]
 Find a good friend from the abstract
 环境设置
-environment setting
-使用国内镜像安装包
-use the domestic mirror installation package
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
-BiocManager::install("rentrez")
-BiocManager::install("pubmed.mineR")
-install.packages("jiebaR")
-install.packages("bibliometrix")
-install.packages("DT")
-install.packages("htmlwidgets")
-加载包
-load package
+Environment setting
+source("install_dependencies.R")
 library(data.table)
 library(stringr)
 library(ggplot2)
-library(jiebaR)
 library(rentrez) 
 library(pubmed.mineR)
-library(bibliometrix)
-library(ggrepel)
-library(ggthemes)
-library(AnnotationDbi)
 library(DT)
 library(htmlwidgets)
 
@@ -88,7 +79,7 @@ frequency.
 (load("HGNCdata.rda")) #位于当前文件夹 located in the current folder
 head(HGNCdata)
 参数设置
-parameter setting
+Parameter setting
 在这里设置检索词、检索的文章发表时间范围
 set search terms and the publication time range of the retrieved
 articles here
@@ -347,4 +338,5 @@ rentrez R package, achieving the purpose of batch retrieval and
 processing.
 Reference:
 https://bioconnector.github.io/workshops/r-ncbi.html
+Session Info
 sessionInfo()

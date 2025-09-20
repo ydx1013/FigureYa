@@ -1,7 +1,17 @@
 FigureYa66单因素cox
 FigureYa66单因素cox
 Yin Li, Taojun Ye
-2025-5-20
+2025-9-18
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed. doi.org/10.1002/imm3.70005
+To cite package ‘ggstatsplot’ in publications use:
+Patil, I. (2021). Visualizations with statistical details: The
+‘ggstatsplot’ approach. Journal of Open Source Software, 6(61), 3167,
+doi:10.21105/joss.03167
 需求描述
 单基因cox分析，并画出像paper里的图。
 计算HR，保存到文件，作为FigureYa6森林图的输入。
@@ -29,12 +39,12 @@ Cox analysis can be used for transcriptome, methylation, miRNA,
 LncRNA, variable shear, etc.
 环境设置
 Environment settings
-#options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-#options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
-#install.packages("ggstatsplot")
+source("install_dependencies.R")
+source("ggscatterstats.R") # from ggstatsplot package https://github.com/IndrajeetPatil/ggstatsplot
+source("theme-ggstatsplot.R") # from ggstatsplot package https://github.com/IndrajeetPatil/ggstatsplot
+
 library(tidyverse)
 library(ggplot2)
-library(ggstatsplot)
 library(survival)
 library(stringr)
 library(viridis)
@@ -50,7 +60,8 @@ If your data has been organized into cox_output.csv format, you can
 skip this step and go directly to “Start Drawing”.
 Here we take LUAD as an example, download the survival data and
 expression matrix from TCGA, and process them into easy_input.csv for
-cox analysis. ### 第一步：样本资料整理，提取LUAD样本名
+cox analysis.
+第一步：样本资料整理，提取LUAD样本名
 数据来源：
 TCGA_phenotype_denseDataOnlyDownload.tsv，TCGA样本资料，下载地址：
 https://pancanatlas.xenahubs.net/download/TCGA_phenotype_denseDataOnlyDownload.tsv.gz
@@ -336,7 +347,6 @@ ggplot(data = plotCoxoutput, aes(x = HR, y = gene, color = pvalue)) +
   theme(panel.grid = element_blank())
 # 保存图形/Save plot
 ggsave('plot1.pdf', width = 8, height = 9)
-
 # 绘图2：误差线随p值变色
 # Plot 2: Error bars colored by p-value
 ggplot(data = plotCoxoutput, aes(x = HR, y = gene, color = pvalue)) +
@@ -352,7 +362,6 @@ ggplot(data = plotCoxoutput, aes(x = HR, y = gene, color = pvalue)) +
   theme_ggstatsplot() +  
   theme(panel.grid = element_blank())
 ggsave('plot2.pdf', width = 8, height = 9)
-
 # 绘图3：自定义主题和配色（樱花粉配色）
 # Plot 3: Custom theme and color scheme (cherry blossom color)
 ggplot(data = plotCoxoutput, aes(x = HR, y = gene, color = pvalue)) +
@@ -444,4 +453,5 @@ ggplot(data = AAtop20, aes(x = HR, y = symbol, color = pvalue)) +
 # 保存图形为PDF（8x9英寸）
 # Save plot as PDF (8x9 inches)
 ggsave('sameplot.pdf', width = 8, height = 9)
+Session Info
 sessionInfo()

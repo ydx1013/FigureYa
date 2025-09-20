@@ -2,6 +2,13 @@ FigureYa197SmoothHaz
 FigureYa197SmoothHaz
 Jiawei Shi
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
 Description of the requirements
 复现平滑化的风险函数曲线（B） Reproducing the smoothed risk function
@@ -59,21 +66,7 @@ Neuro Oncol. 2015
 Jul;17(7):999-1006.
 环境设置
 Environment settings
-使用国内镜像安装包 Use the domestic mirror installation package
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
-install.packages("muhaz")
-install.packages("export")
-
-#下载export，https://cran.r-project.org/src/contrib/Archive/export/
-#Download export，https://cran.r-project.org/src/contrib/Archive/export/
-#安装依赖的包
-#Install the dependent packages
-install.packages(c("rvg", "flextable", "rgl", "stargazer"))
-#本地安装export
-#Install export locally
-install.packages("export_0.2.2.tar.gz", repos = NULL, type = "source")
-加载包 load package
+source("install_dependencies.R")
 library(survival)
 library(survminer)# 生存分析 # Survival analysis
 library(openxlsx) # 读取数据 # Read the data
@@ -135,16 +128,16 @@ dim(clin)
 # Save to a file for easy application
 write.csv(clin, "easy_input.csv", quote = F, row.names = F)
 输入文件
-input files
+Input files
 easy_input.csv，包含生存信息，和一列分组信息（此处为gender）。
 easy_input.csv，Contains survival information, and a column of grouping
 information (in this case, gender)
 clin <- read.csv("easy_input.csv")
 head(clin)
 构建muhaz对象
-#Build the muhaz object
+Build the muhaz object
 muhaz函数的参数设置
-#Parameter settings for the muhaz function
+Parameter settings for the muhaz function
 times，生存时间向量
 delta，生存结局向量
 subset，如果不指定，表示将使用所有观察值
@@ -167,7 +160,7 @@ b.cor，边界效应校正类型，“b”=“both”(表示校正双边的边�
 n.min.grid,n.est.grid=101，前者默认51，后者默认101
 kern=“epanechnikov”
 设置核函数，使用首字母即可，默认epanechnikov
-#Parameter Descriptions for Kernel Density Estimation in Survival
+Parameter Descriptions for Kernel Density Estimation in Survival
 Analysis
 -times: Vector of survival times. -delta: Vector of event status
 indicators (0 = censored, 1 = event occurred). -subset: Subset of
@@ -234,20 +227,49 @@ plot, in three steps:
 # Set the font
 # 施普林格·自然杂志社图片文字要求8号Helvetica or Arial，（https://www.nature.com/documents/aj-artworkguidelines.pdf）
 # Springer Nature Magazine Picture text request No. 8 Helvetica or Arial,（https://www.nature.com/documents/aj-artworkguidelines.pdf）
-# install.packages("extrafont")
-# install.packages("extrafontdb")
-#若extrafont这个包安装失败，可本地安装
-#If the installation of the extrafont package fails, you can install it locally
-#install.packages("extrafont_0.19.tar.gz")
-#若extrafontdb这个包安装失败，可本地安装
-#If the installation of the extrafontdb package fails, you can install it locally
-#install.packages("extrafontdb_1.0.tar.gz")
-library(extrafont)
-library(extrafontdb)
-# font_import() # 导入字体，这个过程需要几分钟 # Import fonts, the process takes a few minutes
-# loadfonts(device = "win") #加载字体 # Load font
-# windowsFonts(Arial = windowsFont('Arial'))        
 
+# 检查并安装必要的包
+if (!require(extrafont)) {
+  cat("extrafont 包未安装，尝试安装...\n")
+  # 尝试安装 extrafont
+  if (!require(remotes)) install.packages("remotes")
+  tryCatch({
+    install.packages("extrafont")
+  }, error = function(e) {
+    remotes::install_github("wch/extrafont")
+  })
+}
+# 加载字体包（如果可用）
+font_available <- require(extrafont, quietly = TRUE)
+
+if (font_available) {
+  # 尝试加载字体
+  tryCatch({
+    # 检查是否已有字体数据
+    if (length(extrafont::fonts()) == 0) {
+      # 导入字体
+      extrafont::font_import(prompt = FALSE)
+    }
+    extrafont::loadfonts(device = "pdf", quiet = TRUE)
+    cat("字体系统初始化成功\n")
+  }, error = function(e) {
+    cat("字体初始化失败:", e$message, "\n")
+    font_available <- FALSE
+  })
+}
+
+# 如果没有字体支持，使用默认设置
+if (!font_available) {
+  cat("使用默认字体设置\n")
+  # 设置默认字体族
+  if (.Platform$OS.type == "windows") {
+    default_font <- "sans"
+  } else {
+    default_font <- "Helvetica"
+  }
+} else {
+  default_font <- "Arial"
+}
 # 自定义颜色
 # Custom colors
 orange <- "#EB292A"
@@ -255,18 +277,20 @@ blue <- "#2271B4"
 
 p1 <- ggplot(smoothhazp, aes(x=Months, y=Hazard, colour= factor(Subgroup,labels = c("Male","Female")))) +
   geom_line() + ggtitle("Kernel-smoothing hazard function plot")+
-  #scale_color_brewer(palette = "Set1") + #用色板配色 # Match colors with color swatches
-  scale_color_manual(values = c(blue, orange)) + #自己设置颜色代码 # Set the color code yourself
-
-  theme_classic() +                        # 设置主题 # Set up a theme
-  theme(plot.title = element_text(hjust=-0.1,size=8,vjust=0.2,face = "bold"), # 调整标题位置 # Adjust the position of the title
-        axis.text = element_text(size=8,#family='Arial'
-                                 ,colour="black"),  # 坐标轴文字 # Axis text
-        axis.title = element_text(size=8,#family='Arial'
-                                  ,colour="black"), # 坐标轴标题 # Axis title
-        legend.title = element_blank(),                                  # 删除图例标题 #Delete the legend title
+  scale_color_manual(values = c(blue, orange)) +
+  theme_classic() +
+  theme(plot.title = element_text(hjust=-0.1, size=8, vjust=0.2, face = "bold"),
+        axis.text = element_text(size=8, colour="black"),
+        axis.title = element_text(size=8, colour="black"),
+        legend.title = element_blank(),
         legend.position = c(0.8,0.9)) +
-  scale_x_continuous(name = "",breaks = seq(0,72,12)) #设置x轴刻度，与risk table一致 # Set the X-axis scale to be consistent with the risk table
+  scale_x_continuous(name = "", breaks = seq(0,72,12))
+
+# 如果字体可用，应用字体设置
+if (font_available) {
+  p1 <- p1 + theme(text = element_text(family = default_font))
+}
+
 p1
 这样就画出了例文那样的图。
 下面是作者给出的升级版：加上风险表
@@ -294,7 +318,6 @@ ggsurv <- ggsurvplot(fit, data = clin, risk.table = TRUE,
                                                     font.x = c(8, "plain", "black"),
                                                     font.y = c(8, "plain", "black"),
                                                     font.tickslab = c(8, "plain", "black")))
-
 p2 <- ggsurv$table + 
   theme(legend.position = "none") + labs(title = "") # 删除风险表的title # Delete the title of the risk table
 p2
