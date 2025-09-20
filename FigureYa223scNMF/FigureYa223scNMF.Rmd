@@ -65,7 +65,7 @@ Figure 3. Unbiased Clustering Reveals a Common Program of p-EMT in HNSCC Tumors
 
 原文：We then applied dimension reduction analyses, specifically non-negative matrix factorization (NMF), and identified a total of 44 **metagenes** that were preferentially co-expressed  by subpopulations of malignant cells across tumors (Supplementary information, Table S4). Then, hierarchical clustering was used to characterize these 44 metagenes into gene expression signatures, and high concordance was shown among five **signatures** (Fig. 2c; Supplementary information, Table S5). For each signature, we then combined the **top 100 genes of each metagene and calculated the average loadings** for each gene. We summarized the total loadings for repetitive genes, retained the original loadings for exclusive genes, and divided the loadings of each gene by the number of metagenes within the signature. Finally, the top 30 genes with the highest loading were defined as the **marker genes for the signature**.
 
-仔细读全文，小丫发现例文的很多图我们都有[相应的FigureYa](https://k.koudai.com/McawGY6=)啦！例如：
+仔细读全文，很多图我们都有相应的FigureYa：
 
 - `FigureYa166scCNV`能帮你实现例文1的Figure 1c 和例文2的Figure 1B。用 单细胞RNA-seq数据计算CNV，用来separate the malignant cells from the non-malignant cells with normal karyotypes. 
 - `FigureYa194pySCENIC`能帮你实现例文1的Figure 4i，用SCENIC找出potential TFs underlying the regulation across subtypes.
@@ -82,7 +82,7 @@ Figure 3. Unbiased Clustering Reveals a Common Program of p-EMT in HNSCC Tumors
 
 Original text: We then applied dimension reduction analyses, specifically non-negative matrix factorization (NMF), and identified a total of 44 **metagenes** that were preferentially co-expressed  by subpopulations of malignant cells across tumors (Supplementary information, Table S4). Then, hierarchical clustering was used to characterize these 44 metagenes into gene expression signatures, and high concordance was shown among five **signatures** (Fig. 2c; Supplementary information, Table S5). For each signature, we then combined the **top 100 genes of each metagene and calculated the average loadings** for each gene. We summarized the total loadings for repetitive genes, retained the original loadings for exclusive genes, and divided the loadings of each gene by the number of metagenes within the signature. Finally, the top 30 genes with the highest loading were defined as the **marker genes for the signature**.
 
-Read the entire text carefully, and Xiao Ya found that we have [corresponding FigureYa](https://k.koudai.com/McawGY6=) for many of the figures in the example text! For instance:
+Read the entire text carefully, we have corresponding FigureYa:
 
 - `FigureYa166scCNV` can help you achieve Figure 1c from Example Text 1 and Figure 1B from Example Text 2. It uses single-cell RNA-seq data to calculate CNV to separate the malignant cells from the non-malignant cells with normal karyotypes.
 - `FigureYa194pySCENIC` can help you achieve Figure 4i from Example Text 1, using SCENIC to identify potential TFs underlying the regulation across subtypes.
@@ -192,9 +192,9 @@ topn <- 6000
 ranks <- 4
 ```
 
-耐心等待，小丫的电脑跑了一天。练习时可先跳过这步，直接进入“NMF program聚类”。
+耐心等待，我的电脑跑了一天。练习时可先跳过这步，直接进入“NMF program聚类”。
 
-Please be patient, Xiaoya's computer has been running all day. During practice sessions, you can skip this step and proceed directly to the "NMF program clustering".
+Please be patient, my computer has been running all day. During practice sessions, you can skip this step and proceed directly to the "NMF program clustering".
 
 ```{r eval=FALSE}
 # 单细胞数据基因有很空值，为了降低噪音，我们选择sd变化前6000个基因进行NMF
