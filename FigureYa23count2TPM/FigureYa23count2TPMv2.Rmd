@@ -270,7 +270,7 @@ my.reduce <- function(x){
 
 ```
 
-> 目前只测试了拟南芥和人类。其他物种报错或者没有返回预期结果，请将物种的URL和你遇到的问题，以【小丫画图|Count2TPM 问题】为邮件标题，发送到邮箱 xuzhougeng@163.com
+> 目前只测试了拟南芥和人类。
 > 注，函数不支持需要登陆才能下载的GTF的URL
 
 下面调用函数下载GTF文件，提取存放有效转录本长度的向量
@@ -287,7 +287,7 @@ my.reduce <- function(x){
 
 去<https://www.gencodegenes.org/releases/22.html>下载相应版本的gtf文件
 
-> Currently only Arabidopsis thaliana and human are tested. For other species that report errors or do not return the expected results, please send the URL of the species and the problem you encountered to xuzhougeng@163.com with the email title [XiaoyaDrawing|Count2TPM Problem].
+> Currently only Arabidopsis thaliana and human are tested.
 > Note, the function does not support the URL of GTF which requires login to download.
 
 Call the function below to download the GTF file and extract the vector containing the lengths of valid transcripts.
