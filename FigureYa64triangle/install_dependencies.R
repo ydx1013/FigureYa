@@ -28,11 +28,11 @@ install_cran_package <- function(package_name) {
 cat("Starting R package installation for ternary plots...\n")
 cat("===========================================\n")
 
-# 安装所有CRAN包（包括ggtern）
+# 安装所有CRAN包
 cat("\nInstalling CRAN packages...\n")
 cran_packages <- c(
   "directlabels", "ggplot2", "proto", "scales", "tidyverse", 
-  "dplyr", "grid", "gtable", "plyr", "MASS", "compositions", "ggtern"
+  "dplyr", "grid", "gtable", "plyr", "MASS", "compositions"
 )
 
 for (pkg in cran_packages) {
@@ -43,7 +43,7 @@ for (pkg in cran_packages) {
 cat("\n===========================================\n")
 cat("Verifying installation...\n")
 
-required_packages <- c("ggplot2", "ggtern", "directlabels", "scales", "tidyverse")
+required_packages <- c("ggplot2", "directlabels", "scales", "tidyverse")
 success_count <- 0
 
 for (pkg in required_packages) {
@@ -63,14 +63,6 @@ if (success_count == length(required_packages)) {
   cat("You can now run your ternary plot scripts.\n")
 } else {
   cat("⚠️  Some packages failed to install.\n")
-  
-  # 提供备选方案
-  if (!is_package_installed("ggtern")) {
-    cat("\nAlternative installation methods for ggtern:\n")
-    cat("1. Try: install.packages('ggtern')\n")
-    cat("2. Check CRAN availability: https://cran.r-project.org/package=ggtern\n")
-    cat("3. Alternative ternary plot package: install.packages('Ternary')\n")
-  }
 }
 
-cat("\nInstallation completed! You can now use ggtern from CRAN.\n")
+cat("\nInstallation completed!\n")
