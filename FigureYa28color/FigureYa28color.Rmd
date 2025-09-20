@@ -1,7 +1,7 @@
 ---
 title: "FigureYa28color"
 author: "Ying Ge; Yijing Chen"
-date: "2025-5-20"
+date: "2025-9-20"
 output: html_document
 ---
 
@@ -61,7 +61,8 @@ Use the `rPlotter` package recommended by Guangchuang Yu <https://mp.weixin.qq.c
 
 ```{r}
 source("install_dependencies.R")
-library(rPlotter)
+source("extract_colours.R") # from rPlotter package, https://github.com/woobe/rPlotter
+
 library(scales)
 library(rgl)
 
