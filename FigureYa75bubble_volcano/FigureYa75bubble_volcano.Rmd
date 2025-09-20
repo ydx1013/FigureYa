@@ -47,9 +47,9 @@ Or display the enrichment analysis results
 
 from<http://dx.doi.org/10.1016/j.neuron.2017.09.008>
 
-想用ggplot2来画火山图，请参考FigureYa59Volcano，在“小丫画图”公众号回复“火山”了解详情。
+想用ggplot2来画火山图，请参考FigureYa59Volcano。
 
-If you want to use ggplot2 to draw a volcanic map, please refer to Figure Ya59Volcano and reply "Volcano" on the "Xiaoya Painting" official account for details.
+If you want to use ggplot2 to draw a volcanic map, please refer to Figure Ya59Volcano.
 
 ## 环境设置
 
