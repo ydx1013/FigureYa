@@ -6,6 +6,11 @@ date: "2025-5-20"
 output: html_document
 ---
 
+# Academic Citation
+If you use this code in your work or research, we kindly request that you cite our publication:
+
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 # 设置knitr代码块的全局选项 / Set global options for knitr code chunks
@@ -33,15 +38,11 @@ Figure 4. E–F, Comparison of the miR-508 ISH scores and the CALD1 and FAP IHC 
 
 可用于计算和展示miRNA跟靶基因，或转录因子跟靶基因之间的相关关系。
 
-在“小丫画图”微信公众号回复“相关性”，查看更多相关性展示方式。
-
 # Application scenarios
 
 Essentially, it is to classify continuous factors, study the correlation between two factors, display it using a contingency table heatmap, and conduct Fisher's exact test.
 
 Can be used to calculate and display the correlation between miRNA and target genes, or transcription factors and target genes.
-
-Reply to "Relevance" on "Xiaoya Pictorial" WeChat official account to see more ways to display relevance.
 
 # 环境设置
 
@@ -260,6 +261,8 @@ invisible(dev.off()) # 关闭图形设备 (Close graphics device)
 ```
 
 ![](ContigencyTable.pdf)
+
+# Session Info
 
 ```{r}
 sessionInfo()
