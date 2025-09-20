@@ -81,7 +81,7 @@ Three files are required:
 
 - **！从STRING数据库下载PPI数据：（此处更新较大！！）**
 
-  在https://string-db.org/cgi/download网站看左上角版本号：**version 11.0**，输人或者小鼠，左下角没有找到小丫代码里面的文件。（如下图示：）
+  在https://string-db.org/cgi/download网站看左上角版本号：**version 11.0**，输人或者小鼠，左下角没有找到小Ying代码里面的文件。（如下图示：）
 
 Three files are required:
 
@@ -91,7 +91,7 @@ Three files are required:
 
 - **! Download PPI data from STRING database: (larger update here!!) **
 
-  Look at the version number in the upper left corner of https://string-db.org/cgi/download website: **version 11.0**, type in human or mouse, and the file in the Xiaoya code is not found in the lower left corner. (as shown below:)
+  Look at the version number in the upper left corner of https://string-db.org/cgi/download website: **version 11.0**, type in human or mouse, and the file in the XiaoYing code is not found in the lower left corner. (as shown below:)
 
   ![STRINGv11-mm](FigureYa53PPImodule-0527更新.assets/STRINGv11-mm.png)
 

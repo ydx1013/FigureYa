@@ -445,7 +445,7 @@ par(bty="n", mgp = c(2,.33,0), mar=rep(0,4), las=1, tcl=-.25, xpd=NA)
 # 创建一个空绘图区域，设置x轴为设计矩阵的列数，y轴为设计矩阵的行数
 # Create an empty plot area with x-axis set to the number of columns and y-axis to the number of rows in the design matrix
 plot(NA, NA, xlim=c(0, ncol(design)), ylim=c(0, nrow(design)), 
-     xaxt="n", yaxt="n", xlab="", ylab="", xaxs="i", yaxs="i")
+     xaxt="n", Yingxt="n", xlab="", ylab="", xaxs="i", Yingxs="i")
 
 # 对设计矩阵的前16列进行层次聚类，以便后续对样本进行排序
 # Perform hierarchical clustering on the first 16 columns of the design matrix to sort samples
@@ -490,7 +490,7 @@ par(bty="n", mgp = c(2,.33,0), mar=rep(0,4), las=1, tcl=-.25, xpd=NA)
 # 创建一个空绘图区域，设置x轴为设计矩阵的列数，y轴为设计矩阵的行数
 # Create an empty plot area with x-axis set to the number of columns and y-axis to the number of rows in the design matrix
 plot(NA, NA, xlim=c(0, ncol(design)), ylim=c(0, nrow(design)), 
-     xaxt="n", yaxt="n", xlab="", ylab="", xaxs="i", yaxs="i")
+     xaxt="n", Yingxt="n", xlab="", ylab="", xaxs="i", Yingxs="i")
 
 # 对设计矩阵的前16列进行层次聚类，以便后续对样本进行排序
 # Perform hierarchical clustering on the first 16 columns of the design matrix to sort samples
@@ -521,7 +521,7 @@ par(bty="n", mgp = c(2,.33,0), mar=rep(0,4), las=1, tcl=-.25, xpd=NA)
 # Create an empty plot area with x-axis set to number of columns in design matrix minus 1 (excluding first column), 
 # y-axis set to 1000 genes
 plot(NA, NA, xlim=c(0, ncol(design)-1), ylim=c(0, 1000), 
-     xaxt="n", yaxt="n", xlab="", ylab="", xaxs="i", yaxs="i")
+     xaxt="n", Yingxt="n", xlab="", ylab="", xaxs="i", Yingxs="i")
 
 # 创建热图：将线性模型系数矩阵(glm$coefficients)中的前1000个基因与突变类型的关系
 # 映射到红-蓝(RdBu)颜色渐变，使用之前的聚类结果排序后绘制

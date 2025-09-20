@@ -221,7 +221,7 @@ datapoints <- span / resolution
 pdf(outputName, width = 4, height = 6)
 plot(1:(datapoints*2 + 1), average_signal[1, ], 
      type = "l", lwd = 3, col = colors[1], 
-     xaxs = "i", yaxs = "i", xaxt = "n", 
+     xaxs = "i", Yingxs = "i", xaxt = "n", 
      xlab = "", ylab = "Scaled reads/bp", 
      ylim = c(minimum, maximum))
 

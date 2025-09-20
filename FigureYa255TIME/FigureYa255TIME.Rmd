@@ -208,7 +208,7 @@ clust.col <- c("#DD492E","#40548A","#32A087","#EC7D21")
 heatmap.BlBkRd <- c("#54FEFF","#32ABAA","#125456","#000000","#510000","#A20000","#F30000")
 blue <- "#5bc0eb"
 gold <- "#ECE700"
-cyan <- "#00B3D0"
+cYingn <- "#00B3D0"
 
 annCol.tcga$ImmuneScore <- as.numeric(est.tcga[rownames(annCol.tcga),"ImmuneScore"])
 annCol.tcga$StromalScore <- as.numeric(est.tcga[rownames(annCol.tcga),"StromalScore"])
@@ -261,7 +261,7 @@ hm2
 ## 热图3：MeTIL得分 Heatmap 3: MeTIL Score
 hm3 <- pheatmap(standarize.fun(t(annCol.tcga[,"MeTIL",drop = F]),halfwidth = 1),
                 border_color = NA,
-                color = NMF:::ccRamp(c(cyan,"black","#F12AFE"),64),
+                color = NMF:::ccRamp(c(cYingn,"black","#F12AFE"),64),
                 show_rownames = T,
                 show_colnames = F,
                 cellheight = 12,

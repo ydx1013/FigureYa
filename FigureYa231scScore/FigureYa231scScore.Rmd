@@ -160,7 +160,7 @@ GBM and Ctrl
 DimPlot(SeuratObj, 
         reduction = "tsne", 
         group.by = "Diagnosis", # metadata的Diagnosis列
-        cols = c("royalblue3", "yellow2"),
+        cols = c("roYinglblue3", "yellow2"),
         pt.size = 1.5)
 ```
 

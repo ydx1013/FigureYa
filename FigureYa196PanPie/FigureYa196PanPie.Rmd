@@ -153,7 +153,7 @@ if(showLayout) {
 par(bty="n", mgp = c(0,0,0), mar = c(0,0,0,0), lwd = 2) # 基础参数，各边界距离为0 # For the basic parameters, the distance between each boundary is 0
 plot(1,1,
      xlab = "",xaxt = "n", # 不显示x坐标轴 # The x-axis is not displayed
-     ylab = "",yaxt = "n") # 不显示y坐标轴 # The y-axis is not displayed
+     ylab = "",Yingxt = "n") # 不显示y坐标轴 # The y-axis is not displayed
 rect(par("usr")[1],par("usr")[3],par("usr")[2],par("usr")[4],col = "black") # 背景涂黑 # The background is blackened
 text((par("usr")[1]+par("usr")[2])/2, # 用par("usr")来获取该画布的绝对位置 # Use par("usr") to get the absolute position of the canvas
      (par("usr")[3]+par("usr")[4])/2,
@@ -161,7 +161,7 @@ text((par("usr")[1]+par("usr")[2])/2, # 用par("usr")来获取该画布的绝对
 
 plot(1,1,
      xlab = "",xaxt = "n", # 不显示x坐标轴 # The x-axis is not displayed
-     ylab = "",yaxt = "n") # 不显示y坐标轴 # The y-axis is not displayed
+     ylab = "",Yingxt = "n") # 不显示y坐标轴 # The y-axis is not displayed
 rect(par("usr")[1],par("usr")[3],par("usr")[2],par("usr")[4],col = "black") # 背景涂黑 # The background is blackened
 text((par("usr")[1]+par("usr")[2])/2, # 用par("usr")来获取该画布的绝对位置 # Use par("usr") to get the absolute position of the canvas
      (par("usr")[3]+par("usr")[4])/2,
@@ -169,7 +169,7 @@ text((par("usr")[1]+par("usr")[2])/2, # 用par("usr")来获取该画布的绝对
 
 plot(1,1,
      xlab = "",xaxt = "n", # 不显示x坐标轴 # The x-axis is not displayed
-     ylab = "",yaxt = "n") # 不显示y坐标轴 # The y-axis is not displayed
+     ylab = "",Yingxt = "n") # 不显示y坐标轴 # The y-axis is not displayed
 rect(par("usr")[1],par("usr")[3],par("usr")[2],par("usr")[4],col = "black") # 背景涂黑 # The background is blackened
 text((par("usr")[1]+par("usr")[2])/2, # 用par("usr")来获取该画布的绝对位置 # Use par("usr") to get the absolute position of the canvas
      (par("usr")[3]+par("usr")[4])/2,
@@ -177,7 +177,7 @@ text((par("usr")[1]+par("usr")[2])/2, # 用par("usr")来获取该画布的绝对
 
 plot(1,1,
      xlab = "",xaxt = "n", # 不显示x坐标轴 # The x-axis is not displayed
-     ylab = "",yaxt = "n") # 不显示y坐标轴 # The y-axis is not displayed
+     ylab = "",Yingxt = "n") # 不显示y坐标轴 # The y-axis is not displayed
 rect(par("usr")[1],par("usr")[3],par("usr")[2],par("usr")[4],col = "black") # 背景涂黑 # The background is blackened
 text((par("usr")[1]+par("usr")[2])/2, # 用par("usr")来获取该画布的绝对位置 # Use par("usr") to get the absolute position of the canvas
      (par("usr")[3]+par("usr")[4])/2,
@@ -185,7 +185,7 @@ text((par("usr")[1]+par("usr")[2])/2, # 用par("usr")来获取该画布的绝对
 
 plot(1,1,
      xlab = "",xaxt = "n", # 不显示x坐标轴 # The x-axis is not displayed
-     ylab = "",yaxt = "n") # 不显示y坐标轴 # The y-axis is not displayed
+     ylab = "",Yingxt = "n") # 不显示y坐标轴 # The y-axis is not displayed
 rect(par("usr")[1],par("usr")[3],par("usr")[2],par("usr")[4],col = "black") # 背景涂黑 # The background is blackened
 text((par("usr")[1]+par("usr")[2])/2, # 用par("usr")来获取该画布的绝对位置 # Use par("usr") to get the absolute position of the canvas
      (par("usr")[3]+par("usr")[4])/2,
@@ -193,7 +193,7 @@ text((par("usr")[1]+par("usr")[2])/2, # 用par("usr")来获取该画布的绝对
 
 plot(1,1,
      xlab = "",xaxt = "n", # 不显示x坐标轴 # The x-axis is not displayed
-     ylab = "",yaxt = "n") # 不显示y坐标轴 # The y-axis is not displayed
+     ylab = "",Yingxt = "n") # 不显示y坐标轴 # The y-axis is not displayed
 rect(par("usr")[1],par("usr")[3],par("usr")[2],par("usr")[4],col = "black") # 背景涂黑 # The background is blackened
 text((par("usr")[1]+par("usr")[2])/2, # 用par("usr")来获取该画布的绝对位置 # Use par("usr") to get the absolute position of the canvas
      (par("usr")[3]+par("usr")[4])/2,
@@ -207,7 +207,7 @@ text((par("usr")[1]+par("usr")[2])/2, # 用par("usr")来获取该画布的绝对
 
 plot(1,1,
      xlab = "",xaxt = "n", 
-     ylab = "",yaxt = "n") 
+     ylab = "",Yingxt = "n") 
 rect(par("usr")[1],par("usr")[3],par("usr")[2],par("usr")[4],col = "black") 
 text((par("usr")[1]+par("usr")[2])/2,
      (par("usr")[3]+par("usr")[4])/2,
@@ -263,7 +263,7 @@ abline(v = par("usr")[2], col = "black") # 右侧封上黑线 # The right side i
 
 plot(1,1,
      xlab = "",xaxt = "n", 
-     ylab = "",yaxt = "n") 
+     ylab = "",Yingxt = "n") 
 rect(par("usr")[1],par("usr")[3],par("usr")[2],par("usr")[4],col = "black") # 背景涂黑
 text((par("usr")[1]+par("usr")[2])/2, # 用par("usr")
      (par("usr")[3]+par("usr")[4])/2,
@@ -319,12 +319,12 @@ abline(v = par("usr")[2], col = "black") # 右侧封上黑线
 
 plot(1,1,
      xlab = "",xaxt = "n", 
-     ylab = "",yaxt = "n") 
+     ylab = "",Yingxt = "n") 
 rect(par("usr")[1],par("usr")[3],par("usr")[2],par("usr")[4],col = "black") 
 
 plot(1,1,col = "white",
      xlab = "",xaxt = "n", 
-     ylab = "",yaxt = "n") 
+     ylab = "",Yingxt = "n") 
 text((par("usr")[1]+par("usr")[2])/2,
      (par("usr")[3]+par("usr")[4])/2,
      paste0("p = ",fisher.p["Status"]),cex = 1.5, col = "black") 
@@ -332,7 +332,7 @@ abline(h = par("usr")[3], col = "black")
 
 plot(1,1,col = "white",
      xlab = "",xaxt = "n", 
-     ylab = "",yaxt = "n") 
+     ylab = "",Yingxt = "n") 
 text((par("usr")[1]+par("usr")[2])/2, 
      (par("usr")[3]+par("usr")[4])/2,
      paste0("p = ",fisher.p["Stage"]),cex = 1.5, col = "black") 
@@ -340,7 +340,7 @@ abline(h = par("usr")[3], col = "black")
 
 plot(1,1,col = "white",
      xlab = "",xaxt = "n",
-     ylab = "",yaxt = "n") 
+     ylab = "",Yingxt = "n") 
 text((par("usr")[1]+par("usr")[2])/2, 
      (par("usr")[3]+par("usr")[4])/2,
      paste0("p = ",fisher.p["M"]),cex = 1.5, col = "black") 
@@ -348,7 +348,7 @@ abline(h = par("usr")[3], col = "black")
 
 plot(1,1,col = "white",
      xlab = "",xaxt = "n", 
-     ylab = "",yaxt = "n") 
+     ylab = "",Yingxt = "n") 
 text((par("usr")[1]+par("usr")[2])/2, 
      (par("usr")[3]+par("usr")[4])/2,
      paste0("p = ",fisher.p["N"]),cex = 1.5, col = "black") 
@@ -356,7 +356,7 @@ abline(h = par("usr")[3], col = "black")
 
 plot(1,1,col = "white",
      xlab = "",xaxt = "n", 
-     ylab = "",yaxt = "n") 
+     ylab = "",Yingxt = "n") 
 text((par("usr")[1]+par("usr")[2])/2, 
      (par("usr")[3]+par("usr")[4])/2,
      paste0("p = ",fisher.p["T"]),cex = 1.5, col = "black") 
@@ -370,7 +370,7 @@ abline(v = par("usr")[2], col = "black")
 
 plot(0,0,col = "white",
      xlab = "",xaxt = "n", 
-     ylab = "",yaxt = "n") 
+     ylab = "",Yingxt = "n") 
 legend("topleft",
        legend = c("Alive","Dead",
                   "I","II","III","IV",

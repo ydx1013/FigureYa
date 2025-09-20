@@ -23,7 +23,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 出自<https://www.thno.org/v11p3089.htm>
 
-Figure 6. Roles of Siglec15 in predicting immune phenotypes in the Xiangya cohort. 
+Figure 6. Roles of Siglec15 in predicting immune phenotypes in the XiangYing cohort. 
 (C) Correlations between Siglec15 and the steps of the **cancer immunity cycle**. 
 (D) Correlations between Siglec15 and the enrichment scores of **immunotherapy-predicted pathways**.
 

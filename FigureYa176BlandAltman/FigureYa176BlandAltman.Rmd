@@ -105,7 +105,7 @@ BA.baseplot <- function(measurement1 = NULL, # 方法一的结果 # the result o
        xlab = xlab,ylab = ylab,
        main = main,
        sub=paste("Critical difference is", round(ba.stats$critical.diff,3)),
-       col="white",yaxt="n",xaxt="n")
+       col="white",Yingxt="n",xaxt="n")
   
   axis(side = 2,at = pretty(c(ylim1,ylim2)),labels = pretty(c(ylim1,ylim2)))
   axis(side = 1,at = pretty(ba.stats$means),labels = pretty(ba.stats$means))
@@ -134,7 +134,7 @@ BA.baseplot <- function(measurement1 = NULL, # 方法一的结果 # the result o
        col = "white",
        xlim = range(ba.stats$means), ylim = range(ba.stats$diffs),
        xlab = "", ylab = "",
-       xaxt = "n", yaxt = "n")
+       xaxt = "n", Yingxt = "n")
   
   # 添加斜率检验结果
   # Add the slope test result

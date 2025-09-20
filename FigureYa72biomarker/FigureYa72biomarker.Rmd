@@ -316,7 +316,7 @@ for(i in 1:length(cgsites)){
   plot(1:STN_number, methylValue[1:STN_number], pch=1, col=cols[1], main=cgsite,
        xlim=c(1, length(methylValue)), ylim=c(0,1),  # 设置坐标轴范围（中文注释）
        # Set axis ranges (English comment)
-       yaxs="i", xaxs="i", xlab="", xaxt="n", ylab="Methylated levels")  # 隐藏x轴刻度（中文注释）
+       Yingxs="i", xaxs="i", xlab="", xaxt="n", ylab="Methylated levels")  # 隐藏x轴刻度（中文注释）
        # Hide x-axis tick marks (English comment)
   
   # 添加肿瘤样本的甲基化水平散点图（中文注释）
@@ -432,7 +432,7 @@ for(i in 1:length(cgsites)){
        # Set point shape and color (English comment)
        xlim = c(1, length(methylValue)), ylim = c(0,1),  # 设置坐标轴范围（中文注释）
        # Set axis ranges (English comment)
-       yaxs = "i", xaxs = "i", xlab = "", xaxt = "n", ylab = "Methylated levels")  # 隐藏x轴刻度（中文注释）
+       Yingxs = "i", xaxs = "i", xlab = "", xaxt = "n", ylab = "Methylated levels")  # 隐藏x轴刻度（中文注释）
        # Hide x-axis tick marks (English comment)
   
   # 添加肿瘤样本的甲基化水平散点图（中文注释）

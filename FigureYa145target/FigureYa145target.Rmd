@@ -200,7 +200,7 @@ head(all1)
 ```{r}
 # 自定义颜色
 # Custom color
-cols <- c("royalblue4","gray80","seagreen3","powderblue","steelblue","goldenrod1")
+cols <- c("roYinglblue4","gray80","seagreen3","powderblue","steelblue","goldenrod1")
 fills <- c("#FFFFD4","#FEE391","#FEC44F","#FE9929","#D95F0E")
 # 查看颜色
 # View colors

@@ -236,7 +236,7 @@ y_at = c(0, 1, 2, 3)
 # 画散点图
 # Draw a scatter plot
 plot(NA, NA, xlim = c(0, length(TMB.plot)), ylim = y_lims, 
-     xlab = NA, ylab = NA, xaxt="n", yaxt = "n", xaxs = "r")
+     xlab = NA, ylab = NA, xaxt="n", Yingxt = "n", xaxs = "r")
 lapply(seq_len(length(TMB.plot)), function(i){
   tmp = TMB.plot[[i]]
   points(tmp$x, log10(tmp$TMB+1), pch = 16, cex = 0.4, col = "black")
@@ -306,7 +306,7 @@ y_lims[2] = ceiling(max(y_lims))
 y_at = c(0, 1, 2, 3)
 x_top_label <- as.numeric(unlist(lapply(TMB.plot, nrow)))
 plot(NA, NA, xlim = c(0, length(TMB.plot)), ylim = y_lims, 
-     xlab = NA, ylab = NA, xaxt="n", yaxt = "n", xaxs = "r")
+     xlab = NA, ylab = NA, xaxt="n", Yingxt = "n", xaxs = "r")
 lapply(seq_len(length(TMB.plot)), function(i){
   tmp = TMB.plot[[i]]
   points(tmp$x, log10(tmp$TMB+1), pch = 16, cex = 0.4, col = "black")

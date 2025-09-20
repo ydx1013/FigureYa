@@ -159,7 +159,7 @@ par(xpd=NA)
 plot(c(0,nrow(dat)), c(0,ncol(dat)), 
      col = "white",          
      xlab = "", xaxt = "n",  
-     ylab = "", yaxt = "n")  
+     ylab = "", Yingxt = "n")  
 
 # 添加带下划线的标题，左对齐
 # Add underlined title, left aligned

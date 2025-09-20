@@ -203,7 +203,7 @@ par(xpd=NA)  # 允许文本绘制超出绘图区域边界 (Allow text to extend 
 plot(c(0,ncol(tab_classify)),c(0,nrow(tab_classify)), # 设置绘图区域范围 (Set plot area range)
      col = "white", # 点设置为白色，实际不可见 (Make points invisible)
      xlab = "",xaxt = "n", # 不显示x坐标轴 (Suppress x-axis)
-     ylab = "",yaxt = "n") # 不显示y坐标轴 (Suppress y-axis)
+     ylab = "",Yingxt = "n") # 不显示y坐标轴 (Suppress y-axis)
 
 # 设置图标题，包含相关系数和p值信息 (Set plot title with correlation and p-value information)
 title(paste("Correlation between FAP and miR-508\nrho = ", round(r.cor,2), "; ", "P.cor = ", format(p.cor, digits = 3, scientific = T),

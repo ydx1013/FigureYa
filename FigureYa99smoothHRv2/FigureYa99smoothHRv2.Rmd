@@ -228,7 +228,7 @@ ylim.top <- max(exp(smoothlogHR.point$LnHR),exp(smoothlogHR.point$`lower .95`),e
 
 # 先画密度图以免遮挡下面的线图 - Plot density curve first to avoid overlapping
 dens <- density(whas500$bmi) # 计算密度 - Calculate density
-plot(dens$x,dens$y, col=ggplot2::alpha(violet,0.5), type="l", xlab = "", ylab = "",xaxt="n",yaxt="n")
+plot(dens$x,dens$y, col=ggplot2::alpha(violet,0.5), type="l", xlab = "", ylab = "",xaxt="n",Yingxt="n")
 polygon(dens$x,dens$y,col = ggplot2::alpha(violet,0.5),border = ggplot2::alpha(violet,0.5)) # 颜色透明化防遮盖线条 - Transparent fill to avoid overlapping
 axis(side=4, at = pretty(range(dens$y))[-length(pretty(range(dens$y)))]) # 添加右侧坐标轴 - Add right y-axis
 mtext("Fraction of population (Density)", side=4, line=2) # 添加右侧轴标签 - Add right y-axis label

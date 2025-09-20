@@ -344,7 +344,7 @@ ylim <- c(min(scores$G.score) - 0.1, max(scores$G.score) + 0.1)
 title <- paste0("TCGA ESCA overall copy number gistic score", " ", "n=", length(dataSub$patient))
 
 plot(scores.amp$Start.geno, scores.amp$G.score,
-     pch = ".", type='h',cex = 2, xaxs = "i", yaxs = "i", 
+     pch = ".", type='h',cex = 2, xaxs = "i", Yingxs = "i", 
      xlim = c(0,chrom$genome.length), ylim = ylim,
      main = title, cex.main = 2, ylab = "gistic score", xlab = NA,
      cex.lab = 2, col = adjustcolor("darkred", alpha.f = .8), xaxt = "n", lwd = 2, las=1) # las=1 rotating axis labels in R
@@ -447,7 +447,7 @@ plot(
   # Point size
   xaxs = "i",             # X轴范围严格按照数据
   # X-axis range exactly matches data
-  yaxs = "i",             # Y轴范围严格按照数据
+  Yingxs = "i",             # Y轴范围严格按照数据
   # Y-axis range exactly matches data
   xlim = c(0, chrom$genome.length),  # X轴范围：基因组全长
   # X-axis range: Full genome length
@@ -622,7 +622,7 @@ plot(
   # Point size
   xaxs = "i",                  # X轴范围：严格匹配数据
   # X-axis range: strictly match data
-  yaxs = "i",                  # Y轴范围：严格匹配数据
+  Yingxs = "i",                  # Y轴范围：严格匹配数据
   # Y-axis range: strictly match data
   xlim = c(0, chrom$genome.length),  # X轴范围：全基因组长度
   # X-axis range: full genome length
@@ -741,7 +741,7 @@ title <- paste0("EAC copy number gistic score", " ", "n=", length(EAC_id))
 plot(
   scores.amp$Start.geno, 
   scores.amp$G.score,
-  pch = ".", type='h', cex = 2, xaxs = "i", yaxs = "i", 
+  pch = ".", type='h', cex = 2, xaxs = "i", Yingxs = "i", 
   xlim = c(0, chrom$genome.length), ylim = ylim,
   main = title, cex.main = 2, ylab = "Frequency", xlab = NA,  # Y轴标签改为"频率"
   # Y-axis label changed to "Frequency"
@@ -796,7 +796,7 @@ title <- paste0("GA_CIN copy number gistic score", " ", "n=", length(GA_CIN_id))
 plot(
   scores.amp$Start.geno, 
   scores.amp$G.score,
-  pch = ".", type='h', cex = 2, xaxs = "i", yaxs = "i", 
+  pch = ".", type='h', cex = 2, xaxs = "i", Yingxs = "i", 
   xlim = c(0, chrom$genome.length), ylim = ylim,
   main = title, cex.main = 2, ylab = "gistic score", xlab = NA,
   cex.lab = 2, col = adjustcolor("darkred", alpha.f = .8), xaxt = "n", lwd = 2, las=1
@@ -862,7 +862,7 @@ title=paste0("GA_nonCIN copy number gistic score"," ","n=",length(GA_nonCIN_id))
 # 绘制扩增区域的GISTIC评分
 # Plot GISTIC scores for amplifications
 plot(scores.amp$Start.geno, scores.amp$G.score,
-     pch = ".", type='h', cex = 2, xaxs = "i", yaxs = "i",  # 设置点形状、绘图类型和坐标轴范围
+     pch = ".", type='h', cex = 2, xaxs = "i", Yingxs = "i",  # 设置点形状、绘图类型和坐标轴范围
      # Set point character, plot type, and axis ranges
      xlim = c(0,chrom$genome.length), ylim = ylim,  # X轴为全基因组范围，Y轴为评分范围
      # X-axis spans the entire genome, Y-axis based on score range
@@ -1011,7 +1011,7 @@ plot(
   # Point size
   xaxs = "i",                  # X轴范围严格匹配数据
   # X-axis range strictly match data
-  yaxs = "i",                  # Y轴范围严格匹配数据
+  Yingxs = "i",                  # Y轴范围严格匹配数据
   # Y-axis range strictly match data
   xlim = c(0, chrom$genome.length),  # X轴范围：整个基因组长度
   # X-axis range: Full genome length
@@ -1130,7 +1130,7 @@ title <- paste0("EAC, n=", length(EAC_id))
 plot(
   scores.amp$Start.geno, 
   scores.amp$frequency,
-  pch = ".", type='h', cex = 2, xaxs = "i", yaxs = "i", 
+  pch = ".", type='h', cex = 2, xaxs = "i", Yingxs = "i", 
   xlim = c(0, chrom$genome.length), ylim = ylim,
   main = title, cex.main = 2, ylab = "Frequency", xlab = NA,
   cex.lab = 2, col = adjustcolor("darkred", alpha.f = .8), xaxt = "n", lwd = 2, las=1
@@ -1187,7 +1187,7 @@ title <- paste0("GA_CIN, n=", length(GA_CIN_id))
 plot(
   scores.amp$Start.geno, 
   scores.amp$frequency,
-  pch = ".", type='h', cex = 2, xaxs = "i", yaxs = "i", 
+  pch = ".", type='h', cex = 2, xaxs = "i", Yingxs = "i", 
   xlim = c(0, chrom$genome.length), ylim = ylim,
   main = title, cex.main = 2, ylab = "Frequency", xlab = NA,
   cex.lab = 2, col = adjustcolor("darkred", alpha.f = .8), xaxt = "n", lwd = 2, las=1
@@ -1244,7 +1244,7 @@ title <- paste0("GA_nonCIN, n=", length(GA_nonCIN_id))
 plot(
   scores.amp$Start.geno, 
   scores.amp$frequency,
-  pch = ".", type='h', cex = 2, xaxs = "i", yaxs = "i", 
+  pch = ".", type='h', cex = 2, xaxs = "i", Yingxs = "i", 
   xlim = c(0, chrom$genome.length), ylim = ylim,
   main = title, cex.main = 2, ylab = "Frequency", xlab = NA,
   cex.lab = 2, col = adjustcolor("darkred", alpha.f = .8), xaxt = "n", lwd = 2, las=1

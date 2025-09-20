@@ -1,16 +1,16 @@
 ---
 title: "How to get easy input from xena pan-cancer file"
-author: "小丫画图出品"
+author: "小Ying画图出品"
 date: "2019-1-20"
 output: html_document
 ---
-欢迎关注“小丫画图”公众号，同名知识星球等你加入
+欢迎关注“小Ying画图”公众号，同名知识星球等你加入
 
-小丫微信: epigenomics  E-mail: figureya@126.com
+小Ying微信: epigenomics  E-mail: figureYing@126.com
 
 作者：小高
 
-小丫编辑校验
+小Ying编辑校验
 
 # Academic Citation
 If you use this code in your work or research, we kindly request that you cite our publication:

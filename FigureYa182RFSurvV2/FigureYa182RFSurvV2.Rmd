@@ -217,7 +217,7 @@ plot(NULL,NULL,
      ylim = yrange,
      xlab = "Variable Relative Importance",
      ylab = "",
-     yaxt = "n",
+     Yingxt = "n",
      las = 1)
 axis(side = 2,at = 1:length(rel.imp.sel),names(rel.imp.sel)) # 补齐y轴  # Complete the Y-axis
 for (i in 1:length(rel.imp.sel)) { # 循环添加线 # loop to add lines

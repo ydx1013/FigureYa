@@ -68,7 +68,7 @@ options(stringsAsFactors = FALSE)
 
 此处以FigureYa55panCancer输出的的基因在TCGA + GTEx的表达量TPM值（easy_input.csv文件）为例，需要把TCGA的癌症名称跟包里的organ对应上。
 
-参照GEPIA help的Differential analysis：<http://gepia.cancer-pku.cn/help.html>，在此基础上添加gganatogram包的organ，整理成TCGA_organ.txt文件，欢迎来小丫画图群里探讨这些对应关系。
+参照GEPIA help的Differential analysis：<http://gepia.cancer-pku.cn/help.html>，在此基础上添加gganatogram包的organ，整理成TCGA_organ.txt文件，欢迎来小Ying画图群里探讨这些对应关系。
 
 ## Input file preprocessing
 
@@ -76,7 +76,7 @@ If your data has already been organized into the format of very easy input. csv,
 
 Taking the TPM value of gene expression in TCGA+GTEx output from FigureYa55panCancer as an example (easy_input. csv file), it is necessary to match the cancer name in TCGA with the 'organ' in the package.
 
-Refer to GEPIA help's differential analysis:< http://gepia.cancer-pku.cn/help.html >On this basis, add the GAN of the gganatogram package and organize it into a TCGA_organ. txt file. Welcome to explore these corresponding relationships in the Xiaoya drawing group.
+Refer to GEPIA help's differential analysis:< http://gepia.cancer-pku.cn/help.html >On this basis, add the GAN of the gganatogram package and organize it into a TCGA_organ. txt file. Welcome to explore these corresponding relationships in the XiaoYing drawing group.
 
 ```{r}
 # 读取包含TCGA和GTEx的肿瘤(tumor)和正常(normal)样本TPM值的CSV文件 | Read CSV file containing TPM values for TCGA and GTEx tumor/normal samples

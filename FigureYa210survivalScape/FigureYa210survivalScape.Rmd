@@ -318,13 +318,13 @@ red <- "#D02E20"
 blue <- "#4D76B7"
 green <- "#50B544"
 yellow <- "#F8C77A"
-cyan <- "#5AC8F9"
+cYingn <- "#5AC8F9"
 
 annRow <- gene_group # 行基因注释 # row gene annotation
 rownames(annRow) <- annRow$Symbol
 annColors <- list("Function" = c("Readers" = green,
                                  "Writers" = yellow,
-                                 "Eraser" = cyan))
+                                 "Eraser" = cYingn))
 
 # cox
 pheatmap(survland.coxplot,

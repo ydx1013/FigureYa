@@ -33,7 +33,7 @@ from<http://cancerres.aacrjournals.org/content/77/7/1649>
 
 在基因组上同时展示突变位点和motif，为突变影响转录因子结合提供量化（pvalue、score）和可视化的证据。
 
-在“小丫画图”公众号回复“SNP”，查看这个图在更多paper里的应用。
+在“小Ying画图”公众号回复“SNP”，查看这个图在更多paper里的应用。
 
 运行下面这行，查看motifbreakR的官方手册
 
@@ -41,7 +41,7 @@ from<http://cancerres.aacrjournals.org/content/77/7/1649>
 
 Simultaneously displaying mutation sites and motifs on the genome provides quantitative (p-value, score) and visual evidence for the impact of mutations on transcription factor binding.
 
-Reply to "SNP" on the "Xiaoya Painting" official account to check the application of this picture in more papers.
+Reply to "SNP" on the "XiaoYing Painting" official account to check the application of this picture in more papers.
 
 Run the following line to view the official manual of motionbreakR
 

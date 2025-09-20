@@ -290,7 +290,7 @@ combined_plot <- insert_xaxis_grob(p1, p3,
                                    height = grid::unit(0.4, "in") # 调节高度比
 ) 
 
-combined_plot <- insert_yaxis_grob(combined_plot, p2, 
+combined_plot <- insert_Yingxis_grob(combined_plot, p2, 
                                    position = "right",
                                    width = grid::unit(2.5, "in")
 )

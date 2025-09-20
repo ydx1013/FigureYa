@@ -293,7 +293,7 @@ plot(-1, -1,
      col = "white",
      xlim = xlim, ylim = ylim,
      xlab = "", ylab = "",
-     xaxt = "n", yaxt = "n")
+     xaxt = "n", Yingxt = "n")
 invisible(dev.off())
 # 最终图可在AI里稍加修饰
 # Final plot can be slightly modified in AI

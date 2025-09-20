@@ -295,7 +295,7 @@ plot(1:nrow(tmp1),
      ylab = "Focal SCNA level",
      xlab = "",
      xaxt = "n",
-     yaxs = "i", # 移除y轴和图像间的空隙 # Remove the gap between the y-axis and the image
+     Yingxs = "i", # 移除y轴和图像间的空隙 # Remove the gap between the y-axis and the image
      xaxs = "i", # 移除x轴和图像间的空隙 # Remove the gap between the x-axis and the image
      type = "l",
      cex = 1.5,
