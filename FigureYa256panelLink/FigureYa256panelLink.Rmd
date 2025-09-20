@@ -132,6 +132,9 @@ p_left
 ## 2. prepare right panel
 
 ```{r}
+# 确保加载了 ggnewscale 包
+library(ggnewscale)
+
 bracketData <- drugAnn %>%
   select(drug, therapy, signaling) %>%
   unique() %>%
@@ -169,21 +172,20 @@ p_right <- base_plot +
     data = rectData,
     alpha = 0.2, inherit.aes = FALSE
   ) +
-  scale_fill_manual(values = mycolor, name = "Therapy")
-
-# 添加新的填充尺度（条形图）
-p_right <- p_right +
+  scale_fill_manual(values = mycolor, name = "Therapy") +
+  
+  # 正确使用 new_scale_fill()
   new_scale_fill() +
+  
+  # 添加条形图（使用新的填充尺度）
   geom_bar(
     mapping = aes(fill = cat),
     stat = "identity",
     position = position_dodge(width = 0.8)
   ) +
-  scale_fill_manual(values = c("magenta", "green"), name = "Category")
-
-# 添加其他图层（颜色尺度）
-p_right <- p_right +
-  # 画方括号
+  scale_fill_manual(values = c("magenta", "green"), name = "Category") +
+  
+  # 添加其他图层
   geom_segment(
     mapping = aes(x = 9, xend = 9, y = min, yend = max, color = therapy),
     data = bracketData, inherit.aes = FALSE
@@ -198,14 +200,12 @@ p_right <- p_right +
   ) +
   scale_color_manual(values = mycolor, guide = "none") +
   
-  # 写右侧文字
   geom_text(
     mapping = aes(x = 9, y = (max + min) / 2, label = signaling),
     data = bracketData,
     hjust = -0.1, inherit.aes = FALSE, size = 3
   ) +
   
-  # 写左侧文字
   geom_text(
     mapping = aes(x = -1, y = drug, label = drug, color = therapy),
     data = drugAnn %>% mutate(drug = revLevels(drug)),
@@ -221,7 +221,7 @@ p_right <- p_right +
     legend.position = "bottom"
   ) +
   labs(x = "# Cancers") +
-  coord_cartesian(xlim = c(-2, 12))  # 使用 coord_cartesian 而不是 xlim
+  coord_cartesian(xlim = c(-2, 12))
 
 # 显示图形
 print(p_right)
