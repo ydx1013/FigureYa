@@ -91,5 +91,10 @@ If you use this code in your work or research, **in addition to complying with t
 
 > Xiaofan Lu, et al. (2025). *FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency*. iMetaMed. [https://doi.org/10.1002/imm3.70005](https://doi.org/10.1002/imm3.70005)
 
----
 *A pre-formatted BibTeX entry will be added here upon final publication.*
+
+---
+
+## :handshake:To Be Continued
+
+FigureYa is continuously being updated with improvements to existing modules and the addition of new ones. We welcome interested contributors to join the development of FigureYa. Contact us on WeChat: **epigenomics**.
