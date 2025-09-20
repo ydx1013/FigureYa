@@ -67,7 +67,7 @@ RMD Render Summary
 [SKIPPED] - ./FigureYa150diversityScore/FigureYa150diversityScore.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa11bubble/FigureYa11bubbles.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa230immunelandscape/FigureYa230immunelandscape.Rmd (Not listed in to_Knit.txt)
-[SKIPPED] - ./FigureYa30nomogram_update/FigureYa30nomogram_update.Rmd (Not listed in to_Knit.txt)
+[SUCCESS] - ./FigureYa30nomogram_update/FigureYa30nomogram_update.Rmd
 [SKIPPED] - ./FigureYa57profile_1bw/FigureYa57profile_1bw.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa194pySCENIC/FigureYa194pySCENIC.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa140mosaicpie/FigureYa140mosaicpie.Rmd (Not listed in to_Knit.txt)
@@ -84,7 +84,7 @@ RMD Render Summary
 [SKIPPED] - ./FigureYa156enrichSimulation/FigureYa156enrichSimulation.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa126CorrelationHeatmap/FigureYa126CorrelationHeatmap.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa268panCNVexpr/FigureYa268panCNVexpr.Rmd (Not listed in to_Knit.txt)
-[SUCCESS] - ./FigureYa283vennyPvalue/FigureYa283vennyPvalue.Rmd
+[SKIPPED] - ./FigureYa283vennyPvalue/FigureYa283vennyPvalue.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa227boxdensity/FigureYa227boxdensity.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa174squareCross/FigureYa174squareCross.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa259circLink/FigureYa259circLink.Rmd (Not listed in to_Knit.txt)
@@ -113,23 +113,14 @@ RMD Render Summary
 [SKIPPED] - ./FigureYa212drugTargetV2/FigureYa212drugTargetV2.Rmd (Not listed in to_Knit.txt)
 [FAILED] - ./FigureYa247oncoPredict/FigureYa247oncoPredict.Rmd
 --- Error Log for ./FigureYa247oncoPredict/FigureYa247oncoPredict.Rmd ---
-trying URL 'https://cloud.r-project.org/src/contrib/oncoPredict_1.2.tar.gz'
-Content type 'application/x-gzip' length 2463558 bytes (2.3 MB)
-==================================================
-downloaded 2.3 MB
-
-ERROR: dependencies ‘sva’, ‘preprocessCore’, ‘GenomicFeatures’, ‘org.Hs.eg.db’, ‘TxDb.Hsapiens.UCSC.hg19.knownGene’, ‘TCGAbiolinks’, ‘BiocGenerics’, ‘GenomicRanges’, ‘IRanges’, ‘S4Vectors’ are not available for package ‘oncoPredict’
-Perhaps try a variation of:
-install.packages(c('sva', 'preprocessCore', 'GenomicFeatures', 'org.Hs.eg.db', 'TxDb.Hsapiens.UCSC.hg19.knownGene', 'TCGAbiolinks', 'BiocGenerics', 'GenomicRanges', 'IRanges', 'S4Vectors'))
-* removing ‘/home/runner/work/_temp/Library/oncoPredict’
-
-The downloaded source packages are in
-	'/tmp/RtmpvdrjNE/downloaded_packages'
-Error in `library()`:
-! there is no package called 'sva'
+Error in `source()`:
+! install_dependencies.R:39:14: unexpected 'function'
+38:       cat("Successfully installed:", package_name, "\n")
+39:     }, error function
+                 ^
 Backtrace:
     ▆
- 1. └─base::library(sva)
+ 1. └─base::source("install_dependencies.R")
 
 Quitting from FigureYa247oncoPredict.Rmd:60-76 [unnamed-chunk-1]
 Execution halted
@@ -140,7 +131,7 @@ Execution halted
 [SKIPPED] - ./FigureYa249Regulon/FigureYa249Regulon.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa203ComBat/FigureYa203ComBat.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa184ranger/FigureYa184ranger.Rmd (Not listed in to_Knit.txt)
-[SKIPPED] - ./FigureYa60GSEA_clusterProfilerV2/FigureYa60GSEA_clusterProfilerV2.Rmd (Not listed in to_Knit.txt)
+[SUCCESS] - ./FigureYa60GSEA_clusterProfilerV2/FigureYa60GSEA_clusterProfilerV2.Rmd
 [SKIPPED] - ./FigureYa188CNVload/FigureYa188CNVload.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa9heatmap/FigureYa9heatmap.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa106immunotherapy/FigureYa106immunotherapy.Rmd (Not listed in to_Knit.txt)
@@ -196,7 +187,7 @@ Execution halted
 [SKIPPED] - ./FigureYa290BarGraph/FigureYa290BarGraph.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa262GDC/FigureYa262GDC.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa215DNAage/FigureYa215DNAage.Rmd (Not listed in to_Knit.txt)
-[SUCCESS] - ./FigureYa112Plus_venn/FigureYa112Plus_venn.Rmd
+[SKIPPED] - ./FigureYa112Plus_venn/FigureYa112Plus_venn.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa211multiCohortImmSubtype/FigureYa211multiCohortImmSubtype.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa4bestSeparation/FigureYa4bestSeparation.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa168legoplot/FigureYa168legoplot.Rmd (Not listed in to_Knit.txt)
@@ -219,7 +210,7 @@ Execution halted
 [SKIPPED] - ./FigureYa275scAUCell/FigureYa275scAUCell.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa319ContribScore/FigureYa319ContribScore.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa228linkCor/FigureYa228linkCor.Rmd (Not listed in to_Knit.txt)
-[SKIPPED] - ./FigureYa35batch_bestSeparationV3_update/FigureYa35batch_bestSeparationV3_update.Rmd (Not listed in to_Knit.txt)
+[SUCCESS] - ./FigureYa35batch_bestSeparationV3_update/FigureYa35batch_bestSeparationV3_update.Rmd
 [SKIPPED] - ./FigureYa311PAM50Heatmap/FigureYa311PAM50Heatmap.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa202consensusGene/FigureYa202consensusGene.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa220repeatedLasso/FigureYa220repeatedLasso.Rmd (Not listed in to_Knit.txt)
@@ -234,7 +225,7 @@ Execution halted
 [SKIPPED] - ./FigureYa165heatmapPvalue/FigureYa165heatmapPvalue.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa97correlationV3/FigureYa97correlationV3.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa191bestLogistic/FigureYa191bestLogistic.Rmd (Not listed in to_Knit.txt)
-[SKIPPED] - ./FigureYa163twoVarCor_update/FigureYa163twoVarCor_update.Rmd (Not listed in to_Knit.txt)
+[SUCCESS] - ./FigureYa163twoVarCor_update/FigureYa163twoVarCor_update.Rmd
 [SKIPPED] - ./FigureYa91cluster_heatmap/FigureYa91cluster_heatmap.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa92immune_gene_update/FigureYa92immune_gene_update.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa273BAPC/FigureYa273BAPC.Rmd (Not listed in to_Knit.txt)
@@ -251,7 +242,7 @@ Execution halted
 [SKIPPED] - ./FigureYa124AssociationHeatmap/FigureYa124AssociationHeatmap.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa207Randomization/FigureYa207Randomization.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa77baseZoom/FigureYa77baseZoom.Rmd (Not listed in to_Knit.txt)
-[SKIPPED] - ./FigureYa95pairwise/FigureYa95pairwise.Rmd (Not listed in to_Knit.txt)
+[SUCCESS] - ./FigureYa95pairwise/FigureYa95pairwise.Rmd
 [SKIPPED] - ./FigureYa142circosBar/FigureYa142circosBar.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa47HRtable/FigureYa47HRtable.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa303panCircos/FigureYa303panCircos.Rmd (Not listed in to_Knit.txt)
@@ -261,7 +252,7 @@ Execution halted
 [SKIPPED] - ./FigureYa63pubmedMiningV2/FigureYa63pubmedMiningV2.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa27tSNE_update/FIgureYa27tSNE_update.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa294HCCdrug/FigureYa294HCCdrug.Rmd (Not listed in to_Knit.txt)
-[SKIPPED] - ./FigureYa125FishertestV2/FigureYa125FishertestV2.Rmd (Not listed in to_Knit.txt)
+[SUCCESS] - ./FigureYa125FishertestV2/FigureYa125FishertestV2.Rmd
 [SKIPPED] - ./FigureYa323STpathseq/FigureYa323STpathseq.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa152DouleCorPlot/FigureYa152DouleCorPlot.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa196PanPie/FigureYa196PanPie.Rmd (Not listed in to_Knit.txt)
@@ -290,18 +281,7 @@ Execution halted
 [SKIPPED] - ./FigureYa316RF_XGBoost_Boruta/FigureYa316RF_XGBoost_Boruta.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa236circGroup/FigureYa236circGroup.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa148SimpleDendrogram/FigureYa148SimpleDendrogram.Rmd (Not listed in to_Knit.txt)
-[FAILED] - ./FigureYa105GDSC/FigureYa105GDSC.Rmd
---- Error Log for ./FigureYa105GDSC/FigureYa105GDSC.Rmd ---
-Error in `getCGPinfo()`:
-! object 'drugSensitivityDataCgp' not found
-Backtrace:
-    ▆
- 1. └─global pRRopheticPredict(...)
- 2.   └─global getCGPinfo(drug, tissueType, dataset)
-
-Quitting from FigureYa105GDSC.Rmd:151-230 [unnamed-chunk-3]
-Execution halted
------------------------------------
+[SKIPPED] - ./FigureYa105GDSC/FigureYa105GDSC.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa206scHeatmap/FigureYa206scHeatmap.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa19Lollipop/FigureYa19Lollipop.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa93UMAP/FigureYa93UMAP.Rmd (Not listed in to_Knit.txt)
@@ -339,7 +319,7 @@ Execution halted
 [SKIPPED] - ./FigureYa136fgsea/FigureYa136fgsea.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa89ggplotCirco/FigureYa89ggplotCirco.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa293machineLearning/FigureYa293machineLearning.Rmd (Not listed in to_Knit.txt)
-[SUCCESS] - ./FigureYa122mut2expr/FigureYa122mut2expr.Rmd
+[SKIPPED] - ./FigureYa122mut2expr/FigureYa122mut2expr.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa175quadrant/FigureYa175quadrant.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa190batchLogistic/FigureYa190batchLogistic.Rmd (Not listed in to_Knit.txt)
 [SKIPPED] - ./FigureYa94STEMbox_update/FigureYa94STEMbox_update.Rmd (Not listed in to_Knit.txt)
