@@ -374,9 +374,9 @@ Figure legend of Figure 1d.d, Co-occurrence or exclusivity of the most recurrent
 And the discription in Methods:
 Co-occurrence and mutual exclusivity. Only mutations seen in at least 10 patients were kept. The DISCOVER41 method was used to determine significant mutual exclusivity and co-occurrence. A plot of the co-occurrences was generated using corrplot84 with the odds ratio of the pairwise co-occurrence used to colour and scale the circle sizes.
 
-然而DESCOVER并不输出odds ratio，原文未描述odds ratio的计算方法，联系通讯作者未得到回复。欢迎对odds ratio的计算感兴趣的小伙伴来小丫画图知识星球或微信群里讨论。
+然而DESCOVER并不输出odds ratio，原文未描述odds ratio的计算方法，联系通讯作者未得到回复。
 
-However, DESCOVER does not output odds ratio, the original article does not describe the calculation method of odds ratio, and contacting the corresponding author did not get a reply. Welcome friends who are interested in the calculation of odds ratio to discuss it in Xiaoya Drawing Knowledge Planet or WeChat Group.
+However, DESCOVER does not output odds ratio, the original article does not describe the calculation method of odds ratio, and contacting the corresponding author did not get a reply.
 
 # 例文的原图复现
 
