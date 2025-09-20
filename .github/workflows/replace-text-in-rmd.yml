@@ -28,8 +28,16 @@ jobs:
       run: |
         find . -type f -iname "*.rmd" | while read file; do
           echo "Processing $file"
-          sed -i -e 's/丫/Ying/g' "$file"
-          sed -i -e 's/ya/Ying/g' "$file"
+          sed -i -e 's/Yingxs/yaxs/g' "$file"
+          sed -i -e 's/Yingxt/yaxt/g' "$file"
+          sed -i -e 's/Yingixs/yaixs/g' "$file"
+          sed -i -e 's/roYinglblue/royalblue/g' "$file"
+          sed -i -e 's/Yingu/yau/g' "$file"
+          sed -i -e 's/Yingxis/yaxis/g' "$file"
+          sed -i -e 's/OuYingng/Ouyang/g' "$file"
+          sed -i -e 's/BoYingult/Boyault/g' "$file"
+          sed -i -e 's/polYing/polya/g' "$file"
+          sed -i -e 's/cYingn/cyan/g' "$file"
         done
 
     - name: Debug - Show Changes
