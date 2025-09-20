@@ -3,7 +3,6 @@
 
 # Set up mirrors
 options("repos" = c(CRAN = "https://cloud.r-project.org/"))
-options(BioC_mirror = "https://bioconductor.org/")
 
 # Improved package check function
 is_package_installed <- function(package_name) {
@@ -22,11 +21,6 @@ install_package <- function(package_name, type = "cran") {
           install.packages("BiocManager", quiet = TRUE)
         }
         BiocManager::install(package_name, update = FALSE, ask = FALSE, quiet = TRUE)
-      } else if (type == "github") {
-        if (!is_package_installed("remotes")) {
-          install.packages("remotes", quiet = TRUE)
-        }
-        remotes::install_github(package_name, quiet = TRUE)
       }
       cat("✓ Successfully installed:", package_name, "\n")
     }, error = function(e) {
@@ -40,81 +34,115 @@ install_package <- function(package_name, type = "cran") {
 cat("Starting package installation for PubMed mining...\n")
 cat("===========================================\n")
 
-# 安装基础工具包
-cat("\n1. Installing basic utilities...\n")
-base_packages <- c("remotes", "devtools")
-for (pkg in base_packages) {
-  install_package(pkg, "cran")
-}
-
 # 安装CRAN包
-cat("\n2. Installing CRAN packages...\n")
+cat("\n1. Installing CRAN packages...\n")
 cran_packages <- c(
-  "bibliometrix", "data.table", "DT", "ggplot2", 
-  "ggrepel", "ggthemes", "htmlwidgets", "pubmed.mineR", 
-  "rentrez", "stringr", "tidyverse", "dplyr"
+  "data.table", "DT", "ggplot2", "htmlwidgets", 
+  "pubmed.mineR", "rentrez", "stringr"
 )
 
 for (pkg in cran_packages) {
   install_package(pkg, "cran")
 }
 
-# 安装jiebaR - 从GitHub安装
-cat("\n3. Installing jiebaR from GitHub...\n")
-install_package("qinwf/jiebaRD", "github")
-install_package("qinwf/jiebaR", "github")
-
-# 安装Bioconductor包
-cat("\n4. Installing Bioconductor packages...\n")
-bioc_packages <- c("AnnotationDbi")
-for (pkg in bioc_packages) {
-  install_package(pkg, "bioc")
-}
-
 # 验证安装
 cat("\n===========================================\n")
 cat("Verifying installation...\n")
 
-critical_packages <- c("jiebaR", "bibliometrix", "pubmed.mineR", "rentrez", "AnnotationDbi")
+required_packages <- c(
+  "data.table", "stringr", "ggplot2", "rentrez", 
+  "pubmed.mineR", "DT", "htmlwidgets"
+)
+
 success_count <- 0
 
-for (pkg in critical_packages) {
+for (pkg in required_packages) {
   if (is_package_installed(pkg)) {
     cat("✓", pkg, "is ready\n")
     success_count <- success_count + 1
+    
+    # 测试包是否能正常加载
+    tryCatch({
+      library(pkg, character.only = TRUE)
+      cat("  -", pkg, "loaded successfully\n")
+    }, error = function(e) {
+      cat("  -", pkg, "load test failed:", e$message, "\n")
+    })
   } else {
     cat("✗", pkg, "is MISSING\n")
   }
 }
 
 cat("\nInstallation summary:\n")
-cat("Successfully installed:", success_count, "/", length(critical_packages), "critical packages\n")
+cat("Successfully installed:", success_count, "/", length(required_packages), "required packages\n")
 
-if (success_count == length(critical_packages)) {
-  cat("✅ All critical packages installed successfully!\n")
-  cat("You can now run your R scripts in this directory.\n")
-} else {
-  cat("⚠️  Some packages may need manual installation.\n")
-  
-  # 提供手动安装命令
-  if (!is_package_installed("jiebaR")) {
-    cat("\nFor manual jiebaR installation:\n")
-    cat("remotes::install_github('qinwf/jiebaR')\n")
-  }
+# 测试关键包的功能
+cat("\nTesting key package functionality...\n")
+
+# 测试 data.table
+if (is_package_installed("data.table")) {
+  tryCatch({
+    library(data.table)
+    test_dt <- data.table(a = 1:3, b = letters[1:3])
+    cat("✓ data.table functionality test passed\n")
+  }, error = function(e) {
+    cat("✗ data.table test failed:", e$message, "\n")
+  })
 }
 
-# 测试jiebaR基本功能
-cat("\nTesting jiebaR functionality...\n")
-if (is_package_installed("jiebaR")) {
+# 测试 rentrez
+if (is_package_installed("rentrez")) {
   tryCatch({
-    library(jiebaR)
-    worker <- worker()
-    test_text <- "这是一个测试句子"
-    result <- segment(test_text, worker)
-    cat("jiebaR test successful:", paste(result, collapse = " | "), "\n")
+    library(rentrez)
+    # 简单的测试查询
+    test_search <- entrez_search(db="pubmed", term="cancer", retmax=1)
+    cat("✓ rentrez functionality test passed\n")
   }, error = function(e) {
-    cat("jiebaR test failed:", e$message, "\n")
+    cat("✗ rentrez test failed:", e$message, "\n")
   })
+}
+
+# 测试 pubmed.mineR
+if (is_package_installed("pubmed.mineR")) {
+  tryCatch({
+    library(pubmed.mineR)
+    cat("✓ pubmed.mineR loaded successfully\n")
+  }, error = function(e) {
+    cat("✗ pubmed.mineR test failed:", e$message, "\n")
+  })
+}
+
+# 测试 DT
+if (is_package_installed("DT")) {
+  tryCatch({
+    library(DT)
+    test_df <- data.frame(x = 1:3, y = letters[1:3])
+    dt_obj <- datatable(test_df)
+    cat("✓ DT functionality test passed\n")
+  }, error = function(e) {
+    cat("✗ DT test failed:", e$message, "\n")
+  })
+}
+
+if (success_count == length(required_packages)) {
+  cat("\n✅ All required packages installed successfully!\n")
+  cat("You can now run your PubMed mining scripts.\n")
+  
+  cat("\nAvailable packages for use:\n")
+  cat("- data.table: for efficient data manipulation\n")
+  cat("- stringr: for string operations\n") 
+  cat("- ggplot2: for data visualization\n")
+  cat("- rentrez: for NCBI Entrez database access\n")
+  cat("- pubmed.mineR: for PubMed data mining\n")
+  cat("- DT: for interactive data tables\n")
+  cat("- htmlwidgets: for HTML widget support\n")
+  
 } else {
-  cat("jiebaR not available for testing\n")
+  cat("\n⚠️  Some packages failed to install.\n")
+  cat("You may need to install them manually:\n")
+  
+  missing_packages <- required_packages[!sapply(required_packages, is_package_installed)]
+  for (pkg in missing_packages) {
+    cat("install.packages('", pkg, "')\n", sep = "")
+  }
 }
