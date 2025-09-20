@@ -124,8 +124,7 @@ read_cut_updown <- function(file){
 输入文件
 SKCM_*_test_result.*.txt，差异表达结果，可以包含全部基因，这里用FDR筛选显著差异基因。
 怎样获得差异表达结果？
-用
-FigureYa59Plus_GEO2DEG
+用FigureYa59Plus_GEO2DEG
 获得芯片的差异表达分析结果文件
 easy_input_limma.csv
 用FigureYa118MulticlassDESeq2、FigureYa119Multiclasslimma和FigureYa120MulticlassedgeR获得RNA-seq的差异表达分析结果。
@@ -135,10 +134,8 @@ SKCM_*_test_result.*.txt， The differential expression results can
 include all genes, and here FDR is used to screen for significantly
 differentially expressed genes.
 How to obtain differential expression results?
--Using [FigureYa59Plus_GEO2DEG]（
-https://www.yuque.com/figureya/figureyaplus/figureya59p
-）Obtain the differential expression analysis result file of the chip
-‘easy_input_imma. csv’`
+-Using FigureYa59Plus_GEO2DEG Obtain the differential expression
+analysis result file of the chip ‘easy_input_imma. csv’`
 -Obtain differential expression analysis results of RNA seq using
 FigureYa118MulticlassDESeq2, FigureYa119Multiclasslimma, and
 FigureYa120MulticlassedgeR.

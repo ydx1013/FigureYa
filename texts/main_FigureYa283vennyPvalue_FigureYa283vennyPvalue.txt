@@ -42,10 +42,7 @@ Venn diagram and p-value calculation (exact test of multiset
 intersections)
 环境设置
 Environment Setup
-Using domestic mirrors for package installation.
 source("install_dependencies.R")
-加载包
-Loading packages
 # 加载韦恩图画图软件包“VennDiagram”
 # For drawing Venn diagrams
 library(VennDiagram)
@@ -100,9 +97,7 @@ Draw Venn diagram
 http://bioinformatics.psb.ugent.be/webtools/Venn/
 http://bioinfogp.cnb.csic.es/tools/venny/index.html
 这里用R画，用的是VennDiagram包。
-还可以用ggVennDiagram包，标注各区域百分比，并且按百分比填充颜色，可参考
-https://www.yuque.com/figureya/figureyaplus/figureya112p
-。
+还可以用ggVennDiagram包，标注各区域百分比，并且按百分比填充颜色，可参考FigureYa112Plus_venn。
 如果有>=5个数据集，可尝试eulerr
 https://cran.r-project.org/web/packages/eulerr/vignettes/venn-diagrams.html
 或nVennR包
@@ -113,9 +108,7 @@ http://bioinformatics.psb.ugent.be/webtools/Venn/
 http://bioinfogp.cnb.csic.es/tools/venny/index.html
 Here we use R with VennDiagram package. Can also use ggVennDiagram
 package to show percentages and color by percentage, see
-https://www.yuque.com/figureya/figureyaplus/figureya112p
-.
-For >=5 datasets, try eulerr
+FigureYa112Plus_venn. For >=5 datasets, try eulerr
 https://cran.r-project.org/web/packages/eulerr/vignettes/venn-diagrams.html
 or nVennR
 https://cran.r-project.org/web/packages/nVennR/vignettes/nVennR.html
