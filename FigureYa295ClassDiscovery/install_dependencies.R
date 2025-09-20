@@ -55,14 +55,14 @@ for (pkg in cran_packages) {
 
 # 2. 安装Bioconductor包
 cat("\n2. Installing Bioconductor packages...\n")
-bioc_packages <- c("ComplexHeatmap", "limma")
+bioc_packages <- c("ComplexHeatmap", "limma", "ConsensusClusterPlus")
 for (pkg in bioc_packages) {
   install_bioc_package(pkg)
 }
 
 # 验证安装
 cat("\n3. Verifying installation...\n")
-required_packages <- c("cluster", "phangorn", "ape", "reshape2", "ComplexHeatmap", "limma")
+required_packages <- c("cluster", "phangorn", "ape", "reshape2", "ComplexHeatmap", "limma", "ConsensusClusterPlus")
 
 all_installed <- TRUE
 for (pkg in required_packages) {
@@ -118,8 +118,18 @@ test_packages <- function() {
   }, error = function(e) {
     cat("✗ limma loading failed:", e$message, "\n")
   })
+  
+  tryCatch({
+    library(ConsensusClusterPlus)
+    cat("✓ ConsensusClusterPlus package loaded successfully\n")
+    
+    # 测试ConsensusClusterPlus的基本功能
+    if (exists("ConsensusClusterPlus")) {
+      cat("✓ ConsensusClusterPlus main function is available\n")
+    }
+  }, error = function(e) {
+    cat("✗ ConsensusClusterPlus loading failed:", e$message, "\n")
+  })
 }
-
-test_packages()
 
 cat("\nInstallation completed!\n")
