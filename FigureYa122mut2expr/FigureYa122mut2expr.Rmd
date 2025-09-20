@@ -32,7 +32,7 @@ from<http://www.nature.com/articles/ncomms6901>
 
 代码在原文补充材料中有提供，里面有很多东西值得学习。同时我自己写了一些比原文精简的代码（一些数据命名尽量和原文一致，确保小伙伴跑的时候能够理解不同做法的异曲同工）。
 
-**小丫碎碎念：**像这种附带代码的好文章越来越多，是非常好的学习资源。
+像这种附带代码的好文章越来越多，是非常好的学习资源。
 
 这类文章怎么找到呢？在感兴趣的期刊主页的高级搜索里，搜code或script，同时限定research article和发表年份等信息。检索结果里会有上下文，一眼扫过去，就能看到哪些文章带代码。
 
@@ -47,7 +47,7 @@ from<http://www.nature.com/articles/ncomms6901>
 
 The code is provided in the supplementary materials of the original text, and there are many things worth learning from it. At the same time, I wrote some code that was more concise than the original text (some data names should be as consistent as possible with the original text to ensure that my friends can understand the similarities of different approaches when running).
 
-**Xiaoya's rambling: * * There are more and more good articles with accompanying code, which are very good learning resources.
+There are more and more good articles with accompanying code, which are very good learning resources.
 
 How can I find such articles? Search for code or script on the advanced search page of the journal, while limiting information such as research article and publication year. There will be context in the search results, and at a glance, you can see which articles have code.
 
@@ -936,6 +936,8 @@ p1 +
   annotation_custom(ggplotGrob(p2),  
                     xmin=7, ymin=4.9, xmax=10, ymax=6.5)  
 ```
+
+# Session Info
 
 ```{r}
 sessionInfo()
