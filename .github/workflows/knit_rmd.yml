@@ -47,13 +47,13 @@ jobs:
       - name: 8. Render Rmd files selectively
         id: render_rmd
         run: |
-          # Ensure the to_Knit.txt file exists
-          if [ ! -f to_Knit.txt ]; then
-            echo "to_Knit.txt file not found. Please provide this file to specify which Rmd files to knit."
+          # Ensure the Auto_Knit_Online.txt file exists
+          if [ ! -f Auto_Knit_Online.txt ]; then
+            echo "Auto_Knit_Online.txt file not found. Please provide this file to specify which Rmd files to knit."
             exit 1
           fi
-          # Read to_Knit.txt into a variable
-          TO_KNIT=$(<to_Knit.txt)
+          # Read Auto_Knit_Online.txt into a variable
+          TO_KNIT=$(<Auto_Knit_Online.txt)
           # Process each .Rmd file
           ANY_FILE_FAILED=false
           echo "RMD Render Summary" > summary.txt
@@ -62,7 +62,7 @@ jobs:
           find . -type f -name "*.Rmd" | while IFS= read -r rmd_file; do
             rmd_dir=$(dirname "$rmd_file")
             rmd_basename=$(basename "$rmd_file")
-            # Check if any entry in to_Knit.txt matches the Rmd file path or name
+            # Check if any entry in Auto_Knit_Online.txt matches the Rmd file path or name
             MATCHED=false
             for pattern in $TO_KNIT; do
               if [[ "$rmd_file" == *"$pattern"* ]]; then
@@ -71,7 +71,7 @@ jobs:
               fi
             done
             if [ "$MATCHED" = false ]; then
-              echo "[SKIPPED] - $rmd_file (Not listed in to_Knit.txt)" | tee -a summary.txt
+              echo "[SKIPPED] - $rmd_file (Not listed in Auto_Knit_Online.txt)" | tee -a summary.txt
               continue
             fi
             echo "========== START: $rmd_file =========="
@@ -108,7 +108,10 @@ jobs:
           echo "Pulling latest changes from remote..."
           git pull origin main --rebase --autostash
           # 添加生成的 HTML 文件
-          find . -name "*.html" -not -path "./.git/*" | xargs git add 2>/dev/null || true
+          #find . -name "*.html" -not -path "./.git/*" | xargs git add 2>/dev/null || true
+          echo "Adding all generated files to git..."
+          git add --all
+
           # 添加 summary 文件（如果存在）
           if [ -f summary.txt ]; then git add summary.txt; fi
           # 检查是否有任何更改
@@ -124,6 +127,7 @@ jobs:
           else
             echo "No new files or changes to commit."
           fi
+          
       - name: 11. Report Final Status
         if: always()
         run: |
