@@ -44,25 +44,6 @@ install_bioc_package <- function(package_name) {
   }
 }
 
-# Function to install GitHub packages
-install_github_package <- function(repo) {
-  pkg_name <- strsplit(repo, "/")[[1]][2]
-  if (!is_package_installed(pkg_name)) {
-    cat("Installing GitHub package:", repo, "\n")
-    tryCatch({
-      if (!is_package_installed("devtools")) {
-        install.packages("devtools")
-      }
-      devtools::install_github(repo)
-      cat("✅ Successfully installed:", pkg_name, "\n")
-    }, error = function(e) {
-      cat("❌ Failed to install", pkg_name, ":", e$message, "\n")
-    })
-  } else {
-    cat("✅ Package already installed:", pkg_name, "\n")
-  }
-}
-
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
@@ -73,10 +54,6 @@ cran_packages <- c("dplyr", "ggplot2", "plyr", "devtools", "reshape2", "tidyr")
 for (pkg in cran_packages) {
   install_cran_package(pkg)
 }
-
-# 安装 yyplot 包（从 GitHub）
-cat("\nInstalling yyplot from GitHub...\n")
-install_github_package("casenhua/yyplot")
 
 # 安装其他可能需要的包
 cat("\nInstalling additional useful packages...\n")
@@ -91,7 +68,7 @@ cat("Package installation completed!\n")
 
 # Test if key packages can be loaded
 cat("\nTesting key packages...\n")
-test_packages <- c("dplyr", "ggplot2", "plyr", "yyplot", "reshape2", "tidyr")
+test_packages <- c("dplyr", "ggplot2", "plyr", "reshape2", "tidyr")
 
 for (pkg in test_packages) {
   if (require(pkg, quietly = TRUE, character.only = TRUE)) {
@@ -101,17 +78,6 @@ for (pkg in test_packages) {
   }
 }
 
-cat("\nInstallation summary:\n")
-cat("===========================================\n")
-
-# 检查所有包的安装状态
-all_packages <- unique(c(cran_packages, additional_packages, "yyplot"))
-for (pkg in all_packages) {
-  status <- ifelse(is_package_installed(pkg), "✅", "❌")
-  cat(status, pkg, "\n")
-}
-
 cat("\nYou can now run your R scripts in this directory.\n")
 cat("If any packages failed to install, try installing them manually:\n")
 cat("install.packages('package_name')\n")
-# 对于 yyplot: devtools::install_github('casenhua/yyplot')\n")
