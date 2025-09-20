@@ -1,70 +1,70 @@
 #!/usr/bin/env Rscript
-# 安装必要依赖包的脚本
+# Script to install necessary dependency packages
 
-# 设置下载选项
+# Set download options
 options(repos = c(CRAN = "https://cloud.r-project.org/"))
 options(BioC_mirror = "https://bioconductor.org/")
-options(timeout = 600)  # 增加超时时间
+options(timeout = 600)  # Increase timeout duration
 
-# 检查包是否已安装
+# Check if package is installed
 is_installed <- function(pkg) {
   pkg %in% rownames(installed.packages())
 }
 
-# 安装Bioconductor包
+# Install Bioconductor package
 install_bioc_package <- function(pkg) {
   if (is_installed(pkg)) {
-    cat("✓", pkg, "已经安装\n")
+    cat("✓", pkg, "is already installed\n")
     return(TRUE)
   }
   
-  cat("安装Bioconductor包:", pkg, "\n")
+  cat("Installing Bioconductor package:", pkg, "\n")
   tryCatch({
     if (!is_installed("BiocManager")) {
       install.packages("BiocManager")
     }
     BiocManager::install(pkg, update = FALSE, ask = FALSE)
     if (is_installed(pkg)) {
-      cat("✓", pkg, "安装成功\n")
+      cat("✓", pkg, "installed successfully\n")
       return(TRUE)
     } else {
-      cat("❌", pkg, "安装失败\n")
+      cat("❌", pkg, "installation failed\n")
       return(FALSE)
     }
   }, error = function(e) {
-    cat("❌", pkg, "安装错误:", e$message, "\n")
+    cat("❌", pkg, "installation error:", e$message, "\n")
     return(FALSE)
   })
 }
 
-# 安装CRAN包
+# Install CRAN package
 install_cran_package <- function(pkg) {
   if (is_installed(pkg)) {
-    cat("✓", pkg, "已经安装\n")
+    cat("✓", pkg, "is already installed\n")
     return(TRUE)
   }
   
-  cat("安装CRAN包:", pkg, "\n")
+  cat("Installing CRAN package:", pkg, "\n")
   tryCatch({
     install.packages(pkg, dependencies = TRUE)
     if (is_installed(pkg)) {
-      cat("✓", pkg, "安装成功\n")
+      cat("✓", pkg, "installed successfully\n")
       return(TRUE)
     } else {
-      cat("❌", pkg, "安装失败\n")
+      cat("❌", pkg, "installation failed\n")
       return(FALSE)
     }
   }, error = function(e) {
-    cat("❌", pkg, "安装错误:", e$message, "\n")
+    cat("❌", pkg, "installation error:", e$message, "\n")
     return(FALSE)
   })
 }
 
-# 安装必要的依赖包
+# Install necessary dependency packages
 install_dependencies <- function() {
-  cat("安装必要的依赖包...\n")
+  cat("Installing necessary dependency packages...\n")
   
-  # Bioconductor依赖
+  # Bioconductor dependencies
   bioc_deps <- c(
     "Biobase",
     "genefilter",
@@ -74,7 +74,7 @@ install_dependencies <- function() {
     "preprocessCore"
   )
   
-  # CRAN依赖
+  # CRAN dependencies
   cran_deps <- c(
     "ggplot2",
     "cowplot",
@@ -85,30 +85,29 @@ install_dependencies <- function() {
     "doParallel"
   )
   
-  # 安装Bioconductor依赖
+  # Install Bioconductor dependencies
   for (pkg in bioc_deps) {
     install_bioc_package(pkg)
   }
   
-  # 安装CRAN依赖
+  # Install CRAN dependencies
   for (pkg in cran_deps) {
     install_cran_package(pkg)
   }
 }
 
-# 主安装函数
+# Main installation function
 main <- function() {
-  cat("开始安装必要的依赖包...\n")
+  cat("Starting installation of necessary dependency packages...\n")
   cat("===========================================\n")
   
-  # 安装依赖包
+  # Install dependency packages
   install_dependencies()
   
   cat("\n===========================================\n")
-  cat("✅ 依赖包安装完成！\n")
-  cat("注意：pRRophetic 包已不再需要安装\n")
-  cat("你现在可以运行相关的R脚本了。\n")
+  cat("✅ Dependency package installation completed!\n")
+  cat("You can now run the relevant R scripts.\n")
 }
 
-# 执行安装
+# Execute installation
 main()
