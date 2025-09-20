@@ -1,7 +1,7 @@
 ---
 title: "FigureYa64triangle"
 author: "Yin Li; Ying Ge, Yijing Chen"
-date: "2025-5-20"
+date: "2025-9-20"
 output: html_document
 ---
 
@@ -9,6 +9,10 @@ output: html_document
 If you use this code in your work or research, we kindly request that you cite our publication:
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
+
+To cite ggtern in publications use:
+
+Hamilton NE and Ferry M (2018). ggtern: Ternary Diagrams Using ggplot2. Journal of Statistical Software, Code Snippets, 87(3), pp. 1-17. doi: 10.18637/jss.v087.c03
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -44,17 +48,9 @@ Original analysis:
 
 展示3种不同疾病或者3组之间某个指标的相关性，一目了然。
 
-ggtern在文献中的应用：<http://www.ggtern.com/publications/>
-
-带代码的更多主题：<http://www.ggtern.com/posts/>
-
 脑洞大开，发挥你的想象力，一定能拓展出更多应用场景。
 
 Display the correlation of a certain indicator among 3 different diseases or 3 groups, clearly and concisely.
-
-Application of ggtern in the literature: <http://www.ggtern.com/publications/>
-
-More topics with codes: <http://www.ggtern.com/posts/>.
 
 Use your imagination to develop more application scenarios.
 
@@ -63,9 +59,8 @@ Use your imagination to develop more application scenarios.
 
 ```{r,message=FALSE}
 source("install_dependencies.R")
+source("ggtern-constructor.R") # from ggtern package, https://github.com/nicholasehamilton/ggtern
 
-library(ggtern)
-citation(package = 'ggtern')
 library(tidyverse)
 library(scales)
 library(ggplot2)
