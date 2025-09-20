@@ -17,11 +17,11 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## 需求描述
 
-富集分析得到太多GO term，其中好多还是相似的，怎样合理的合并？clusterProfiler有一个simplify函数，能给富集分析结果瘦身by removing redundancy of enriched GO terms，但有时瘦的不够多。小丫找到这样一篇例文，它列出了富集的 term，同时在旁边给出一个短语来概括性的描述这几个相似的term：
+富集分析得到太多GO term，其中好多还是相似的，怎样合理的合并？clusterProfiler有一个simplify函数，能给富集分析结果瘦身by removing redundancy of enriched GO terms，但有时瘦的不够多。这篇例文列出了富集的 term，同时在旁边给出一个短语来概括性的描述这几个相似的term：
 
 ## Requirement description
 
-Enrichment analysis yields too many GO terms, many of which are still similar. How to merge them reasonably? ClusterProfiler has a simplify function that can thin down enriched GO terms by removing redundancy of enriched GO terms, but sometimes not enough weight is lost. Xiaoya found an example article that lists enriched terms and provides a phrase next to them to summarize these similar terms:
+Enrichment analysis yields too many GO terms, many of which are still similar. How to merge them reasonably? ClusterProfiler has a simplify function that can thin down enriched GO terms by removing redundancy of enriched GO terms, but sometimes not enough weight is lost. This article lists enriched terms and provides a phrase next to them to summarize these similar terms:
 
 ![](example.png)
 
@@ -35,9 +35,9 @@ from<https://www.nature.com/articles/nature22973>
 
 Extended Data Figure 5 | Candidate driver genes and pathways in MB subgroups. c, GO and pathway summary of recurrently mutated genes in MB. GO and pathway categories are **grouped according to functional theme** and the proportion of cases affected by individual pathway alterations are plotted per subgroup and across the series.
 
-例文中关于这些相似term如何合并的描述只说grouped according to functional theme。因此，我用Y叔的GOSemSim计算GO term之间的相似性，然后借助ggtree实现例文中相似GO germ的标注效果。关于ggtree和GOSemSim的问题，请前往Y叔知识星球biobabble讨论。
+例文中关于这些相似term如何合并的描述只说grouped according to functional theme。因此，我用Y叔的GOSemSim计算GO term之间的相似性，然后借助ggtree实现例文中相似GO germ的标注效果。
 
-The description in the example text about how these similar terms are merged only states that they are grouped according to the functional theme. Therefore, I used Y's GOSemSim to calculate the similarity between GO terms, and then used ggtree to achieve the annotation effect of similar GO terms in the example text. Regarding the issues of ggtree and GOSemSim, please go to Y Uncle's knowledge planet biobabble for discussion.
+The description in the example text about how these similar terms are merged only states that they are grouped according to the functional theme. Therefore, I used Y's GOSemSim to calculate the similarity between GO terms, and then used ggtree to achieve the annotation effect of similar GO terms in the example text.
 
 ![](method.png)
 
