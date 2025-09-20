@@ -43,8 +43,6 @@ from<https://www.nature.com/articles/s41467-018-06648-6>
 
 同样适用于展示转录因子和靶基因表达调控的关系。
 
-在“小丫画图”公众号回复“R2”，查看如何将这个图用在paper里。
-
 ## Application Scenarios
 
 Evaluate the effect of genes on immune infiltration;
@@ -52,8 +50,6 @@ Evaluate the effect of genes on immune infiltration;
 Batch screening of candidate genes affecting immune infiltration;
 
 It is also applicable to show the relationship between transcription factors and target gene expression regulation.
-
-Reply “R2” in “Xiaoya Drawing” public number to see how to use this diagram in the paper.
 
 ## 输入文件的获得
 
