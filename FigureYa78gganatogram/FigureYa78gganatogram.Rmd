@@ -1,14 +1,18 @@
 ---
 title: "FigureYa78gganatogram"
 author: "Ying Ge, Taojun Ye"
-date: "2025-5-20"
+date: "2025-9-20"
 output: html_document
 ---
 
 # Academic Citation
 If you use this code in your work or research, we kindly request that you cite our publication:
 
-Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. <https://doi.org/10.1002/imm3.70005>
+
+To cite package 'gganatogram' in publications use:
+
+Maag J (2018). "gganatogram: An R package for modular visualisation of anatograms and tissues based on ggplot2." _f1000research_. Version 1: Awaiting peer review. <https://f1000research.com/articles/7-1576/v1>.
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -29,15 +33,11 @@ gganatogramR包介绍：<https://github.com/jespermaag/gganatogram>，<https://m
 
 文章里类似的图举例：<https://mp.weixin.qq.com/s/Uc6syOjFTOduxZfVaZRPqw>
 
-在小丫画图公众号回复“器官”，查看更多介绍。
-
 ## Application scenarios
 
 Introduction to the GGanatoramR package:< https://github.com/jespermaag/gganatogram >，< https://mp.weixin.qq.com/s/BlRT8I0RB1o-Mi4TEWhFrQ >
 
 Examples of similar images in the article:< https://mp.weixin.qq.com/s/Uc6syOjFTOduxZfVaZRPqw >
-
-Reply to "organ" on Xiaoya Pictorial official account for more information.
 
 ## 环境设置
 
@@ -45,6 +45,7 @@ Reply to "organ" on Xiaoya Pictorial official account for more information.
 
 ```{r}
 source("install_dependencies.R")
+
 # 加载gganatogram包，用于绘制器官图 | Load the gganatogram package for plotting anatomical diagrams
 library(gganatogram)
 
@@ -167,7 +168,7 @@ setdiff(hgMale_key$organ, hgFemale_key$organ)
 #cell_key[['cell']]$organ
 
 # 查看支持的其他物种列表 | View list of other supported species
-names(other_key)
+#names(other_key)
 
 # 以拟南芥为例，查看其支持的器官/组织列表（当前行被注释） | View organs/tissues supported in Arabidopsis thaliana (current line is commented)
 #other_key[["arabidopsis_thaliana"]]$organ
