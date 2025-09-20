@@ -159,11 +159,11 @@ write.csv(count, "TCGA_CHOL_Count.txt", quote=F, row.names=T, col.names = NA)
 
 这里用DESeq2，还可以用limma、edgeR等方法，可参考FigureYa118MulticlassDESeq2、FigureYa119Multiclasslimma、FigureYa120MulticlassedgeR。
 
-芯片数据从下载到差异分析可参考[FigureYa59Plus_GEO2DEG](https://www.yuque.com/figureYing/figureYingplus/figureYing59p)
+芯片数据从下载到差异分析可参考FigureYa59Plus_GEO2DEG
 
 Here we use DESeq2, but limma and edgeR can also be used. Refer to FigureYa118MulticlassDESeq2, FigureYa119Multiclasslimma, FigureYa120MulticlassedgeR.
 
-For microarray data processing from download to differential analysis, see[FigureYa59Plus_GEO2DEG](https://www.yuque.com/figureYing/figureYingplus/figureYing59p)
+For microarray data processing from download to differential analysis, see FigureYa59Plus_GEO2DEG
 
 ```{r}
 # 创建DESeq2数据集对象 
