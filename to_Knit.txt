@@ -1,21 +1,7 @@
-FigureYa92immune_gene_update
-FigureYa66单因素cox
-FigureYa295ClassDiscovery
-FigureYa161stemness
-FigureYa78gganatogram
-FigureYa209batchEnrich
-FigureYa110mutationSignature
-FigureYa302NTPPAM
-FigureYa228linkCor
-FigureYa86SNPmotif
-FigureYa160scGSVA
-FigureYa80GOclustering
 FigureYa197SmoothHaz
 FigureYa38PCA
-FigureYa257armCNV
-FigureYa61GSVA
-FigureYa88DAVIDkappa
-FigureYa255TIME
-FigureYa64triangle
+FigureYa256panelLink
+FigureYa66单因素cox
+FigureYa28color 
 FigureYa63pubmedMiningV2
-FigureYa28color
+FigureYa78gganatogram
