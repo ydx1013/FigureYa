@@ -141,8 +141,8 @@ The results are consistent with the original paper. It can be seen that MYC-targ
 ## 方法二：用clusterProfiler做GSEA，DIY出paper里的图
 ## Method 2: Use clusterProfiler to do GSEA and DIY the graph in the paper
 
-用Y叔的**clusterProfiler**做GSEA分析，然后用base plot画出原文相似的图。相似用法可以参考FigureYa60GSEA_clusterprofiler。
-Use Uncle Y's **clusterProfiler** to do GSEA analysis, and then use base plot to draw a graph similar to the original paper. For similar usage, please refer to FigureYa60GSEA_clusterprofiler.
+用Guangchuang Yu的**clusterProfiler**做GSEA分析，然后用base plot画出原文相似的图。相似用法可以参考FigureYa60GSEA_clusterprofiler。
+Use Guangchuang Yu's **clusterProfiler** to do GSEA analysis, and then use base plot to draw a graph similar to the original paper. For similar usage, please refer to FigureYa60GSEA_clusterprofiler.
 
 先整理输入格式
 First, organize the input format

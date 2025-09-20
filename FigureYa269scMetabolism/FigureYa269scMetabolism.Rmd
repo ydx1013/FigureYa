@@ -199,7 +199,7 @@ saveRDS(immune.combined,"immune.combined.rds")
 
 提取特定通路里的差异表达基因，用热图展示其表达变化。
 
-这里用Y叔的clusterProfiler读取scMetabolism包里整理的gmt文件，按照自己安装路径寻找，一般位于`安装目录/lib/R/library/scMetabolism/data/KEGG_metabolism_nc.gmt`。或者直接从msigdb下载gmt文件，<https://www.gsea-msigdb.org/gsea/msigdb/>
+这里用Guangchuang Yu的clusterProfiler读取scMetabolism包里整理的gmt文件，按照自己安装路径寻找，一般位于`安装目录/lib/R/library/scMetabolism/data/KEGG_metabolism_nc.gmt`。或者直接从msigdb下载gmt文件，<https://www.gsea-msigdb.org/gsea/msigdb/>
 
 Extract differentially expressed genes from a specific pathway and visualize their expression changes using a heatmap.
 

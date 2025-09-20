@@ -143,11 +143,11 @@ Two methods are provided here:
 
 用到做PCA的R包`ggord`，优点是能用背景色展示置信区间，缺点是没有画圈功能。
 
-Y叔对ggord进行了加强，放在R包`gglayer`里，详情看这篇：<https://mp.weixin.qq.com/s/iA0IuyRx_Ojk639sxenmvg>。`geom_ord_ellipse`能画出多个圆圈，用来展示不同的置信区间，并且可以反复叠加，想画几个圈就画几个圈。
+Guangchuang Yu对ggord进行了加强，放在R包`gglayer`里，详情看这篇：<https://mp.weixin.qq.com/s/iA0IuyRx_Ojk639sxenmvg>。`geom_ord_ellipse`能画出多个圆圈，用来展示不同的置信区间，并且可以反复叠加，想画几个圈就画几个圈。
 
 The R package `ggord` used for PCA has the advantage of displaying confidence intervals with background color, but the disadvantage is that it does not have the function of drawing circles.
 
-Uncle Y enhanced ggord and put it in the R package `gglayer`, see this article for details: <https://mp.weixin.qq.com/s/iA0IuyRx_Ojk639sxenmvg>. `geom_ord_ellipse` which can draw multiple circles to show different confidence intervals, and can be stacked over and over again to draw as many circles as you want.
+Guangchuang Yu enhanced ggord and put it in the R package `gglayer`, see this article for details: <https://mp.weixin.qq.com/s/iA0IuyRx_Ojk639sxenmvg>. `geom_ord_ellipse` which can draw multiple circles to show different confidence intervals, and can be stacked over and over again to draw as many circles as you want.
 
 #### 经典版
 #### Classic version

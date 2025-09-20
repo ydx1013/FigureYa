@@ -40,7 +40,7 @@ from<http://www.nature.com/articles/ncomms6901>
 
 - 先尝试自己写，或者至少在脑子里猜测作者是用什么方法哪个包实现的
 - 看原文代码，边看边实践
-- 记笔记，思考这段代码能应用到哪些场景上，可以尝试按照FigureYa的格式来写，或者干脆写成R包（Y叔说写R包要趁早）
+- 记笔记，思考这段代码能应用到哪些场景上，可以尝试按照FigureYa的格式来写，或者干脆写成R包（Guangchuang Yu说写R包要趁早）
 - 用在自己的数据上，争取能用到paper里，经历了这一过程，你会有质的提升
 
 自己死磕一篇文章的代码是孤独的，遇到问题也没人讨论，以后有机会我们可以搞个学习小组，感兴趣的小伙伴一起讨论同一篇文章的代码。
@@ -55,7 +55,7 @@ How to learn this type of code? This time campaign will take you through this ar
 
 -Try writing it yourself first, or at least guess in your mind what method and package the author used to implement it
 -Read the original code and practice while reading
--Take notes and think about which scenarios this code can be applied to. You can try writing it in the format of FigureYa, or simply write it as an R package (Uncle Y said it's better to write an R package as soon as possible)
+-Take notes and think about which scenarios this code can be applied to. You can try writing it in the format of FigureYa, or simply write it as an R package (Guangchuang Yu said it's better to write an R package as soon as possible)
 -Apply it to your own data and strive to use it in a paper. Through this process, you will have a qualitative improvement
 
 It's lonely to tinker with the code of an article by oneself, and no one will discuss it when encountering problems. In the future, we can form a study group where interested friends can discuss the code of the same article together.
@@ -476,11 +476,11 @@ rasterImage(matrix_order, 0, 0, ncol(design), nrow(design), interpolate=FALSE)
 
 ### b左侧图：
 
-首先是把基因表达的大小分成12份，然后换成11个颜色，之后组成颜色的矩阵。通过rasterImage画出来。rasterImage还有其他有意思的用法，可以参考Y叔的<https://guangchuangyu.github.io/cn/2017/04/ggimage/>
+首先是把基因表达的大小分成12份，然后换成11个颜色，之后组成颜色的矩阵。通过rasterImage画出来。rasterImage还有其他有意思的用法，可以参考Guangchuang Yu的<https://guangchuangyu.github.io/cn/2017/04/ggimage/>
 
 ### Left side image:
 
-Firstly, divide the size of gene expression into 12 parts, then replace them with 11 colors, and then form a matrix of colors. Draw it through RasterImage. RasterImage has other interesting uses, you can refer to Uncle Y's< https://guangchuangyu.github.io/cn/2017/04/ggimage/ >
+Firstly, divide the size of gene expression into 12 parts, then replace them with 11 colors, and then form a matrix of colors. Draw it through RasterImage. RasterImage has other interesting uses, you can refer to Guangchuang Yu's< https://guangchuangyu.github.io/cn/2017/04/ggimage/ >
 
 ```{r}
 # 设置绘图参数，包括无边框、坐标轴标签位置、边距等

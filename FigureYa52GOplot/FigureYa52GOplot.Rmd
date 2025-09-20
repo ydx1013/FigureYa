@@ -43,7 +43,7 @@ from<https://www.karger.com/Article/FullText/492519>
 
 此处以GO为例，获得clusterProfiler的富集分析结果，生成GOplot所需的格式，用GOplot画⭕️图。
 
-clusterProfiler除了擅长做GO富集分析以外，还可以用KEGG、Diseaes、Reactome、DAVID、MSigDB等注释库做富集分析。另外，enrichplot自带的gseaplot2函数可以生成GSEA结果的矢量图、多条pathway画到同一个图上，完美代替Java版本的GSEA，看这篇：<https://mp.weixin.qq.com/s/AamfRz0BUENCi_1P0P-Ruw>。有关clusterProfiler、enrichplot本身的问题，建议加入Y叔知识星球提问。
+clusterProfiler除了擅长做GO富集分析以外，还可以用KEGG、Diseaes、Reactome、DAVID、MSigDB等注释库做富集分析。另外，enrichplot自带的gseaplot2函数可以生成GSEA结果的矢量图、多条pathway画到同一个图上，完美代替Java版本的GSEA，看这篇：<https://mp.weixin.qq.com/s/AamfRz0BUENCi_1P0P-Ruw>。有关clusterProfiler、enrichplot本身的问题，建议加入Guangchuang Yu知识星球提问。
 
 ## Application scenarios
 
@@ -51,7 +51,7 @@ Suitable for: those who want to use clusterProfiler for enrichment analysis and 
 
 Taking GO as an example, obtain the enrichment analysis results of clusterProfiler, generate the required format for GOplot, and use GOplot to draw ⭕ Picture.
 
-In addition to being proficient in GO enrichment analysis, clusterProfiler can also use annotation libraries such as KEGG, Disseales, Reactor, DAVID, MSigDB, etc. for enrichment analysis. In addition, enrichplot's built-in gseaplot2 function can generate vector graphs of GSEA results and draw multiple pathways onto the same graph, perfectly replacing the Java version of GSEA. See this article:< https://mp.weixin.qq.com/s/AamfRz0BUENCi_1P0P-Ruw >Regarding issues related to clusterProfiler and enrichplot itself, it is recommended to include questions from Uncle Y's Knowledge Planet.
+In addition to being proficient in GO enrichment analysis, clusterProfiler can also use annotation libraries such as KEGG, Disseales, Reactor, DAVID, MSigDB, etc. for enrichment analysis. In addition, enrichplot's built-in gseaplot2 function can generate vector graphs of GSEA results and draw multiple pathways onto the same graph, perfectly replacing the Java version of GSEA. See this article:< https://mp.weixin.qq.com/s/AamfRz0BUENCi_1P0P-Ruw >Regarding issues related to clusterProfiler and enrichplot itself, it is recommended to include questions from Guangchuang Yu's Knowledge Planet.
 
 ## 环境设置
 
@@ -142,7 +142,7 @@ write.csv(gsym.fc[,c(3,2)], "very_easy_input_Mm.csv",  # 选择第3列(ENTREZID)
 
 参考资料：
 
-- Y叔公众号biobabble：<https://mp.weixin.qq.com/s/lHKZtzpN2k9uPN7e6HjH3w>
+- Guangchuang Yu公众号biobabble：<https://mp.weixin.qq.com/s/lHKZtzpN2k9uPN7e6HjH3w>
 
 - AnnotationHub包的说明文档：<https://bioconductor.org/packages/release/bioc/vignettes/AnnotationHub/inst/doc/AnnotationHub.html>
 
@@ -185,7 +185,7 @@ Model organisms, please skip this paragraph and proceed directly to "Enrichment 
 
 reference material:
 
--Uncle Y's official account:< https://mp.weixin.qq.com/s/lHKZtzpN2k9uPN7e6HjH3w >
+-Guangchuang Yu's official account:< https://mp.weixin.qq.com/s/lHKZtzpN2k9uPN7e6HjH3w >
 
 -AnnotationHub package documentation:< https://bioconductor.org/packages/release/bioc/vignettes/AnnotationHub/inst/doc/AnnotationHub.html >
 

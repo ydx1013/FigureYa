@@ -392,7 +392,7 @@ head(ISGs.DEGs.filter)
 write.csv(ISGs.DEGs.filter, "output_ISGs.type.DEGs.filter.list.csv")
 ```
 
-最后选取High.ISGs组的基因去做GO和pathway，可以用Y叔的clusterProfiler包或者各种在线包
+最后选取High.ISGs组的基因去做GO和pathway，可以用Guangchuang Yu的clusterProfiler包或者各种在线包
 
 最核心还是找到适合自己研究思路的基因集！
 

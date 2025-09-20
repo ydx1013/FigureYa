@@ -43,7 +43,7 @@ DAVID给gene或annotation做分类的原理：<https://david.ncifcrf.gov/helps/f
 
 H Ma等写了R代码来计算Kappa value：[Use of DAVID algorithms for clustering custom annotated gene lists in a non-model organism, rainbow trout](https://bmcresnotes.biomedcentral.com/articles/10.1186/s13104-018-3154-7)。作者在补充材料里提供了R代码：[Additional file 1. R_script for clustering.](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5781295/bin/13104_2018_3154_MOESM1_ESM.txt)，包含两部分，第一部分：计算Kappa value，第二部分：设置kappa的cutoff筛选。
 
-基于这篇文章提供的代码里的第一部分来计算Kappa value。然后借助ggtree展示各个term之间的关系，并实现例文中相似term的标注效果。关于ggtree的问题，请前往Y叔知识星球biobabble讨论。
+基于这篇文章提供的代码里的第一部分来计算Kappa value。然后借助ggtree展示各个term之间的关系，并实现例文中相似term的标注效果。关于ggtree的问题，请前往Guangchuang Yu知识星球biobabble讨论。
 
 **Method exploration:**
 

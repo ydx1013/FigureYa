@@ -344,8 +344,8 @@ names(id.fc) <- gsym.fc.id.sorted$ENTREZID
 ## GSEA富集分析
 ## GSEA enrichment analysis
 
-查看clusterProfiler的最新用法，请移步Y叔的在线电子书：<https://yulab-smu.top/clusterProfiler-book/>
-To see the latest usage of clusterProfiler, please visit Uncle Y's online eBook: <https://yulab-smu.top/clusterProfiler-book/>
+查看clusterProfiler的最新用法，请移步Guangchuang Yu的在线电子书：<https://yulab-smu.top/clusterProfiler-book/>
+To see the latest usage of clusterProfiler, please visit Guangchuang Yu's online eBook: <https://yulab-smu.top/clusterProfiler-book/>
 
 ```{r}
 # 自定义函数
