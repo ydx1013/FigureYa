@@ -173,7 +173,7 @@ bar <- barplot(avg,
                border = F, # 柱子不显示轮廓 # Do not outline the bars
                ylab = "Scanning length error (mm)", # y轴标签 # y-axis label
                ylim = c(0,80), # 高度要比最大的均值要大一些，给添加P值预留空间 # The height should be slightly larger than the maximum mean to allow for adding P values
-               Yingxt = "n", # 不显示y轴 # Hide the y-axis
+               yaxt = "n", # 不显示y轴 # Hide the y-axis
                xaxt = "n", # 不显示x轴 # Hide the x-axis
                col = c(seagreen,NA, # 注意颜色的NA是均值为0的部分，为空白柱 # Note that NA in the color represents a blank column with a mean of 0)
                        sun, ggplot2::alpha(sun,0.6), ggplot2::alpha(sun,0.3), NA, # 注意颜色的渐变透明 # Note the color gradient transparency

@@ -53,7 +53,7 @@ c图展示1,074个癌细胞系中低氧相关基因mRNA表达水平与药物敏�
 Source: <https://doi.org/10.1038/s42255-019-0045-8>, from the same article as FigureYa174squareCross, FigureYa199crosslink, and FigureYa256panelLink. This paper is renowned for its connection designs—constantly imitated, yet to be surpassed.
 
 Fig. 3 | overview of the propensity score algorithm and the hypoxia-associated molecular patterns across cancer types. 
-c, Association between mRNA expression levels of hypoxia-associated genes and drug sensitivity across 1,074 cancer cell lines by Spearman’s rank correlation. The dark green dots along the x axis indicate hypoxia-related genes; the orange dots denote drugs that are clustered by different signalling pathways. The size of the orange dot indicates the number of genes correlated with drug sensitivity (|rs| > 0.3, FDR < 0.05); the bar plot shows the number of drugs correlated with the genes. The pink and cYingn lines indicate positive and negative correlation, respectively. JNK, Jun N-terminal kinase.
+c, Association between mRNA expression levels of hypoxia-associated genes and drug sensitivity across 1,074 cancer cell lines by Spearman’s rank correlation. The dark green dots along the x axis indicate hypoxia-related genes; the orange dots denote drugs that are clustered by different signalling pathways. The size of the orange dot indicates the number of genes correlated with drug sensitivity (|rs| > 0.3, FDR < 0.05); the bar plot shows the number of drugs correlated with the genes. The pink and cyan lines indicate positive and negative correlation, respectively. JNK, Jun N-terminal kinase.
 
 # 应用场景
 # Application scenarios

@@ -100,7 +100,7 @@ p.lab
 # 设置颜色
 # Set the color
 green <- "#C7EAB2"
-cYingn <- "#5FC1C2"
+cyan <- "#5FC1C2"
 blue <- "#1B90BE"
 
 # 绘制上半部分密度图
@@ -109,8 +109,8 @@ p_top <- ggplot(df, aes(x = AUC, color = Subtype, fill = Subtype)) +
   geom_density() +
   # 让箱子的所有位置都颜色统一，如例文所示
   # Make all positions of the box uniform in color, as shown in the example
-  scale_color_manual(values = c(alpha(green,0.7),alpha(cYingn,0.7),alpha(blue,0.7))) + # 设置透明色 # Set the transparent color
-  scale_fill_manual(values = c(alpha(green,0.7),alpha(cYingn,0.7),alpha(blue,0.7))) +
+  scale_color_manual(values = c(alpha(green,0.7),alpha(cyan,0.7),alpha(blue,0.7))) + # 设置透明色 # Set the transparent color
+  scale_fill_manual(values = c(alpha(green,0.7),alpha(cyan,0.7),alpha(blue,0.7))) +
   theme_classic() + # 如果显示采用这一行 # Use this line if you want to display
    
   # 这里提取输入文件的第一列药物名称，写入x轴标签
@@ -137,8 +137,8 @@ p_top
 # Draw a box plot
 p_bot <- ggplot(df, aes(Subtype, AUC, fill = Subtype)) + 
   geom_boxplot(aes(col = Subtype)) + 
-  scale_fill_manual(values = c(green, cYingn, blue)) + 
-  scale_color_manual(values = c(green, cYingn, blue)) + 
+  scale_fill_manual(values = c(green, cyan, blue)) + 
+  scale_color_manual(values = c(green, cyan, blue)) + 
   xlab(NULL) + ylab("Estimated AUC") + 
   theme_void() +
   theme(legend.position = "right",

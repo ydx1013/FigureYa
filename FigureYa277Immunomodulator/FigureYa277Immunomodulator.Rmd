@@ -369,7 +369,7 @@ annColors <- list()
 annColors[["subtype"]] <- c("C1" = "red",
                             "C2" = "yellow",
                             "C3" = "green",
-                            "C4" = "cYingn",
+                            "C4" = "cyan",
                             "C5" = "blue")
 
 # 创建顶部注释条 

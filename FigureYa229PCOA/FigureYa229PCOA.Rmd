@@ -353,9 +353,9 @@ brca.TCGA$`Pr(>F)`
 
 ## Yau队列数据，也是同样的道理
 ## The same goes for Yau queue data
-Yingu.sam <- rownames(sinfo[sinfo$Cohort == "Yau",])
-Yingu.dist <- dist_subset(brca.dist,Yingu.sam) 
-brca.Yau <- adonis2(Yingu.dist~PAM50, data=sinfo[Yingu.sam,], 
+yau.sam <- rownames(sinfo[sinfo$Cohort == "Yau",])
+yau.dist <- dist_subset(brca.dist,yau.sam) 
+brca.Yau <- adonis2(yau.dist~PAM50, data=sinfo[yau.sam,], 
                     permutations = 1000, method="bray")
 print(brca.Yau)
 ```

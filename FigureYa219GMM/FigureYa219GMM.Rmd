@@ -282,14 +282,14 @@ write.table(aucDF,"output_auc for all models with GMM clusters.txt",sep = "\t",r
 darkred  <- "#F2042C"
 lightred <- "#FF7FBF"
 nake     <- "#F8C364"
-cYingn     <- "#00B3D0"
+cyan     <- "#00B3D0"
 darkblue <- "#21498D"
 
 pdf("GMM cluster of all auc model combination.pdf", width = 5,height = 4)
 par(bty = "o", mgp = c(2,0.5,0), mar = c(3.1,4.1,1.1,1.1),tcl = -.25,las = 1)
 plot(mod,
      what = "classification",
-     colors = c(darkblue,darkred,cYingn,lightred,nake), # 注意根据颜色判别类，蓝色第一类，红色第二类，绿色第三类，黄色第四类，灰色第五类 # Note that the classes are judged according to color, blue category 1, red category 2, green category 3, yellow category 4, gray category 5
+     colors = c(darkblue,darkred,cyan,lightred,nake), # 注意根据颜色判别类，蓝色第一类，红色第二类，绿色第三类，黄色第四类，灰色第五类 # Note that the classes are judged according to color, blue category 1, red category 2, green category 3, yellow category 4, gray category 5
      xlab = paste0("Sorted logistic regression models (1:",n.model,")"),
      ylab = "")
 mtext("AUC of training models", side = 2, line = 2.5, las = 3)

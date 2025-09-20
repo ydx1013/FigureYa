@@ -457,8 +457,8 @@ if(showLayout) {
 par(bty = "n", mgp = c(2,.6,0), mar = c(0,0,0,0), xpd = T)
 plot(0,0,col = "white",
      xlab = "",xaxt = "n", 
-     ylab = "",Yingxt = "n",
-     xaxs = "i", Yingxs = "i") 
+     ylab = "",yaxt = "n",
+     xaxs = "i", yaxs = "i") 
 text(0,0,"rRNA metabolic score\n[Z-score (ssGSE)]", srt = 90, cex = 1, font = 2)
 
 #------------------------------#
@@ -470,7 +470,7 @@ a <- barplot(c(0,0),
              border = NA,
              ylim = ylim,
              xlab = "", xaxt = "n", 
-             ylab = "rRNA metabolic score\n[Z-score (ssGSE)]", Yingxt = "n") 
+             ylab = "rRNA metabolic score\n[Z-score (ssGSE)]", yaxt = "n") 
 axis(side = 2, at = pretty(ylim), lwd = 2)
 abline(h = par("usr")[3], col = "black", lwd = 3)
 abline(h = par("usr")[4], col = "black", lwd = 2) 
@@ -493,7 +493,7 @@ for (i in proid) {
                border = NA,
                ylim = ylim,
                xlab = "", xaxt = "n", 
-               ylab = "", Yingxt = "n")
+               ylab = "", yaxt = "n")
   
   # 添加癌症名称标签
   # Add cancer name label 
@@ -534,8 +534,8 @@ for (i in proid) {
 par(bty = "n", mgp = c(2,.6,0), mar = c(0,0,0,0), xpd = T)
 plot(0,0,col = "white",
      xlab = "",xaxt = "n", 
-     ylab = "",Yingxt = "n",
-     xaxs = "i", Yingxs = "i") 
+     ylab = "",yaxt = "n",
+     xaxs = "i", yaxs = "i") 
 legend((par("usr")[1] + par("usr")[2])/2,par("usr")[4],
        legend = c("Tumor","Normal"),
        col = c("#BB61A1","#7EC09A"),

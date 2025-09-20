@@ -229,7 +229,7 @@ par(bty="n", mgp = c(0,0,0), mar = c(0,0,0,0))
 plot(1,1,
      col = "white", 
      xlab = "",xaxt = "n", 
-     ylab = "",Yingxt = "n") 
+     ylab = "",yaxt = "n") 
 
 # 在画布中央添加图标题
 # Add the figure title at the center of the canvas
@@ -251,7 +251,7 @@ par(bty="n", mgp = c(0,0,0), mar = c(0,0,0,0))
 plot(1,1,
      col = "white", 
      xlab = "",xaxt = "n", 
-     ylab = "",Yingxt = "n") 
+     ylab = "",yaxt = "n") 
 
 # 在画布底部上方添加子标题
 # Add the subtitle slightly above the bottom of the canvas
@@ -273,8 +273,8 @@ par(bty="n", mgp = c(0,0,0), mar = c(0,6.1,0,0))
 plot(c(0,ncol(enrich.go)),c(0,nrow(enrich.go)), 
      col = "white", 
      xlab = "",xaxt = "n", 
-     ylab = "",Yingxt = "n", 
-     xaxs="i", Yingxs="i") 
+     ylab = "",yaxt = "n", 
+     xaxs="i", yaxs="i") 
 
 # 生成纵坐标标签
 # Generate y-axis labels
@@ -413,7 +413,7 @@ for (i in 1:nrow(cor.dat)) {
 plot(1,1,
      col = "white", 
      xlab = "",xaxt = "n", 
-     ylab = "",Yingxt = "n") 
+     ylab = "",yaxt = "n") 
 
 #--------------------------#
 # 画布区域12：绘制热图图例 #
@@ -448,7 +448,7 @@ text(length(col.vec)/4*3,-0.9,"0.5", adj=0.55,cex = 1.2)
 plot(1,1,
      col = "white", 
      xlab = "",xaxt = "n", 
-     ylab = "",Yingxt = "n") 
+     ylab = "",yaxt = "n") 
 
 # 关闭图形设备
 # Close the graphics device

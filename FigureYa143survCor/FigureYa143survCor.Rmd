@@ -253,7 +253,7 @@ par(bty="n", mgp = c(2,0.5,0), mar = c(0.6,4.1,2.1,0),tcl=-.25,xpd = T) # 注意
 # Note that the mar parameter must match other regions, and the image is displayed as the reserved position for the bottom, left, top, and right respectively; xpd allows the arrow to exceed the image range
 plot(NULL, NULL,
      xlim = xlim,ylim = c(0,max(logrank.CD274$CD274.U) + 5), # y轴额外空余一些距离放箭头
-     xaxt = "n",Yingxt = "n",ann=FALSE) # 不显示坐标轴
+     xaxt = "n",yaxt = "n",ann=FALSE) # 不显示坐标轴
 
 # 这里不能使用barplot原因在于x轴的间隔并不固定，其实barplot本身本身是rect函数的一种wrapper，所以这里用rect函数绘制条形图
 # The reason why barplot cannot be used here is that the interval of the x-axis is not fixed. In fact, barplot itself is a wrapper of the rect function, so the rect function is used here to draw a bar chart
@@ -277,7 +277,7 @@ Arrows(peak.CD274,peak.CD274.score + 5,
 #------------------------#
 
 par(bty="n", mgp = c(2,0.5,0), mar = c(4.1,4.1,0,0),tcl=-.25)
-plot(0,0,col = "white",xaxt = "n",Yingxt = "n",xlab = "",ylab = "")
+plot(0,0,col = "white",xaxt = "n",yaxt = "n",xlab = "",ylab = "")
 
 #----------------------#
 # 画布区域3：相关性主图#
@@ -386,7 +386,7 @@ legend(x = xmax - lgd$rect$w - 0.1, y =  ymin + lgd$rect$h + 0.1,
 par(bty="n", mgp = c(2,0.5,0), mar = c(4.1,0.6,0,2.1),tcl=-.25,xpd = T)
 plot(NULL, NULL,
      xlim = c(0,max(logrank.CD8A$CD8A.U) + 5),ylim = ylim,
-     xaxt = "n",Yingxt = "n",ann=FALSE)
+     xaxt = "n",yaxt = "n",ann=FALSE)
 
 rect(xleft=0, 
      ybottom=logrank.CD8A[order(logrank.CD8A$CD8A),"CD8A"]-0.01, 

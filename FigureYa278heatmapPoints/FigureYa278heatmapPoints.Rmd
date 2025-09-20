@@ -365,7 +365,7 @@ p <- ggplot() +
 p
 ```
 
-Y轴标星，采用 `Pvalue` 中的 `label` 替换原本的 Yingixs 文本信息
+Y轴标星，采用 `Pvalue` 中的 `label` 替换原本的 yaixs 文本信息
 
 Y-axis significance markers: Replace original axis labels with asterisk-tagged labels from the Pvalue$label column
 

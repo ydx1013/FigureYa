@@ -111,7 +111,7 @@ plot(NULL,NULL,
      ylim = c(1,nrow(dat)),
      xlab = "Time (Years)",
      ylab = "",
-     Yingxt = "n")
+     yaxt = "n")
 axis(side = 2,at = seq(1,nrow(dat)),labels = rownames(dat))
 
 # 2. 主时间轴：overall survival（时间最长）
@@ -201,7 +201,7 @@ plot(NULL,NULL,
      ylim = c(1,nrow(dat)),
      xlab = "Time (Years)",
      ylab = "Patients With Response",
-     Yingxt = "n")
+     yaxt = "n")
 axis(side = 2,tck = 0, #不显示刻度线  # Do not display the scale lines
      at = seq(1,nrow(dat)),
      labels = rep("", nrow(dat))) #y轴不显示patient编号   # The Y-axis does not display the patient number

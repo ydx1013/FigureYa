@@ -92,13 +92,13 @@ options(stringsAsFactors = FALSE)
 # 输入文件
 # Input Files
 
-data_mrna_seq_fpkm_polYing.txt，表达矩阵。可以从百度网盘下载<https://pan.baidu.com/s/1vwBmgnDV5-ee6q5DP_-7Fg?pwd=m2mg>
+data_mrna_seq_fpkm_polya.txt，表达矩阵。可以从百度网盘下载<https://pan.baidu.com/s/1vwBmgnDV5-ee6q5DP_-7Fg?pwd=m2mg>
 
 easyinput_signature.txt，基因签名，用于计算图中的Molecular signature scores ，即AR、NE、CCP、FGF-MEK签名。出自ccr-21-4289_supplementary_tables_ts1-13_suppts1-13.xlsx里的Table S13。可以替换成自己感兴趣的签名。
 
 easyinput_clin.txt，样本分组信息，对应图中的Phenotype。其中Sample列里是样本名，跟表达矩阵的列名一致。出自ccr-21-4289_supplementary_tables_ts1-13_suppts1-13.xlsx里的Table S1。可以替换成自己想要对比展示的注释信息。
 
-data_mrna_seq_fpkm_polYing.txt - Expression matrix. Available for download on BaiduNetdisk<https://pan.baidu.com/s/1vwBmgnDV5-ee6q5DP_-7Fg?pwd=m2mg>
+data_mrna_seq_fpkm_polya.txt - Expression matrix. Available for download on BaiduNetdisk<https://pan.baidu.com/s/1vwBmgnDV5-ee6q5DP_-7Fg?pwd=m2mg>
 
 easyinput_signature.txt - Gene signatures used to calculate the Molecular signature scores (AR, NE, CCP, FGF-MEK signatures) in the figures. Derived from Table S13 in ccr-21-4289_supplementary_tables_ts1-13_suppts1-13.xlsx. Can be replaced with signatures of interest.
 
@@ -107,7 +107,7 @@ easyinput_clin.txt - Sample grouping information, corresponding to the Phenotype
 ```{r}
 # 读取原文表达谱
 # Load original expression matrix
-eset <- read.table("data_mrna_seq_fpkm_polYing.txt", header = T, sep = "\t", check.names = F)
+eset <- read.table("data_mrna_seq_fpkm_polya.txt", header = T, sep = "\t", check.names = F)
 
 # 去掉重名基因
 # Remove duplicate genes

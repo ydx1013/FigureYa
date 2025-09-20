@@ -195,7 +195,7 @@ screen(1, new = T)
 par(xpd = T, mar = c(0, 0, 0, 0), oma = c(0, 0, 0, 0),
     bty = "n")#xpd = T,让超出画图范围的字也能显示出来
 #xpd = T, so that words beyond the drawing range can also be displayed
-plot(c(0, 1), c(0, 1), xlab = "",xaxt = "n", ylab = "",Yingxt = "n",lty= 0, col = "white")#建立个空白画布, xaxt = "n":suppresses plotting of the axis
+plot(c(0, 1), c(0, 1), xlab = "",xaxt = "n", ylab = "",yaxt = "n",lty= 0, col = "white")#建立个空白画布, xaxt = "n":suppresses plotting of the axis
 #Create a blank canvas, xaxt = "n":suppresses plotting of the axis
 text(c(par()$usr[1] + par()$usr[2])/1.5, c(par()$usr[3] + par()$usr[4])/2,
      labels = "Cancer Hallmarks and oncogenic pathways", adj = 0.5, cex = 1.2)
@@ -203,7 +203,7 @@ text(c(par()$usr[1] + par()$usr[2])/1.5, c(par()$usr[3] + par()$usr[4])/2,
 screen(2, new = T)
 par(xpd = F, mar = opar$mar + c(-5.1, 15 , -4.1, 6), oma = c(0, 0, 0, 0),
     bty = "n")
-plot(c(0, 1), c(0, 1), xlab = "",xaxt = "n", ylab = "",Yingxt = "n", lty= 0, col = "white")
+plot(c(0, 1), c(0, 1), xlab = "",xaxt = "n", ylab = "",yaxt = "n", lty= 0, col = "white")
 mtext("gene upregulated", side = 2, adj = 1, line = -4, las = 1, col = "red", cex = 1)
 mtext("Size", side = 4, adj = 0, las = 1, line = 1, cex = mtextsize)
 mtext("NES", side = 4, adj = 0, las = 1, line = 3.5, cex = mtextsize)
@@ -212,7 +212,7 @@ mtext("Size", side = 4, adj = 0, las = 1, line = 6, cex = mtextsize)
 screen(textscreen[3], new = T)
 par(xpd = F, mar = c(0, 0, 0, 0), oma = c(0, 0, 0, 0),
     bty = "n")
-plot(c(0, 1), c(0, 1), xlab = "",xaxt = "n", ylab = "",Yingxt = "n", lty = 0, col = "white")
+plot(c(0, 1), c(0, 1), xlab = "",xaxt = "n", ylab = "",yaxt = "n", lty = 0, col = "white")
 mtext(text = "Postive correlated hallmarks", side = 2, adj = 0, line = 1.5, las = 1, 
       cex = mtextsize2, col = "blue")
 segments(x0 = par("usr")[1], x1 = par("usr")[2], 
@@ -221,27 +221,27 @@ segments(x0 = par("usr")[1], x1 = par("usr")[2],
 screen(textscreen[3], new = F)
 par(xpd = F, mar = opar$mar + c(-5.1, 15 , -4.1, 6), oma = c(0, 0, 0, 0),
     bty = "n")
-plot(c(0, 1), c(0, 1), xlab = "",xaxt = "n", ylab = "",Yingxt = "n", lty = 0, col = "white")
+plot(c(0, 1), c(0, 1), xlab = "",xaxt = "n", ylab = "",yaxt = "n", lty = 0, col = "white")
 segments(x0 = c(par("usr")[1]+par("usr")[2])/2, x1 = c(par("usr")[1]+par("usr")[2])/2,
          y0 = par("usr")[3], y1 = par("usr")[4], col="grey",lwd=1)
 ###################################
 screen(textscreen[4], new = T)
 par(xpd = F, mar = c(0, 0, 0, 0), oma = c(0, 0, 0, 0),
     bty = "n")
-plot(c(0, 1), c(0, 1), xlab = "",xaxt = "n", ylab = "",Yingxt = "n", lty = 0, col = "white")
+plot(c(0, 1), c(0, 1), xlab = "",xaxt = "n", ylab = "",yaxt = "n", lty = 0, col = "white")
 mtext(text = "Negative correlated hallmarks", side = 2, adj = 0, line = 1.5, las = 1, 
       cex = mtextsize2, col = "blue")
 screen(textscreen[4], new = F)
 par(xpd = F, mar = opar$mar + c(-5.1, 15 , -4.1, 6), oma = c(0, 0, 0, 0),
     bty = "n")
-plot(c(0, 1), c(0, 1), xlab = "",xaxt = "n", ylab = "",Yingxt = "n", lty = 0, col = "white")
+plot(c(0, 1), c(0, 1), xlab = "",xaxt = "n", ylab = "",yaxt = "n", lty = 0, col = "white")
 segments(x0 = c(par("usr")[1]+par("usr")[2])/2, x1 = c(par("usr")[1]+par("usr")[2])/2,
          y0 = par("usr")[3], y1 = par("usr")[4], col="grey",lwd=1)
 ###################################
 screen(textscreen[5], new = T)
 par(xpd = F, mar = opar$mar + c(-5.1, 15 , -4.1, 6), oma = c(0, 0, 0, 0),
     bty = "n")
-plot(c(0, nrow(mRNA_si)), c(0, 1), xlab = "",xaxt = "n", ylab = "",Yingxt = "n", lty= 0, col = "white",
+plot(c(0, nrow(mRNA_si)), c(0, 1), xlab = "",xaxt = "n", ylab = "",yaxt = "n", lty= 0, col = "white",
      xaxs = "i")# xaxs = "i":finds an axis with pretty labels that fits within the original data range
 mtext("gene downregulated", side = 4, adj = 0, line = -4, las = 1, col = "black", cex = 1)
 segments(x0 = c(par("usr")[1]+par("usr")[2])/2, x1 = c(par("usr")[1]+par("usr")[2])/2,
@@ -257,7 +257,7 @@ for (i in 1:length(plotscreen)){
     input1 <- baseinput[[ topPathways[i] ]]
     input1 <- input1[input1$position == 1, ]
     plot(c(1,nrow(mRNA_si)),c(-0.66, 0.66),
-     xlab = "",xaxt = "n", ylab = "",Yingxt = "n", lty = 0, col = "white") 
+     xlab = "",xaxt = "n", ylab = "",yaxt = "n", lty = 0, col = "white") 
     segments(x0 = input1$x, x1 = input1$x, y0 = 0, y1 = input1$statsAdj, col = "black")
     segments(x0 = c(par("usr")[1]+par("usr")[2])/2, x1 = c(par("usr")[1]+par("usr")[2])/2,
          y0 = par("usr")[3], y1 = par("usr")[4], col="grey",lwd=1)
@@ -368,7 +368,7 @@ screen(1, new = T)
 par(xpd = T, mar = c(0, 0, 0, 0), oma = c(0, 0, 0, 0),
     bty = "n")#xpd = T,让超出画图范围的字也能显示出来
 #xpd = T, so that words beyond the drawing range can also be displayed
-plot(c(0, 1), c(0, 1), xlab = "",xaxt = "n", ylab = "",Yingxt = "n",lty= 0, col = "white")#建立个空白画布, xaxt = "n":suppresses plotting of the axis
+plot(c(0, 1), c(0, 1), xlab = "",xaxt = "n", ylab = "",yaxt = "n",lty= 0, col = "white")#建立个空白画布, xaxt = "n":suppresses plotting of the axis
 #Create a blank canvas, xaxt = "n":suppresses plotting of the axis
 text(c(par()$usr[1] + par()$usr[2])/1.5, c(par()$usr[3] + par()$usr[4])/2,
      labels = "Cancer Hallmarks and oncogenic pathways", adj = 0.5, cex = 1.2)
@@ -376,7 +376,7 @@ text(c(par()$usr[1] + par()$usr[2])/1.5, c(par()$usr[3] + par()$usr[4])/2,
 screen(2, new = T)
 par(xpd = F, mar = opar$mar + c(-5.1, 15 , -4.1, 6), oma = c(0, 0, 0, 0),
     bty = "n")
-plot(c(0, 1), c(0, 1), xlab = "",xaxt = "n", ylab = "",Yingxt = "n", lty= 0, col = "white")
+plot(c(0, 1), c(0, 1), xlab = "",xaxt = "n", ylab = "",yaxt = "n", lty= 0, col = "white")
 mtext("gene upregulated", side = 2, adj = 1, line = -4, las = 1, col = "red", cex = 1)
 mtext("Size", side = 4, adj = 0, las = 1, line = 1, cex = mtextsize)
 mtext("NES", side = 4, adj = 0, las = 1, line = 3.5, cex = mtextsize)
@@ -385,7 +385,7 @@ mtext("Size", side = 4, adj = 0, las = 1, line = 6, cex = mtextsize)
 screen(textscreen[3], new = T)
 par(xpd = F, mar = c(0, 0, 0, 0), oma = c(0, 0, 0, 0),
     bty = "n")
-plot(c(0, 1), c(0, 1), xlab = "",xaxt = "n", ylab = "",Yingxt = "n", lty = 0, col = "white")
+plot(c(0, 1), c(0, 1), xlab = "",xaxt = "n", ylab = "",yaxt = "n", lty = 0, col = "white")
 mtext(text = "Postive correlated hallmarks", side = 2, adj = 0, line = 1.5, las = 1, 
       cex = mtextsize2, col = "blue")
 segments(x0 = par("usr")[1], x1 = par("usr")[2], 
@@ -394,27 +394,27 @@ segments(x0 = par("usr")[1], x1 = par("usr")[2],
 screen(textscreen[3], new = F)
 par(xpd = F, mar = opar$mar + c(-5.1, 15 , -4.1, 6), oma = c(0, 0, 0, 0),
     bty = "n")
-plot(c(0, 1), c(0, 1), xlab = "",xaxt = "n", ylab = "",Yingxt = "n", lty = 0, col = "white")
+plot(c(0, 1), c(0, 1), xlab = "",xaxt = "n", ylab = "",yaxt = "n", lty = 0, col = "white")
 segments(x0 = c(par("usr")[1]+par("usr")[2])/2, x1 = c(par("usr")[1]+par("usr")[2])/2,
          y0 = par("usr")[3], y1 = par("usr")[4], col="grey",lwd=1)
 ###################################
 screen(textscreen[4], new = T)
 par(xpd = F, mar = c(0, 0, 0, 0), oma = c(0, 0, 0, 0),
     bty = "n")
-plot(c(0, 1), c(0, 1), xlab = "",xaxt = "n", ylab = "",Yingxt = "n", lty = 0, col = "white")
+plot(c(0, 1), c(0, 1), xlab = "",xaxt = "n", ylab = "",yaxt = "n", lty = 0, col = "white")
 mtext(text = "Negative correlated hallmarks", side = 2, adj = 0, line = 1.5, las = 1, 
       cex = mtextsize2, col = "blue")
 screen(textscreen[4], new = F)
 par(xpd = F, mar = opar$mar + c(-5.1, 15 , -4.1, 6), oma = c(0, 0, 0, 0),
     bty = "n")
-plot(c(0, 1), c(0, 1), xlab = "",xaxt = "n", ylab = "",Yingxt = "n", lty = 0, col = "white")
+plot(c(0, 1), c(0, 1), xlab = "",xaxt = "n", ylab = "",yaxt = "n", lty = 0, col = "white")
 segments(x0 = c(par("usr")[1]+par("usr")[2])/2, x1 = c(par("usr")[1]+par("usr")[2])/2,
          y0 = par("usr")[3], y1 = par("usr")[4], col="grey",lwd=1)
 ###################################
 screen(textscreen[5], new = T)
 par(xpd = F, mar = opar$mar + c(-5.1, 15 , -4.1, 6), oma = c(0, 0, 0, 0),
     bty = "n")
-plot(c(0, length(gene.id)), c(0, 1), xlab = "",xaxt = "n", ylab = "",Yingxt = "n", lty= 0, col = "white",
+plot(c(0, length(gene.id)), c(0, 1), xlab = "",xaxt = "n", ylab = "",yaxt = "n", lty= 0, col = "white",
      xaxs = "i")# xaxs = "i":finds an axis with pretty labels that fits within the original data range
 mtext("gene downregulated", side = 4, adj = 0, line = -4, las = 1, col = "black", cex = 1)
 segments(x0 = c(par("usr")[1]+par("usr")[2])/2, x1 = c(par("usr")[1]+par("usr")[2])/2,
@@ -433,7 +433,7 @@ for (i in 1:length(plotscreen)){
       bty = "n")
     input2 <- fdataset[[ c(topPathwaysUp2, topPathwaysDown2)[i] ]]
     plot(c(1,length(gene.id)),c(-0.2, 0.2),
-     xlab = "",xaxt = "n", ylab = "",Yingxt = "n", lty = 0, col = "white") 
+     xlab = "",xaxt = "n", ylab = "",yaxt = "n", lty = 0, col = "white") 
     segments(x0 = input2$RANK.IN.GENE.LIST, x1 = input2$RANK.IN.GENE.LIST, y0 = 0, y1 = input2$statsAdj, col = "black")
     segments(x0 = c(par("usr")[1]+par("usr")[2])/2, x1 = c(par("usr")[1]+par("usr")[2])/2,
          y0 = par("usr")[3], y1 = par("usr")[4], col="grey",lwd=1)

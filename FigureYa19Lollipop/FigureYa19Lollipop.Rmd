@@ -187,7 +187,7 @@ sample.gr$color <-sample.gr$border <- brewer.pal(9,"Set1")[4] #点及连线颜�
 sample.gr$score<- log2(nrpos$rate) #点所在高度（纵坐标） height of the point (vertical coordinate) 
 
 pdf("test1.pdf",width=24,height = 5)
-lolliplot(sample.gr, features,xaxis = c(protein_inform$Start,protein_inform$End),Yingxis = F, ylab = F,type="circle")
+lolliplot(sample.gr, features,xaxis = c(protein_inform$Start,protein_inform$End),yaxis = F, ylab = F,type="circle")
 dev.off()
 ```
 
@@ -207,7 +207,7 @@ sample.gr$SNPsideID <- torb
 sample.gr$color[torb=="bottom"] <- sample.gr$border[torb=="bottom"] <- brewer.pal(9,"Set1")[7]
 
 pdf("test2.pdf",width=21)
-lolliplot(sample.gr, features,xaxis = c(protein_inform$Start,protein_inform$End),Yingxis = F, ylab = F,type="circle")
+lolliplot(sample.gr, features,xaxis = c(protein_inform$Start,protein_inform$End),yaxis = F, ylab = F,type="circle")
 dev.off()
 ```
 
@@ -222,7 +222,7 @@ labs<-sample.gr$label
 labs[labs=="1"]<-""
 sample.gr$label <- labs
 pdf("test3.pdf",width=21)
-lolliplot(sample.gr, features,xaxis = c(protein_inform$Start,protein_inform$End),Yingxis = F, ylab = F,type="circle")
+lolliplot(sample.gr, features,xaxis = c(protein_inform$Start,protein_inform$End),yaxis = F, ylab = F,type="circle")
 dev.off()
 ```
 
@@ -235,7 +235,7 @@ Set point size according to mutation frequency
 ```{r}
 sample.gr$cex <- log10(nrpos$rate) + 0.4
 pdf("test4.pdf",width=21)
-lolliplot(sample.gr, features,xaxis = c(protein_inform$Start,protein_inform$End),Yingxis = F, ylab = F,type="circle")
+lolliplot(sample.gr, features,xaxis = c(protein_inform$Start,protein_inform$End),yaxis = F, ylab = F,type="circle")
 dev.off()
 ```
 
@@ -267,7 +267,7 @@ sample.gr$SNPsideID <- torb
 sample.gr$color[torb=="bottom"] <- sample.gr$border[torb=="bottom"] <- brewer.pal(9,"Set1")[7]
 
 pdf("test5.pdf",width=21)
-lolliplot(sample.gr, features,xaxis = c(protein_inform$Start,protein_inform$End),Yingxis = F, ylab = F,type="circle")
+lolliplot(sample.gr, features,xaxis = c(protein_inform$Start,protein_inform$End),yaxis = F, ylab = F,type="circle")
 dev.off()
 ```
 

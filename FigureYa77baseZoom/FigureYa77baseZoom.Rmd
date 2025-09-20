@@ -225,7 +225,7 @@ plot(ILC, IDC,
      xlim=c(0,70), ylim=c(0,70),                # 设置更大的坐标轴范围，显示整体数据 / Set wider axis limits
      ylab="",                                   # 暂时不设置Y轴标签 / Empty Y label (will be added later)
      xlab="ILC (% altered samples)",            # X轴标签 / X-axis label
-     Yingxt='n',                                  # 不显示左侧Y轴 / Suppress left Y-axis
+     yaxt='n',                                  # 不显示左侧Y轴 / Suppress left Y-axis
      pch=16,                                    # 使用实心圆点作为绘图符号 / Use filled circles
      cex=sizes)                                 # 根据p值设置点的大小 / Scale points by p-value
 

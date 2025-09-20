@@ -169,9 +169,9 @@ b <- barplot(matrix(c(2,7,11)), # 堆叠柱状图，这里对应三种m6A regula
 # Stacked bar chart, here corresponds to three m6A regulator classifications, in actual application, it depends on the number of your own classifications
              col = c("#5AC9FA","#FAC67A","#51B743"), # 柱子颜色  # Column color
              border = NA, ylim = c(0,length(gene.level)),
-             xaxs="i", Yingxs="i", # 取消坐标轴与实际画图区域的间隙
+             xaxs="i", yaxs="i", # 取消坐标轴与实际画图区域的间隙
 # Cancel the gap between the coordinate axis and the actual drawing area
-             Yingxt = "n")
+             yaxt = "n")
 # 添加块名，实际应用时根据自己的分类数量调整
 # Add block name, in actual application, adjust according to the number of your own classifications
 text(b,2/2,"E",cex = 2) 
@@ -194,8 +194,8 @@ y=as.numeric(factor(heatmat$Gene,levels = gene.level))
 plot(1,
      xlim=c(1,length(unique(x))+1),
      ylim=c(1,length(unique(y))+1),
-     xaxs="i", Yingxs="i",
-     xaxt="n",Yingxt="n",
+     xaxs="i", yaxs="i",
+     xaxt="n",yaxt="n",
      type="n",bty="n",
      xlab="",ylab="",
      main = "Copy number variation across cancer types")
@@ -225,7 +225,7 @@ par(mar=c(0,0,0,0),xpd = T)
 plot(0,0,
      col = "white", # 点设置为白色 # Set the point to white
      xlab = "",xaxt = "n", # 不显示x坐标轴 # Do not display the x-axis
-     ylab = "",Yingxt = "n") # 不显示y坐标轴 # Do not display the y-axis
+     ylab = "",yaxt = "n") # 不显示y坐标轴 # Do not display the y-axis
 
 #---------------------#
 # 画布区域4：Gain图例 #
@@ -280,7 +280,7 @@ par(mar=c(0,0,0,0),xpd = T)
 plot(0,0,
      col = "white", # 点设置为白色 # Set the point to white
      xlab = "",xaxt = "n", # 不显示x坐标轴 # Do not display the x-axis
-     ylab = "",Yingxt = "n") # 不显示y坐标轴 # Do not display the y-axis
+     ylab = "",yaxt = "n") # 不显示y坐标轴 # Do not display the y-axis
 
 # 关闭图像句柄
 # Close the image handle

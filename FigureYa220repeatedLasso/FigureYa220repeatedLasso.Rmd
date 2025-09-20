@@ -324,7 +324,7 @@ plot(NULL, NULL,
      col = "white",
      xlim = range(a), ylim = range(plotdata),
      xlab = "", ylab = "",
-     xaxt = "n", Yingxt = "n")
+     xaxt = "n", yaxt = "n")
 
 ## 图B
 ## Figure B
@@ -343,7 +343,7 @@ plot(NULL, NULL,
      col = "white",
      xlim = range(b), ylim = c(0,1),
      xlab = "", ylab = "",
-     xaxt = "n", Yingxt = "n")
+     xaxt = "n", yaxt = "n")
 dev.copy2pdf(file = "frequency and cindex of model.pdf", width = 8, height = 4.5) # 保存图片 # Save the image
 ```
 

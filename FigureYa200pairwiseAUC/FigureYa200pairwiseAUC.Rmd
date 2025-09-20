@@ -272,7 +272,7 @@ plot(x = auc1[FAKE.protein.positive],
      xlim = c(xrange[1],xrange[length(xrange)]),
      ylim = c(yrange[1],yrange[length(yrange)]),
      xaxt = "n",
-     Yingxt = "n")
+     yaxt = "n")
 # 添加“假的”无蛋白表达的散点
 # Add "fake" scatters without protein expression
 points(x = auc1[FAKE.protein.negtive],

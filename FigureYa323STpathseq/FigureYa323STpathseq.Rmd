@@ -38,7 +38,7 @@ Source: <https://www.nature.com/articles/s41586-022-05435-0>
 Fig. 1: Assessing the spatial distribution of intratumoral bacteria throughout the tumour tissue.
 a, Haematoxylin and eosin (H&E) staining (left), spatial distribution of total bacterial reads (centre) and total UMI transcripts (right) throughout the tumour tissue in the 10x Visium capture slides from human OSCC and CRC specimens. 
 b, Pie chart of the top 10 most dominant bacterial genera detected in the 10x Visium RNA-sequencing data from the OSCC and CRC tumours. 
-c, RNAscope-FISH imaging showing the distribution of bacteria across the tumour tissue in a sequential slide following the 10x Visium section. The F.nucleatum probe is red and the eubacterial probe is cYingn. Scale bars, 1 mm. 
+c, RNAscope-FISH imaging showing the distribution of bacteria across the tumour tissue in a sequential slide following the 10x Visium section. The F.nucleatum probe is red and the eubacterial probe is cyan. Scale bars, 1 mm. 
 d, Spatial distribution of Parvimonas, Peptoniphilus and Fusobacterium UMIs detected in the 10x Visium OSCC specimen data. 
 e, Spatial distribution of Fusobacterium, Bacteroides and Leptotrichia UMIs detected in the 10x Visium CRC specimen data.
 

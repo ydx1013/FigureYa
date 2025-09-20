@@ -208,21 +208,21 @@ rownames(icluster) <- substr(rownames(icluster),1,15)
 Loading HCC subtype signatures and creating templates for nearest template prediction.
 
 ```{r}
-boYingult <- read.delim("BoYingult-marker-all.txt",sep = "\t",row.names = NULL,check.names = F,stringsAsFactors = F,header = T)
+boyault <- read.delim("Boyault-marker-all.txt",sep = "\t",row.names = NULL,check.names = F,stringsAsFactors = F,header = T)
 
 # 将Entrez ID转换为基因符号
 # Convert Entrez IDs to gene symbols
-tmp <- bitr(boYingult$`Gene ID #1`,fromType = "ENTREZID",toType = "SYMBOL",OrgDb = org.Hs.eg.db)
+tmp <- bitr(boyault$`Gene ID #1`,fromType = "ENTREZID",toType = "SYMBOL",OrgDb = org.Hs.eg.db)
 
 # 提取关键列
 # Extract relevant columns 
-boYingult <- boYingult[,c(2,4)]
-colnames(boYingult) <- c("ENTREZID","class")
+boyault <- boyault[,c(2,4)]
+colnames(boyault) <- c("ENTREZID","class")
 
 # 合并基因符号映射
 # Merge with symbol mapping 
-boYingult <- merge(tmp,boYingult,by = "ENTREZID", all.x = T)
-colnames(boYingult)[2] <- "probe"
+boyault <- merge(tmp,boyault,by = "ENTREZID", all.x = T)
+colnames(boyault)[2] <- "probe"
 
 chiang <- read.delim("Chiang-marker-all.txt",sep = "\t",row.names = NULL,check.names = F,stringsAsFactors = F,header = T)
 chiang <- chiang[,c(1,4)]
@@ -243,8 +243,8 @@ colnames(lee) <- c("probe","class")
 Obtaining other subtypes via nearest template prediction.
 
 ```{r}
-tcga.boYingult <- ntp(emat = t(scale(t(expr))),
-                    templates = boYingult,
+tcga.boyault <- ntp(emat = t(scale(t(expr))),
+                    templates = boyault,
                     doPlot = T,
                     seed = 19991018)
 tcga.chiang <- ntp(emat = t(scale(t(expr))),
@@ -270,7 +270,7 @@ tcga.hoshida <- ntp(emat = t(scale(t(expr))),
 annCol <- data.frame(CTNNB1 = ifelse(as.numeric(mut.binary["CTNNB1",]) == 0,"WT","MT"),
                      Lee = as.character(tcga.lee$prediction),
                      Hoshida = as.character(tcga.hoshida$prediction),
-                     BoYingult = as.character(tcga.boYingult$prediction),
+                     Boyault = as.character(tcga.boyault$prediction),
                      Chiang = as.character(tcga.chiang$prediction),
                      row.names = colnames(mut.binary),
                      stringsAsFactors = F)
@@ -301,7 +301,7 @@ annCol[which(annCol$Chiang == "chromosome 7 polysomy class"), "Chiang"] <- "POLY
 annCol$CTNNB1 <- factor(annCol$CTNNB1, levels = c("MT","WT"))
 annCol$Lee <- factor(annCol$Lee, levels = c("SURVIVAL_DN","SURVIVAL_UP"))
 annCol$Hoshida <- factor(annCol$Hoshida, levels = c("S1","S2","S3"))
-annCol$BoYingult <- factor(annCol$BoYingult, levels = c("G12","G3","G56"))
+annCol$Boyault <- factor(annCol$Boyault, levels = c("G12","G3","G56"))
 annCol$Chiang <- factor(annCol$Chiang, levels = c("PROLIFERATION","CTNNB1","INTERFERON","POLYSOMY7","UNANNOTATED"))
 annCol$iCluster <- factor(annCol$iCluster, levels = c("iC1","iC2","iC3","N/A"))
 
@@ -311,7 +311,7 @@ annColors <- list()
 annColors[["CTNNB1"]] <- c("WT" = "white","MT" = "black")
 annColors[["Lee"]] <- c("SURVIVAL_DN" = "#E80035","SURVIVAL_UP" = "#DBDEDD")
 annColors[["Hoshida"]] <- c("S1" = "#E8536B","S2" = "#F6B879","S3" = "#DFEBAF")
-annColors[["BoYingult"]] <- c("G12" = "#E8536B","G3" = "#F6B879","G56" = "#DFEBAF")
+annColors[["Boyault"]] <- c("G12" = "#E8536B","G3" = "#F6B879","G56" = "#DFEBAF")
 annColors[["Chiang"]] <- c("PROLIFERATION" = "#F2A1A2","CTNNB1" = "#68BE8B","INTERFERON" = "#2CA8E1","POLYSOMY7" = "#A2D9F1","UNANNOTATED" = "#BAC8E5")
 annColors[["iCluster"]] <- c("iC1" = "#A8BFDE","iC2" = "#DA8A88","iC3" = "#BCA3D6","N/A" = "white")
 annColors[["Group"]] <- c("A" = "#FE0000","B" = "black")
@@ -356,7 +356,7 @@ hm <- pheatmap(plotdata,
          #cutree_cols = 3,
          show_rownames = F,
          show_colnames = F,
-         annotation_col = annCol[,c("iCluster","Chiang","BoYingult","Hoshida","Lee","CTNNB1","MS","Group")],
+         annotation_col = annCol[,c("iCluster","Chiang","Boyault","Hoshida","Lee","CTNNB1","MS","Group")],
          annotation_colors = annColors,
          cellwidth = 0.6,
          cellheight = 0.2)
@@ -378,7 +378,7 @@ outTabGroup <- outTabMS <- NULL
 
 # 检验Group/MS与其他分类的独立性
 # Perform independence tests between Group/MS and other classifications
-for (i in c("iCluster","Chiang","BoYingult","Hoshida","Lee","CTNNB1")) {
+for (i in c("iCluster","Chiang","Boyault","Hoshida","Lee","CTNNB1")) {
   tmp <- annCol[,c(i,"Group")]
   set.seed(123)
   p <- fisher.test(table(tmp[,1],tmp[,2]), 

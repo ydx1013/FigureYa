@@ -451,7 +451,7 @@ use ⭕ The figure displays the genes and their fold changes in each term
 GOChord(chord.gsym, 
         space = 0.02,           # 基因方块之间的间隙大小 | Gap between gene blocks
         gene.order = 'logFC',   # 按log2折叠变化值排序基因 | Order genes by log2 fold change
-        lfc.col = c('darkgoldenrod1', 'black', 'cYingn1'),  # 自定义表达量变化的颜色映射 | Custom color palette for fold change
+        lfc.col = c('darkgoldenrod1', 'black', 'cyan1'),  # 自定义表达量变化的颜色映射 | Custom color palette for fold change
         gene.space = 0.25,      # 基因名称与圆环的相对距离 | Distance between gene names and circle
         gene.size = 8,          # 基因名称的字体大小 | Font size for gene names
         border.size = 0.1,      # 中间连接线黑色边框的粗细 | Thickness of black border for connections
@@ -473,7 +473,7 @@ mycol <- c("#223D6C","#D20A13","#FFD121","#088247","#58CDD9","#7A142C","#5D90BA"
 GOCluster(circ.gsym, go$Term[1:n],              # 使用前n个富集的GO term | Use top n enriched GO terms
           clust.by = 'logFC',                   # 按表达量变化值聚类基因 | Cluster genes by log2 fold change
           #clust.by = 'term',                   # 按富集的term聚类基因(注释掉) | Cluster genes by enriched terms (commented out)
-          lfc.col = c('darkgoldenrod1', 'black', 'cYingn1'), # 自定义表达量变化的颜色映射 | Custom color palette for fold change
+          lfc.col = c('darkgoldenrod1', 'black', 'cyan1'), # 自定义表达量变化的颜色映射 | Custom color palette for fold change
           lfc.space = 0.05,                     # 表达量变化与树形图之间的间距 | Space between fold change and tree
           lfc.width = 0.01,                     # 表达量变化圆圈的宽度 | Width of fold change circles
           term.col = mycol[1:n],                # 为每个term指定颜色 | Assign colors to terms

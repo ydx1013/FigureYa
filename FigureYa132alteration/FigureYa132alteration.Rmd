@@ -367,7 +367,7 @@ p_top
 p_left <- ggplot(row_annot) +
   geom_tile(mapping = aes(x = 0, y = Gene, fill = Type), 
             height = 0.9, color = "white") +
-  scale_fill_manual(values = c(OG = "orangered", TSG = 'roYinglblue', Other = "white")) +
+  scale_fill_manual(values = c(OG = "orangered", TSG = 'royalblue', Other = "white")) +
   theme_void()
 p_left
 

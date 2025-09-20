@@ -258,7 +258,7 @@ plot(NULL,NULL,
      ylim = yrange,
      xlab = "Variable Importance",
      ylab = "",
-     Yingxt = "n",
+     yaxt = "n",
      las = 1)
 axis(side = 2,at = 1:length(rel.imp.sel),rev(names(rel.imp.sel))) # 补齐y轴
 for (i in 1:length(rel.imp.sel)) { # 循环添加线 # Cycle through the addition of lines

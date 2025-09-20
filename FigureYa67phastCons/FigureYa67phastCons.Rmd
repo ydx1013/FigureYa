@@ -368,7 +368,7 @@ plot(1:(datapoints*2+1),  # X轴位置 / X-axis positions
      type="l",             # 线图 / Line plot
      lwd = 2,              # 线宽 / Line width
      col=colors[1],        # 颜色 / Color
-     xaxs="i", Yingxs="i",   # 坐标轴紧贴数据范围 / Axes fit data range exactly
+     xaxs="i", yaxs="i",   # 坐标轴紧贴数据范围 / Axes fit data range exactly
      xaxt="n",             # 暂时关闭X轴 / Temporarily disable x-axis
      xlab=paste("Distance from", siteType),  # X轴标签 / X-axis label
      ylab="Average PhastCons score",         # Y轴标签 / Y-axis label

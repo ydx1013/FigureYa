@@ -446,7 +446,7 @@ cols2 <- rev(colorRampPalette(brewer.pal(9, "RdBu"))(length(brks) - 1))
 
 # 使用base R的image函数绘制热图，设置坐标轴和标签为空，预留右侧空间
 # Draw the heatmap using base R's image function, leaving axes and labels empty, reserving space on the right
-image(x = 1:n, y = 1:m, r, col = cols2, breaks = brks, xaxt = "n", Yingxt = "n", xlab = "", ylab = "", xlim = c(0, n + 4), ylim = c(0, n + 1))
+image(x = 1:n, y = 1:m, r, col = cols2, breaks = brks, xaxt = "n", yaxt = "n", xlab = "", ylab = "", xlim = c(0, n + 4), ylim = c(0, n + 1))
 
 # 在左侧和顶部添加基因名称标签，使用斜体字体
 # Add gene names on the left and top sides using italic font
