@@ -68,6 +68,9 @@ options(stringsAsFactors = FALSE) #禁止chr转成factor #Disable conversion of 
 # 0. 导入数据
 # 0. Import data
 
+输入数据的微云链接：<https://share.weiyun.com/GqYbpeGV>
+Weiyun download link for input data: <https://share.weiyun.com/GqYbpeGV>
+
 ## 0.1 cell meta信息
 ## 0.1 Cell metadata
 
