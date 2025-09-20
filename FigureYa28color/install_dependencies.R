@@ -1,10 +1,9 @@
 #!/usr/bin/env Rscript
-# Auto-generated R dependency installation script for rPlotter
-# This script installs all required R packages for rPlotter
+# R dependency installation script for scales and rgl packages
+# This script installs scales and rgl packages
 
 # Set up mirrors for better download performance
 options("repos" = c(CRAN = "https://cloud.r-project.org/"))
-options(BioC_mirror = "https://bioconductor.org/")
 
 # Function to check if a package is installed
 is_package_installed <- function(package_name) {
@@ -26,83 +25,22 @@ install_cran_package <- function(package_name) {
   }
 }
 
-# Function to install Bioconductor packages
-install_bioc_package <- function(package_name) {
-  if (!is_package_installed(package_name)) {
-    cat("Installing Bioconductor package:", package_name, "\n")
-    tryCatch({
-      if (!is_package_installed("BiocManager")) {
-        install.packages("BiocManager", quiet = TRUE)
-      }
-      BiocManager::install(package_name, ask = FALSE, quiet = TRUE)
-      cat("✓ Successfully installed:", package_name, "\n")
-    }, error = function(e) {
-      cat("✗ Failed to install", package_name, ":", e$message, "\n")
-    })
-  } else {
-    cat("✓ Package already installed:", package_name, "\n")
-  }
-}
+cat("Starting R package installation for scales and rgl...\n")
+cat("===================================================\n")
 
-# Function to install packages from GitHub
-install_github_package <- function(repo) {
-  package_name <- basename(repo)
-  if (!is_package_installed(package_name)) {
-    cat("Installing GitHub package:", repo, "\n")
-    tryCatch({
-      if (!is_package_installed("devtools")) {
-        install.packages("devtools", quiet = TRUE)
-      }
-      devtools::install_github(repo, quiet = TRUE)
-      cat("✓ Successfully installed:", package_name, "\n")
-    }, error = function(e) {
-      cat("✗ Failed to install", repo, ":", e$message, "\n")
-    })
-  } else {
-    cat("✓ Package already installed:", package_name, "\n")
-  }
-}
-
-cat("Starting R package installation for rPlotter...\n")
-cat("===========================================\n")
-
-# 1. 安装CRAN包（包括scales和rgl）
+# 安装CRAN包（只安装scales和rgl）
 cat("\n1. Installing CRAN packages...\n")
-cran_packages <- c("ggplot2", "stringr", "reshape2", "dichromat", "scales", "rgl")
+cran_packages <- c("scales", "rgl")
 for (pkg in cran_packages) {
   install_cran_package(pkg)
 }
 
-# 2. 安装EBImage (Bioconductor)
-cat("\n2. Installing EBImage from Bioconductor...\n")
-install_bioc_package("EBImage")
-
-# 3. 安装GitHub包
-cat("\n3. Installing packages from GitHub...\n")
-
-# 首先安装devtools
-if (!is_package_installed("devtools")) {
-  install_cran_package("devtools")
-}
-
-# 安装rblocks
-install_github_package("ramnathv/rblocks")
-
-# 4. 最后安装rPlotter
-cat("\n4. Installing rPlotter from GitHub...\n")
-install_github_package("woobe/rPlotter")
-
-cat("\n===========================================\n")
+cat("\n===================================================\n")
 cat("Package installation completed!\n")
 
 # 验证安装
 cat("\nVerifying package installation:\n")
-required_packages <- c(
-  "ggplot2", "stringr", "reshape2", "dichromat", "scales", "rgl", # CRAN包
-  "EBImage",                                     # Bioconductor包
-  "rblocks",                                     # GitHub包
-  "rPlotter"                                     # 目标包
-)
+required_packages <- c("scales", "rgl")
 
 all_installed <- TRUE
 for (pkg in required_packages) {
@@ -121,9 +59,11 @@ if (is_package_installed("scales")) {
     library(scales)
     cat("✓ scales package loaded successfully\n")
     # 测试一些常用函数
-    if (exists("percent") && exists("comma") && exists("scientific")) {
-      cat("✓ scales main functions are available\n")
-    }
+    test_values <- c(0.1234, 1234.567, 0.0001234)
+    cat("Testing percent format:", percent(test_values), "\n")
+    cat("Testing comma format:", comma(test_values), "\n")
+    cat("Testing scientific format:", scientific(test_values), "\n")
+    cat("✓ scales main functions are working properly\n")
   }, error = function(e) {
     cat("✗ scales test failed:", e$message, "\n")
   })
@@ -136,39 +76,37 @@ if (is_package_installed("rgl")) {
     library(rgl)
     cat("✓ rgl package loaded successfully\n")
     # 检查主要函数是否存在
-    if (exists("plot3d") && exists("rgl.open") && exists("rgl.points")) {
+    if (exists("plot3d") && exists("open3d") && exists("points3d")) {
       cat("✓ rgl main functions are available\n")
+      
+      # 简单的3D绘图测试（可选）
+      if (interactive()) {
+        cat("Creating simple 3D plot...\n")
+        open3d()
+        x <- rnorm(100)
+        y <- rnorm(100)
+        z <- rnorm(100)
+        plot3d(x, y, z, col = "blue", size = 3)
+        cat("✓ 3D plot created successfully\n")
+      }
     }
   }, error = function(e) {
     cat("✗ rgl test failed:", e$message, "\n")
   })
 }
 
-# 测试rPlotter功能
-if (is_package_installed("rPlotter")) {
-  cat("\nTesting rPlotter package...\n")
-  tryCatch({
-    library(rPlotter)
-    cat("✓ rPlotter package loaded successfully\n")
-    # 检查主要函数是否存在
-    if (exists("plot_colors") || exists("rPlotter")) {
-      cat("✓ Main functions are available\n")
-    }
-  }, error = function(e) {
-    cat("✗ rPlotter test failed:", e$message, "\n")
-  })
-}
-
-cat("\n===========================================\n")
+cat("\n===================================================\n")
 if (all_installed) {
   cat("✅ All required packages installed successfully!\n")
-  cat("You can now use rPlotter, scales, and rgl in your R scripts.\n")
+  cat("You can now use scales and rgl in your R scripts.\n")
 } else {
   cat("⚠️  Some packages failed to install. You may need to:\n")
   cat("1. Check your internet connection\n")
-  cat("2. Install missing packages manually\n")
-  cat("3. For Bioconductor packages: BiocManager::install('package_name')\n")
-  cat("4. For GitHub packages: devtools::install_github('user/repo')\n")
+  cat("2. Install missing packages manually:\n")
+  cat("   install.packages(c('scales', 'rgl'))\n")
+  cat("3. Check for any system dependencies\n")
 }
 
-cat("\nYou can now run your R scripts with rPlotter, scales, and rgl.\n")
+cat("\nUsage examples:\n")
+cat("library(scales)  # For formatting numbers and dates\n")
+cat("library(rgl)     # For 3D graphics\n")
