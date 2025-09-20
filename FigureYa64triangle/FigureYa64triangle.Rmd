@@ -60,6 +60,7 @@ Use your imagination to develop more application scenarios.
 ```{r,message=FALSE}
 source("install_dependencies.R")
 source("ggtern-constructor.R") # from ggtern package, https://github.com/nicholasehamilton/ggtern
+source("theme-defaults.R") # from ggtern package, https://github.com/nicholasehamilton/ggtern
 
 library(tidyverse)
 library(scales)
