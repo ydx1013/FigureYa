@@ -1,7 +1,7 @@
 ---
-title: "FigureYa38 PCA"
+title: "FigureYa38PCA"
 author: "Zhougeng Xu; Ying Ge, Yijing Chen"
-date: "2025-5-20"
+date: "2025-9-20"
 output: html_document
 ---
 
@@ -67,10 +67,10 @@ Scenario 2: Multiple subgroups, sent for sequencing in three batches. Do PCA, do
 
 ```{r}
 source("install_dependencies.R")
-source("ggord.R") # from ggord packge
+source("ggord.R") # from ggord packge, https://github.com/fawda123/ggord
+source("geom_ord_ellipse.R") # from gglayer package, https://github.com/GuangchuangYu/gglayer
 library(ggplot2)
 library(plyr)
-library(yyplot)
 library(ggplot2)
 library(dplyr)
 library(plyr)
@@ -143,22 +143,16 @@ Two methods are provided here:
 
 用到做PCA的R包`ggord`，优点是能用背景色展示置信区间，缺点是没有画圈功能。
 
-Y叔对ggord进行了加强，放在R包`yyplot`里，详情看这篇：<https://mp.weixin.qq.com/s/iA0IuyRx_Ojk639sxenmvg>。yyplot包里提供的`geom_ord_ellipse`能画出多个圆圈，用来展示不同的置信区间，并且可以反复叠加，想画几个圈就画几个圈。
+Y叔对ggord进行了加强，放在R包`gglayer`里，详情看这篇：<https://mp.weixin.qq.com/s/iA0IuyRx_Ojk639sxenmvg>。`geom_ord_ellipse`能画出多个圆圈，用来展示不同的置信区间，并且可以反复叠加，想画几个圈就画几个圈。
 
 The R package `ggord` used for PCA has the advantage of displaying confidence intervals with background color, but the disadvantage is that it does not have the function of drawing circles.
 
-Uncle Y enhanced ggord and put it in the R package `yyplot`, see this article for details: <https://mp.weixin.qq.com/s/iA0IuyRx_Ojk639sxenmvg>. yyplot package provides `geom_ord_ellipse` which can draw multiple circles to show different confidence intervals, and can be stacked over and over again to draw as many circles as you want.
+Uncle Y enhanced ggord and put it in the R package `gglayer`, see this article for details: <https://mp.weixin.qq.com/s/iA0IuyRx_Ojk639sxenmvg>. `geom_ord_ellipse` which can draw multiple circles to show different confidence intervals, and can be stacked over and over again to draw as many circles as you want.
 
 #### 经典版
 #### Classic version
 
 ```{r}
-#有可能你的网络在安装yyplot时遇到困难，我把geom_ord_ellipse函数单独下载，通过本地进行加载。
-#调用yyplot包里的geom_ord_ellipse函数
-#It is possible that your network encountered difficulties when installing yyplot, so I downloaded the geom_ord_ellipse function separately and loaded it locally.
-#call the geom_ord_ellipse function in the yyplot package
-#source('./geom_ord_ellipse.R') #该文件位于当前文件夹 the file is located in the current folder
-
 #用ggord画基本PCA图
 #draw basic PCA graph with ggord
 ggord(pca.results, grp_in = meta_df$group, repel=TRUE,
@@ -171,8 +165,8 @@ ggord(pca.results, grp_in = meta_df$group, repel=TRUE,
       arrow = NULL,txt = NULL) + #不画箭头和箭头上的文字 no drawing of arrows and text on arrows
   theme(panel.grid =element_blank()) + #去除网格线 remove gridlines
   
-  #用yyplot添加置信区间圆圈
-  #add confidence interval circles with yyplot
+  #用gglayer添加置信区间圆圈
+  #add confidence interval circles with gglayer
   geom_ord_ellipse(ellipse_pro = .95, #设置置信区间 set confidence interval
                    size=1.5, #线的粗细 thickness of the line
                    lty=1 ) #实线 solid line
@@ -204,8 +198,8 @@ ggord(pca.results, grp_in = meta_df$group, repel=TRUE,
       txt=3) + #箭头指向的基因名的字体大小 font size of the gene name pointed to by the arrow
   theme(panel.grid =element_blank()) + 
   
-  #用yyplot继续添加虚线的置信区间
-  #continue to add dashed confidence intervals with yyplot
+  #用gglayer继续添加虚线的置信区间
+  #continue to add dashed confidence intervals with gglayer
   geom_ord_ellipse(ellipse_pro = .95, #先画个.95的圆圈 draw a .95 circle first
                    color='darkgrey', #圈圈的颜色 color of the circle
                    size=0.5, 
