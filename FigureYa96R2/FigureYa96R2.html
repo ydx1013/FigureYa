@@ -387,7 +387,6 @@ high/low immune infiltration.</p>
 <p>评价基因对免疫浸润的影响；</p>
 <p>批量筛选出影响免疫浸润的候选基因；</p>
 <p>同样适用于展示转录因子和靶基因表达调控的关系。</p>
-<p>在“小丫画图”公众号回复“R2”，查看如何将这个图用在paper里。</p>
 </div>
 <div id="application-scenarios" class="section level2">
 <h2>Application Scenarios</h2>
@@ -395,8 +394,6 @@ high/low immune infiltration.</p>
 <p>Batch screening of candidate genes affecting immune infiltration;</p>
 <p>It is also applicable to show the relationship between transcription
 factors and target gene expression regulation.</p>
-<p>Reply “R2” in “Xiaoya Drawing” public number to see how to use this
-diagram in the paper.</p>
 </div>
 <div id="输入文件的获得" class="section level2">
 <h2>输入文件的获得</h2>
@@ -1050,7 +1047,7 @@ system.time(
   data &lt;- future_lapply(rownames(tcga_expr), my_cor, y)
 )</code></pre>
 <pre><code>##    user  system elapsed 
-##  90.626   0.075  90.719</code></pre>
+##  96.206   0.084  96.313</code></pre>
 <pre class="r"><code># 将结果整理成数据框格式
 # Convert results into a data frame
 result1 &lt;- data.frame(
@@ -1118,7 +1115,7 @@ system.time(
   data &lt;- future_lapply(rownames(tcga_expr), my_cor, y)
 )</code></pre>
 <pre><code>##    user  system elapsed 
-##  89.768   0.034  89.825</code></pre>
+##  97.235   0.033  97.291</code></pre>
 <pre class="r"><code># 将结果整理成数据框格式
 # Convert results into a data frame
 result2 &lt;- data.frame(
@@ -1173,6 +1170,11 @@ result2 %&gt;%
 example.</p>
 <p>Once you have selected the gene, you can go back to “Start Drawing”
 and draw a beautiful picture.</p>
+</div>
+</div>
+</div>
+<div id="session-info" class="section level1">
+<h1>Session Info</h1>
 <pre class="r"><code>sessionInfo()</code></pre>
 <pre><code>## R version 4.5.1 (2025-06-13)
 ## Platform: x86_64-pc-linux-gnu
@@ -1200,19 +1202,17 @@ and draw a beautiful picture.</p>
 ## 
 ## loaded via a namespace (and not attached):
 ##  [1] gtable_0.3.6       jsonlite_2.0.0     compiler_4.5.1     tidyselect_1.2.1  
-##  [5] parallel_4.5.1     dichromat_2.0-0.1  jquerylib_0.1.4    globals_0.18.0    
-##  [9] systemfonts_1.2.3  scales_1.4.0       textshaping_1.0.3  yaml_2.3.10       
-## [13] fastmap_1.2.0      R6_2.6.1           labeling_0.4.3     generics_0.1.4    
-## [17] knitr_1.50         forcats_1.0.0      tibble_3.3.0       bslib_0.9.0       
-## [21] pillar_1.11.0      RColorBrewer_1.1-3 rlang_1.1.6        cachem_1.1.0      
-## [25] xfun_0.53          sass_0.4.10        S7_0.2.0           cli_3.6.5         
-## [29] withr_3.0.2        magrittr_2.0.4     digest_0.6.37      grid_4.5.1        
-## [33] lifecycle_1.0.4    vctrs_0.6.5        evaluate_1.0.5     glue_1.8.0        
-## [37] data.table_1.17.8  listenv_0.9.1      farver_2.1.2       codetools_0.2-20  
-## [41] ragg_1.5.0         parallelly_1.45.1  rmarkdown_2.29     tools_4.5.1       
-## [45] pkgconfig_2.0.3    htmltools_0.5.8.1</code></pre>
-</div>
-</div>
+##  [5] parallel_4.5.1     jquerylib_0.1.4    globals_0.18.0     systemfonts_1.2.3 
+##  [9] scales_1.4.0       textshaping_1.0.3  yaml_2.3.10        fastmap_1.2.0     
+## [13] R6_2.6.1           labeling_0.4.3     generics_0.1.4     knitr_1.50        
+## [17] forcats_1.0.0      tibble_3.3.0       bslib_0.9.0        pillar_1.11.1     
+## [21] RColorBrewer_1.1-3 rlang_1.1.6        cachem_1.1.0       xfun_0.53         
+## [25] sass_0.4.10        S7_0.2.0           cli_3.6.5          withr_3.0.2       
+## [29] magrittr_2.0.4     digest_0.6.37      grid_4.5.1         lifecycle_1.0.4   
+## [33] vctrs_0.6.5        evaluate_1.0.5     glue_1.8.0         data.table_1.17.8 
+## [37] listenv_0.9.1      farver_2.1.2       codetools_0.2-20   ragg_1.5.0        
+## [41] parallelly_1.45.1  rmarkdown_2.29     tools_4.5.1        pkgconfig_2.0.3   
+## [45] htmltools_0.5.8.1</code></pre>
 </div>
 
 

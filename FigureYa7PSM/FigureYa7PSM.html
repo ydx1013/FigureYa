@@ -12,7 +12,7 @@
 <meta name="author" content="Ying Ge; Yijing Chen" />
 
 
-<title>FigureYa7 PSM</title>
+<title>FigureYa7PSM</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -349,7 +349,7 @@ display: none;
 
 
 
-<h1 class="title toc-ignore">FigureYa7 PSM</h1>
+<h1 class="title toc-ignore">FigureYa7PSM</h1>
 <h4 class="author">Ying Ge; Yijing Chen</h4>
 <h4 class="date">2025-5-20</h4>
 
@@ -398,7 +398,7 @@ easy for us to perform propensity score matching.</p>
 QLD-C30是一个由30个项目组成，包括5个功能量表，9个症状量表和一个全球生活质量量表的的问卷。所有量表都会给出一个0-100之间的得分。症状量表得分越高代表被调查人生活压力越大，其余两个量表得分越高代表生活质量越高。</p>
 <p>然而，如果没有任何参照，直接对数据进行解释是很困难的。幸运的是，EORTC
 QLQ-C30问卷也在一些一般人群调查中使用，我们可以对比患者的得分和一般人群的得分差异，从而判断患者的负担症状和一些功能障碍是否能归因于癌症治疗。PSM在这里可以以年龄和性别等特征，将相似的患者和一般人群进行匹配。</p>
-<p>代码和说明信息来源于以下资料，小丫重新编辑整理：</p>
+<p>代码和说明信息来源于以下资料：</p>
 <p>原文：<a href="https://datascienceplus.com/how-to-use-r-for-matching-samples-propensity-score/" class="uri">https://datascienceplus.com/how-to-use-r-for-matching-samples-propensity-score/</a></p>
 <p>译文：<a href="http://www.ituring.com.cn/article/260460" class="uri">http://www.ituring.com.cn/article/260460</a></p>
 <p>Health-related quality of life (HRQOL) is considered one of the
@@ -420,7 +420,7 @@ impairments in patients can be attributed to cancer treatment. PSM can
 match similar patients with the general population based on
 characteristics such as age and gender.</p>
 <p>The code and description information is taken from the following
-sources and re-edited and organized by Xiaoya:</p>
+sources:</p>
 <p>original text: <a href="https://datascienceplus.com/how-to-use-r-for-matching-samples-propensity-score/" class="uri">https://datascienceplus.com/how-to-use-r-for-matching-samples-propensity-score/</a></p>
 <p>translation: <a href="http://www.ituring.com.cn/article/260460" class="uri">http://www.ituring.com.cn/article/260460</a></p>
 </div>
@@ -635,7 +635,7 @@ head(dfpair)</code></pre>
 ## [17] fastmap_1.2.0     yaml_2.3.10       lifecycle_1.0.4   chk_0.10.0       
 ## [21] compiler_4.5.1    dplyr_1.1.4       Rcpp_1.1.0        pkgconfig_2.0.3  
 ## [25] digest_0.6.37     R6_2.6.1          tidyselect_1.2.1  utf8_1.2.6       
-## [29] pillar_1.11.0     magrittr_2.0.4    bslib_0.9.0       tools_4.5.1      
+## [29] pillar_1.11.1     magrittr_2.0.4    bslib_0.9.0       tools_4.5.1      
 ## [33] cachem_1.1.0</code></pre>
 </div>
 

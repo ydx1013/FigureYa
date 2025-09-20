@@ -1,0 +1,115 @@
+Starting R package installation...
+===========================================
+
+Installing important dependency packages first...
+Package already installed: devtools 
+Package already installed: remotes 
+Package already installed: httr 
+Package already installed: curl 
+Package already installed: jsonlite 
+
+Installing CRAN packages...
+Installing CRAN package: Reds 
+Installing package into ‘/home/runner/work/_temp/Library’
+(as ‘lib’ is unspecified)
+Successfully installed: Reds 
+Package already installed: dplyr 
+Package already installed: ggplot2 
+Package already installed: scales 
+Package already installed: tidyverse 
+Package already installed: reshape2 
+Package already installed: tibble 
+Package already installed: purrr 
+Warning message:
+package ‘Reds’ is not available for this version of R
+
+A version of this package for your version of R might be available elsewhere,
+see the ideas at
+https://cran.r-project.org/doc/manuals/r-patched/R-admin.html#Installing-packages 
+
+Installing ImmuLncRNA package...
+Downloading and installing ImmuLncRNA package...
+URL: http://bio-bigdata.hrbmu.edu.cn/ImmLnc/download_loading.jsp?path=jt_download/ImmuLncRNA_0.1.0.tar.gz&name=ImmuLncRNA_0.1.0.tar.gz 
+Downloading package file...
+trying URL 'http://bio-bigdata.hrbmu.edu.cn/ImmLnc/download_loading.jsp?path=jt_download/ImmuLncRNA_0.1.0.tar.gz&name=ImmuLncRNA_0.1.0.tar.gz'
+Content type 'application/x-gzip;charset=UTF-8' length 10855978 bytes (10.4 MB)
+==================================================
+downloaded 10.4 MB
+
+Download successful, file size: 10855978 bytes
+Installing package from local file...
+Installing package into ‘/home/runner/work/_temp/Library’
+(as ‘lib’ is unspecified)
+* installing *source* package ‘ImmuLncRNA’ ...
+** this is package ‘ImmuLncRNA’ version ‘0.1.0’
+** using staged installation
+** R
+** data
+*** moving datasets to lazyload DB
+** inst
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** installing vignettes
+** testing if installed package can be loaded from temporary location
+** testing if installed package can be loaded from final location
+** testing if installed package keeps a record of temporary installation path
+* DONE (ImmuLncRNA)
+Successfully installed: ImmuLncRNA 
+
+Installing ESTIMATE package...
+Installing ESTIMATE package...
+Installing Bioconductor package: estimate 
+'getOption("repos")' replaces Bioconductor standard repositories, see
+'help("repositories", package = "BiocManager")' for details.
+Replacement repositories:
+    CRAN: https://cloud.r-project.org/
+Bioconductor version 3.21 (BiocManager 1.30.26), R 4.5.1 (2025-06-13)
+Installing package(s) 'estimate'
+Successfully installed: estimate 
+Installing CRAN package: estimate 
+Installing package into ‘/home/runner/work/_temp/Library’
+(as ‘lib’ is unspecified)
+Successfully installed: estimate 
+Using bundled GitHub PAT. Please add your own PAT using `gitcreds::gitcreds_set()`
+GitHub installation failed: Failed to install 'unknown package' from GitHub:
+  HTTP error 401.
+  Bad credentials 
+All ESTIMATE installation methods failed
+Warning messages:
+1: package ‘estimate’ is not available for Bioconductor version '3.21'
+
+A version of this package for your version of R might be available elsewhere,
+see the ideas at
+https://cran.r-project.org/doc/manuals/r-patched/R-admin.html#Installing-packages 
+2: package ‘estimate’ is not available for this version of R
+
+A version of this package for your version of R might be available elsewhere,
+see the ideas at
+https://cran.r-project.org/doc/manuals/r-patched/R-admin.html#Installing-packages 
+
+Installing Bioconductor packages...
+Package already installed: ComplexHeatmap 
+Package already installed: SummarizedExperiment 
+Package already installed: TCGAbiolinks 
+Package already installed: fgsea 
+
+Verifying package installation...
+✓ dplyr is installed
+✓ ggplot2 is installed
+✓ ComplexHeatmap is installed
+✓ TCGAbiolinks is installed
+✓ fgsea is installed
+✓ ImmuLncRNA is installed
+  ImmuLncRNA loads successfully
+✗ estimate is NOT installed
+
+===========================================
+Main packages successfully installed!
+
+Installation summary:
+- ImmuLncRNA: ✓ 
+- estimate: ✗ 
+- Other packages: ✓ 
+You can now run your R scripts in this directory.

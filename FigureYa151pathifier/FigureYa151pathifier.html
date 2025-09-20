@@ -663,59 +663,18 @@ path.res &lt;- quantify_pathways_deregulation(data = indata, # 表达谱，行�
                                            min_exp = 0, # 默认值为4，倘若表达值低于该阈值，则填补该阈值 # Default is 4. If the expression value is below this threshold, the threshold is padded.
                                            min_std = 0) # 默认值位0.4，倘若某基因的标准差低于该阈值，则标准化时除以该阈值，而不使用真实标准差 # Default is 0.4. If the standard deviation of a gene is below this threshold, the normalization is divided by the threshold instead of the true standard deviation.</code></pre>
 <pre><code>## robust_score_bydist. min_exp= 0 , min_std= 0 
-## pathway  1 &gt; sig: 0.02246133 
-## pathway  2 &gt; sig: 0.06504749 
-## pathway  2  k= 7 ( 7 ) wj= 3 &gt;new sig: 0.02640214 | accepted!
-## pathway  3 &gt; sig: 0.03400569 
-## pathway  4 &gt; sig: 0.02446201 
-## pathway  5 &gt; sig: 0.06094536 
-## pathway  5  k= 11 ( 11 ) wj= 1 &gt;new sig: 0.04266093 | accepted!
-## pathway  6 &gt; sig: 0.04149568 
-## pathway  7 &gt; sig: 0.02021935 
-## pathway  8 &gt; sig: 0.06628884 
-## pathway  9 &gt; sig: 0.07022986 
-## pathway  9  k= 22 ( 22 ) wj= 3 &gt;new sig: 0.05871815 | accepted!</code></pre>
-<pre><code>## Warning in stats::smooth.spline(lambda, xj, ..., df = df, keep.data = FALSE): smoothing parameter value too large
-## setting df = 1  __use with care!__
-## Warning in stats::smooth.spline(lambda, xj, ..., df = df, keep.data = FALSE): smoothing parameter value too large
-## setting df = 1  __use with care!__
-## Warning in stats::smooth.spline(lambda, xj, ..., df = df, keep.data = FALSE): smoothing parameter value too large
-## setting df = 1  __use with care!__
-## Warning in stats::smooth.spline(lambda, xj, ..., df = df, keep.data = FALSE): smoothing parameter value too large
-## setting df = 1  __use with care!__
-## Warning in stats::smooth.spline(lambda, xj, ..., df = df, keep.data = FALSE): smoothing parameter value too large
-## setting df = 1  __use with care!__
-## Warning in stats::smooth.spline(lambda, xj, ..., df = df, keep.data = FALSE): smoothing parameter value too large
-## setting df = 1  __use with care!__
-## Warning in stats::smooth.spline(lambda, xj, ..., df = df, keep.data = FALSE): smoothing parameter value too large
-## setting df = 1  __use with care!__
-## Warning in stats::smooth.spline(lambda, xj, ..., df = df, keep.data = FALSE): smoothing parameter value too large
-## setting df = 1  __use with care!__
-## Warning in stats::smooth.spline(lambda, xj, ..., df = df, keep.data = FALSE): smoothing parameter value too large
-## setting df = 1  __use with care!__
-## Warning in stats::smooth.spline(lambda, xj, ..., df = df, keep.data = FALSE): smoothing parameter value too large
-## setting df = 1  __use with care!__
-## Warning in stats::smooth.spline(lambda, xj, ..., df = df, keep.data = FALSE): smoothing parameter value too large
-## setting df = 1  __use with care!__
-## Warning in stats::smooth.spline(lambda, xj, ..., df = df, keep.data = FALSE): smoothing parameter value too large
-## setting df = 1  __use with care!__
-## Warning in stats::smooth.spline(lambda, xj, ..., df = df, keep.data = FALSE): smoothing parameter value too large
-## setting df = 1  __use with care!__
-## Warning in stats::smooth.spline(lambda, xj, ..., df = df, keep.data = FALSE): smoothing parameter value too large
-## setting df = 1  __use with care!__
-## Warning in stats::smooth.spline(lambda, xj, ..., df = df, keep.data = FALSE): smoothing parameter value too large
-## setting df = 1  __use with care!__
-## Warning in stats::smooth.spline(lambda, xj, ..., df = df, keep.data = FALSE): smoothing parameter value too large
-## setting df = 1  __use with care!__
-## Warning in stats::smooth.spline(lambda, xj, ..., df = df, keep.data = FALSE): smoothing parameter value too large
-## setting df = 1  __use with care!__
-## Warning in stats::smooth.spline(lambda, xj, ..., df = df, keep.data = FALSE): smoothing parameter value too large
-## setting df = 1  __use with care!__
-## Warning in stats::smooth.spline(lambda, xj, ..., df = df, keep.data = FALSE): smoothing parameter value too large
-## setting df = 1  __use with care!__
-## Warning in stats::smooth.spline(lambda, xj, ..., df = df, keep.data = FALSE): smoothing parameter value too large
-## setting df = 1  __use with care!__</code></pre>
-<pre><code>## pathway  9  k= 21 ( 21 ) wj= 4 &gt;new sig: 0.05405507 x rejected
+## pathway  1 &gt; sig: 0.01534688 
+## pathway  2 &gt; sig: 0.08991751 
+## pathway  2  k= 7 ( 7 ) wj= 3 &gt;new sig: 0.034515 | accepted!
+## pathway  3 &gt; sig: 0.03823165 
+## pathway  4 &gt; sig: 0.01908608 
+## pathway  5 &gt; sig: 0.05908341 
+## pathway  5  k= 11 ( 11 ) wj= 1 &gt;new sig: 0.04393015 | accepted!
+## pathway  6 &gt; sig: 0.03940111 
+## pathway  7 &gt; sig: 0.01895035 
+## pathway  8 &gt; sig: 0.06076879 
+## pathway  9 &gt; sig: 0.06001434 
+## pathway  9  k= 22 ( 22 ) wj= 3 &gt;new sig: 0.04907988 | accepted!
 ## 9 pathways processed with start= by ranks</code></pre>
 <pre class="r"><code># 生成pathway score
 # Generate pathway score

@@ -1,0 +1,22 @@
+Starting R package installation...
+===========================================
+
+Installing TCGAbiolinks dependencies...
+Package already installed: AnnotationDbi 
+Package already installed: httr2 
+Package already installed: BiocFileCache 
+Package already installed: curl 
+Package already installed: rvest 
+Package already installed: httr 
+
+Installing CRAN packages...
+Package already installed: ggplot2 
+Package already installed: ggrepel 
+
+Installing Bioconductor packages...
+Package already installed: TCGAbiolinks 
+Package already installed: limma 
+
+===========================================
+Package installation completed!
+You can now run your R scripts in this directory.
