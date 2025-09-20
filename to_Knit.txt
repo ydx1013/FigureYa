@@ -1,5 +1,7 @@
 FigureYa247oncoPredict
-FigureYa105GDSC
-FigureYa112Plus_venn
-FigureYa122mut2expr
-FigureYa283vennyPvalue
+FigureYa125FishertestV2
+FigureYa30nomogram_update
+FigureYa35batch_bestSeparationV3_update
+FigureYa163twoVarCor_update
+FigureYa60GSEA_clusterProfilerV2
+FigureYa95pairwise
