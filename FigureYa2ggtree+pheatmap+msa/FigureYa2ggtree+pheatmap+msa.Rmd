@@ -21,14 +21,14 @@ knitr::opts_chunk$set(echo = TRUE)
 
 本文档分别绘制三个图，没有组到一张图里
 
-另一份文档解决组图问题（by Y叔）
+另一份文档解决组图问题（by Guangchuang Yu）
 ggtree_pheatmap_msa_cowplot.html
 
 Gene family member evolutionary tree, expression profile clustering, multiple sequence comparison, grouped figures
 
 This document separately draws three figures, not grouped into one figure.
 
-Another document to solve the grouping problem (by Uncle Y)
+Another document to solve the grouping problem (by Guangchuang Yu)
 
 ## 使用场景
 ## Usage scenario
