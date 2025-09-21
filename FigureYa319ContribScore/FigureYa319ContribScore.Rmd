@@ -1,7 +1,7 @@
 ---
 title: "FigureYa319ContribScore"
 author: "Xiaofan Lu; Yasi Zhang"
-date: "2025-9-15"
+date: "`r Sys.Date()`"
 output: html_document
 ---
 

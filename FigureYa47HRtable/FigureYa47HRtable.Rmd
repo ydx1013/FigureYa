@@ -1,7 +1,7 @@
 ---
 title: "FigureYa47HR2table"
 author: "Yuan Tang; Ying Ge, Yijing Chen"
-date: "2025-5-20"
+date: "`r Sys.Date()`"
 output: html_document
 ---
 

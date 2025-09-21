@@ -2,7 +2,7 @@
 title: "FigureYa248MutLandscape"
 author: "Xiaofan Lu"
 reviewers: "Ying Ge, Hui Huang"
-date: "2025-9-12"
+date: "`r Sys.Date()`"
 output: html_document
 ---
 # Academic Citation

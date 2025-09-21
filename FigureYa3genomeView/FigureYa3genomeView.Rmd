@@ -1,7 +1,7 @@
 ---
 title: "FigureYa3genomeView"
 author: "Dekang Lv; Ying Ge, Yijing Chen"
-date: "2025-9-15"
+date: "`r Sys.Date()`"
 output: html_document
 ---
 

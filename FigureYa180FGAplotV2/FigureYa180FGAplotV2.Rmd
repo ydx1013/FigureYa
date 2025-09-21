@@ -2,7 +2,7 @@
 title: "FigureYa180FGAplotV2"
 author: "Enyu Lin"
 reviewer: "Ying Ge, Junyi Shen"
-date: "2025-5-20"
+date: "`r Sys.Date()`"
 output: html_document
 ---
 # Academic Citation

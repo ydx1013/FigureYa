@@ -1,7 +1,7 @@
 ---
 title: "Annotate Cell Type"
 author: "Jarning"
-date: "2020/4/25"
+date: "`r Sys.Date()`"
 output: html_document
 ---
 # Academic Citation

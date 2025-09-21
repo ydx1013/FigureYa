@@ -2,7 +2,7 @@
 title: "FigureYa174squareCross"
 author: "Zongcheng Li"
 reviewer: "Ying Ge, Junyi Shen"
-date: "2025-9-18"
+date: "`r Sys.Date()`"
 output: html_document
 ---
 # Academic Citation

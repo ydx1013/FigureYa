@@ -2,7 +2,7 @@
 title: "FigureYa98STEMheatmapV2"
 author: "Yuhui Li, Xiao Gu, Taojun Ye"
 reviewer: "Ying Ge"
-date: "2025-5-20"
+date: "`r Sys.Date()`"
 output: html_document
 ---
 

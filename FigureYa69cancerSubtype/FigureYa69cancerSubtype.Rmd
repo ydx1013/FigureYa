@@ -2,7 +2,7 @@
 title: "FigureYa69 CancerSubtypes"
 author: "Jingze Gao, Xiaofan Lu, Taojun Ye"
 reviewer: "Ying Ge"
-date: "2025-5-20"
+date: "`r Sys.Date()`"
 output: html_document
 ---
 

@@ -2,7 +2,7 @@
 title: "FigureYa224scMarker"
 author: "Yangding Zheng"
 reviewers: "Ying Ge,Hui Huang"
-date: "2025-5-20"
+date: "`r Sys.Date()`"
 output: html_document
 ---
 # Academic Citation

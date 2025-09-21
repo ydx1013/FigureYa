@@ -2,7 +2,7 @@
 title: "FigureYa246supervisedGDSC"
 author: "Xiaofan Lu"
 reviewer: "Ying Ge, Junyi Shen"
-date: "2025-5-20"
+date: "`r Sys.Date()`"
 ---
 
 # Academic Citation

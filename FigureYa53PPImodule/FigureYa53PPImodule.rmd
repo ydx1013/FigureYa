@@ -1,7 +1,7 @@
 ---
 title: "FigureYa53 PPImodule"
 author: "Yangzhige He; Ying Ge, Yijing Chen"
-date: "2025-5-20"
+date: "`r Sys.Date()`"
 output: html_document
 ---
 # Academic Citation
