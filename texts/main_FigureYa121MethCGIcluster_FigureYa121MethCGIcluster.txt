@@ -1,10 +1,17 @@
 FigureYa121MethCGIcluster
 FigureYa121MethCGIcluster
 Xiaofan Lu, Taojun Ye
-2025-5-20
+2025-09-21
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
 用DNA甲基化数据做分型，画出这个图。
-##Requirement description
+Requirement description
 Use DNA methylation data for typing and draw this graph.
 出自
 https://link.springer.com/article/10.1007%2Fs00401-018-1854-7
@@ -13,19 +20,13 @@ https://link.springer.com/article/10.1007%2Fs00401-018-1854-7
 应用场景
 DNA甲基化450k数据挑选出CpG位点，然后取高变异的探针，做无监督聚类分子分型。
 可用于挖掘TCGA的DNA甲基化数据。
-##Application scenarios
+Application scenarios
 Select CpG sites from 450k DNA methylation data, and then use highly
 variable probes for unsupervised clustering molecular typing.
 Can be used to mine DNA methylation data of TCGA.
 环境设置
-使用国内镜像安装包
-##Environment settings
-Use domestic image installation package
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
-BiocManager::install("ChAMP")
-加载包
-library packages
+Environment settings
+source("install_dependencies.R")
 # 加载数据处理包
 # Load data processing package
 library(data.table)
@@ -60,9 +61,9 @@ methylation下Illumina Human Methylation 450 (n=57) GDC Hub，
 https://xenabrowser.net/datapages/?dataset=TCGA.UCS.sampleMap%2FHumanMethylation450&host=https%3A%2F%2Ftcga.xenahubs.net&removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443
 ，点击download右侧的链接，下载得到HumanMethylation450.gz，解压到当前文件夹，无后缀名
 easy_input_age.txt，年龄，非必需，仅用于模仿例文的图，还可以是其他数据，可参考FigureYa71ssGSEA获得临床信息。
-##Preparation of input files
-HumanMethylation450.gz， Due to the large amount of data involved
-in methylation, we chose UCS, a uterine sarcoma with a relatively small
+Preparation of input files
+HumanMethylation450.gz， Due to the large amount of data involved in
+methylation, we chose UCS, a uterine sarcoma with a relatively small
 sample size in TCGA, as an example
 Download the data from XENA platform and enter<
 https://xenabrowser.net/datapages/
@@ -111,7 +112,7 @@ head(Sinfo)
 利用champ包做探针过滤，探针主要包括CpG、XY染色体和SNPs，我们只保留CpG位点。
 题外话：
 champ包功能强大，尤其是在差异甲基化功能富集上，感兴趣的小伙伴可以自行学习
-##Select CpG sites
+Select CpG sites
 Using the champ package for probe filtering, the probes mainly
 include CpG, XY chromosomes, and SNPs, while we only retain CpG
 sites.
@@ -148,7 +149,7 @@ myFilter <- champ.filter(
 # Check dimensions of filtered data (rows = probes, columns = samples)
 dim(myFilter$beta)
 取高变异的探针（此处取2500个）
-##Take probes with high variability (here take 2500 probes)
+Take probes with high variability (here take 2500 probes)
 k <- 2500  # 选择变异程度最高的前k个探针（此处k设为2500）
           # Select the top k probes with highest variability (k=2500 here)
 
@@ -168,7 +169,7 @@ topcgimeth <- indata[names(var[1:k]), ]
 # View first 3 rows and 3 columns of the extracted data (check results)
 topcgimeth[1:3, 1:3]
 无监督分子分型
-##Unsupervised molecular subtyping
+Unsupervised molecular subtyping
 # 对样本进行层次聚类（基于高变异性CpG岛探针的甲基化数据）
 # Hierarchical clustering of samples based on methylation data of highly variable CpG island probes
 hcg <- hclust(
@@ -204,14 +205,14 @@ names(group) <- colnames(topcgimeth)  # 将组标签与样本名称关联
 画法一用pheatmap，简单易用，如果不画age，这个就够了。
 画法二用complexheatmap，复现原图。
 画法一：pheatmap
-##Start drawing
+Start drawing
 Here are two painting methods provided:
 -Using pheatmap for drawing is simple and easy to use. If you don’t
 draw age, this is enough. -Use complexheatmap for drawing method two to
 reproduce the original image.
-###Drawing Method 1: Pheatmap
+Drawing Method 1: Pheatmap
 画法二：complexheatmap
-###Drawing Method 2: Complex Heatmap
+Drawing Method 2: Complex Heatmap
 # 创建顶部注释（用于ComplexHeatmap可视化）
 # Create top annotation for ComplexHeatmap visualization
 column_ha <- HeatmapAnnotation(
@@ -268,4 +269,5 @@ hm <- Heatmap(
 pdf("methylation_cgi_clustering_complexheatmap.pdf", width = 8, height = 7)
 draw(hm)
 invisible(dev.off())
+Session Info
 sessionInfo()
