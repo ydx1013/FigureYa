@@ -18,43 +18,13 @@ jobs:
         echo "Matched files:"
         find . -type f -iname "*.rmd"
 
+    - name: Install Python dependencies
+      run: |
+        pip install pyyaml
+
     - name: Convert Rmd YAML to params format
       run: |
-        find . -type f -iname "*.rmd" | while read file; do
-          echo "Processing $file"
-          # 提取字段内容（允许引号或无引号，防止空值出错）
-          title=$(awk '/^title:/ {sub(/^title: *"?/,""); sub(/"?$/,""); print; exit}' "$file")
-          author=$(awk '/^author:/ {sub(/^author: *"?/,""); sub(/"?$/,""); print; exit}' "$file")
-          reviewer=$(awk '/^reviewer:/ {sub(/^reviewer: *"?/,""); sub(/"?$/,""); print; exit}' "$file")
-          date=$(awk '/^date:/ {sub(/^date: *"?/,""); sub(/"?$/,""); print; exit}' "$file")
-
-          # 获取YAML头部的结束行号
-          yaml_end=$(awk '/^---/ && NR!=1 {print NR; exit}' "$file")
-          
-          # 获取YAML下的正文内容
-          body=""
-          if [ -n "$yaml_end" ]; then
-            body=$(tail -n +"$((yaml_end+1))" "$file")
-          fi
-
-          # 生成新文件内容（无缩进）
-          cat > "$file" <<EOF
----
-title: "$title"
-params:
-  author: "$author"
-  reviewer: "$reviewer"
-  date: "$date"
-output: html_document
----
-
-**Author(s)**: \`r params\$author\`  
-**Reviewer(s)**: \`r params\$reviewer\`  
-**Date**: \`r params\$date\` 
-
-$body
-EOF
-        done
+        python .github/scripts/convert_rmd_yaml_specific.py
 
     - name: Debug - Show Changes
       run: |
