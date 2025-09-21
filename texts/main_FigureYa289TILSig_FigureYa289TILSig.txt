@@ -1,10 +1,17 @@
 FigureYa289TILSig
 FigureYa289TILSig
 Guoqi Li, Taojun Ye
-2025-5-20
+2025-09-22
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
 利用纯化细胞系计算免疫相关指数的计算方法，想学习框里的这个复现方法
-#Requirement description
+Requirement description
 I want to learn the replication method in the box for calculating
 immune related indices using purified cell lines
 出自
@@ -27,28 +34,12 @@ lncRNAs, weighted by their estimated regression coefficients in the
 multivariate Cox regression analysis.
 应用场景
 从表达数据鉴定肿瘤免疫浸润相关lncRNA。
-#Application scenarios
+Application scenarios
 Identify tumor immune infiltration related lncRNAs from expression
 data.
 环境设置
-使用国内镜像安装包
-#Environment settings
-Use domestic image installation package
-# 设置CRAN镜像为清华大学镜像源（Set CRAN mirror to Tsinghua University mirror source）
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-# 设置Bioconductor镜像为清华大学镜像源（Set Bioconductor mirror to Tsinghua University mirror source）
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
-
-# 下载DealGPL570，下载地址https://cran.r-project.org/src/contrib/Archive/DealGPL570/
-# DealGPL570 package version 2.0 will report errors during operation, so I installed version 1.0 locally. 
-# Place the compressed package DealGPL570_0.0.1.tar.gz in the current working directory. 
-# In Rstudio, click Install in the lower right corner, select the second option for "Install from", 
-# click Browse and select DealGPL570_0.0.1.tar.gz, then click Install.
-# Or install from the command line
-# 从本地源安装DealGPL570包（Install the DealGPL570 package from a local source）
-install.packages("DealGPL570", repos = NULL, type = "source")
-加载包
-library packages
+Environment settings
+source("install_dependencies.R")
 # 加载DealGPL570包，用于处理GPL570平台的表达谱数据（Load the DealGPL570 package to process expression profile data from the GPL570 platform）
 # 由于所有免疫细胞系的表达谱数据均来自GPL570平台([HG-U133_Plus_2] Affymetrix Human Genome U133 Plus 2.0 Array)，因此这里使用DealGPL570包来处理GPL570平台的表达谱数据。
 # Since the expression profile data of all immune cell lines are from the GPL570 platform ([HG-U133_Plus_2] Affymetrix Human Genome U133 Plus 2.0 Array), 
@@ -81,23 +72,17 @@ Sys.setenv(LANGUAGE = "en")
 options(stringsAsFactors = FALSE)
 输入文件
 数据收集
-文章所使用的大型数据均上传到百度网盘，链接：
-https://pan.baidu.com/s/1mpYgfy1cCZPQPzmkv4VQDA
-，提取码：ibzk。
-包括19种免疫细胞系表达谱数据，GENECODE注释文件，RefSeq注释文件。
+文章所使用的大型数据包括19种免疫细胞系表达谱数据，GENECODE注释文件，RefSeq注释文件。
 CCLE表达谱数据，TCGA胃癌表达谱数据和临床数据，count数据转换为TPM数据的参考数据集。
-#Input file
-##Data collection
-The large data used in the article has been uploaded to Baidu Cloud,
-link:<
-https://pan.baidu.com/s/1mpYgfy1cCZPQPzmkv4VQDA
->Extract code: ibzk.
-Including expression profile data of 19 immune cell lines, GENECODE
-annotation files, and RefSeq annotation files. The reference dataset for
-converting CCLE expression profile data, TCGA gastric cancer expression
-profile data, clinical data, and count data into TPM data.
+Input file
+Data collection
+The large data used in the article including expression profile data
+of 19 immune cell lines, GENECODE annotation files, and RefSeq
+annotation files. The reference dataset for converting CCLE expression
+profile data, TCGA gastric cancer expression profile data, clinical
+data, and count data into TPM data.
 来自GEO的表达数据处理
-##Expression data processing from GEO
+Expression data processing from GEO
 # 使用DealGPL570处理16个表达谱数据，包含114个细胞系，19种免疫细胞类型
 # Process 16 expression profile datasets containing 114 cell lines and 19 immune cell types using DealGPL570
 GSE13906 <- DealGPL570(file = "GSE13906_RAW.tar",type = "geneSymbol")
@@ -222,7 +207,7 @@ batchPCA(indata = t(scale(t(data_combat))),
          showLegend = T,
          pos = "bottomright")
 提取lncRNA表达谱数据
-##Extract lncRNA expression profile data
+Extract lncRNA expression profile data
 # 提取lncRNA表达谱数据（Extract lncRNA expression profile data）
 # 首先是通过GENCODE注释信息提取lncRNA（First, extract lncRNA through GENCODE annotation information）
 genecode <- import('gencode.v25.long_noncoding_RNAs.gtf')  # 导入GENCODE数据库的lncRNA的gtf注释文件（Import the gtf annotation file of lncRNA from the GENCODE database）
@@ -248,7 +233,7 @@ write.table(data_combat, "expall_114line.txt", col.names = T, row.names = T, sep
 # 输出全部免疫细胞系lncRNA表达谱数据（Output lncRNA expression profile data of all immune cell lines）
 write.table(data_lncRNA, "explncRNA_114line.txt", col.names = T, row.names = T, sep = "\t", quote = F)
 对每个免疫细胞系的lncRNA进行排序
-#Sort the lncRNAs of each immune cell line
+Sort the lncRNAs of each immune cell line
 # 提取lncRNA表达谱数据的免疫细胞系注释信息（Extract annotation information of immune cell lines for lncRNA expression profile data）
 ann_114 <- ann[which(ann$`Sample ID` %in% colnames(data_lncRNA)), ]  # 筛选出与lncRNA表达谱样本ID匹配的注释信息（Filter annotations matching lncRNA expression profile sample IDs）
 table(ann_114$Population)  # 统计各免疫细胞类型的样本数量（Count sample numbers for each immune cell type）
@@ -317,7 +302,7 @@ head(top_outTab)  # 查看结果前几行（View first few rows of results）
 计算TSI，提取ihk-lnc
 计算TSI，这里要说明一下TSI的计算思想，例如，lncRNA（命名A）在5种免疫细胞系中的表达值分别为1，2，3，4，5
 则原文公式中的X(A,i)值分别为(1-1)/(5-1)=0,(2-1)/(5-1)=0.25,(3-1)/(5-1)=0.5,(4-1)/(5-1)=0.75,(5-1)/(5-1)=1
-#Calculate TSI and extract ihk lnc
+Calculate TSI and extract ihk lnc
 To calculate TSI, we need to explain the calculation idea of TSI. For
 example, the expression values of lncRNA (named A) in five immune cell
 lines are 1, 2, 3, 4, and 5, respectively
@@ -364,7 +349,7 @@ tsi <- read.table("output_TSI_all_result.txt", header = T, sep = "\t", quote = "
 tsi_0.4 <- tsi[which(tsi$TSI < 0.4 & tsi$top_index <= 0.05), ]
 ihk_lnc <- unique(tsi_0.4$gene)  # 去重得到ihk-lnc（Remove duplicates to get ihk-lnc）
 筛选TILncRNA
-#Screening TILncRNA
+Screening TILncRNA
 # 读取lncRNA表达谱数据（Read lncRNA expression profile data）
 exp <- read.table("explncRNA_114line.txt", header = T, sep = "\t", quote = "", check.names = F, row.names = 1)
 # 读取CCLE数据库癌症细胞系表达谱数据（Read cancer cell line expression profile data from CCLE database）
@@ -427,7 +412,7 @@ write.table(DEG, "output_DEG.txt",
 # 实际应用中可根据需要过滤差异分析结果（In practice, filter DEG results as needed）
 TILncRNA <- DEG$symbol
 构建TILSig打分
-#Build TILSig scoring system
+Build TILSig scoring system
 # 读取TCGA表达谱数据（包含226个癌症样本和22个正常样本，预后分析仅用癌症样本）
 # Read TCGA expression profile data (including 226 cancer samples and 22 normal samples, only cancer samples for prognosis analysis)
 TCGA <- read.table("TCGA_STAD_226_22_expCli.txt", header = T, sep = "\t", quote = "", check.names = F)
