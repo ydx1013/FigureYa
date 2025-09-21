@@ -1,7 +1,14 @@
 FigureYa45 iCluster的教程答疑V2
 FigureYa45 iCluster的教程答疑V2
 Zhougeng Xu, Taojun Ye
-2025-05-20
+2025-09-22
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 版本更新
 在原来的基础上，增加和修改了如下几处内容：
 修改了R 3.5.0以后的安装方法(保留低于R 3.5.0之前的安装方法)
@@ -12,7 +19,7 @@ iClusterPlus
 iClusterBayes
 增加了结果输出部分，用于调用其他R包做热图
 增加了几个统计学和机器学习概念的解释
-##Version update
+Version update
 On the basis of the original, the following contents have been added
 and modified:
 -Modified the installation method after R 3.5.0 (retaining the
@@ -24,7 +31,7 @@ learning concepts
 需求描述
 iCluster分析过程答疑。
 另外，需要输出分类和特征基因，用于画paper里的这种热图。
-##Requirement description
+Requirement description
 Q&A on the iCluster analysis process.
 In addition, it is necessary to output classification and feature
 genes for drawing such heat maps in the paper.
@@ -70,7 +77,7 @@ variable)是一个机器学习中的概念。举例说明，如果一个人面�
 了，那么选袋子这一步就是隐变量。广义上的隐变量主要就是指”不能被直接观察到，但是对系统的状态和能观察到的输出存在影响的一种东西”
 lasso, elastic net, fused lasso 是机器学习中特征选择的实现算法,
 也就是找到数据集中有代表性的属性(attribute)。
-##Application scenarios
+Application scenarios
 Integrate multiple genomic data using iClusterPlus.
 The molecular complexity of tumors is reflected at various levels
 such as genome, epigenome, transcriptome, and proteome.
@@ -101,65 +108,11 @@ Lasso, elastic net, fused lasso is an implementation algorithm for
 feature selection in machine learning, which involves finding
 representative attributes in a dataset.
 环境准备
-安装iClusterPlus
-iClusterPlus
-需要通过
-biocLite
-安装，如果速度慢，将下面代码
-#options(...)
-中的
-#
-去掉，则会使用国内镜像.
-CRAN镜像备选
-国科大:
-https://mirrors.ustc.edu.cn/CRAN/
-同济大学:
-https://mirrors.tongji.edu.cn/CRAN/
-兰州大学:
-https://mirror.lzu.edu.cn/CRAN/
-##Environmental preparation
-###Install iClusterPlus
-`IClusterPlus needs to be installed through biocLite. If the speed is
-slow, remove the # from the # options (…) code below, and a domestic
-image will be used
-CRAN image backup
--University of Science and Technology of China:<
-https://mirrors.ustc.edu.cn/CRAN/
-> -Tongji
-University:<
-https://mirrors.tongji.edu.cn/CRAN/
-> -Lanzhou
-University:<
-https://mirror.lzu.edu.cn/CRAN/
->
-#options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-#options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
-# R版本大于3.5.0时的安装方法
-# Installation method for R version > 3.5.0
-if (!requireNamespace("BiocManager"))
-    install.packages("BiocManager")
-# 检查是否安装了iClusterPlus包，若未安装则通过BiocManager安装
-# Check if the iClusterPlus package is installed, if not, install it via BiocManager
-if (!requireNamespace("iClusterPlus"))
-  BiocManager::install("iClusterPlus")
-#R版本小于3.5.0时的安装方法（已注释）
-# Installation method for R version < 3.5.0 (commented out)
-#source("http://bioconductor.org/biocLite.R")
-#biocLite("iClusterPlus")
+Environmental preparation
+source("install_dependencies.R")
 # 加载iClusterPlus包
 # Load the iClusterPlus package
 library("iClusterPlus")
-其他工具
-###Other tools
-# 安装DNAcopy和GenomicRanges包（已注释，避免重复安装）
-# Install DNAcopy and GenomicRanges packages (commented to avoid reinstallation)
-#BiocManager::install("DNAcopy")
-#BiocManager::install("GenomicRanges")
-# R < 3.5.0版本的安装方法（已注释）
-# Installation method for R < 3.5.0 (commented out)
-#source("http://bioconductor.org/biocLite.R")
-#biocLite("DNAcopy")
-#biocLite("GenomicRanges") 
 
 # 加载DNAcopy包 - 用于DNA拷贝数变异分析
 # Load the DNAcopy package - for DNA copy number variation analysis
@@ -188,7 +141,7 @@ https://portal.gdc.cancer.gov/
 0表示无，1表示有 - gbm_exp.txt: 来自于不同平台的基因表达量归一化后数据 -
 gbm_seg.txt: DNA 拷贝数变异. Level 3经标准化和片段化(normalized and
 segmented)数据集.
-##Input data
+Input data
 `IClusterPlus and iClusterBayes support the following types of
 data:
 -Binary: If there is somatic variation, there is (1)/no (0)
@@ -242,7 +195,7 @@ tune.iClusterBayes()
 矩阵
 ,
 且每一行表示是不同的样本，每一列表示的基因组的特征,如基因名或者基因区间。
-##Data preprocessing
+Data preprocessing
 According to the requirements of iClusterBayes() and tune.
 iClusterBayes(), the input data must be a * * matrix * *, with each row
 representing a different sample and each column representing genomic
@@ -255,7 +208,7 @@ apply
 对每一个基因用
 mean
 计算变异频率，根据阈值进行过滤
-###CNA preprocessing
+CNA preprocessing
 CNA (Copy Number Mutation): Filter out genes with low mutation rates,
 such as setting a threshold of 2%
 Use ‘apply’ to calculate the mutation frequency for each gene using
@@ -288,7 +241,7 @@ CNV预处理
 因此iCluster推荐用R包
 DNAcopy
 处理, 得到片段化结果。
-###CNV preprocessing
+CNV preprocessing
 Due to the high dimensionality and spatial correlation of raw or
 standardized copy number datasets, iCluster recommends using the R
 package ‘DNAcopy’ to obtain fragmented results.
@@ -353,7 +306,7 @@ http://dgv.tcag.ca/dgv/app/downloads?table=DGV_Content_Summary.txt
 >Download
 芯片表达量预处理
 基因表达量数据, 选择样本间变化程度比较高的基因基因。
-###Preprocessing of chip expression level
+Preprocessing of chip expression level
 Select genes with relatively high degree of variation between samples
 based on gene expression data.
 # 将基因表达数据转换为矩阵格式
@@ -445,7 +398,7 @@ prior.gamma:
 如果你确定最后可以分成多少类，那么直接用
 iClusterBayes
 .
-###Integrated analysis
+Integrated analysis
 For example, it took iClusterBayes about
 2
 h to
@@ -582,7 +535,7 @@ iCluster
 的本质是数据分析，因此最后的热图展示不作为本次教程的重点。仅以自带的
 plotHeatmap
 展示下结果。
-###Draw a graph
+Draw a graph
 `The essence of iCluster is data analysis, so the final heatmap
 display is not the focus of this tutorial. Only display the results
 using the built-in ‘plotHeatmap’.
@@ -632,7 +585,7 @@ plotHeatmap(fit= bayfit$fit[[3]] ,
 输出文件
 把best.cluster.Bayes
 、特征基因和值保存到文件，就可以用自己的heatmap代码画热图了。
-##Output file
+Output file
 Save best.cluster.Bayes, feature genes, and values to a file, and you
 can use your own heatmap code to draw a heatmap.
 # 将最优聚类结果保存为制表符分隔文本文件
