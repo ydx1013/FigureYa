@@ -47,13 +47,13 @@ jobs:
       - name: 8. Render Rmd files selectively
         id: render_rmd
         run: |
-          # Ensure the Auto_Knit_Online.txt file exists
-          if [ ! -f Auto_Knit_Online.txt ]; then
-            echo "Auto_Knit_Online.txt file not found. Please provide this file to specify which Rmd files to knit."
+          # Ensure the auto_Knit_online.txt file exists
+          if [ ! -f auto_Knit_online.txt ]; then
+            echo "auto_Knit_online.txt file not found. Please provide this file to specify which Rmd files to knit."
             exit 1
           fi
-          # Read Auto_Knit_Online.txt into a variable
-          TO_KNIT=$(<Auto_Knit_Online.txt)
+          # Read auto_Knit_online.txt into a variable
+          TO_KNIT=$(<auto_Knit_online.txt)
           # Process each .Rmd file
           ANY_FILE_FAILED=false
           echo "RMD Render Summary" > summary.txt
@@ -62,7 +62,7 @@ jobs:
           find . -type f -name "*.Rmd" | while IFS= read -r rmd_file; do
             rmd_dir=$(dirname "$rmd_file")
             rmd_basename=$(basename "$rmd_file")
-            # Check if any entry in Auto_Knit_Online.txt matches the Rmd file path or name
+            # Check if any entry in auto_Knit_online.txt matches the Rmd file path or name
             MATCHED=false
             for pattern in $TO_KNIT; do
               if [[ "$rmd_file" == *"$pattern"* ]]; then
@@ -71,7 +71,7 @@ jobs:
               fi
             done
             if [ "$MATCHED" = false ]; then
-              echo "[SKIPPED] - $rmd_file (Not listed in Auto_Knit_Online.txt)" | tee -a summary.txt
+              echo "[SKIPPED] - $rmd_file (Not listed in auto_Knit_online.txt)" | tee -a summary.txt
               continue
             fi
             echo "========== START: $rmd_file =========="
