@@ -1,7 +1,14 @@
 FigureYa71ssGSEA_update
 FigureYa71ssGSEA_update
 Rongfang Shen, Taojun Ye
-2025-5-20
+2025-09-22
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
 输入TCGA数据，用原文的方法计算，原图复现。
 Requirement Description
@@ -64,15 +71,8 @@ input these marker genes provided by the original author to run this set
 of code, the result is basically the same as the original article, and
 it can be well categorized into 3 classes.
 环境设置
-使用国内镜像安装包
 Environment settings
-Installation of packages using domestic mirrors
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
-BiocManager::install("GSVA")
-install.packages("circlize")
-加载包
-library packages
+source("install_dependencies.R")
 # 加载生物信息学分析所需的R包 / Load R packages for bioinformatics analysis
 library(GSVA)          # 基因集变异分析 / Gene Set Variation Analysis
 library(org.Hs.eg.db)
@@ -103,8 +103,7 @@ Immunity那篇文章的Table S1
 Affymetrix platform）按照探针得到gene
 symbol，文章有提到这批数据是从这个芯片平台得到的。
 easy_input_expr.csv，基因表达矩阵，每行一个基因，每列一个sample。第一列基因ID跟easy_input_immunity.rdata里的基因ID一致，此处都用ENTREZ
-ID。文件太大，请从微云下载easy_input_expr.csv和not_easy_input_expr.csv：
-https://share.weiyun.com/5EsD2Ek
+ID。
 如果你已经准备好了这两个文件，就可以直接进入“用ssGSEA来量化浸润水平”。
 下面带你获得这两个输入文件：
 Input data preprocessing
@@ -120,10 +119,7 @@ the article has mentioned that this batch of data was obtained from this
 chip platform.
 easy_input_expr.csv, gene expression matrix, one gene per row,
 one sample per column, the first column gene ID is the same as the gene
-ID in easy_input_immunity.rdata, and ENTREZ ID is used here. the file is
-too big, please download easy_input_expr. csv and not_easy_input_expr.
-csv from Weiyun. csv and not_easy_input_expr.csv:
-https://share.weiyun.com/5EsD2Ek
+ID in easy_input_immunity.rdata, and ENTREZ ID is used here.
 If you have these two files ready, you can go directly to
 “Quantifying infiltration levels with ssGSEA”.
 The following takes you to the two input files:
@@ -744,4 +740,5 @@ decorate_heatmap_body(ht_drawn@ht_list[[1]]@name, {
 
 # 关闭图形设备 / Close graphics device
 dev.off()
+Session Info
 sessionInfo()
