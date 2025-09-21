@@ -28,16 +28,7 @@ jobs:
       run: |
         find . -type f -iname "*.rmd" | while read file; do
           echo "Processing $file"
-          sed -i -e 's/Yingxs/yaxs/g' "$file"
-          sed -i -e 's/Yingxt/yaxt/g' "$file"
-          sed -i -e 's/Yingixs/yaixs/g' "$file"
-          sed -i -e 's/roYinglblue/royalblue/g' "$file"
-          sed -i -e 's/Yingu/yau/g' "$file"
-          sed -i -e 's/Yingxis/yaxis/g' "$file"
-          sed -i -e 's/OuYingng/Ouyang/g' "$file"
-          sed -i -e 's/BoYingult/Boyault/g' "$file"
-          sed -i -e 's/polYing/polya/g' "$file"
-          sed -i -e 's/cYingn/cyan/g' "$file"
+          sed -i -E 's/(^date:[[:space:]]*")[^"]*(")/\1`r Sys.Date()`\2/' "$file"
         done
 
     - name: Debug - Show Changes
@@ -49,10 +40,13 @@ jobs:
       run: |
         git config --global user.name "github-actions[bot]"
         git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        branch="fix-rmd-date-$(date +%Y%m%d%H%M%S)"
+        git checkout -b "$branch"
         if ! git diff --quiet; then
           git add .
-          git commit -m "Automated text replacement in RMD files"
-          git push
+          git commit -m "Automated text replacement in RMD files, including date standardization"
+          git push origin "$branch"
+          echo "Pushed to branch: $branch"
         else
           echo "No changes to commit"
         fi
