@@ -1,7 +1,7 @@
 name: Replace Text in RMD Files
 
 on:
-  workflow_dispatch: # 添加支持手动触发的配置
+  workflow_dispatch: # 仅手动触发
 
 jobs:
   replace-text:
@@ -18,11 +18,42 @@ jobs:
         echo "Matched files:"
         find . -type f -iname "*.rmd"
 
-    - name: Find and Replace in RMD Files
+    - name: Convert Rmd YAML to params format
       run: |
         find . -type f -iname "*.rmd" | while read file; do
           echo "Processing $file"
-          sed -i -E 's/(^date:[[:space:]]*")[^"]*(")/\1`r Sys.Date()`\2/' "$file"
+          # 提取字段内容（允许引号或无引号，防止空值出错）
+          title=$(awk '/^title:/ {sub(/^title: *"?/,""); sub(/"?$/,""); print; exit}' "$file")
+          author=$(awk '/^author:/ {sub(/^author: *"?/,""); sub(/"?$/,""); print; exit}' "$file")
+          reviewer=$(awk '/^reviewer:/ {sub(/^reviewer: *"?/,""); sub(/"?$/,""); print; exit}' "$file")
+          date=$(awk '/^date:/ {sub(/^date: *"?/,""); sub(/"?$/,""); print; exit}' "$file")
+
+          # 获取YAML头部的结束行号
+          yaml_end=$(awk '/^---/ && NR!=1 {print NR; exit}' "$file")
+          
+          # 获取YAML下的正文内容
+          body=""
+          if [ -n "$yaml_end" ]; then
+            body=$(tail -n +"$((yaml_end+1))" "$file")
+          fi
+
+          # 生成新文件内容（无缩进）
+          cat > "$file" <<EOF
+---
+title: "$title"
+params:
+  author: "$author"
+  reviewer: "$reviewer"
+  date: "$date"
+output: html_document
+---
+
+**Author(s)**: \`r params\$author\`  
+**Reviewer(s)**: \`r params\$reviewer\`  
+**Date**: \`r params\$date\` 
+
+$body
+EOF
         done
 
     - name: Debug - Show Changes
@@ -30,7 +61,7 @@ jobs:
         echo "Changes:"
         git status --short
 
-    - name: Commit Changes
+    - name: Commit Changes to New Branch
       run: |
         git config --global user.name "github-actions[bot]"
         git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -38,7 +69,7 @@ jobs:
         git checkout -b "$branch"
         if ! git diff --quiet; then
           git add .
-          git commit -m "Automated text replacement in RMD files, including date standardization"
+          git commit -m "Automated Rmd YAML conversion to params format"
           git push origin "$branch"
           echo "Pushed to branch: $branch"
         else
