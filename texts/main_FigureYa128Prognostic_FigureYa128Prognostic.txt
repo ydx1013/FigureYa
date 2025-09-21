@@ -1,14 +1,21 @@
 FigureYa128Prognostic
 FigureYa128Prognostic
 Xiaofan Lu, Taojun Ye
-2025-5-20
+2025-09-22
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
 文章中的那7个基因咋选出来的？
 出自
 https://clincancerres.aacrjournals.org/content/18/21/6001
 这里有文章解读：
 https://www.jianshu.com/p/58eab0d8ac22?from=singlemessage&isappinstalled=0
-##Requirement description
+Requirement description
 How were the 7 genes selected in the article?
 From<
 https://clincancerres.aacrjournals.org/content/18/21/6001
@@ -22,7 +29,7 @@ https://www.jianshu.com/p/58eab0d8ac22?from=singlemessage&isappinstalled=0
 小伙伴跟作者间的问答记录：
 问：迭代lasso的原理是什么？
 答：lasso在允许的时候高度依赖种子，因为你需要交叉验证，而交叉验证的过程是随机选取样本的。所以一旦你更换了种子，最优lambda就会改变，最终得到的特征就会改变。共识就是在多次运行lasso（不依赖种子）后，那么高频次被保留下的特征，可以认为是对感兴趣话题最有影响的。因为如果我运行500次，A特征出现了300次，和B特征出现了30次，它们的重要程度肯定是不同的。不是选共同的，是对频次排序，这是我的理解。频次的顺序代表了这些特征的影响程度，然后依次把这些特征纳入cox模型，当AUROC达到峰值的时候停止纳入，此时模型最优，并且所含特征最少。
-##Application scenarios
+Application scenarios
 Find marker genes.
 By iterating LASSO to generate genes that are retained under the
 consensus, the minimum gene combination related to survival is further
@@ -45,37 +52,10 @@ included in the Cox model. When the AUROC reaches its peak, the
 inclusion stops, and the model is optimal with the least number of
 features.
 环境设置
-使用国内镜像安装和加载包
-##Environment settings
-###Install and load packages using domestic images
-# 设置CRAN镜像为清华大学镜像源
-# Set CRAN mirror to Tsinghua University mirror source
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-
-# 设置Bioconductor镜像为中国科学技术大学镜像源
-# Set Bioconductor mirror to University of Science and Technology of China mirror source
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
-
-# 检查并加载/安装survival包 - 用于生存分析
-# Check and load/install survival package - for survival analysis
-if(!require(survival)){ 
-  install.packages("survival")
-} else {library(survival)}
-# 检查并加载/安装glmnet包 - 用于正则化广义线性模型
-# Check and load/install glmnet package - for regularized generalized linear models
-if(!require(glmnet)){ 
-  install.packages("glmnet")
-} else {library(glmnet)}
-# 检查并加载/安装pbapply包 - 用于并行计算和进度条显示
-# Check and load/install pbapply package - for parallel computation and progress bar display
-if(!require(pbapply)){ 
-  install.packages("pbapply")
-} else {library(pbapply)}
-# 检查并加载/安装survivalROC包 - 用于生存分析中的ROC曲线
-# Check and load/install survivalROC package - for ROC curves in survival analysis
-if(!require(survivalROC)){ 
-  install.packages("survivalROC")
-} else {library(survivalROC)}
+Environment settings
+source("install_dependencies.R")
+library(survival)
+library(survivalROC)
 # 设置环境语言为英文，确保报错信息为英文
 # Set environment language to English to ensure error messages are in English
 Sys.setenv(LANGUAGE = "en") 
@@ -84,7 +64,7 @@ Sys.setenv(LANGUAGE = "en")
 # Disable automatic conversion of strings to factors for more stable data processing
 options(stringsAsFactors = FALSE)
 自定义函数
-###Custom functions
+Custom functions
 # 显示进程
 # Display progress
 display.progress = function (index, totalN, breakN=20) {
@@ -137,26 +117,20 @@ surv_lasso <- function(iter.times = NULL, surv.obj = NULL, expr.obj = NULL, nfol
 }
 输入文件的准备
 如果你的文件已经整理成easy_input_expr.csv和easy_input_cli.csv的格式，就可以跳过这步，直接进入“筛选基因”。
-##Preparation of input files
+Preparation of input files
 If your file has already been organized into the formats of
 easy_input-expr.csv and easy_input_cli.csv, you can skip this step and
 go directly to “Filter Genes”.
 输入文件的下载
 需要表达矩阵和带followup的临床数据。
-下面这两个文件太大，我上传到微云上了，下载链接：
-https://share.weiyun.com/5t3fKeL
 COAD_TPM.txt，表达矩阵，这里用的是COAD的TPM。从XENA
 pan-cancer表达数据中提取某种癌症的TPM的方法可参考FigureYa56Immune_inflitration；或者直接下载某个癌症的表达矩阵，方法可参考FigureYa23count2TPM、FigureYa34count2FPKMv2。
 clinical_PANCAN_patient_with_followup.tsv，带followup的临床信息，从这个页面下载
 https://gdc.cancer.gov/about-data/publications/PanCanStemness-2018
 ，下载地址：
 https://api.gdc.cancer.gov/data/0fc78496-818b-4896-bd83-52db1f533c5c
-###Download of input files
+Download of input files
 Need to express matrix and clinical data with followup.
-The following two files are too large, I uploaded them to
-Weiyun, download link:<
-https://share.weiyun.com/5t3fKeL
->
 COAD_TPM.txt， The expression matrix used here is COAD’s TPM. The
 method for extracting TPM of a certain cancer from XENA pan cancer
 expression data can refer to FigureYa56Immune_infliction; Alternatively,
