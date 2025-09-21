@@ -1,12 +1,6 @@
 name: Replace Text in RMD Files
 
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
   workflow_dispatch: # 添加支持手动触发的配置
 
 jobs:
