@@ -215,11 +215,11 @@ FigureYa62twoAxis/FigureYa62twoAxis.Rmd
 FigureYa63pubmedMiningV2/FigureYa63pubmedMiningV2.Rmd
 FigureYa64triangle/FigureYa64triangle.Rmd
 FigureYa65SVM/FigureYa65SVM.Rmd
-"FigureYa66\345\215\225\345\233\240\347\264\240cox/FigureYa66\345\215\225\345\233\240\347\264\240cox.Rmd"
+FigureYa66单因素cox/FigureYa66单因素cox.Rmd
 FigureYa67phastCons/FigureYa67phastCons.Rmd
 FigureYa68friendsV2/FigureYa68friendsV2.Rmd
 FigureYa69cancerSubtype/FigureYa69cancerSubtype.Rmd
-"FigureYa69cancerSubtype/How to get easy input from xena pan-cancer file.Rmd"
+FigureYa69cancerSubtype/How to get easy input from xena pan-cancer file.Rmd
 FigureYa6rHRs/FigureYa6rHRs.Rmd
 FigureYa70mutationEvents/FigureYa70mutationEvents.Rmd
 FigureYa71ssGSEA_update/FigureYa71ssGSEA_update.Rmd
