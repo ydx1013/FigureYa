@@ -221,8 +221,9 @@ rm -rf *.tmp.bed *.tmp_merge.bed
 cat *.bed |bedtools sort | bedtools merge -i - > allMerge.bed
 peak注释
 Peak Annotation
-peak注释到基因层面，主要用Y叔的ChIPseeker。 Peaks are annotated at
-the gene level, primarily using Uncle Y’s ChIPseeker.
+peak注释到基因层面，主要用Guangchuang Yu的ChIPseeker。 Peaks are
+annotated at the gene level, primarily using Guangchuang Yu’s
+ChIPseeker.
 这里用gtf文件做了一个txdb注释文件，同样适用于bioconductor中没有txdb的物种。
 Here, a txdb annotation file is created using a gtf file. This also
 works for species without a txdb file in Bioconductor.

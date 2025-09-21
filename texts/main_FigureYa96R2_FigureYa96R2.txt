@@ -29,14 +29,11 @@ https://www.nature.com/articles/s41467-018-06648-6
 评价基因对免疫浸润的影响；
 批量筛选出影响免疫浸润的候选基因；
 同样适用于展示转录因子和靶基因表达调控的关系。
-在“小丫画图”公众号回复“R2”，查看如何将这个图用在paper里。
 Application Scenarios
 Evaluate the effect of genes on immune infiltration;
 Batch screening of candidate genes affecting immune infiltration;
 It is also applicable to show the relationship between transcription
 factors and target gene expression regulation.
-Reply “R2” in “Xiaoya Drawing” public number to see how to use this
-diagram in the paper.
 输入文件的获得
 如果你的数据已经整理成very_easy_input.csv的格式，就可以跳过这步，直接进入“开始画图”。
 这里基于免疫细胞矩阵把样品分为两类，并把分类信息加到基因表达矩阵里。要求两个文件的样本名一致：
@@ -548,4 +545,5 @@ The first AP1M2 gene is the one in the negative correlation
 example.
 Once you have selected the gene, you can go back to “Start Drawing”
 and draw a beautiful picture.
+Session Info
 sessionInfo()

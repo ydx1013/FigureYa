@@ -125,7 +125,6 @@ nomogramEx(nomo=x,np=2,digit = 9)
 Draw new nomogram
 regplot
 可以交互式调整nomogram，代码更简单，输出的图形更漂亮。
-关注“小丫画图”微信公众号，回复“30”看用法小视频。
 把
 regplot
 那段代码粘贴到Console里，回车，就会在Plots窗口出现可以交互的图。
@@ -135,8 +134,6 @@ regplot
 regplot
 can interactively adjust the nomogram, the code
 is simpler, the output graph is more beautiful.
-Follow “Xiaoya Drawing” WeChat Official Account, reply “30” to see
-the usage video.
 Paste the code
 regplot
 into Console, enter, then the

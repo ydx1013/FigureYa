@@ -52,7 +52,7 @@ viewed in IGV. This allows for a visual understanding of gene
 transcription (RNA-seq), protein binding (ChIP-seq), and chromatin
 access (ATAC-seq). m6A and RIP-seq data can also be viewed.
 想把这种图作为Figure放到文章里，有人喜欢用IGV，有人喜欢用WashU
-brower。群里的小伙伴喜欢自己用代码画图，例如用Gviz画，可参考FigureYa3genomeView；用sushi画，可参考FigureYa82IGVzoom。小丫曾看过作者用ggplot2画这种图，于是请他来分享这套代码。
+brower。群里的小伙伴喜欢自己用代码画图，例如用Gviz画，可参考FigureYa3genomeView；用sushi画，可参考FigureYa82IGVzoom。作者用ggplot2画过这种图，于是请他来分享这套代码。
 I’d like to include this type of graph as a figure in my paper. Some
 people prefer using IGV, while others prefer using the WashU browser.
 Friends in my group like to create their own graphs using code. For

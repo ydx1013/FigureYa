@@ -72,11 +72,8 @@ mycol <- c("darkgreen","chocolate4","blueviolet","#223D6C","#D20A13","#088247","
 输入文件的准备
 Input file preparation
 下面这段代码仅仅为了获得clusterProfiler格式的GSEA结果。
-有关用clusterProfiler做GSEA的问题，建议加入Y叔知识星球biobabble提问。
 The following code is just to get the GSEA results in clusterProfiler
 format.
-For questions about GSEA with clusterProfiler, it is recommended to
-join Uncle Y’s Knowledge Planet biobabble to ask questions.
 把clusterProfiler的GSEA结果输出到文件
 Output the GSEA results of clusterProfiler to file
 easy_input_rnk.txt：包含两列，基因名（SYMBOL）、变化倍数（logFC）

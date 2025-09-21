@@ -32,21 +32,18 @@ relative to adjacent normal tissue. Kruskal-Wallis false discovery rate
 (FDR) < 0.05 for MMRp versus MMRd are marked with asterisks.
 应用场景
 Application Scenario
-Y叔评价：上下三角的更好替代品。上下三角指的是这个图
+Dr. Guangchuang Yu评价：上下三角的更好替代品。上下三角指的是这个图
 https://mp.weixin.qq.com/s/34WRZRBVPHUNRLlzNH2nzw
 同时展示同一对象的两种特征，例如同时展示多个基因在多个样本中的表达量和DNA甲基化水平等等。
-Dr.Y’s evaluation: A better alternative to upper and lower triangles.
-The upper and lower triangles refer to this figure
+Dr. Guangchuang Yu’s evaluation: A better alternative to upper and
+lower triangles. The upper and lower triangles refer to this figure
 https://mp.weixin.qq.com/s/34WRZRBVPHUNRLlzNH2nzw
 Simultaneously displaying two characteristics of the same object,
 such as showing both the expression levels and DNA methylation levels of
 multiple genes across multiple samples, etc.
 环境设置
 Environment Setup
-Using domestic mirrors for package installation.
 source("install_dependencies.R")
-加载包
-Loading packages
 library(tidyverse)
 library(ggplot2)
 

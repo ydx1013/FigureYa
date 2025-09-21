@@ -46,10 +46,7 @@ possible explanation could be high-frequency copy number variations
 (gain/loss) in certain genes.
 环境设置
 Environment Setup
-Using domestic mirrors for package installation.
 source("install_dependencies.R")
-加载包
-Loading packages
 library(magrittr)
 library(tidyverse)
 library(org.Hs.eg.db)
@@ -269,8 +266,5 @@ cBioPortal
 . We have reached out
 to the original authors for clarification but have not yet received a
 response.
-会话信息
 Session Info
-# 显示会话信息
-# Show session information
 sessionInfo()

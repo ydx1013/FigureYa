@@ -12,14 +12,12 @@ https://doi.org/10.1002/imm3.70005
 需求描述
 我要用自己的gene set做富集分析，像paper里那样用ROAST-barcode
 plot的方法来实现。
-扩展阅读：
-“小丫画图群”对富集分析的讨论记录：
+**扩展阅读：
 https://mp.weixin.qq.com/s/O1xd5l5h33fXUWOvX3UBGw
 Requirement description
 I want to use my own gene set for enrichment analysis, using the
 ROAST barcode plot method as described in the paper.
-**Extended reading: * * Discussion record on enrichment analysis in
-the “Xiaoya Drawing Group”:
+**Extended reading: * *
 https://mp.weixin.qq.com/s/O1xd5l5h33fXUWOvX3UBGw
 出自
 http://genesdev.cshlp.org/content/28/12/1337.long

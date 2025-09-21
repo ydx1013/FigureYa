@@ -14,14 +14,11 @@ Requirement description
 已经用
 Java版GSEA
 做出了GSEA分析结果，想自己画图。
-在小丫画图公众号回复“GSEA”查看GSEA结果在更多文章中的展示方式。
 图一：点图 + 条码
 I have already made GSEA analysis results with
 GSEA for
 Java
 and would like to draw my own plots.
-Reply “GSEA” in Xiaoya’s official Account to see how GSEA results are
-displayed in more articles.
 Figure 1: Dot Map + Barcode
 出自
 https://science.sciencemag.org/content/354/6316/1160
@@ -51,9 +48,7 @@ comparisons of the same pathway to a single plot, use
 FigureYa60GSEA_clusterprofiler.
 环境设置
 Environment setting
-use the domestic mirror installation package
 source("install_dependencies.R")
-load package
 library(plyr)
 library(ggplot2)
 library(RColorBrewer)
@@ -233,4 +228,5 @@ Combine images with cowplot
 pbar[[4]] <- pheat
 plot_grid(plotlist=pbar, ncol=1,rel_heights = c(2,2,2,1))
 ggsave("prettyGSEAbar.pdf")
+Session Info
 sessionInfo()

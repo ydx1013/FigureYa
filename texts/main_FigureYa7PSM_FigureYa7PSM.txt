@@ -1,5 +1,5 @@
-FigureYa7 PSM
-FigureYa7 PSM
+FigureYa7PSM
+FigureYa7PSM
 Ying Ge; Yijing Chen
 2025-5-20
 Academic Citation
@@ -37,7 +37,7 @@ Usage scenario
 QLD-C30是一个由30个项目组成，包括5个功能量表，9个症状量表和一个全球生活质量量表的的问卷。所有量表都会给出一个0-100之间的得分。症状量表得分越高代表被调查人生活压力越大，其余两个量表得分越高代表生活质量越高。
 然而，如果没有任何参照，直接对数据进行解释是很困难的。幸运的是，EORTC
 QLQ-C30问卷也在一些一般人群调查中使用，我们可以对比患者的得分和一般人群的得分差异，从而判断患者的负担症状和一些功能障碍是否能归因于癌症治疗。PSM在这里可以以年龄和性别等特征，将相似的患者和一般人群进行匹配。
-代码和说明信息来源于以下资料，小丫重新编辑整理：
+代码和说明信息来源于以下资料：
 原文：
 https://datascienceplus.com/how-to-use-r-for-matching-samples-propensity-score/
 译文：
@@ -61,7 +61,7 @@ impairments in patients can be attributed to cancer treatment. PSM can
 match similar patients with the general population based on
 characteristics such as age and gender.
 The code and description information is taken from the following
-sources and re-edited and organized by Xiaoya:
+sources:
 original text:
 https://datascienceplus.com/how-to-use-r-for-matching-samples-propensity-score/
 translation:

@@ -39,11 +39,7 @@ Bayesian age-period-cohort prediction model
 (Bayesian-age-period-cohort [BAPC] model)
 环境设置
 Environment Setup
-Using domestic mirrors for package installation.
 source("install_dependencies.R")
-install.packages("bamp")
-加载包
-Loading packages
 # 加载用于估计BAPC模型及进行预测的R包
 # Load R package for estimating BAPC model and making predictions
 library(bamp)

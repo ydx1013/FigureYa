@@ -198,8 +198,6 @@ Note: The code here can be obtained from the R package
 ImmuLncRNA
 .
 Step1: estimate tumor purity
-“小丫画图群-纯画图”讨论记录： “Xiaoya Drawing Group - Pure Drawing”
-Discussion Record:
 问：文章找跟免疫相关的lncRNA, 为什么要消掉肿瘤纯度这个因素呢？ Q:
 When searching for immune-related lncRNAs in this article, why does it
 eliminate the factor of tumor purity?

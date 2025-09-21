@@ -21,14 +21,14 @@ http://www.nature.com/articles/ncomms6901
 from
 http://www.nature.com/articles/ncomms6901
 代码在原文补充材料中有提供，里面有很多东西值得学习。同时我自己写了一些比原文精简的代码（一些数据命名尽量和原文一致，确保小伙伴跑的时候能够理解不同做法的异曲同工）。
-小丫碎碎念：
 像这种附带代码的好文章越来越多，是非常好的学习资源。
 这类文章怎么找到呢？在感兴趣的期刊主页的高级搜索里，搜code或script，同时限定research
 article和发表年份等信息。检索结果里会有上下文，一眼扫过去，就能看到哪些文章带代码。
 怎样学习这类代码？这次就从这篇带代码的文章带你上手，以后你就可以自己去挖宝藏了。推荐路线：
 先尝试自己写，或者至少在脑子里猜测作者是用什么方法哪个包实现的
 看原文代码，边看边实践
-记笔记，思考这段代码能应用到哪些场景上，可以尝试按照FigureYa的格式来写，或者干脆写成R包（Y叔说写R包要趁早）
+记笔记，思考这段代码能应用到哪些场景上，可以尝试按照FigureYa的格式来写，或者干脆写成R包（Guangchuang
+Yu说写R包要趁早）
 用在自己的数据上，争取能用到paper里，经历了这一过程，你会有质的提升
 自己死磕一篇文章的代码是孤独的，遇到问题也没人讨论，以后有机会我们可以搞个学习小组，感兴趣的小伙伴一起讨论同一篇文章的代码。
 The code is provided in the supplementary materials of the original
@@ -37,8 +37,8 @@ time, I wrote some code that was more concise than the original text
 (some data names should be as consistent as possible with the original
 text to ensure that my friends can understand the similarities of
 different approaches when running).
-**Xiaoya’s rambling: * * There are more and more good articles with
-accompanying code, which are very good learning resources.
+There are more and more good articles with accompanying code, which
+are very good learning resources.
 How can I find such articles? Search for code or script on the
 advanced search page of the journal, while limiting information such as
 research article and publication year. There will be context in the
@@ -51,10 +51,10 @@ in the future. Recommended route:
 method and package the author used to implement it -Read the original
 code and practice while reading -Take notes and think about which
 scenarios this code can be applied to. You can try writing it in the
-format of FigureYa, or simply write it as an R package (Uncle Y said
-it’s better to write an R package as soon as possible) -Apply it to your
-own data and strive to use it in a paper. Through this process, you will
-have a qualitative improvement
+format of FigureYa, or simply write it as an R package (Guangchuang Yu
+said it’s better to write an R package as soon as possible) -Apply it to
+your own data and strive to use it in a paper. Through this process, you
+will have a qualitative improvement
 It’s lonely to tinker with the code of an article by oneself, and no
 one will discuss it when encountering problems. In the future, we can
 form a study group where interested friends can discuss the code of the
@@ -413,13 +413,14 @@ matrix <-sapply(1:ncol(z), func)
 matrix_order <- matrix[h$order,j$order]
 rasterImage(matrix_order, 0, 0, ncol(design), nrow(design), interpolate=FALSE)
 b左侧图：
-首先是把基因表达的大小分成12份，然后换成11个颜色，之后组成颜色的矩阵。通过rasterImage画出来。rasterImage还有其他有意思的用法，可以参考Y叔的
+首先是把基因表达的大小分成12份，然后换成11个颜色，之后组成颜色的矩阵。通过rasterImage画出来。rasterImage还有其他有意思的用法，可以参考Guangchuang
+Yu的
 https://guangchuangyu.github.io/cn/2017/04/ggimage/
 Left side image:
 Firstly, divide the size of gene expression into 12 parts, then
 replace them with 11 colors, and then form a matrix of colors. Draw it
 through RasterImage. RasterImage has other interesting uses, you can
-refer to Uncle Y’s<
+refer to Guangchuang Yu’s<
 https://guangchuangyu.github.io/cn/2017/04/ggimage/
 >
 # 设置绘图参数，包括无边框、坐标轴标签位置、边距等
@@ -852,4 +853,5 @@ library(cowplot)
 p1 +
   annotation_custom(ggplotGrob(p2),  
                     xmin=7, ymin=4.9, xmax=10, ymax=6.5)
+Session Info
 sessionInfo()

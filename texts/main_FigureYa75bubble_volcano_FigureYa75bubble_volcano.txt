@@ -24,10 +24,9 @@ Or display the enrichment analysis results
 http://dx.doi.org/10.1016/j.neuron.2017.09.008
 from
 http://dx.doi.org/10.1016/j.neuron.2017.09.008
-想用ggplot2来画火山图，请参考FigureYa59Volcano，在“小丫画图”公众号回复“火山”了解详情。
+想用ggplot2来画火山图，请参考FigureYa59Volcano。
 If you want to use ggplot2 to draw a volcanic map, please refer to
-Figure Ya59Volcano and reply “Volcano” on the “Xiaoya Painting” official
-account for details.
+Figure Ya59Volcano.
 环境设置
 Environment settings
 # 中文注释：设置R运行环境显示英文错误信息（便于国际交流或搜索解决方案）

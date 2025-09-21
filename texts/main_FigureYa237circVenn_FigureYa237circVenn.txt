@@ -25,16 +25,12 @@ reads (RPKM) and “not expressed” when its expression is ≤ -2 log2
 RPKM.
 应用场景
 展示多组之间的overlap genes、以及每组specific
-genes，通常会用到venn图（可参考
-FigureYa112venn
-），有太多组需要对比的话还可以像例文这样画成环形图。
+genes，通常会用到venn图（可参考FigureYa112venn），有太多组需要对比的话还可以像例文这样画成环形图。
 Application Scenarios
 To show the overlap genes between multiple groups and each specific
-gene, a venn diagram is usually used (see
-FigureYa112venn
-),
-and if there are too many groups to compare, you can draw a donut chart
-like the example text.
+gene, a venn diagram is usually used (FigureYa112venn), and if there are
+too many groups to compare, you can draw a donut chart like the example
+text.
 环境设置
 Environment settings
 source("install_dependencies.R")
@@ -60,15 +56,12 @@ from FigureYa118MulticlassDESeq2 and FigureYa120MulticlassedgeR.
 It is not limited to differential expression analysis result files.
 As long as there is a column ID in each file, it is sufficient.
 怎样获得差异表达分析结果？
-用
-FigureYa59Plus_GEO2DEG
-获得芯片的差异表达分析结果文件
+用FigureYa59Plus_GEO2DEG获得芯片的差异表达分析结果文件
 easy_input_limma.csv
 用FigureYa118MulticlassDESeq2、FigureYa119Multiclasslimma和FigureYa120MulticlassedgeR获得RNA-seq的差异表达分析结果。
 How do I get the results of differential expression analysis?
 Obtain the differential expression analysis result file
-‘easy_input_limma.csv’ of the chip with
-FigureYa59Plus_GEO2DEG
+‘easy_input_limma.csv’ of the chip with FigureYa59Plus_GEO2DEG
 Differential expression analysis of RNA-seq was obtained with
 FigureYa118MulticlassDESeq2, FigureYa119Multiclasslimma, and
 FigureYa120MulticlassedgeR.
