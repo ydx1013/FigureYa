@@ -1,7 +1,14 @@
 FigureYa69 CancerSubtypes
 FigureYa69 CancerSubtypes
 Jingze Gao, Xiaofan Lu, Taojun Ye
-2025-5-20
+2025-09-22
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
 输入TCGA数据，复现原图。
 Requirement Description
@@ -24,15 +31,7 @@ identification of cancer on genomic data:
 环境设置
 用国内镜像安装包
 Environment settings
-Installing packages with domestic mirrors
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
-if (!requireNamespace("BiocManager", quietly = TRUE))
-    install.packages("BiocManager")
-install.packages("iCluster_2.1.0.tar.gz", repos = NULL, type = "source")
-BiocManager::install("CancerSubtypes", version = "3.20")
-加载包
-library packages
+source("install_dependencies.R")
 # 加载stringr包 - 用于字符串处理和操作
 # Load the stringr package - used for string processing and manipulation
 library(stringr)
@@ -462,4 +461,5 @@ Reference
 Xu T, Le T D, Liu L, et al. CancerSubtypes: an R/Bioconductor package
 for molecular cancer subtype identification, validation and
 visualization[J]. Bioinformatics, 2017, 33(19): 3131-3133.
+Session Info
 sessionInfo()

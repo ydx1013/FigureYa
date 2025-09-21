@@ -1,10 +1,17 @@
 FigureYa267scCellChat
 FigureYa267scCellChat
-Yandong Zheng, Taojun Ye
-2025-5-20
+Xiao Gu, Taojun Ye
+2025-09-22
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
 希望用cellchat来实现：
-#Requirement description
+Requirement description
 I hope to use CellChat to achieve:
 出自
 https://aacrjournals.org/cancerdiscovery/article/12/1/134/675646/Spatiotemporal-Immune-Landscape-of-Colorectal
@@ -25,7 +32,7 @@ circlize可视化来解决。由于CellPhoneDB不能直接处理两组间的关�
 把直肠癌的所有细胞类型combined到一起，相当于一种细胞类型，命名为tumor，这样就可以克服cellphonedb无法一次性比较两组间的关系的困难。
 这个方法其实我不太认可，这样抹掉了结肠癌的细胞类型的信息。我个人认为cellchat的算法是优于cellphonedb的，尤其是在有对照处理的分析中。
 提需求的小伙伴要求用cellchat来实现，用cellchat的确可以很方便的实现。详见“开始画图”结尾的“结果解读”。
-Comments from the author of this document, Gu Xiao:
+Comments from the author of this document, Xiao Gu:
 Given the enrichment of macrophage subpopulations in liver
 metastasis, we hypothesize that those liver metastases – enriched
 macrophages may be functionally distinct across How to test this
@@ -47,8 +54,7 @@ of Results” at the end of “Start Drawing” for details.
 应用场景
 单细胞RNA-seq数据，对比两组样本（例文的原发vs.转移、不同亚型、不同发育时期等）之间，基于“受体-配体”的差异，用cellchat来实现。
 另外，CellPhoneDB的用法可参考FigureYa178receptorLigand
-https://k.youshop10.com/YICoy-XB
-#Application scenarios
+Application scenarios
 Single cell RNA seq data was compared between two groups of samples
 (e.g. primary vs. metastasis, different subtypes, different
 developmental stages, etc.) using cellchat based on the differences in
@@ -58,23 +64,8 @@ FigureYa178receptorLigand<
 https://k.youshop10.com/YICoy-XB
 >
 环境设置
-使用国内镜像安装包
-#Environment settings
-Use domestic image installation package
-# 设置R包安装源为清华镜像（Set CRAN mirror to Tsinghua University）
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-# 设置Bioconductor镜像为清华源（Set Bioconductor mirror to Tsinghua University）
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
-# 安装管道操作符包（Install the magrittr package for pipe operators）
-install.packages("magrittr")
-# 从GitHub安装Seurat-data包（Install the Seurat-data package from GitHub）
-devtools::install_github('satijalab/seurat-data')
-# 从GitHub安装CellChat包用于细胞间通讯分析（Install the CellChat package from GitHub for cell-cell communication analysis）
-devtools::install_github("jinworks/CellChat") 
-install.packages("ifnb.SeuratData_3.1.0.tar.gz", repos = NULL, type = "source")
-devtools::install_github('immunogenomics/presto')
-加载包
-Load Package
+Environment settings
+source("install_dependencies.R")
 # 加载Seurat包用于单细胞数据分析（Load the Seurat package for single-cell RNA-seq data analysis）
 library(Seurat)
 # 加载SeuratData包用于获取示例数据集（Load the SeuratData package for accessing example datasets）
@@ -105,7 +96,7 @@ https://pubmed.ncbi.nlm.nih.gov/29227470/
 先拆分成两个seurat
 object，对两个数据集单独进行normalize并识别各自的高变异基因，使用高变异基因在两个基因集中分别执行PCA。
 然后对两个数据集进行整合，进行常规数据预处理，存入immune.combined，以便进行后续分析。
-#Input data preprocessing
+Input data preprocessing
 ifnb
 - A Seurat object with the PBMC
 control/IFNB-stimulated dataset。 From<
@@ -121,14 +112,14 @@ and store them in immunembined for subsequent analysis.
 提取数据分别创建CellChat对象
 STIM和CTRL两组，分别提取数据，创建CellChat对象。
 运行时间约10min
-#Extract data and create CellChat objects separately
+Extract data and create CellChat objects separately
 Extract data from STIM and CTRL groups respectively, and create
 CellChat objects.
 Running time is about 10 minutes
 开始画图
-#Start drawing
+Start drawing
 细胞间互作次数bar图
-##Bar chart of intercellular interaction frequency
+Bar chart of intercellular interaction frequency
 Comparing the number of inferred communication links between
 different datasets
 # 比较两组间的细胞通讯相互作用（默认使用通讯频率）
@@ -152,7 +143,7 @@ Circle plot showing differential cell-cell communication network
 between two datasets
 红色为STIM组相比CTRL组互作次数和互作强度增加，线越粗表示差异越大；蓝色则表示减少。
 两个数据集之间的细胞-细胞通信网络中的交互或交互强度的差异数量可以使用圆形图来可视化，其中红色(或蓝色)边表示第二个数据集相比于第一个数据集增加(或减少)的信号。
-##Network diagram of intercellular interaction frequency
+Network diagram of intercellular interaction frequency
 Circle plot showing differential cell-cell communication network
 between two datasets
 The red color indicates an increase in the number and intensity of
@@ -181,7 +172,7 @@ netVisual_diffInteraction(cellchat, weight.scale = T, measure = "weight")
 # Close the PDF device
 dev.off()
 结果解读：
-##Interpretation of Results:
+Interpretation of Results:
 红色表示处理 vs 对照后受体-配体对增加，蓝色表示降低。 可以看到CD14
 Mono的线很粗，线越粗数量越多。这样就可以回答文中提出的假设了。
 把圆形网络拉开看更明显：

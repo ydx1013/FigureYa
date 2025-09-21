@@ -1,7 +1,14 @@
 FigureYa72biomarker
 FigureYa72biomarker
 Wen Wang, Taojun Ye
-2025-5-20
+2025-09-22
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
 复现原文的nearest shrunken centroid
 classification找biomarker，画出文章里的图。
@@ -26,16 +33,8 @@ Ref: Robert Tibshirani, Trevor Hastie, Balasubramanian Narasimhan,
 and Gilbert Chu. 2002. Diagnosis of multiple cancer types by shrunken
 centroids of gene expression PNAS 99: 6567-6572.
 环境设置
-使用国内镜像安装包
 Environment settings
-Installation of packages using domestic mirrors
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
-install.packages("pamr")
-install.packages('R.utils') # required by data.table::fread to read gipped file
-install.packages("data.table")
-加载包
-library packages
+source("install_dependencies.R")
 # 加载PAMR包 - 用于微阵列数据分类分析 / Load PAMR package - for microarray data classification
 library(pamr)  
 
@@ -187,10 +186,10 @@ head(sample_select)
 # Keep sites with no missing values in all samples (English comment)
 cgList_selector <- apply(methylation_matrix, 1, function(x) {sum(is.na(x)) == 0})
 cgList_select <- unlist(cgList[cgList_selector])
-nearest shrunken centroid classification
+Nearest shrunken centroid classification
 先把上面各种信息存到metylation.data里，然后用到pamr包里的两个函数：pamr.train和pamr.predict。
 用?pamr.train查看对输入的要求
-nearest shrunken centroid classification
+Nearest shrunken centroid classification
 First, we saved the above information into metylation.data, and then
 we used two functions from the pamr package: pamr.train and
 pamr.predict.
@@ -259,7 +258,7 @@ cgsites <- pamr.getGenes(metylation.train, metylation.data, threshold = 3)
 cgsites
 cg25247520, cg11201447 in cgsites
 开始画图
-plot
+Plot
 # 遍历筛选出的每个CpG位点，绘制其在肿瘤和正常样本中的甲基化水平分布图（中文注释）
 # Loop through each selected CpG site and plot its methylation levels in tumor and normal samples (English comment)
 for(i in 1:length(cgsites)){
@@ -408,4 +407,5 @@ for(i in 1:length(cgsites)){
   # Close the PDF device (English comment)
   dev.off()
 }
+Session Info
 sessionInfo()
