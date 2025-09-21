@@ -122,7 +122,6 @@ FigureYa173fancybar
 FigureYa174squareCross
 FigureYa175quadrant
 FigureYa176BlandAltman
-FigureYa177RNAvelocity
 FigureYa178receptorLigand
 FigureYa180FGAplotV2
 FigureYa181multiCorrelation
