@@ -2,9 +2,16 @@ FigureYa111markerGene_step1
 FigureYa111markerGene_step1
 Zhougeng Xu, Taojun Ye
 2025-5-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
 用Seurat找marker基因，用scanpy画出文章里这种热图，中间顺利衔接。
-##Requirement description
+Requirement description
 Use Seurat to find marker genes, and use scanpy to draw this heatmap
 in the article, smoothly connecting the middle.
 出自
@@ -16,7 +23,7 @@ marker genes for each maturing gut cluster.
 应用场景
 本文档用Seurat进行单细胞上游分析，得到聚类信息和聚类注释信息，使用我写的函数保存结果，然后打开FigureYa111markerGene.ipynb文件，用Scanpy画美图。
 这里是前面用Seurat，后面只是用scanpy的画图功能。当然你也可以从头到尾都用Scanpy来做，这个不包含在本文档范围内。
-##Application scenarios
+Application scenarios
 This document uses Seurat for single-cell upstream analysis to obtain
 clustering information and cluster annotation information. Use the
 function I wrote to save the results, then open the
@@ -32,16 +39,13 @@ MacOS，Linux(Ubuntu/CentOS)，
 电脑内存: 最低8G， 推荐16G起步，上不封顶
 掌握shell的基本使用方法
 安装Seurat包
-##Environment settings
+Environment settings
 requirement:
 -Operating System: The operating environment for Windows 10 (64GB of
 memory) is WSN, MacOS, Linux (Ubuntu/CentOS), -Computer memory: minimum
 8GB, recommended starting at 16GB, with no upper limit -Master the basic
 usage of shell
-Install Seurat package
-install.packages('Seurat')
-加载包
-library packages
+source("install_dependencies.R")
 # 加载dplyr包，提供数据处理和转换的函数
 # Load the dplyr package, which provides functions for data manipulation and transformation
 library(dplyr)
@@ -58,7 +62,7 @@ Sys.setenv(LANGUAGE = "en")
 options(stringsAsFactors = FALSE)
 输入文件
 示例文件保存在当前文件夹下的filtered_gene_bc_matrices/hg19/文件夹里
-##Input file
+Input file
 The example file is saved in the filtered_gene-bc_tricks/hg19/folder
 in the current folder
 # 从指定目录读取10X Genomics单细胞RNA测序数据
@@ -81,7 +85,7 @@ Seurat聚类分析
 下面的步骤是常规的单细胞数据处理流程, 主要是将细胞进行聚类分析,
 从而知道每个细胞属于哪一类, 同时根据差异分析结果, 选择标记基因。
 数据预处理
-##Seurat clustering analysis
+Seurat clustering analysis
 The following steps are the conventional single-cell data processing
 flow, mainly clustering analysis of cells to determine which category
 each cell belongs to, and selecting marker genes based on the results of
@@ -90,7 +94,6 @@ Data preprocessing
 # 计算线粒体基因表达比例，线粒体高比例可能表示细胞质量不佳
 # Calculate the percentage of mitochondrial gene expression. High mitochondrial percentage may indicate poor cell quality
 pbmc[["percent.mt"]] <- PercentageFeatureSet(pbmc, pattern = "^MT-")
-
 # 基于特征基因数和线粒体基因比例过滤细胞，保留高质量细胞
 # Filter cells based on the number of detected features and mitochondrial gene percentage to retain high-quality cells
 pbmc <- subset(pbmc, subset = nFeature_RNA > 200 &  # 保留检测到至少200个基因的细胞
@@ -107,6 +110,7 @@ pbmc <- NormalizeData(pbmc,
 pbmc <- FindVariableFeatures(pbmc, 
                              selection.method = "vst",  # 使用方差稳定变换方法
                              nfeatures = 2000)         # 保留前2000个高变基因
+
 # 获取所有基因名称，用于后续数据缩放
 # Get all gene names for subsequent data scaling
 all.genes <- rownames(pbmc)
@@ -156,10 +160,10 @@ pbmc <- RunUMAP(pbmc, dims = 1:10)
 DimPlot(pbmc, reduction = "umap", label = T)
 开始画图
 用Seurat展示标记基因
-##Start drawing
+Start drawing
 Display marker genes using Seurat
 定义基因
-###Define genes
+Define genes
 # 定义标记基因向量，用于后续的细胞类型鉴定和可视化
 # Define a vector of marker genes for subsequent cell type identification and visualization
 marker_gene <- c(
@@ -183,14 +187,14 @@ marker_gene <- c(
                     # Marker gene for Platelet cells (platelets)
 )
 热图
-###Heat map
+Heat map
 # 绘制热图展示标记基因在不同细胞聚类中的表达模式
 # Generate a heatmap to visualize the expression patterns of marker genes across different cell clusters
 DoHeatmap(pbmc, 
           features = marker_gene)  # 指定要展示的特征基因为之前定义的标记基因向量
 # Specify the features to plot using the previously defined marker gene vector
 小提琴图
-###Violin Diagram
+Violin Diagram
 # 绘制小提琴图展示IL7R和CCR7基因在各细胞聚类中的表达分布
 # Generate violin plots to show the expression distribution of IL7R and CCR7 genes across cell clusters
 VlnPlot(pbmc, 
@@ -225,7 +229,7 @@ https://scanpy-tutorials.readthedocs.io/en/latest/visualizing-marker-genes.html
 So how to combine the results of Seruat with Scanpy? We first need to
 output the results to a file, and then use Scanpy to draw beautiful
 images.
-##Output Seurat results
+Output Seurat results
 The expression level data of Seurat is stored under ‘@ assay
 $RNA’,
 -Counts: TPM or UMI information, initial input information -Data:
@@ -265,8 +269,9 @@ FigureYa111markerGene_step2w_in10.ipynb document with Jupyter notebook
 to continue drawing. -The usage of the ipynb document can be found in
 this article:
 https://mp.weixin.qq.com/s/G-CQhNEJBmMRuDe2kxND_w
-##Reference materials
+Reference materials
 <
 https://scanpy.readthedocs.io/
 >
+Session Info
 sessionInfo()
