@@ -65,7 +65,7 @@ for (pkg in tcga_cran_deps) {
 
 # Installing CRAN packages
 cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("ggplot2", "ggrepel")
+cran_packages <- c("ggplot2", "ggrepel", "openxlsx")
 
 for (pkg in cran_packages) {
   install_cran_package(pkg)
