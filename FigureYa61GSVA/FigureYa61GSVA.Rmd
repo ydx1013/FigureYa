@@ -2,7 +2,7 @@
 title: "FigureYa61GSVA"
 author: "Yu Sun, Taojun Ye"
 reviser: "Ying Ge"
-date: "2025-9-18"
+date: "`r Sys.Date()`"
 output: html_document
 ---
 

@@ -2,7 +2,7 @@
 title: "FigureYa171subgroupSurv"
 author: "Shipeng Guo"
 reviewer: "Ying Ge, Junyi Shen"
-date: "2025-5-20"
+date: "`r Sys.Date()`"
 output: html_document
 ---
 

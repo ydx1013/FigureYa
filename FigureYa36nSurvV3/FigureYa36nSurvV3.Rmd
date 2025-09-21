@@ -1,7 +1,7 @@
 ---
 title: "FigureYa36双因子生存分析v3"
 author: "Guoshuang Feng; Ying Ge, Yijing Chen"
-date: "2025-5-20"
+date: "`r Sys.Date()`"
 output: html_document
 ---
 

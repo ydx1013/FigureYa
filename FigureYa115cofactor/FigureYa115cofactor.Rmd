@@ -2,7 +2,7 @@
 title: "FigureYa115cofactor"
 author: "Long Zhao, Taojun Ye"
 reviewer: "Ying Ge"
-date: "2025-7-15"
+date: "`r Sys.Date()`"
 output: html_document
 ---
 

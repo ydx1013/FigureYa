@@ -1,7 +1,7 @@
 ---
 title: "FigureYa55plus_pancancer_boxplot"
 author: "Chris Lou, Yijing Chen"
-date:  "2025-5-20"
+date:  "`r Sys.Date()`"
 output: html_document
 ---
 

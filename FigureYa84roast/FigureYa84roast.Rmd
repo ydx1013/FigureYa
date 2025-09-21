@@ -1,7 +1,7 @@
 ---
 title: "FigureYa84roast"
 author: "Ying Ge, Taojun Ye"
-date: "2025-5-20"
+date: "`r Sys.Date()`"
 output: html_document
 ---
 

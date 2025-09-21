@@ -1,7 +1,7 @@
 ---
 title: "FigureYa216MetaREM"
 author: "Jiawei Shi"
-date: "2021-1-15"
+date: "`r Sys.Date()`"
 output: html_document
 ---
 

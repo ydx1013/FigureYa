@@ -2,7 +2,7 @@
 title: "FigureYa57 profile_1bw"
 author: "Wen Wang, Taojun Ye"
 reviewer: "Ying Ge"
-date: "2025-05-20"
+date: "`r Sys.Date()`"
 output: html_document
 ---
 
