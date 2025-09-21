@@ -1,16 +1,23 @@
 FigureYa129TCGAbox
 FigureYa129TCGAbox
 Yin Li, Taojun Ye
-2025-5-20
+2025-09-22
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
 用TCGA数据画这种图，在不同分期对比不同分型里某个基因的表达量。从数据下载到出图。
-##Requirement description
+Requirement description
 Draw this graph using TCGA data to compare the expression level of a
 certain gene in different stages and subtypes. Download data to generate
 images.
 出自
 https://www.tandfonline.com/doi/full/10.1080/2162402X.2016.1196310
-from
+From
 https://www.tandfonline.com/doi/full/10.1080/2162402X.2016.1196310
 Figure 2. PD-L1 expression in molecular subtypes (A, B)
 To investigate the molecular relevance between PD-L1 and glioma, we
@@ -25,7 +32,7 @@ mesenchymal subtype.
 基因在哪个分期能区分不同亚型？画这个图一目了然。
 然后还可以像例文那样接着画ROC曲线，画法可参考FigureYa24ROC。
 甚至你可以写成循环，批量画出多个基因，看看哪几个基因的分型效果更好。
-##Application scenarios
+Application scenarios
 At which stage can genes distinguish different subtypes? Draw this
 picture at a glance.
 Then you can continue to draw the ROC curve like in the example text,
@@ -33,16 +40,8 @@ and the drawing method can refer to FigureYa24ROC.
 You can even write it as a loop and draw multiple genes in batches to
 see which genes have better typing results.
 环境设置
-使用国内镜像安装包
-##Environment settings
-Use domestic image installation package
-# 设置CRAN镜像为清华大学镜像源（Set CRAN mirror to Tsinghua University mirror source）
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-
-# 设置Bioconductor镜像为中国科学技术大学镜像源（Set Bioconductor mirror to USTC mirror source）
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
-加载包
-library packages
+Environment settings
+source("install_dependencies.R")
 # 加载tidyverse包：用于数据处理和可视化（Load tidyverse package: for data processing and visualization）
 library(tidyverse)
 # 加载ggplot2包：用于创建优雅的图形（Load ggplot2 package: for creating elegant graphics）
@@ -62,9 +61,6 @@ Sys.setenv(LANGUAGE = "en")
 # 禁止将字符型变量自动转换为因子类型（Disable automatic conversion of character variables to factors）
 options(stringsAsFactors = FALSE)
 输入文件的下载：
-下面4个文件我上传到微云上了，下载地址：
-https://share.weiyun.com/5F4J859
-，你可以选择从微云下载，或者用下面的下载地址分别下载，一样的。
 从xena
 https://xenabrowser.net/datapages/
 下载感兴趣的癌症的表达数据和临床信息。此处以例文数据为例：
@@ -86,12 +82,7 @@ https://xenabrowser.net/datapages/?dataset=TCGA.LGG.sampleMap%2FLGG_clinicalMatr
 ：
 phenotype，Phenotypes (n=530) TCGA hub，下载地址：
 https://tcga.xenahubs.net/download/TCGA.LGG.sampleMap/LGG_clinicalMatrix.gz
-##Download the input file:
-I have uploaded the following 4 files to Weiyun, download link:<
-https://share.weiyun.com/5F4J859
->You can choose to
-download from Weiyun or use the download addresses below to download
-separately, the same way.
+Download the input file:
 From Xena<
 https://xenabrowser.net/datapages/
 >Download the
@@ -121,7 +112,7 @@ phenotype，Phenotypes (n=530) TCGA hub， Download link:<
 https://tcga.xenahubs.net/download/TCGA.LGG.sampleMap/LGG_clinicalMatrix.gz
 >
 输入文件预处理
-##Input file preprocessing
+Input file preprocessing
 # 将多形性胶质母细胞瘤直接列为IV级（Classify glioblastoma as Grade IV）
 clniical_all$grade <- na.replace(clniical_all$neoplasm_histologic_grade,'G4')
 clniical_all$sample <- clniical_all$sampleID
@@ -143,7 +134,7 @@ alldata$grade <- str_replace_all(alldata$grade,'2','II')
 alldata$mut <- ifelse(alldata$IDH1=='0','WT','Mut')
 alldata$CD274 <- as.numeric(alldata$CD274)
 开始画图
-start plot
+Start plot
 # 创建基于IDH突变状态分组的PD-L1表达箱线图，按肿瘤分级分面展示（Create boxplot of PD-L1 expression grouped by IDH mutation status, faceted by tumor grade）
 ggplot(alldata, aes(x=mut, y=CD274)) + 
   # 添加箱线图，按突变状态着色，设置透明度为0（无填充），宽度为0.6（Add boxplot colored by mutation status, transparency 0, width 0.6）
