@@ -20,13 +20,11 @@ jobs:
 
     - name: Remove date line from RMD files
       run: |
-        # 查找所有Rmd文件并删除包含 date: 的行
+        # 查找所有Rmd文件并替换日期模式
         find . -name "*.Rmd" -o -name "*.rmd" | while read file; do
           echo "Processing $file"
-          # 删除包含 date: 的行（包括带r表达式和不带r表达式的）
-          sed -i '/date:.*Sys.Date()/d' "$file"
-          sed -i '/date:.*[0-9]\{4\}-[0-9]\{2\}-[0-9]\{2\}/d' "$file"
-          sed -i '/^[[:space:]]*date:/d' "$file"
+          # 将 **Date**: `r params$date` 替换为 **Date**: `r Sys.Date()`
+          sed -i 's/\*\*Date\*\*: `r params\$date`/\*\*Date\*\*: `r Sys.Date()`/g' "$file"
         done
 
     - name: Debug - Show Changes
