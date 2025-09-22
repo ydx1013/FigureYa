@@ -1,5 +1,6 @@
 import sys
 import yaml
+from collections import OrderedDict
 
 class QuotedString(str): pass
 
@@ -33,36 +34,44 @@ def process_file(rmd_path):
     else:
         data = yaml.safe_load(yaml_text) or {}
 
+    # 提取
     title = data.pop('title', '')
     output = data.pop('output', 'html_document')
     author = data.pop('author', '')
     reviewer = data.pop('reviewer', '')
+    reviewers = data.pop('reviewers', '')
     date = data.pop('date', '')
 
-    params = {}
+    # params 顺序
+    params = OrderedDict()
     if author: params['author'] = QuotedString(author)
     if reviewer: params['reviewer'] = QuotedString(reviewer)
+    if reviewers: params['reviewers'] = QuotedString(reviewers)
     if date: params['date'] = QuotedString(date)
 
-    new_yaml = {'title': QuotedString(title)}
+    # YAML顺序
+    new_yaml = OrderedDict()
+    new_yaml['title'] = QuotedString(title)
     if params:
         new_yaml['params'] = params
     new_yaml['output'] = output
-    # 保留其它字段
+    # 其它字段也按原顺序补进去
     for k, v in data.items():
         new_yaml[k] = v
 
     with open(rmd_path, 'w', encoding='utf-8') as f:
         f.write('---\n')
-        yaml.dump(new_yaml, f, allow_unicode=True, sort_keys=False)
+        yaml.dump(new_yaml, f, allow_unicode=True, sort_keys=False, default_flow_style=False)
         f.write('---\n\n')
+        if 'author' in params:
+            f.write('**Author(s)**: `r params$author`  \n')
+        if 'reviewer' in params:
+            f.write('**Reviewer(s)**: `r params$reviewer`  \n')
+        if 'reviewers' in params:
+            f.write('**Reviewer(s)**: `r params$reviewers`  \n')
+        if 'date' in params:
+            f.write('**Date**: `r params$date`  \n')
         if params:
-            if 'author' in params:
-                f.write('**Author(s)**: `r params$author`  \n')
-            if 'reviewer' in params:
-                f.write('**Reviewer(s)**: `r params$reviewer`  \n')
-            if 'date' in params:
-                f.write('**Date**: `r params$date`  \n')
             f.write('\n')
         f.write(body)
 
