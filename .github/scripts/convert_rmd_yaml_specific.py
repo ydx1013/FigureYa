@@ -3,8 +3,6 @@ import re
 with open('filelist.txt') as f:
     files = [line.strip() for line in f if line.strip()]
 
-title_pattern = re.compile(r'^(title:\s*)(["\']?)(.*?)(["\']?)\s*$', re.IGNORECASE)
-
 for file in files:
     with open(file, encoding='utf-8') as f:
         lines = f.readlines()
@@ -20,11 +18,10 @@ for file in files:
                 in_yaml = False
             new_lines.append(line)
             continue
-        if in_yaml:
-            m = title_pattern.match(line.strip())
-            if m:
-                title_text = m.group(3).strip().strip('"').strip("'")
-                line = f'{m.group(1)}"{title_text}"\n'
+        if in_yaml and re.match(r'^\s*date\s*:\s*["\']?\d{4}-\d{2}-\d{2}["\']?\s*$', line):
+            # 替换为 R 代码格式
+            indent = re.match(r'^(\s*)', line).group(1)
+            line = f'{indent}date: "`r Sys.Date()`"\n'
         new_lines.append(line)
     with open(file, "w", encoding="utf-8") as f:
         f.writelines(new_lines)
