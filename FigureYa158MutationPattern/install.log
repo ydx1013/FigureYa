@@ -54,7 +54,7 @@ downloaded 697.4 MB
 * DONE (BSgenome.Hsapiens.UCSC.hg38)
 
 The downloaded source packages are in
-	‘/tmp/RtmpOHfcjY/downloaded_packages’
+	‘/tmp/RtmpDMoeSM/downloaded_packages’
 Successfully installed: BSgenome.Hsapiens.UCSC.hg38 
 Installing Bioconductor package: MutationalPatterns 
 'getOption("repos")' replaces Bioconductor standard repositories, see
@@ -84,7 +84,7 @@ downloaded 5.7 MB
 * DONE (MutationalPatterns)
 
 The downloaded source packages are in
-	‘/tmp/RtmpOHfcjY/downloaded_packages’
+	‘/tmp/RtmpDMoeSM/downloaded_packages’
 Successfully installed: MutationalPatterns 
 Package already installed: NMF 
 Package already installed: maftools 

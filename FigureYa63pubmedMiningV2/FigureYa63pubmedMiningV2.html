@@ -9,7 +9,6 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="Haitao Wang, Melvin L.K. Chua; Ying Ge, Yijing Chen" />
 
 
 <title>FigureYa63PubmedMiningV2</title>
@@ -350,13 +349,13 @@ display: none;
 
 
 <h1 class="title toc-ignore">FigureYa63PubmedMiningV2</h1>
-<h4 class="author">Haitao Wang, Melvin L.K. Chua; Ying Ge, Yijing
-Chen</h4>
-<h4 class="date">2025-9-20</h4>
 
 </div>
 
 
+<p><strong>Author(s)</strong>: Haitao Wang, Melvin L.K. Chua; Ying Ge,
+Yijing Chen<br />
+<strong>Date</strong>: <code>r Sys.Date()</code></p>
 <div id="academic-citation" class="section level1">
 <h1>Academic Citation</h1>
 <p>If you use this code in your work or research, we kindly request that
@@ -628,7 +627,7 @@ journal from the results.</h2>
 #let&#39;s set retmax to 0 and not let it return a result, just to see how many records there are
 pre.result &lt;- entrez_search(db=&quot;pubmed&quot;, term=term, retmode = &quot;xml&quot;, retmax = 0)
 pre.result$count #一共有多少条记录 how many records in total</code></pre>
-<pre><code>## [1] 41323</code></pre>
+<pre><code>## [1] 41333</code></pre>
 <pre class="r"><code>#返回所有检索到的结果
 #return all retrieved results
 #result &lt;- entrez_search(db=&quot;pubmed&quot;, term=term, retmode = &quot;xml&quot;, retmax = pre.result$count)
@@ -740,16 +739,14 @@ for (i in seq(1, length(result$ids), n)) {
   abstract0 &lt;- rbind(abstract0, abstract1)
 }
 abstract1[1,]</code></pre>
-<pre><code>##                                                                                                           title
-## 1 Vitiligo Signature-Based Drug Screening Identifies Fulvestrant as a Novel Immunotherapy Combination Strategy.
-##                                                                                                                     authors
-## 1 Zhu, Jie, Huang, Liting, Bi, Suzhen, Kong, WeiKaixin, Feng, Wanting, Li, Yingjia, Xie, Zhengwei, Shan, Peipei, Zhu, Sujie
-##   year                                                 journal volume issue
-## 1 2025 Advanced science (Weinheim, Baden-Wurttemberg, Germany)   NULL  NULL
-##    pages key_words                    doi     pmid
-## 1 e03979      NULL 10.1002/advs.202503979 40974370
-##                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        abstract
-## 1 Immunotherapy has revolutionized cancer treatment; however, only 10-30% of patients experience durable survival benefits, while most malignancies remain resistant. In melanoma, vitiligo-like depigmentation is a frequent and generally mild immune-related adverse event, whose presence correlates positively with enhanced antitumor immune responses and prolonged patient survival. By performing comparative analyses between vitiligo and melanoma, we established a biomarker panel-designated the vitiligo signature (VGS)-that differentiates &quot;cold&quot; from &quot;hot&quot; tumors with high accuracy. Leveraging a deep learning-based efficacy prediction system (DLEPS), we identified and validated Fulvestrant as a candidate capable of enhancing anti-programmed cell death ligand 1 (PD L1) therapy in preclinical models. Single cell RNA sequencing revealed that Fulvestrant expanded cytotoxic T cell populations, while immunofluorescence and flow cytometry confirmed markedly increased CD8⁺ T cell infiltration into tumor tissue. Mechanistic investigations demonstrated that Fulvestrant activates the C─C motif chemokine 5 (CCL5), major histocompatibility complex class I (MHC I), and type II interferon (IFN II) signaling pathways, thereby potentiating antitumor immunity. Collectively, our study introduces a precision approach for patient stratification in immunotherapy and highlights Fulvestrant as a promising component of immunotherapy based combination strategies warranting clinical evaluation.</code></pre>
+<pre><code>##                                                                                                        title
+## 1 Histone lactylation in gastrointestinal cancers: developing immunotherapeutic drugs targeting epigenetics.
+##          authors year                        journal volume issue pages
+## 1 Huang, Mingyao 2025 Archives of pharmacal research   NULL  NULL  NULL
+##   key_words                        doi     pmid
+## 1      NULL 10.1007/s12272-025-01570-0 40976819
+##                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   abstract
+## 1 Gastrointestinal cancers (GICs) remain a major global health burden due to their aggressive nature, therapeutic resistance, and immunosuppressive tumor microenvironment (TME). Histone lactylation, a novel epigenetic modification driven by tumor-derived lactate, has emerged as a key mediator linking metabolic reprogramming to gene expression and immune regulation. In GICs, aberrant lactylation contributes to M2 macrophage polarization, increased PD-L1 expression, and diminished cytotoxic immune cell infiltration, all of which are associated with poor prognosis and resistance to immunotherapy. Targeting histone lactylation-related enzymes-such as p300, SIRT2, and LDHA-or interfering with lactate metabolism offers promising avenues to reshape the TME and enhance responses to immune checkpoint blockade. This review highlights the mechanistic underpinnings and immunological consequences of histone lactylation in GICs and discusses emerging therapeutic strategies that leverage this epigenetic axis to improve cancer immunotherapy outcomes.</code></pre>
 <pre class="r"><code>length(abstract1$abstract) # how many abstract 有多少摘要</code></pre>
 <pre><code>## [1] 200</code></pre>
 <pre class="r"><code>abstract &lt;- unlist(abstract0$abstract)

@@ -9,7 +9,6 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="Haitao Wang; Ying Ge, Yijing Chen" />
 
 
 <title>FigureYa59Plus_GEO2DEG</title>
@@ -350,12 +349,12 @@ display: none;
 
 
 <h1 class="title toc-ignore">FigureYa59Plus_GEO2DEG</h1>
-<h4 class="author">Haitao Wang; Ying Ge, Yijing Chen</h4>
-<h4 class="date">2025-9-18</h4>
 
 </div>
 
 
+<p><strong>Author(s)</strong>: Haitao Wang; Ying Ge, Yijing Chen<br />
+<strong>Date</strong>: <code>r Sys.Date()</code></p>
 <div id="academic-citation" class="section level1">
 <h1>Academic Citation</h1>
 <p>If you use this code in your work or research, we kindly request that
@@ -542,7 +541,7 @@ colnames(exprSet) &lt;- GSMID$geo_accession
 # obtain the correspondence between probe set and gene symbol
 gpl &lt;- getGEO(eset$platform_id[1])</code></pre>
 <pre><code>## Using locally cached version of GPL3921 found here:
-## /tmp/Rtmp9ItwEq/GPL3921.soft.gz</code></pre>
+## /tmp/RtmpbP8pfY/GPL3921.soft.gz</code></pre>
 <pre class="r"><code>dim(Table(gpl)) #查看一共有多少行探针组 view how many rows of probe sets there are</code></pre>
 <pre><code>## [1] 22277    16</code></pre>
 <pre class="r"><code># 到此為止，所需要的表达矩阵和芯片平台注释已經下載成功

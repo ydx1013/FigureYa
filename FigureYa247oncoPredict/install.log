@@ -72,7 +72,7 @@ installing to /home/runner/work/_temp/Library/00LOCK-sva/00new/sva/libs
 * DONE (sva)
 
 The downloaded source packages are in
-	‘/tmp/RtmpEJtM4L/downloaded_packages’
+	‘/tmp/Rtmpst3cgj/downloaded_packages’
 Successfully installed: sva 
 Package already installed: preprocessCore 
 Package already installed: impute 
@@ -90,13 +90,23 @@ Installing system dependencies for ridge package...
 Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
 Hit:2 http://azure.archive.ubuntu.com/ubuntu noble InRelease
 Get:3 http://azure.archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
-Hit:4 http://azure.archive.ubuntu.com/ubuntu noble-backports InRelease
-Hit:5 http://azure.archive.ubuntu.com/ubuntu noble-security InRelease
+Get:4 http://azure.archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+Get:5 http://azure.archive.ubuntu.com/ubuntu noble-security InRelease [126 kB]
 Hit:6 https://packages.microsoft.com/repos/azure-cli noble InRelease
 Hit:7 https://packages.microsoft.com/ubuntu/24.04/prod noble InRelease
-Get:8 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1415 kB]
-Get:9 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [1485 kB]
-Fetched 3026 kB in 0s (6622 kB/s)
+Get:8 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Components [175 kB]
+Get:9 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Components [378 kB]
+Get:10 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Components [212 B]
+Get:11 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Components [940 B]
+Get:12 http://azure.archive.ubuntu.com/ubuntu noble-backports/main amd64 Components [7092 B]
+Get:13 http://azure.archive.ubuntu.com/ubuntu noble-backports/universe amd64 Components [19.2 kB]
+Get:14 http://azure.archive.ubuntu.com/ubuntu noble-backports/restricted amd64 Components [212 B]
+Get:15 http://azure.archive.ubuntu.com/ubuntu noble-backports/multiverse amd64 Components [212 B]
+Get:16 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Components [21.6 kB]
+Get:17 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Components [52.3 kB]
+Get:18 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted amd64 Components [212 B]
+Get:19 http://azure.archive.ubuntu.com/ubuntu noble-security/multiverse amd64 Components [208 B]
+Fetched 1033 kB in 0s (2799 kB/s)
 Reading package lists...
 Reading package lists...
 Building dependency tree...
@@ -114,7 +124,7 @@ Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
 Get:2 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libgslcblas0 amd64 2.7.1+dfsg-6ubuntu2 [104 kB]
 Get:3 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libgsl27 amd64 2.7.1+dfsg-6ubuntu2 [987 kB]
 Get:4 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libgsl-dev amd64 2.7.1+dfsg-6ubuntu2 [1259 kB]
-Fetched 2349 kB in 1s (4696 kB/s)
+Fetched 2349 kB in 0s (11.3 MB/s)
 Selecting previously unselected package libgslcblas0:amd64.
 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 253081 files and directories currently installed.)
 Preparing to unpack .../libgslcblas0_2.7.1+dfsg-6ubuntu2_amd64.deb ...
@@ -214,7 +224,7 @@ installing to /home/runner/work/_temp/Library/00LOCK-ridge/00new/ridge/libs
 * DONE (ridge)
 
 The downloaded source packages are in
-	‘/tmp/RtmpEJtM4L/downloaded_packages’
+	‘/tmp/Rtmpst3cgj/downloaded_packages’
 Successfully installed: ridge 
 
 ===========================================

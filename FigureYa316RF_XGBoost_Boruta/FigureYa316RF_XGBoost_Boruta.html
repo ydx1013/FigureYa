@@ -355,7 +355,7 @@ display: none;
 
 <p><strong>Author(s)</strong>: Guoqi Li; Yasi Zhang<br />
 <strong>Reviewer(s)</strong>: Ying Ge<br />
-<strong>Date</strong>: 2025-05-20</p>
+<strong>Date</strong>: <code>r Sys.Date()</code></p>
 <div id="academic-citation" class="section level1">
 <h1>Academic Citation</h1>
 <p>If you use this code in your work or research, we kindly request that
@@ -825,7 +825,7 @@ boruta &lt;- Boruta(group ~ ., data = Boruta_input, doTrace = 2, maxRuns = 500)<
 <pre><code>##  11. run of importance source...</code></pre>
 <pre><code>##  12. run of importance source...</code></pre>
 <pre><code>##  13. run of importance source...</code></pre>
-<pre><code>## After 13 iterations, +0.52 secs:</code></pre>
+<pre><code>## After 13 iterations, +0.5 secs:</code></pre>
 <pre><code>##  confirmed 1 attribute: cg00127150;</code></pre>
 <pre><code>##  rejected 14 attributes: cg00032959, cg00036263, cg00053135, cg00099976, cg00133811 and 9 more;</code></pre>
 <pre><code>##  still have 35 attributes left.</code></pre>
@@ -833,7 +833,7 @@ boruta &lt;- Boruta(group ~ ., data = Boruta_input, doTrace = 2, maxRuns = 500)<
 <pre><code>##  15. run of importance source...</code></pre>
 <pre><code>##  16. run of importance source...</code></pre>
 <pre><code>##  17. run of importance source...</code></pre>
-<pre><code>## After 17 iterations, +0.67 secs:</code></pre>
+<pre><code>## After 17 iterations, +0.63 secs:</code></pre>
 <pre><code>##  confirmed 1 attribute: cg00142925;</code></pre>
 <pre><code>##  rejected 10 attributes: cg00013006, cg00031105, cg00058009, cg00060627, cg00109776 and 5 more;</code></pre>
 <pre><code>##  still have 24 attributes left.</code></pre>
@@ -841,7 +841,7 @@ boruta &lt;- Boruta(group ~ ., data = Boruta_input, doTrace = 2, maxRuns = 500)<
 <pre><code>##  19. run of importance source...</code></pre>
 <pre><code>##  20. run of importance source...</code></pre>
 <pre><code>##  21. run of importance source...</code></pre>
-<pre><code>## After 21 iterations, +0.8 secs:</code></pre>
+<pre><code>## After 21 iterations, +0.75 secs:</code></pre>
 <pre><code>##  confirmed 1 attribute: cg00171565;</code></pre>
 <pre><code>##  still have 23 attributes left.</code></pre>
 <pre><code>##  22. run of importance source...</code></pre>
@@ -850,37 +850,37 @@ boruta &lt;- Boruta(group ~ ., data = Boruta_input, doTrace = 2, maxRuns = 500)<
 <pre><code>##  25. run of importance source...</code></pre>
 <pre><code>##  26. run of importance source...</code></pre>
 <pre><code>##  27. run of importance source...</code></pre>
-<pre><code>## After 27 iterations, +0.99 secs:</code></pre>
+<pre><code>## After 27 iterations, +0.93 secs:</code></pre>
 <pre><code>##  rejected 1 attribute: cg00013618;</code></pre>
 <pre><code>##  still have 22 attributes left.</code></pre>
 <pre><code>##  28. run of importance source...</code></pre>
 <pre><code>##  29. run of importance source...</code></pre>
 <pre><code>##  30. run of importance source...</code></pre>
-<pre><code>## After 30 iterations, +1.1 secs:</code></pre>
+<pre><code>## After 30 iterations, +1 secs:</code></pre>
 <pre><code>##  confirmed 1 attribute: cg00139242;</code></pre>
 <pre><code>##  still have 21 attributes left.</code></pre>
 <pre><code>##  31. run of importance source...</code></pre>
 <pre><code>##  32. run of importance source...</code></pre>
 <pre><code>##  33. run of importance source...</code></pre>
-<pre><code>## After 33 iterations, +1.2 secs:</code></pre>
+<pre><code>## After 33 iterations, +1.1 secs:</code></pre>
 <pre><code>##  confirmed 1 attribute: cg00121876;</code></pre>
 <pre><code>##  still have 20 attributes left.</code></pre>
 <pre><code>##  34. run of importance source...</code></pre>
 <pre><code>##  35. run of importance source...</code></pre>
 <pre><code>##  36. run of importance source...</code></pre>
-<pre><code>## After 36 iterations, +1.3 secs:</code></pre>
+<pre><code>## After 36 iterations, +1.2 secs:</code></pre>
 <pre><code>##  rejected 1 attribute: cg00139683;</code></pre>
 <pre><code>##  still have 19 attributes left.</code></pre>
 <pre><code>##  37. run of importance source...</code></pre>
 <pre><code>##  38. run of importance source...</code></pre>
 <pre><code>##  39. run of importance source...</code></pre>
-<pre><code>## After 39 iterations, +1.4 secs:</code></pre>
+<pre><code>## After 39 iterations, +1.3 secs:</code></pre>
 <pre><code>##  confirmed 1 attribute: cg00162862;</code></pre>
 <pre><code>##  still have 18 attributes left.</code></pre>
 <pre><code>##  40. run of importance source...</code></pre>
 <pre><code>##  41. run of importance source...</code></pre>
 <pre><code>##  42. run of importance source...</code></pre>
-<pre><code>## After 42 iterations, +1.5 secs:</code></pre>
+<pre><code>## After 42 iterations, +1.4 secs:</code></pre>
 <pre><code>##  confirmed 1 attribute: cg00014561;</code></pre>
 <pre><code>##  still have 17 attributes left.</code></pre>
 <pre><code>##  43. run of importance source...</code></pre>
@@ -899,13 +899,13 @@ boruta &lt;- Boruta(group ~ ., data = Boruta_input, doTrace = 2, maxRuns = 500)<
 <pre><code>##  56. run of importance source...</code></pre>
 <pre><code>##  57. run of importance source...</code></pre>
 <pre><code>##  58. run of importance source...</code></pre>
-<pre><code>## After 58 iterations, +2 secs:</code></pre>
+<pre><code>## After 58 iterations, +1.8 secs:</code></pre>
 <pre><code>##  confirmed 1 attribute: cg00168009;</code></pre>
 <pre><code>##  rejected 1 attribute: cg00017475;</code></pre>
 <pre><code>##  still have 15 attributes left.</code></pre>
 <pre><code>##  59. run of importance source...</code></pre>
 <pre><code>##  60. run of importance source...</code></pre>
-<pre><code>## After 60 iterations, +2 secs:</code></pre>
+<pre><code>## After 60 iterations, +1.9 secs:</code></pre>
 <pre><code>##  confirmed 1 attribute: cg00040419;</code></pre>
 <pre><code>##  still have 14 attributes left.</code></pre>
 <pre><code>##  61. run of importance source...</code></pre>
@@ -921,13 +921,13 @@ boruta &lt;- Boruta(group ~ ., data = Boruta_input, doTrace = 2, maxRuns = 500)<
 <pre><code>##  71. run of importance source...</code></pre>
 <pre><code>##  72. run of importance source...</code></pre>
 <pre><code>##  73. run of importance source...</code></pre>
-<pre><code>## After 73 iterations, +2.4 secs:</code></pre>
+<pre><code>## After 73 iterations, +2.2 secs:</code></pre>
 <pre><code>##  confirmed 1 attribute: cg00151250;</code></pre>
 <pre><code>##  still have 13 attributes left.</code></pre>
 <pre><code>##  74. run of importance source...</code></pre>
 <pre><code>##  75. run of importance source...</code></pre>
 <pre><code>##  76. run of importance source...</code></pre>
-<pre><code>## After 76 iterations, +2.5 secs:</code></pre>
+<pre><code>## After 76 iterations, +2.3 secs:</code></pre>
 <pre><code>##  confirmed 1 attribute: cg00113623;</code></pre>
 <pre><code>##  still have 12 attributes left.</code></pre>
 <pre><code>##  77. run of importance source...</code></pre>
@@ -937,7 +937,7 @@ boruta &lt;- Boruta(group ~ ., data = Boruta_input, doTrace = 2, maxRuns = 500)<
 <pre><code>##  81. run of importance source...</code></pre>
 <pre><code>##  82. run of importance source...</code></pre>
 <pre><code>##  83. run of importance source...</code></pre>
-<pre><code>## After 83 iterations, +2.7 secs:</code></pre>
+<pre><code>## After 83 iterations, +2.5 secs:</code></pre>
 <pre><code>##  rejected 1 attribute: cg00134728;</code></pre>
 <pre><code>##  still have 11 attributes left.</code></pre>
 <pre><code>##  84. run of importance source...</code></pre>
@@ -948,12 +948,12 @@ boruta &lt;- Boruta(group ~ ., data = Boruta_input, doTrace = 2, maxRuns = 500)<
 <pre><code>##  89. run of importance source...</code></pre>
 <pre><code>##  90. run of importance source...</code></pre>
 <pre><code>##  91. run of importance source...</code></pre>
-<pre><code>## After 91 iterations, +3 secs:</code></pre>
+<pre><code>## After 91 iterations, +2.7 secs:</code></pre>
 <pre><code>##  confirmed 1 attribute: cg00032686;</code></pre>
 <pre><code>##  still have 10 attributes left.</code></pre>
 <pre><code>##  92. run of importance source...</code></pre>
 <pre><code>##  93. run of importance source...</code></pre>
-<pre><code>## After 93 iterations, +3.1 secs:</code></pre>
+<pre><code>## After 93 iterations, +2.8 secs:</code></pre>
 <pre><code>##  confirmed 2 attributes: cg00039564, cg00115040;</code></pre>
 <pre><code>##  still have 8 attributes left.</code></pre>
 <pre><code>##  94. run of importance source...</code></pre>
@@ -992,7 +992,7 @@ boruta &lt;- Boruta(group ~ ., data = Boruta_input, doTrace = 2, maxRuns = 500)<
 <pre><code>##  127. run of importance source...</code></pre>
 <pre><code>##  128. run of importance source...</code></pre>
 <pre><code>##  129. run of importance source...</code></pre>
-<pre><code>## After 129 iterations, +4.1 secs:</code></pre>
+<pre><code>## After 129 iterations, +3.8 secs:</code></pre>
 <pre><code>##  confirmed 1 attribute: cg00113020;</code></pre>
 <pre><code>##  still have 7 attributes left.</code></pre>
 <pre><code>##  130. run of importance source...</code></pre>
@@ -1007,7 +1007,7 @@ boruta &lt;- Boruta(group ~ ., data = Boruta_input, doTrace = 2, maxRuns = 500)<
 <pre><code>##  139. run of importance source...</code></pre>
 <pre><code>##  140. run of importance source...</code></pre>
 <pre><code>##  141. run of importance source...</code></pre>
-<pre><code>## After 141 iterations, +4.5 secs:</code></pre>
+<pre><code>## After 141 iterations, +4.1 secs:</code></pre>
 <pre><code>##  rejected 1 attribute: cg00008544;</code></pre>
 <pre><code>##  still have 6 attributes left.</code></pre>
 <pre><code>##  142. run of importance source...</code></pre>
@@ -1105,7 +1105,7 @@ boruta &lt;- Boruta(group ~ ., data = Boruta_input, doTrace = 2, maxRuns = 500)<
 <pre><code>##  234. run of importance source...</code></pre>
 <pre><code>##  235. run of importance source...</code></pre>
 <pre><code>##  236. run of importance source...</code></pre>
-<pre><code>## After 236 iterations, +7.3 secs:</code></pre>
+<pre><code>## After 236 iterations, +6.8 secs:</code></pre>
 <pre><code>##  confirmed 1 attribute: cg00157016;</code></pre>
 <pre><code>##  still have 5 attributes left.</code></pre>
 <pre><code>##  237. run of importance source...</code></pre>
@@ -1168,7 +1168,7 @@ boruta &lt;- Boruta(group ~ ., data = Boruta_input, doTrace = 2, maxRuns = 500)<
 <pre><code>##  294. run of importance source...</code></pre>
 <pre><code>##  295. run of importance source...</code></pre>
 <pre><code>##  296. run of importance source...</code></pre>
-<pre><code>## After 296 iterations, +9.1 secs:</code></pre>
+<pre><code>## After 296 iterations, +8.4 secs:</code></pre>
 <pre><code>##  confirmed 1 attribute: cg00033304;</code></pre>
 <pre><code>##  still have 4 attributes left.</code></pre>
 <pre><code>##  297. run of importance source...</code></pre>
@@ -1341,7 +1341,7 @@ boruta &lt;- Boruta(group ~ ., data = Boruta_input, doTrace = 2, maxRuns = 500)<
 <pre><code>##  464. run of importance source...</code></pre>
 <pre><code>##  465. run of importance source...</code></pre>
 <pre><code>##  466. run of importance source...</code></pre>
-<pre><code>## After 466 iterations, +14 secs:</code></pre>
+<pre><code>## After 466 iterations, +13 secs:</code></pre>
 <pre><code>##  confirmed 1 attribute: cg00160981;</code></pre>
 <pre><code>##  still have 3 attributes left.</code></pre>
 <pre><code>##  467. run of importance source...</code></pre>
@@ -1380,7 +1380,7 @@ boruta &lt;- Boruta(group ~ ., data = Boruta_input, doTrace = 2, maxRuns = 500)<
 <pre class="r"><code># 查看结果
 # View results
 print(boruta)</code></pre>
-<pre><code>## Boruta performed 499 iterations in 14.96328 secs.
+<pre><code>## Boruta performed 499 iterations in 14.05229 secs.
 ##  18 attributes confirmed important: cg00014561, cg00032686, cg00033304,
 ## cg00039564, cg00040419 and 13 more;
 ##  29 attributes confirmed unimportant: cg00008544, cg00013006,
@@ -1407,7 +1407,7 @@ dev.off()</code></pre>
 # Resolve tentative features using TentativeRoughFix method
 bor &lt;- TentativeRoughFix(boruta)
 print(bor)</code></pre>
-<pre><code>## Boruta performed 499 iterations in 14.96328 secs.
+<pre><code>## Boruta performed 499 iterations in 14.05229 secs.
 ## Tentatives roughfixed over the last 499 iterations.
 ##  20 attributes confirmed important: cg00014561, cg00032686, cg00033304,
 ## cg00039564, cg00040419 and 15 more;

@@ -5,12 +5,13 @@ Installing CRAN packages...
 Installing CRAN package: SimDesign 
 Installing package into ‘/home/runner/work/_temp/Library’
 (as ‘lib’ is unspecified)
-also installing the dependencies ‘gmp’, ‘base64url’, ‘conf.design’, ‘vcd’, ‘numbers’, ‘partitions’, ‘audio’, ‘gsl’, ‘ADGofTest’, ‘stabledist’, ‘pcaPP’, ‘pspline’, ‘batchtools’, ‘DoE.base’, ‘sfsmisc’, ‘beepr’, ‘copula’, ‘extraDistr’, ‘renv’, ‘job’, ‘future.batchtools’, ‘FrF2’, ‘RPushbullet’
+also installing the dependencies ‘gmp’, ‘base64url’, ‘conf.design’, ‘vcd’, ‘combinat’, ‘numbers’, ‘partitions’, ‘audio’, ‘gsl’, ‘ADGofTest’, ‘stabledist’, ‘pcaPP’, ‘pspline’, ‘batchtools’, ‘DoE.base’, ‘sfsmisc’, ‘beepr’, ‘copula’, ‘extraDistr’, ‘renv’, ‘job’, ‘future.batchtools’, ‘FrF2’, ‘RPushbullet’
 
 trying URL 'https://cloud.r-project.org/src/contrib/gmp_0.7-5.tar.gz'
 trying URL 'https://cloud.r-project.org/src/contrib/base64url_1.4.tar.gz'
 trying URL 'https://cloud.r-project.org/src/contrib/conf.design_2.0.0.tar.gz'
 trying URL 'https://cloud.r-project.org/src/contrib/vcd_1.4-13.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/combinat_0.0-8.tar.gz'
 trying URL 'https://cloud.r-project.org/src/contrib/numbers_0.8-5.tar.gz'
 trying URL 'https://cloud.r-project.org/src/contrib/partitions_1.10-9.tar.gz'
 trying URL 'https://cloud.r-project.org/src/contrib/audio_0.1-11.tar.gz'
@@ -27,7 +28,7 @@ trying URL 'https://cloud.r-project.org/src/contrib/copula_1.1-6.tar.gz'
 trying URL 'https://cloud.r-project.org/src/contrib/extraDistr_1.10.0.tar.gz'
 trying URL 'https://cloud.r-project.org/src/contrib/renv_1.1.5.tar.gz'
 trying URL 'https://cloud.r-project.org/src/contrib/job_0.3.1.tar.gz'
-trying URL 'https://cloud.r-project.org/src/contrib/future.batchtools_0.20.0.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/future.batchtools_0.21.0.tar.gz'
 trying URL 'https://cloud.r-project.org/src/contrib/FrF2_2.3-4.tar.gz'
 trying URL 'https://cloud.r-project.org/src/contrib/RPushbullet_0.3.4.tar.gz'
 trying URL 'https://cloud.r-project.org/src/contrib/SimDesign_2.21.tar.gz'
@@ -151,6 +152,19 @@ installing to /home/runner/work/_temp/Library/00LOCK-base64url/00new/base64url/l
 ** testing if installed package can be loaded from final location
 ** testing if installed package keeps a record of temporary installation path
 * DONE (vcd)
+* installing *source* package ‘combinat’ ...
+** this is package ‘combinat’ version ‘0.0-8’
+** package ‘combinat’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded from temporary location
+** testing if installed package can be loaded from final location
+** testing if installed package keeps a record of temporary installation path
+* DONE (combinat)
 * installing *source* package ‘numbers’ ...
 ** this is package ‘numbers’ version ‘0.8-5’
 ** package ‘numbers’ successfully unpacked and MD5 sums checked
@@ -633,7 +647,7 @@ Creating a generic function for ‘%in%’ from package ‘base’ in package �
 ** testing if installed package keeps a record of temporary installation path
 * DONE (DoE.base)
 * installing *source* package ‘future.batchtools’ ...
-** this is package ‘future.batchtools’ version ‘0.20.0’
+** this is package ‘future.batchtools’ version ‘0.21.0’
 ** package ‘future.batchtools’ successfully unpacked and MD5 sums checked
 ** using staged installation
 ** R
@@ -681,7 +695,7 @@ Creating a generic function for ‘%in%’ from package ‘base’ in package �
 * DONE (FrF2)
 
 The downloaded source packages are in
-	‘/tmp/Rtmpe5UobF/downloaded_packages’
+	‘/tmp/RtmpXys8tm/downloaded_packages’
 Successfully installed: SimDesign 
 Package already installed: pROC 
 

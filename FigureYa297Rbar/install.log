@@ -9,25 +9,12 @@ Package already installed: devtools
 
 Installing system dependencies...
 Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+Hit:2 http://azure.archive.ubuntu.com/ubuntu noble InRelease
+Hit:3 http://azure.archive.ubuntu.com/ubuntu noble-updates InRelease
+Hit:4 http://azure.archive.ubuntu.com/ubuntu noble-backports InRelease
+Hit:5 http://azure.archive.ubuntu.com/ubuntu noble-security InRelease
 Hit:6 https://packages.microsoft.com/repos/azure-cli noble InRelease
 Hit:7 https://packages.microsoft.com/ubuntu/24.04/prod noble InRelease
-Hit:2 http://azure.archive.ubuntu.com/ubuntu noble InRelease
-Get:3 http://azure.archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
-Get:4 http://azure.archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
-Get:5 http://azure.archive.ubuntu.com/ubuntu noble-security InRelease [126 kB]
-Get:8 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Components [175 kB]
-Get:9 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Components [378 kB]
-Get:10 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Components [212 B]
-Get:11 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Components [940 B]
-Get:12 http://azure.archive.ubuntu.com/ubuntu noble-backports/main amd64 Components [7080 B]
-Get:13 http://azure.archive.ubuntu.com/ubuntu noble-backports/universe amd64 Components [19.2 kB]
-Get:14 http://azure.archive.ubuntu.com/ubuntu noble-backports/restricted amd64 Components [216 B]
-Get:15 http://azure.archive.ubuntu.com/ubuntu noble-backports/multiverse amd64 Components [212 B]
-Get:16 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Components [21.6 kB]
-Get:17 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Components [52.2 kB]
-Get:18 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted amd64 Components [212 B]
-Get:19 http://azure.archive.ubuntu.com/ubuntu noble-security/multiverse amd64 Components [208 B]
-Fetched 1033 kB in 0s (2399 kB/s)
 Reading package lists...
 Reading package lists...
 Building dependency tree...
@@ -140,7 +127,7 @@ installing to /home/runner/work/_temp/Library/00LOCK-aRtsy/00new/aRtsy/libs
 * DONE (aRtsy)
 
 The downloaded source packages are in
-	‘/tmp/RtmpOPYl1n/downloaded_packages’
+	‘/tmp/RtmpyXzx1z/downloaded_packages’
 Successfully installed: gridpattern 
 
 Installing ggpattern...
@@ -170,7 +157,7 @@ downloaded 3.0 MB
 * DONE (ggpattern)
 
 The downloaded source packages are in
-	‘/tmp/RtmpOPYl1n/downloaded_packages’
+	‘/tmp/RtmpyXzx1z/downloaded_packages’
 Successfully installed: ggpattern 
 
 Installing gganimate...

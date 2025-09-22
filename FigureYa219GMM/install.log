@@ -33,7 +33,7 @@ downloaded 20.2 MB
 * DONE (miRBaseVersions.db)
 
 The downloaded source packages are in
-	‘/tmp/Rtmp5fzZQc/downloaded_packages’
+	‘/tmp/RtmpZrMOcQ/downloaded_packages’
 Successfully installed: miRBaseVersions.db 
 Installing Bioconductor package: miRBaseConverter 
 'getOption("repos")' replaces Bioconductor standard repositories, see
@@ -65,7 +65,7 @@ downloaded 1.9 MB
 * DONE (miRBaseConverter)
 
 The downloaded source packages are in
-	‘/tmp/Rtmp5fzZQc/downloaded_packages’
+	‘/tmp/RtmpZrMOcQ/downloaded_packages’
 Successfully installed: miRBaseConverter 
 Package already installed: SimDesign 
 

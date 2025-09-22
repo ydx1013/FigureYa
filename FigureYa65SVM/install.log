@@ -20,6 +20,8 @@ Replacement repositories:
     CRAN: https://cloud.r-project.org/
 Bioconductor version 3.21 (BiocManager 1.30.26), R 4.5.1 (2025-06-13)
 Installing package(s) 'sigFeature'
+also installing the dependencies ‘RBGL’, ‘RUnit’, ‘biocViews’
+
 ✓ Successfully installed: sigFeature
 
 Installing other Bioconductor packages...

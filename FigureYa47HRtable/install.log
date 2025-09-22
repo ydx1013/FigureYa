@@ -58,7 +58,7 @@ trying URL 'https://cloud.r-project.org/src/contrib/kableExtra_1.4.0.tar.gz'
 * DONE (kableExtra)
 
 The downloaded source packages are in
-	‘/tmp/RtmpTt1In2/downloaded_packages’
+	‘/tmp/RtmpAoFVMF/downloaded_packages’
 Successfully installed: kableExtra 
 Package already installed: officer 
 Package already installed: survival 

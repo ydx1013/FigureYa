@@ -6,10 +6,7 @@
 ✅ 已安装: dplyr 
 ✅ 已安装: ggplot2 
 ✅ 已安装: muhaz 
-安装: openxlsx 
-also installing the dependencies ‘operator.tools’, ‘formula.tools’
-
-✅ 成功安装: openxlsx 
+✅ 已安装: openxlsx 
 ✅ 已安装: survival 
 ✅ 已安装: survminer 
 ✅ 已安装: remotes 
@@ -43,7 +40,7 @@ A version of this package for your version of R might be available elsewhere,
 see the ideas at
 https://cran.r-project.org/doc/manuals/r-patched/R-admin.html#Installing-packages 
 2: In i.p(...) :
-  installation of package ‘/tmp/Rtmpb6VqJI/remotes3bc4f769222f7/extrafont’ had non-zero exit status
+  installation of package ‘/tmp/RtmpjUPif9/remotes3bd6a243fca1d/extrafont’ had non-zero exit status
 验证安装...
 ✅ survival 安装成功
 ✅ survminer 安装成功

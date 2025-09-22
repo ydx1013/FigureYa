@@ -2,77 +2,18 @@ Starting R package installation...
 ===========================================
 
 Installing Bioconductor packages...
-Installing Bioconductor package(s): ClassDiscovery, impute 
+Installing Bioconductor package(s): impute 
 'getOption("repos")' replaces Bioconductor standard repositories, see
 'help("repositories", package = "BiocManager")' for details.
 Replacement repositories:
     CRAN: https://cloud.r-project.org/
 Bioconductor version 3.21 (BiocManager 1.30.26), R 4.5.1 (2025-06-13)
-Installing package(s) 'ClassDiscovery', 'impute'
-also installing the dependencies ‘oompaBase’, ‘mclust’, ‘oompaData’
-
-trying URL 'https://cloud.r-project.org/src/contrib/oompaBase_3.2.10.tar.gz'
-trying URL 'https://cloud.r-project.org/src/contrib/mclust_6.1.1.tar.gz'
-trying URL 'https://cloud.r-project.org/src/contrib/oompaData_3.1.5.tar.gz'
-trying URL 'https://cloud.r-project.org/src/contrib/ClassDiscovery_3.4.9.tar.gz'
+Installing package(s) 'impute'
 trying URL 'https://bioconductor.org/packages/3.21/bioc/src/contrib/impute_1.82.0.tar.gz'
-* installing *source* package ‘oompaBase’ ...
-** this is package ‘oompaBase’ version ‘3.2.10’
-** package ‘oompaBase’ successfully unpacked and MD5 sums checked
-** using staged installation
-** R
-** inst
-** byte-compile and prepare package for lazy loading
-** help
-*** installing help indices
-** building package indices
-** installing vignettes
-** testing if installed package can be loaded from temporary location
-** testing if installed package can be loaded from final location
-** testing if installed package keeps a record of temporary installation path
-* DONE (oompaBase)
-* installing *source* package ‘mclust’ ...
-** this is package ‘mclust’ version ‘6.1.1’
-** package ‘mclust’ successfully unpacked and MD5 sums checked
-** using staged installation
-** libs
-using C compiler: ‘gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0’
-using Fortran compiler: ‘GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0’
-gfortran  -fpic  -g -O2  -c dmvnorm.f -o dmvnorm.o
-gcc -std=gnu2x -I"/opt/R/4.5.1/lib/R/include" -DNDEBUG   -I/usr/local/include    -fpic  -g -O2  -c init.c -o init.o
-gfortran  -fpic  -g -O2  -c logsumexp.f -o logsumexp.o
-gfortran  -fpic  -g -O2  -c mclust.f -o mclust.o
-gfortran  -fpic  -g -O2  -c mclustaddson.f -o mclustaddson.o
-gcc -std=gnu2x -shared -L/opt/R/4.5.1/lib/R/lib -L/usr/local/lib -o mclust.so dmvnorm.o init.o logsumexp.o mclust.o mclustaddson.o -llapack -lblas -lgfortran -lm -lquadmath -lgfortran -lm -lquadmath -L/opt/R/4.5.1/lib/R/lib -lR
-installing to /home/runner/work/_temp/Library/00LOCK-mclust/00new/mclust/libs
-** R
-** data
-*** moving datasets to lazyload DB
-** inst
-** byte-compile and prepare package for lazy loading
-** help
-*** installing help indices
-*** copying figures
-** building package indices
-** installing vignettes
-** testing if installed package can be loaded from temporary location
-** checking absolute paths in shared objects and dynamic libraries
-** testing if installed package can be loaded from final location
-** testing if installed package keeps a record of temporary installation path
-* DONE (mclust)
-* installing *source* package ‘oompaData’ ...
-** this is package ‘oompaData’ version ‘3.1.5’
-** package ‘oompaData’ successfully unpacked and MD5 sums checked
-** using staged installation
-** data
-*** moving datasets to lazyload DB
-** help
-*** installing help indices
-** building package indices
-** testing if installed package can be loaded from temporary location
-** testing if installed package can be loaded from final location
-** testing if installed package keeps a record of temporary installation path
-* DONE (oompaData)
+Content type 'application/x-gzip' length 641588 bytes (626 KB)
+==================================================
+downloaded 626 KB
+
 * installing *source* package ‘impute’ ...
 ** this is package ‘impute’ version ‘1.82.0’
 ** using staged installation
@@ -102,25 +43,10 @@ installing to /home/runner/work/_temp/Library/00LOCK-impute/00new/impute/libs
 ** testing if installed package can be loaded from final location
 ** testing if installed package keeps a record of temporary installation path
 * DONE (impute)
-* installing *source* package ‘ClassDiscovery’ ...
-** this is package ‘ClassDiscovery’ version ‘3.4.9’
-** package ‘ClassDiscovery’ successfully unpacked and MD5 sums checked
-** using staged installation
-** R
-** inst
-** byte-compile and prepare package for lazy loading
-** help
-*** installing help indices
-** building package indices
-** installing vignettes
-** testing if installed package can be loaded from temporary location
-** testing if installed package can be loaded from final location
-** testing if installed package keeps a record of temporary installation path
-* DONE (ClassDiscovery)
 
 The downloaded source packages are in
-	‘/tmp/RtmpeBuET2/downloaded_packages’
-Successfully installed: ClassDiscovery, impute 
+	‘/tmp/RtmpqQyY96/downloaded_packages’
+Successfully installed: impute 
 
 Installing CRAN packages...
 Installing CRAN package: WGCNA 
@@ -234,7 +160,7 @@ installing to /home/runner/work/_temp/Library/00LOCK-WGCNA/00new/WGCNA/libs
 * DONE (WGCNA)
 
 The downloaded source packages are in
-	‘/tmp/RtmpeBuET2/downloaded_packages’
+	‘/tmp/RtmpqQyY96/downloaded_packages’
 Successfully installed: WGCNA 
 Package already installed: gplots 
 Package already installed: pheatmap 

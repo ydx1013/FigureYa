@@ -25,7 +25,7 @@ downloaded 2367 bytes
 * DONE (nomogramEx)
 
 The downloaded source packages are in
-	‘/tmp/RtmpqTs6zL/downloaded_packages’
+	‘/tmp/Rtmpg3v4aP/downloaded_packages’
 Successfully installed: nomogramEx 
 Installing CRAN package: regplot 
 Installing package into ‘/home/runner/work/_temp/Library’
@@ -80,7 +80,7 @@ trying URL 'https://cloud.r-project.org/src/contrib/regplot_1.1.tar.gz'
 * DONE (regplot)
 
 The downloaded source packages are in
-	‘/tmp/RtmpqTs6zL/downloaded_packages’
+	‘/tmp/Rtmpg3v4aP/downloaded_packages’
 Successfully installed: regplot 
 Package already installed: rms 
 Package already installed: survival 

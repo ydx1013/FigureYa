@@ -49,7 +49,7 @@ trying URL 'https://cloud.r-project.org/src/contrib/grImport2_0.3-3.tar.gz'
 * DONE (grImport2)
 
 The downloaded source packages are in
-	‘/tmp/RtmpWJ5Y82/downloaded_packages’
+	‘/tmp/RtmpN9HbHY/downloaded_packages’
 Successfully installed: grImport2 
 
 Installing CRAN packages...
@@ -80,7 +80,7 @@ downloaded 4.8 MB
 * DONE (RIdeogram)
 
 The downloaded source packages are in
-	‘/tmp/RtmpWJ5Y82/downloaded_packages’
+	‘/tmp/RtmpN9HbHY/downloaded_packages’
 Successfully installed: RIdeogram 
 Package already installed: knitr 
 
