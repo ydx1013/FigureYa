@@ -152,14 +152,14 @@ installing to /home/runner/work/_temp/Library/00LOCK-tm/00new/tm/libs
 * DONE (lsa)
 
 The downloaded source packages are in
-	‘/tmp/Rtmp39TVye/downloaded_packages’
+	‘/tmp/RtmpggTY87/downloaded_packages’
 Successfully installed: lsa 
 Installing CRAN package: magicaxis 
 Installing package into ‘/home/runner/work/_temp/Library’
 (as ‘lib’ is unspecified)
 also installing the dependencies ‘bmp’, ‘tiff’, ‘NISTunits’, ‘readbitmap’, ‘fstcore’, ‘celestial’, ‘sm’, ‘RANN’, ‘imager’, ‘fst’
 
-trying URL 'https://cloud.r-project.org/src/contrib/bmp_0.3.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/bmp_0.3.1.tar.gz'
 trying URL 'https://cloud.r-project.org/src/contrib/tiff_0.1-12.tar.gz'
 trying URL 'https://cloud.r-project.org/src/contrib/NISTunits_1.0.1.tar.gz'
 trying URL 'https://cloud.r-project.org/src/contrib/readbitmap_0.1.5.tar.gz'
@@ -171,7 +171,7 @@ trying URL 'https://cloud.r-project.org/src/contrib/imager_1.0.5.tar.gz'
 trying URL 'https://cloud.r-project.org/src/contrib/fst_0.9.8.tar.gz'
 trying URL 'https://cloud.r-project.org/src/contrib/magicaxis_2.5.1.tar.gz'
 * installing *source* package ‘bmp’ ...
-** this is package ‘bmp’ version ‘0.3’
+** this is package ‘bmp’ version ‘0.3.1’
 ** package ‘bmp’ successfully unpacked and MD5 sums checked
 ** using staged installation
 ** R
@@ -469,7 +469,7 @@ installing to /home/runner/work/_temp/Library/00LOCK-imager/00new/imager/libs
 * DONE (magicaxis)
 
 The downloaded source packages are in
-	‘/tmp/Rtmp39TVye/downloaded_packages’
+	‘/tmp/RtmpggTY87/downloaded_packages’
 Successfully installed: magicaxis 
 Package already installed: parallel 
 Installing CRAN package: relations 
@@ -542,7 +542,7 @@ ERROR: configuration failed for package ‘Rsymphony’
 * DONE (relations)
 
 The downloaded source packages are in
-	‘/tmp/Rtmp39TVye/downloaded_packages’
+	‘/tmp/RtmpggTY87/downloaded_packages’
 Successfully installed: relations 
 Installing CRAN package: shinydashboard 
 Installing package into ‘/home/runner/work/_temp/Library’
@@ -568,7 +568,7 @@ downloaded 229 KB
 * DONE (shinydashboard)
 
 The downloaded source packages are in
-	‘/tmp/Rtmp39TVye/downloaded_packages’
+	‘/tmp/RtmpggTY87/downloaded_packages’
 Successfully installed: shinydashboard 
 Installing CRAN package: shinyjs 
 Installing package into ‘/home/runner/work/_temp/Library’
@@ -623,7 +623,7 @@ trying URL 'https://cloud.r-project.org/src/contrib/shinyjs_2.1.0.tar.gz'
 * DONE (shinyjs)
 
 The downloaded source packages are in
-	‘/tmp/Rtmp39TVye/downloaded_packages’
+	‘/tmp/RtmpggTY87/downloaded_packages’
 Successfully installed: shinyjs 
 Package already installed: stringr 
 Package already installed: tibble 
@@ -812,7 +812,7 @@ installing to /home/runner/work/_temp/Library/00LOCK-PharmacoGx/00new/PharmacoGx
 * DONE (PharmacoGx)
 
 The downloaded source packages are in
-	‘/tmp/Rtmp39TVye/downloaded_packages’
+	‘/tmp/RtmpggTY87/downloaded_packages’
 Successfully installed: PharmacoGx 
 Package already installed: CoreGx 
 Installing Bioconductor package: clusterProfiler 
@@ -857,7 +857,7 @@ trying URL 'https://bioconductor.org//packages/3.21/bioc/src/contrib/clusterProf
 * DONE (clusterProfiler)
 
 The downloaded source packages are in
-	‘/tmp/Rtmp39TVye/downloaded_packages’
+	‘/tmp/RtmpggTY87/downloaded_packages’
 Successfully installed: clusterProfiler 
 
 ===========================================

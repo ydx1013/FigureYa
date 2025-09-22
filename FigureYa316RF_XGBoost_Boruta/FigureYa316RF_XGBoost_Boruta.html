@@ -355,7 +355,7 @@ display: none;
 
 <p><strong>Author(s)</strong>: Guoqi Li; Yasi Zhang<br />
 <strong>Reviewer(s)</strong>: Ying Ge<br />
-<strong>Date</strong>: <code>r Sys.Date()</code></p>
+<strong>Date</strong>: 2025-09-22</p>
 <div id="academic-citation" class="section level1">
 <h1>Academic Citation</h1>
 <p>If you use this code in your work or research, we kindly request that
@@ -850,7 +850,7 @@ boruta &lt;- Boruta(group ~ ., data = Boruta_input, doTrace = 2, maxRuns = 500)<
 <pre><code>##  25. run of importance source...</code></pre>
 <pre><code>##  26. run of importance source...</code></pre>
 <pre><code>##  27. run of importance source...</code></pre>
-<pre><code>## After 27 iterations, +0.93 secs:</code></pre>
+<pre><code>## After 27 iterations, +0.92 secs:</code></pre>
 <pre><code>##  rejected 1 attribute: cg00013618;</code></pre>
 <pre><code>##  still have 22 attributes left.</code></pre>
 <pre><code>##  28. run of importance source...</code></pre>
@@ -1168,7 +1168,7 @@ boruta &lt;- Boruta(group ~ ., data = Boruta_input, doTrace = 2, maxRuns = 500)<
 <pre><code>##  294. run of importance source...</code></pre>
 <pre><code>##  295. run of importance source...</code></pre>
 <pre><code>##  296. run of importance source...</code></pre>
-<pre><code>## After 296 iterations, +8.4 secs:</code></pre>
+<pre><code>## After 296 iterations, +8.5 secs:</code></pre>
 <pre><code>##  confirmed 1 attribute: cg00033304;</code></pre>
 <pre><code>##  still have 4 attributes left.</code></pre>
 <pre><code>##  297. run of importance source...</code></pre>
@@ -1380,7 +1380,7 @@ boruta &lt;- Boruta(group ~ ., data = Boruta_input, doTrace = 2, maxRuns = 500)<
 <pre class="r"><code># 查看结果
 # View results
 print(boruta)</code></pre>
-<pre><code>## Boruta performed 499 iterations in 14.05229 secs.
+<pre><code>## Boruta performed 499 iterations in 14.17835 secs.
 ##  18 attributes confirmed important: cg00014561, cg00032686, cg00033304,
 ## cg00039564, cg00040419 and 13 more;
 ##  29 attributes confirmed unimportant: cg00008544, cg00013006,
@@ -1407,7 +1407,7 @@ dev.off()</code></pre>
 # Resolve tentative features using TentativeRoughFix method
 bor &lt;- TentativeRoughFix(boruta)
 print(bor)</code></pre>
-<pre><code>## Boruta performed 499 iterations in 14.05229 secs.
+<pre><code>## Boruta performed 499 iterations in 14.17835 secs.
 ## Tentatives roughfixed over the last 499 iterations.
 ##  20 attributes confirmed important: cg00014561, cg00032686, cg00033304,
 ## cg00039564, cg00040419 and 15 more;

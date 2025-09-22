@@ -355,7 +355,7 @@ display: none;
 
 <p><strong>Author(s)</strong>: Shipeng Guo, Taojun Ye<br />
 <strong>Reviewer(s)</strong>: Ying Ge<br />
-<strong>Date</strong>: <code>r Sys.Date()</code></p>
+<strong>Date</strong>: 2025-09-22</p>
 <div id="academic-citation" class="section level1">
 <h1>Academic Citation</h1>
 <p>If you use this code in your work or research, we kindly request that
@@ -1047,7 +1047,7 @@ system.time(
   data &lt;- future_lapply(rownames(tcga_expr), my_cor, y)
 )</code></pre>
 <pre><code>##    user  system elapsed 
-##  88.257   0.088  88.370</code></pre>
+##  94.839   0.086  94.948</code></pre>
 <pre class="r"><code># 将结果整理成数据框格式
 # Convert results into a data frame
 result1 &lt;- data.frame(
@@ -1115,7 +1115,7 @@ system.time(
   data &lt;- future_lapply(rownames(tcga_expr), my_cor, y)
 )</code></pre>
 <pre><code>##    user  system elapsed 
-##  87.193   0.032  87.246</code></pre>
+##  93.309   0.052  93.377</code></pre>
 <pre class="r"><code># 将结果整理成数据框格式
 # Convert results into a data frame
 result2 &lt;- data.frame(

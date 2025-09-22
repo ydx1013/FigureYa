@@ -41,7 +41,7 @@ trying URL 'https://cloud.r-project.org/src/contrib/ResourceSelection_0.3-6.tar.
 * DONE (ResourceSelection)
 
 The downloaded source packages are in
-	‘/tmp/RtmpctLyJK/downloaded_packages’
+	‘/tmp/RtmpLFALpt/downloaded_packages’
 Successfully installed: ResourceSelection 
 Package already installed: rms 
 Package already installed: scales 

@@ -30,7 +30,7 @@ Backtrace:
     ▆
  1. └─base::library(Sushi)
 
-Quitting from FigureYa82IGVzoom.Rmd:59-73 [unnamed-chunk-1]
+Quitting from FigureYa82IGVzoom.Rmd:58-72 [unnamed-chunk-1]
 Execution halted
 -----------------------------------
 [SUCCESS] - ./FigureYa51TMB_update/FigureYa51TMB_update.Rmd
@@ -46,14 +46,7 @@ Execution halted
 [SUCCESS] - ./FigureYa251NPHSurv/FigureYa251NPHSurv.Rmd
 [SUCCESS] - ./FigureYa278heatmapPoints/FigureYa278heatmapPoints.Rmd
 [SUCCESS] - ./FigureYa59Plus_GEO2DEG/FigureYa59Plus_GEO2DEG.Rmd
-[FAILED] - ./FigureYa114ternaryCluster/FigureYa114ternaryCluster.Rmd
---- Error Log for ./FigureYa114ternaryCluster/FigureYa114ternaryCluster.Rmd ---
-Error:
-! cannot change value of locked binding for 'params'
-
-Quitting from FigureYa114ternaryCluster.Rmd:135-152 [unnamed-chunk-4]
-Execution halted
------------------------------------
+[SUCCESS] - ./FigureYa114ternaryCluster/FigureYa114ternaryCluster.Rmd
 [SUCCESS] - ./FigureYa12box/FigureYa12box.Rmd
 [SKIPPED] - ./FigureYa243scMarkerGroupHeatmap/FigureYa243scMarkerGroupHeatmap.Rmd (Not listed in auto_Knit_online.txt)
 [SUCCESS] - ./FigureYa103coAbundant/FigureYa103coAbundant.Rmd
@@ -78,6 +71,14 @@ Execution halted
 [SUCCESS] - ./FigureYa33DCA_update/FigureYa33DCA_update.Rmd
 [SKIPPED] - ./FigureYa128Prognostic/FigureYa128Prognostic.Rmd (Not listed in auto_Knit_online.txt)
 [SUCCESS] - ./FigureYa282CMAP_XSum/FigureYa282CMAP_XSum.Rmd
+[FAILED] - ./FigureYa14circos/FigureYa14circos.Rmd
+--- Error Log for ./FigureYa14circos/FigureYa14circos.Rmd ---
+Error:
+! object '.' not found
+
+Quitting from FigureYa14circos.Rmd:71-73 [unnamed-chunk-1]
+Execution halted
+-----------------------------------
 [SUCCESS] - ./FigureYa138NiceCalibration/FigureYa138NiceCalibration.Rmd
 [SKIPPED] - ./FigureYa238corRiskMut/FigureYa238corRiskMut.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa166scCNV/FigureYa166scCNV.Rmd (Not listed in auto_Knit_online.txt)
@@ -184,14 +185,7 @@ Execution halted
 [SUCCESS] - ./FigureYa173fancybar/FigureYa173fancybar.Rmd
 [SKIPPED] - ./FigureYa185sciATAC/FigureYa185sciATAC.Rmd (Not listed in auto_Knit_online.txt)
 [SUCCESS] - ./FigureYa117multilinearDE/FigureYa117multilinearDE.Rmd
-[FAILED] - ./FigureYa109SubtypeGSEA_update/FigureYa109SubtypeGSEA_update.Rmd
---- Error Log for ./FigureYa109SubtypeGSEA_update/FigureYa109SubtypeGSEA_update.Rmd ---
-Error:
-! cannot change value of locked binding for 'params'
-
-Quitting from FigureYa109SubtypeGSEA_update.Rmd:333-370 [unnamed-chunk-5]
-Execution halted
------------------------------------
+[SUCCESS] - ./FigureYa109SubtypeGSEA_update/FigureYa109SubtypeGSEA_update.Rmd
 [SKIPPED] - ./FigureYa216MetaREM/FigureYa216MetaREM.Rmd (Not listed in auto_Knit_online.txt)
 [SUCCESS] - ./FigureYa26circos_R/FigureYa26circos_R.Rmd
 [SKIPPED] - ./FigureYa179AMDAplot/FigureYa179AMDAplot.Rmd (Not listed in auto_Knit_online.txt)
@@ -244,14 +238,7 @@ Execution halted
 [SUCCESS] - ./FigureYa135multiVolcano/FigureYa135multiVolcano.Rmd
 [SUCCESS] - ./FigureYa115cofactor/FigureYa115cofactor.Rmd
 [SUCCESS] - ./FigureYa48Adonis/FigureYa48Adonis.Rmd
-[FAILED] - ./FigureYa127HeatmapPie/FigureYa127HeatmapPie.Rmd
---- Error Log for ./FigureYa127HeatmapPie/FigureYa127HeatmapPie.Rmd ---
-Error:
-! cannot change value of locked binding for 'params'
-
-Quitting from FigureYa127HeatmapPie.Rmd:133-172 [unnamed-chunk-3]
-Execution halted
------------------------------------
+[SUCCESS] - ./FigureYa127HeatmapPie/FigureYa127HeatmapPie.Rmd
 [SUCCESS] - ./FigureYa233genepair/FigureYa233genepair.Rmd
 [SKIPPED] - ./FigureYa291PancanProgSigatureV2/FigureYa291PancanProgSigatureV2.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa224scMarker/FigureYa224scMarker.Rmd (Not listed in auto_Knit_online.txt)
@@ -261,14 +248,7 @@ Execution halted
 [SUCCESS] - ./FigureYa124AssociationHeatmap/FigureYa124AssociationHeatmap.Rmd
 [SUCCESS] - ./FigureYa207Randomization/FigureYa207Randomization.Rmd
 [SUCCESS] - ./FigureYa77baseZoom/FigureYa77baseZoom.Rmd
-[FAILED] - ./FigureYa95pairwise/FigureYa95pairwise.Rmd
---- Error Log for ./FigureYa95pairwise/FigureYa95pairwise.Rmd ---
-Error:
-! cannot change value of locked binding for 'params'
-
-Quitting from FigureYa95pairwise.Rmd:225-256 [unnamed-chunk-5]
-Execution halted
------------------------------------
+[SUCCESS] - ./FigureYa95pairwise/FigureYa95pairwise.Rmd
 [SUCCESS] - ./FigureYa142circosBar/FigureYa142circosBar.Rmd
 [SUCCESS] - ./FigureYa47HRtable/FigureYa47HRtable.Rmd
 [SUCCESS] - ./FigureYa303panCircos/FigureYa303panCircos.Rmd

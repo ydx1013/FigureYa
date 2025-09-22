@@ -66,7 +66,7 @@ trying URL 'https://cloud.r-project.org/src/contrib/survMisc_0.5.6.tar.gz'
 * DONE (survMisc)
 
 The downloaded source packages are in
-	‘/tmp/RtmpO99RzU/downloaded_packages’
+	‘/tmp/RtmpLvivs3/downloaded_packages’
 Successfully installed: survMisc 
 Package already installed: survival 
 

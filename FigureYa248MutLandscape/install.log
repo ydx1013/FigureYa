@@ -34,7 +34,7 @@ installing to /home/runner/work/_temp/Library/00LOCK-png/00new/png/libs
 * DONE (png)
 
 The downloaded source packages are in
-	‘/tmp/Rtmp6uc0Xm/downloaded_packages’
+	‘/tmp/Rtmpe3gP8y/downloaded_packages’
 Successfully installed: png 
 Installing CRAN package: jpeg 
 Installing package into ‘/home/runner/work/_temp/Library’
@@ -68,7 +68,7 @@ installing to /home/runner/work/_temp/Library/00LOCK-jpeg/00new/jpeg/libs
 * DONE (jpeg)
 
 The downloaded source packages are in
-	‘/tmp/Rtmp6uc0Xm/downloaded_packages’
+	‘/tmp/Rtmpe3gP8y/downloaded_packages’
 Successfully installed: jpeg 
 
 NOTE: If you encounter errors for packages like 'png', 'systemfonts', 'curl', or 'xml2',
@@ -516,7 +516,7 @@ Creating a generic function for ‘smoothEnds’ from package ‘stats’ in pac
 * DONE (ComplexHeatmap)
 
 The downloaded source packages are in
-	‘/tmp/Rtmp6uc0Xm/downloaded_packages’
+	‘/tmp/Rtmpe3gP8y/downloaded_packages’
 Successfully installed: ComplexHeatmap 
 
 ===========================================

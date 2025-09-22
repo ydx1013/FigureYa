@@ -40,7 +40,7 @@ A version of this package for your version of R might be available elsewhere,
 see the ideas at
 https://cran.r-project.org/doc/manuals/r-patched/R-admin.html#Installing-packages 
 2: In i.p(...) :
-  installation of package ‘/tmp/RtmpjUPif9/remotes3bd6a243fca1d/extrafont’ had non-zero exit status
+  installation of package ‘/tmp/RtmpkaA551/remotes3bd275c3a0d83/extrafont’ had non-zero exit status
 验证安装...
 ✅ survival 安装成功
 ✅ survminer 安装成功

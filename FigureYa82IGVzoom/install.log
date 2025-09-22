@@ -92,7 +92,7 @@ installing to /home/runner/work/_temp/Library/00LOCK-mclust/00new/mclust/libs
 * DONE (ClassDiscovery)
 
 The downloaded source packages are in
-	‘/tmp/RtmpBxNfJB/downloaded_packages’
+	‘/tmp/RtmpwZI2Xl/downloaded_packages’
 Successfully installed: ClassDiscovery 
 Installing Bioconductor package: Sushi 
 'getOption("repos")' replaces Bioconductor standard repositories, see
