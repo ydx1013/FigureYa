@@ -3,7 +3,7 @@ title: "FigureYa275scAUCell"
 params:
   author: "Xiao Gu; Yasi Zhang"  
   reviewer: "Ying Ge"
-  date: "2025-05-20"
+  date: "`r Sys.Date()`"
 output: html_document
 ---
 
