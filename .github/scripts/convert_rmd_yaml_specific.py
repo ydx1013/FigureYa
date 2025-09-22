@@ -1,6 +1,13 @@
 import sys
 import yaml
 
+class QuotedString(str): pass
+
+def quoted_presenter(dumper, data):
+    return dumper.represent_scalar('tag:yaml.org,2002:str', data, style='"')
+
+yaml.add_representer(QuotedString, quoted_presenter)
+
 def split_yaml_and_body(text):
     if not text.startswith('---'):
         return None, text
@@ -33,9 +40,9 @@ def process_file(rmd_path):
     date = data.pop('date', '')
 
     params = {}
-    if author: params['author'] = author
-    if reviewer: params['reviewer'] = reviewer
-    if date: params['date'] = date
+    if author: params['author'] = QuotedString(author)
+    if reviewer: params['reviewer'] = QuotedString(reviewer)
+    if date: params['date'] = QuotedString(date)
 
     new_yaml = {'title': title}
     if params:
