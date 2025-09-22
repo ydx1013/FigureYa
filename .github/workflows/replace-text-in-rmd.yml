@@ -18,28 +18,36 @@ jobs:
         echo "Matched files:"
         find . -type f -iname "*.rmd"
 
-    - name: Install Python dependencies
+    - name: Remove date line from RMD files
       run: |
-        pip install pyyaml
-
-    - name: Convert Rmd YAML to params format
-      run: |
-        python .github/scripts/convert_rmd_yaml_specific.py
+        # 查找所有Rmd文件并删除包含 date: 的行
+        find . -name "*.Rmd" -o -name "*.rmd" | while read file; do
+          echo "Processing $file"
+          # 删除包含 date: 的行（包括带r表达式和不带r表达式的）
+          sed -i '/date:.*Sys.Date()/d' "$file"
+          sed -i '/date:.*[0-9]\{4\}-[0-9]\{2\}-[0-9]\{2\}/d' "$file"
+          sed -i '/^[[:space:]]*date:/d' "$file"
+        done
 
     - name: Debug - Show Changes
       run: |
         echo "Changes:"
         git status --short
+        echo "Modified files content:"
+        git diff --name-only | head -5 | while read file; do
+          echo "--- $file ---"
+          git diff "$file" | head -10
+        done
 
     - name: Commit Changes to New Branch
       run: |
         git config --global user.name "github-actions[bot]"
         git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-        branch="fix-rmd-date-$(date +%Y%m%d%H%M%S)"
+        branch="remove-rmd-date-$(date +%Y%m%d%H%M%S)"
         git checkout -b "$branch"
         if ! git diff --quiet; then
           git add .
-          git commit -m "Automated Rmd YAML conversion to params format"
+          git commit -m "Remove date lines from Rmd files"
           git push origin "$branch"
           echo "Pushed to branch: $branch"
         else
