@@ -1,9 +1,14 @@
 ---
-title: "FigureYa20 mortality"
-author: "Guangchuang Yu; Ying Ge, Yijing Chen"
-date: "`r Sys.Date()`"
+title: FigureYa20 mortality
+params:
+  author: "Guangchuang Yu; Ying Ge, Yijing Chen"
+  date: "`r Sys.Date()`"
 output: html_document
 ---
+
+**Author(s)**: `r params$author`  
+**Date**: `r params$date`  
+
 
 [<img src="https://guangchuangyu.github.io/blog_images/biobabble.jpg" width="100px"/>](https://guangchuangyu.github.io/blog_images/biobabble.jpg) 
 

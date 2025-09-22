@@ -1,9 +1,14 @@
 ---
-title: "FigureYa13GSEA_JavaV2_update"
-author: "Guangchuang Yu; Ying Ge, Yijing Chen"
-date: "`r Sys.Date()`"
+title: FigureYa13GSEA_JavaV2_update
+params:
+  author: "Guangchuang Yu; Ying Ge, Yijing Chen"
+  date: "`r Sys.Date()`"
 output: html_document
 ---
+
+**Author(s)**: `r params$author`  
+**Date**: `r params$date`  
+
 
 # Academic Citation
 If you use this code in your work or research, we kindly request that you cite our publication:

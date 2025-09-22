@@ -1,9 +1,14 @@
 ---
-title: "Trajectory Analysis"
-author: "Jarning"
-date: "`r Sys.Date()`"
+title: Trajectory Analysis
+params:
+  author: "Jarning"
+  date: "`r Sys.Date()`"
 output: html_document
 ---
+
+**Author(s)**: `r params$author`  
+**Date**: `r params$date`  
+
 # Academic Citation
 If you use this code in your work or research, we kindly request that you cite our publication:
 
@@ -171,5 +176,4 @@ cowplot::plot_grid(p1,p2, ncol = 2)
 ```{r}
 saveRDS(monocle_cds, "tmp/s6-fib_monocle.rds")
 ```
-
 

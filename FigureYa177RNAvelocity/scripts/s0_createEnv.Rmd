@@ -1,9 +1,14 @@
 ---
-title: "Create Environment"
-author: "Jarning"
-date: "`r Sys.Date()`"
+title: Create Environment
+params:
+  author: "Jarning"
+  date: "`r Sys.Date()`"
 output: html_document
 ---
+
+**Author(s)**: `r params$author`  
+**Date**: `r params$date`  
+
 # Academic Citation
 If you use this code in your work or research, we kindly request that you cite our publication:
 
@@ -58,4 +63,3 @@ library(scmap, lib.loc = newpath)
 library(DESeq2, lib.loc = newpath)
 library(IHW, lib.loc = newpath)
 ```
-

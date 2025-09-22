@@ -1,10 +1,15 @@
 ---
-title: "FigureYa229PCOA"
-author: "Xiaofan Lu"
-reviewers: "Ying Ge,Hui Huang"
-date: "`r Sys.Date()`"
+title: FigureYa229PCOA
+params:
+  author: "Xiaofan Lu"
+  date: "`r Sys.Date()`"
 output: html_document
+reviewers: Ying Ge,Hui Huang
 ---
+
+**Author(s)**: `r params$author`  
+**Date**: `r params$date`  
+
 # Academic Citation
 If you use this code in your work or research, we kindly request that you cite our publication:
 
