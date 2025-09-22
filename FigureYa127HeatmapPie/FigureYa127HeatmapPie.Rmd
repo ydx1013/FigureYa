@@ -160,9 +160,9 @@ goterms
 # 基于基因表达矩阵进行GSVA富集分析，评估基因集活性（Perform GSVA enrichment analysis to evaluate gene set activity）
 # 构造GSVA参数对象（指定表达数据和基因集列表）
 # Construct GSVA parameter object (specify expression data and gene set list)
-params <- gsvaParam(exprData = as.matrix(expr2[, names(sam.order)]), 
+gsva_params <- gsvaParam(exprData = as.matrix(expr2[, names(sam.order)]), 
                            geneSets = go.list)
-enrich.go <- gsva(params)
+enrich.go <- gsva(gsva_params)
 
 # 计算每个通路活性与TIM-3表达量的Spearman相关性（非参数检验，不依赖数据分布）
 # Calculate Spearman correlation between pathway activities and TIM-3 expression (non-parametric test, distribution-free)
