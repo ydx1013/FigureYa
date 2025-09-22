@@ -18,14 +18,11 @@ jobs:
         echo "Matched files:"
         find . -type f -iname "*.rmd"
 
-    - name: Remove date line from RMD files
+    - name: Remove GDCdata Folder
       run: |
-        # 查找所有Rmd文件并替换日期模式
-        find . -name "*.Rmd" -o -name "*.rmd" | while read file; do
-          echo "Processing $file"
-          # 将 **Date**: `r params$date` 替换为 **Date**: `r Sys.Date()`
-          sed -i 's/\*\*Date\*\*: `r params\$date`/\*\*Date\*\*: `r Sys.Date()`/g' "$file"
-        done
+        echo "Trying to remove GDCdata folder..."
+        find . -type d -name "GDCdata" -exec rm -rf {} +
+        echo "Removed GDCdata folders if found."
 
     - name: Debug - Show Changes
       run: |
@@ -41,11 +38,11 @@ jobs:
       run: |
         git config --global user.name "github-actions[bot]"
         git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-        branch="remove-rmd-date-$(date +%Y%m%d%H%M%S)"
+        branch="remove-gdcdata-folder-$(date +%Y%m%d%H%M%S)"
         git checkout -b "$branch"
         if ! git diff --quiet; then
           git add .
-          git commit -m "Remove date lines from Rmd files"
+          git commit -m "Remove GDCdata folder(s)"
           git push origin "$branch"
           echo "Pushed to branch: $branch"
         else
