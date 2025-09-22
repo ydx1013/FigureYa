@@ -1,7 +1,11 @@
 FigureYa167TumorIndex
 FigureYa167TumorIndex
-Rongfang Shen
-2025-5-20
+Author(s)
+: Rongfang Shen
+Reviewer(s)
+: Ying Ge, Junyi Shen
+Date
+: 2025-09-23
 Academic Citation
 If you use this code in your work or research, we kindly request that
 you cite our publication:
@@ -181,15 +185,15 @@ GSE56140 dataset: Cirrhotic liver (n = 34) and HCC (n = 35) samples
 Prepare the dataset: expression matrix and clinical group data,
 following standard GEO dataset usage, in Prepare_GEO.R.
 source("Prepare_GEO.R")
-gse6764dat <- data.frame(X = rownames(gse6764dat), gse6764dat)
-gse6764dat$X <- toupper(as.character(gse6764dat$X))
-gse56140dat <- data.frame(X = rownames(gse56140dat), gse56140dat)
-gse56140dat$X <- toupper(as.character(gse56140dat$X))
-datlist <- list(gse6764dat = gse6764dat, gse56140dat = gse56140dat)
+#gse6764dat <- data.frame(X = rownames(gse6764dat), gse6764dat)
+#gse6764dat$X <- toupper(as.character(gse6764dat$X))
+#gse56140dat <- data.frame(X = rownames(gse56140dat), gse56140dat)
+#gse56140dat$X <- toupper(as.character(gse56140dat$X))
+#datlist <- list(gse6764dat = gse6764dat, gse56140dat = gse56140dat)
 
 # 保存，便于下次使用
 # Save for future use
-save(datlist, gse56140pdata, gse6764pdata, file = "datlist.RData")
+# save(datlist, gse56140pdata, gse6764pdata, file = "datlist.RData")
 运行模型
 Run the model
 #train
