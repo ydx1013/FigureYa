@@ -14,16 +14,21 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-# 设置knitr的全局代码块选项 / Set global chunk options for knitr
 ```
+
+# Academic Citation
+If you use this code in your work or research, we kindly request that you cite our publication:
+
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
+
 
 ## 需求描述
 
-通过在线工具找到了哪个转录因子调控我的基因<https://mp.weixin.qq.com/s/wA6OE-tsD66KPjW6LPs32Q>，不想截屏，想DIY矢量图。用R来画这种类似IGV zoom in效果的信号分布图。
+通过在线工具找到了哪个转录因子调控我的基因，不想截屏，想DIY矢量图。用R来画这种类似IGV zoom in效果的信号分布图。
 
-##Requirement description
+## Requirement description
 
-I found which transcription factor regulates my genes through online tools< https://mp.weixin.qq.com/s/wA6OE-tsD66KPjW6LPs32Q >I don't want to take screenshots, I want to DIY vector graphics. Use R to draw a signal distribution diagram similar to the IGV zoom in effect.
+I found which transcription factor regulates my genes through online tools. I don't want to take screenshots, I want to DIY vector graphics. Use R to draw a signal distribution diagram similar to the IGV zoom in effect.
 
 ![](example.png)
 
@@ -39,8 +44,6 @@ Sushi包的优点：不限物种，不依赖于任何基因组文件，速度快
 
 **题外话：**Sushi包非常好用，还可以用来展示ChIA-PET、Hi-C等3D基因组数据，以及GWAS结果画Manhattan图。可参考Sushi文档的5 Appendix举例：<https://www.bioconductor.org/packages/devel/bioc/vignettes/Sushi/inst/doc/Sushi.pdf>
 
-在“小丫画图”公众号回复“IGV”，查看该图在更多paper里的应用。
-
 ##Application scenarios
 
 Simultaneously display ChIP seq, ATAC seq, DNase seq, RNA seq, GRO seq and other signals within a certain region.
@@ -49,29 +52,13 @@ The advantages of Sushi package: unlimited species, not dependent on any genome 
 
 **Off topic: The Sushi package is very useful and can also be used to display 3D genomic data such as ChIA PET, Hi-C, as well as GWAS results in a Manhattan plot. For example, please refer to Appendix 5 of the Sushi document:< https://www.bioconductor.org/packages/devel/bioc/vignettes/Sushi/inst/doc/Sushi.pdf >
 
-Reply to "IGV" on the official account of "Xiaoya Painting" to check the application of this picture in more papers.
-
 ## 环境设置
 
-使用国内镜像安装包
-
-##Environment settings
-
-Use domestic image installation package
-
-```r
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
-if (!requireNamespace("BiocManager", quietly = TRUE))
-    install.packages("BiocManager")
-BiocManager::install("Sushi", version = "3.8")
-```
-
-加载包
-
-library packages
+## Environment settings
 
 ```{r}
+source("install_dependencies.R")
+
 # 加载Sushi包，用于基因组数据可视化
 # Load the Sushi package for genomic data visualization
 library(Sushi)
@@ -87,7 +74,7 @@ options(stringsAsFactors = FALSE)
 
 ## 参数设置
 
-##Parameter settings
+## Parameter settings
 
 ```{r}
 # 定义要分析的染色体
@@ -131,15 +118,15 @@ ChIP-seq、ATAC-seq、DNase-seq、RNA-seq、GRO-seq的信号用bedgragh文件。
 
 此处展示了多种测序数据类型，实际操作中根据你需要的类型截取相应的代码来画。
 
-##Input file
+## Input file
 
 Sushi accepts input files such as bedgrain (. bdg), bedpe, bed, and interaction matrix.
 
 Bedgragh and bed files are required here. If your data type does not match, you can use the following methods for conversion:
 
--BAM file, can be converted to bedgragh, bedpe, or bed file using bedtools
--The gff file can be converted to a bed file using bedtools
--BW file, can be accessed from< http://hgdownload.soe.ucsc.edu/admin/exe/linux.x86_64/ >Download 'bigWigToBedGraph' and convert it to a. bdg file; Or use FigureYa3genomeView to draw.
+- BAM file, can be converted to bedgragh, bedpe, or bed file using bedtools
+- The gff file can be converted to a bed file using bedtools
+- BW file, can be accessed from <http://hgdownload.soe.ucsc.edu/admin/exe/linux.x86_64/> Download 'bigWigToBedGraph' and convert it to a .bdg file; Or use FigureYa3genomeView to draw.
 
 The signals of ChIP seq, ATAC seq, DNase seq, RNA seq, and GRO seq are recorded in bedgragh files.
 
@@ -184,7 +171,7 @@ head(h)
 
 ## 画图原理
 
-##Principles of Drawing
+## Principles of Drawing
 
 ![](anno.png)
 
@@ -192,7 +179,7 @@ head(h)
 
 大家画图时，请根据实际情况耐心调节layout和每个图的par部分。
 
-##Start drawing
+## Start drawing
 
 When drawing, please patiently adjust the layout and par section of each image according to the actual situation.
 
@@ -373,7 +360,7 @@ dev.off()  # 关闭PDF设备 / Close PDF device
 
 输出的pdf文件是矢量图，可以用Illustrator等软件编辑。例如加入染色体全局图和motif logo等等。
 
-##Attachment: Post processing
+## Attachment: Post processing
 
 The output PDF file is a vector image that can be edited using software such as Illustrator. For example, adding chromosome global maps and motif logos, etc.
 
@@ -381,7 +368,7 @@ The output PDF file is a vector image that can be edited using software such as 
 
 1. 先用“直线段工具”描边，然后右键选连接。
 
-###The method of adding background color in AI
+### The method of adding background color in AI
 
 1. First use the "Line Segment Tool" to stroke, then right-click and select "Connect".
 
@@ -401,17 +388,15 @@ The output PDF file is a vector image that can be edited using software such as 
 
 ### 根据矩阵生成motif logo的方法见SeqLogo文件夹
 
-在“小丫画图”公众号回复“motif”，查看motif矩阵的查询方法
-
-###The method of generating motif logos based on matrices can be found in the SeqLogo folder
-
-Reply to "motif" on "Xiaoya Pictorial" official account and check the query method of motif matrix
+### The method of generating motif logos based on matrices can be found in the SeqLogo folder
 
 ### 编辑后的效果：
 
-###The edited effect:
+### The edited effect:
 
 ![](Sushiplot_AImodified.pdf)
+
+# Session Info
 
 ```{r}
 sessionInfo()
