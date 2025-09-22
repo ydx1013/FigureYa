@@ -7,7 +7,7 @@ reviewers: Ying Ge,Hui Huang
 ---
 
 **Author(s)**: `r params$author`  
-**Date**: `r params$date`  
+**Date**: `r Sys.Date()`  
 
 # Academic Citation
 If you use this code in your work or research, we kindly request that you cite our publication:

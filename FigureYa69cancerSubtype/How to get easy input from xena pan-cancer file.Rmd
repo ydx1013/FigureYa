@@ -6,7 +6,7 @@ output: html_document
 ---
 
 **Author(s)**: `r params$author`  
-**Date**: `r params$date`  
+**Date**: `r Sys.Date()`  
 
 欢迎关注“小Ying画图”公众号，同名知识星球等你加入
 

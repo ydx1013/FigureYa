@@ -6,7 +6,7 @@ output: html_document
 ---
 
 **Author(s)**: `r params$author`  
-**Date**: `r params$date`  
+**Date**: `r Sys.Date()`  
 
 
 [<img src="https://guangchuangyu.github.io/blog_images/biobabble.jpg" width="100px"/>](https://guangchuangyu.github.io/blog_images/biobabble.jpg) 

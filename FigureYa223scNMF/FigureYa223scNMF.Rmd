@@ -6,7 +6,7 @@ output: html_document
 ---
 
 **Author(s)**: `r params$author`  
-**Date**: `r params$date`  
+**Date**: `r Sys.Date()`  
 
 
 ![](IOBR.png)
