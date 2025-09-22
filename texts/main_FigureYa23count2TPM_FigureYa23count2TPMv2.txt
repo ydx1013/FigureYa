@@ -3,8 +3,7 @@ FigureYa23count2TPMv2
 Author(s)
 : Zhougeng Xu; Ying Ge, Yijing Chen
 Date
-:
-r Sys.Date()
+: 2025-09-22
 需求描述
 Requirement description
 RNA-seq read count转换成TPM。

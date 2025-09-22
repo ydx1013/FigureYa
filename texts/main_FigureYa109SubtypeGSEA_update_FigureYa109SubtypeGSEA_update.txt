@@ -1,7 +1,11 @@
 FigureYa109subtypeGSEA_update
 FigureYa109subtypeGSEA_update
-Xiaofan Lu, Taojun Ye
-2025-9-12
+Author(s)
+: Xiaofan Lu, Taojun Ye
+Reviewer(s)
+: Ying Ge
+Date
+: 2025-09-22
 Academic Citation
 If you use this code in your work or research, we kindly request that
 you cite our publication:
@@ -150,9 +154,9 @@ gs.up <- subtype_specific_gsea(msigdb = msigdfFile,
                                subtype.label = n.sub.label,
                                mode = mode)
 # 计算GSVA得分：基于基因表达矩阵和GSEA分析得到的基因集，使用GSVA方法计算通路富集得分（Calculate GSVA scores: Based on the gene expression matrix and gene sets obtained from GSEA analysis, use the GSVA method to calculate pathway enrichment scores）
-params <- gsvaParam(exprData = as.matrix(expr),
+gsva_params <- gsvaParam(exprData = as.matrix(expr),
                      geneSets = gs.up$gs)
-gsva_gs.up <- gsva(params)
+gsva_gs.up <- gsva(gsva_params)
 # 查看GSVA得分矩阵的维度，确认结果（Check the dimensions of the GSVA score matrix to confirm the results）
 dim(gsva_gs.up)
 # 这里是30条通路，说明top通路无重叠（Here there are 30 pathways, indicating no overlap among the top pathways）
@@ -210,9 +214,9 @@ gs.dn <- subtype_specific_gsea(msigdb = msigdfFile,
                                subtype.label = n.sub.label,
                                mode = mode)
 # 计算GSVA得分：基于基因表达矩阵和GSEA分析得到的下调基因集（Calculate GSVA scores: Based on the gene expression matrix and downregulated gene sets from GSEA analysis）
-params <- gsvaParam(exprData = as.matrix(expr),
+gsva_params <- gsvaParam(exprData = as.matrix(expr),
                      geneSets = gs.dn$gs)
-gsva_gs.dn <- gsva(params)
+gsva_gs.dn <- gsva(gsva_params)
 # 注意这里只有27条通路了，说明top通路有重叠（Note that there are only 27 pathways here, indicating overlap among the top pathways）
 
 # 初始化数据框，用于存储每个亚型的下调通路平均GSVA得分（Initialize a data frame to store the average GSVA scores of downregulated pathways for each subtype）

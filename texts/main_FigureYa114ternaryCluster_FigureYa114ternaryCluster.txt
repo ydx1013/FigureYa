@@ -1,7 +1,11 @@
 FigureYa114ternaryCluster
 FigureYa114ternaryCluster
-Xiaofan Lu, Taojun Ye
-2025-5-20
+Author(s)
+: Xiaofan Lu, Taojun Ye
+Reviewer(s)
+: Ying Ge
+Date
+: 2025-09-22
 Academic Citation
 If you use this code in your work or research, we kindly request that
 you cite our publication:
@@ -18,7 +22,7 @@ cancer sample heterogeneity. The article lost by the great god can solve
 my problem. I would like to draw the following image
 出自
 https://www.gastrojournal.org/article/S0016-5085(17)36144-9/abstract
-from
+From
 https://www.gastrojournal.org/article/S0016-5085(17)36144-9/abstract
 应用场景
 在一组样本中某个geneset表达谱变异很大时，展示这个geneset的所有基因表达异质性。
@@ -113,9 +117,9 @@ siglist[[signaturename]] <- signature
 # 参数说明:
 # - as.matrix(expr[,1:tumornumber]): 提取前tumornumber列的表达矩阵作为肿瘤样本
 # - siglist: 包含基因集签名的列表
-params <- gsvaParam(exprData = as.matrix(expr[,1:tumornumber]),
-                     geneSets = siglist)
-signature.gsva <- gsva(params)
+gsva_params <- gsvaParam(exprData = as.matrix(expr[,1:tumornumber]),
+                         geneSets = siglist)
+signature.gsva <- gsva(gsva_params)
 根据正常样本signature基因表达将肿瘤样本基因表达状态分成3类：高标达、低表达、不变
 According to the normal sample signature gene expression, the gene
 expression status of tumor samples can be divided into three categories:

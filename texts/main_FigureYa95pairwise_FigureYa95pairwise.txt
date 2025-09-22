@@ -1,7 +1,11 @@
 FigureYa95pairwise
 FigureYa95pairwise
-Xiaofan Lu, Taojun Ye
-2025-5-20
+Author(s)
+: Xiaofan Lu, Taojun Ye
+Reviewer(s)
+: Ying Ge
+Date
+: 2025-09-22
 Academic Citation
 If you use this code in your work or research, we kindly request that
 you cite our publication:
@@ -195,16 +199,16 @@ for (i in cell.type) {
 
 # 对LUAD表达矩阵进行GSVA分析，计算免疫细胞类型富集分数
 # Perform GSVA analysis on LUAD expression matrix to calculate immune cell type enrichment scores
-params <- ssgseaParam(exprData = as.matrix(tcga_expr_luad),
+gsva_params <- ssgseaParam(exprData = as.matrix(tcga_expr_luad),
                        geneSets = immune.sig)
 
-tcga_gsva_luad <- gsva(params)
+tcga_gsva_luad <- gsva(gsva_params)
 # 对LUSC表达矩阵进行GSVA分析，计算免疫细胞类型富集分数
 # Perform GSVA analysis on LUSC expression matrix to calculate immune cell type enrichment scores
-params <- ssgseaParam(exprData = as.matrix(tcga_expr_lusc),
+gsva_params <- ssgseaParam(exprData = as.matrix(tcga_expr_lusc),
                        geneSets = immune.sig)
 
-tcga_gsva_lusc <- gsva(params)
+tcga_gsva_lusc <- gsva(gsva_params)
 样本聚类提取距离
 Sample clustering extraction distance
 # 确保表达矩阵和突变矩阵的样本顺序一致，取交集获取共同样本

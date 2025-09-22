@@ -5,8 +5,7 @@ Author(s)
 Reviewer(s)
 : Ying Ge, Junyi Shen
 Date
-:
-r Sys.Date()
+: 2025-09-22
 需求描述
 Requirement
 我想实现这篇文章的Figure

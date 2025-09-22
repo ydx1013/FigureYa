@@ -3,8 +3,7 @@ FigureYa76corrgram
 Author(s)
 : Ying Ge, TaojunYe
 Date
-:
-r Sys.Date()
+: 2025-09-22
 需求描述
 用R复现原图的形式。
 Requirement description
