@@ -1,5 +1,5 @@
 ---
-title: FigureYa197SmoothHaz
+title: "FigureYa197SmoothHaz"
 params:
   author: "Jiawei Shi"
   date: "`r Sys.Date()`"

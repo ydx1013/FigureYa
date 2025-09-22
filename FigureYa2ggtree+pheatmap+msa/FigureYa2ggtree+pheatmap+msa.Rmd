@@ -1,5 +1,5 @@
 ---
-title: FigureYa2 ggtree+pheatmap+msa
+title: "FigureYa2 ggtree+pheatmap+msa"
 params:
   author: "Guangchuang Yu; Ying Ge, Yijing Chen"
   date: "`r Sys.Date()`"

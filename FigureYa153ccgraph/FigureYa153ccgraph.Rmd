@@ -1,5 +1,5 @@
 ---
-title: FigureYa153ccgraph
+title: "FigureYa153ccgraph"
 params:
   author: "Chunhui Gao"
   reviewer: "Ying Ge, Junyi Shen"

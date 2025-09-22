@@ -1,5 +1,5 @@
 ---
-title: FigureYa215DNAage
+title: "FigureYa215DNAage"
 params:
   author: "Xiaofan Lu; Ying Ge, Yijing Chen"
   date: "`r Sys.Date()`"

@@ -1,5 +1,5 @@
 ---
-title: FigureYa114ternaryCluster
+title: "FigureYa114ternaryCluster"
 params:
   author: "Xiaofan Lu, Taojun Ye"
   reviewer: "Ying Ge"

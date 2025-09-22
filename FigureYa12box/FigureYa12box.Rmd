@@ -1,5 +1,5 @@
 ---
-title: FigureYa12 box
+title: "FigureYa12 box"
 params:
   author: "Guangchuang Yu; Ying Ge, Yijing Chen"
   date: "`r Sys.Date()`"

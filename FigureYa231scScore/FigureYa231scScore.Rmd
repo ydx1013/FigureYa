@@ -1,5 +1,5 @@
 ---
-title: FigureYa231scScore
+title: "FigureYa231scScore"
 params:
   author: "Yi Xiong"
   date: "`r Sys.Date()`"

@@ -1,5 +1,5 @@
 ---
-title: FigureYa201ClusterCorrelation
+title: "FigureYa201ClusterCorrelation"
 params:
   author: "Xiaofan Lu"
   date: "`r Sys.Date()`"

@@ -1,5 +1,5 @@
 ---
-title: FigureYa4 bestSeparation
+title: "FigureYa4 bestSeparation"
 params:
   author: "Dekang Lv; Ying Ge, Yijing Chen"
   date: "`r Sys.Date()`"

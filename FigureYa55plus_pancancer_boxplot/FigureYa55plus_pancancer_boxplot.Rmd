@@ -1,5 +1,5 @@
 ---
-title: FigureYa55plus_pancancer_boxplot
+title: "FigureYa55plus_pancancer_boxplot"
 params:
   author: "Chris Lou, Yijing Chen"
   date: "`r Sys.Date()`"

@@ -1,5 +1,5 @@
 ---
-title: FigureYa210survivalScape
+title: "FigureYa210survivalScape"
 params:
   author: "Xiaofan Lu"
   date: "`r Sys.Date()`"

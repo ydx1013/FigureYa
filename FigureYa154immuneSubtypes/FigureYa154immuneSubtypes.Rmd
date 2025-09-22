@@ -1,5 +1,5 @@
 ---
-title: FigureYa154immuneSubtypes
+title: "FigureYa154immuneSubtypes"
 params:
   author: "Yufang Wang"
   reviewer: "Ying Ge, Junyi Shen"

@@ -1,5 +1,5 @@
 ---
-title: FigureYa22 FPKM2TPM
+title: "FigureYa22 FPKM2TPM"
 params:
   author: "Ying Ge; Yijing Chen"
   date: "`r Sys.Date()`"

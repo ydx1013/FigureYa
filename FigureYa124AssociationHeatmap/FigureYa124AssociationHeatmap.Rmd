@@ -1,5 +1,5 @@
 ---
-title: FigureYa124AssociationHeatmap
+title: "FigureYa124AssociationHeatmap"
 params:
   author: "Xiaofan Lu, Taojun Ye"
   reviewer: "Ying Ge"

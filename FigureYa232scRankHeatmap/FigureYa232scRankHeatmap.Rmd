@@ -1,5 +1,5 @@
 ---
-title: FigureYa232scRankHeatmap
+title: "FigureYa232scRankHeatmap"
 params:
   author: "Zongcheng Li"
   date: "`r Sys.Date()`"

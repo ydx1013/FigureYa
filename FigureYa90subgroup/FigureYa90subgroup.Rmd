@@ -1,5 +1,5 @@
 ---
-title: FigureYa90subgroup
+title: "FigureYa90subgroup"
 params:
   author: "Dongqiang Zeng, Taojun Ye"
   reviewer: "Ying Ge"

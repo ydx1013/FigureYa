@@ -1,5 +1,5 @@
 ---
-title: FigureYa70mutationEvents
+title: "FigureYa70mutationEvents"
 params:
   author: "Yi Xiong, Taojun Ye"
   reviewer: "Ying Ge"

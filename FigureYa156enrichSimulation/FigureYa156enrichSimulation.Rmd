@@ -1,5 +1,5 @@
 ---
-title: FigureYa156enrichSimulation
+title: "FigureYa156enrichSimulation"
 params:
   author: "Zongcheng Li"
   reviewer: "Ying Ge, Junyi Shen"

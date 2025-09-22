@@ -1,5 +1,5 @@
 ---
-title: FigureYa270panMeth
+title: "FigureYa270panMeth"
 params:
   author: "Xiaofan Lu, Taojun Ye"
   reviewer: "Ying Ge"

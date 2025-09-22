@@ -1,5 +1,5 @@
 ---
-title: FigureYa28color
+title: "FigureYa28color"
 params:
   author: "Ying Ge; Yijing Chen"
   date: "`r Sys.Date()`"

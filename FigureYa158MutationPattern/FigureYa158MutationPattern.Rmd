@@ -1,5 +1,5 @@
 ---
-title: FigureYa158MutationPattern
+title: "FigureYa158MutationPattern"
 params:
   author: "Rongfang Shen"
   reviewer: "Ying Ge, Junyi Shen"

@@ -1,5 +1,5 @@
 ---
-title: FigureYa86SNPmotif
+title: "FigureYa86SNPmotif"
 params:
   author: "Ying Ge, Taojun Ye"
   date: "`r Sys.Date()`"

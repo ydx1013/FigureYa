@@ -1,5 +1,5 @@
 ---
-title: FigureYa152DouleCorPlot
+title: "FigureYa152DouleCorPlot"
 params:
   author: "Hao Li"
   reviewer: "Ying Ge, Junyi Shen"

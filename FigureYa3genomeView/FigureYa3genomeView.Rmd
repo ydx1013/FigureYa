@@ -1,5 +1,5 @@
 ---
-title: FigureYa3genomeView
+title: "FigureYa3genomeView"
 params:
   author: "Dekang Lv; Ying Ge, Yijing Chen"
   date: "`r Sys.Date()`"

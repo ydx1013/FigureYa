@@ -1,5 +1,5 @@
 ---
-title: FigureYa69 CancerSubtypes
+title: "FigureYa69 CancerSubtypes"
 params:
   author: "Jingze Gao, Xiaofan Lu, Taojun Ye"
   reviewer: "Ying Ge"

@@ -1,5 +1,5 @@
 ---
-title: FigureYa82IGVzoom
+title: "FigureYa82IGVzoom"
 params:
   author: "Qidong Li, Taojun Ye"
   reviewer: "Ying Ge"

@@ -1,5 +1,5 @@
 ---
-title: FigureYa209batchEnrich
+title: "FigureYa209batchEnrich"
 params:
   author: "Erqiang Hu"
   date: "`r Sys.Date()`"

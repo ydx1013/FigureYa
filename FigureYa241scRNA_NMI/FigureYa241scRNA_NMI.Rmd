@@ -1,5 +1,5 @@
 ---
-title: FigureYa241scRNA_NMI
+title: "FigureYa241scRNA_NMI"
 params:
   author: "Jianing Gao"
   reviewer: "Ying Ge, Junyi Shen"

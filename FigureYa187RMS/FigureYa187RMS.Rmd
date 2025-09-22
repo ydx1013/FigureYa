@@ -1,5 +1,5 @@
 ---
-title: FigureYa187RMS
+title: "FigureYa187RMS"
 params:
   author: "Xiaofan Lu"
   reviewer: "Ying Ge, Junyi Shen"

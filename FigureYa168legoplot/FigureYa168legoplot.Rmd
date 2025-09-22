@@ -1,5 +1,5 @@
 ---
-title: FigureYa168legoplot
+title: "FigureYa168legoplot"
 params:
   author: "Bin Wei"
   reviewer: "Ying Ge, Junyi Shen"

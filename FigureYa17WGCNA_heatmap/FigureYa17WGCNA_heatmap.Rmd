@@ -1,5 +1,5 @@
 ---
-title: FigureYa17 WGCNA_heatmap
+title: "FigureYa17 WGCNA_heatmap"
 params:
   author: "Ying Ge; Yijing Chen"
   date: "`r Sys.Date()`"

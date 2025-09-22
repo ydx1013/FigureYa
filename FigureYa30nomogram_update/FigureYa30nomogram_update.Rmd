@@ -1,5 +1,5 @@
 ---
-title: FigureYa30nomogram_update
+title: "FigureYa30nomogram_update"
 params:
   author: "Dongqiang Zeng, Ying Ge; Yijing Chen"
   date: "`r Sys.Date()`"

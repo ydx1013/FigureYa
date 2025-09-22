@@ -1,5 +1,5 @@
 ---
-title: FigureYa59volcano V2
+title: "FigureYa59volcano V2"
 params:
   author: "Haitao Wang; Ying Ge, Yijing Chen"
   date: "`r Sys.Date()`"

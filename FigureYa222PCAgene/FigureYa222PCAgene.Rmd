@@ -1,5 +1,5 @@
 ---
-title: FigureYa222PCAgene
+title: "FigureYa222PCAgene"
 params:
   author: "Zongcheng Li; Ying Ge, Yijing Chen"
   date: "`r Sys.Date()`"

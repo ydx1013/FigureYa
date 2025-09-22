@@ -1,5 +1,5 @@
 ---
-title: FigureYa105GDSC
+title: "FigureYa105GDSC"
 params:
   author: "Xiaofan Lu, Taojun Ye"
   reviewer: "Ying Ge"

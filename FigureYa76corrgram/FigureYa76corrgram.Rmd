@@ -1,5 +1,5 @@
 ---
-title: FigureYa76corrgram
+title: "FigureYa76corrgram"
 params:
   author: "Ying Ge, TaojunYe"
   date: "`r Sys.Date()`"

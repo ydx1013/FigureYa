@@ -1,5 +1,5 @@
 ---
-title: FigureYa98STEMheatmapV2
+title: "FigureYa98STEMheatmapV2"
 params:
   author: "Yuhui Li, Xiao Gu, Taojun Ye"
   reviewer: "Ying Ge"

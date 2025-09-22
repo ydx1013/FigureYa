@@ -1,5 +1,5 @@
 ---
-title: FigureYa243scMarkerGroupHeatmap
+title: "FigureYa243scMarkerGroupHeatmap"
 params:
   author: "Xiao Gu"
   reviewer: "Ying Ge, Junyi Shen"

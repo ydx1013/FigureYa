@@ -1,5 +1,5 @@
 ---
-title: FigureYa10chromosomeV2_update
+title: "FigureYa10chromosomeV2_update"
 params:
   author: "Zhaodong Hao; Ying Ge, Yijing Chen"
   date: "`r Sys.Date()`"

@@ -1,5 +1,5 @@
 ---
-title: FigureYa179AMDAplot
+title: "FigureYa179AMDAplot"
 params:
   author: "Enyu Lin"
   reviewer: "Ying Ge, Junyi Shen"

@@ -1,5 +1,5 @@
 ---
-title: FigureYa44 profile
+title: "FigureYa44 profile"
 params:
   author: "Wen Wang; Ying Ge, Yijing Chen"
   date: "`r Sys.Date()`"

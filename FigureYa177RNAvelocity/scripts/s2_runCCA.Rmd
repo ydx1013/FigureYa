@@ -1,5 +1,5 @@
 ---
-title: Run CCA
+title: "Run CCA"
 params:
   author: "Jarning"
   date: "`r Sys.Date()`"

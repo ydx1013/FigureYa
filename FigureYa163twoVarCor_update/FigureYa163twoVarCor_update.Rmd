@@ -1,5 +1,5 @@
 ---
-title: FigureYa163twoVarCor_update
+title: "FigureYa163twoVarCor_update"
 params:
   author: "Xiaofan Lu"
   reviewer: "Ying Ge, Junyi Shen"

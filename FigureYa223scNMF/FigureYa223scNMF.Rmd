@@ -1,5 +1,5 @@
 ---
-title: FigureYa223scNMF
+title: "FigureYa223scNMF"
 params:
   author: "Rongfang Shen; Ying Ge, Yijing Chen"
   date: "`r Sys.Date()`"

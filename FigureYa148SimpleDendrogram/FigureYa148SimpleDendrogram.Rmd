@@ -1,5 +1,5 @@
 ---
-title: FigureYa148SimpleDendrogram
+title: "FigureYa148SimpleDendrogram"
 params:
   author: "Xiaofan Lu"
   reviewer: "Ying Ge, Junyi Shen"

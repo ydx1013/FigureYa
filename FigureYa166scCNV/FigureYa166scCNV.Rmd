@@ -1,5 +1,5 @@
 ---
-title: FigureYa166scCNV
+title: "FigureYa166scCNV"
 params:
   author: "Zongcheng Li"
   reviewer: "Ying Ge, Junyi Shen"

@@ -1,5 +1,5 @@
 ---
-title: FigureYa60GSEA_clusterProfiler
+title: "FigureYa60GSEA_clusterProfiler"
 params:
   author: "Ying Ge, Di Wang; Yijing Chen"
   date: "`r Sys.Date()`"

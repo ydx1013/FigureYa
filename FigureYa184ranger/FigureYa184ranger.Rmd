@@ -1,5 +1,5 @@
 ---
-title: FigureYa184ranger
+title: "FigureYa184ranger"
 params:
   author: "Xiaofan Lu"
   reviewer: "Ying Ge, Junyi Shen"

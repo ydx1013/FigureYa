@@ -1,5 +1,5 @@
 ---
-title: FigureYa37CorrelationV2_update
+title: "FigureYa37CorrelationV2_update"
 params:
   author: "Zhaodong Hao, Jiacheng Lou; Ying Ge, Yijing Chen"
   date: "`r Sys.Date()`"

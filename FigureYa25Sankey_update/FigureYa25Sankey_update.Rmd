@@ -1,5 +1,5 @@
 ---
-title: FigureYa25Sankey_update
+title: "FigureYa25Sankey_update"
 params:
   author: "Ying Ge, Xiaofan Lu; Yijing Chen"
   date: "`r Sys.Date()`"

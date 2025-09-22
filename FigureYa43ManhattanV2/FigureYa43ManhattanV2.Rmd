@@ -1,5 +1,5 @@
 ---
-title: FigureYa43ManhattanV2
+title: "FigureYa43ManhattanV2"
 params:
   author: "Zhaodong Hao; Ying Ge, Yijing Chen"
   date: "`r Sys.Date()`"

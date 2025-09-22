@@ -1,5 +1,5 @@
 ---
-title: FigureYa174squareCross
+title: "FigureYa174squareCross"
 params:
   author: "Zongcheng Li"
   reviewer: "Ying Ge, Junyi Shen"

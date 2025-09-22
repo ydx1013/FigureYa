@@ -1,5 +1,5 @@
 ---
-title: FigureYa75base_volcano
+title: "FigureYa75base_volcano"
 params:
   author: "Haitao Wang, Taojun Ye"
   reviewer: "Ying Ge"

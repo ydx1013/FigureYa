@@ -1,5 +1,5 @@
 ---
-title: FigureYa227boxdensity
+title: "FigureYa227boxdensity"
 params:
   author: "Xiaofan Lu"
   date: "`r Sys.Date()`"

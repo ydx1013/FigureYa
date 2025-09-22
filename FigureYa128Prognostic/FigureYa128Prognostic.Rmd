@@ -1,5 +1,5 @@
 ---
-title: FigureYa128Prognostic
+title: "FigureYa128Prognostic"
 params:
   author: "Xiaofan Lu, Taojun Ye"
   reviewer: "Ying Ge"

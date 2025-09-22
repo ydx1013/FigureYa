@@ -1,5 +1,5 @@
 ---
-title: FigureYa161stemness
+title: "FigureYa161stemness"
 params:
   author: "Yi Xiong"
   reviewer: "Ying Ge, Junyi Shen"

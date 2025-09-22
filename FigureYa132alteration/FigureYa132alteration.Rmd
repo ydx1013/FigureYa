@@ -1,5 +1,5 @@
 ---
-title: FigureYa132alteration
+title: "FigureYa132alteration"
 params:
   author: "Zongcheng Li"
   reviewer: "Ying Ge, Junyi Shen"

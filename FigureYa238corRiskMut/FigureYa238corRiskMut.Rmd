@@ -1,5 +1,5 @@
 ---
-title: FigureYa238corRiskMut
+title: "FigureYa238corRiskMut"
 params:
   author: "Xiaofan Lu"
   date: "`r Sys.Date()`"

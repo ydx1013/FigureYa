@@ -1,5 +1,5 @@
 ---
-title: FigureYa149rankHeatmap
+title: "FigureYa149rankHeatmap"
 params:
   author: "Hao Li"
   reviewer: "Ying Ge, Junyi Shen"
