@@ -33,7 +33,7 @@ I found which transcription factor regulates my genes through online tools. I do
 
 出自<http://www.plantphysiol.org/content/170/1/528.long>
 
-from<http://www.plantphysiol.org/content/170/1/528.long>
+From<http://www.plantphysiol.org/content/170/1/528.long>
 
 ## 应用场景
 
@@ -41,7 +41,7 @@ from<http://www.plantphysiol.org/content/170/1/528.long>
 
 Sushi包的优点：不限物种，不依赖于任何基因组文件，速度快。
 
-**题外话：**Sushi包非常好用，还可以用来展示ChIA-PET、Hi-C等3D基因组数据，以及GWAS结果画Manhattan图。可参考Sushi文档的5 Appendix举例：<https://www.bioconductor.org/packages/devel/bioc/vignettes/Sushi/inst/doc/Sushi.pdf>
+**题外话：**Sushi包非常好用，还可以用来展示ChIA-PET、Hi-C等3D基因组数据，以及GWAS结果画Manhattan图。可参考Sushi文档的5 Appendix举例：<https://www.bioconductor.org/packages/3.8/bioc/vignettes/Sushi/inst/doc/Sushi.pdf>
 
 ## Application scenarios
 
@@ -49,7 +49,7 @@ Simultaneously display ChIP seq, ATAC seq, DNase seq, RNA seq, GRO seq and other
 
 The advantages of Sushi package: unlimited species, not dependent on any genome files, fast speed.
 
-**Off topic: The Sushi package is very useful and can also be used to display 3D genomic data such as ChIA PET, Hi-C, as well as GWAS results in a Manhattan plot. For example, please refer to Appendix 5 of the Sushi document:< https://www.bioconductor.org/packages/devel/bioc/vignettes/Sushi/inst/doc/Sushi.pdf >
+**Off topic: The Sushi package is very useful and can also be used to display 3D genomic data such as ChIA PET, Hi-C, as well as GWAS results in a Manhattan plot. For example, please refer to Appendix 5 of the Sushi document:<https://www.bioconductor.org/packages/3.8/bioc/vignettes/Sushi/inst/doc/Sushi.pdf>
 
 ## 环境设置
 
