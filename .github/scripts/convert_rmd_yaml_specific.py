@@ -17,15 +17,6 @@ def split_yaml_and_body(text):
     body = '\n'.join(lines[end_idx+1:])
     return '\n'.join(yaml_lines), body
 
-def quote(s):
-    """加双引号（如已带引号则不重复）"""
-    if not s:
-        return ""
-    s = str(s)
-    if s.startswith('"') and s.endswith('"'):
-        return s
-    return '"' + s.replace('"', '\\"') + '"'
-
 def process_file(rmd_path):
     with open(rmd_path, encoding='utf-8') as f:
         content = f.read()
@@ -42,9 +33,9 @@ def process_file(rmd_path):
     date = data.pop('date', '')
 
     params = {}
-    if author: params['author'] = quote(author)
-    if reviewer: params['reviewer'] = quote(reviewer)
-    if date: params['date'] = quote(date)
+    if author: params['author'] = author
+    if reviewer: params['reviewer'] = reviewer
+    if date: params['date'] = date
 
     new_yaml = {'title': title}
     if params:
