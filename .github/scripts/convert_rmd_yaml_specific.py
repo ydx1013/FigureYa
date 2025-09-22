@@ -44,7 +44,7 @@ def process_file(rmd_path):
     if reviewer: params['reviewer'] = QuotedString(reviewer)
     if date: params['date'] = QuotedString(date)
 
-    new_yaml = {'title': title}
+    new_yaml = {'title': QuotedString(title)}
     if params:
         new_yaml['params'] = params
     new_yaml['output'] = output
