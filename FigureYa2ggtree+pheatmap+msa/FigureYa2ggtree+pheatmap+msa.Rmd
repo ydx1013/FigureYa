@@ -1,5 +1,5 @@
 ---
-title: "FigureYa2 ggtree+pheatmap+msa"
+title: "FigureYa2ggtree+pheatmap+msa"
 params:
   author: "Guangchuang Yu; Ying Ge, Yijing Chen"
 output: html_document
@@ -7,7 +7,6 @@ output: html_document
 
 **Author(s)**: `r params$author`  
 **Date**: `r Sys.Date()`  
-
 
 # Academic Citation
 If you use this code in your work or research, we kindly request that you cite our publication:
@@ -25,8 +24,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 本文档分别绘制三个图，没有组到一张图里
 
-另一份文档解决组图问题（by Guangchuang Yu）
-ggtree_pheatmap_msa_cowplot.html
+另一份文档解决组图问题（by Guangchuang Yu）ggtree_pheatmap_msa_cowplot.html
 
 Gene family member evolutionary tree, expression profile clustering, multiple sequence comparison, grouped figures
 
@@ -45,6 +43,22 @@ Scenario 1: After drawing the heatmap of RNA-seq data from multiple samples, I f
 
 Scenario 2: I have identified a new transcription factor, what is its function? Sequence similarity predicts function similarity, perform multiple sequence comparison to find known transcription factors with similar sequences first, then download public data to see if their expression profiles are also consistent.
 
+## 环境设置
+
+## Environment settings
+
+```{r}
+source("install_dependencies.R")
+
+# 设置系统环境，使R显示英文错误信息
+# Set the system environment to display English error messages
+Sys.setenv(LANGUAGE = "en") 
+
+# 全局选项设置：禁止将字符型变量自动转换为因子类型
+# Global option setting: Prevent automatic conversion of character variables to factors
+options(stringsAsFactors = FALSE) 
+```
+
 ## 表达谱聚类
 ## Expression profile clustering
 
@@ -53,8 +67,6 @@ Scenario 2: I have identified a new transcription factor, what is its function? 
 Adding the same color to the samples of the same group shows that the samples of the two groups are clustered into two categories, indicating that these genes can be used to distinguish between the two groups
 
 ```{r,fig.height=3}
-source("install_dependencies.R")
-
 require(pheatmap)
 df<-read.table("easy_input.txt",header = T, row.names = 1,as.is = 1)
 
