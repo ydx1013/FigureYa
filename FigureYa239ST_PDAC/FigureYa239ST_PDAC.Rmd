@@ -2,7 +2,6 @@
 title: "FigureYa239ST_PDAC"
 params:
   author: "Houshi Xu"
-  date: "`r Sys.Date()`"
 output: html_document
 reviewers: Ying Ge,Hui Huang
 ---

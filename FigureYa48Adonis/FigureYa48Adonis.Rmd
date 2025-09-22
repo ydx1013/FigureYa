@@ -2,7 +2,6 @@
 title: "FigureYa48 Adonis"
 params:
   author: "yeoli; Ying Ge, Yijing Chen"
-  date: "`r Sys.Date()`"
 output: html_document
 ---
 

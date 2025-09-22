@@ -2,7 +2,6 @@
 title: "FigureYa257armCNV"
 params:
   author: "Xiaofan Lu"
-  date: "`r Sys.Date()`"
 output: html_document
 reviewers: Ying Ge,Hui Huang
 ---

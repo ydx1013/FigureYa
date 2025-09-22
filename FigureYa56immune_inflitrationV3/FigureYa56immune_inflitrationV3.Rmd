@@ -3,7 +3,6 @@ title: "FigureYa56Immune_inflitrationV3"
 params:
   author: "Jingze Gao, Ying Ge, Yijing Chen"
   reviewer: "Ying Ge"
-  date: "`r Sys.Date()`"
 output: html_document
 ---
 

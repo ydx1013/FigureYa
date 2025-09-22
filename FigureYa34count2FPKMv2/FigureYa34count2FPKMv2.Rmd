@@ -2,7 +2,6 @@
 title: "FigureYa34 count2FPKMv2"
 params:
   author: "Ying Ge, Yuan Tang; Yijing Chen"
-  date: "`r Sys.Date()`"
 output: html_document
 ---
 

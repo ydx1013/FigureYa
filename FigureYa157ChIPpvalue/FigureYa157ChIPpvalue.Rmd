@@ -3,7 +3,6 @@ title: "FigureYa157ChIPpvalue"
 params:
   author: "Wen Wang"
   reviewer: "Ying Ge, Junyi Shen"
-  date: "`r Sys.Date()`"
 output: html_document
 ---
 

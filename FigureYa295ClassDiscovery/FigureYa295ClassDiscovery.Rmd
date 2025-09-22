@@ -3,7 +3,6 @@ title: "FigureYa295ClassDiscovery"
 params:
   author: "Xiaofan Lu; Yasi Zhang"  
   reviewer: "Ying Ge"
-  date: "2025-9-19"
 output: html_document
 ---
 

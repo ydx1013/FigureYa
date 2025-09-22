@@ -3,7 +3,6 @@ title: "FigureYa70mutationEvents"
 params:
   author: "Yi Xiong, Taojun Ye"
   reviewer: "Ying Ge"
-  date: "`r Sys.Date()`"
 output: html_document
 ---
 

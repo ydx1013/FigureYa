@@ -2,7 +2,6 @@
 title: "FigureYa194pySCENIC"
 params:
   author: "Jianing Gao"
-  date: "`r Sys.Date()`"
 output: html_document
 ---
 

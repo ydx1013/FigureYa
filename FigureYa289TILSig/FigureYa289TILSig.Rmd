@@ -3,7 +3,6 @@ title: "FigureYa289TILSig"
 params:
   author: "Guoqi Li, Taojun Ye"
   reviewer: "Ying Ge"
-  date: "`r Sys.Date()`"
 output: html_document
 ---
 

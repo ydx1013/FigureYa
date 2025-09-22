@@ -2,7 +2,6 @@
 title: "FigureYa214KEGG_hierarchyV2"
 params:
   author: "Zongcheng Li"
-  date: "`r Sys.Date()`"
 output: html_document
 reviewers: Ying Ge,Hui Huang
 ---

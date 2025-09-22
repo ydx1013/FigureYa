@@ -3,7 +3,6 @@ title: "FigureYa94STEMbox_update"
 params:
   author: "Yuhui Li, Yi Xiong, Taojun Ye"
   reviewer: "Ying Ge"
-  date: "`r Sys.Date()`"
 output: html_document
 ---
 

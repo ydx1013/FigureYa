@@ -2,7 +2,6 @@
 title: "Trajectory Analysis"
 params:
   author: "Jarning"
-  date: "`r Sys.Date()`"
 output: html_document
 ---
 

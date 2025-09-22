@@ -3,7 +3,6 @@ title: "FigureYa98STEMheatmapV2"
 params:
   author: "Yuhui Li, Xiao Gu, Taojun Ye"
   reviewer: "Ying Ge"
-  date: "`r Sys.Date()`"
 output: html_document
 ---
 

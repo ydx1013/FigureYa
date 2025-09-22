@@ -2,7 +2,6 @@
 title: "FigureYa224scMarker"
 params:
   author: "Yangding Zheng"
-  date: "`r Sys.Date()`"
 output: html_document
 reviewers: Ying Ge,Hui Huang
 ---

@@ -2,7 +2,6 @@
 title: "FigureYa36双因子生存分析v3"
 params:
   author: "Guoshuang Feng; Ying Ge, Yijing Chen"
-  date: "`r Sys.Date()`"
 output: html_document
 ---
 

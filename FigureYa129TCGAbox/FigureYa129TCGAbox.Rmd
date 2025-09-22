@@ -3,7 +3,6 @@ title: "FigureYa129TCGAbox"
 params:
   author: "Yin Li, Taojun Ye"
   reviewer: "Ying Ge"
-  date: "`r Sys.Date()`"
 output: html_document
 ---
 

@@ -3,7 +3,6 @@ title: "FigureYa72biomarker"
 params:
   author: "Wen Wang, Taojun Ye"
   reviewer: "Ying Ge"
-  date: "`r Sys.Date()`"
 output: html_document
 ---
 

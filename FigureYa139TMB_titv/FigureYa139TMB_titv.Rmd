@@ -3,7 +3,6 @@ title: "FigureYa139TMB_titv"
 params:
   author: "Rongfang Shen"
   reviewer: "Ying Ge, Junyi Shen"
-  date: "`r Sys.Date()`"
 output: html_document
 ---
 

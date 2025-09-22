@@ -2,7 +2,6 @@
 title: "FigureYa16 WGCNA_fitting"
 params:
   author: "Ying Ge; Yijing Chen"
-  date: "`r Sys.Date()`"
 output: html_document
 ---
 

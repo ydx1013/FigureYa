@@ -3,7 +3,6 @@ title: "FigureYa280TMEofSTS"
 params:
   author: "Xiaofan Lu; Yasi Zhang"  
   reviewer: "Ying Ge"
-  date: "2025-9-17"
 output: html_document
 ---
 
