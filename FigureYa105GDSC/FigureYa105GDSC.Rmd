@@ -8,7 +8,7 @@ output: html_document
 
 **Author(s)**: `r params$author`  
 **Reviewer(s)**: `r params$reviewer`  
-**Date**: `r params$date`  
+**Date**: `r Sys.Date()`  
 
 
 # Academic Citation

@@ -7,7 +7,7 @@ reviser: Ying Ge
 ---
 
 **Author(s)**: `r params$author`  
-**Date**: `r params$date`  
+**Date**: `r Sys.Date()`  
 
 
 # Academic Citation
