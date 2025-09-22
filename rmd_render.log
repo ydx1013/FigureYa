@@ -1,0 +1,21 @@
+Error in `texi2dvi()`:
+! Running 'texi2dvi' on 'myFirstAlignment.tex' failed.
+Messages:
+You don't have a working TeX binary (tex) installed anywhere in
+your PATH, and texi2dvi cannot proceed without one.  If you want to use
+this script, you'll need to install TeX (if you don't have it) or change
+your PATH or TEX environment variable (if you do).  See the --help
+output for more details.
+
+For information about obtaining TeX, please see http://tug.org/texlive,
+or do a web search for TeX and your operating system or distro.
+
+On Debian you can install a working TeX system with
+  apt-get install texlive
+Backtrace:
+    ▆
+ 1. └─msa::msaPrettyPrint(...)
+ 2.   └─tools::texi2dvi(...)
+
+Quitting from FigureYa2ggtree+pheatmap+msa.Rmd:97-120 [unnamed-chunk-3]
+Execution halted
