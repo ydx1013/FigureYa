@@ -127,7 +127,7 @@ selected_samples <- pData(gse)$platform_id == 'GPL22286'
 expr_data <- exprs(gse)[, selected_samples]
 
 # 获取平台注释信息
-GPL_anno <- Table(gse@featureData)
+GPL_anno <- fData(gse)
 head(GPL_anno)
 
 # 使用Entrez ID或其他合适的ID
