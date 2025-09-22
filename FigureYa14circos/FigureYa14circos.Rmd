@@ -1,8 +1,18 @@
 ---
 title: "FigureYa14Circos"
-author: "Zhaodong Hao; Ying Ge, Yijing Chen"
+params:
+  author: "Zhaodong Hao; Ying Ge, Yijing Chen"
 output: html_document
 ---
+
+**Author(s)**: `r params$author`  
+**Reviewer(s)**: `r params$reviewer`  
+**Date**: `r Sys.Date()`  
+
+# Academic Citation
+If you use this code in your work or research, we kindly request that you cite our publication:
+
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
 ## 需求描述
 ## requirement description
@@ -11,13 +21,13 @@ output: html_document
 
 Use Circos to draw a circle plot from the paper, including GC content, gene density, RPKM, SNP, etc.
 
-![demo](/Users/jing/Downloads/FigureYa/14/demo.png)
+![demo](demo.png)
 
-如果要画直的染色体，可参考FigureYa10chromosome https://k.youshop10.com/k5BQBSoI，
+如果要画直的染色体，可参考FigureYa10chromosome
 
 更多画染色体的工具看这里：https://mp.weixin.qq.com/s/M-W277k-h6zFJT-8fqekmA
 
-To draw straight chromosomes, see FigureYa10chromosome https://k.youshop10.com/k5BQBSoI,
+To draw straight chromosomes, see FigureYa10chromosome
 
 See here for more tools for drawing chromosomes: https://mp.weixin.qq.com/s/M-W277k-h6zFJT-8fqekmA
 
@@ -76,7 +86,7 @@ First, enter the following command in the terminal
 
 The result of the operation looks like this:
 
-![missing_module](/Users/jing/Downloads/FigureYa/14/missing_module.png)
+![missing_module](missing_module.png)
 
 **ok**：电脑上已经有了哪些模块
 
@@ -279,7 +289,7 @@ CIRCOS.CONF tells Circos how large (radius) and how thick the chromosomes should
 
 With just karyotype.human.txt and a simple configuration file CIRCOS.CONF, a circle of chromosomes like this is drawn:
 
-![例子1](/Users/jing/Downloads/FigureYa/14/例子1.png)
+![例子1](例子1.png)
 
 #### 例子二：QUICK START中的2.Ticks And Lables
 #### Example 2: 2. Ticks And Lables in QUICK START
@@ -292,7 +302,7 @@ Click to view: http://circos.ca/documentation/tutorials/quick_start/ticks_and_la
 
 Add tick marks and labels (chromosome names) to the segment (chromosome), and write them in three configuration files: CIRCOS.CONF, IDEOGRAM.CONF (chromosomes and labels), and TICKS.CONF (tick marks). This will draw a circle of chromosomes with tick marks and labels:
 
-![例子2](/Users/jing/Downloads/FigureYa/14/例子2.png)
+![例子2](例子2.png)
 
 #### 例子三：菜谱中的CELL CYCLE — PART 1
 #### Example 3: CELL CYCLE in the menu — PART 1
@@ -313,7 +323,7 @@ Click to view http://circos.ca/documentation/tutorials/recipes/cell_cycle_part_1
 
 This diagram is complex and has multiple configuration files: CIRCOS.CONF, IDEOGRAM.CONF, IDEOGRAM.LABEL.CONF, IDEOGRAM.POSITION.CONF, TICKS.CONF
 
-![例子3](/Users/jing/Downloads/FigureYa/14/例子3.png)
+![例子3](例子3.png)
 
 ## 最实用的配置文件，自己paper里能用到
 ## The most practical configuration file that can be used in your own paper
@@ -420,7 +430,7 @@ Two files, circos.svg and circos.png, will be generated in the current folder.
 
 circos.svg is a vector image that can be opened, edited, and saved as a PDF file using Illustrator or Inkscape.
 
-![开始画图](/Users/jing/Downloads/FigureYa/14/开始画图.png)
+![开始画图](开始画图.png)
 
 #### Figure legend通用格式
 #### Figure legend general format
