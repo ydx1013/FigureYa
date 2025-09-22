@@ -1,9 +1,14 @@
 ---
-title: "FigureYa34 count2FPKMv2"
-author: "Ying Ge, Yuan Tang; Yijing Chen"
-date: "`r Sys.Date()`"
+title: FigureYa34 count2FPKMv2
+params:
+  author: "Ying Ge, Yuan Tang; Yijing Chen"
+  date: "`r Sys.Date()`"
 output: html_document
 ---
+
+**Author(s)**: `r params$author`  
+**Date**: `r params$date`  
+
 
 # Academic Citation
 If you use this code in your work or research, we kindly request that you cite our publication:
@@ -293,4 +298,3 @@ The correlation coefficient between the FPKM converted from count and the FPKM d
 ```{r}
 sessionInfo()
 ```
-

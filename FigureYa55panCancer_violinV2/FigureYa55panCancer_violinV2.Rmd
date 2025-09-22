@@ -1,9 +1,14 @@
 ---
-title: "FigureYa55panCancer_violinV2"
-author: "Yi Xiong, Zhougeng Xu, Ying Ge; Ying Ge, Yijing Chen"
-date: "`r Sys.Date()`"
+title: FigureYa55panCancer_violinV2
+params:
+  author: "Yi Xiong, Zhougeng Xu, Ying Ge; Ying Ge, Yijing Chen"
+  date: "`r Sys.Date()`"
 output: html_document
 ---
+
+**Author(s)**: `r params$author`  
+**Date**: `r params$date`  
+
 # Academic Citation
 If you use this code in your work or research, we kindly request that you cite our publication:
 
@@ -345,4 +350,3 @@ ggsave(paste0(targetGene, "expression.pdf"),width = 20, height = 6)
 ```{r}
 sessionInfo()
 ```
-

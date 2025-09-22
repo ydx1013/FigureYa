@@ -1,9 +1,14 @@
 ---
-title: "FigureYa23count2TPMv2"
-author: "Zhougeng Xu; Ying Ge, Yijing Chen"
-date: "`r Sys.Date()`"
+title: FigureYa23count2TPMv2
+params:
+  author: "Zhougeng Xu; Ying Ge, Yijing Chen"
+  date: "`r Sys.Date()`"
 output: html_document
 ---
+
+**Author(s)**: `r params$author`  
+**Date**: `r params$date`  
+
 
 ![](hoptop.png)
 
@@ -527,4 +532,3 @@ BiocInstaller::biocLite()
 ```{r}
 sessionInfo()
 ```
-

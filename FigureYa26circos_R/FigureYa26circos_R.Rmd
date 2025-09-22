@@ -1,9 +1,14 @@
 ---
-title: "FigureYa26 circos_R"
-author: "Zhaodong Hao; Ying Ge, Yijing Chen"
-date: "`r Sys.Date()`"
+title: FigureYa26 circos_R
+params:
+  author: "Zhaodong Hao; Ying Ge, Yijing Chen"
+  date: "`r Sys.Date()`"
 output: html_document
 ---
+
+**Author(s)**: `r params$author`  
+**Date**: `r params$date`  
+
 
 # Academic Citation
 If you use this code in your work or research, we kindly request that you cite our publication:

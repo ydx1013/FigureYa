@@ -1,9 +1,14 @@
 ---
-title: "FigureYa223scNMF"
-author: "Rongfang Shen; Ying Ge, Yijing Chen"
-date: "`r Sys.Date()`"
+title: FigureYa223scNMF
+params:
+  author: "Rongfang Shen; Ying Ge, Yijing Chen"
+  date: "`r Sys.Date()`"
 output: html_document
 ---
+
+**Author(s)**: `r params$author`  
+**Date**: `r params$date`  
+
 
 ![](IOBR.png)
 

@@ -1,9 +1,14 @@
 ---
-title: "Annotate Cell Type"
-author: "Jarning"
-date: "`r Sys.Date()`"
+title: Annotate Cell Type
+params:
+  author: "Jarning"
+  date: "`r Sys.Date()`"
 output: html_document
 ---
+
+**Author(s)**: `r params$author`  
+**Date**: `r params$date`  
+
 # Academic Citation
 If you use this code in your work or research, we kindly request that you cite our publication:
 
@@ -280,4 +285,3 @@ DimPlot(seu.CCA, reduction.use = "tsne", group.by = "cell_type_label",
 ```{r, eval=FALSE}
 saveRDS(seu.CCA, "tmp/s4.2-seu_CCA_clustering_cellAnnotation.rds")
 ```
-

@@ -1,10 +1,16 @@
 ---
-title: "FigureYa69 CancerSubtypes"
-author: "Jingze Gao, Xiaofan Lu, Taojun Ye"
-reviewer: "Ying Ge"
-date: "`r Sys.Date()`"
+title: FigureYa69 CancerSubtypes
+params:
+  author: "Jingze Gao, Xiaofan Lu, Taojun Ye"
+  reviewer: "Ying Ge"
+  date: "`r Sys.Date()`"
 output: html_document
 ---
+
+**Author(s)**: `r params$author`  
+**Reviewer(s)**: `r params$reviewer`  
+**Date**: `r params$date`  
+
 
 # Academic Citation
 If you use this code in your work or research, we kindly request that you cite our publication:
@@ -526,4 +532,3 @@ Xu T, Le T D, Liu L, et al. CancerSubtypes: an R/Bioconductor package for molecu
 ```{r}
 sessionInfo()
 ```
-

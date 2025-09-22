@@ -1,9 +1,14 @@
 ---
-title: "FigureYa21 TCGA2table"
-author: "Guangchuang Yu"
-date: "`r Sys.Date()`"
+title: FigureYa21 TCGA2table
+params:
+  author: "Guangchuang Yu"
+  date: "`r Sys.Date()`"
 output: latex_document
 ---
+
+**Author(s)**: `r params$author`  
+**Date**: `r params$date`  
+
 # Academic Citation
 If you use this code in your work or research, we kindly request that you cite our publication:
 

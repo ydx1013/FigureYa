@@ -1,9 +1,14 @@
 ---
-title: "FigureYa65SVM"
-author: "Dongqiang Zeng, Yin Li; Ying Ge, Yijing Chen"
-date: "`r Sys.Date()`"
+title: FigureYa65SVM
+params:
+  author: "Dongqiang Zeng, Yin Li; Ying Ge, Yijing Chen"
+  date: "`r Sys.Date()`"
 output: html_document
 ---
+
+**Author(s)**: `r params$author`  
+**Date**: `r params$date`  
+
 
 # Academic Citation
 If you use this code in your work or research, we kindly request that you cite our publication:

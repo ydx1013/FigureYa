@@ -1,9 +1,14 @@
 ---
-title: "How to get easy input from xena pan-cancer file"
-author: "小Ying画图出品"
-date: "`r Sys.Date()`"
+title: How to get easy input from xena pan-cancer file
+params:
+  author: "小Ying画图出品"
+  date: "`r Sys.Date()`"
 output: html_document
 ---
+
+**Author(s)**: `r params$author`  
+**Date**: `r params$date`  
+
 欢迎关注“小Ying画图”公众号，同名知识星球等你加入
 
 小Ying微信: epigenomics  E-mail: figureYing@126.com
