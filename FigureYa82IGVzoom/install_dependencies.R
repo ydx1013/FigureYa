@@ -4,67 +4,43 @@
 
 # Set up mirrors for better download performance
 options("repos" = c(CRAN = "https://cloud.r-project.org/"))
-# Note: BiocManager::install handles its own mirrors, so the BioC_mirror option is often not needed.
 
 # Function to check if a package is installed
 is_package_installed <- function(package_name) {
   return(package_name %in% rownames(installed.packages()))
 }
 
-# Function to install CRAN packages
-install_cran_package <- function(package_name) {
-  if (!is_package_installed(package_name)) {
-    cat("Installing CRAN package:", package_name, "\n")
+# Function to install Sushi package from archive
+install_sushi_package <- function() {
+  if (!is_package_installed("Sushi")) {
+    cat("Installing Sushi package from Bioconductor archive...\n")
     tryCatch({
-      install.packages(package_name, dependencies = TRUE)
-      cat("Successfully installed:", package_name, "\n")
+      # 下载并安装Sushi包
+      sushi_url <- "https://www.bioconductor.org/packages/3.8/bioc/src/contrib/Sushi_1.20.0.tar.gz"
+      install.packages(sushi_url, repos = NULL, type = "source")
+      cat("Successfully installed: Sushi\n")
     }, error = function(e) {
-      cat("Failed to install", package_name, ":", e$message, "\n")
+      cat("Failed to install Sushi:", e$message, "\n")
+      cat("Trying alternative installation method...\n")
+      # 备用安装方法
+      try({
+        # 尝试安装旧版本
+        install.packages("https://cran.r-project.org/src/contrib/Archive/Sushi/Sushi_1.20.0.tar.gz", 
+                        repos = NULL, type = "source")
+        cat("Successfully installed: Sushi (via CRAN archive)\n")
+      }, silent = TRUE)
     })
   } else {
-    cat("Package already installed:", package_name, "\n")
-  }
-}
-
-# Function to install Bioconductor packages
-install_bioc_package <- function(package_name) {
-  if (!is_package_installed(package_name)) {
-    cat("Installing Bioconductor package:", package_name, "\n")
-    tryCatch({
-      if (!is_package_installed("BiocManager")) {
-        install.packages("BiocManager")
-      }
-      # Also install Biobase as it's a key dependency
-      BiocManager::install(c("Biobase", package_name), update = FALSE, ask = FALSE)
-      cat("Successfully installed:", package_name, "\n")
-    }, error = function(e) {
-      cat("Failed to install", package_name, ":", e$message, "\n")
-    })
-  } else {
-    cat("Package already installed:", package_name, "\n")
+    cat("Package already installed: Sushi\n")
   }
 }
 
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
-
-# Installing CRAN packages
-cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("stringr") # "ClassDiscovery" was removed from here
-
-for (pkg in cran_packages) {
-  install_cran_package(pkg)
-}
-
-# Installing Bioconductor packages
-cat("\nInstalling Bioconductor packages...\n")
-bioc_packages <- c("ClassDiscovery", "Sushi") # 添加了Sushi包
-
-for (pkg in bioc_packages) {
-  install_bioc_package(pkg)
-}
-
+# 安装Sushi包
+cat("\nInstalling Sushi package...\n")
+install_sushi_package()
 
 cat("\n===========================================\n")
 cat("Package installation completed!\n")
