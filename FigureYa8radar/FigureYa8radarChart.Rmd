@@ -2,7 +2,6 @@
 title: "FigureYa8 Radar chart"
 params:
   author: "Zhaodong Hao; Ying Ge, Yijing Chen"
-  date: "`r Sys.Date()`"
 output: html_document
 ---
 

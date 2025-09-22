@@ -2,7 +2,6 @@
 title: "FigureYa3genomeView"
 params:
   author: "Dekang Lv; Ying Ge, Yijing Chen"
-  date: "`r Sys.Date()`"
 output: html_document
 ---
 

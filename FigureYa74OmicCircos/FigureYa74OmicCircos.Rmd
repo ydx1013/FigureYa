@@ -3,7 +3,6 @@ title: "FigureYa74omicCircos"
 params:
   author: "Li Yin, Taojun Ye"
   reviewer: "Ying Ge"
-  date: "`r Sys.Date()`"
 output: html_document
 ---
 

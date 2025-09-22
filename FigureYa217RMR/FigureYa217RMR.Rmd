@@ -2,7 +2,6 @@
 title: "FigureYa217RMR"
 params:
   author: "Xiaofan Lu; Ying Ge, Yijing Chen"
-  date: "`r Sys.Date()`"
 output: html_document
 ---
 

@@ -2,7 +2,6 @@
 title: "FigureYa86SNPmotif"
 params:
   author: "Ying Ge, Taojun Ye"
-  date: "`r Sys.Date()`"
 output: html_document
 ---
 

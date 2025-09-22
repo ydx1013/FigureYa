@@ -3,7 +3,6 @@ title: "FigureYa178receptorLigand"
 params:
   author: "Xiao Gu"
   reviewer: "Ying Ge, Junyi Shen"
-  date: "`r Sys.Date()`"
 output: html_document
 ---
 

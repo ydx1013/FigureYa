@@ -2,7 +2,6 @@
 title: "FigureYa27t-SNE_update"
 params:
   author: "Zhougeng Xu; Ying Ge, Yijing Chen"
-  date: "`r Sys.Date()`"
 output: html_document
 ---
 

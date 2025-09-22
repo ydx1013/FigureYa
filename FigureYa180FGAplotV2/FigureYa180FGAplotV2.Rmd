@@ -3,7 +3,6 @@ title: "FigureYa180FGAplotV2"
 params:
   author: "Enyu Lin"
   reviewer: "Ying Ge, Junyi Shen"
-  date: "`r Sys.Date()`"
 output: html_document
 ---
 

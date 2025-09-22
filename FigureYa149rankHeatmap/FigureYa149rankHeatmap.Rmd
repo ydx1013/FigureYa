@@ -3,7 +3,6 @@ title: "FigureYa149rankHeatmap"
 params:
   author: "Hao Li"
   reviewer: "Ying Ge, Junyi Shen"
-  date: "`r Sys.Date()`"
 output: html_document
 ---
 

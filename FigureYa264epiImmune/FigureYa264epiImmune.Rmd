@@ -3,7 +3,6 @@ title: "FigureYa264epiImmune"
 params:
   author: "Shuwen Cheng; Yasi Zhang"  
   reviewer: "Ying Ge"
-  date: "`r Sys.Date()`"
 output: html_document
 ---
 

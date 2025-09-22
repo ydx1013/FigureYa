@@ -3,7 +3,6 @@ title: "FigureYa269scMetabolism"
 params:
   author: "Yandong Zheng; Yasi Zhang"  
   reviewer: "Ying Ge"
-  date: "`r Sys.Date()`"
 output: html_document
 ---
 

@@ -2,7 +2,6 @@
 title: "FigureYa13GSEA_JavaV2_update"
 params:
   author: "Guangchuang Yu; Ying Ge, Yijing Chen"
-  date: "`r Sys.Date()`"
 output: html_document
 ---
 

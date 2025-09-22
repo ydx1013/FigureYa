@@ -2,7 +2,6 @@
 title: "FigureYa51TMB_update"
 params:
   author: "Jingze Gao; Ying Ge, Yijing Chen"
-  date: "`r Sys.Date()`"
 output: html_document
 ---
 

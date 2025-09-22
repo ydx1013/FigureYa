@@ -3,7 +3,6 @@ title: "FigureYa241scRNA_NMI"
 params:
   author: "Jianing Gao"
   reviewer: "Ying Ge, Junyi Shen"
-  date: "`r Sys.Date()`"
 output: html_document
 ---
 

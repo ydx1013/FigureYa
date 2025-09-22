@@ -3,7 +3,6 @@ title: "FigureYa166scCNV"
 params:
   author: "Zongcheng Li"
   reviewer: "Ying Ge, Junyi Shen"
-  date: "`r Sys.Date()`"
 output: html_document
 ---
 

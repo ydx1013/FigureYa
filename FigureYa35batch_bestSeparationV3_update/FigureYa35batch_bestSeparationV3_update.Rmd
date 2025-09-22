@@ -2,7 +2,6 @@
 title: "FigureYa35batch_bestSeparationV3_update"
 params:
   author: "Hao Li, Xiaofan Lu; Ying Ge, Yijing Chen"
-  date: "`r Sys.Date()`"
 output: html_document
 ---
 

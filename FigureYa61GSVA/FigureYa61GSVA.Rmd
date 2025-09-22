@@ -2,7 +2,6 @@
 title: "FigureYa61GSVA"
 params:
   author: "Yu Sun, Taojun Ye"
-  date: "`r Sys.Date()`"
 output: html_document
 reviser: Ying Ge
 ---

@@ -3,7 +3,6 @@ title: "FigureYa40 lineages_analysis"
 params:
   author: "Zhougeng Xu, Taojun Ye"
   reviewer: "Ying Ge"
-  date: "`r Sys.Date()`"
 output: html_document
 ---
 

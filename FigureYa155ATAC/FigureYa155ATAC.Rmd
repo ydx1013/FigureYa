@@ -3,7 +3,6 @@ title: "FigureYa155ATAC"
 params:
   author: "Long Zhao"
   reviewer: "Ying Ge, Junyi Shen"
-  date: "`r Sys.Date()`"
 output: html_document
 ---
 
