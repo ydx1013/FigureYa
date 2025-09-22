@@ -1,5 +1,5 @@
 ---
-title: FigureYa244PCAPlot
+title: "FigureYa244PCAPlot"
 params:
   author: "Jianing Gao"
   date: "`r Sys.Date()`"

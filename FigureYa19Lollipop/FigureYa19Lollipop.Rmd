@@ -1,5 +1,5 @@
 ---
-title: FigureYa19 Lollipop
+title: "FigureYa19 Lollipop"
 params:
   author: "Dekang Lv; Ying Ge, Yijing Chen"
   date: "`r Sys.Date()`"

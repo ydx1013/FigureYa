@@ -1,5 +1,5 @@
 ---
-title: FigureYa164PCA3D
+title: "FigureYa164PCA3D"
 params:
   author: "Bin Wei"
   reviewer: "Ying Ge, Junyi Shen"

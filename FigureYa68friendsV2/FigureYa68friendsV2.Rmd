@@ -1,5 +1,5 @@
 ---
-title: FigureYa68friendsV2
+title: "FigureYa68friendsV2"
 params:
   author: "Zhongtian Xu, Taojun Ye"
   reviewer: "Ying Ge"

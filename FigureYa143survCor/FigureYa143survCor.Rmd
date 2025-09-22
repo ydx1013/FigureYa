@@ -1,5 +1,5 @@
 ---
-title: FigureYa143survCor
+title: "FigureYa143survCor"
 params:
   author: "Xiaofan Lu"
   reviewer: "Ying Ge, Junyi Shen"

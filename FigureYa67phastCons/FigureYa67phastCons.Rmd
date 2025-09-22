@@ -1,5 +1,5 @@
 ---
-title: FigureYa67phastCons
+title: "FigureYa67phastCons"
 params:
   author: "Wen Wang, Taojun Ye"
   reviewer: "Ying Ge"

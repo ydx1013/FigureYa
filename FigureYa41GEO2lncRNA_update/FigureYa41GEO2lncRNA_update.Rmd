@@ -1,5 +1,5 @@
 ---
-title: FigureYa41GEO2lncRNA_update
+title: "FigureYa41GEO2lncRNA_update"
 params:
   author: "Ying Ge, Yijing Chen"
   date: "`r Sys.Date()`"

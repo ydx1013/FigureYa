@@ -1,5 +1,5 @@
 ---
-title: FigureYa121MethCGIcluster
+title: "FigureYa121MethCGIcluster"
 params:
   author: "Xiaofan Lu, Taojun Ye"
   reviewer: "Ying Ge"

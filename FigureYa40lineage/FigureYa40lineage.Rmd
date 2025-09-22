@@ -1,5 +1,5 @@
 ---
-title: FigureYa40 lineages_analysis
+title: "FigureYa40 lineages_analysis"
 params:
   author: "Zhougeng Xu, Taojun Ye"
   reviewer: "Ying Ge"

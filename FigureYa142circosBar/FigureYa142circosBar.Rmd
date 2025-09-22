@@ -1,5 +1,5 @@
 ---
-title: FigureYa142circosBar
+title: "FigureYa142circosBar"
 params:
   author: "Hao Wu"
   reviewer: "Ying Ge, Junyi Shen"

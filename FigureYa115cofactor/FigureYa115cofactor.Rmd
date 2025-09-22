@@ -1,5 +1,5 @@
 ---
-title: FigureYa115cofactor
+title: "FigureYa115cofactor"
 params:
   author: "Long Zhao, Taojun Ye"
   reviewer: "Ying Ge"

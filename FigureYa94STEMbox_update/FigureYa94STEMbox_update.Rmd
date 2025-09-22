@@ -1,5 +1,5 @@
 ---
-title: FigureYa94STEMbox_update
+title: "FigureYa94STEMbox_update"
 params:
   author: "Yuhui Li, Yi Xiong, Taojun Ye"
   reviewer: "Ying Ge"

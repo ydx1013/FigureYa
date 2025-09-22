@@ -1,5 +1,5 @@
 ---
-title: FigureYa212drugTargetV2
+title: "FigureYa212drugTargetV2"
 params:
   author: "Xiaofan Lu, Ying Ge"
   date: "`r Sys.Date()`"

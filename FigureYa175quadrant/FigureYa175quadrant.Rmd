@@ -1,5 +1,5 @@
 ---
-title: FigureYa175quadrant
+title: "FigureYa175quadrant"
 params:
   author: "Bin Wei"
   reviewer: "Ying Ge, Junyi Shen"

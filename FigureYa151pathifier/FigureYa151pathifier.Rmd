@@ -1,5 +1,5 @@
 ---
-title: FigureYa151pathifier
+title: "FigureYa151pathifier"
 params:
   author: "Xiaofan Lu"
   reviewer: "Ying Ge, Junyi Shen"

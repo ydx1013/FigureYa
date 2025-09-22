@@ -1,5 +1,5 @@
 ---
-title: FigureYa256panelLink
+title: "FigureYa256panelLink"
 params:
   author: "Zongcheng Li"
   reviewer: "Ying Ge"

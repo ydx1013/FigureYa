@@ -1,5 +1,5 @@
 ---
-title: FigureYa1SurvivalCurve_update
+title: "FigureYa1SurvivalCurve_update"
 params:
   author: "Dekang Lv; Ying Ge, Yijing Chen"
   date: "`r Sys.Date()`"

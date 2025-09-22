@@ -1,5 +1,5 @@
 ---
-title: FigureYa319ContribScore
+title: "FigureYa319ContribScore"
 params:
   author: "Xiaofan Lu; Yasi Zhang"
   date: "`r Sys.Date()`"

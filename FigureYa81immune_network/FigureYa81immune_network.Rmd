@@ -1,5 +1,5 @@
 ---
-title: FigureYa81immune_network
+title: "FigureYa81immune_network"
 params:
   author: "Dongqiang Zeng, Taojun Ye"
   reviewer: "Ying Ge"

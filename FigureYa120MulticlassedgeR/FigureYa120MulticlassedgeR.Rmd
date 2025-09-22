@@ -1,5 +1,5 @@
 ---
-title: FigureYa120MulticlassedgeR
+title: "FigureYa120MulticlassedgeR"
 params:
   author: "Xiaofan Lu, Taojun Ye"
   reviewer: "Ying Ge"

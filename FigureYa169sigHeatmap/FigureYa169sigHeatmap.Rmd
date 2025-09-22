@@ -1,5 +1,5 @@
 ---
-title: FigureYa169sigHeatmap
+title: "FigureYa169sigHeatmap"
 params:
   author: "Xiaofan Lu"
   reviewer: "Ying Ge, Junyi Shen"

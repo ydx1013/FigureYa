@@ -1,5 +1,5 @@
 ---
-title: FigureYa96R2
+title: "FigureYa96R2"
 params:
   author: "Shipeng Guo, Taojun Ye"
   reviewer: "Ying Ge"

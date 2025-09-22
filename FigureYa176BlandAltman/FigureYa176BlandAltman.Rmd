@@ -1,5 +1,5 @@
 ---
-title: FigureYa176BlandAltman
+title: "FigureYa176BlandAltman"
 params:
   author: "Xiaofan Lu"
   reviewer: "Ying Ge, Junyi Shen"

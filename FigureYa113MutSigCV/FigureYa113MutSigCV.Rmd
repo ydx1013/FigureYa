@@ -1,5 +1,5 @@
 ---
-title: FigureYa113MutSigCV
+title: "FigureYa113MutSigCV"
 params:
   author: "Xiaofan Lu, Taojun Ye"
   reviewer: "Ying Ge"

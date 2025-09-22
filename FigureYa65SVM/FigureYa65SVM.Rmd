@@ -1,5 +1,5 @@
 ---
-title: FigureYa65SVM
+title: "FigureYa65SVM"
 params:
   author: "Dongqiang Zeng, Yin Li; Ying Ge, Yijing Chen"
   date: "`r Sys.Date()`"

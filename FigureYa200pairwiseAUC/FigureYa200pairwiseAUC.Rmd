@@ -1,5 +1,5 @@
 ---
-title: FigureYa200pairwiseAUC
+title: "FigureYa200pairwiseAUC"
 params:
   author: "Xiaofan Lu"
   date: "`r Sys.Date()`"

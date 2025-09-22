@@ -1,5 +1,5 @@
 ---
-title: FigureYa57 profile_1bw
+title: "FigureYa57 profile_1bw"
 params:
   author: "Wen Wang, Taojun Ye"
   reviewer: "Ying Ge"

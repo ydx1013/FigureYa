@@ -1,5 +1,5 @@
 ---
-title: FigureYa236circGroup
+title: "FigureYa236circGroup"
 params:
   author: "Xiaofan Lu"
   date: "`r Sys.Date()`"

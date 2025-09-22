@@ -1,5 +1,5 @@
 ---
-title: FigureYa9 heatmap
+title: "FigureYa9 heatmap"
 params:
   author: "Ying Ge; Yijing Chen"
   date: "`r Sys.Date()`"

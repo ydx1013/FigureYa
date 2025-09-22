@@ -1,5 +1,5 @@
 ---
-title: FigureYa63PubmedMiningV2
+title: "FigureYa63PubmedMiningV2"
 params:
   author: "Haitao Wang, Melvin L.K. Chua; Ying Ge, Yijing Chen"
   date: "`r Sys.Date()`"

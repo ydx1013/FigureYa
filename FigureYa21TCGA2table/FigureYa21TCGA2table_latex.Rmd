@@ -1,5 +1,5 @@
 ---
-title: FigureYa21 TCGA2table
+title: "FigureYa21 TCGA2table"
 params:
   author: "Guangchuang Yu"
   date: "`r Sys.Date()`"

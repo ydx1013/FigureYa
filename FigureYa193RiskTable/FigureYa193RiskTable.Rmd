@@ -1,5 +1,5 @@
 ---
-title: FigureYa193RiskTable
+title: "FigureYa193RiskTable"
 params:
   author: "Xiaofan Lu"
   reviewer: "Ying Ge, Junyi Shen"

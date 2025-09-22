@@ -1,5 +1,5 @@
 ---
-title: FigureYa77baseZoom
+title: "FigureYa77baseZoom"
 params:
   author: "Haitao Wang, Taojun Ye"
   reviewer: "Ying Ge"

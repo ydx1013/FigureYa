@@ -1,5 +1,5 @@
 ---
-title: FigureYa126CorrelationHeatmap
+title: "FigureYa126CorrelationHeatmap"
 params:
   author: "Xiaofan Lu, Taojun Ye"
   reviewer: "Ying Ge"

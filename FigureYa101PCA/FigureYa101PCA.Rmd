@@ -1,5 +1,5 @@
 ---
-title: FigureYa101PCA
+title: "FigureYa101PCA"
 params:
   author: "Xiaofan Lu, Taojun Ye"
   reviewer: "Ying Ge"

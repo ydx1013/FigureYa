@@ -1,5 +1,5 @@
 ---
-title: FigureYa109subtypeGSEA_update
+title: "FigureYa109subtypeGSEA_update"
 params:
   author: "Xiaofan Lu, Taojun Ye"
   reviewer: "Ying Ge"

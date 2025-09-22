@@ -1,5 +1,5 @@
 ---
-title: FigureYa245VarDecompose
+title: "FigureYa245VarDecompose"
 params:
   author: "Jianing Gao"
   date: "`r Sys.Date()`"

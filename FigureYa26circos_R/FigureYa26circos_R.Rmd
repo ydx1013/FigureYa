@@ -1,5 +1,5 @@
 ---
-title: FigureYa26 circos_R
+title: "FigureYa26 circos_R"
 params:
   author: "Zhaodong Hao; Ying Ge, Yijing Chen"
   date: "`r Sys.Date()`"

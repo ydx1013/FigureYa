@@ -1,5 +1,5 @@
 ---
-title: FigureYa219GMM
+title: "FigureYa219GMM"
 params:
   author: "Xiaofan Lu"
   date: "`r Sys.Date()`"

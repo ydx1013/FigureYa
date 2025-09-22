@@ -1,5 +1,5 @@
 ---
-title: FigureYa160scGSVA
+title: "FigureYa160scGSVA"
 params:
   author: "Jinen Song"
   reviewer: "Ying Ge, Junyi Shen"

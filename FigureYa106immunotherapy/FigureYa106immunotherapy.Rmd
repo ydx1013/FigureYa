@@ -1,5 +1,5 @@
 ---
-title: FigureYa106immunotherapy
+title: "FigureYa106immunotherapy"
 params:
   author: "Xiaofan Lu, Taojun Ye"
   reviewer: "Ying Ge"

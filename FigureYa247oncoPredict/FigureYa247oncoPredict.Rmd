@@ -1,5 +1,5 @@
 ---
-title: FigureYa247oncoPredict
+title: "FigureYa247oncoPredict"
 params:
   author: "Xiaofan Lu"
   reviewer: "Ying Ge, Junyi Shen"

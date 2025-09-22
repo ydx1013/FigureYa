@@ -1,5 +1,5 @@
 ---
-title: FigureYa177RNAvelocity
+title: "FigureYa177RNAvelocity"
 params:
   author: "Jianing Gao"
   reviewer: "Ying Ge, Junyi Shen"

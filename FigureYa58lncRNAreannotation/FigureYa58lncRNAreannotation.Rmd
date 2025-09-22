@@ -1,5 +1,5 @@
 ---
-title: FigureYa58 lncRNAreannotation
+title: "FigureYa58 lncRNAreannotation"
 params:
   author: "Yuan Tang; Ying Ge, Yijing Chen"
   date: "`r Sys.Date()`"

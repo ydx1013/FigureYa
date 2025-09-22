@@ -1,5 +1,5 @@
 ---
-title: RNA Velocity
+title: "RNA Velocity"
 params:
   author: "Jarning"
   date: "`r Sys.Date()`"

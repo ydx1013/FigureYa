@@ -1,5 +1,5 @@
 ---
-title: FigureYa38PCA
+title: "FigureYa38PCA"
 params:
   author: "Zhougeng Xu; Ying Ge, Yijing Chen"
   date: "`r Sys.Date()`"

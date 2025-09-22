@@ -1,5 +1,5 @@
 ---
-title: FigureYa99smoothHRv2
+title: "FigureYa99smoothHRv2"
 params:
   author: "Xiaofan Lu, Taojun Ye"
   reviewer: "Ying Ge"

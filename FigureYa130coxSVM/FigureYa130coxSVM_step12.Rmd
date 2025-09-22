@@ -1,5 +1,5 @@
 ---
-title: FigureYa130SVM_step12
+title: "FigureYa130SVM_step12"
 params:
   author: "Yufang Wang, Dongqiang Zeng"
   reviewer: "Ying Ge, Junyi Shen"

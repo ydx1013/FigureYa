@@ -1,5 +1,5 @@
 ---
-title: FigureYa52 GOplot
+title: "FigureYa52 GOplot"
 params:
   author: "Ying Ge, Guangchuang Yu, Taojun Ye"
   reviewer: "Ying Ge"

@@ -1,5 +1,5 @@
 ---
-title: FigureYa34 count2FPKMv2
+title: "FigureYa34 count2FPKMv2"
 params:
   author: "Ying Ge, Yuan Tang; Yijing Chen"
   date: "`r Sys.Date()`"

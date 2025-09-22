@@ -1,5 +1,5 @@
 ---
-title: FigureYa93UMAP
+title: "FigureYa93UMAP"
 params:
   author: "Zhougeng Xu, Taojun Ye"
   reviewer: "Ying Ge"

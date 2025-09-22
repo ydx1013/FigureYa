@@ -1,5 +1,5 @@
 ---
-title: FigureYa87fish
+title: "FigureYa87fish"
 params:
   author: "Chengli Song, Taojun Ye"
   reviewer: "Ying Ge"

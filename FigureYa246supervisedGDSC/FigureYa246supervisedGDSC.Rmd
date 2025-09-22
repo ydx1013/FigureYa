@@ -1,5 +1,5 @@
 ---
-title: FigureYa246supervisedGDSC
+title: "FigureYa246supervisedGDSC"
 params:
   author: "Xiaofan Lu"
   reviewer: "Ying Ge, Junyi Shen"

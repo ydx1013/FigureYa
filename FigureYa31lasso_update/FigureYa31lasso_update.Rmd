@@ -1,5 +1,5 @@
 ---
-title: FIgureYa31lasso_update
+title: "FIgureYa31lasso_update"
 params:
   author: "Ya Zhang, Ying Ge; Yijing Chen"
   date: "`r Sys.Date()`"

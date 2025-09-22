@@ -1,5 +1,5 @@
 ---
-title: FigureYa72biomarker
+title: "FigureYa72biomarker"
 params:
   author: "Wen Wang, Taojun Ye"
   reviewer: "Ying Ge"

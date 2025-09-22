@@ -1,5 +1,5 @@
 ---
-title: FigureYa5 bubbles
+title: "FigureYa5 bubbles"
 params:
   author: "Dekang Lv; Ying Ge, Yijing Chen"
   date: "`r Sys.Date()`"

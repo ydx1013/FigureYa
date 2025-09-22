@@ -1,5 +1,5 @@
 ---
-title: FigureYa79CNV
+title: "FigureYa79CNV"
 params:
   author: "Haitao Wang, Taojun Ye"
   reviewer: "Ying Ge"

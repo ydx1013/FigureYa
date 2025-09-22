@@ -1,5 +1,5 @@
 ---
-title: FigureYa228linkCor
+title: "FigureYa228linkCor"
 params:
   author: "Xiaofan Lu"
   reviewer: "Ying Ge"

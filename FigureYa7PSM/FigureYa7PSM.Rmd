@@ -1,5 +1,5 @@
 ---
-title: FigureYa7PSM
+title: "FigureYa7PSM"
 params:
   author: "Ying Ge; Yijing Chen"
   date: "`r Sys.Date()`"

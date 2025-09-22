@@ -1,5 +1,5 @@
 ---
-title: FigureYa131CMap_update
+title: "FigureYa131CMap_update"
 params:
   author: "Rongfang Shen"
   reviewer: "Ying Ge, Junyi Shen"

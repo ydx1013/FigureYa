@@ -1,5 +1,5 @@
 ---
-title: FigureYa61GSVA
+title: "FigureYa61GSVA"
 params:
   author: "Yu Sun, Taojun Ye"
   date: "`r Sys.Date()`"

@@ -1,5 +1,5 @@
 ---
-title: FigureYa178receptorLigand
+title: "FigureYa178receptorLigand"
 params:
   author: "Xiao Gu"
   reviewer: "Ying Ge, Junyi Shen"

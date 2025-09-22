@@ -1,5 +1,5 @@
 ---
-title: FigureYa224scMarker
+title: "FigureYa224scMarker"
 params:
   author: "Yangding Zheng"
   date: "`r Sys.Date()`"

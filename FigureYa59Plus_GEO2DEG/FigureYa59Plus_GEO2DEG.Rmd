@@ -1,5 +1,5 @@
 ---
-title: FigureYa59Plus_GEO2DEG
+title: "FigureYa59Plus_GEO2DEG"
 params:
   author: "Haitao Wang; Ying Ge, Yijing Chen"
   date: "`r Sys.Date()`"

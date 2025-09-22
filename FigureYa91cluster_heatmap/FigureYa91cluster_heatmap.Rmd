@@ -1,5 +1,5 @@
 ---
-title: FigureY91cluster_heatmap
+title: "FigureY91cluster_heatmap"
 params:
   author: "Xiaofan Lu, Taojun Ye"
   reviewer: "Ying Ge"

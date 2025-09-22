@@ -1,5 +1,5 @@
 ---
-title: Trajectory Analysis
+title: "Trajectory Analysis"
 params:
   author: "Jarning"
   date: "`r Sys.Date()`"

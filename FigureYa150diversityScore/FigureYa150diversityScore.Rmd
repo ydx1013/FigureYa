@@ -1,5 +1,5 @@
 ---
-title: FigureYa150diversityScore
+title: "FigureYa150diversityScore"
 params:
   author: "Zongcheng Li"
   reviewer: "Ying Ge, Junyi Shen"

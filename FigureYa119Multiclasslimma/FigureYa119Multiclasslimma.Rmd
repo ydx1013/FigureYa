@@ -1,5 +1,5 @@
 ---
-title: FigureYa119Multiclasslimma
+title: "FigureYa119Multiclasslimma"
 params:
   author: "Xiaofan Lu, Taojun Ye"
   reviewer: "Ying Ge"

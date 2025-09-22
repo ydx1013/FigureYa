@@ -1,5 +1,5 @@
 ---
-title: How to get easy input from xena pan-cancer file
+title: "How to get easy input from xena pan-cancer file"
 params:
   author: "小Ying画图出品"
   date: "`r Sys.Date()`"

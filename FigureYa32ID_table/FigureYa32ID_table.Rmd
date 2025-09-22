@@ -1,5 +1,5 @@
 ---
-title: FigureYa32 ID_table
+title: "FigureYa32 ID_table"
 params:
   author: "Shipeng Guo; Ying Ge, Yijing Chen"
   date: "`r Sys.Date()`"
