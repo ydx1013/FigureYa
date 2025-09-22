@@ -44,7 +44,7 @@ Sushi包的优点：不限物种，不依赖于任何基因组文件，速度快
 
 **题外话：**Sushi包非常好用，还可以用来展示ChIA-PET、Hi-C等3D基因组数据，以及GWAS结果画Manhattan图。可参考Sushi文档的5 Appendix举例：<https://www.bioconductor.org/packages/devel/bioc/vignettes/Sushi/inst/doc/Sushi.pdf>
 
-##Application scenarios
+## Application scenarios
 
 Simultaneously display ChIP seq, ATAC seq, DNase seq, RNA seq, GRO seq and other signals within a certain region.
 
