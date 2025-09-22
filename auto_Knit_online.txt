@@ -9,6 +9,7 @@ FigureYa10chromosomeV2_update
 FigureYa11bubbles
 FigureYa12box
 FigureYa13GSEA_Java_update
+FigureYa14circos
 FigureYa15WGCNA
 FigureYa16WGCNA_fitting
 FigureYa17WGCNA_heatmap
