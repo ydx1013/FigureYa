@@ -1,26 +1,58 @@
 FigureYa161stemness
 FigureYa161stemness
-Date：2025-5-20
-Author：Yi Xiong
-Reviewer：Ying Ge、Junyi Shen
-需求描述Description of requirements
-用GEO数据计算mRNAsi、mDNAsi，画图。mRNAsi and mDNAsi were calculated using GEO data and plotted.
-出自From
+Author(s)
+: Yi Xiong
+Reviewer(s)
+: Ying Ge, Junyi Shen
+Date
+: 2025-09-22
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
+需求描述
+Requirement Description
+用GEO数据计算mRNAsi、mDNAsi，画图。 Calculate mRNAsi and mDNAsi using
+GEO data and plot them.
+出自
 https://febs.onlinelibrary.wiley.com/doi/abs/10.1002/1878-0261.12557
-Fig. 1. Clinical and molecular features associated with the mRNA expression-based stemness index (mRNAsi) and the mDNAsi in MB. (A) An overview of the association between known clinical and molecular features (histology, subgroup, gender, and metastatic status) and mRNAsi in MB. Columns represent samples sorted by mRNAsi from low to high (top row). Rows represent known clinical and molecular features. (B) An overview of the association between known clinical and molecular features (histology, subgroup, gender, and metastatic status) and mDNAsi in MB. Columns represent samples sorted by mDNAsi from low to high (top row). Rows represent known clinical and molecular features.
-The work flow to generate the stemness indices (mRNAsi and mDNAsi) is available on
+Retrieved from
+https://febs.onlinelibrary.wiley.com/doi/abs/10.1002/1878-0261.12557
+Fig. 1. Clinical and molecular features associated with the mRNA
+expression-based stemness index (mRNAsi) and the mDNAsi in MB. (A) An
+overview of the association between known clinical and molecular
+features (histology, subgroup, gender, and metastatic status) and mRNAsi
+in MB. Columns represent samples sorted by mRNAsi from low to high (top
+row). Rows represent known clinical and molecular features. (B) An
+overview of the association between known clinical and molecular
+features (histology, subgroup, gender, and metastatic status) and mDNAsi
+in MB. Columns represent samples sorted by mDNAsi from low to high (top
+row). Rows represent known clinical and molecular features.
+The work flow to generate the stemness indices (mRNAsi and mDNAsi) is
+available on
 https://bioinformaticsfmrp.github.io/PanCanStem_Web/
-. 或
+.
+或
 http://tcgabiolinks.fmrp.usp.br/PanCanStem/
-应用场景Application scenarios
-用于计算肿瘤基因表达以及DNA甲基化的干性指数，跟临床信息一起展示。It is used to calculate the dryness index of tumor gene expression and DNA methylation, and is displayed together with clinical information
-另外，Fig. 6的分析画图可参考FigureYa131CMap。其余可参考文章作者分享的代码In addition, the analysis drawing in Fig. 6 can be found in FigureYa131CMap. For the rest, you can refer to the code shared by the author of the article：
+应用场景
+Application Scenarios
+用于计算肿瘤基因表达以及DNA甲基化的干性指数，跟临床信息一起展示。
+This tool is used to calculate stemness indices for tumor gene
+expression and DNA methylation, and presents them alongside clinical
+information.
+另外，Fig.
+6的分析画图可参考FigureYa131CMap。其余可参考文章作者分享的代码：
 https://github.com/richie2019/MBpanel
-环境设置Environment settings
-使用国内镜像安装包Use the domestic mirror installation package
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")
-加载包Load the package
+For the analysis
+plots in Figure 6, please refer to FigureYa131CMap. For other code,
+please refer to the article author’s shared code:
+https://github.com/richie2019/MBpanel
+环境设置
+Environment Setup
+source("install_dependencies.R")
 library(GEOquery)
 library(dplyr)
 library(limma)
@@ -30,55 +62,93 @@ library(clusterProfiler)
 library(tibble)
 library(ggplot2)
 library(cowplot)
-Sys.setenv(LANGUAGE = "en") #显示英文报错信息Displays the error message in English
-options(stringsAsFactors = FALSE) #禁止chr转成factor   Prohibiting CHR from converting to factor
-用到的两个文件The two files used：pcbc-stemsig.tsv和pcbc-stemsig.p219.Rda，来自From
+Sys.setenv(LANGUAGE = "en") #显示英文报错信息 # Display English error message
+options(stringsAsFactors = FALSE) #禁止chr转成factor # Disable conversion of chr to factor
+用到的两个文件：pcbc-stemsig.tsv和pcbc-stemsig.p219.Rda，来自
 https://www.cell.com/cell/fulltext/S0092-8674(18)30358-1
-，跑自己的数据就用这个作为输入跑就行了。Just use this as input to run your own data
+，跑自己的数据就用这个作为输入跑就行了。
+Two files used: pcbc-stemsig.tsv and pcbc-stemsig.p219.Rda, from
+https://www.cell.com/cell/fulltext/S0092-8674(18)30358-1
+.
+Just use this as input to run your own data.
 mRNAsi
-输入文件Enter the file
-需要表达数据和临床信息作为输入Expression data and clinical information are required as inputs：
-GSE85217_family.soft.gz，表达数据Express data。Download required data and read data. We directly download files from
-https://ftp.ncbi.nlm.nih.gov/geo/series/GSE85nnn/GSE85217/soft/GSE85217_family.soft.gz
-easyinput_clinicaldata.csv，临床信息Clinical information。
-GSE文件已上传到微云，下载链接GSE文件已上传到微云，下载链接GSE file has been uploaded to Microcloud, download link GSE file has been uploaded to Microcloud, download link：
-https://share.weiyun.com/5X52f08
-gse <- getGEO(filename='GSE85217_family.soft.gz')
-数据预处理Data preprocessing
-names(GSMList(gse))[1:5] # sample names
-# we have only one platform
+输入文件
+Input file
+需要表达数据GSE85217和临床信息作为输入： Expression data GSE85217 and
+clinical information are required as input:
+easyinput_clinicaldata.csv，临床信息。
+easyinput_clinicaldata.csv, clinical information.
+data_dir <- "GEO_data"  # 创建专门的目录
+if (!dir.exists(data_dir)) {
+  dir.create(data_dir)
+}
+
+gse <- getGEO(GEO = "GSE85217", 
+              destdir = data_dir,  # 指定明确的数据目录
+              AnnotGPL = FALSE,
+              getGPL = TRUE)
+if (is.list(gse) && length(gse) > 0) {
+  gse <- gse[[1]]  # 取第一个ExpressionSet对象
+}
+
+## load clinical data
+clic <- read.csv("easyinput_clinicaldata.csv")
+names(clic)[1] <- "Sample.ID"
+clic$MetStatus <- dplyr::recode(clic$MetStatus, '1'="Metastatic", '0'="Non-metastatic")
+数据预处理
+Data preprocessing
+# 首先检查gse对象的结构
+class(gse)
+names(gse)
+# 查看gse对象的所有slot
+slotNames(gse)
+# 根据GEOquery包的新版本，样本信息可能在phenoData中
+# 获取样本名称
+sample_names <- sampleNames(gse)[1:5]
+print(sample_names)
+# 获取平台信息
+gsmplatforms <- pData(gse)$platform_id
+unique(gsmplatforms)
+# We have only one platform
 
 ## Acquire expression set
-gsmlist = Filter(function(gse) {Meta(gse)$platform_id=='GPL22286'},GSMList(gse))
-Table(gsmlist[[1]])[1:5,]
-probesets <- Table(GPLList(gse)[[1]])$ID
-data.matrix <- do.call('cbind',lapply(gsmlist,function(x) 
-{tab <- Table(x)
-mymatch <- match(probesets,tab$ID_REF)
-return(tab$VALUE[mymatch])
-}))
-data.matrix <- apply(data.matrix,2,function(x) {as.numeric(as.character(x))})
-data.matrix[1:5,1:5]
-rownames(data.matrix) <- probesets
-colnames(data.matrix) <- names(gsmlist)
-data.matrix[1:5,1:5]
-GPL_anno <-  Table(GPLList(gse)[[1]])
+# 根据平台ID筛选样本
+selected_samples <- pData(gse)$platform_id == 'GPL22286'
+expr_data <- exprs(gse)[, selected_samples]
+
+GPL_anno <- fData(gse)
 head(GPL_anno)
-# we used Entrez ID here
-exprSet <- data.matrix
-rownames(exprSet) <- GPL_anno$SPOT_ID
+# 使用Entrez ID或其他合适的ID
+exprSet <- expr_data
+rownames(exprSet) <- GPL_anno$SPOT_ID  # 根据实际的列名调整
 exprSet[1:5,1:5]
 boxplot(exprSet, main="MB_mRNA_boxplot_pre")
+exprSet_processed <- normalizeBetweenArrays(exprSet_processed, method="quantile")
+
+## merge with clinical data
+# 直接从phenoData中获取样本信息
+b <- pData(gse)
+b <- b[, c("title", "geo_accession")]
+colnames(exprSet_processed) <- b$title[match(colnames(exprSet_processed), b$geo_accession)]
+exprSet_processed_back <- exprSet_processed
+
+## Convert IDs
+# 确保org.Hs.eg.db包已安装
+if (!requireNamespace("org.Hs.eg.db", quietly = TRUE)) {
+  BiocManager::install("org.Hs.eg.db")
+}
+library(org.Hs.eg.db)
+idmap <- bitr(geneID = rownames(exprSet_processed), fromType = "ENSEMBL", toType = "SYMBOL", OrgDb="org.Hs.eg.db", drop = TRUE)
 exprSet_processed <- as.data.frame(exprSet_processed)
 exprSet_processed <- exprSet_processed %>% 
   rownames_to_column(var="ENSEMBL") %>% 
-  inner_join(idmap,by="ENSEMBL") %>% 
+  inner_join(idmap, by="ENSEMBL") %>% 
   dplyr::select(-ENSEMBL) %>% 
-  dplyr::select(SYMBOL,everything()) %>%
-  dplyr::mutate(rowMean =rowMeans(.[grep("MB_", names(.))])) %>% 
+  dplyr::select(SYMBOL, everything()) %>%
+  dplyr::mutate(rowMean = rowMeans(.[grep("MB_", names(.))], na.rm = TRUE)) %>% 
   dplyr::filter(SYMBOL != "NA") %>% 
   dplyr::arrange(desc(rowMean)) %>% 
-  dplyr::distinct(SYMBOL,.keep_all = T) %>% 
+  dplyr::distinct(SYMBOL, .keep_all = T) %>% 
   dplyr::select(-rowMean) %>% 
   column_to_rownames(var = "SYMBOL")
 exprSet_processed[1:5,1:5]
@@ -123,11 +193,13 @@ input$Gender <- factor(input$Gender,levels = c("F","M","Unknown"))
 input$MetStatus <- factor(input$MetStatus,levels = c("Metastatic","Non-metastatic","Unknown"))
 input$index <- 1:nrow(input)
 
-# 画图Drawing
+# 画图
+# draw
 darkred   <- "#F2042C"
 blue      <- "#0A0745"
 lightgrey <- "#dcddde"
-# 自定义主题Custom themes
+# 自定义主题
+# Custom theme
 My_Theme1 <- theme_bw() + 
   theme(panel.grid =element_blank()) + 
   theme(panel.border = element_rect(size = 1)) + 
@@ -138,7 +210,6 @@ My_Theme1 <- theme_bw() +
         axis.ticks.x = element_blank()
         )+
     theme(plot.margin = margin(0,0.1,0,0.1, "cm"))
-    
 My_Theme2 = theme_minimal()+
   theme(legend.position="none") +
   theme(axis.title.x=element_blank(),
@@ -152,35 +223,35 @@ p1 <- ggplot(input, aes(index, mRNAsi))+
   geom_bar(stat="identity",col = blue)+
   My_Theme1 +
   labs(y = "mRNAsi") +
-  scale_x_continuous(expand = c(0,0)) #不留空There is no space
+  scale_x_continuous(expand = c(0,0)) #不留空 #Do not leave blank
 
 p2 <- ggplot(input,aes(index,1))+
   geom_tile(aes(fill = Histology))+
   My_Theme2+
   labs(y = "Histology")+
   scale_fill_manual(values = c("#74C065","#B096C2","#FAA96C","#EFF882","#6D6466")) +
-  scale_x_continuous(expand = c(0,0)) #不留空There is no space
+  scale_x_continuous(expand = c(0,0)) #不留空 #Do not leave blank
 
 p3 <- ggplot(input,aes(index,1))+
   geom_tile(aes(fill = Subgroup))+
   My_Theme2+
   labs(y = "Subgroup")+
   scale_fill_manual(values = c("#84CBA8","#F2FA9C","#B1A5C8","#FA5E5C")) +
-  scale_x_continuous(expand = c(0,0)) #不留空There is no space
+  scale_x_continuous(expand = c(0,0)) #不留空 #Do not leave blank
 
 p4 <- ggplot(input,aes(index,1))+
   geom_tile(aes(fill = Gender))+
   My_Theme2+
   labs(y = "Gender")+
   scale_fill_manual(values=c("#E00F0A","#3D6197","#6D6466")) +
-  scale_x_continuous(expand = c(0,0)) #不留空  There is no space
+  scale_x_continuous(expand = c(0,0)) #不留空  #Do not leave blank
 
 p5 <- ggplot(input,aes(index,1))+
   geom_tile(aes(fill = MetStatus))+
   My_Theme2 +
   labs(y = "MetStatus")+
   scale_fill_manual(values=c("#64B685","#FC6D4C","#6D6466")) +
-  scale_x_continuous(expand = c(0,0)) #不留空There is no space
+  scale_x_continuous(expand = c(0,0)) #不留空 #Do not leave blank
 
 legend_a <- get_legend(p2+theme(legend.position = "bottom"))
 legend_b <- get_legend(p3+theme(legend.position = "bottom"))
@@ -193,9 +264,8 @@ p <- plot_grid(p1,p2,p3,p4,p5,
 p
 save_plot("mRNAsi.pdf", p,base_width = 10,base_height = 8)
 mDNAsi
-输入文件Enter the file
-GSE文件已上传到微云，下载链接The GSE file has been uploaded to Microcloud, download link：
-https://share.weiyun.com/5X52f08
+输入文件
+Input File
 exprSet <- data.table::fread("GSE85212_Methylation_763samples_SubtypeStudy_TaylorLab_beta_values.txt.gz")
 exprSet[1:5,1:5]
 exprSet <- exprSet %>% tibble::column_to_rownames(var = "V1")
@@ -219,7 +289,7 @@ ss <- data.frame(Sample.ID = rownames(ss), mDNAsi = ss$mDNAsi)
 input <- clic %>% left_join(ss, by = c("Sample.ID"))
 input <- input[order(input$mDNAsi),]
 save(input,file = "DNAinput.Rdata")
-画图Drawing
+画图 Draw
 load(file = "DNAinput.Rdata")
 
 input <- as.matrix(input)
@@ -232,7 +302,7 @@ input$Gender <- factor(input$Gender,levels = c("F","M","Unknown"))
 input$MetStatus <- factor(input$MetStatus,levels = c(" 1"," 0","Unknown"),labels = c("Metastatic","Non−metastatic","Unknown"))
 input$index <- 1:nrow(input)
 
-# 画图Drawing
+# 画图 Draw
 darkred   <- "#F2042C"
 blue      <- "#0A0745"
 lightgrey <- "#dcddde"
@@ -261,32 +331,32 @@ p1 <- ggplot(input,aes(index,mDNAsi))+
   geom_bar(stat="identity",col = blue)+
   My_Theme1+
   labs(y = "mDNAsi")+
-  scale_x_continuous(expand = c(0,0)) #不留空There is no space
+  scale_x_continuous(expand = c(0,0)) #不留空 #Do not leave blank
 
 p2 <- ggplot(input,aes(index,1))+
   geom_tile(aes(fill = Histology))+
   My_Theme2+
   labs(y = "Histology")+
   scale_fill_manual(values=c("#74C065","#B096C2","#FAA96C","#EFF882","#6D6466"))+
-  scale_x_continuous(expand = c(0,0)) #不留空There is no space
+  scale_x_continuous(expand = c(0,0)) #不留空 #Do not leave blank
 
 p3 <- ggplot(input,aes(index,1))+
   geom_tile(aes(fill = Subgroup))+
   My_Theme2+labs(y = "Subgroup")+
   scale_fill_manual(values=c("#84CBA8","#F2FA9C","#B1A5C8","#FA5E5C"))+
-  scale_x_continuous(expand = c(0,0)) #不留空There is no space
+  scale_x_continuous(expand = c(0,0)) #不留空 #Do not leave blank
 
 p4 <- ggplot(input,aes(index,1))+
   geom_tile(aes(fill = Gender))+
   My_Theme2+labs(y = "Gender")+
   scale_fill_manual(values=c("#E00F0A","#3D6197","#6D6466")) +
-  scale_x_continuous(expand = c(0,0)) #不留空 There is no space
+  scale_x_continuous(expand = c(0,0)) #不留空 #Do not leave blank
 
 p5 <- ggplot(input,aes(index,1))+
   geom_tile(aes(fill = MetStatus))+
   My_Theme2+labs(y = "MetStatus")+
   scale_fill_manual(values=c("#64B685","#FC6D4C","#6D6466")) +
-  scale_x_continuous(expand = c(0,0)) #不留空There is no space
+  scale_x_continuous(expand = c(0,0)) #不留空 #Do not leave blank
 
 legend_a <- get_legend(p2+theme(legend.position = "bottom"))
 legend_b <- get_legend(p3+theme(legend.position = "bottom"))
