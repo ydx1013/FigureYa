@@ -240,17 +240,17 @@ for (i in cell.type) {
 
 # 对LUAD表达矩阵进行GSVA分析，计算免疫细胞类型富集分数
 # Perform GSVA analysis on LUAD expression matrix to calculate immune cell type enrichment scores
-params <- ssgseaParam(exprData = as.matrix(tcga_expr_luad),
+gsva_params <- ssgseaParam(exprData = as.matrix(tcga_expr_luad),
                        geneSets = immune.sig)
 
-tcga_gsva_luad <- gsva(params)
+tcga_gsva_luad <- gsva(gsva_params)
 
 # 对LUSC表达矩阵进行GSVA分析，计算免疫细胞类型富集分数
 # Perform GSVA analysis on LUSC expression matrix to calculate immune cell type enrichment scores
-params <- ssgseaParam(exprData = as.matrix(tcga_expr_lusc),
+gsva_params <- ssgseaParam(exprData = as.matrix(tcga_expr_lusc),
                        geneSets = immune.sig)
 
-tcga_gsva_lusc <- gsva(params)
+tcga_gsva_lusc <- gsva(gsva_params)
 
 ```
 
