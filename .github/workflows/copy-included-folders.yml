@@ -23,7 +23,7 @@ jobs:
         with:
           repository: ying-ge/FigureYa-Actions
           path: target-repo
-          token: ${{ secrets.ACTIONS_REPO_TOKEN }}
+          token: ${{ secrets.FIGUREYA2ACTION }}
 
       - name: Determine Changed Folders
         id: changed
