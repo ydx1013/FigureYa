@@ -1,30 +1,37 @@
 FigureYa271panMethExpr
 FigureYa271panMethExpr
 Xiaofan Lu, Taojun Ye
-2025-5-20
+2025-09-24
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
-小丫姐好，我还有很多小伙伴想众筹这篇铁死亡泛癌的其他图片，主要是Figure
-1。感觉这个套路只要换一个通路就可以测试，我看大鱼老师写了这篇文章的Figure
+想实现这篇铁死亡泛癌的其他图片，主要是Figure
+1。感觉这个套路只要换一个通路就可以测试，我看Xiaofan
+Lu写了这篇文章的Figure
 2A（铁死亡基因在泛癌肿瘤与正常的差异箱线图，FigureYa208FPI），Figure
-3B（铁死亡与免疫通路的相关性，FigureYa253panGSEA），可否请大鱼老师详细写一下文章Figure
-1的相关代码？
+3B（铁死亡与免疫通路的相关性，FigureYa253panGSEA），可否请Xiaofan
+Lu详细写一下文章Figure 1的相关代码？
 1A（铁死亡在泛癌中体细胞拷贝数变异情况，绘制条形图，可参考FigureYa265panCNV）
 1B（铁死亡基因在肿瘤与正常的差异表达，绘制拼接的点图和柱状图，可参考FigureYa263panDiff）
 1C（铁死亡基因体细胞拷贝数与基因表达的相关性点图，可参考FigureYa268panCNVexpr）
 1D（铁死亡基因肿瘤与正常组织甲基化状态点图，可参考FigureYa270panMeth）
 1E（铁死亡转录组表达与启动子甲基化相关性的点图）
-这些图都是泛癌的，不知道大鱼老师可不可以用例文数据分别众筹个教程
+这些图都是泛癌的，不知道Xiaofan Lu可不可以用例文数据分别实现个教程
 [皱眉] ？（感觉都可以出一期专栏——iSicence复现了哈哈）
-这次众筹Figure 1E，铁死亡转录组表达与启动子甲基化相关性的点图。
-#Requirement description
-Hello Xiaoya, I have many other friends who want to crowdfund for
-this iron death pan cancer image, mainly Figure 1. I feel that this
-routine can be tested by simply changing the pathway. I saw that
-Professor Dayu wrote Figure 2A (Box plot of differences in ferroptosis
-genes between pan cancer tumors and normal, Figure Ya208FPI) and Figure
-3B (Correlation between ferroptosis and immune pathways) in this
-article, FigureYa253panGSEA）， Could you please ask Teacher Big Fish to
-write the relevant code for Figure 1 in detail?
+这次实现Figure 1E，铁死亡转录组表达与启动子甲基化相关性的点图。
+Requirement description
+For Figure 1. I feel that this routine can be tested by simply
+changing the pathway. I saw that Xiaofan Lu wrote Figure 2A (Box plot of
+differences in ferroptosis genes between pan cancer tumors and normal,
+Figure Ya208FPI) and Figure 3B (Correlation between ferroptosis and
+immune pathways) in this article, FigureYa253panGSEA）， Could you
+please ask Xiaofan Lu to write the relevant code for Figure 1 in
+detail?
 -1A (Iron induced cell copy number variation in pan cancer, plot a
 bar chart, refer to FigureYa265panCNV) -1B (Differential expression of
 ferroptosis genes between tumors and normal, plot concatenated dot plots
@@ -34,12 +41,11 @@ to FigureYa268panCNVexpr) -1D (Methylation status point map of iron
 death gene tumors and normal tissues, refer to Figure Ya270panMeth) -1E
 (Point plot of correlation between iron death transcriptome expression
 and promoter methylation)
-These images are all pan cancerous. Can Big Fish Teacher crowdfund a
-tutorial using example text data? (I feel like I could even publish a
-column - iSicence has reproduced it haha)
+These images are all pan cancerous. Can Xiaofan Lu write a tutorial
+using example text data? (I feel like I could even publish a column -
+iSicence has reproduced it haha)
 Figure 1E, a dot plot of the correlation between iron death
-transcriptome expression and promoter methylation, was raised for this
-crowdfunding campaign.
+transcriptome expression and promoter methylation.
 出自
 https://linkinghub.elsevier.com/retrieve/pii/S2589004220304892
 from
@@ -50,23 +56,13 @@ promoter methylation. Red and blue represent positive and negative
 correlations, respectively.
 应用场景
 分析基因（以铁死亡为例）转录组表达与启动子甲基化相关并绘制点图。
-#Application scenarios
+Application scenarios
 Analyze the correlation between gene transcriptome expression and
 promoter methylation (using iron death as an example) and draw a dot
 plot.
 环境设置
-使用国内镜像安装包
-#Environment settings
-Use domestic image installation package
-# 设置CRAN镜像为清华大学镜像源（提升R包下载速度）
-# Set CRAN mirror to Tsinghua University mirror (improve R package download speed)
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-
-# 设置Bioconductor镜像为清华大学镜像源（用于生物信息学相关R包）
-# Set Bioconductor mirror to Tsinghua University mirror (for bioinformatics-related R packages)
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
-加载包
-library packages
+Environment settings
+source("install_dependencies.R")
 # 加载数据分析与可视化所需的R包
 # Load R packages for data analysis and visualization
 library(ggplot2)            # 高级数据可视化包
@@ -78,6 +74,7 @@ library(GSVA)               # 基因集变异分析包
 library(clusterProfiler)    # 基因功能富集分析包
 library(impute)             # 数据缺失值插补包
 library(ComplexHeatmap)     # 复杂热图绘制包
+
 data("probe.features") # 读取甲基化450k数据的探针注释
 # Read probe annotations for methylation 450k data
 
@@ -97,8 +94,8 @@ http://api.gdc.cancer.gov/data/1a7d7be8-675d-4e60-a105-19d4121bdebf
 。
 tcga_methy450文件夹里面是甲基化数据，过滤掉了有空值的探针，均已保存为RData文件，微云链接：
 https://share.weiyun.com/jRry4rlU
-。下载后把tcga_methy450文件夹放到当前文件夹。跟FigureYa270panMeth使用的是同一文件。
-#Input file
+。下载后把tcga_methy450文件夹放到当前文件夹。
+Input file
 EBPlusPlusAdjustPANCAN_IlluminaHiSeq_RNASeqV2.geneExp.tsv， The
 expression matrix consists of genes in the first column, followed by
 their expression levels in each sample. Download from<
@@ -114,8 +111,7 @@ The tcga_sthy450 folder contains methylation data, filtered out
 probes with null values, and saved them as RData files. Weiyun link:<
 https://share.weiyun.com/jRry4rlU
 >After downloading,
-place the tcga_cethy450 folder into the current folder. The same file is
-used as FigureYa270panMet.
+place the tcga_cethy450 folder into the current folder.
 # 获得同时有肿瘤和正常样本的肿瘤名（20种癌症类型缩写）
 # Obtain tumor names with both tumor and normal samples (20 cancer type abbreviations)
 tumors <- c("BLCA","BRCA","CESC","CHOL","COAD",
@@ -236,7 +232,7 @@ for (i in tumors) {
 gc()  # 最终清理内存
 # Final memory cleanup
 相关性分析
-#Correlation analysis
+Correlation analysis
 # 初始化存储基因表达与甲基化相关性结果的数据框
 # Initialize data frame to store correlation results between gene expression and methylation
 corExprMeth <- NULL
@@ -300,19 +296,19 @@ for (i in tumors) {
 write.table(corExprMeth, "TCGA_pancan_correlation_expr_meth_subset.txt",sep = "\t",row.names = F,col.names = T,quote = F)
 例文展示相关性画的是点图，也可以画成热图、圆圈图等形式。
 TCGA_pancan_correlation_expr_meth_subset.txt
-文件里存放了n*n的correlation和pvalue，可以套用到我们以前众筹过的FigureYa当中。更多相关性展示方式看这里：
+文件里存放了n*n的correlation和pvalue，可以套用到我们以前实现过的FigureYa当中。更多相关性展示方式看这里：
 相关性展示的8种情况，还想要哪样？
 The example text shows the correlation by drawing a point chart,
 which can also be drawn in the form of a heat map, circle chart,
 etc.
 `The TCGA_cncan_correlation-expr_eth_stubset. txt file contains n * n
-correlations and p-values, which can be applied to the FigureYa we
-previously crowdfunded. More ways to display relevance can be found
-here: [Which of the 8 situations to display relevance would you like?]（
+correlations and p-values, which can be applied to the FigureYa. More
+ways to display relevance can be found here: [Which of the 8 situations
+to display relevance would you like?]（
 https://mp.weixin.qq.com/s/D9wheY5QdnOh4JrjIc8-Cg
 )
 开始画图
-start plot
+Start plot
 # 设置绘图颜色（用于后续相关性泡泡图的颜色映射）
 # Set plot colors (for color mapping in subsequent correlation bubble plot)
 blue <- "#4577FF"       
