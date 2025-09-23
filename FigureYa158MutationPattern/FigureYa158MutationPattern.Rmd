@@ -72,6 +72,8 @@ Download mutation information and clinical data using TCGAbiolinks
 ```{r}
 ## 突变数据
 ## Mutation data
+on.exit(unlink("GDCdata", recursive = TRUE, force = TRUE), add = TRUE)
+
 query <- GDCquery(
   project = "TCGA-BLCA", 
   data.category = "Simple Nucleotide Variation",
