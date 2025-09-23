@@ -1,7 +1,11 @@
 FigureYa177RNAvelocity
 FigureYa177RNAvelocity
-Jianing Gao
-2025-5-20
+Author(s)
+: Jianing Gao
+Reviewer(s)
+: Ying Ge, Junyi Shen
+Date
+: 2025-09-23
 Academic Citation
 If you use this code in your work or research, we kindly request that
 you cite our publication:
