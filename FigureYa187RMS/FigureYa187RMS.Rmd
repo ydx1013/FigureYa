@@ -106,11 +106,11 @@ rms2curve <- function(survdt = NULL,
   cox.model1 <- coxph(surv~marker1,data=fitdat.df1)
   rms.calc1 <- summary(survfit(cox.model1,
                                newdata=newdat.df1),rmean=tau)
-  rms.mean1 <- rms.calc1$table[,"*rmean"]
+  rms.mean1 <- rms.calc1$table[,"rmean"]
   
   cox.model2 <- coxph(surv~marker2,data=fitdat.df2)
   rms.calc2 <- summary(survfit(cox.model2,newdata=newdat.df2),rmean=tau)
-  rms.mean2 <- rms.calc2$table[,"*rmean"]
+  rms.mean2 <- rms.calc2$table[,"rmean"]
   
   fit1 <- coxph(Surv(OS.time,OS) ~ marker1,data = survdt)
   cindex1 <- concordance.index(predict(fit1),surv.time = survdt$OS.time,surv.event = survdt$OS,method = "noether")
