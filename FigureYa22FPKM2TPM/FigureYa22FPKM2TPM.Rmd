@@ -1,5 +1,5 @@
 ---
-title: "FigureYa22 FPKM2TPM"
+title: "FigureYa22FPKM2TPM"
 params:
   author: "Ying Ge; Yijing Chen"
 output: html_document
@@ -40,6 +40,16 @@ Both FPKM and TPM calculations consider gene length, making the conversion from 
 
 If you need to convert from read count to TPM, please purchase FigureYa23count2TPM; to convert from read count to FPKM, please purchase FigureYa34count2FPKM.
 
+# 环境设置
+# Environment Setup
+
+```{r}
+source("install_dependencies.R")
+library(TCGAbiolinks)
+Sys.setenv(LANGUAGE = "en") #显示英文报错信息
+options(stringsAsFactors = FALSE) #禁止chr转成factor
+```
+
 ## 下载TCGA RNA-seq的FPKM数据 
 ## Download FPKM data for TCGA RNA-seq
 
@@ -52,10 +62,7 @@ This is an example of TCGA data.
 If you have saved your own RNA-seq data in `easy_input.txt` format, skip this step and go directly to “Input data”.
 
 ```{r,message=FALSE,warning=FALSE}
-source("install_dependencies.R")
-#source("https://bioconductor.org/biocLite.R")
-#biocLite("TCGAbiolinks")
-library(TCGAbiolinks)
+on.exit(unlink("GDCdata", recursive = TRUE, force = TRUE), add = TRUE)
 expquery <- GDCquery(project = "TCGA-LIHC", 
                 data.category = "Transcriptome Profiling",
                 data.type = "Gene Expression Quantification",
