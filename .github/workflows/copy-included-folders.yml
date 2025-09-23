@@ -5,7 +5,7 @@ on:
     paths:
       - all_included.txt
       - '**/all_included.txt'
-      - '**'  # 监听所有文件变动
+      - '**'
   workflow_dispatch:
 
 jobs:
@@ -17,14 +17,14 @@ jobs:
         with:
           repository: ying-ge/FigureYa
           path: source-repo
-          fetch-depth: 0  # 拉取全部历史，确保可以 diff
+          fetch-depth: 0
 
       - name: Checkout Target Repo
         uses: actions/checkout@v4
         with:
           repository: ying-ge/FigureYa-Actions
           path: target-repo
-          token: ${{ secrets.FIGUREYA2ACTION }}  # 或者你的 secret 名
+          token: ${{ secrets.FIGUREYA2ACTION }}
 
       - name: Determine Changed Folders
         id: changed
@@ -32,25 +32,19 @@ jobs:
           cd source-repo
           git fetch origin main
 
-          # 获取 before commit 和 sha
           before="${{ github.event.before }}"
           after="${{ github.sha }}"
 
-          # 判断 before 是否有效
           if [ "$before" = "0000000000000000000000000000000000000000" ] || ! git cat-file -e "$before" 2>/dev/null; then
             echo "首次运行或 before commit 不存在，全部需要同步"
             echo "changed_needed=1" >> $GITHUB_OUTPUT
-            # 生成 changed_files.txt 以兼容后续流程
             git ls-files > changed_files.txt
           else
-            # 正常 diff
             git diff --name-only "$before" "$after" > changed_files.txt
           fi
 
-          # 提取所有_included.txt引用的文件夹名
           cat all_included.txt | grep -v '^\s*$' | grep -v '^#' > folder_list.txt
 
-          # 判断是否有需要同步的文件夹发生变化
           changed_needed=0
           while read folder; do
             if grep -q "^$folder/" changed_files.txt; then
@@ -58,7 +52,7 @@ jobs:
               changed_needed=1
             fi
           done < folder_list.txt
-          # 检查all_included.txt是否发生变动
+
           if grep -q "^all_included.txt$" changed_files.txt; then
             changed_needed=1
           fi
