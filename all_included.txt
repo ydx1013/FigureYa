@@ -1,3 +1,5 @@
+gallery_compress
+js
 FigureYa1survivalCurve_update
 FigureYa4bestSeparation
 FigureYa5bubbles
