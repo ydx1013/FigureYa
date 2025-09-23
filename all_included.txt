@@ -178,6 +178,7 @@ FigureYa298ecdfPvalue
 FigureYa303panCircos
 FigureYa306slingshot
 FigureYa307CNVHeatmap
+FigureYa311PAM50Heatmap
 FigureYa312CellPreference
 FigureYa313CircularPlot
 FigureYa316RF_XGBoost_Boruta
