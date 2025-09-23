@@ -260,10 +260,6 @@ dev.off()
 
 ![](oncoplotGroup.pdf)
 
-```{r}
-unlink("GDCdata", recursive = TRUE, force = TRUE)
-```
-
 # Session Info
 
 ```{r}
