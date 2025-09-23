@@ -62,10 +62,12 @@ In Figures 2D and 2G of the example paper, expression programs were extracted us
 
 ```{r}
 source("install_dependencies.R")
+install.packages("infotheo")
 
 library(Seurat)
 library(rhdf5)
 library(tidyverse)
+library(infotheo)
 Sys.setenv(LANGUAGE = "en") #显示英文报错信息 #Display English error messages
 options(stringsAsFactors = FALSE) #禁止chr转成factor #Disable conversion of chr to factor
 ``` 
@@ -108,7 +110,7 @@ v <- h5read(filename, name = "v") %>% as.vector()
 
 counts <- Matrix::sparseMatrix(i, j, x = v)
 counts %>% dim
-rownames(counts) <- genes$geneSymbol
+rownames(counts) <- make.unique(as.character(genes$geneSymbol))
 colnames(counts) <- cells$sampleID
 counts[1:5,1:5]
 ```
@@ -127,14 +129,14 @@ v <- h5read(filename, name = "v") %>% as.vector()
 TPM <- Matrix::sparseMatrix(i, j, x = v)
 TPM %>% dim
 TPM <- TPM %>% round(digits = 2)
-rownames(TPM) <- genes$geneSymbol
+rownames(TPM) <- make.unique(as.character(genes$geneSymbol))
 colnames(TPM) <- cells$sampleID
 TPM[1:5,1:5]
 ```
 
 ```{r}
 seu <- CreateSeuratObject(counts = counts, meta.data = cells.annot)
-seu[["RNA"]]@data <- TPM
+seu <- SetAssayData(object = seu, assay = "RNA", layer = "data", new.data = TPM)
 seu[["tsne"]] <- CreateDimReducObject(embeddings = cells.annot[, c("tSNE_1", "tSNE_2")] %>% as.matrix(), assay = DefaultAssay(seu), key = "tSNE_")
 seu[["phate"]] <- CreateDimReducObject(embeddings = cells.annot[, c("phate_1", "phate_2")] %>% as.matrix() * 50, assay = DefaultAssay(seu), key = "phate_")
 Idents(seu) <- factor(seu$clusterK12)
@@ -196,8 +198,8 @@ length(comb.genes)
 > 这里尚不清楚作者采用了何种分箱算法，我们默认其采用的是`等长分箱` It's unclear what binning algorithm the author used, but we assume it uses equal width binning.
 
 ```{r, fig.width=5, fig.height=5}
-row.idx <- rownames(seu[["RNA"]]@data) %in% comb.genes
-dat <- seu[["RNA"]]@data[row.idx, ] %>% as.matrix()
+row.idx <- rownames(GetAssayData(seu, layer = "data")) %in% comb.genes
+dat <- GetAssayData(seu, layer = "data")[row.idx, ] %>% as.matrix()
 dat[1:5, 1:5]
 
 disc.expr <- apply(dat, 2, function(xx) {
