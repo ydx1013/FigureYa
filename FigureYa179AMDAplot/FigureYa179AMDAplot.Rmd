@@ -561,7 +561,6 @@ p2 <- ggplot() +
         axis.ticks =element_blank(),
         axis.text =element_blank(),
         axis.title =element_blank(),
-        aspect.ratio = 0.0001/10000,
         plot.margin = unit(c(6,0.1,0,0.1), "lines"))+
   facet_grid(~subgroup,scales = "free_x",space = "free_x",switch = "x")+
   theme(strip.text = element_text(size = 10,hjust=0.5,face="italic"),
@@ -575,7 +574,9 @@ pg2 = ggplotGrob(p2)
 pg2 <- gtable_filter(pg2, 
                      "(background|strip-b-[1234])",
                      trim=T,invert = F)
-pgn <- gtable_add_grob(pg1, pg2, t = 14, l = 9, r = 9,z=2)
+panel_col <- pg1$layout$l[grepl("panel", pg1$layout$name)][1]
+pgn <- gtable_add_rows(pg1, heights = unit(1, "lines"), pos = 0)
+pgn <- gtable_add_grob(pgn, pg2, t = 1, l = panel_col, r = panel_col, z=2)
 ```
 
 ## 提取legend、添加上下文字、合并图层
@@ -599,10 +600,13 @@ padding <- unit(0.5,"line")
 # Adjust pos according to the layout
 gtable_show_layout(pgn2)
 pgn3 <- gtable_add_rows(pgn2, heights = grobHeight(Alignment) + padding, pos = 0)
-pgn3 <- gtable_add_rows(pgn3, heights = grobHeight(Reversion) + padding, pos = 6)
+pgn3 <- gtable_add_rows(pgn3, heights = grobHeight(Reversion) + padding, pos = nrow(pgn3))
 pgn3 <- gtable_add_grob(pgn3, list(Alignment),t = 1, l = 1, r = ncol(pgn3))
-pgn3 <- gtable_add_grob(pgn3, list(Reversion),t = 6, l = 1, r = ncol(pgn3))
-pgn <- gtable_add_grob(pgn, pgn3, t = 14, l = 6, r = 6,z=13) #合并，固定位置 # Merge, Fixed position
+pgn3 <- gtable_add_grob(pgn3, list(Reversion),t = nrow(pgn3), l = 1, r = ncol(pgn3))
+panel_t <- pgn$layout$t[grepl("panel", pgn$layout$name)][1]
+guide_l <- pg1$layout$l[grepl("guide-box", pg1$layout$name)][1]
+pgn <- gtable_add_grob(pgn, pgn3, t = panel_t, l = guide_l, r = guide_l, z=13)
+#合并，固定位置 # Merge, Fixed position
 ```
 
 ## 输出图片
