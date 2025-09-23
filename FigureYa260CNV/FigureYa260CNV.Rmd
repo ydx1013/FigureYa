@@ -83,6 +83,8 @@ Download hg38 CNV data from GDC, using COAD/READ as an example.
 The file easy_input_gene.txt should contain the list of genes for CNV analysis. You may include all differentially expressed genes or pathway-related genes for calculation, then check the output file `output_cnv.csv`. Subsequently, select the top ~10 genes with high-frequency gains or losses for visualization.
 
 ```{r}
+on.exit(unlink("GDCdata", recursive = TRUE, force = TRUE), add = TRUE)
+
 # 查询并下载TCGA-COAD拷贝数变异数据
 # Query and download TCGA-COAD copy number variation data
 cnv_COAD <- GDCquery(
