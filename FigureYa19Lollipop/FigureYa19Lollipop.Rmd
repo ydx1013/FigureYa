@@ -70,6 +70,8 @@ If genetic mutation information you want to draw is already saved in a file like
 Download the mutation information as input data.
 
 ```{r,message=FALSE,warning=FALSE}
+on.exit(unlink("GDCdata", recursive = TRUE, force = TRUE), add = TRUE)
+
 mutquery <- GDCquery(project = "TCGA-LIHC",
                      data.category = "Simple Nucleotide Variation",
                      data.type = "Masked Somatic Mutation",
