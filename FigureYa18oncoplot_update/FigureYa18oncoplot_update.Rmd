@@ -90,6 +90,8 @@ head(cancerName)
 Parameter `project = ` followed by the abbreviation of the cancer name you want to view
 
 ```{r,message=FALSE}
+on.exit(unlink("GDCdata", recursive = TRUE, force = TRUE), add = TRUE)
+
 clinical <- GDCquery(project = "TCGA-LIHC", 
                      data.category = "Clinical", 
                      data.type = "Clinical Supplement", 
