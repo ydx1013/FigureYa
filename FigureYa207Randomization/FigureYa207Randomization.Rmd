@@ -104,6 +104,8 @@ If your data has already been processed into easy_input_diff.csv and easy_input_
 ## Download expression data and sample information using TCGAbiolinks
 
 ```{r}
+on.exit(unlink("GDCdata", recursive = TRUE, force = TRUE), add = TRUE)
+
 ## 下载TCGA-CHOL原始count数据
 ## Download raw count data for TCGA-CHOL
 expquery <- GDCquery(project = "TCGA-CHOL", 
