@@ -1,30 +1,37 @@
 FigureYa270panMeth
 FigureYa270panMeth
 Xiaofan Lu, Taojun Ye
-2025-5-20
+2025-09-23
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
-小丫姐好，我还有很多小伙伴想众筹这篇铁死亡泛癌的其他图片，主要是Figure
-1。感觉这个套路只要换一个通路就可以测试，我看大鱼老师写了这篇文章的Figure
+想实现这篇铁死亡泛癌的其他图片，主要是Figure
+1。感觉这个套路只要换一个通路就可以测试，我看Xiaofan
+Lu写了这篇文章的Figure
 2A（铁死亡基因在泛癌肿瘤与正常的差异箱线图，FigureYa208FPI），Figure
-3B（铁死亡与免疫通路的相关性，FigureYa253panGSEA），可否请大鱼老师详细写一下文章Figure
-1的相关代码？
+3B（铁死亡与免疫通路的相关性，FigureYa253panGSEA），可否请Xiaofan
+Lu详细写一下文章Figure 1的相关代码？
 1A（铁死亡在泛癌中体细胞拷贝数变异情况，绘制条形图，可参考FigureYa265panCNV）
 1B（铁死亡基因在肿瘤与正常的差异表达，绘制拼接的点图和柱状图，可参考FigureYa263panDiff）
 1C（铁死亡基因体细胞拷贝数与基因表达的相关性点图，可参考FigureYa268panCNVexpr）
 1D（铁死亡基因肿瘤与正常组织甲基化状态点图）
 1E（铁死亡转录组表达与启动子甲基化相关性的点图）
-这些图都是泛癌的，不知道大鱼老师可不可以用例文数据分别众筹个教程
+这些图都是泛癌的，不知道Xiaofan Lu可不可以用例文数据分别实现个教程
 [皱眉] ？（感觉都可以出一期专栏——iSicence复现了哈哈）
-这次众筹Figure 1D，铁死亡基因肿瘤与正常组织甲基化状态点图。
-#Requirement description
-Hello Xiaoya, I have many other friends who want to crowdfund for
-this iron death pan cancer image, mainly Figure 1. I feel that this
-routine can be tested by simply changing the pathway. I saw that
-Professor Dayu wrote Figure 2A (Box plot of differences in ferroptosis
-genes between pan cancer tumors and normal, Figure Ya208FPI) and Figure
-3B (Correlation between ferroptosis and immune pathways) in this
-article, FigureYa253panGSEA）， Could you please ask Teacher Big Fish to
-write the relevant code for Figure 1 in detail?
+这次实现Figure 1D，铁死亡基因肿瘤与正常组织甲基化状态点图。
+Requirement description
+For Figure 1. I feel that this routine can be tested by simply
+changing the pathway. I saw that Professor Dayu wrote Figure 2A (Box
+plot of differences in ferroptosis genes between pan cancer tumors and
+normal, Figure Ya208FPI) and Figure 3B (Correlation between ferroptosis
+and immune pathways) in this article, FigureYa253panGSEA）， Could you
+please ask Xiaofan Lu to write the relevant code for Figure 1 in
+detail?
 -1A (Iron induced cell copy number variation in pan cancer, plot a
 bar chart, refer to FigureYa265panCNV) -1B (Differential expression of
 ferroptosis genes between tumors and normal, plot concatenated dot plots
@@ -34,17 +41,17 @@ to FigureYa268panCNVexpr) -1D (Methylation Status Point Map of Iron
 Death Gene Tumors and Normal Tissues) -1E (Point plot of correlation
 between iron death transcriptome expression and promoter
 methylation)
-These images are all pan cancerous. Can Big Fish Teacher crowdfund a
-tutorial using example text data? (I feel like I could even publish a
-column - iSicence has reproduced it haha)
+These images are all pan cancerous. Can Xiaofan Lu write a tutorial
+using example text data? (I feel like I could even publish a column -
+iSicence has reproduced it haha)
 Figure 1D, a point map of methylation status between iron death gene
-tumors and normal tissues, was crowdfunded this time.
+tumors and normal tissues, for this time.
 出自
 https://linkinghub.elsevier.com/retrieve/pii/S2589004220304892
 from
 https://linkinghub.elsevier.com/retrieve/pii/S2589004220304892
-接下来会陆续众筹Figure1E，敬请关注。
-We will continue to crowdfund Figure 1E, please stay tuned.
+接下来会陆续实现Figure1E，敬请关注。
+Figure 1E to be continue.
 Figure 1. The Dysregulation of Ferroptosis Regulator Genes (FRGs) (D)
 Heatmap shows the differential methylation of FRGs in cancers;
 hypermethylated and hypomethylated genes are marked in red and
@@ -52,38 +59,12 @@ blue
 , respectively (Wilcoxon rank-sum test).
 应用场景
 分析铁死亡基因肿瘤与正常组织甲基化状态并绘制点图
-#Application scenarios
+Application scenarios
 Analyze the methylation status of iron death genes in tumors and
 normal tissues and draw a point map
 环境设置
-使用国内镜像安装包
-#Environment settings
-Use domestic image installation package
-# 设置CRAN镜像为清华大学镜像源，加速R包下载
-# Set CRAN mirror to Tsinghua University mirror source to speed up R package downloads
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-
-# 设置Bioconductor镜像为清华大学镜像源，加速生物信息学相关包的下载
-# Set Bioconductor mirror to Tsinghua University mirror source to speed up downloads of bioinformatics-related packages
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
-
-# 使用BiocManager安装ChAMP包，用于DNA甲基化数据分析
-# Install the ChAMP package using BiocManager for DNA methylation data analysis
-BiocManager::install("ChAMP")
-
-# 使用BiocManager安装ChAMPdata包，包含ChAMP分析所需的示例数据集
-# Install the ChAMPdata package using BiocManager, which contains example datasets required for ChAMP analysis
-BiocManager::install("ChAMPdata")
-
-# 使用BiocManager安装ComplexHeatmap包，用于创建复杂热图可视化
-# Install the ComplexHeatmap package using BiocManager for creating complex heatmap visualizations
-BiocManager::install("ComplexHeatmap")
-
-# 安装ggpubr包用于增强ggplot2的统计可视化功能，以及randomcoloR包用于生成随机配色方案
-# Install the ggpubr package to enhance ggplot2's statistical visualization capabilities, and the randomcoloR package to generate random color schemes
-install.packages(c("ggpubr", "randomcoloR"))
-加载包
-library packages
+Environment settings
+source("install_dependencies.R")
 # 加载ggplot2包，用于创建优雅的统计图形
 # Load the ggplot2 package for creating elegant statistical graphics
 library(ggplot2)
@@ -91,9 +72,11 @@ library(ggplot2)
 # 加载ChAMP包，用于DNA甲基化数据分析
 # Load the ChAMP package for DNA methylation data analysis
 library(ChAMP)
+
 # 加载data.table包，提供高效处理大型数据集的功能
 # Load the data.table package for efficient processing of large datasets
 library(data.table)
+
 # 加载randomcoloR包，用于生成视觉上愉悦的随机颜色
 # Load the randomcoloR package to generate visually pleasing random colors
 library(randomcoloR)
@@ -132,10 +115,8 @@ https://gdc.cancer.gov/about-data/publications/pancanatlas
 ，下载地址
 http://api.gdc.cancer.gov/data/1a7d7be8-675d-4e60-a105-19d4121bdebf
 。跟FigureYa263panDiff、FigureYa265panCNV、FigureYa268panCNVexpr使用的是同一套数据，已经下载的小伙伴就不用重复下载了。
-tcga_methy450文件夹里面是甲基化数据，过滤掉了有空值的探针，均已保存为RData文件，微云链接：
-https://share.weiyun.com/jRry4rlU
-。下载后把tcga_methy450文件夹放到当前文件夹。
-#Input file
+tcga_methy450文件夹里面是甲基化数据，过滤掉了有空值的探针，均已保存为RData文件。下载后把tcga_methy450文件夹放到当前文件夹。
+Input file
 merged_sample_quality_annotations.tsv， Download from<
 https://gdc.cancer.gov/about-data/publications/pancanatlas
 >, download link<
@@ -144,10 +125,8 @@ http://api.gdc.cancer.gov/data/1a7d7be8-675d-4e60-a105-19d4121bdebf
 FigureYa265panCNV, and FigureYa268panCNVexpr, so users who have already
 downloaded it do not need to download it again.
 The tcga_sthy450 folder contains methylation data, filtered out
-probes with null values, and saved them as RData files. Weiyun link:<
-https://share.weiyun.com/jRry4rlU
->After downloading,
-place the tcga_cethy450 folder into the current folder.
+probes with null values, and saved them as RData files. After
+downloading, place the tcga_cethy450 folder into the current folder.
 # 获得同时有肿瘤和正常样本的肿瘤名
 # Obtain the names of tumors that have both tumor and normal samples
 tumors <- c("BLCA","BRCA","CESC","CHOL","COAD",
@@ -217,7 +196,7 @@ for (i in tumors) { # 比较慢请耐心
 }
 gc()
 提取甲基化数据
-#Extract methylation data
+Extract methylation data
 # 初始化存储差异甲基化结果的数据框
 # Initialize data frame to store differential methylation results
 deltaMeth <- NULL
@@ -297,7 +276,7 @@ for (i in tumors) {
 # Save differential methylation analysis results for all tumor types to file
 write.table(deltaMeth, "TCGA_pancan_delta_meth_subset.txt",sep = "\t",row.names = F,col.names = T,quote = F)
 开始画图
-start plot
+Start plot
 # 设置颜色（用于后续绘图的颜色映射）
 # Set colors (for color mapping in subsequent plotting)
 blue <- "#4577FF"       # 蓝色
