@@ -40,7 +40,7 @@ function renderToc() {
   Object.values(folderMap).forEach(folder => {
     // 提取编号，拼gallery路径
     let galleryBase = getGalleryBase(folder.folder);
-    let thumb = galleryBase ? `gallery_compress/${galleryBase}.png` : null;
+    let thumb = galleryBase ? `gallery_compress/${galleryBase}.webp` : null;
     html += `<div class="card">`;
     // 图像
     html += thumb ? `<img src="${thumb}" alt="${folder.folder}" loading="lazy">`
