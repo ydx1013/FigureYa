@@ -27,14 +27,14 @@ downloaded 580 KB
 * DONE (BiocManager)
 
 The downloaded source packages are in
-	‘/tmp/Rtmpv4YfgW/downloaded_packages’
+	‘/tmp/RtmpYt1s51/downloaded_packages’
 'getOption("repos")' replaces Bioconductor standard repositories, see
 'help("repositories", package = "BiocManager")' for details.
 Replacement repositories:
     CRAN: https://cloud.r-project.org/
 Bioconductor version 3.21 (BiocManager 1.30.26), R 4.5.1 (2025-06-13)
 Installing package(s) 'BiocVersion', 'genefu'
-also installing the dependencies ‘listenv’, ‘parallelly’, ‘UCSC.utils’, ‘GenomeInfoDbData’, ‘farver’, ‘labeling’, ‘RColorBrewer’, ‘viridisLite’, ‘future’, ‘globals’, ‘bit’, ‘XVector’, ‘GenomeInfoDb’, ‘sys’, ‘utf8’, ‘gtable’, ‘isoband’, ‘S7’, ‘scales’, ‘shape’, ‘future.apply’, ‘numDeriv’, ‘progressr’, ‘SQUAREM’, ‘generics’, ‘bit64’, ‘blob’, ‘pkgconfig’, ‘plogr’, ‘cpp11’, ‘png’, ‘Biostrings’, ‘askpass’, ‘pillar’, ‘purrr’, ‘tibble’, ‘tidyr’, ‘tidyselect’, ‘Rcpp’, ‘data.table’, ‘ggplot2’, ‘diagram’, ‘lava’, ‘BiocGenerics’, ‘IRanges’, ‘DBI’, ‘RSQLite’, ‘S4Vectors’, ‘KEGGREST’, ‘crayon’, ‘hms’, ‘prettyunits’, ‘magrittr’, ‘stringi’, ‘vctrs’, ‘openssl’, ‘withr’, ‘dbplyr’, ‘dplyr’, ‘filelock’, ‘httr’, ‘proxy’, ‘prodlim’, ‘ipred’, ‘SuppDists’, ‘survivalROC’, ‘bootstrap’, ‘rmeta’, ‘AnnotationDbi’, ‘progress’, ‘stringr’, ‘httr2’, ‘BiocFileCache’, ‘xml2’, ‘curl’, ‘e1071’, ‘Biobase’, ‘statmod’, ‘survcomp’, ‘biomaRt’, ‘iC10’, ‘AIMS’, ‘amap’, ‘impute’, ‘mclust’, ‘limma’, ‘iC10TrainingData’
+also installing the dependencies ‘listenv’, ‘parallelly’, ‘UCSC.utils’, ‘GenomeInfoDbData’, ‘farver’, ‘labeling’, ‘RColorBrewer’, ‘viridisLite’, ‘future’, ‘globals’, ‘bit’, ‘XVector’, ‘GenomeInfoDb’, ‘sys’, ‘utf8’, ‘gtable’, ‘isoband’, ‘S7’, ‘scales’, ‘shape’, ‘future.apply’, ‘numDeriv’, ‘progressr’, ‘SQUAREM’, ‘generics’, ‘bit64’, ‘blob’, ‘pkgconfig’, ‘plogr’, ‘cpp11’, ‘png’, ‘Biostrings’, ‘askpass’, ‘pillar’, ‘purrr’, ‘tibble’, ‘tidyr’, ‘tidyselect’, ‘Rcpp’, ‘data.table’, ‘ggplot2’, ‘diagram’, ‘lava’, ‘BiocGenerics’, ‘IRanges’, ‘DBI’, ‘RSQLite’, ‘S4Vectors’, ‘KEGGREST’, ‘crayon’, ‘hms’, ‘prettyunits’, ‘magrittr’, ‘stringi’, ‘vctrs’, ‘openssl’, ‘withr’, ‘dbplyr’, ‘dplyr’, ‘filelock’, ‘httr’, ‘proxy’, ‘prodlim’, ‘ipred’, ‘SuppDists’, ‘survivalROC’, ‘bootstrap’, ‘rmeta’, ‘AnnotationDbi’, ‘progress’, ‘stringr’, ‘httr2’, ‘BiocFileCache’, ‘xml2’, ‘curl’, ‘pamr’, ‘e1071’, ‘Biobase’, ‘statmod’, ‘survcomp’, ‘biomaRt’, ‘iC10’, ‘AIMS’, ‘amap’, ‘impute’, ‘mclust’, ‘limma’, ‘iC10TrainingData’
 
 trying URL 'https://cloud.r-project.org/src/contrib/listenv_0.9.1.tar.gz'
 trying URL 'https://cloud.r-project.org/src/contrib/parallelly_1.45.1.tar.gz'
@@ -48,7 +48,7 @@ trying URL 'https://cloud.r-project.org/src/contrib/future_1.67.0.tar.gz'
 trying URL 'https://cloud.r-project.org/src/contrib/globals_0.18.0.tar.gz'
 trying URL 'https://cloud.r-project.org/src/contrib/bit_4.6.0.tar.gz'
 trying URL 'https://bioconductor.org//packages/3.21/bioc/src/contrib/XVector_0.48.0.tar.gz'
-trying URL 'https://bioconductor.org//packages/3.21/bioc/src/contrib/GenomeInfoDb_1.44.2.tar.gz'
+trying URL 'https://bioconductor.org//packages/3.21/bioc/src/contrib/GenomeInfoDb_1.44.3.tar.gz'
 trying URL 'https://cloud.r-project.org/src/contrib/sys_3.4.3.tar.gz'
 trying URL 'https://cloud.r-project.org/src/contrib/utf8_1.2.6.tar.gz'
 trying URL 'https://cloud.r-project.org/src/contrib/gtable_0.3.6.tar.gz'
@@ -111,6 +111,7 @@ trying URL 'https://cloud.r-project.org/src/contrib/httr2_1.2.1.tar.gz'
 trying URL 'https://bioconductor.org//packages/3.21/bioc/src/contrib/BiocFileCache_2.16.2.tar.gz'
 trying URL 'https://cloud.r-project.org/src/contrib/xml2_1.4.0.tar.gz'
 trying URL 'https://cloud.r-project.org/src/contrib/curl_7.0.0.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/pamr_1.57.tar.gz'
 trying URL 'https://cloud.r-project.org/src/contrib/e1071_1.7-16.tar.gz'
 trying URL 'https://bioconductor.org//packages/3.21/bioc/src/contrib/Biobase_2.68.0.tar.gz'
 trying URL 'https://cloud.r-project.org/src/contrib/statmod_1.5.0.tar.gz'
@@ -1234,6 +1235,20 @@ installing to /home/runner/work/_temp/Library/00LOCK-curl/00new/curl/libs
 ** testing if installed package can be loaded from final location
 ** testing if installed package keeps a record of temporary installation path
 * DONE (curl)
+* installing *source* package ‘pamr’ ...
+** this is package ‘pamr’ version ‘1.57’
+** package ‘pamr’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** data
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded from temporary location
+** testing if installed package can be loaded from final location
+** testing if installed package keeps a record of temporary installation path
+* DONE (pamr)
 * installing *source* package ‘statmod’ ...
 ** this is package ‘statmod’ version ‘1.5.0’
 ** package ‘statmod’ successfully unpacked and MD5 sums checked
@@ -3200,7 +3215,7 @@ installing to /home/runner/work/_temp/Library/00LOCK-prodlim/00new/prodlim/libs
 ** testing if installed package keeps a record of temporary installation path
 * DONE (prodlim)
 * installing *source* package ‘GenomeInfoDb’ ...
-** this is package ‘GenomeInfoDb’ version ‘1.44.2’
+** this is package ‘GenomeInfoDb’ version ‘1.44.3’
 ** using staged installation
 ** R
 ** inst
@@ -3421,7 +3436,7 @@ Warning: replacing previous import ‘limma::logsumexp’ by ‘mclust::logsumex
 * DONE (genefu)
 
 The downloaded source packages are in
-	‘/tmp/Rtmpv4YfgW/downloaded_packages’
+	‘/tmp/RtmpYt1s51/downloaded_packages’
 Successfully installed: genefu 
 Package already installed: AnnotationDbi 
 Installing Bioconductor package: org.Hs.eg.db 
@@ -3451,7 +3466,7 @@ downloaded 93.7 MB
 * DONE (org.Hs.eg.db)
 
 The downloaded source packages are in
-	‘/tmp/Rtmpv4YfgW/downloaded_packages’
+	‘/tmp/RtmpYt1s51/downloaded_packages’
 Successfully installed: org.Hs.eg.db 
 Installing Bioconductor package: GSVA 
 'getOption("repos")' replaces Bioconductor standard repositories, see
@@ -3967,12 +3982,12 @@ config.status: executing .classes commands
 General Information:
 -------------------
                    HDF5 Version: 1.10.7
-                  Configured on: Mon Sep 22 14:29:36 UTC 2025
+                  Configured on: Wed Sep 24 11:36:10 UTC 2025
                   Configured by: runner@runnervmf4ws1
                     Host system: x86_64-pc-linux-gnu
               Uname information: Linux runnervmf4ws1 6.11.0-1018-azure #18~24.04.1-Ubuntu SMP Sat Jun 28 04:46:03 UTC 2025 x86_64 x86_64 x86_64 GNU/Linux
                        Byte sex: little-endian
-             Installation point: /tmp/RtmpIu1fBp/R.INSTALL6e6d7e0c004a/Rhdf5lib/src/hdf5/hdf5
+             Installation point: /tmp/RtmpvXJ32m/R.INSTALL6db17fc9da8b/Rhdf5lib/src/hdf5/hdf5
 
 Compiling Options:
 ------------------
@@ -4047,14 +4062,14 @@ Parallel Filtered Dataset Writes: no
                 Use file locking: best-effort
        Strict file format checks: no
     Optimization instrumentation: no
-make[1]: Entering directory '/tmp/RtmpIu1fBp/R.INSTALL6e6d7e0c004a/Rhdf5lib/src/hdf5'
+make[1]: Entering directory '/tmp/RtmpvXJ32m/R.INSTALL6db17fc9da8b/Rhdf5lib/src/hdf5'
 for d in src . c++ hl; do                                \
   if test $d != .; then                                        \
    (cd $d && make  lib) || exit 1;            \
   fi;                                                           \
 done
-make[2]: Entering directory '/tmp/RtmpIu1fBp/R.INSTALL6e6d7e0c004a/Rhdf5lib/src/hdf5/src'
-make[3]: Entering directory '/tmp/RtmpIu1fBp/R.INSTALL6e6d7e0c004a/Rhdf5lib/src/hdf5/src'
+make[2]: Entering directory '/tmp/RtmpvXJ32m/R.INSTALL6db17fc9da8b/Rhdf5lib/src/hdf5/src'
+make[3]: Entering directory '/tmp/RtmpvXJ32m/R.INSTALL6db17fc9da8b/Rhdf5lib/src/hdf5/src'
   CC       H5.lo
   CC       H5checksum.lo
   CC       H5dbg.lo
@@ -4366,16 +4381,16 @@ LD_LIBRARY_PATH="$LD_LIBRARY_PATH`echo -L/usr/local/lib |                  \
   CC       H5FDros3.lo
   CC       H5FDs3comms.lo
   CCLD     libhdf5.la
-make[3]: Leaving directory '/tmp/RtmpIu1fBp/R.INSTALL6e6d7e0c004a/Rhdf5lib/src/hdf5/src'
-make[2]: Leaving directory '/tmp/RtmpIu1fBp/R.INSTALL6e6d7e0c004a/Rhdf5lib/src/hdf5/src'
-make[2]: Entering directory '/tmp/RtmpIu1fBp/R.INSTALL6e6d7e0c004a/Rhdf5lib/src/hdf5/c++'
-make[3]: Entering directory '/tmp/RtmpIu1fBp/R.INSTALL6e6d7e0c004a/Rhdf5lib/src/hdf5/c++'
+make[3]: Leaving directory '/tmp/RtmpvXJ32m/R.INSTALL6db17fc9da8b/Rhdf5lib/src/hdf5/src'
+make[2]: Leaving directory '/tmp/RtmpvXJ32m/R.INSTALL6db17fc9da8b/Rhdf5lib/src/hdf5/src'
+make[2]: Entering directory '/tmp/RtmpvXJ32m/R.INSTALL6db17fc9da8b/Rhdf5lib/src/hdf5/c++'
+make[3]: Entering directory '/tmp/RtmpvXJ32m/R.INSTALL6db17fc9da8b/Rhdf5lib/src/hdf5/c++'
 make[3]: Nothing to be done for 'build-lib'.
-make[3]: Leaving directory '/tmp/RtmpIu1fBp/R.INSTALL6e6d7e0c004a/Rhdf5lib/src/hdf5/c++'
+make[3]: Leaving directory '/tmp/RtmpvXJ32m/R.INSTALL6db17fc9da8b/Rhdf5lib/src/hdf5/c++'
 + cd src
 + make lib
-make[3]: Entering directory '/tmp/RtmpIu1fBp/R.INSTALL6e6d7e0c004a/Rhdf5lib/src/hdf5/c++/src'
-make[4]: Entering directory '/tmp/RtmpIu1fBp/R.INSTALL6e6d7e0c004a/Rhdf5lib/src/hdf5/c++/src'
+make[3]: Entering directory '/tmp/RtmpvXJ32m/R.INSTALL6db17fc9da8b/Rhdf5lib/src/hdf5/c++/src'
+make[4]: Entering directory '/tmp/RtmpvXJ32m/R.INSTALL6db17fc9da8b/Rhdf5lib/src/hdf5/c++/src'
   CXX      H5Exception.lo
   CXX      H5IdComponent.lo
   CXX      H5DataSpace.lo
@@ -4408,17 +4423,17 @@ make[4]: Entering directory '/tmp/RtmpIu1fBp/R.INSTALL6e6d7e0c004a/Rhdf5lib/src/
   CXX      H5Group.lo
   CXX      H5File.lo
   CXXLD    libhdf5_cpp.la
-make[4]: Leaving directory '/tmp/RtmpIu1fBp/R.INSTALL6e6d7e0c004a/Rhdf5lib/src/hdf5/c++/src'
-make[3]: Leaving directory '/tmp/RtmpIu1fBp/R.INSTALL6e6d7e0c004a/Rhdf5lib/src/hdf5/c++/src'
-make[2]: Leaving directory '/tmp/RtmpIu1fBp/R.INSTALL6e6d7e0c004a/Rhdf5lib/src/hdf5/c++'
-make[2]: Entering directory '/tmp/RtmpIu1fBp/R.INSTALL6e6d7e0c004a/Rhdf5lib/src/hdf5/hl'
-make[3]: Entering directory '/tmp/RtmpIu1fBp/R.INSTALL6e6d7e0c004a/Rhdf5lib/src/hdf5/hl'
+make[4]: Leaving directory '/tmp/RtmpvXJ32m/R.INSTALL6db17fc9da8b/Rhdf5lib/src/hdf5/c++/src'
+make[3]: Leaving directory '/tmp/RtmpvXJ32m/R.INSTALL6db17fc9da8b/Rhdf5lib/src/hdf5/c++/src'
+make[2]: Leaving directory '/tmp/RtmpvXJ32m/R.INSTALL6db17fc9da8b/Rhdf5lib/src/hdf5/c++'
+make[2]: Entering directory '/tmp/RtmpvXJ32m/R.INSTALL6db17fc9da8b/Rhdf5lib/src/hdf5/hl'
+make[3]: Entering directory '/tmp/RtmpvXJ32m/R.INSTALL6db17fc9da8b/Rhdf5lib/src/hdf5/hl'
 make[3]: Nothing to be done for 'build-lib'.
-make[3]: Leaving directory '/tmp/RtmpIu1fBp/R.INSTALL6e6d7e0c004a/Rhdf5lib/src/hdf5/hl'
+make[3]: Leaving directory '/tmp/RtmpvXJ32m/R.INSTALL6db17fc9da8b/Rhdf5lib/src/hdf5/hl'
 + cd src
 + make lib
-make[3]: Entering directory '/tmp/RtmpIu1fBp/R.INSTALL6e6d7e0c004a/Rhdf5lib/src/hdf5/hl/src'
-make[4]: Entering directory '/tmp/RtmpIu1fBp/R.INSTALL6e6d7e0c004a/Rhdf5lib/src/hdf5/hl/src'
+make[3]: Entering directory '/tmp/RtmpvXJ32m/R.INSTALL6db17fc9da8b/Rhdf5lib/src/hdf5/hl/src'
+make[4]: Entering directory '/tmp/RtmpvXJ32m/R.INSTALL6db17fc9da8b/Rhdf5lib/src/hdf5/hl/src'
   CC       H5DO.lo
   CC       H5DS.lo
   CC       H5IM.lo
@@ -4429,25 +4444,25 @@ make[4]: Entering directory '/tmp/RtmpIu1fBp/R.INSTALL6e6d7e0c004a/Rhdf5lib/src/
   CC       H5TB.lo
   CC       H5LD.lo
   CCLD     libhdf5_hl.la
-make[4]: Leaving directory '/tmp/RtmpIu1fBp/R.INSTALL6e6d7e0c004a/Rhdf5lib/src/hdf5/hl/src'
-make[3]: Leaving directory '/tmp/RtmpIu1fBp/R.INSTALL6e6d7e0c004a/Rhdf5lib/src/hdf5/hl/src'
+make[4]: Leaving directory '/tmp/RtmpvXJ32m/R.INSTALL6db17fc9da8b/Rhdf5lib/src/hdf5/hl/src'
+make[3]: Leaving directory '/tmp/RtmpvXJ32m/R.INSTALL6db17fc9da8b/Rhdf5lib/src/hdf5/hl/src'
 + cd c++
 + make lib
-make[3]: Entering directory '/tmp/RtmpIu1fBp/R.INSTALL6e6d7e0c004a/Rhdf5lib/src/hdf5/hl/c++'
-make[4]: Entering directory '/tmp/RtmpIu1fBp/R.INSTALL6e6d7e0c004a/Rhdf5lib/src/hdf5/hl/c++'
+make[3]: Entering directory '/tmp/RtmpvXJ32m/R.INSTALL6db17fc9da8b/Rhdf5lib/src/hdf5/hl/c++'
+make[4]: Entering directory '/tmp/RtmpvXJ32m/R.INSTALL6db17fc9da8b/Rhdf5lib/src/hdf5/hl/c++'
 make[4]: Nothing to be done for 'build-lib'.
-make[4]: Leaving directory '/tmp/RtmpIu1fBp/R.INSTALL6e6d7e0c004a/Rhdf5lib/src/hdf5/hl/c++'
+make[4]: Leaving directory '/tmp/RtmpvXJ32m/R.INSTALL6db17fc9da8b/Rhdf5lib/src/hdf5/hl/c++'
 + cd src
 + make lib
-make[4]: Entering directory '/tmp/RtmpIu1fBp/R.INSTALL6e6d7e0c004a/Rhdf5lib/src/hdf5/hl/c++/src'
-make[5]: Entering directory '/tmp/RtmpIu1fBp/R.INSTALL6e6d7e0c004a/Rhdf5lib/src/hdf5/hl/c++/src'
+make[4]: Entering directory '/tmp/RtmpvXJ32m/R.INSTALL6db17fc9da8b/Rhdf5lib/src/hdf5/hl/c++/src'
+make[5]: Entering directory '/tmp/RtmpvXJ32m/R.INSTALL6db17fc9da8b/Rhdf5lib/src/hdf5/hl/c++/src'
   CXX      H5PacketTable.lo
   CXXLD    libhdf5_hl_cpp.la
-make[5]: Leaving directory '/tmp/RtmpIu1fBp/R.INSTALL6e6d7e0c004a/Rhdf5lib/src/hdf5/hl/c++/src'
-make[4]: Leaving directory '/tmp/RtmpIu1fBp/R.INSTALL6e6d7e0c004a/Rhdf5lib/src/hdf5/hl/c++/src'
-make[3]: Leaving directory '/tmp/RtmpIu1fBp/R.INSTALL6e6d7e0c004a/Rhdf5lib/src/hdf5/hl/c++'
-make[2]: Leaving directory '/tmp/RtmpIu1fBp/R.INSTALL6e6d7e0c004a/Rhdf5lib/src/hdf5/hl'
-make[1]: Leaving directory '/tmp/RtmpIu1fBp/R.INSTALL6e6d7e0c004a/Rhdf5lib/src/hdf5'
+make[5]: Leaving directory '/tmp/RtmpvXJ32m/R.INSTALL6db17fc9da8b/Rhdf5lib/src/hdf5/hl/c++/src'
+make[4]: Leaving directory '/tmp/RtmpvXJ32m/R.INSTALL6db17fc9da8b/Rhdf5lib/src/hdf5/hl/c++/src'
+make[3]: Leaving directory '/tmp/RtmpvXJ32m/R.INSTALL6db17fc9da8b/Rhdf5lib/src/hdf5/hl/c++'
+make[2]: Leaving directory '/tmp/RtmpvXJ32m/R.INSTALL6db17fc9da8b/Rhdf5lib/src/hdf5/hl'
+make[1]: Leaving directory '/tmp/RtmpvXJ32m/R.INSTALL6db17fc9da8b/Rhdf5lib/src/hdf5'
 mkdir -p "/home/runner/work/_temp/Library/00LOCK-Rhdf5lib/00new/Rhdf5lib/include"
 cp "hdf5/src"/*.h "/home/runner/work/_temp/Library/00LOCK-Rhdf5lib/00new/Rhdf5lib/include"
 cp "hdf5/c++/src"/*.h "/home/runner/work/_temp/Library/00LOCK-Rhdf5lib/00new/Rhdf5lib/include"
@@ -4879,37 +4894,37 @@ config.status: creating src/Makevars
 ** libs
 using C compiler: ‘gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0’
 make -C zstd
-make[1]: Entering directory '/tmp/Rtmpl8fFUq/R.INSTALLb33a38fcb8ec/rhdf5filters/src/zstd'
+make[1]: Entering directory '/tmp/Rtmp8yGZ8c/R.INSTALLb2aa7cf80e1/rhdf5filters/src/zstd'
 gcc -std=gnu2x -g -O2 -fpic -shared H5Zzstd.c -I/usr/local/include -I"/home/runner/work/_temp/Library/Rhdf5lib/include" \
  -lzstd -L/usr/local/lib -o libH5Zzstd.so
-make[1]: Leaving directory '/tmp/Rtmpl8fFUq/R.INSTALLb33a38fcb8ec/rhdf5filters/src/zstd'
+make[1]: Leaving directory '/tmp/Rtmp8yGZ8c/R.INSTALLb2aa7cf80e1/rhdf5filters/src/zstd'
 make -C blosc
-make[1]: Entering directory '/tmp/Rtmpl8fFUq/R.INSTALLb33a38fcb8ec/rhdf5filters/src/blosc'
+make[1]: Entering directory '/tmp/Rtmp8yGZ8c/R.INSTALLb2aa7cf80e1/rhdf5filters/src/blosc'
 g++ -std=gnu++17 -g -O2 -fpic -shared -I/usr/local/include -I"/home/runner/work/_temp/Library/Rhdf5lib/include" H5Zblosc.cpp \
 -L/usr/local/lib  -lblosc -lzstd -lz -o libH5Zblosc.so 
-make[1]: Leaving directory '/tmp/Rtmpl8fFUq/R.INSTALLb33a38fcb8ec/rhdf5filters/src/blosc'
+make[1]: Leaving directory '/tmp/Rtmp8yGZ8c/R.INSTALLb2aa7cf80e1/rhdf5filters/src/blosc'
 make -C bzip2
-make[1]: Entering directory '/tmp/Rtmpl8fFUq/R.INSTALLb33a38fcb8ec/rhdf5filters/src/bzip2'
+make[1]: Entering directory '/tmp/Rtmp8yGZ8c/R.INSTALLb2aa7cf80e1/rhdf5filters/src/bzip2'
 gcc -std=gnu2x -g -O2 -fpic -shared H5Zbzip2.c -I/usr/local/include -I"/home/runner/work/_temp/Library/Rhdf5lib/include" \
  -lbz2 -L/usr/local/lib -o libH5Zbz2.so
-make[1]: Leaving directory '/tmp/Rtmpl8fFUq/R.INSTALLb33a38fcb8ec/rhdf5filters/src/bzip2'
+make[1]: Leaving directory '/tmp/Rtmp8yGZ8c/R.INSTALLb2aa7cf80e1/rhdf5filters/src/bzip2'
 make -C lzf
-make[1]: Entering directory '/tmp/Rtmpl8fFUq/R.INSTALLb33a38fcb8ec/rhdf5filters/src/lzf'
+make[1]: Entering directory '/tmp/Rtmp8yGZ8c/R.INSTALLb2aa7cf80e1/rhdf5filters/src/lzf'
 make -C lzf
-make[2]: Entering directory '/tmp/Rtmpl8fFUq/R.INSTALLb33a38fcb8ec/rhdf5filters/src/lzf/lzf'
+make[2]: Entering directory '/tmp/Rtmp8yGZ8c/R.INSTALLb2aa7cf80e1/rhdf5filters/src/lzf/lzf'
 gcc -std=gnu2x -g -O2 -fpic -I/usr/local/include -I"/home/runner/work/_temp/Library/Rhdf5lib/include" -c lzf_c.c
 gcc -std=gnu2x -g -O2 -fpic -I/usr/local/include -I"/home/runner/work/_temp/Library/Rhdf5lib/include" -c lzf_d.c
 rm -f liblzf.a
 ar cq liblzf.a lzf_c.o lzf_d.o
 ranlib liblzf.a
-make[2]: Leaving directory '/tmp/Rtmpl8fFUq/R.INSTALLb33a38fcb8ec/rhdf5filters/src/lzf/lzf'
+make[2]: Leaving directory '/tmp/Rtmp8yGZ8c/R.INSTALLb2aa7cf80e1/rhdf5filters/src/lzf/lzf'
 gcc -std=gnu2x -g -O2 -fpic -shared H5Zlzf.c -I/usr/local/include -I"/home/runner/work/_temp/Library/Rhdf5lib/include" \
 -I./lzf/ ./lzf/liblzf.a -L/usr/local/lib -o libH5Zlzf.so
-make[1]: Leaving directory '/tmp/Rtmpl8fFUq/R.INSTALLb33a38fcb8ec/rhdf5filters/src/lzf'
+make[1]: Leaving directory '/tmp/Rtmp8yGZ8c/R.INSTALLb2aa7cf80e1/rhdf5filters/src/lzf'
 make -C vbz
-make[1]: Entering directory '/tmp/Rtmpl8fFUq/R.INSTALLb33a38fcb8ec/rhdf5filters/src/vbz'
+make[1]: Entering directory '/tmp/Rtmp8yGZ8c/R.INSTALLb2aa7cf80e1/rhdf5filters/src/vbz'
 make -C third_party/streamvbyte
-make[2]: Entering directory '/tmp/Rtmpl8fFUq/R.INSTALLb33a38fcb8ec/rhdf5filters/src/vbz/third_party/streamvbyte'
+make[2]: Entering directory '/tmp/Rtmp8yGZ8c/R.INSTALLb2aa7cf80e1/rhdf5filters/src/vbz/third_party/streamvbyte'
 gcc -std=gnu99 -g -O2 -fpic -Iinclude -I/usr/local/include -I"/home/runner/work/_temp/Library/Rhdf5lib/include" -mavx  -c ./src/streamvbyte_decode.c
 gcc -std=gnu99 -g -O2 -fpic -Iinclude -I/usr/local/include -I"/home/runner/work/_temp/Library/Rhdf5lib/include" -mavx  -c ./src/streamvbyte_encode.c
 gcc -std=gnu99 -g -O2 -fpic -Iinclude -I/usr/local/include -I"/home/runner/work/_temp/Library/Rhdf5lib/include" -mavx  -c ./src/streamvbytedelta_decode.c
@@ -4920,19 +4935,19 @@ gcc -std=gnu99 -g -O2 -fpic -Iinclude -I/usr/local/include -I"/home/runner/work/
 rm -f libstreamvbyte.a
 ar cq libstreamvbyte.a streamvbyte_decode.o streamvbyte_encode.o streamvbytedelta_decode.o streamvbytedelta_encode.o streamvbyte_0124_encode.o streamvbyte_0124_decode.o streamvbyte_zigzag.o
 ranlib libstreamvbyte.a 
-make[2]: Leaving directory '/tmp/Rtmpl8fFUq/R.INSTALLb33a38fcb8ec/rhdf5filters/src/vbz/third_party/streamvbyte'
+make[2]: Leaving directory '/tmp/Rtmp8yGZ8c/R.INSTALLb2aa7cf80e1/rhdf5filters/src/vbz/third_party/streamvbyte'
 make -C vbz
-make[2]: Entering directory '/tmp/Rtmpl8fFUq/R.INSTALLb33a38fcb8ec/rhdf5filters/src/vbz/vbz'
+make[2]: Entering directory '/tmp/Rtmp8yGZ8c/R.INSTALLb2aa7cf80e1/rhdf5filters/src/vbz/vbz'
 g++ -std=gnu++17 -g -O2 -fpic -I/usr/local/include -I"/home/runner/work/_temp/Library/Rhdf5lib/include" -I../third_party/streamvbyte/include/ -I../third_party/ -I../../zstd/ -mssse3 -c vbz.cpp -o vbz.o
 g++ -std=gnu++17 -g -O2 -fpic -I/usr/local/include -I"/home/runner/work/_temp/Library/Rhdf5lib/include" -I../third_party/streamvbyte/include/ -I../third_party/ -I../../zstd/ -mssse3 -c v0/vbz_streamvbyte.cpp -o v0/vbz_streamvbyte.o
 g++ -std=gnu++17 -g -O2 -fpic -I/usr/local/include -I"/home/runner/work/_temp/Library/Rhdf5lib/include" -I../third_party/streamvbyte/include/ -I../third_party/ -I../../zstd/ -mssse3 -c v1/vbz_streamvbyte.cpp -o v1/vbz_streamvbyte.o
-make[2]: Leaving directory '/tmp/Rtmpl8fFUq/R.INSTALLb33a38fcb8ec/rhdf5filters/src/vbz/vbz'
+make[2]: Leaving directory '/tmp/Rtmp8yGZ8c/R.INSTALLb2aa7cf80e1/rhdf5filters/src/vbz/vbz'
 rm -f libvbz.a
 ar cq libvbz.a vbz/vbz.o vbz/v0/vbz_streamvbyte.o vbz/v1/vbz_streamvbyte.o
 ranlib libvbz.a
 g++ -std=gnu++17 -g -O2 -fpic -I/usr/local/include -I"/home/runner/work/_temp/Library/Rhdf5lib/include" -shared vbz_plugin.cpp \
 libvbz.a -L/usr/local/lib -lzstd third_party/streamvbyte/libstreamvbyte.a -o libH5Zvbz.so
-make[1]: Leaving directory '/tmp/Rtmpl8fFUq/R.INSTALLb33a38fcb8ec/rhdf5filters/src/vbz'
+make[1]: Leaving directory '/tmp/Rtmp8yGZ8c/R.INSTALLb2aa7cf80e1/rhdf5filters/src/vbz'
 mkdir -p "/home/runner/work/_temp/Library/00LOCK-rhdf5filters/00new/rhdf5filters/lib/"
 cp bzip2/libH5Zbz2.so blosc/libH5Zblosc.so lzf/libH5Zlzf.so zstd/libH5Zzstd.so vbz/libH5Zvbz.so "/home/runner/work/_temp/Library/00LOCK-rhdf5filters/00new/rhdf5filters/lib/"
 gcc -std=gnu2x -I"/opt/R/4.5.1/lib/R/include" -DNDEBUG -I/usr/local/include -I"/home/runner/work/_temp/Library/Rhdf5lib/include" -I'/home/runner/work/_temp/Library/Rhdf5lib/include' -I/usr/local/include   -g -O2 -fpic  -g -O2  -c rhdf5filters.c -o rhdf5filters.o
@@ -5519,7 +5534,7 @@ installing to /home/runner/work/_temp/Library/00LOCK-GSVA/00new/GSVA/libs
 * DONE (GSVA)
 
 The downloaded source packages are in
-	‘/tmp/Rtmpv4YfgW/downloaded_packages’
+	‘/tmp/RtmpYt1s51/downloaded_packages’
 Successfully installed: GSVA 
 Installing Bioconductor package: ComplexHeatmap 
 'getOption("repos")' replaces Bioconductor standard repositories, see
@@ -5699,7 +5714,7 @@ installing to /home/runner/work/_temp/Library/00LOCK-clue/00new/clue/libs
 * DONE (ComplexHeatmap)
 
 The downloaded source packages are in
-	‘/tmp/Rtmpv4YfgW/downloaded_packages’
+	‘/tmp/RtmpYt1s51/downloaded_packages’
 Successfully installed: ComplexHeatmap 
 Package already installed: circlize 
 

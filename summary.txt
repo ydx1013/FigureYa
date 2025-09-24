@@ -22,21 +22,7 @@ RMD Render Summary
 [SKIPPED] - ./FigureYa271panMethExpr/FigureYa271panMethExpr.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa119Multiclasslimma/FigureYa119Multiclasslimma.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa55plus_pancancer_boxplot/FigureYa55plus_pancancer_boxplot.Rmd (Not listed in auto_Knit_online.txt)
-[FAILED] - ./FigureYa82IGVzoom/FigureYa82IGVzoom.Rmd
---- Error Log for ./FigureYa82IGVzoom/FigureYa82IGVzoom.Rmd ---
-ERROR: dependencies ‘zoo’, ‘biomaRt’ are not available for package ‘Sushi’
-Perhaps try a variation of:
-install.packages(c('zoo', 'biomaRt'))
-* removing ‘/home/runner/work/_temp/Library/Sushi’
-Error in `library()`:
-! there is no package called 'Sushi'
-Backtrace:
-    ▆
- 1. └─base::library(Sushi)
-
-Quitting from FigureYa82IGVzoom.Rmd:58-72 [unnamed-chunk-1]
-Execution halted
------------------------------------
+[SKIPPED] - ./FigureYa82IGVzoom/FigureYa82IGVzoom.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa51TMB_update/FigureYa51TMB_update.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa120MulticlassedgeR/FigureYa120MulticlassedgeR.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa155ATAC/FigureYa155ATAC.Rmd (Not listed in auto_Knit_online.txt)
@@ -57,18 +43,7 @@ Execution halted
 [SKIPPED] - ./FigureYa209batchEnrich/FigureYa209batchEnrich.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa96R2/FigureYa96R2.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa254scViolin/FigureYa254scViolin.Rmd (Not listed in auto_Knit_online.txt)
-[FAILED] - ./FigureYa302NTPPAM/FigureYa302NTPPAM.Rmd
---- Error Log for ./FigureYa302NTPPAM/FigureYa302NTPPAM.Rmd ---
-Error in `fromTo()`:
-! could not find function "fromTo"
-Backtrace:
-    ▆
- 1. └─global CMScaller(...)
- 2.   └─global replaceGeneId(emat, id.in = rowNames, id.out = "entrez")
-
-Quitting from FigureYa302NTPPAM.Rmd:116-159 [unnamed-chunk-3]
-Execution halted
------------------------------------
+[SKIPPED] - ./FigureYa302NTPPAM/FigureYa302NTPPAM.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa321volcanoSE/FigureYa321volcanoSE.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa266panHeatmap/FigureYa266panHeatmap.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa24ROC/FigureYa24ROC.Rmd (Not listed in auto_Knit_online.txt)
@@ -289,29 +264,7 @@ Execution halted
 [SKIPPED] - ./FigureYa99smoothHRv2/FigureYa99smoothHRv2.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa36nSurvV3/FigureYa36nSurvV3.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa296VIPER/FigureYa296VIPER.Rmd (Not listed in auto_Knit_online.txt)
-[FAILED] - ./FigureYa2ggtree+pheatmap+msa/FigureYa2ggtree+pheatmap+msa.Rmd
---- Error Log for ./FigureYa2ggtree+pheatmap+msa/FigureYa2ggtree+pheatmap+msa.Rmd ---
-! Running 'texi2dvi' on 'myFirstAlignment.tex' failed.
-Messages:
-You don't have a working TeX binary (tex) installed anywhere in
-your PATH, and texi2dvi cannot proceed without one.  If you want to use
-this script, you'll need to install TeX (if you don't have it) or change
-your PATH or TEX environment variable (if you do).  See the --help
-output for more details.
-
-For information about obtaining TeX, please see http://tug.org/texlive,
-or do a web search for TeX and your operating system or distro.
-
-On Debian you can install a working TeX system with
-  apt-get install texlive
-Backtrace:
-    ▆
- 1. └─msa::msaPrettyPrint(...)
- 2.   └─tools::texi2dvi(...)
-
-Quitting from FigureYa2ggtree+pheatmap+msa.Rmd:97-120 [unnamed-chunk-3]
-Execution halted
------------------------------------
+[SKIPPED] - ./FigureYa2ggtree+pheatmap+msa/FigureYa2ggtree+pheatmap+msa.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa187RMS/FigureYa187RMS.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa232scRankHeatmap/FigureYa232scRankHeatmap.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa316RF_XGBoost_Boruta/FigureYa316RF_XGBoost_Boruta.Rmd (Not listed in auto_Knit_online.txt)
