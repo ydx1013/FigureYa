@@ -1,4 +1,1 @@
-FigureYa2ggtree+pheatmap+msa
-FigureYa302NTPPAM
-FigureYa82IGVzoom
 FigureYa311PAM50Heatmap
