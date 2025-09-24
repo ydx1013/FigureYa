@@ -72,6 +72,13 @@ FigureYa59volcanoV2/
 ```
 
 ---
+## 🌱 FigureYa Ecosystem
+
+The FigureYa community has developed many extension tools based on this project.  
+Visit our [ecosystem page](docs/ecosystem.md) to discover more related tools or contribute your own!  
+The ecosystem includes various intelligent extensions and visualization plugins to empower research and data analysis.
+
+---
 
 ## ✍️ Usage and Citation
 
