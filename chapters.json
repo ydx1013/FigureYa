@@ -480,18 +480,18 @@
     "thumb": "gallery_compress/FigureYa63.webp"
   },
   {
-    "id": "main_FigureYa63pubmedMiningV2_output_friends",
-    "title": "FigureYa63pubmedMiningV2/output_friends.html",
-    "html": "FigureYa63pubmedMiningV2/output_friends.html",
-    "text": "texts/main_FigureYa63pubmedMiningV2_output_friends.txt",
-    "folder": "FigureYa63pubmedMiningV2",
-    "thumb": "gallery_compress/FigureYa63.webp"
-  },
-  {
     "id": "main_FigureYa63pubmedMiningV2_output_paper",
     "title": "FigureYa63pubmedMiningV2/output_paper.html",
     "html": "FigureYa63pubmedMiningV2/output_paper.html",
     "text": "texts/main_FigureYa63pubmedMiningV2_output_paper.txt",
+    "folder": "FigureYa63pubmedMiningV2",
+    "thumb": "gallery_compress/FigureYa63.webp"
+  },
+  {
+    "id": "main_FigureYa63pubmedMiningV2_output_friends",
+    "title": "FigureYa63pubmedMiningV2/output_friends.html",
+    "html": "FigureYa63pubmedMiningV2/output_friends.html",
+    "text": "texts/main_FigureYa63pubmedMiningV2_output_friends.txt",
     "folder": "FigureYa63pubmedMiningV2",
     "thumb": "gallery_compress/FigureYa63.webp"
   },
@@ -880,18 +880,18 @@
     "thumb": "gallery_compress/FigureYa111.webp"
   },
   {
-    "id": "main_FigureYa111markerGene_FigureYa111markerGene_step2_linuxMAC",
-    "title": "FigureYa111markerGene/FigureYa111markerGene_step2_linuxMAC.html",
-    "html": "FigureYa111markerGene/FigureYa111markerGene_step2_linuxMAC.html",
-    "text": "texts/main_FigureYa111markerGene_FigureYa111markerGene_step2_linuxMAC.txt",
-    "folder": "FigureYa111markerGene",
-    "thumb": "gallery_compress/FigureYa111.webp"
-  },
-  {
     "id": "main_FigureYa111markerGene_FigureYa111markerGene_step1",
     "title": "FigureYa111markerGene/FigureYa111markerGene_step1.html",
     "html": "FigureYa111markerGene/FigureYa111markerGene_step1.html",
     "text": "texts/main_FigureYa111markerGene_FigureYa111markerGene_step1.txt",
+    "folder": "FigureYa111markerGene",
+    "thumb": "gallery_compress/FigureYa111.webp"
+  },
+  {
+    "id": "main_FigureYa111markerGene_FigureYa111markerGene_step2_linuxMAC",
+    "title": "FigureYa111markerGene/FigureYa111markerGene_step2_linuxMAC.html",
+    "html": "FigureYa111markerGene/FigureYa111markerGene_step2_linuxMAC.html",
+    "text": "texts/main_FigureYa111markerGene_FigureYa111markerGene_step2_linuxMAC.txt",
     "folder": "FigureYa111markerGene",
     "thumb": "gallery_compress/FigureYa111.webp"
   },
