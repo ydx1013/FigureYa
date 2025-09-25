@@ -3,17 +3,19 @@ title: "FigureYa302NTPPAM"
 params:
   author: "Xiaofan Lu; Yasi Zhang"  
   reviewer: "Ying Ge"
+  date: "2025-05-20"
 output: html_document
 ---
 
 **Author(s)**: `r params$author`  
 **Reviewer(s)**: `r params$reviewer`  
-**Date**: `r Sys.Date()` 
+**Date**: `r params$date` 
 
 # Academic Citation
 If you use this code in your work or research, we kindly request that you cite our publication:
+  
+  Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
-Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -29,32 +31,32 @@ I want to identify specific markers in molecular subtypes and use NTP to predict
 ![](method1.png)
 
 出自：<https://www.nature.com/articles/ncomms15107>
-
-Source: <https://www.nature.com/articles/ncomms15107>
-
-![](method2.png)
+  
+  Source: <https://www.nature.com/articles/ncomms15107>
+  
+  ![](method2.png)
 
 出自：<https://www.nature.com/articles/ng.3224>
-
-就是从表达谱数据已知样本分型情况下，找出每个亚型特异的marker，再用NTP预测亚型，其中的PAM过程不懂。
+  
+  就是从表达谱数据已知样本分型情况下，找出每个亚型特异的marker，再用NTP预测亚型，其中的PAM过程不懂。
 
 这篇文章也是差不多的方法，方法写在文章附件里：
 
 Source: <https://www.nature.com/articles/ng.3224>
-
-It involves identifying subtype-specific markers from expression profile data with known sample classifications, then using NTP (Nearest Template Prediction) to predict subtypes—though I don’t fully understand the PAM (Prediction Analysis of Microarrays) step.
+  
+  It involves identifying subtype-specific markers from expression profile data with known sample classifications, then using NTP (Nearest Template Prediction) to predict subtypes—though I don’t fully understand the PAM (Prediction Analysis of Microarrays) step.
 
 This paper uses a similar approach, with the methods detailed in the supplementary materials:
-
-![](method3.png)
+  
+  ![](method3.png)
 
 出自：<https://www.nature.com/articles/nm.3175>
-
-MOVICS包其实有NTP预测亚型的，但是他是直接选亚型特异表达的靠前的基因，没有用PAM这些筛选方法。这里将实现用PAM筛选。
+  
+  MOVICS包其实有NTP预测亚型的，但是他是直接选亚型特异表达的靠前的基因，没有用PAM这些筛选方法。这里将实现用PAM筛选。
 
 Source: <https://www.nature.com/articles/nm.3175>
-
-The MOVICS package actually includes NTP-based subtype prediction, but it directly selects the top differentially expressed genes (DEGs) for each subtype without using filtering methods like PAM. Here, we will implement PAM-based gene selection.
+  
+  The MOVICS package actually includes NTP-based subtype prediction, but it directly selects the top differentially expressed genes (DEGs) for each subtype without using filtering methods like PAM. Here, we will implement PAM-based gene selection.
 
 # 应用场景
 # Application scenarios
@@ -74,10 +76,15 @@ References available in the "Literatures" folder.
 # 环境设置
 # Environment Setup
 
+使用国内镜像安装包。
+
+Using domestic mirrors for package installation.
+
 ```{r}
 source("install_dependencies.R")
 source("CMScaller.R") # From CMScaller package, https://github.com/peterawe/CMScaller
 source("replaceGeneId.R") # From CMScaller package, https://github.com/peterawe/CMScaller
+library(CMScaller)
 library(pamr)
 library(cluster)
 
@@ -98,10 +105,7 @@ gse17536.expr.txt - GEO结直肠癌表达谱文件。/ A GEO colorectal cancer e
 ```{r}
 # 读取GEO结直肠癌表达谱文件
 # Read GEO colorectal cancer expression profile file
-#expr <- read.delim(file = "gse17536.expr.txt",sep = "\t",row.names = 1,check.names = F,stringsAsFactors = F,header = T)
-expr <- read.delim(unz("gse17536.expr.txt.zip", "gse17536.expr.txt"), 
-                   sep = "\t", row.names = 1, check.names = FALSE, 
-                   stringsAsFactors = FALSE, header = TRUE)
+expr <- read.delim(file = "gse17536.expr.txt",sep = "\t",row.names = 1,check.names = F,stringsAsFactors = F,header = T)
 
 # 对行名进行标准化，重复基因取均值
 # Standardize row names - take mean for duplicate genes
