@@ -1,0 +1,8 @@
+Error in `library()`:
+! there is no package called 'CMScaller'
+Backtrace:
+    ▆
+ 1. └─base::library(CMScaller)
+
+Quitting from FigureYa302NTPPAM.Rmd:83-98 [unnamed-chunk-1]
+Execution halted
