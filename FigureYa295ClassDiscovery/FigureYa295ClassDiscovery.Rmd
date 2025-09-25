@@ -3,18 +3,19 @@ title: "FigureYa295ClassDiscovery"
 params:
   author: "Xiaofan Lu; Yasi Zhang"  
   reviewer: "Ying Ge"
+  date: "2025-05-20"
 output: html_document
 ---
 
 **Author(s)**: `r params$author`  
 **Reviewer(s)**: `r params$reviewer`  
-**Date**: `r Sys.Date()` 
+**Date**: `r params$date` 
 
 # Academic Citation
 If you use this code in your work or research, we kindly request that you cite our publication:
-
+  
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
-
+  
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -29,14 +30,14 @@ We want a clustering analysis method, mainly to reproduce the approach described
 ![](pipeline.png)
 
 出自<https://europepmc.org/article/med/19061838>
-
+  
 图1. 通过表达谱分析鉴定肝母细胞瘤的两个亚型。
 (A) 方法流程图：用于识别稳健样本聚类（包括两个肿瘤亚群 rC1 和 rC2 以及一个非肿瘤组 NL），并采用六种不同算法（CCP、LDA、1NN、3NN、NC 和 SVM）结合留一法交叉验证对肝母细胞瘤（HB）样本进行分类。
 (B) 上：25 例 HB 样本的分子分型及 CTNNB1 基因状态。黑色和灰色方块分别表示 CTNNB1 和 AXIN1 基因突变。下：代表性 C1 和 C2 病例的 β-catenin 免疫组化分析。比例尺 = 50 μm。
 (C) HB 亚型与非肿瘤肝组织（NT）中 Wnt 通路相关基因及 β-catenin 靶基因的表达情况（p < 0.005）。水平线表示平均值。
 
 Source: <https://europepmc.org/article/med/19061838>
-
+  
 Figure 1. Identification of Two Hepatoblas- toma Subclasses by Expression Profiling.
 (A) Schematic overview of the approach used to identify robust clusters of samples, including two tumor clusters (rC1 and rC2) and one nontumor cluster (NL), and to classify hepatoblastoma (HB) samples using six different algorithms (CCP, LDA, 1NN, 3NN, NC, and SVM) and leave-one- out cross-validation.
 (B) Top: molecular classification of 25 HB samples and CTNNB1 gene status. Black and gray squares indicate mutations of the CTNNB1 and AXIN1 genes. Bottom: immunohistochemical analysis of b-catenin for representative C1 and C2 cases. Scale bars = 50 mm.
@@ -62,6 +63,7 @@ library(ape)
 library(reshape2)
 library(ComplexHeatmap)
 library(limma)
+library(classpredict) 
 
 # 显示英文报错信息
 # Show English error messages
@@ -368,7 +370,7 @@ resList <- classPredict(exprTrain = train.data, exprTest = test.data, isPaired =
                         filter = rep(1, length(geneId)), ngenePairs = 25, nfrvm = 10, cvMethod = 1,
                         kfoldValue = 10, bccPrior = 1, bccThresh = 0.8, nperm = 0,
                         svmCost = 1, svmWeight =1, fixseed = 1, prevalence = NULL, 
-                        outputName = "ClassPrediction", generateHTML = F)
+                        outputName = "ClassPrediction", generateHTML = T)
 View(resList$predNewSamples)
 View(resList$performClass)
 write.table(resList$predNewSamples, file.path(res.path, "output_ClassPrediction.txt"),
