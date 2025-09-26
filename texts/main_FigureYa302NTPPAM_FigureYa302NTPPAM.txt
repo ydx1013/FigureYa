@@ -6,13 +6,20 @@ Reviewer(s)
 : Ying Ge
 Date
 : 2025-05-20
+Academic Citation
+If you use this code in your work or research, we kindly request that
+you cite our publication:
+Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization
+Framework for Enhancing Biomedical Data Interpretation and Research
+Efficiency. iMetaMed.
+https://doi.org/10.1002/imm3.70005
 需求描述
 Demand description
-我想众筹个找出分子亚型中的特异marker并用NTP预测外部数据亚型的，分别是这两篇文章中的方法，作者是同一个人。
-I want to crowdfund a project to identify specific markers in
-molecular subtypes and use NTP to predict the subtypes of external data,
-following the methods described in these two papers, which are authored
-by the same person.
+我想实现个找出分子亚型中的特异marker并用NTP预测外部数据亚型的，分别是这两篇文章中的方法，作者是同一个人。
+I want to identify specific markers in molecular subtypes and use NTP
+to predict the subtypes of external data, following the methods
+described in these two papers, which are authored by the same
+person.
 出自：
 https://www.nature.com/articles/ncomms15107
 Source:
@@ -31,14 +38,13 @@ This paper uses a similar approach, with the methods detailed in the
 supplementary materials:
 出自：
 https://www.nature.com/articles/nm.3175
-大鱼海棠的MOVICS包其实有NTP预测亚型的，但是他是直接选亚型特异表达的靠前的基因，没有用PAM这些筛选方法。这里将实现用PAM筛选。
+MOVICS包其实有NTP预测亚型的，但是他是直接选亚型特异表达的靠前的基因，没有用PAM这些筛选方法。这里将实现用PAM筛选。
 Source:
 https://www.nature.com/articles/nm.3175
-The MOVICS package from Big Fish & Begonia actually includes
-NTP-based subtype prediction, but it directly selects the top
-differentially expressed genes (DEGs) for each subtype without using
-filtering methods like PAM. Here, we will implement PAM-based gene
-selection.
+The MOVICS package actually includes NTP-based subtype prediction,
+but it directly selects the top differentially expressed genes (DEGs)
+for each subtype without using filtering methods like PAM. Here, we will
+implement PAM-based gene selection.
 应用场景
 Application scenarios
 利用PAM算法根据某感兴趣分类筛选特异性marker，生成模版后利用NTP算法进行分类预测。
@@ -55,11 +61,9 @@ References available in the “Literatures” folder.
 Environment Setup
 使用国内镜像安装包。
 Using domestic mirrors for package installation.
-options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
-options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
-BiocManager::install("pamr")
-加载包
-Loading packages
+source("install_dependencies.R")
+source("CMScaller.R") # From CMScaller package, https://github.com/peterawe/CMScaller
+source("replaceGeneId.R") # From CMScaller package, https://github.com/peterawe/CMScaller
 library(CMScaller)
 library(pamr)
 library(cluster)
@@ -73,11 +77,8 @@ Sys.setenv(LANGUAGE = "en")
 options(stringsAsFactors = FALSE)
 输入文件
 Input Files
-gse17536.expr.txt - GEO结直肠癌表达谱文件。可前往百度网盘下载
-https://pan.baidu.com/s/1THBHtvrR0mEgA79xcf877w?pwd=wz7w
-gse17536.expr.txt – A GEO colorectal cancer expression profile file.
-Download available at
-https://pan.baidu.com/s/1THBHtvrR0mEgA79xcf877w?pwd=wz7w
+gse17536.expr.txt - GEO结直肠癌表达谱文件。/ A GEO colorectal cancer
+expression profile file.
 # 读取GEO结直肠癌表达谱文件
 # Read GEO colorectal cancer expression profile file
 expr <- read.delim(file = "gse17536.expr.txt",sep = "\t",row.names = 1,check.names = F,stringsAsFactors = F,header = T)
@@ -202,8 +203,5 @@ cms.df$CMS.pred <- as.character(cms.pred$prediction)
  # 基因完美预测
 # Perfect gene prediction
 table(cms.df$CMS.true, cms.df$CMS.pred)
-会话信息
 Session Info
-# 显示会话信息
-# Show session information
 sessionInfo()
