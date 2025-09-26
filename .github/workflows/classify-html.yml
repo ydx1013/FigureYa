@@ -6,6 +6,8 @@ on:
 jobs:
   classify:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       # Step 1: 检出代码仓库
       - name: Check out repository
