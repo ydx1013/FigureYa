@@ -26,24 +26,6 @@ install_cran_package <- function(package_name) {
   }
 }
 
-# Function to install Bioconductor packages
-install_bioc_package <- function(package_name) {
-  if (!is_package_installed(package_name)) {
-    cat("Installing Bioconductor package:", package_name, "\n")
-    tryCatch({
-      if (!requireNamespace("BiocManager", quietly = TRUE)) {
-        install.packages("BiocManager")
-      }
-      BiocManager::install(package_name, dependencies = TRUE)
-      cat("Successfully installed:", package_name, "\n")
-    }, error = function(e) {
-      cat("Failed to install", package_name, ":", e$message, "\n")
-    })
-  } else {
-    cat("Package already installed:", package_name, "\n")
-  }
-}
-
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
@@ -53,14 +35,6 @@ cran_packages <- c("ggplot2", "magrittr", "tidyverse", "rlang", "patchwork")
 
 for (pkg in cran_packages) {
   install_cran_package(pkg)
-}
-
-# Installing Bioconductor packages
-cat("\nInstalling Bioconductor packages...\n")
-bioc_packages <- c("BiocGenerics", "GenomicRanges", "IRanges", "AnnotationDbi")
-
-for (pkg in bioc_packages) {
-  install_bioc_package(pkg)
 }
 
 cat("\n===========================================\n")
