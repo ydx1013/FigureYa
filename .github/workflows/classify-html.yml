@@ -63,4 +63,9 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: .  # 当前目录下的分类结果会发布到 Wiki
+          destination_dir: wiki  # 发布到 Wiki 的目录
           commit_message: "更新分类结果"
+
+      # Step 6: 清理临时文件（可选）
+      - name: Clean up
+        run: rm -rf classification_results.yml
