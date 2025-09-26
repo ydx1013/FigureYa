@@ -11,11 +11,11 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v3
 
-      # Step 2: 设置 Python 环境（用于分类脚本）
+      # Step 2: 设置 Python 环境
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: "3.9"
+          python-version: "3.9" # 确保使用 Python 3.9
 
       # Step 3: 安装必要的依赖
       - name: Install dependencies
@@ -25,6 +25,7 @@ jobs:
       - name: Classify HTML files
         id: classify
         run: |
+          python <<EOF
           import os
           import yaml
 
@@ -56,6 +57,7 @@ jobs:
               yaml.dump(results, f, allow_unicode=True)
 
           print("分类完成，结果保存到 classification_results.yml")
+          EOF
 
       # Step 5: 将分类结果写入 Wiki
       - name: Publish to Wiki
@@ -63,7 +65,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: .  # 当前目录下的分类结果会发布到 Wiki
-          destination_dir: wiki  # 发布到 Wiki 的目录
+          destination_dir: wiki
           commit_message: "更新分类结果"
 
       # Step 6: 清理临时文件（可选）
