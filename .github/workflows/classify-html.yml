@@ -59,9 +59,8 @@ jobs:
 
       # Step 5: 将分类结果写入 Wiki
       - name: Publish to Wiki
-        uses: actions-gh-pages/publish@v4
+        uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: wiki
-          folder: .  # 当前目录下的分类结果会发布到 Wiki
+          publish_dir: .  # 当前目录下的分类结果会发布到 Wiki
           commit_message: "更新分类结果"
