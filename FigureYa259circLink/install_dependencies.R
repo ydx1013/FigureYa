@@ -4,7 +4,7 @@
 
 # Set up mirrors for better download performance
 options("repos" = c(CRAN = "https://cloud.r-project.org/"))
-options(BioC_mirror = "https://bioconductor.org/")
+options(BioC_mirror = "https://bioconductor.org/"))
 
 # Function to check if a package is installed
 is_package_installed <- function(package_name) {
@@ -57,7 +57,7 @@ for (pkg in cran_packages) {
 
 # Installing Bioconductor packages
 cat("\nInstalling Bioconductor packages...\n")
-bioc_packages <- c("ComplexHeatmap", "BiocGenerics", "DESeq2")
+bioc_packages <- c("BiocGenerics", "GenomicRanges", "IRanges", "AnnotationDbi")
 
 for (pkg in bioc_packages) {
   install_bioc_package(pkg)
