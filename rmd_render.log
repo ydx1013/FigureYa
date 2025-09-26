@@ -1,8 +1,8 @@
 Error in `library()`:
-! there is no package called 'CMScaller'
+! there is no package called 'classpredict'
 Backtrace:
     ▆
- 1. └─base::library(CMScaller)
+ 1. └─base::library(classpredict)
 
-Quitting from FigureYa302NTPPAM.Rmd:83-98 [unnamed-chunk-1]
+Quitting from FigureYa295ClassDiscovery.Rmd:56-75 [unnamed-chunk-1]
 Execution halted

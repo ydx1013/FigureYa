@@ -171,17 +171,7 @@ RMD Render Summary
 [SKIPPED] - ./FigureYa208FPI/FigureYa208FPI.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa59volcanoV2/FigureYa59volcanoV2.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa215DNAage/FigureYa215DNAage.Rmd (Not listed in auto_Knit_online.txt)
-[FAILED] - ./FigureYa302NTPPAM/FigureYa302NTPPAM.Rmd
---- Error Log for ./FigureYa302NTPPAM/FigureYa302NTPPAM.Rmd ---
-Error in `library()`:
-! there is no package called 'CMScaller'
-Backtrace:
-    ▆
- 1. └─base::library(CMScaller)
-
-Quitting from FigureYa302NTPPAM.Rmd:83-98 [unnamed-chunk-1]
-Execution halted
------------------------------------
+[SKIPPED] - ./FigureYa302NTPPAM/FigureYa302NTPPAM.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa318GenesetDEDotplot/FigureYa318GenesetDEDotplot.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa126CorrelationHeatmap/FigureYa126CorrelationHeatmap.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa174squareCross/FigureYa174squareCross.Rmd (Not listed in auto_Knit_online.txt)
@@ -250,7 +240,17 @@ Execution halted
 [SKIPPED] - ./FigureYa157ChIPpvalue/FigureYa157ChIPpvalue.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa243scMarkerGroupHeatmap/FigureYa243scMarkerGroupHeatmap.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa41GEO2lncRNA_update/FigureYa41GEO2lncRNA_update.Rmd (Not listed in auto_Knit_online.txt)
-[SKIPPED] - ./FigureYa295ClassDiscovery/FigureYa295ClassDiscovery.Rmd (Not listed in auto_Knit_online.txt)
+[FAILED] - ./FigureYa295ClassDiscovery/FigureYa295ClassDiscovery.Rmd
+--- Error Log for ./FigureYa295ClassDiscovery/FigureYa295ClassDiscovery.Rmd ---
+Error in `library()`:
+! there is no package called 'classpredict'
+Backtrace:
+    ▆
+ 1. └─base::library(classpredict)
+
+Quitting from FigureYa295ClassDiscovery.Rmd:56-75 [unnamed-chunk-1]
+Execution halted
+-----------------------------------
 [SKIPPED] - ./FigureYa300pancanCor/FigureYa300pancanCor.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa155ATAC/FigureYa155ATAC.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa200pairwiseAUC/FigureYa200pairwiseAUC.Rmd (Not listed in auto_Knit_online.txt)
