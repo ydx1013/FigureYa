@@ -1,4 +1,4 @@
-name: Compress Updated FigureYa Folders
+name: Compress All FigureYa Folders
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  compress-updated-figureya-folders:
+  compress-all-figureya-folders:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -20,20 +20,17 @@ jobs:
       - name: Create compressed folder if not exists
         run: mkdir -p compressed
 
-      - name: Find updated FigureYa* folders
-        id: updates
+      - name: Find all FigureYa* folders
+        id: find
         run: |
-          # 获取本次提交中变动的 FigureYa* 一级目录
-          UPDATED_DIRS=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep '^FigureYa[^/]\+/' | sed -E 's#/.*##' | sort | uniq)
-          echo "UPDATED_DIRS=$UPDATED_DIRS" >> $GITHUB_ENV
+          # 查找所有一级 FigureYa* 目录（排除 compressed 文件夹）
+          ALL_DIRS=$(find . -maxdepth 1 -type d -name 'FigureYa*' ! -name 'compressed' | sed 's|^\./||')
+          echo "ALL_DIRS=$ALL_DIRS" >> $GITHUB_ENV
 
-      - name: Zip updated FigureYa* folders
+      - name: Zip all FigureYa* folders
         run: |
-          for foldername in $UPDATED_DIRS; do
-            # 跳过 compressed、本身不是目录的情况
-            if [ "$foldername" = "compressed" ] || [ ! -d "$foldername" ]; then
-              continue
-            fi
+          for foldername in $ALL_DIRS; do
+            [ -d "$foldername" ] || continue
             zipfile="compressed/${foldername}.zip"
             echo "Compressing $foldername -> $zipfile"
             rm -f "$zipfile"
@@ -48,5 +45,5 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add compressed/*.zip || true
-          git commit -m "Auto-compress updated FigureYa folders [skip ci]" || echo "Nothing to commit"
+          git commit -m "Auto-compress all FigureYa folders [skip ci]" || echo "Nothing to commit"
           git push || echo "Nothing to push"
