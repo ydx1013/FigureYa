@@ -1,3 +1,25 @@
+# ✍️ Usage and Citation
+
+This project is built upon research that has now been published. We encourage its use under the following guidelines for licensing and academic citation.
+
+### License and Commercial Use
+
+This software is licensed under the **[Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/)**.
+
+This means you are free to share and adapt the code for **non-commercial purposes**, provided you give appropriate credit and distribute any adaptations under the same license.
+
+For all commercial use cases (including but not limited to integration into proprietary software, use in a commercial service, or as an internal corporate tool), a separate commercial license is required.
+
+### Academic Citation
+
+If you use this code in your work or research, **in addition to complying with the license**, we kindly request that you cite our publication:
+
+> Xiaofan Lu, et al. (2025). *FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency*. iMetaMed. [https://doi.org/10.1002/imm3.70005](https://doi.org/10.1002/imm3.70005)
+
+*A pre-formatted BibTeX entry will be added here upon final publication.*
+
+---
+
 # FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency
 
 This repository provides the complete set of input files, analysis code, and results from the FigureYa manuscript.
@@ -37,7 +59,7 @@ All FigureYa modules are available as individually compressed zip files for conv
 **Note on File Availability:**
 - The file [`/Actions`](https://github.com/ying-ge/FigureYa/wiki/Actions-Enabled-FigureYa-Modules) contains a complete list of all available FigureYa modules.
 - If a particular module is not listed in `all_included.txt`, this indicates that its input files exceed GitHub's file size limitations.
-- For these larger files: some Rmd files include direct download links for the required data files. For files without direct download links, please visit our [`Baidu Cloud`](https://pan.baidu.com) storage. Join the baidu group: **967269198** to access the download links.
+- For these larger files: some Rmd files include direct download links for the required data files. For files without direct download links, please visit our [`Baidu Cloud`](https://pan.baidu.com)[...]
 
 ### 2. Browse Online on GitHub
 If you want to view the code, input or output files directly, you can browse them in the file browser at the top of this repository's main page.
@@ -80,28 +102,6 @@ The ecosystem includes various intelligent extensions and visualization plugins 
 
 ---
 
-## ✍️ Usage and Citation
-
-This project is built upon research that has now been published. We encourage its use under the following guidelines for licensing and academic citation.
-
-### License and Commercial Use
-
-This software is licensed under the **[Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/)**.
-
-This means you are free to share and adapt the code for **non-commercial purposes**, provided you give appropriate credit and distribute any adaptations under the same license.
-
-For all commercial use cases (including but not limited to integration into proprietary software, use in a commercial service, or as an internal corporate tool), a separate commercial license is required. Please contact **geying.tju@gmail.com** to discuss a commercial license.
-
-### Academic Citation
-
-If you use this code in your work or research, **in addition to complying with the license**, we kindly request that you cite our publication:
-
-> Xiaofan Lu, et al. (2025). *FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency*. iMetaMed. [https://doi.org/10.1002/imm3.70005](https://doi.org/10.1002/imm3.70005)
-
-*A pre-formatted BibTeX entry will be added here upon final publication.*
-
----
-
 ## :handshake:To Be Continued
 
-FigureYa is continuously being updated with improvements to existing modules and the addition of new ones. We welcome interested contributors to join the development of FigureYa. Contact us on WeChat: **epigenomics**.
+FigureYa is continuously being updated with improvements to existing modules and the addition of new ones. We welcome interested contributors to join the development of FigureYa. Contact us on WeChat for more information.
