@@ -1,3 +1,5 @@
+# FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency
+
 This repository provides the complete set of input files, analysis code, and results from the FigureYa manuscript.
 
 ## 🔎 Interactive Results Browser
@@ -71,7 +73,7 @@ FigureYa59volcanoV2/
 
 ---
 
-# ✍️ Usage and Citation
+## ✍️ Usage and Citation
 
 This project is licensed under the **[Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/)**.
 
