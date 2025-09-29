@@ -35,7 +35,7 @@ All FigureYa modules are available as individually compressed zip files for conv
 3.  Click on the file, then select the **Download** button.
 
 **Note on File Availability:**
-- The file [`/all_included.txt`](https://github.com/ying-ge/FigureYa/blob/main/all_included.txt) contains a complete list of all available FigureYa modules.
+- The file [`/Actions`](https://github.com/ying-ge/FigureYa/wiki/Actions-Enabled-FigureYa-Modules) contains a complete list of all available FigureYa modules.
 - If a particular module is not listed in `all_included.txt`, this indicates that its input files exceed GitHub's file size limitations.
 - For these larger files: some Rmd files include direct download links for the required data files. For files without direct download links, please visit our [`Baidu Cloud`](https://pan.baidu.com) storage. Join the baidu group: **967269198** to access the download links.
 
@@ -75,7 +75,7 @@ FigureYa59volcanoV2/
 ## 🌱 FigureYa Ecosystem
 
 The FigureYa community has developed many extension tools based on this project.  
-Visit our [ecosystem page](docs/ecosystem.md) to discover more related tools or contribute your own!  
+Visit our [ecosystem page](https://github.com/ying-ge/FigureYa/wiki/FigureYa-Ecosystem) to discover more related tools or contribute your own!  
 The ecosystem includes various intelligent extensions and visualization plugins to empower research and data analysis.
 
 ---
