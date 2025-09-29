@@ -45,7 +45,7 @@ jobs:
           else
             git diff --name-only "$before" "$after" > changed_files.txt
           fi
-          cat all_included.txt | grep -v '^\s*$' | grep -v '^#' > folder_list.txt
+          cat .github/docs/all_included.txt | grep -v '^\s*$' | grep -v '^#' > folder_list.txt
           changed_needed=0
           while read folder; do
             if grep -q "^$folder/" changed_files.txt; then
@@ -53,7 +53,7 @@ jobs:
               changed_needed=1
             fi
           done < folder_list.txt
-          if grep -q "^all_included.txt$" changed_files.txt; then
+          if grep -q "^.github/docs/all_included.txt$" changed_files.txt; then
             changed_needed=1
           fi
           echo "changed_needed=$changed_needed" >> $GITHUB_OUTPUT
@@ -76,7 +76,7 @@ jobs:
             else
               echo "Warning: $folder not found"
             fi
-          done < all_included.txt
+          done < .github/docs/all_included.txt
 
       - name: List target-repo after sync
         if: steps.changed.outputs.changed_needed == '1'
