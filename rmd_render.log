@@ -1,8 +1,0 @@
-Error in `library()`:
-! there is no package called 'classpredict'
-Backtrace:
-    ▆
- 1. └─base::library(classpredict)
-
-Quitting from FigureYa295ClassDiscovery.Rmd:56-75 [unnamed-chunk-1]
-Execution halted
