@@ -1,27 +1,3 @@
-# ✍️ Usage and Citation
-
-This project is built upon research that has now been published. We encourage its use under the following guidelines for licensing and academic citation.
-
-### License and Commercial Use
-
-This software is licensed under the **[Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/)**.
-
-This means you are free to share and adapt the code for **non-commercial purposes**, provided you give appropriate credit and distribute any adaptations under the same license.
-
-For all commercial use cases (including but not limited to integration into proprietary software, use in a commercial service, or as an internal corporate tool), a separate commercial license is required.
-
-### Academic Citation
-
-If you use this code in your work or research, **in addition to complying with the license**, we kindly request that you cite our publication:
-
-> Xiaofan Lu, et al. (2025). *FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency*. iMetaMed. [https://doi.org/10.1002/imm3.70005](https://doi.org/10.1002/imm3.70005)
-
-*A pre-formatted BibTeX entry will be added here upon final publication.*
-
----
-
-# FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency
-
 This repository provides the complete set of input files, analysis code, and results from the FigureYa manuscript.
 
 ## 🔎 Interactive Results Browser
@@ -94,6 +70,19 @@ FigureYa59volcanoV2/
 ```
 
 ---
+
+# ✍️ Usage and Citation
+
+This project is licensed under the **[Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/)**.
+
+If you use this project in your research, please cite our publication:
+
+> Xiaofan Lu, et al. (2025). *FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency*. iMetaMed. [https://doi.org/10.1002/imm3.70005](https://doi.org/10.1002/imm3.70005)
+
+*A pre-formatted BibTeX entry will be added here upon final publication.*
+
+---
+
 ## 🌱 FigureYa Ecosystem
 
 The FigureYa community has developed many extension tools based on this project.  
