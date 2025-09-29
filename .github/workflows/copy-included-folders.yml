@@ -3,9 +3,8 @@ name: Sync Included Folders to Actions Repo
 on:
   push:
     paths:
-      - all_included.txt
-      - '**/all_included.txt'
-      - '**'
+      - .github/docs/all_included.txt
+
   workflow_dispatch:
 
 permissions:
