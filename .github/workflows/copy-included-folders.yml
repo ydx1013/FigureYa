@@ -1,4 +1,4 @@
-name: Sync Included Folders to Actions Repo
+name: Sync All Included Folders to Actions Repo
 
 on:
   push:
