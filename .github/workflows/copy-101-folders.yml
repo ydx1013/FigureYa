@@ -1,5 +1,5 @@
 
-name: Sync Included Folders to Actions Repo
+name: Sync 101 Folders to Book Repo
 
 on:
   push:
