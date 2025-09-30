@@ -74,20 +74,15 @@ The matrix and survival information need to be expressed.
 这里用TCGA数据做训练集，用从GEO数据库下载的一组表达数据做测试集。如果你用多组GEO数据或自己的表达数据做测试集，就依次添加。
 Here, TCGA data is used as the training set, and a set of expression data downloaded from the GEO database is used as the test set. If you use multiple sets of GEO data or your own expression data as test sets, add them one by one.
 
-- tcga.expr.txt，TCGA的表达矩阵；
-  tcga.expr.txt, the expression matrix of TCGA.
-- tcga.surv.txt，TCGA的生存数据。
-  tcga.surv.txt, survival data of TCGA.
-- gse39582.expr.txt，GEO的表达矩阵；
-  gse39582.expr.txt, the expression matrix of GEO.
-- gse39582.surv.txt，GEO的生存数据。
-  gse39582.surv.txt, survival data of GEO.
+- tcga.expr.txt，TCGA的表达矩阵；/ the expression matrix of TCGA.
+- tcga.surv.txt，TCGA的生存数据。/ survival data of TCGA.
+- gse39582.expr.txt，GEO的表达矩阵；/ the expression matrix of GEO.
+- gse39582.surv.txt，GEO的生存数据。/ survival data of GEO.
 
 ```{r}
 # 加载TCGA训练集
 # Load the TCGA training set
-tcga.expr <- read.table(unz("tcga.expr.txt.zip", "tcga.expr.txt"), 
-                        row.names = 1, check.names = F, stringsAsFactors = F, header = T)
+tcga.expr <- read.table("tcga.expr.txt", row.names = 1, check.names = F, stringsAsFactors = F, header = T)
 tcga.expr[1:3, 1:3]
 tcga.surv <- read.table("tcga.surv.txt", row.names = 1, check.names = F, stringsAsFactors = F, header = T)
 tcga.surv[1:3,]
@@ -99,8 +94,7 @@ tcga.surv <- tcga.surv[comsam.tcga,]
 
 # 加载GEO测试集
 # Load the GEO test set
-geo.expr <- read.delim(unz("gse39582.expr.txt.zip", "gse39582.expr.txt"), 
-                       row.names = 1, check.names = F, stringsAsFactors = F, header = T)
+geo.expr <- read.delim("gse39582.expr.txt", row.names = 1, check.names = F, stringsAsFactors = F, header = T)
 geo.surv <- read.table("gse39582.surv.txt", row.names = 1, check.names = F, stringsAsFactors = F, header = T)
 # 保留既有表达数据又有生存数据的sample
 # Retain samples that have both expressive data and survival data
