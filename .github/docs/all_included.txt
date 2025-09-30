@@ -105,7 +105,6 @@ FigureYa151pathifier
 FigureYa152DouleCorPlot
 FigureYa153ccgraph
 FigureYa154immuneSubtypes
-FigureYa155ATAC
 FigureYa156enrichSimulation
 FigureYa158MutationPattern
 FigureYa159LR_RF_V2
