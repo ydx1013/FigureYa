@@ -52,6 +52,7 @@ source("install_dependencies.R")
 library(SNFtool)
 library(data.table)
 library(pheatmap)
+library(NMF)
 
 # 自定义函数
 # Custom function
