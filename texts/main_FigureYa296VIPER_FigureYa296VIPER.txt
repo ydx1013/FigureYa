@@ -5,7 +5,7 @@ Author(s)
 Reviewer(s)
 : Ying Ge
 Date
-: 2025-05-20
+: 2025-09-30
 Academic Citation
 If you use this code in your work or research, we kindly request that
 you cite our publication:
@@ -92,9 +92,6 @@ tfs.txt，转录因子列表，这里是从dorothea包中提取的。
 HS_CPTAC_HNSCC_RNAseq_RSEM_UQ_log2_Normal.cct，HS_CPTAC_HNSCC_RNAseq_RSEM_UQ_log2_Tumor.cct，表达矩阵，下载自
 http://linkedomics.org/data_download/CPTAC-HNSCC
 。整理成easy_input_matrix.txt。
-文件较大，请到百度网盘下载
-https://pan.baidu.com/s/1czOsuUfywIZD_h11TY0zHQ?pwd=rai9
-，如图保存到相应文件夹内：
 VIPER/ARACNe requires input data in TXT format, including a
 transcription factor list and an expression matrix, stored in the
 “InputData” folder.
@@ -105,9 +102,6 @@ Expression matrices downloaded from
 http://linkedomics.org/data_download/CPTAC-HNSCC
 and
 reformatted into easy_input_matrix.txt.
-Due to large file sizes, please download them from BaiduNetdisk
-https://pan.baidu.com/s/1czOsuUfywIZD_h11TY0zHQ?pwd=rai9
-and save them in the corresponding folder as shown in the figure:
 work.path <- "."
 data.path <- file.path(work.path, "InputData")
 res.path <- file.path(work.path, "Results")
