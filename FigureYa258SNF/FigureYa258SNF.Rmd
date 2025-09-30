@@ -69,13 +69,9 @@ options(stringsAsFactors = FALSE)
 # 输入文件
 # Input Files
 
-easy_input_expr.txt: 表达谱矩阵。
+easy_input_expr.txt: 表达谱矩阵。/ Expression profile matrix.
 
-easy_input_beta.txt: 甲基化数据，beta值。
-
-easy_input_expr.txt: Expression profile matrix.
-
-easy_input_beta.txt: Methylation data (beta values).
+easy_input_beta.txt: 甲基化数据，beta值。/ Methylation data (beta values).
 
 ```{r}
 # 加载表达谱和甲基化（beta值）
@@ -84,12 +80,15 @@ easy_input_beta.txt: Methylation data (beta values).
 # Loading expression profiles and methylation (beta values)
 # Note: The original paper states that the SNF algorithm itself does not require any pre-filtering of data, hence the full expression and methylation profiles were used. For this demonstration, we only used mRNA and promoter-region methylation data.
 # Original text: "The SNF method does not require any prior feature selection so we used the full matrix of gene expression (21,641 genes) and the full matrix of methylation data (logitB values, 321,174 probes)."
-expr <- fread("easy_input_expr.txt",sep = "\t",check.names = F,stringsAsFactors = F,header = T,data.table = F)
+#expr <- fread("easy_input_expr.txt",sep = "\t",check.names = F,stringsAsFactors = F,header = T,data.table = F)
+expr <- fread(unz("easy_input_expr.txt.zip", "easy_input_expr.txt"), sep = "\t", check.names = F, stringsAsFactors = F, header = T, data.table = F)
 rownames(expr) <- expr[,1]; expr <- expr[,-1]
 expr <- expr[rowSums(expr) > 0,]
 expr <- as.data.frame(t(scale(t(log2(expr + 1)))))
 
-beta <- fread("easy_input_beta.txt",sep = "\t",check.names = F,stringsAsFactors = F,header = T,data.table = F)
+#beta <- fread("easy_input_beta.txt",sep = "\t",check.names = F,stringsAsFactors = F,header = T,data.table = F)
+beta <- fread(unz("easy_input_beta.txt.zip", "easy_input_beta.txt"), sep = "\t", check.names = F, stringsAsFactors = F, header = T, data.table = F)
+
 rownames(beta) <- beta[,1]; beta <- beta[,-1]
 beta <- as.data.frame(na.omit(beta))
 ```
