@@ -57,8 +57,9 @@ Dual-axis charts are often used to compare and display trends and correlations b
 
 ```{r}
 source("install_dependencies.R")
+source("estimateScore.R") # from estimate package, https://rdrr.io/rforge/estimate/f/
+source("filterCommonGenes.R") # from estimate package, https://rdrr.io/rforge/estimate/f/
 
-library(estimate)
 library(ComplexHeatmap)
 library(TCGAbiolinks)
 library(SummarizedExperiment)
