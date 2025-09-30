@@ -1,0 +1,10 @@
+Error in `open.connection()`:
+! cannot open the connection
+Backtrace:
+    ▆
+ 1. └─utils::read.table(...)
+ 2.   ├─base::open(file, "rt")
+ 3.   └─base::open.connection(file, "rt")
+
+Quitting from FigureYa255TIME.Rmd:141-204 [unnamed-chunk-4]
+Execution halted
