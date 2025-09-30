@@ -178,7 +178,7 @@ RMD Render Summary
 [SKIPPED] - ./FigureYa91cluster_heatmap/FigureYa91cluster_heatmap.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa271panMethExpr/FigureYa271panMethExpr.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa214KEGG_hierarchyV2/FigureYa214KEGG_hierarchyV2.Rmd (Not listed in auto_Knit_online.txt)
-[SKIPPED] - ./FigureYa213customizeHeatmap/FigureYa213customizeHeatmap.Rmd (Not listed in auto_Knit_online.txt)
+[SUCCESS] - ./FigureYa213customizeHeatmap/FigureYa213customizeHeatmap.Rmd
 [SKIPPED] - ./FigureYa40lineage/FigureYa40lineage.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa195PanPaire/FigureYa195PanPaire.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa78gganatogram/FigureYa78gganatogram.Rmd (Not listed in auto_Knit_online.txt)
@@ -209,16 +209,14 @@ RMD Render Summary
 [SKIPPED] - ./FigureYa301scCoExpr/FigureYa301scCoExpr.Rmd (Not listed in auto_Knit_online.txt)
 [FAILED] - ./FigureYa170ImmuLncRNA/FigureYa170ImmuLncRNA.Rmd
 --- Error Log for ./FigureYa170ImmuLncRNA/FigureYa170ImmuLncRNA.Rmd ---
-Error in `source()`:
-! estimateScore.R:3:1: unexpected '<'
-2: 
-3: <
-   ^
+Error in `checkBarcodeDefinition()`:
+! Primary solid Tumor was not found. Please select a difinition from the table above 
 Backtrace:
     ▆
- 1. └─base::source("estimateScore.R")
+ 1. └─TCGAbiolinks::GDCquery(...)
+ 2.   └─TCGAbiolinks:::checkBarcodeDefinition(sample.type)
 
-Quitting from FigureYa170ImmuLncRNA.Rmd:58-73 [unnamed-chunk-1]
+Quitting from FigureYa170ImmuLncRNA.Rmd:125-135 [unnamed-chunk-3]
 Execution halted
 -----------------------------------
 [SKIPPED] - ./FigureYa71ssGSEA_update/FigureYa71ssGSEA_update.Rmd (Not listed in auto_Knit_online.txt)
@@ -274,7 +272,7 @@ Execution halted
 [SKIPPED] - ./FigureYa47HRtable/FigureYa47HRtable.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa237circVenn/FigureYa237circVenn.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa61GSVA/FigureYa61GSVA.Rmd (Not listed in auto_Knit_online.txt)
-[SKIPPED] - ./FigureYa218Elasticnet/FigureYa218Elasticnet.Rmd (Not listed in auto_Knit_online.txt)
+[SUCCESS] - ./FigureYa218Elasticnet/FigureYa218Elasticnet.Rmd
 [SKIPPED] - ./FigureYa276panSNV/FigureYa276panSNV.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa221tenFoldRF/FigureYa221tenFoldRF.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa190batchLogistic/FigureYa190batchLogistic.Rmd (Not listed in auto_Knit_online.txt)
