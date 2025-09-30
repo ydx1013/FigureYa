@@ -70,6 +70,8 @@ Many of the figures in the example article:
 
 ```{r}
 source("install_dependencies.R")
+source("estimateScore.R") # from estimate package, https://rdrr.io/rforge/estimate/f/
+source("filterCommonGenes.R") # from estimate package, https://rdrr.io/rforge/estimate/f/
 
 library(utils)
 library(GSVA)
@@ -79,7 +81,6 @@ library(circlize)
 library(viridis)
 library(gplots)
 library(data.table)
-library(estimate)
 source("annTrackScale.R") # 加载函数，对数值进行标准化并对极端值做截断 # Load the function to normalize and truncate extreme values.
 Sys.setenv(LANGUAGE = "en") #显示英文报错信息 # Display English error messages.
 options(stringsAsFactors = FALSE) #禁止chr转成factor # Disable conversion of chr values ​​to factors.
