@@ -40,24 +40,7 @@ RMD Render Summary
 [SKIPPED] - ./FigureYa69cancerSubtype/FigureYa69cancerSubtype.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa242corMethExpr/FigureYa242corMethExpr.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa310CPDBChordGramV2/FigureYa310CPDBChordGramV2.Rmd (Not listed in auto_Knit_online.txt)
-[FAILED] - ./FigureYa258SNF/FigureYa258SNF.Rmd
---- Error Log for ./FigureYa258SNF/FigureYa258SNF.Rmd ---
-Error in `loadNamespace()`:
-! there is no package called 'NMF'
-Backtrace:
-    ▆
- 1. ├─pheatmap::pheatmap(...)
- 2. │ └─pheatmap:::generate_breaks(as.vector(mat), length(color))
- 3. │   ├─base::seq(...)
- 4. │   └─base::seq.default(...)
- 5. └─base::loadNamespace(x)
- 6.   └─base::withRestarts(stop(cond), retry_loadNamespace = function() NULL)
- 7.     └─base (local) withOneRestart(expr, restarts[[1L]])
- 8.       └─base (local) doWithOneRestart(return(expr), restart)
-
-Quitting from FigureYa258SNF.Rmd:127-149 [unnamed-chunk-4]
-Execution halted
------------------------------------
+[SKIPPED] - ./FigureYa258SNF/FigureYa258SNF.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa156enrichSimulation/FigureYa156enrichSimulation.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa123mutVSexpr/FigureYa123mutVSexpr.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa275scAUCell/FigureYa275scAUCell.Rmd (Not listed in auto_Knit_online.txt)
@@ -77,7 +60,7 @@ Execution halted
 [SKIPPED] - ./FigureYa251NPHSurv/FigureYa251NPHSurv.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa31lasso_update/FigureYa31lasso_update.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa113MutSigCV/FigureYa113MutSigCV.Rmd (Not listed in auto_Knit_online.txt)
-[SKIPPED] - ./FigureYa7PSM/FigureYa7PSM.Rmd (Not listed in auto_Knit_online.txt)
+[SUCCESS] - ./FigureYa7PSM/FigureYa7PSM.Rmd
 [SKIPPED] - ./FigureYa164PCA3D/FigureYa164PCA3D.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa143survCor/FigureYa143survCor.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa206scHeatmap/FigureYa206scHeatmap.Rmd (Not listed in auto_Knit_online.txt)
@@ -132,7 +115,7 @@ Execution halted
 [SKIPPED] - ./FigureYa262GDC/FigureYa262GDC.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa286ExprCorORR/FigureYa286ExprCorORR.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa55plus_pancancer_boxplot/FigureYa55plus_pancancer_boxplot.Rmd (Not listed in auto_Knit_online.txt)
-[SUCCESS] - ./FigureYa250ImmGenePair/FigureYa250ImmGenePair.Rmd
+[SKIPPED] - ./FigureYa250ImmGenePair/FigureYa250ImmGenePair.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa36nSurvV3/FigureYa36nSurvV3.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa11bubble/FigureYa11bubbles.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa144DiagHeatmap/FigureYa144DiagHeatmap.Rmd (Not listed in auto_Knit_online.txt)
@@ -224,18 +207,7 @@ Execution halted
 [SKIPPED] - ./FigureYa288MutualExclusivity/FigureYa288MutualExclusivity.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa205immunophenoscore_update/FigureYa205immunophenoscore_update.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa301scCoExpr/FigureYa301scCoExpr.Rmd (Not listed in auto_Knit_online.txt)
-[FAILED] - ./FigureYa170ImmuLncRNA/FigureYa170ImmuLncRNA.Rmd
---- Error Log for ./FigureYa170ImmuLncRNA/FigureYa170ImmuLncRNA.Rmd ---
-Error in `checkBarcodeDefinition()`:
-! Primary Solid Tumor was not found. Please select a difinition from the table above 
-Backtrace:
-    ▆
- 1. └─TCGAbiolinks::GDCquery(...)
- 2.   └─TCGAbiolinks:::checkBarcodeDefinition(sample.type)
-
-Quitting from FigureYa170ImmuLncRNA.Rmd:125-135 [unnamed-chunk-3]
-Execution halted
------------------------------------
+[SKIPPED] - ./FigureYa170ImmuLncRNA/FigureYa170ImmuLncRNA.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa71ssGSEA_update/FigureYa71ssGSEA_update.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa76corrgram/FigureYa76corrgram.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa292HCCsubtype/FigureYa292HCCsubtype.Rmd (Not listed in auto_Knit_online.txt)
@@ -305,18 +277,7 @@ Execution halted
 [SKIPPED] - ./FigureYa306slingshot/FigureYa306slingshot.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa112Plus_venn/FigureYa112Plus_venn.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa93UMAP/FigureYa93UMAP.Rmd (Not listed in auto_Knit_online.txt)
-[FAILED] - ./FigureYa255TIME/FigureYa255TIME.Rmd
---- Error Log for ./FigureYa255TIME/FigureYa255TIME.Rmd ---
-trying URL 'https://bioinformatics.mdanderson.org/estimate/estimate_1.0.13.tar.gz'
-Error in `library()`:
-! there is no package called 'estimate'
-Backtrace:
-    ▆
- 1. └─base::library(estimate)
-
-Quitting from FigureYa255TIME.Rmd:71-86 [unnamed-chunk-1]
-Execution halted
------------------------------------
+[SKIPPED] - ./FigureYa255TIME/FigureYa255TIME.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa192breakpoint/FigureYa192breakpoint.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa294HCCdrug/FigureYa294HCCdrug.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa261circGene/FigureYa261circGene.Rmd (Not listed in auto_Knit_online.txt)
