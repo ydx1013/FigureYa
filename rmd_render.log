@@ -1,10 +1,14 @@
-Error in `fread()`:
-! input= must be a single character string containing a file name, a system command containing at least one space, a URL starting 'http[s]://', 'ftp[s]://' or 'file://', or, the input data itself containing at least one \n or \r
-Backtrace:
-    ▆
- 1. └─data.table::fread(...)
- 2.   └─data.table:::stopf("input= must be a single character string containing a file name, a system command containing at least one space, a URL starting 'http[s]://', 'ftp[s]://' or 'file://', or, the input data itself containing at least one \\n or \\r")
- 3.     └─data.table:::raise_condition(...)
+MI threshold file was already there, but I am recalculating it.
+Finding threshold for 162 samples
+Parameters for fitted threshold function: [0.14103755767029932, 6.225412312981691E-6]
+MI threshold: 0.1586100591876638
+Bootstrapping input matrix 1 with 33281 genes and 162 samples
+MI threshold file is present
+Calculate network from: ./InputData/easy_input_matrix.txt
+TFs processed: 1314
+Time elapsed for calculating MI: 135 sec
 
-Quitting from FigureYa258SNF.Rmd:76-94 [unnamed-chunk-2]
-Execution halted
+DPI time elapsed: 102 sec
+Edges removed by DPI:	6988937
+Final Network size:	473819
+Total time elapsed: 240 sec

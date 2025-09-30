@@ -40,19 +40,7 @@ RMD Render Summary
 [SKIPPED] - ./FigureYa69cancerSubtype/FigureYa69cancerSubtype.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa242corMethExpr/FigureYa242corMethExpr.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa310CPDBChordGramV2/FigureYa310CPDBChordGramV2.Rmd (Not listed in auto_Knit_online.txt)
-[FAILED] - ./FigureYa258SNF/FigureYa258SNF.Rmd
---- Error Log for ./FigureYa258SNF/FigureYa258SNF.Rmd ---
-Error in `fread()`:
-! input= must be a single character string containing a file name, a system command containing at least one space, a URL starting 'http[s]://', 'ftp[s]://' or 'file://', or, the input data itself containing at least one \n or \r
-Backtrace:
-    ▆
- 1. └─data.table::fread(...)
- 2.   └─data.table:::stopf("input= must be a single character string containing a file name, a system command containing at least one space, a URL starting 'http[s]://', 'ftp[s]://' or 'file://', or, the input data itself containing at least one \\n or \\r")
- 3.     └─data.table:::raise_condition(...)
-
-Quitting from FigureYa258SNF.Rmd:76-94 [unnamed-chunk-2]
-Execution halted
------------------------------------
+[SKIPPED] - ./FigureYa258SNF/FigureYa258SNF.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa156enrichSimulation/FigureYa156enrichSimulation.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa123mutVSexpr/FigureYa123mutVSexpr.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa275scAUCell/FigureYa275scAUCell.Rmd (Not listed in auto_Knit_online.txt)
@@ -94,7 +82,7 @@ Execution halted
 [SKIPPED] - ./FigureYa304MAGIC/FigureYa304MAGIC_lowMemory.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa304MAGIC/FigureYa304MAGIC.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa48Adonis/FigureYa48Adonis.Rmd (Not listed in auto_Knit_online.txt)
-[SKIPPED] - ./FigureYa296VIPER/FigureYa296VIPER.Rmd (Not listed in auto_Knit_online.txt)
+[SUCCESS] - ./FigureYa296VIPER/FigureYa296VIPER.Rmd
 [SKIPPED] - ./FigureYa290BarGraph/FigureYa290BarGraph.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa228linkCor/FigureYa228linkCor.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa297Rbar/FigureYa297Rbar.Rmd (Not listed in auto_Knit_online.txt)
