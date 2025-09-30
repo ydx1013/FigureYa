@@ -89,9 +89,6 @@ options(stringsAsFactors = FALSE) #禁止chr转成factor # Disable conversion of
 如果你已经获得`rawCount.txt`文件，就可以跳过这步，直接进入“开始画图”。
 If you already have the `rawCount.txt` file, you can skip this step and proceed directly to "Start Drawing."
 
-sra和bam文件已上传到百度云，链接：https://pan.baidu.com/s/1_iUX6rb1aZYRU42jeqtE4w，提取码：j2k1
-The sra and bam files have been uploaded to Baidu Cloud. Link: https://pan.baidu.com/s/1_iUX6rb1aZYRU42jeqtE4w, extraction code: j2k1
-
 ## 下载参考基因组
 ## Download the reference genome
 
