@@ -21,7 +21,7 @@ jobs:
 
       - name: Find and Unzip .zip File
         run: |
-          cd FigureYa258SNF
+          cd FigureYa128Prognostic_sup
           for zip_file in *.zip; do
             unzip -o "$zip_file" -d .
           done
