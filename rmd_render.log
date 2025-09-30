@@ -1,0 +1,10 @@
+Error in `fread()`:
+! input= must be a single character string containing a file name, a system command containing at least one space, a URL starting 'http[s]://', 'ftp[s]://' or 'file://', or, the input data itself containing at least one \n or \r
+Backtrace:
+    ▆
+ 1. └─data.table::fread(...)
+ 2.   └─data.table:::stopf("input= must be a single character string containing a file name, a system command containing at least one space, a URL starting 'http[s]://', 'ftp[s]://' or 'file://', or, the input data itself containing at least one \\n or \\r")
+ 3.     └─data.table:::raise_condition(...)
+
+Quitting from FigureYa258SNF.Rmd:76-94 [unnamed-chunk-2]
+Execution halted
