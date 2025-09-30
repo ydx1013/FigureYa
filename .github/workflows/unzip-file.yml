@@ -25,7 +25,11 @@ jobs:
           for zip_file in *.zip; do
             unzip -o "$zip_file" -d .
           done
-
+          
+      - name: Pull latest changes
+        run: |
+          git pull origin main --rebase
+          
       - name: Commit and Push Changes
         run: |
           git config --global user.name "github-actions[bot]"
