@@ -1,4 +1,1 @@
-FigureYa128Prognostic
-FigureYa255TIME
-FigureYa258SNF
-FigureYa170ImmuLncRNA
+FigureYa7PSM
