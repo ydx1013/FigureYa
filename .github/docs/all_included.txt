@@ -85,6 +85,7 @@ FigureYa124AssociationHeatmap
 FigureYa125FishertestV2
 FigureYa126CorrelationHeatmap
 FigureYa127HeatmapPie
+FigureYa128Prognostic
 FigureYa131CMap_update
 FigureYa132alteration
 FigureYa135multiVolcano
@@ -161,6 +162,7 @@ FigureYa248MutLandscape
 FigureYa250ImmGenePair
 FigureYa251NPHSurv
 FigureYa257armCNV
+FigureYa258SNF
 FigureYa259circLink
 FigureYa260CNV
 FigureYa261circGene
