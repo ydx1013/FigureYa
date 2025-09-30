@@ -58,6 +58,7 @@ Dual-axis charts are often used to compare and display trends and correlations b
 ```{r}
 source("install_dependencies.R")
 
+library(estimate)
 library(ComplexHeatmap)
 library(TCGAbiolinks)
 library(SummarizedExperiment)
@@ -120,7 +121,7 @@ RNA-Seqbased gene expression profile data were obtained from the TCGA project vi
 下载表达矩阵
 Download expression matrix
 
-```{r, eval=FALSE}
+```{r}
 query <- GDCquery(project = "TCGA-ACC",
                   data.category = "Transcriptome Profiling",
                   data.type = "Gene Expression Quantification", 
@@ -145,7 +146,7 @@ lncRNAs are classified into the following categories:
 lncRNA的注释文件可以从[genecode](ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_22/gencode.v22.long_noncoding_RNAs.gtf.gz)下载，全部rna的基因注释可以从[这里](ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_22/gencode.v22.annotation.gtf.gz)下载。
 The lncRNA annotation file can be downloaded from [genecode](ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_22/gencode.v22.long_noncoding_RNAs.gtf.gz). Gene annotations for all RNAs can be downloaded from [here](ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_22/gencode.v22.annotation.gtf.gz).
 
-```{r, eval=FALSE}
+```{r}
 # protein_coding RNA
 gtf_mrna_v22 <- rtracklayer::import('gencode.v27.annotation.gtf') %>% as.data.frame()
 gtf_mrna_v22 <- dplyr::select(gtf_mrna_v22,c("gene_id","gene_type", "gene_name")) %>% 
@@ -161,7 +162,7 @@ write.table(gtf_lnc_v22, "gtflncRNA22.txt", row.names = F, sep = "\t")
 
 ## 
 
-```{r, eval=FALSE}
+```{r}
 (load("acc.rda"))
 acc.dat <- as.data.frame(assay(acc))
 
@@ -220,9 +221,7 @@ Some tumor types, such as anaplastic thyroid cancer, have inherently small cance
 下面用estimate包计算肿瘤纯度
 The following uses the estimate package to calculate tumor purity.
 
-```{r, eval=FALSE}
-library(estimate)
-
+```{r}
 # estimate包计算浸润水平
 # estimate package calculates infiltration level
 filterCommonGenes("purityinput.txt", output.f="exp_deal.gct", id="GeneSymbol")
@@ -252,7 +251,7 @@ fun_mtx_pcr即为偏相关系数的主要算法。
 To learn more about partial correlation coefficients, click [here](https://www.youtube.com/watch?v=U8M-eXR9vj8)
 fun_mtx_pcr is the main algorithm for partial correlation coefficients.
 
-```{r, eval=FALSE}
+```{r}
 #这一步非常耗费内存:生成的相关矩阵是行为lncRNA，列为mRNA的矩阵
 #This step is very memory-intensive: the resulting correlation matrix is a matrix with lncRNAs as rows and mRNAs as columns
 fun_mtx_pcr <- function(x,y,z){
@@ -294,7 +293,7 @@ Then fgsea was used to enrich lncRNA pathways.
 
 ![](step3.png)
 
-```{r, eval=FALSE}
+```{r}
 load("pathways.rda")
 k=0.995
 fgseaRes_all <- c()
@@ -341,7 +340,7 @@ The results of the article can be found on its [webpage](http://bio-bigdata.hrbm
 我们下载画图所需的两个文件：Lnc_Pathways_Sig.txt & Lnc_Pathways_All.txt
 We download the two files required for drawing: Lnc_Pathways_Sig.txt & Lnc_Pathways_All.txt
 
-```{r, eval=FALSE}
+```{r}
 # 用R包ImmuLncRNA计算
 # Calculation using R package ImmuLncRNA
 acc_pack <- immu.LncRNA(acc_mrna, acc_lnc, adjusted=TRUE, Tumor_purity, pathways, k = 0.995)
@@ -363,7 +362,7 @@ The results calculated in each step are largely consistent with the original pap
 # 计算lncRNA proportion
 # Calculate lncRNA proportions
 
-```{r, eval=FALSE}
+```{r}
 # 加载前面计算获得的免疫相关lncRNA数量，用于top y-axis
 # Load the previously calculated immune-related lncRNA counts for the top y-axis
 pan_pairs <- read.table("pan_lnc_sig.txt", header = T, sep = "\t")
