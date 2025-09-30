@@ -121,47 +121,6 @@ install_immulncrna <- function() {
   })
 }
 
-# 安装ESTIMATE包（特殊处理）
-install_estimate_package <- function() {
-  if (is_package_installed("estimate")) {
-    cat("Package already installed: estimate\n")
-    return(TRUE)
-  }
-  
-  cat("Installing ESTIMATE package...\n")
-  
-  # 尝试多种安装方法
-  tryCatch({
-    # 方法1：从Bioconductor安装
-    install_bioc_package("estimate")
-    if (is_package_installed("estimate")) return(TRUE)
-  }, error = function(e) {
-    cat("Bioconductor installation failed:", e$message, "\n")
-  })
-  
-  tryCatch({
-    # 方法2：从CRAN安装
-    install_cran_package("estimate")
-    if (is_package_installed("estimate")) return(TRUE)
-  }, error = function(e) {
-    cat("CRAN installation failed:", e$message, "\n")
-  })
-  
-  tryCatch({
-    # 方法3：从GitHub安装
-    if (!is_package_installed("devtools")) {
-      install.packages("devtools")
-    }
-    devtools::install_github("bhklab/estimate")
-    if (is_package_installed("estimate")) return(TRUE)
-  }, error = function(e) {
-    cat("GitHub installation failed:", e$message, "\n")
-  })
-  
-  cat("All ESTIMATE installation methods failed\n")
-  return(FALSE)
-}
-
 cat("Starting R package installation...\n")
 cat("===========================================\n")
 
@@ -182,10 +141,6 @@ for (pkg in cran_packages) {
 # 安装ImmuLncRNA包
 cat("\nInstalling ImmuLncRNA package...\n")
 immulncrna_success <- install_immulncrna()
-
-# 安装ESTIMATE包
-cat("\nInstalling ESTIMATE package...\n")
-estimate_success <- install_estimate_package()
 
 # 安装Bioconductor包
 cat("\nInstalling Bioconductor packages...\n")
@@ -208,7 +163,7 @@ for (pkg in required_packages) {
   }
 }
 
-# 特别检查ImmuLncRNA和ESTIMATE
+# 特别检查ImmuLncRNA
 if (is_package_installed("ImmuLncRNA")) {
   cat("✓ ImmuLncRNA is installed\n")
   tryCatch({
@@ -221,12 +176,6 @@ if (is_package_installed("ImmuLncRNA")) {
   cat("✗ ImmuLncRNA is NOT installed\n")
 }
 
-if (is_package_installed("estimate")) {
-  cat("✓ estimate is installed\n")
-} else {
-  cat("✗ estimate is NOT installed\n")
-}
-
 cat("\n===========================================\n")
 if (all_installed) {
   cat("Main packages successfully installed!\n")
@@ -236,7 +185,6 @@ if (all_installed) {
 
 cat("\nInstallation summary:\n")
 cat("- ImmuLncRNA:", ifelse(immulncrna_success, "✓", "✗"), "\n")
-cat("- estimate:", ifelse(estimate_success, "✓", "✗"), "\n")
 cat("- Other packages:", ifelse(all_installed, "✓", "✗"), "\n")
 
 cat("You can now run your R scripts in this directory.\n")
