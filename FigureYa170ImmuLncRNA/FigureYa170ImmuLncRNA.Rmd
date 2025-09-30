@@ -126,7 +126,7 @@ Download expression matrix
 query <- GDCquery(project = "TCGA-ACC",
                   data.category = "Transcriptome Profiling",
                   data.type = "Gene Expression Quantification", 
-                  workflow.type = "HTSeq - FPKM", sample.type = c("Primary solid Tumor"))
+                  workflow.type = "HTSeq - FPKM", sample.type = c("Primary Solid Tumor"))
 GDCdownload(query, method = "api", files.per.chunk = 10)
 acc <- GDCprepare(query)
 #保存到文件，便于以后重复使用
