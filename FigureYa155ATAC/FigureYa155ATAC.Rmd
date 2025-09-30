@@ -71,16 +71,7 @@ Install R packages
 
 ```{r}
 source("install_dependencies.R")
-```
 
-```{r, eval=FALSE}
-BiocManager::install("DESeq2")
-BiocManager::install("ChIPseeker")
-```
-
-Load package
-
-```{r}
 library(dplyr)
 library(DESeq2)
 library(ChIPseeker)
