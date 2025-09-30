@@ -172,6 +172,7 @@ FigureYa283vennyPvalue
 FigureYa284pairwiseLogrank
 FigureYa287L2logV2
 FigureYa288MutualExclusivity
+FigureYa296VIPER
 FigureYa297Rbar
 FigureYa298ecdfPvalue
 FigureYa303panCircos
