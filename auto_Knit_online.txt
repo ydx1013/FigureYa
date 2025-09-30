@@ -1,3 +1,6 @@
 FigureYa213customizeHeatmap
 FigureYa218Elasticnet
 FigureYa170ImmuLncRNA
+FigureYa250ImmGenePair
+FigureYa255TIME
+FigureYa258SNF
