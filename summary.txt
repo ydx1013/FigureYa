@@ -82,7 +82,7 @@ RMD Render Summary
 [SKIPPED] - ./FigureYa304MAGIC/FigureYa304MAGIC_lowMemory.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa304MAGIC/FigureYa304MAGIC.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa48Adonis/FigureYa48Adonis.Rmd (Not listed in auto_Knit_online.txt)
-[SUCCESS] - ./FigureYa296VIPER/FigureYa296VIPER.Rmd
+[SKIPPED] - ./FigureYa296VIPER/FigureYa296VIPER.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa290BarGraph/FigureYa290BarGraph.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa228linkCor/FigureYa228linkCor.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa297Rbar/FigureYa297Rbar.Rmd (Not listed in auto_Knit_online.txt)
@@ -207,7 +207,20 @@ RMD Render Summary
 [SKIPPED] - ./FigureYa288MutualExclusivity/FigureYa288MutualExclusivity.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa205immunophenoscore_update/FigureYa205immunophenoscore_update.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa301scCoExpr/FigureYa301scCoExpr.Rmd (Not listed in auto_Knit_online.txt)
-[SKIPPED] - ./FigureYa170ImmuLncRNA/FigureYa170ImmuLncRNA.Rmd (Not listed in auto_Knit_online.txt)
+[FAILED] - ./FigureYa170ImmuLncRNA/FigureYa170ImmuLncRNA.Rmd
+--- Error Log for ./FigureYa170ImmuLncRNA/FigureYa170ImmuLncRNA.Rmd ---
+Error in `source()`:
+! estimateScore.R:3:1: unexpected '<'
+2: 
+3: <
+   ^
+Backtrace:
+    ▆
+ 1. └─base::source("estimateScore.R")
+
+Quitting from FigureYa170ImmuLncRNA.Rmd:58-73 [unnamed-chunk-1]
+Execution halted
+-----------------------------------
 [SKIPPED] - ./FigureYa71ssGSEA_update/FigureYa71ssGSEA_update.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa76corrgram/FigureYa76corrgram.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa292HCCsubtype/FigureYa292HCCsubtype.Rmd (Not listed in auto_Knit_online.txt)
