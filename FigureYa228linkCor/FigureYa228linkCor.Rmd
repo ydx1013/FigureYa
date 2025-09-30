@@ -107,12 +107,8 @@ Below, using gene expression matrix and pathway-gene information, calculate the 
 原文：A set of **gene signatures positively correlated with the clinical response of an anti-PD-L1 agent (atezolizumab) in BLCA** were collected from Mariathasan’s study [27]. Twelve bladder cancer signatures that are specific to different molecular subtypes were collected from the study performed by the Bladder Cancer Molecular Taxonomy Group [19]. We also collected other **therapeutic signatures**, including oncogenic pathways that could shape a non-inflamed TME, targeted therapy-associated gene signatures, and gene signatures predicting radiotherapy responses (Table S9).
 
 ```{r}
-# 解压文件并读取
-unzipped_files <- unzip('tcga_blca_fpkm.txt.zip', exdir = tempdir())
-data_file <- unzipped_files[1]  # 取第一个文件
-
 # 读取数据
-expr <- fread(data_file, sep = "\t", header = TRUE, check.names = FALSE)
+expr <- fread("tcga_blca_fpkm.txt", sep = "\t", header = TRUE, check.names = FALSE)
 expr <- as.data.frame(expr)
 rownames(expr) <- expr[, 1]
 expr <- expr[, -1]
