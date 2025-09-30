@@ -1,3 +1,1 @@
-FigureYa128Prognostic
 FigureYa255TIME
-FigureYa258SNF
