@@ -158,6 +158,7 @@ FigureYa244PCAPlot
 FigureYa245VarDecompose
 FigureYa247oncoPredict
 FigureYa248MutLandscape
+FigureYa250ImmGenePair
 FigureYa251NPHSurv
 FigureYa257armCNV
 FigureYa259circLink
