@@ -40,7 +40,11 @@ RMD Render Summary
 [SKIPPED] - ./FigureYa69cancerSubtype/FigureYa69cancerSubtype.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa242corMethExpr/FigureYa242corMethExpr.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa310CPDBChordGramV2/FigureYa310CPDBChordGramV2.Rmd (Not listed in auto_Knit_online.txt)
+<<<<<<< Updated upstream
 [SKIPPED] - ./FigureYa258SNF/FigureYa258SNF.Rmd (Not listed in auto_Knit_online.txt)
+=======
+[SUCCESS] - ./FigureYa258SNF/FigureYa258SNF.Rmd
+>>>>>>> Stashed changes
 [SKIPPED] - ./FigureYa156enrichSimulation/FigureYa156enrichSimulation.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa123mutVSexpr/FigureYa123mutVSexpr.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa275scAUCell/FigureYa275scAUCell.Rmd (Not listed in auto_Knit_online.txt)
@@ -277,7 +281,24 @@ RMD Render Summary
 [SKIPPED] - ./FigureYa306slingshot/FigureYa306slingshot.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa112Plus_venn/FigureYa112Plus_venn.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa93UMAP/FigureYa93UMAP.Rmd (Not listed in auto_Knit_online.txt)
+<<<<<<< Updated upstream
 [SKIPPED] - ./FigureYa255TIME/FigureYa255TIME.Rmd (Not listed in auto_Knit_online.txt)
+=======
+[FAILED] - ./FigureYa255TIME/FigureYa255TIME.Rmd
+--- Error Log for ./FigureYa255TIME/FigureYa255TIME.Rmd ---
+trying URL 'https://bioinformatics.mdanderson.org/estimate/estimate_1.0.13.tar.gz'
+Error in `open.connection()`:
+! cannot open the connection
+Backtrace:
+    ▆
+ 1. └─utils::read.table(...)
+ 2.   ├─base::open(file, "rt")
+ 3.   └─base::open.connection(file, "rt")
+
+Quitting from FigureYa255TIME.Rmd:141-204 [unnamed-chunk-4]
+Execution halted
+-----------------------------------
+>>>>>>> Stashed changes
 [SKIPPED] - ./FigureYa192breakpoint/FigureYa192breakpoint.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa294HCCdrug/FigureYa294HCCdrug.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa261circGene/FigureYa261circGene.Rmd (Not listed in auto_Knit_online.txt)
@@ -309,7 +330,7 @@ RMD Render Summary
 [SKIPPED] - ./FigureYa252mclust/FigureYa252mclust.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa299pancanSurv/FigureYa299pancanSurv.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa102multipanelROC/FigureYa102multipanelROC.Rmd (Not listed in auto_Knit_online.txt)
-[SKIPPED] - ./FigureYa128Prognostic/FigureYa128Prognostic.Rmd (Not listed in auto_Knit_online.txt)
+[SUCCESS] - ./FigureYa128Prognostic/FigureYa128Prognostic.Rmd
 [SKIPPED] - ./FigureYa173fancybar/FigureYa173fancybar.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa43ManhattanV2/FigureYa43ManhattanV2.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa284pairwiseLogrank/FigureYa284pairwiseLogrank.Rmd (Not listed in auto_Knit_online.txt)

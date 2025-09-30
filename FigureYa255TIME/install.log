@@ -5,17 +5,46 @@ Installing CRAN packages...
 Installing CRAN package: viridis 
 Installing package into ‘/home/runner/work/_temp/Library’
 (as ‘lib’ is unspecified)
-also installing the dependencies ‘gridExtra’, ‘hexbin’, ‘dichromat’, ‘mapproj’, ‘vdiffr’, ‘svglite’, ‘maps’, ‘terra’
+also installing the dependencies ‘lazyeval’, ‘rex’, ‘gridExtra’, ‘hexbin’, ‘dichromat’, ‘mapproj’, ‘vdiffr’, ‘svglite’, ‘covr’, ‘maps’, ‘terra’
 
+trying URL 'https://cloud.r-project.org/src/contrib/lazyeval_0.2.2.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/rex_1.2.1.tar.gz'
 trying URL 'https://cloud.r-project.org/src/contrib/gridExtra_2.3.tar.gz'
 trying URL 'https://cloud.r-project.org/src/contrib/hexbin_1.28.5.tar.gz'
 trying URL 'https://cloud.r-project.org/src/contrib/dichromat_2.0-0.1.tar.gz'
 trying URL 'https://cloud.r-project.org/src/contrib/mapproj_1.2.12.tar.gz'
 trying URL 'https://cloud.r-project.org/src/contrib/vdiffr_1.0.8.tar.gz'
 trying URL 'https://cloud.r-project.org/src/contrib/svglite_2.2.1.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/covr_3.6.4.tar.gz'
 trying URL 'https://cloud.r-project.org/src/contrib/maps_3.4.3.tar.gz'
 trying URL 'https://cloud.r-project.org/src/contrib/terra_1.8-70.tar.gz'
 trying URL 'https://cloud.r-project.org/src/contrib/viridis_0.6.5.tar.gz'
+* installing *source* package ‘lazyeval’ ...
+** this is package ‘lazyeval’ version ‘0.2.2’
+** package ‘lazyeval’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+using C compiler: ‘gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0’
+gcc -std=gnu2x -I"/opt/R/4.5.1/lib/R/include" -DNDEBUG   -I/usr/local/include    -fpic  -g -O2  -c expr.c -o expr.o
+gcc -std=gnu2x -I"/opt/R/4.5.1/lib/R/include" -DNDEBUG   -I/usr/local/include    -fpic  -g -O2  -c init.c -o init.o
+gcc -std=gnu2x -I"/opt/R/4.5.1/lib/R/include" -DNDEBUG   -I/usr/local/include    -fpic  -g -O2  -c interp.c -o interp.o
+gcc -std=gnu2x -I"/opt/R/4.5.1/lib/R/include" -DNDEBUG   -I/usr/local/include    -fpic  -g -O2  -c lazy.c -o lazy.o
+gcc -std=gnu2x -I"/opt/R/4.5.1/lib/R/include" -DNDEBUG   -I/usr/local/include    -fpic  -g -O2  -c name.c -o name.o
+gcc -std=gnu2x -I"/opt/R/4.5.1/lib/R/include" -DNDEBUG   -I/usr/local/include    -fpic  -g -O2  -c utils.c -o utils.o
+gcc -std=gnu2x -shared -L/opt/R/4.5.1/lib/R/lib -L/usr/local/lib -o lazyeval.so expr.o init.o interp.o lazy.o name.o utils.o -L/opt/R/4.5.1/lib/R/lib -lR
+installing to /home/runner/work/_temp/Library/00LOCK-lazyeval/00new/lazyeval/libs
+** R
+** inst
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** installing vignettes
+** testing if installed package can be loaded from temporary location
+** checking absolute paths in shared objects and dynamic libraries
+** testing if installed package can be loaded from final location
+** testing if installed package keeps a record of temporary installation path
+* DONE (lazyeval)
 * installing *source* package ‘gridExtra’ ...
 ** this is package ‘gridExtra’ version ‘2.3’
 ** package ‘gridExtra’ successfully unpacked and MD5 sums checked
@@ -130,32 +159,32 @@ configure: creating ./config.status
 config.status: creating src/Makefile
 ** libs
 make -f "/opt/R/4.5.1/lib/R/etc/Makeconf" -f Makefile init.o mapclip.o mapget.o smooth.o thin.o 
-make[1]: Entering directory '/tmp/Rtmpx2kWTv/R.INSTALL1144f6c295e40/maps/src'
+make[1]: Entering directory '/tmp/Rtmp9dlHSt/R.INSTALL1086c7e3346ea/maps/src'
 gcc -std=gnu2x -I"/opt/R/4.5.1/lib/R/include" -DNDEBUG   -I/usr/local/include    -fpic  -g -O2  -c init.c -o init.o
 gcc -std=gnu2x -I"/opt/R/4.5.1/lib/R/include" -DNDEBUG   -I/usr/local/include    -fpic  -g -O2  -c mapclip.c -o mapclip.o
 gcc -std=gnu2x -I"/opt/R/4.5.1/lib/R/include" -DNDEBUG   -I/usr/local/include    -fpic  -g -O2  -c mapget.c -o mapget.o
 gcc -std=gnu2x -I"/opt/R/4.5.1/lib/R/include" -DNDEBUG   -I/usr/local/include    -fpic  -g -O2  -c smooth.c -o smooth.o
 gcc -std=gnu2x -I"/opt/R/4.5.1/lib/R/include" -DNDEBUG   -I/usr/local/include    -fpic  -g -O2  -c thin.c -o thin.o
-make[1]: Leaving directory '/tmp/Rtmpx2kWTv/R.INSTALL1144f6c295e40/maps/src'
+make[1]: Leaving directory '/tmp/Rtmp9dlHSt/R.INSTALL1086c7e3346ea/maps/src'
 "/opt/R/4.5.1/lib/R/bin/R" CMD SHLIB -o maps.so init.o mapclip.o mapget.o smooth.o thin.o 
-make[1]: Entering directory '/tmp/Rtmpx2kWTv/R.INSTALL1144f6c295e40/maps/src'
+make[1]: Entering directory '/tmp/Rtmp9dlHSt/R.INSTALL1086c7e3346ea/maps/src'
 gcc -std=gnu2x -shared -L/opt/R/4.5.1/lib/R/lib -L/usr/local/lib -o maps.so init.o mapclip.o mapget.o smooth.o thin.o -L/opt/R/4.5.1/lib/R/lib -lR
-make[1]: Leaving directory '/tmp/Rtmpx2kWTv/R.INSTALL1144f6c295e40/maps/src'
+make[1]: Leaving directory '/tmp/Rtmp9dlHSt/R.INSTALL1086c7e3346ea/maps/src'
 make -f "/opt/R/4.5.1/lib/R/etc/Makeconf" -f Makefile Gmake
-make[1]: Entering directory '/tmp/Rtmpx2kWTv/R.INSTALL1144f6c295e40/maps/src'
+make[1]: Entering directory '/tmp/Rtmp9dlHSt/R.INSTALL1086c7e3346ea/maps/src'
 gcc -std=gnu2x -g -O2  -I/usr/local/include -L/usr/local/lib  Gmake.c   -o Gmake
-make[1]: Leaving directory '/tmp/Rtmpx2kWTv/R.INSTALL1144f6c295e40/maps/src'
+make[1]: Leaving directory '/tmp/Rtmp9dlHSt/R.INSTALL1086c7e3346ea/maps/src'
 make -f "/opt/R/4.5.1/lib/R/etc/Makeconf" -f Makefile Lmake
-make[1]: Entering directory '/tmp/Rtmpx2kWTv/R.INSTALL1144f6c295e40/maps/src'
+make[1]: Entering directory '/tmp/Rtmp9dlHSt/R.INSTALL1086c7e3346ea/maps/src'
 gcc -std=gnu2x -g -O2  -I/usr/local/include -L/usr/local/lib  Lmake.c   -o Lmake
-make[1]: Leaving directory '/tmp/Rtmpx2kWTv/R.INSTALL1144f6c295e40/maps/src'
+make[1]: Leaving directory '/tmp/Rtmp9dlHSt/R.INSTALL1086c7e3346ea/maps/src'
 make -f "/opt/R/4.5.1/lib/R/etc/Makeconf" -f Makefile world2.line
-make[1]: Entering directory '/tmp/Rtmpx2kWTv/R.INSTALL1144f6c295e40/maps/src'
+make[1]: Entering directory '/tmp/Rtmp9dlHSt/R.INSTALL1086c7e3346ea/maps/src'
 Converting world to world2
 gawk -f ./convert.awk < world.line > world2.line
-make[1]: Leaving directory '/tmp/Rtmpx2kWTv/R.INSTALL1144f6c295e40/maps/src'
+make[1]: Leaving directory '/tmp/Rtmp9dlHSt/R.INSTALL1086c7e3346ea/maps/src'
 make -f "/opt/R/4.5.1/lib/R/etc/Makeconf" -f Makefile county.L state.L usa.L nz.L world.L world2.L italy.L france.L state.vbm.L state.carto.L lakes.L
-make[1]: Entering directory '/tmp/Rtmpx2kWTv/R.INSTALL1144f6c295e40/maps/src'
+make[1]: Entering directory '/tmp/Rtmp9dlHSt/R.INSTALL1086c7e3346ea/maps/src'
 ./Lmake 0 s b county.line county.linestats ../inst/mapdata/county.L
 ./Lmake 0 s b state.line state.linestats ../inst/mapdata/state.L
 ./Lmake 0 s b usa.line usa.linestats ../inst/mapdata/usa.L
@@ -167,9 +196,9 @@ make[1]: Entering directory '/tmp/Rtmpx2kWTv/R.INSTALL1144f6c295e40/maps/src'
 ./Lmake 0 p b state.vbm.line state.vbm.linestats ../inst/mapdata/state.vbm.L
 ./Lmake 0 p b state.carto.line state.carto.linestats ../inst/mapdata/state.carto.L
 ./Lmake 0 s b lakes.line lakes.linestats ../inst/mapdata/lakes.L
-make[1]: Leaving directory '/tmp/Rtmpx2kWTv/R.INSTALL1144f6c295e40/maps/src'
+make[1]: Leaving directory '/tmp/Rtmp9dlHSt/R.INSTALL1086c7e3346ea/maps/src'
 make -f "/opt/R/4.5.1/lib/R/etc/Makeconf" -f Makefile county.G state.G usa.G nz.G world.G world2.G italy.G france.G state.vbm.G state.carto.G lakes.G
-make[1]: Entering directory '/tmp/Rtmpx2kWTv/R.INSTALL1144f6c295e40/maps/src'
+make[1]: Entering directory '/tmp/Rtmp9dlHSt/R.INSTALL1086c7e3346ea/maps/src'
 ./Gmake b county.gon county.gonstats ../inst/mapdata/county.G ../inst/mapdata/county.L
 ./Gmake b state.gon state.gonstats ../inst/mapdata/state.G ../inst/mapdata/state.L
 ./Gmake b usa.gon usa.gonstats ../inst/mapdata/usa.G ../inst/mapdata/usa.L
@@ -181,10 +210,10 @@ make[1]: Entering directory '/tmp/Rtmpx2kWTv/R.INSTALL1144f6c295e40/maps/src'
 ./Gmake b state.vbm.gon state.vbm.gonstats ../inst/mapdata/state.vbm.G ../inst/mapdata/state.vbm.L
 ./Gmake b state.carto.gon state.carto.gonstats ../inst/mapdata/state.carto.G ../inst/mapdata/state.carto.L
 ./Gmake b lakes.gon lakes.gonstats ../inst/mapdata/lakes.G ../inst/mapdata/lakes.L
-make[1]: Leaving directory '/tmp/Rtmpx2kWTv/R.INSTALL1144f6c295e40/maps/src'
+make[1]: Leaving directory '/tmp/Rtmp9dlHSt/R.INSTALL1086c7e3346ea/maps/src'
 make -f "/opt/R/4.5.1/lib/R/etc/Makeconf" -f Makefile county.N state.N usa.N nz.N world.N world2.N italy.N france.N state.vbm.N state.carto.N lakes.N
-make[1]: Entering directory '/tmp/Rtmpx2kWTv/R.INSTALL1144f6c295e40/maps/src'
-make[1]: Leaving directory '/tmp/Rtmpx2kWTv/R.INSTALL1144f6c295e40/maps/src'
+make[1]: Entering directory '/tmp/Rtmp9dlHSt/R.INSTALL1086c7e3346ea/maps/src'
+make[1]: Leaving directory '/tmp/Rtmp9dlHSt/R.INSTALL1086c7e3346ea/maps/src'
 installing to /home/runner/work/_temp/Library/00LOCK-maps/00new/maps/libs
 ** R
 ** data
@@ -369,6 +398,21 @@ Creating a generic function for ‘readRDS’ from package ‘base’ in package
 ** testing if installed package can be loaded from final location
 ** testing if installed package keeps a record of temporary installation path
 * DONE (terra)
+* installing *source* package ‘rex’ ...
+** this is package ‘rex’ version ‘1.2.1’
+** package ‘rex’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** inst
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** installing vignettes
+** testing if installed package can be loaded from temporary location
+** testing if installed package can be loaded from final location
+** testing if installed package keeps a record of temporary installation path
+* DONE (rex)
 * installing *source* package ‘mapproj’ ...
 ** this is package ‘mapproj’ version ‘1.2.12’
 ** package ‘mapproj’ successfully unpacked and MD5 sums checked
@@ -447,9 +491,31 @@ installing to /home/runner/work/_temp/Library/00LOCK-mapproj/00new/mapproj/libs
 ** testing if installed package can be loaded from final location
 ** testing if installed package keeps a record of temporary installation path
 * DONE (viridis)
+* installing *source* package ‘covr’ ...
+** this is package ‘covr’ version ‘3.6.4’
+** package ‘covr’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+using C compiler: ‘gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0’
+gcc -std=gnu2x -I"/opt/R/4.5.1/lib/R/include" -DNDEBUG   -I/usr/local/include    -fpic  -g -O2  -c reassign.c -o reassign.o
+gcc -std=gnu2x -shared -L/opt/R/4.5.1/lib/R/lib -L/usr/local/lib -o covr.so reassign.o -L/opt/R/4.5.1/lib/R/lib -lR
+installing to /home/runner/work/_temp/Library/00LOCK-covr/00new/covr/libs
+** R
+** inst
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+*** copying figures
+** building package indices
+** installing vignettes
+** testing if installed package can be loaded from temporary location
+** checking absolute paths in shared objects and dynamic libraries
+** testing if installed package can be loaded from final location
+** testing if installed package keeps a record of temporary installation path
+* DONE (covr)
 
 The downloaded source packages are in
-	‘/tmp/Rtmp8ze0TK/downloaded_packages’
+	‘/tmp/RtmpfWshTO/downloaded_packages’
 Successfully installed: viridis 
 Installing CRAN package: gplots 
 Installing package into ‘/home/runner/work/_temp/Library’
@@ -572,7 +638,7 @@ installing to /home/runner/work/_temp/Library/00LOCK-caTools/00new/caTools/libs
 * DONE (gplots)
 
 The downloaded source packages are in
-	‘/tmp/Rtmp8ze0TK/downloaded_packages’
+	‘/tmp/RtmpfWshTO/downloaded_packages’
 Successfully installed: gplots 
 Package already installed: data.table 
 
@@ -584,10 +650,13 @@ Replacement repositories:
     CRAN: https://cloud.r-project.org/
 Bioconductor version 3.21 (BiocManager 1.30.26), R 4.5.1 (2025-06-13)
 Installing package(s) 'GSVA'
-also installing the dependencies ‘graph’, ‘magick’, ‘ScaledMatrix’, ‘irlba’, ‘rsvd’, ‘beachmat’, ‘assorthead’, ‘GSEABase’, ‘SingleCellExperiment’, ‘SpatialExperiment’, ‘BiocSingular’
+also installing the dependencies ‘dbplyr’, ‘filelock’, ‘graph’, ‘magick’, ‘BiocFileCache’, ‘ScaledMatrix’, ‘irlba’, ‘rsvd’, ‘beachmat’, ‘assorthead’, ‘GSEABase’, ‘SingleCellExperiment’, ‘SpatialExperiment’, ‘BiocSingular’
 
+trying URL 'https://cloud.r-project.org/src/contrib/dbplyr_2.5.1.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/filelock_1.0.3.tar.gz'
 trying URL 'https://bioconductor.org//packages/3.21/bioc/src/contrib/graph_1.86.0.tar.gz'
 trying URL 'https://cloud.r-project.org/src/contrib/magick_2.9.0.tar.gz'
+trying URL 'https://bioconductor.org//packages/3.21/bioc/src/contrib/BiocFileCache_2.16.2.tar.gz'
 trying URL 'https://bioconductor.org//packages/3.21/bioc/src/contrib/ScaledMatrix_1.16.0.tar.gz'
 trying URL 'https://cloud.r-project.org/src/contrib/irlba_2.3.5.1.tar.gz'
 trying URL 'https://cloud.r-project.org/src/contrib/rsvd_1.0.5.tar.gz'
@@ -598,6 +667,45 @@ trying URL 'https://bioconductor.org//packages/3.21/bioc/src/contrib/SingleCellE
 trying URL 'https://bioconductor.org//packages/3.21/bioc/src/contrib/SpatialExperiment_1.18.1.tar.gz'
 trying URL 'https://bioconductor.org//packages/3.21/bioc/src/contrib/BiocSingular_1.24.0.tar.gz'
 trying URL 'https://bioconductor.org//packages/3.21/bioc/src/contrib/GSVA_2.2.0.tar.gz'
+* installing *source* package ‘dbplyr’ ...
+** this is package ‘dbplyr’ version ‘2.5.1’
+** package ‘dbplyr’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** inst
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+*** copying figures
+** building package indices
+** installing vignettes
+** testing if installed package can be loaded from temporary location
+** testing if installed package can be loaded from final location
+** testing if installed package keeps a record of temporary installation path
+* DONE (dbplyr)
+* installing *source* package ‘filelock’ ...
+** this is package ‘filelock’ version ‘1.0.3’
+** package ‘filelock’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+using C compiler: ‘gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0’
+rm -f filelock.so init.o filelock-unix.o locklist.o
+gcc -std=gnu2x -I"/opt/R/4.5.1/lib/R/include" -DNDEBUG   -I/usr/local/include    -fpic  -g -O2  -c init.c -o init.o
+gcc -std=gnu2x -I"/opt/R/4.5.1/lib/R/include" -DNDEBUG   -I/usr/local/include    -fpic  -g -O2  -c filelock-unix.c -o filelock-unix.o
+gcc -std=gnu2x -I"/opt/R/4.5.1/lib/R/include" -DNDEBUG   -I/usr/local/include    -fpic  -g -O2  -c locklist.c -o locklist.o
+gcc -std=gnu2x -shared -L/opt/R/4.5.1/lib/R/lib -L/usr/local/lib -o filelock.so init.o filelock-unix.o locklist.o -L/opt/R/4.5.1/lib/R/lib -lR
+installing to /home/runner/work/_temp/Library/00LOCK-filelock/00new/filelock/libs
+** R
+** inst
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded from temporary location
+** checking absolute paths in shared objects and dynamic libraries
+** testing if installed package can be loaded from final location
+** testing if installed package keeps a record of temporary installation path
+* DONE (filelock)
 * installing *source* package ‘graph’ ...
 ** this is package ‘graph’ version ‘1.86.0’
 ** using staged installation
@@ -739,6 +847,20 @@ No man pages found in package  ‘assorthead’
 ** testing if installed package can be loaded from final location
 ** testing if installed package keeps a record of temporary installation path
 * DONE (SingleCellExperiment)
+* installing *source* package ‘BiocFileCache’ ...
+** this is package ‘BiocFileCache’ version ‘2.16.2’
+** using staged installation
+** R
+** inst
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** installing vignettes
+** testing if installed package can be loaded from temporary location
+** testing if installed package can be loaded from final location
+** testing if installed package keeps a record of temporary installation path
+* DONE (BiocFileCache)
 * installing *source* package ‘beachmat’ ...
 ** this is package ‘beachmat’ version ‘2.24.0’
 ** using staged installation
@@ -848,9 +970,129 @@ installing to /home/runner/work/_temp/Library/00LOCK-GSVA/00new/GSVA/libs
 * DONE (GSVA)
 
 The downloaded source packages are in
-	‘/tmp/Rtmp8ze0TK/downloaded_packages’
+	‘/tmp/RtmpfWshTO/downloaded_packages’
 Successfully installed: GSVA 
-Package already installed: ComplexHeatmap 
+Installing Bioconductor package: ComplexHeatmap 
+'getOption("repos")' replaces Bioconductor standard repositories, see
+'help("repositories", package = "BiocManager")' for details.
+Replacement repositories:
+    CRAN: https://cloud.r-project.org/
+Bioconductor version 3.21 (BiocManager 1.30.26), R 4.5.1 (2025-06-13)
+Installing package(s) 'ComplexHeatmap'
+also installing the dependencies ‘shape’, ‘circlize’, ‘GetoptLong’, ‘clue’, ‘GlobalOptions’
+
+trying URL 'https://cloud.r-project.org/src/contrib/shape_1.4.6.1.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/circlize_0.4.16.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/GetoptLong_1.0.5.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/clue_0.3-66.tar.gz'
+trying URL 'https://cloud.r-project.org/src/contrib/GlobalOptions_0.1.2.tar.gz'
+trying URL 'https://bioconductor.org//packages/3.21/bioc/src/contrib/ComplexHeatmap_2.24.1.tar.gz'
+* installing *source* package ‘shape’ ...
+** this is package ‘shape’ version ‘1.4.6.1’
+** package ‘shape’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** demo
+** inst
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** installing vignettes
+** testing if installed package can be loaded from temporary location
+** testing if installed package can be loaded from final location
+** testing if installed package keeps a record of temporary installation path
+* DONE (shape)
+* installing *source* package ‘clue’ ...
+** this is package ‘clue’ version ‘0.3-66’
+** package ‘clue’ successfully unpacked and MD5 sums checked
+** using staged installation
+** libs
+using C compiler: ‘gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0’
+gcc -std=gnu2x -I"/opt/R/4.5.1/lib/R/include" -DNDEBUG   -I/usr/local/include    -fpic  -g -O2  -c assignment.c -o assignment.o
+gcc -std=gnu2x -I"/opt/R/4.5.1/lib/R/include" -DNDEBUG   -I/usr/local/include    -fpic  -g -O2  -c clue.c -o clue.o
+gcc -std=gnu2x -I"/opt/R/4.5.1/lib/R/include" -DNDEBUG   -I/usr/local/include    -fpic  -g -O2  -c init.c -o init.o
+gcc -std=gnu2x -I"/opt/R/4.5.1/lib/R/include" -DNDEBUG   -I/usr/local/include    -fpic  -g -O2  -c lsap.c -o lsap.o
+gcc -std=gnu2x -I"/opt/R/4.5.1/lib/R/include" -DNDEBUG   -I/usr/local/include    -fpic  -g -O2  -c trees.c -o trees.o
+gcc -std=gnu2x -shared -L/opt/R/4.5.1/lib/R/lib -L/usr/local/lib -o clue.so assignment.o clue.o init.o lsap.o trees.o -L/opt/R/4.5.1/lib/R/lib -lR
+installing to /home/runner/work/_temp/Library/00LOCK-clue/00new/clue/libs
+** R
+** data
+** inst
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** installing vignettes
+** testing if installed package can be loaded from temporary location
+** checking absolute paths in shared objects and dynamic libraries
+** testing if installed package can be loaded from final location
+** testing if installed package keeps a record of temporary installation path
+* DONE (clue)
+* installing *source* package ‘GlobalOptions’ ...
+** this is package ‘GlobalOptions’ version ‘0.1.2’
+** package ‘GlobalOptions’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** inst
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** installing vignettes
+** testing if installed package can be loaded from temporary location
+** testing if installed package can be loaded from final location
+** testing if installed package keeps a record of temporary installation path
+* DONE (GlobalOptions)
+* installing *source* package ‘circlize’ ...
+** this is package ‘circlize’ version ‘0.4.16’
+** package ‘circlize’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** demo
+** inst
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** installing vignettes
+** testing if installed package can be loaded from temporary location
+** testing if installed package can be loaded from final location
+** testing if installed package keeps a record of temporary installation path
+* DONE (circlize)
+* installing *source* package ‘GetoptLong’ ...
+** this is package ‘GetoptLong’ version ‘1.0.5’
+** package ‘GetoptLong’ successfully unpacked and MD5 sums checked
+** using staged installation
+** R
+** inst
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** installing vignettes
+** testing if installed package can be loaded from temporary location
+** testing if installed package can be loaded from final location
+** testing if installed package keeps a record of temporary installation path
+* DONE (GetoptLong)
+* installing *source* package ‘ComplexHeatmap’ ...
+** this is package ‘ComplexHeatmap’ version ‘2.24.1’
+** using staged installation
+** R
+** inst
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** installing vignettes
+** testing if installed package can be loaded from temporary location
+** testing if installed package can be loaded from final location
+** testing if installed package keeps a record of temporary installation path
+* DONE (ComplexHeatmap)
+
+The downloaded source packages are in
+	‘/tmp/RtmpfWshTO/downloaded_packages’
+Successfully installed: ComplexHeatmap 
 Package already installed: circlize 
 
 Installing estimate package (special procedure)...
