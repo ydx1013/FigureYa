@@ -132,7 +132,6 @@ FigureYa190batchLogistic
 FigureYa191bestLogistic
 FigureYa192breakpoint
 FigureYa193RiskTable
-FigureYa194pySCENIC
 FigureYa196PanPie
 FigureYa197SmoothHaz
 FigureYa198SignatureCombinationV2
