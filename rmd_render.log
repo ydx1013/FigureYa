@@ -1,11 +1,8 @@
-Error in `fix.by()`:
-! 'by' must specify a uniquely valid column
+Error in `dimnames(x) <- dn`:
+! length of 'dimnames' [1] not equal to array extent
 Backtrace:
     ▆
- 1. └─global filterCommonGenes(...)
- 2.   ├─base::merge(common_genes, input.df, by.x = id, by.y = "row.names")
- 3.   └─base::merge.data.frame(common_genes, input.df, by.x = id, by.y = "row.names")
- 4.     └─base (local) fix.by(by.x, x)
+ 1. └─base::`rownames<-`(`*tmp*`, value = `<chr>`)
 
-Quitting from FigureYa255TIME.Rmd:173-236 [unnamed-chunk-4]
+Quitting from FigureYa255TIME.Rmd:139-201 [unnamed-chunk-4]
 Execution halted
