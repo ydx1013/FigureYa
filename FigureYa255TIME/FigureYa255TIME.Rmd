@@ -1,8 +1,8 @@
 ---
-title: "FigureYa255TIME"
+title: "FigureYa255TIME_update"
 params:
-  author: "Xiaofan Lu"
-  reviewer: "Ying Ge, Junyi Shen"
+  author: "Xiaofan Lu, Ying Ge"
+  reviewer: "Junyi Shen"
 output: html_document
 ---
 
@@ -70,8 +70,6 @@ Many of the figures in the example article:
 
 ```{r}
 source("install_dependencies.R")
-source("estimateScore.R") # from estimate package, https://rdrr.io/rforge/estimate/f/
-
 library(utils)
 library(GSVA)
 library(ComplexHeatmap) # 用到里面的pheatmap画图然后拼图，需安装2.8以上版本的ComplexHeatmap # Use the pheatmap function to plot and then assemble the image. You must have ComplexHeatmap version 2.8 or later installed.
@@ -80,6 +78,7 @@ library(circlize)
 library(viridis)
 library(gplots)
 library(data.table)
+library(tidyestimate)
 source("annTrackScale.R") # 加载函数，对数值进行标准化并对极端值做截断 # Load the function to normalize and truncate extreme values.
 Sys.setenv(LANGUAGE = "en") #显示英文报错信息 # Display English error messages.
 options(stringsAsFactors = FALSE) #禁止chr转成factor # Disable conversion of chr values ​​to factors.
@@ -94,39 +93,6 @@ standarize.fun <- function(indata=NULL, halfwidth=NULL, centerFlag=T, scaleFlag=
     outdata[outdata<(-halfwidth)]= -halfwidth
   }
   return(outdata)
-}
-
-# from estimate package, https://rdrr.io/rforge/estimate/f/
-filterCommonGenes <- function(input.f,
-                              output.f,
-                              id=c("GeneSymbol", "EntrezID")) {
-
-    id <- match.arg(id)
-    
-    ## Read input data: accept either file name or data.frame
-    if (is.character(input.f) && length(input.f) == 1 && nzchar(input.f)) {
-        input.df <- read.table(input.f,
-                               header=TRUE,
-                               row.names=1,
-                               sep="\t", 
-                               quote="",
-                               stringsAsFactors=FALSE)
-    } else if (is.data.frame(input.f)) {
-        input.df <- input.f
-    } else {
-        stop("input.f must be either a file name or a data.frame")
-    }
-    
-    ## Check output.f argument
-    stopifnot(is.character(output.f) && length(output.f) == 1 && nzchar(output.f))
-    
-    merged.df <- merge(common_genes, input.df, by.x=id, by.y="row.names")
-    rownames(merged.df) <- merged.df$GeneSymbol
-    merged.df <- merged.df[, -1:-ncol(common_genes)]
-    print(sprintf("Merged dataset includes %d genes (%d mismatched).",
-                  nrow(merged.df),
-                  nrow(common_genes) - nrow(merged.df)))
-    outputGCT(merged.df, output.f)
 }
 ```
 
@@ -218,11 +184,10 @@ immune.sig.ccr.order <- c("T.cells.CD8",
 # 计算immune/stromal得分 # Calculate immune/stromal score
 indata <- log2(tpm + 1)
 
-load("common_genes.rda") # from tidyestimate package, https://github.com/KaiAragaki/tidyestimate/blob/main/data/common_genes.rda
+est.tcga <- indata |> 
+  filter_common_genes(id = "hgnc_symbol", tell_missing = FALSE, find_alias = TRUE) |> 
+  estimate_score(is_affymetrix = TRUE)
 
-filterCommonGenes(input.f = indata , output.f="TCGA_log2TPM_hugo_ESTIMATE.txt", id="GeneSymbol")
-estimateScore("TCGA_log2TPM_hugo_ESTIMATE.txt","TCGA_log2TPM_hugo_estimate_score.txt", platform="affymetrix")
-est.tcga <- read.table(file = "TCGA_log2TPM_hugo_estimate_score.txt",header = T,row.names = NULL,check.names = F,stringsAsFactors = F,sep = "\t")
 rownames(est.tcga) <- est.tcga[,2]; colnames(est.tcga) <- est.tcga[1,]; est.tcga <- est.tcga[-1,c(-1,-2)];
 est.tcga <- sapply(est.tcga, as.numeric); rownames(est.tcga) <- c("StromalScore","ImmuneScore","ESTIMATEScore","TumorPurity"); est.tcga.backup = as.data.frame(est.tcga); colnames(est.tcga.backup) <- colnames(indata)
 
