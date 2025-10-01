@@ -53,7 +53,7 @@ if (!is_package_installed("BiocManager")) {
 }
 
 # 根据您提供的library列表确定需要安装的包
-cran_packages <- c("viridis", "gplots", "data.table")
+cran_packages <- c("viridis", "gplots", "data.table", "tidyestimate")
 
 bioc_packages <- c("GSVA", "ComplexHeatmap", "circlize")
 
@@ -90,7 +90,7 @@ cat("Package installation completed!\n")
 
 # 检查所有包是否安装成功
 cat("\nVerifying package installation:\n")
-required_packages <- c("viridis", "gplots", "data.table", "GSVA", "ComplexHeatmap", "circlize")
+required_packages <- c("viridis", "gplots", "data.table", "GSVA", "ComplexHeatmap", "circlize", "tidyestimate")
 
 all_installed <- TRUE
 for (pkg in required_packages) {
