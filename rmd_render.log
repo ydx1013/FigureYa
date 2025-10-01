@@ -1,10 +1,9 @@
-Error in `open.connection()`:
-! cannot open the connection
+Error in `filterCommonGenes()`:
+! (is.character(input.f) && length(input.f) == 1 && nzchar(input.f)) ||  .... is not TRUE
 Backtrace:
     ▆
- 1. └─utils::read.table(...)
- 2.   ├─base::open(file, "rt")
- 3.   └─base::open.connection(file, "rt")
+ 1. └─global filterCommonGenes(...)
+ 2.   └─base::stopifnot(...)
 
-Quitting from FigureYa255TIME.Rmd:141-204 [unnamed-chunk-4]
+Quitting from FigureYa255TIME.Rmd:141-206 [unnamed-chunk-4]
 Execution halted
