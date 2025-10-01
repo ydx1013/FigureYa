@@ -5,6 +5,8 @@ on:
     paths:
       - 'FigureYa*/**'
   workflow_dispatch:
+  schedule:
+    - cron: '0 12 * * *' # UTC
 
 jobs:
   compress-all-figureya-folders:
