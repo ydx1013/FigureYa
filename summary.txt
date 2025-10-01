@@ -279,14 +279,16 @@ RMD Render Summary
 [SKIPPED] - ./FigureYa93UMAP/FigureYa93UMAP.Rmd (Not listed in auto_Knit_online.txt)
 [FAILED] - ./FigureYa255TIME/FigureYa255TIME.Rmd
 --- Error Log for ./FigureYa255TIME/FigureYa255TIME.Rmd ---
-Error in `filterCommonGenes()`:
-! object 'common_genes' not found
+Error in `fix.by()`:
+! 'by' must specify a uniquely valid column
 Backtrace:
     ▆
  1. └─global filterCommonGenes(...)
- 2.   └─base::merge(common_genes, input.df, by.x = id, by.y = "row.names")
+ 2.   ├─base::merge(common_genes, input.df, by.x = id, by.y = "row.names")
+ 3.   └─base::merge.data.frame(common_genes, input.df, by.x = id, by.y = "row.names")
+ 4.     └─base (local) fix.by(by.x, x)
 
-Quitting from FigureYa255TIME.Rmd:173-234 [unnamed-chunk-4]
+Quitting from FigureYa255TIME.Rmd:173-236 [unnamed-chunk-4]
 Execution halted
 -----------------------------------
 [SKIPPED] - ./FigureYa192breakpoint/FigureYa192breakpoint.Rmd (Not listed in auto_Knit_online.txt)
