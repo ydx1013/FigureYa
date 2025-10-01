@@ -1,9 +1,9 @@
 Error in `filterCommonGenes()`:
-! (is.character(input.f) && length(input.f) == 1 && nzchar(input.f)) ||  .... is not TRUE
+! object 'common_genes' not found
 Backtrace:
     ▆
  1. └─global filterCommonGenes(...)
- 2.   └─base::stopifnot(...)
+ 2.   └─base::merge(common_genes, input.df, by.x = id, by.y = "row.names")
 
-Quitting from FigureYa255TIME.Rmd:141-206 [unnamed-chunk-4]
+Quitting from FigureYa255TIME.Rmd:173-234 [unnamed-chunk-4]
 Execution halted
