@@ -19,9 +19,6 @@ jobs:
       with:
         python-version: "3.9"  # 使用 Python 版本
 
-    - name: Install dependencies
-      run: pip install csv
-
     - name: Run Python script to process Rmd files
       run: |
         mkdir -p .github/docs
