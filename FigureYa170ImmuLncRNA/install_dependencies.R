@@ -133,7 +133,7 @@ for (pkg in base_dep_packages) {
 
 # 安装标准CRAN包
 cat("\nInstalling CRAN packages...\n")
-cran_packages <- c("Reds", "dplyr", "ggplot2", "scales", "tidyverse", "reshape2", "tibble", "purrr")
+cran_packages <- c("Reds", "dplyr", "ggplot2", "scales", "tidyverse", "reshape2", "tibble", "purrr", "data.table", "rtracklayer")
 for (pkg in cran_packages) {
   install_cran_package(pkg)
 }
