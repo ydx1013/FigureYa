@@ -24,7 +24,7 @@ Alternatively, you can manually browse the reports by clicking on the thumbnails
 
 ## 📦 Getting the Code and Data
 
-You have two options for accessing the files.
+You have three options for accessing the files.
 
 ### 1. Download for Offline Use
 
@@ -35,12 +35,17 @@ All FigureYa modules are available as individually compressed zip files for conv
 3.  Click on the file, then select the **Download** button.
 
 **Note on File Availability:**
-- The file [`/Actions`](https://github.com/ying-ge/FigureYa/wiki/Actions-Enabled-FigureYa-Modules) contains a complete list of all available FigureYa modules.
-- If a particular module is not listed in `all_included.txt`, this indicates that its input files exceed GitHub's file size limitations.
-- For these larger files: some Rmd files include direct download links for the required data files. For files without direct download links, please visit our [`Baidu Cloud`](https://pan.baidu.com)[...]
+- [all_included.txt](https://github.com/ying-ge/FigureYa/blob/main/.github/docs/all_included.txt) contains a complete list of all available FigureYa modules.
+- If a particular module is not listed in [all_included.txt](https://github.com/ying-ge/FigureYa/blob/main/.github/docs/all_included.txt), this indicates that its input files exceed GitHub's file size limitations.
+- For these larger files: some Rmd files include direct download links for the required data files. For files without direct download links, please visit our [`Baidu Cloud`](https://pan.baidu.com) storage. Join the baidu group: **967269198** to access the download links.
 
 ### 2. Browse Online on GitHub
 If you want to view the code, input or output files directly, you can browse them in the file browser at the top of this repository's main page.
+
+#### 3. Download the Repository Using git or GitHub CLI
+
+You can use `git` or [GitHub CLI (gh)](https://cli.github.com/) to download the repository to your computer.  
+For step-by-step usage instructions, please visit the [wiki page](https://github.com/ying-ge/FigureYa/wiki).
 
 ---
 
@@ -77,7 +82,7 @@ FigureYa59volcanoV2/
 
 This project is licensed under the **[Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/)**.
 
-If you use this project in your research, please cite our publication:
+If you use this project in your research, please cite:
 
 > Xiaofan Lu, et al. (2025). *FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency*. iMetaMed. [https://doi.org/10.1002/imm3.70005](https://doi.org/10.1002/imm3.70005)
 
@@ -95,4 +100,4 @@ The ecosystem includes various intelligent extensions and visualization plugins 
 
 ## :handshake:To Be Continued
 
-FigureYa is continuously being updated with improvements to existing modules and the addition of new ones. We welcome interested contributors to join the development of FigureYa. Contact us on WeChat for more information.
+FigureYa is continuously being updated with improvements to existing modules and the addition of new ones. We welcome interested contributors to join the development of FigureYa. Contact us on WeChat: **epigenomics** for more information.
