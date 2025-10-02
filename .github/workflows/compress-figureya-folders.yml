@@ -9,42 +9,32 @@ on:
     - cron: '0 12 * * *' # UTC
 
 jobs:
-  compress-all-figureya-folders:
+  compress-and-push:
     runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
-      - name: Checkout repository
+      - name: Checkout Target Repo
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          repository: ying-ge/FigureYa-compressed
+          token: ${{ secrets.FIGUREYA2ACTION }}
+          path: FigureYa-compressed
 
-      - name: Create compressed folder if not exists
-        run: mkdir -p compressed
-
-      - name: Zip all FigureYa* folders
+      - name: Zip all FigureYa* folders and move to target repo
         run: |
-          for foldername in $(find . -maxdepth 1 -type d -name 'FigureYa*' ! -name 'compressed' | sed 's|^\./||'); do
+          for foldername in $(find . -maxdepth 1 -type d -name 'FigureYa*' | sed 's|^\./||'); do
             [ -d "$foldername" ] || continue
-            zipfile="compressed/${foldername}.zip"
+            zipfile="FigureYa-compressed/${foldername}.zip"
             echo "Compressing $foldername -> $zipfile"
-            rm -f "$zipfile"
             zip -r -q "$zipfile" "$foldername"
           done
 
-      - name: Show compressed files
-        run: ls -lh compressed
-
-      - name: Commit and push zip files to FigureYa-compressed repo
-        env:
-          REPO_URL: https://github.com/ying-ge/FigureYa-compressed.git
-          BRANCH: main
+      - name: Commit and push compressed files
+        working-directory: FigureYa-compressed
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git init
-          git remote add origin $REPO_URL
-          git checkout -b $BRANCH
-          git add compressed/*.zip || true
+          git add *.zip || true
           git commit -m "Auto-compress all FigureYa folders [skip ci]" || echo "Nothing to commit"
-          git push origin $BRANCH --force || echo "Nothing to push"
+          git push || echo "Nothing to push"
