@@ -1,9 +1,6 @@
 name: Process Rmd Files
 
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
   
 permissions:
