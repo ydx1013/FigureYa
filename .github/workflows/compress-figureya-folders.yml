@@ -35,10 +35,16 @@ jobs:
       - name: Show compressed files
         run: ls -lh compressed
 
-      - name: Commit and push zip files
+      - name: Commit and push zip files to FigureYa-compressed repo
+        env:
+          REPO_URL: https://github.com/ying-ge/FigureYa-compressed.git
+          BRANCH: main
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git init
+          git remote add origin $REPO_URL
+          git checkout -b $BRANCH
           git add compressed/*.zip || true
           git commit -m "Auto-compress all FigureYa folders [skip ci]" || echo "Nothing to commit"
-          git push || echo "Nothing to push"
+          git push origin $BRANCH --force || echo "Nothing to push"
