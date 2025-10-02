@@ -30,6 +30,7 @@ jobs:
             echo "No .last_run file found. This is the first run."
             echo "LAST_RUN=1970-01-01T00:00:00" >> $GITHUB_ENV
             echo "RUN_MODE=first" >> $GITHUB_ENV
+          fi
 
       - name: Compress Folders
         run: |
