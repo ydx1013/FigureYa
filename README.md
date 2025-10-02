@@ -30,7 +30,7 @@ You have three options for accessing the files.
 
 All FigureYa modules are available as individually compressed zip files for convenient offline use. To download a specific module:
 
-1.  Navigate to the [`/compressed`](https://github.com/ying-ge/FigureYa/tree/main/compressed) directory in this repository.
+1.  Navigate to the [FigureYa-compressed](https://github.com/ying-ge/FigureYa-compressed) repository.
 2.  Locate the zip file corresponding to the module you need (e.g., `FigureYa123mutVSexpr.zip`).
 3.  Click on the file, then select the **Download** button.
 
@@ -43,7 +43,6 @@ All FigureYa modules are available as individually compressed zip files for conv
 If you want to view the code, input or output files directly, you can browse them in the file browser at the top of this repository's main page.
 
 #### 3. Download the Repository Using git or GitHub CLI
-
 You can use `git` or [GitHub CLI (gh)](https://cli.github.com/) to download the repository to your computer.  
 For step-by-step usage instructions, please visit the [wiki page](https://github.com/ying-ge/FigureYa/wiki).
 
