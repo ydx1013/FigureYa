@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Mirror the repository
-        uses: Yikun/hub-mirror-action@v1.3 # 使用一个稳定且广泛使用的 Action
+        uses: Yikun/hub-mirror-action@v1.5 # 使用一个稳定且广泛使用的 Action
         with:
           # 源仓库，默认为当前仓库，所以这里是 'ying-ge/FigureYa'
           src: 'github/ying-ge'
