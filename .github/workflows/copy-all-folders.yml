@@ -1,11 +1,10 @@
-# 将这个文件命名为 mirror-to-book-repo.yml 会更清晰
 name: Mirror Repository to FigureYa-Book
 
 on:
-  # 1. 每次推送到源仓库（FigureYa）的 main 分支时触发
-  push:
-    branches:
-      - main
+  # 1. 每次推送到源仓库（FigureYa）时触发
+  #push:
+  #  branches:
+  #    - main
   
   # 2. 每天定时运行一次，作为兜底
   schedule:
@@ -15,18 +14,32 @@ on:
   workflow_dispatch:
 
 jobs:
-  mirroring:
+  mirror:
     runs-on: ubuntu-latest
     steps:
       - name: Mirror the repository
-        uses: pixta-dev/repository-mirroring-action@v1
+        uses: Yikun/hub-mirror-action@v1.3 # 使用一个稳定且广泛使用的 Action
         with:
-          # 源仓库 (当前仓库)
-          source_repo: 'ying-ge/FigureYa'
+          # 源仓库，默认为当前仓库，所以这里是 'ying-ge/FigureYa'
+          src: 'github/ying-ge'
           
           # 目标仓库
-          target_repo: 'ying-ge/FigureYa-Book'
+          dst: 'github/ying-ge'
           
-          # 用于推送到目标仓库的 Personal Access Token
+          # 目标仓库的 Personal Access Token
           # 请确保这个 Secret 存在于 FigureYa 仓库的 "Settings > Secrets and variables > Actions" 中
-          pat: ${{ secrets.FIGUREYA2ACTION }}
+          dst_token: ${{ secrets.FIGUREYA2ACTION }}
+          
+          # 要同步的仓库列表，这里我们只指定 FigureYa
+          # 注意：这里的 'FigureYa' 后面不能加 '/'
+          static_list: 'FigureYa'
+          
+          # 目标仓库的名称映射
+          # 将源仓库 'FigureYa' 映射到目标仓库 'FigureYa-Book'
+          mappings: 'FigureYa => FigureYa-Book'
+          
+          # 强制更新，会覆盖目标仓库的历史
+          force_update: true
+          
+          # 开启后，会执行 git gc，减小仓库体积
+          clone_style: "mirror"
