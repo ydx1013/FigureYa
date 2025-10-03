@@ -1,8 +1,8 @@
-# install.packages(c("dplyr", "stringr", "purrr", "httr", "remotes"))
+# --- 智能分析版 R 包收集和下载脚本 ---
+
+# 加载所需库
 library(dplyr)
-library(stringr)
 library(purrr)
-library(httr)
 library(remotes)
 
 # --- 配置 ---
@@ -22,75 +22,76 @@ if (length(dependency_files) == 0) {
   stop("错误：在 '", SOURCE_REPO_PATH, "' 中没有找到 'install_dependencies.R' 文件。")
 }
 
-cat("找到以下依赖文件：\n")
+cat("找到以下依赖文件进行分析：\n")
 print(dependency_files)
 
-# 2. 读取并解析所有文件内容，提取包信息
-all_lines <- map(dependency_files, readLines) %>% unlist()
+# 2. 智能分析文件，提取包列表
+all_cran_packages <- c()
+all_bioc_packages <- c()
+all_github_packages <- c()
 
-# 提取 CRAN 和 Bioconductor 包
-cran_bioc_packages <- all_lines %>%
-  str_extract_all('(?<=install\\.packages\\(|BiocManager::install\\()"[^"]+"') %>%
-  unlist() %>%
-  str_remove_all('"')
-
-# 提取 GitHub 包
-github_packages <- all_lines %>%
-  str_extract_all('(?<=install_github\\()"[^"]+"') %>%
-  unlist() %>%
-  str_remove_all('"')
-
-# 去重
-unique_cran_bioc <- unique(cran_bioc_packages)
-unique_github <- unique(github_packages)
-
-cat("\n--- 汇总需要安装的包 ---\n")
-cat("CRAN/Bioconductor 包:\n")
-print(unique_cran_bioc)
-cat("\nGitHub 包:\n")
-print(unique_github)
-cat("---------------------------\n\n")
-
-# 3. 下载包的源码
-dir.create(TARGET_REPO_PATH, showWarnings = FALSE)
-
-# 下载 CRAN/Bioc 包
-if (length(unique_cran_bioc) > 0) {
-  cat("开始下载 CRAN/Bioconductor 源码包...\n")
-  # 使用 download.packages 下载源码包，它会自动处理依赖
-  # type = "source" 确保下载的是 .tar.gz
+for (file_path in dependency_files) {
+  cat("\n正在分析文件:", file_path, "\n")
+  
+  # 创建一个独立的环境来执行脚本，避免污染主环境
+  script_env <- new.env()
+  
   tryCatch({
-    download.packages(
-      pkgs = unique_cran_bioc,
-      destdir = TARGET_REPO_PATH,
-      type = "source",
-      repos = "https://cran.r-project.org" # 指定 CRAN 镜像
-    )
-  }, error = function(e) {
-    cat("从 CRAN 下载时出错，尝试从 Bioconductor 下载...\n")
-    # 如果 CRAN 失败，可能是 Bioconductor 包
-    # BiocManager::install(..., destdir=...) 的行为不同，我们用 remotes
-    for (pkg in unique_cran_bioc) {
-      tryCatch({
-        remotes::download_version(pkg, destdir = TARGET_REPO_PATH, type = "source")
-        cat("成功下载: ", pkg, "\n")
-      }, error = function(e_remotes) {
-        cat("警告：下载 '", pkg, "' 失败: ", e_remotes$message, "\n")
-      })
+    # 在独立环境中执行脚本
+    source(file_path, local = script_env)
+    
+    # 检查并提取变量
+    if (exists("cran_packages", envir = script_env)) {
+      pkgs <- get("cran_packages", envir = script_env)
+      cat("  > 找到 CRAN 包:", paste(pkgs, collapse = ", "), "\n")
+      all_cran_packages <- c(all_cran_packages, pkgs)
     }
+    if (exists("bioc_packages", envir = script_env)) {
+      pkgs <- get("bioc_packages", envir = script_env)
+      cat("  > 找到 Bioconductor 包:", paste(pkgs, collapse = ", "), "\n")
+      all_bioc_packages <- c(all_bioc_packages, pkgs)
+    }
+    # 也可以在这里扩展，比如寻找 github_packages 变量
+    
+  }, error = function(e) {
+    cat("  ! 分析时出错:", e$message, "\n")
   })
 }
 
-# 下载 GitHub 包
-if (length(unique_github) > 0) {
-  cat("\n开始下载 GitHub 源码包...\n")
-  for (pkg_repo in unique_github) {
-    cat("下载: ", pkg_repo, "\n")
+# 3. 清洗和汇总
+# 过滤掉明显不是包名的项 (例如，包含 .bed, .bw 等)
+is_valid_pkg_name <- function(name) {
+  !grepl("\\.", name) || grepl("^[A-Za-z]", name)
+}
+
+unique_cran <- unique(all_cran_packages) %>% purrr::keep(is_valid_pkg_name)
+unique_bioc <- unique(all_bioc_packages) %>% purrr::keep(is_valid_pkg_name)
+# unique_github <- ...
+
+cat("\n--- 汇总需要安装的包 (已清洗) ---\n")
+cat("CRAN 包:\n")
+print(unique_cran)
+cat("\nBioconductor 包:\n")
+print(unique_bioc)
+cat("---------------------------------------\n\n")
+
+# 4. 下载包的源码
+dir.create(TARGET_REPO_PATH, showWarnings = FALSE)
+
+# 合并 CRAN 和 Bioc 列表进行下载
+packages_to_download <- unique(c(unique_cran, unique_bioc))
+
+if (length(packages_to_download) > 0) {
+  cat("开始下载源码包...\n")
+  
+  for (pkg in packages_to_download) {
+    cat("尝试下载:", pkg, "\n")
     tryCatch({
-      # remotes::download_github 会下载源码的 zip 或 tar.gz
-      remotes::download_github(pkg_repo, destdir = TARGET_REPO_PATH)
+      # remotes::download_version 会智能地从 CRAN 或 Bioconductor 寻找
+      remotes::download_version(pkg, destdir = TARGET_REPO_PATH, type = "source")
+      cat("  > 成功下载:", pkg, "\n")
     }, error = function(e) {
-      cat("警告：下载 '", pkg_repo, "' 失败: ", e$message, "\n")
+      cat("  ! 下载 '", pkg, "' 失败:", e$message, "\n")
     })
   }
 }
