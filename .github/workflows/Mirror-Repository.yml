@@ -1,31 +1,54 @@
-name: Mirror Repository to FigureYa-Book (via SSH)
+name: Daily Sync All Content to Book Repo
 
 on:
-  push:
-    branches:
-      - main
   schedule:
-    - cron: '0 12 * * *' # 每天国际标准时间 12:00 运行
-  workflow_dispatch:
+    - cron: '0 0 * * *' # 每天凌晨 0:00 (UTC) 定时触发
+  workflow_dispatch: # 保留手动触发
+
+permissions:
+  contents: write
 
 jobs:
-  mirror:
+  sync-content:
     runs-on: ubuntu-latest
     steps:
-      # 步骤 1: 使用 HTTPS 克隆源仓库 (克隆是读取操作，通常很稳定)
-      - name: Clone source repository
-        run: git clone --mirror https://github.com/ying-ge/FigureYa.git
-
-      # 步骤 2: 设置 SSH 环境
-      # 这个 Action 会将你的私钥加载到 SSH Agent 中，为后续的 git 命令做准备
-      - name: Setup SSH Agent
-        uses: webfactory/ssh-agent@v0.9.0
+      - name: Checkout Source Repo (FigureYa)
+        uses: actions/checkout@v4
         with:
-          ssh-private-key: ${{ secrets.DEPLOY_KEY }}
+          path: source-repo
 
-      # 步骤 3: 使用 SSH 协议推送到目标仓库
-      - name: Push to target repository via SSH
+      - name: Checkout Target Repo (FigureYa-Book)
+        uses: actions/checkout@v4
+        with:
+          repository: ying-ge/FigureYa-Book
+          path: target-repo
+          token: ${{ secrets.FIGUREYA2ACTION }}
+
+      - name: Sync files using rsync
+        id: rsync
         run: |
-          cd FigureYa.git
-          git remote set-url --push origin git@github.com:ying-ge/FigureYa-Book.git
-          git push --mirror origin
+          # rsync 会自动处理首次运行和增量更新。
+          # 首次运行时，目标目录为空，它会复制所有文件。
+          # 后续运行时，它会比较两个目录，只同步有差异的文件（新增、修改、删除）。
+          # -a: 归档模式，保留文件属性。
+          # -v: 显示详细过程。
+          # --delete: 删除目标仓库中多余的文件，确保与源仓库完全一致。
+          # --exclude='.git': 在同步时排除 .git 目录本身。
+          rsync -av --delete --exclude='.git/' source-repo/ target-repo/
+
+      - name: Commit and Push to Target Repo
+        run: |
+          cd target-repo
+          
+          # 检查是否有文件变动。如果没有变动，则不进行提交。
+          # git status --porcelain 会在有变动时输出内容，无变动时为空。
+          if [[ -z $(git status --porcelain) ]]; then
+            echo "No changes detected. Nothing to commit."
+            exit 0
+          fi
+          
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "Daily sync from FigureYa repo"
+          git push
