@@ -26,7 +26,7 @@ jobs:
           repository: ying-ge/FigureYa-package
           path: target-repo
           # 需要一个拥有 repo 权限的 Personal Access Token
-          token: ${{ secrets.PACKAGE_BACKUP_TOKEN }}
+          token: ${{ secrets.FIGUREYA2ACTION }}
 
       - name: Set up R
         uses: r-lib/actions/setup-r@v2
