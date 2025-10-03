@@ -15,6 +15,10 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
+To cite package 'RCircos' in publications use:
+
+Hongen Zhang, Paul Meltzer and Sean Davis (2013), RCircos: an R package for Circos 2D track plots, BMC Bioinformatics 14:244
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
