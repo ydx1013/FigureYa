@@ -1,4 +1,4 @@
-name: Mirror Repository to FigureYa-Book
+name: Mirror Repository to FigureYa-Book (via SSH)
 
 on:
   push:
@@ -12,19 +12,20 @@ jobs:
   mirror:
     runs-on: ubuntu-latest
     steps:
-      # 步骤 1: 克隆源仓库
+      # 步骤 1: 使用 HTTPS 克隆源仓库 (克隆是读取操作，通常很稳定)
       - name: Clone source repository
         run: git clone --mirror https://github.com/ying-ge/FigureYa.git
 
-      # 新增步骤: 优化 Git 配置以适应大仓库推送
-      - name: Configure Git for large repository push
-        run: |
-          git config --global http.postBuffer 524288000
-          git config --global http.lowSpeedLimit 0
-          git config --global http.lowSpeedTime 999999
-      
-      # 步骤 2: 推送到目标仓库
-      - name: Push to target repository
+      # 步骤 2: 设置 SSH 环境
+      # 这个 Action 会将你的私钥加载到 SSH Agent 中，为后续的 git 命令做准备
+      - name: Setup SSH Agent
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.DEPLOY_KEY }}
+
+      # 步骤 3: 使用 SSH 协议推送到目标仓库
+      - name: Push to target repository via SSH
         run: |
           cd FigureYa.git
-          git push --mirror https://x-access-token:${{ secrets.FIGUREYA2ACTION }}@github.com/ying-ge/FigureYa-Book.git
+          git remote set-url --push origin git@github.com:ying-ge/FigureYa-Book.git
+          git push --mirror origin
