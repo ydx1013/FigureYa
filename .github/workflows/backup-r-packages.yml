@@ -2,11 +2,6 @@ name: Backup R Packages
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - main
-    paths:
-      - '**/install_dependencies.R'
 
 jobs:
   sync-r-packages:
