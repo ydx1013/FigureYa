@@ -12,11 +12,18 @@ jobs:
   mirror:
     runs-on: ubuntu-latest
     steps:
-      # 步骤 1: 使用 --mirror 选项克隆源仓库的所有内容
+      # 步骤 1: 克隆源仓库
       - name: Clone source repository
         run: git clone --mirror https://github.com/ying-ge/FigureYa.git
 
-      # 步骤 2: 使用 --mirror 选项将所有内容推送到目标仓库
+      # 新增步骤: 优化 Git 配置以适应大仓库推送
+      - name: Configure Git for large repository push
+        run: |
+          git config --global http.postBuffer 524288000
+          git config --global http.lowSpeedLimit 0
+          git config --global http.lowSpeedTime 999999
+      
+      # 步骤 2: 推送到目标仓库
       - name: Push to target repository
         run: |
           cd FigureYa.git
