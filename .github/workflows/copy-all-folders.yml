@@ -1,0 +1,32 @@
+# 将这个文件命名为 mirror-to-book-repo.yml 会更清晰
+name: Mirror Repository to FigureYa-Book
+
+on:
+  # 1. 每次推送到源仓库（FigureYa）的 main 分支时触发
+  push:
+    branches:
+      - main
+  
+  # 2. 每天定时运行一次，作为兜底
+  schedule:
+    - cron: '0 12 * * *' # 每天国际标准时间 12:00 运行
+
+  # 3. 允许手动触发
+  workflow_dispatch:
+
+jobs:
+  mirroring:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mirror the repository
+        uses: pixta-dev/repository-mirroring-action@v1
+        with:
+          # 源仓库 (当前仓库)
+          source_repo: 'ying-ge/FigureYa'
+          
+          # 目标仓库
+          target_repo: 'ying-ge/FigureYa-Book'
+          
+          # 用于推送到目标仓库的 Personal Access Token
+          # 请确保这个 Secret 存在于 FigureYa 仓库的 "Settings > Secrets and variables > Actions" 中
+          pat: ${{ secrets.FIGUREYA2ACTION }}
