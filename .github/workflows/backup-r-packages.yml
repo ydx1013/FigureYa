@@ -1,0 +1,58 @@
+name: Backup R Packages
+
+on:
+  workflow_dispatch: # 允许手动触发
+  push:
+    branches:
+      - main
+    paths:
+      - '**/install_dependencies.R' # 当任何依赖文件变更时触发
+
+jobs:
+  sync-r-packages:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # 给予工作流写权限
+
+    steps:
+      - name: Checkout Source Repo (FigureYa)
+        uses: actions/checkout@v4
+        with:
+          path: source-repo
+
+      - name: Checkout Target Repo (FigureYa-package)
+        uses: actions/checkout@v4
+        with:
+          repository: ying-ge/FigureYa-package
+          path: target-repo
+          # 需要一个拥有 repo 权限的 Personal Access Token
+          token: ${{ secrets.PACKAGE_BACKUP_TOKEN }}
+
+      - name: Set up R
+        uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: '4.2' # 可以指定一个你常用的 R 版本
+
+      - name: Install R script dependencies
+        run: |
+          install.packages(c("dplyr", "stringr", "purrr", "httr", "remotes"))
+        shell: Rscript {0}
+
+      - name: Run R script to collect and download packages
+        run: |
+          Rscript source-repo/.github/scripts/collect_and_download.R
+
+      - name: Commit and Push downloaded packages
+        run: |
+          cd target-repo
+          
+          if [[ -z $(git status --porcelain) ]]; then
+            echo "没有新的或更新的包，无需提交。"
+            exit 0
+          fi
+          
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "自动更新 R 源码包"
+          git push
