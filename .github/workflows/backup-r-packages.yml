@@ -1,18 +1,18 @@
 name: Backup R Packages
 
 on:
-  workflow_dispatch: # 允许手动触发
+  workflow_dispatch:
   push:
     branches:
       - main
     paths:
-      - '**/install_dependencies.R' # 当任何依赖文件变更时触发
+      - '**/install_dependencies.R'
 
 jobs:
   sync-r-packages:
     runs-on: ubuntu-latest
     permissions:
-      contents: write # 给予工作流写权限
+      contents: write
 
     steps:
       - name: Checkout Source Repo (FigureYa)
@@ -25,32 +25,35 @@ jobs:
         with:
           repository: ying-ge/FigureYa-package
           path: target-repo
-          # 需要一个拥有 repo 权限的 Personal Access Token
           token: ${{ secrets.FIGUREYA2ACTION }}
 
       - name: Set up R
         uses: r-lib/actions/setup-r@v2
         with:
-          r-version: '4.2' # 可以指定一个你常用的 R 版本
+          r-version: '4.2'
 
+      # 核心修正：使用 r-lib/actions 的推荐方式来安装依赖
       - name: Install R script dependencies
-        run: |
-          install.packages(c("dplyr", "stringr", "purrr", "httr", "remotes"))
-        shell: Rscript {0}
+        uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          packages:
+            # - any::pkg # 这种方式可以指定包的来源，但对于 CRAN 包，直接列出即可
+            - dplyr
+            - stringr
+            - purrr
+            - httr
+            - remotes
 
       - name: Run R script to collect and download packages
-        run: |
-          Rscript source-repo/.github/scripts/collect_and_download.R
+        run: Rscript source-repo/.github/scripts/collect_and_download.R
 
       - name: Commit and Push downloaded packages
         run: |
           cd target-repo
-          
           if [[ -z $(git status --porcelain) ]]; then
             echo "没有新的或更新的包，无需提交。"
             exit 0
           fi
-          
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add .
