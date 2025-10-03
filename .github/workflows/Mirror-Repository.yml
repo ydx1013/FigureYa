@@ -2,9 +2,9 @@ name: Mirror Repository to FigureYa-Book
 
 on:
   # 1. 每次推送到源仓库（FigureYa）时触发
-  #push:
-  #  branches:
-  #    - main
+  push:
+    branches:
+      - main
   
   # 2. 每天定时运行一次，作为兜底
   schedule:
@@ -18,28 +18,29 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Mirror the repository
-        uses: Yikun/hub-mirror-action@v1.5 # 使用一个稳定且广泛使用的 Action
+        uses: Yikun/hub-mirror-action@v1.5
         with:
-          # 源仓库，默认为当前仓库，所以这里是 'ying-ge/FigureYa'
+          # 源仓库的拥有者
           src: 'github/ying-ge'
           
-          # 目标仓库
+          # 目标仓库的拥有者
           dst: 'github/ying-ge'
+
+          # 新增：提供源仓库的令牌以强制使用 HTTPS 协议
+          # GITHUB_TOKEN 是 GitHub 自动提供的，对于公开仓库有读取权限
+          src_token: ${{ secrets.GITHUB_TOKEN }}
           
-          # 目标仓库的 Personal Access Token
-          # 请确保这个 Secret 存在于 FigureYa 仓库的 "Settings > Secrets and variables > Actions" 中
+          # 用于推送到目标仓库的 Personal Access Token
           dst_token: ${{ secrets.FIGUREYA2ACTION }}
           
-          # 要同步的仓库列表，这里我们只指定 FigureYa
-          # 注意：这里的 'FigureYa' 后面不能加 '/'
+          # 要同步的仓库列表
           static_list: 'FigureYa'
           
-          # 目标仓库的名称映射
           # 将源仓库 'FigureYa' 映射到目标仓库 'FigureYa-Book'
           mappings: 'FigureYa => FigureYa-Book'
           
-          # 强制更新，会覆盖目标仓库的历史
+          # 强制更新，覆盖目标仓库历史
           force_update: true
           
-          # 开启后，会执行 git gc，减小仓库体积
+          # 镜像克隆，确保完全一致
           clone_style: "mirror"
