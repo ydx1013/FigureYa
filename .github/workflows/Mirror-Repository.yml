@@ -12,24 +12,12 @@ jobs:
   mirror:
     runs-on: ubuntu-latest
     steps:
-      - name: Mirror the repository
-        uses: Yikun/hub-mirror-action@v1.5
-        with:
-          # 直接提供源仓库的完整 HTTPS URL，强制使用 HTTPS 协议
-          src: 'https://github.com/ying-ge/FigureYa.git'
-          
-          # 直接提供目标仓库的完整 HTTPS URL
-          # 注意：URL 中需要包含用于认证的 token
-          dst: 'https://x-access-token:${{ secrets.FIGUREYA2ACTION }}@github.com/ying-ge/FigureYa-Book.git'
-          
-          # 由于我们已经在 URL 中指定了所有信息，以下参数不再需要
-          # src_token: ...
-          # dst_token: ...
-          # static_list: ...
-          # mappings: ...
+      # 步骤 1: 使用 --mirror 选项克隆源仓库的所有内容
+      - name: Clone source repository
+        run: git clone --mirror https://github.com/ying-ge/FigureYa.git
 
-          # 强制更新，覆盖目标仓库历史
-          force_update: true
-          
-          # 镜像克隆，确保完全一致
-          clone_style: "mirror"
+      # 步骤 2: 使用 --mirror 选项将所有内容推送到目标仓库
+      - name: Push to target repository
+        run: |
+          cd FigureYa.git
+          git push --mirror https://x-access-token:${{ secrets.FIGUREYA2ACTION }}@github.com/ying-ge/FigureYa-Book.git
