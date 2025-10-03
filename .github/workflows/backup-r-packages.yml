@@ -2,6 +2,11 @@ name: Backup R Packages
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - '**/install_dependencies.R'
 
 jobs:
   sync-r-packages:
@@ -20,24 +25,23 @@ jobs:
         with:
           repository: ying-ge/FigureYa-package
           path: target-repo
-          token: ${{ secrets.FIGUREYA2ACTION }}
+          token: ${{ secrets.PACKAGE_BACKUP_TOKEN }}
 
       - name: Set up R
         uses: r-lib/actions/setup-r@v2
         with:
           r-version: '4.2'
 
-      # 核心修正：使用 r-lib/actions 的推荐方式来安装依赖
+      # 修正此步骤的 YAML 语法
       - name: Install R script dependencies
         uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          packages:
-            # - any::pkg # 这种方式可以指定包的来源，但对于 CRAN 包，直接列出即可
-            - dplyr
-            - stringr
-            - purrr
-            - httr
-            - remotes
+          packages: |
+            dplyr
+            stringr
+            purrr
+            httr
+            remotes
 
       - name: Run R script to collect and download packages
         run: Rscript source-repo/.github/scripts/collect_and_download.R
