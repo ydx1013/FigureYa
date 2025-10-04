@@ -1,5 +1,5 @@
 ---
-title: "FigureYa26 circos_R"
+title: "FigureYa26circos_R"
 params:
   author: "Zhaodong Hao; Ying Ge, Yijing Chen"
 output: html_document
@@ -14,6 +14,9 @@ If you use this code in your work or research, we kindly request that you cite o
 
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed. https://doi.org/10.1002/imm3.70005
 
+If you use it in published research, please cite:
+
+Gu, Z. circlize implements and enhances circular visualization in R. Bioinformatics 2014.
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -59,6 +62,24 @@ This diagram uses circles and connecting lines to show relationships between mul
 
 - Scenario 2: As in the example diagram, the same group of genes is displayed in the same color, and the positive and negative regulatory relationships between genes are displayed with lines of two colors, so that the regulatory relationships between groups can be seen at a glance.
 
+## 环境设置
+# Environment Setup
+
+```{r}
+source("install_dependencies.R")
+library(stringi)
+library(circlize)
+library(graphics)
+
+# 显示英文报错信息
+# Show English error messages
+Sys.setenv(LANGUAGE = "en") 
+
+# 禁止chr转成factor
+# Prevent character-to-factor conversion
+options(stringsAsFactors = FALSE) 
+```
+
 ## 输入文件
 ## Input file
 
@@ -83,7 +104,6 @@ Three files are needed:
 If you want to highlight a gene or a link, find the corresponding line in the input file and change the color or height.
 
 ```{r}
-source("install_dependencies.R")
 #组ID、组的起止位置
 #Group ID, start and end positions of the group
 GeneID <- read.table("Gene_ID.txt", header = TRUE, sep = "\t")
@@ -116,11 +136,6 @@ GeneID$GeneID <- factor(GeneID$GeneID, levels = GeneID$GeneID)
 **Note:** If you run it by copying and pasting the code, you need to copy all the statements between pdf and dev.off at once.
 
 ```{r,message=FALSE,warning=FALSE}
-#install.packages("circlize")
-#install.packages("stringi")
-library(stringi)
-library(circlize)
-
 #### 绘图区设置
 #### drawing area setting
 
@@ -188,7 +203,7 @@ circos.trackPlotRegion(ylim = c(0, 1), factors = GeneID$GeneID, track.height=0.1
 #运行下面两行，设置彩虹色
 #The requester also wants each square in the circle chart to have a different color, displaying a rainbow effect overall, similar to the effect in circlize_rainbow.pdf. Just replace the line "col = ..." in the for loop below with "col = bgcol[i], ".
 #run the following two lines, set the rainbow color
-library(graphics)
+
 bgcol <- rainbow(sum(GeneID$Gene_End), s = 1, v = 1, start = 0, end = max(1, sum(GeneID$Gene_End) - 1)/sum(GeneID$Gene_End), alpha = 1)
 
 for (i in 1:nrow(GeneFe)){
