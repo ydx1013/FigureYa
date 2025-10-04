@@ -8,7 +8,6 @@ output: html_document
 **Author(s)**: `r params$author`  
 **Date**: `r Sys.Date()`  
 
-
 # Academic Citation
 If you use this code in your work or research, we kindly request that you cite our publication:
 
@@ -37,7 +36,7 @@ Use R code to draw the plot in paper.
 
 出自<https://academic.oup.com/brain/article-lookup/doi/10.1093/brain/awx233>
 
-from<https://academic.oup.com/brain/article-lookup/doi/10.1093/brain/awx233>
+From<https://academic.oup.com/brain/article-lookup/doi/10.1093/brain/awx233>
 
 ## 应用场景
 ## Application scenario
@@ -66,10 +65,10 @@ This diagram uses circles and connecting lines to show relationships between mul
 # Environment Setup
 
 ```{r}
-source("install_dependencies.R")
-library(stringi)
-library(circlize)
-library(graphics)
+source("install_dependencies.R") #自动识别缺哪些R包，自动安装
+library(stringi)    # 字符串处理工具包，用于文本操作
+library(circlize)   # 用于绘制环形图（circos plot）的核心包
+library(graphics)   # R 基础绘图包，支持基本图形功能
 
 # 显示英文报错信息
 # Show English error messages
@@ -89,7 +88,7 @@ options(stringsAsFactors = FALSE)
 
 - Gene_feature.txt，亚组，Gene内包含多个Subgroup；
 
-- Links.txt，Subgroup之间的inks。
+- Links.txt，Subgroup之间的links。
 
 如果你要突出显示某个基因或某条连线，在输入文件中找到相应的行，修改颜色或高度即可。
 
