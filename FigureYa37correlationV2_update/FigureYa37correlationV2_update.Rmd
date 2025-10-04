@@ -59,9 +59,9 @@ More usage:
 ```{r}
 source("install_dependencies.R")
 
-library(circlize)
-library(ggsci)
-library(parallel)
+library(circlize)   # 用于绘制环形相关图 circos correlation plot
+library(ggsci)      # 提供科学期刊风格的配色方案 Provides scientific journal-style color palettes
+library(parallel)   # 支持并行计算，加速相关系数计算 Supports parallel computing to accelerate correlation calculations
 Sys.setenv(LANGUAGE = "en") #显示英文报错信息 display English error messages
 options(stringsAsFactors = FALSE) #禁止chr转成factor prohibit the conversion of chr to factor
 ```
