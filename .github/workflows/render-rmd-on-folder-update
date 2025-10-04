@@ -1,0 +1,267 @@
+name: Knit Updated Rmd Files
+
+on:
+  workflow_dispatch:
+  schedule:
+    # 工作时间检查：北京时间 8-23点，每3小时一次
+    - cron: '0 0 * * *'    # UTC 0点 (北京 8点)
+    - cron: '0 3 * * *'    # UTC 3点 (北京 11点)
+    - cron: '0 6 * * *'    # UTC 6点 (北京 14点)
+    - cron: '0 9 * * *'    # UTC 9点 (北京 17点)
+    - cron: '0 12 * * *'   # UTC 12点 (北京 20点)
+    - cron: '0 15 * * *'   # UTC 15点 (北京 23点)
+  push:
+    paths:
+      - '**'  # 监控所有文件变化
+
+jobs:
+  knit-rmd:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: 1. Check out repository with full history
+        uses: actions/checkout@v4
+        with:
+          lfs: false
+          fetch-depth: 0
+
+      - name: 2. Set up R environment
+        uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: 'latest'
+      
+      - name: 3. Set up Java for rJava
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '11'
+
+      - name: 4. Configure R for Java
+        run: sudo R CMD javareconf
+
+      - name: 5. Set up Pandoc
+        uses: r-lib/actions/setup-pandoc@v2
+
+      - name: 6. Install core R dependencies
+        run: Rscript -e 'install.packages(c("rmarkdown", "knitr", "remotes"))'
+
+      - name: 7. Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libmagick++-dev libgeos-dev libgfortran5 liblapack-dev libblas-dev \
+            libpng-dev libjpeg-dev librsvg2-dev libcairo2-dev libproj-dev \
+            libxml2-dev libcurl4-openssl-dev libssl-dev libhdf5-dev libv8-dev \
+            libfontconfig1-dev libharfbuzz-dev libfribidi-dev libgdal-dev \
+            libfreetype6-dev libtiff5-dev libudunits2-dev
+
+      - name: 8. Find Rmd directories with any file changes since last run
+        id: find_updated
+        run: |
+          echo "=== Finding Updated Rmd Directories ==="
+          echo "Current time: $(date)"
+          echo "Beijing time: $(TZ='Asia/Shanghai' date)"
+          echo "Workflow trigger: ${{ github.event_name }}"
+          
+          # 获取上次成功运行的commit SHA
+          LAST_SUCCESS_SHA=""
+          
+          # 方法1: 查找最近的成功workflow运行
+          if [ "${{ github.event_name }}" == "push" ]; then
+            # 对于push事件，比较当前commit和前一个commit
+            LAST_SUCCESS_SHA="${{ github.event.before }}"
+            echo "Push event: comparing $LAST_SUCCESS_SHA..${{ github.sha }}"
+          else
+            # 对于schedule和manual触发，查找最近的成功运行commit
+            LAST_SUCCESS_SHA=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+              "https://api.github.com/repos/${{ github.repository }}/actions/runs?status=success&event=schedule" | \
+              jq -r '.workflow_runs[0].head_sha' 2>/dev/null || echo "")
+          fi
+          
+          # 方法2: 如果找不到上次成功运行，使用最近4小时的提交
+          if [ -z "$LAST_SUCCESS_SHA" ] || [ "$LAST_SUCCESS_SHA" == "null" ]; then
+            echo "Cannot find last successful run, using 4-hour window as fallback"
+            LAST_SUCCESS_SHA=$(git log --since="4 hours ago" --format=format:%H | tail -1)
+            if [ -z "$LAST_SUCCESS_SHA" ]; then
+              # 如果还没有提交，使用初始commit
+              LAST_SUCCESS_SHA=$(git rev-list --max-parents=0 HEAD)
+            fi
+          fi
+          
+          CURRENT_SHA="${{ github.sha }}"
+          echo "Comparing changes from: $LAST_SUCCESS_SHA to $CURRENT_SHA"
+          
+          # 获取所有变更的文件
+          ALL_CHANGED_FILES="all_changed_files.txt"
+          > "$ALL_CHANGED_FILES"
+          
+          if [ "$LAST_SUCCESS_SHA" != "$CURRENT_SHA" ]; then
+            git diff --name-only "$LAST_SUCCESS_SHA" "$CURRENT_SHA" | while IFS= read -r changed_file; do
+              if [ -n "$changed_file" ]; then
+                echo "$changed_file" >> "$ALL_CHANGED_FILES"
+              fi
+            done
+          fi
+          
+          # 对于push事件，额外检查本次提交的变更
+          if [ "${{ github.event_name }}" == "push" ]; then
+            git diff --name-only HEAD~1 HEAD | while IFS= read -r changed_file; do
+              if [ -n "$changed_file" ] && ! grep -q "$changed_file" "$ALL_CHANGED_FILES"; then
+                echo "$changed_file" >> "$ALL_CHANGED_FILES"
+              fi
+            done
+          fi
+          
+          # 找出包含Rmd文件的文件夹，且该文件夹内有任何文件变更
+          UPDATED_RMD_FILES="updated_rmd_files.txt"
+          > "$UPDATED_RMD_FILES"
+          
+          # 首先找出所有包含Rmd文件的文件夹
+          find . -type f -name "*.Rmd" | while IFS= read -r rmd_file; do
+            rmd_dir=$(dirname "$rmd_file")
+            
+            # 检查这个文件夹是否有任何文件在变更列表中
+            cat "$ALL_CHANGED_FILES" | while IFS= read -r changed_file; do
+              changed_dir=$(dirname "$changed_file")
+              if [ "$changed_dir" = "$rmd_dir" ]; then
+                # 这个Rmd文件所在的文件夹有文件更新，需要处理
+                if ! grep -q "$rmd_file" "$UPDATED_RMD_FILES"; then
+                  echo "$rmd_file" >> "$UPDATED_RMD_FILES"
+                  echo "[Need Render] $rmd_file (folder has updated files)"
+                fi
+                break
+              fi
+            done
+          done
+          
+          # 统计结果
+          RMD_COUNT=$(wc -l < "$UPDATED_RMD_FILES" 2>/dev/null | tr -d ' ' || echo "0")
+          CHANGED_COUNT=$(wc -l < "$ALL_CHANGED_FILES" 2>/dev/null | tr -d ' ' || echo "0")
+          
+          echo "=== Results ==="
+          echo "Total changed files: $CHANGED_COUNT"
+          echo "Rmd files needing render: $RMD_COUNT"
+          echo "rmd_count=$RMD_COUNT" >> $GITHUB_OUTPUT
+          
+          if [ $RMD_COUNT -gt 0 ]; then
+            echo "Rmd files to render:"
+            cat "$UPDATED_RMD_FILES"
+          else
+            echo "No Rmd files need rendering (no folder updates since last run)."
+          fi
+
+      - name: 9. Render updated Rmd files
+        id: render_rmd
+        if: steps.find_updated.outputs.rmd_count != '0'
+        run: |
+          UPDATED_RMD_FILES="updated_rmd_files.txt"
+          ANY_FILE_FAILED=false
+          
+          echo "RMD Render Summary" > summary.txt
+          echo "==================" >> summary.txt
+          echo "Render time: $(date)" >> summary.txt
+          echo "Beijing time: $(TZ='Asia/Shanghai' date)" >> summary.txt
+          echo "Trigger: ${{ github.event_name }}" >> summary.txt
+          echo "Rmd files processed: $(cat $UPDATED_RMD_FILES | wc -l)" >> summary.txt
+          echo "" >> summary.txt
+          
+          # 处理每个需要渲染的Rmd文件
+          while IFS= read -r rmd_file; do
+            [ -z "$rmd_file" ] && continue
+            
+            echo "========== START: $rmd_file =========="
+            rmd_dir=$(dirname "$rmd_file")
+            
+            # 安装依赖（如果存在）
+            if [ -f "$rmd_dir/install_dependencies.R" ]; then
+              echo "Installing dependencies in $rmd_dir..."
+              (cd "$rmd_dir" && Rscript install_dependencies.R > "${rmd_dir//\//_}_install.log" 2>&1 || echo "Dependency install completed")
+            fi
+            
+            # 渲染Rmd文件
+            echo "Rendering $rmd_file..."
+            if Rscript -e "rmarkdown::render('$rmd_file', quiet=FALSE)" > "${rmd_file%.Rmd}_render.log" 2>&1; then
+              echo "[SUCCESS] - $rmd_file" | tee -a summary.txt
+              echo "  Reason: Folder content updated" >> summary.txt
+            else
+              ANY_FILE_FAILED=true
+              echo "[FAILED] - $rmd_file" | tee -a summary.txt
+              echo "Error log:" | tee -a summary.txt
+              tail -n 15 "${rmd_file%.Rmd}_render.log" | tee -a summary.txt
+              echo "---" | tee -a summary.txt
+            fi
+            
+            echo "=========== END: $rmd_file ==========="
+            echo ""
+            
+          done < "$UPDATED_RMD_FILES"
+          
+          echo "job_failed=$ANY_FILE_FAILED" >> $GITHUB_OUTPUT
+
+      - name: 10. Skip processing if no updates
+        if: steps.find_updated.outputs.rmd_count == '0'
+        run: |
+          echo "No Rmd files need rendering (no folder updates since last run)." > summary.txt
+          echo "Last checked: $(date)" >> summary.txt
+          echo "Beijing time: $(TZ='Asia/Shanghai' date)" >> summary.txt
+
+      - name: 11. Upload Process Summary
+        uses: actions/upload-artifact@v4
+        with:
+          name: process-summary
+          path: summary.txt
+
+      - name: 12. Upload render logs
+        if: steps.find_updated.outputs.rmd_count != '0'
+        uses: actions/upload-artifact@v4
+        with:
+          name: render-logs
+          path: "**/*_render.log"
+
+      - name: 13. Commit and push generated files
+        if: steps.find_updated.outputs.rmd_count != '0'
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          
+          echo "Pulling latest changes..."
+          git pull origin main --rebase --autostash
+          
+          echo "Adding generated files..."
+          git add --all
+
+          if [ -f summary.txt ]; then git add summary.txt; fi
+          
+          if ! git diff --staged --quiet; then
+            COMMIT_MSG="chore: Auto-render Rmd files with updated dependencies"
+            if [ "${{ github.event_name }}" == "schedule" ]; then
+              COMMIT_MSG="$COMMIT_MSG [scheduled]"
+            elif [ "${{ github.event_name }}" == "push" ]; then
+              COMMIT_MSG="$COMMIT_MSG [push]"
+            else
+              COMMIT_MSG="$COMMIT_MSG [manual]"
+            fi
+            git commit -m "$COMMIT_MSG"
+            
+            echo "Pushing changes..."
+            git push origin main
+          else
+            echo "No changes to commit."
+          fi
+
+      - name: 14. Report Final Status
+        if: always()
+        run: |
+          echo "=== Workflow Complete ==="
+          echo "Trigger: ${{ github.event_name }}"
+          echo "Beijing Time: $(TZ='Asia/Shanghai' date)"
+          echo "Rmd Files Needing Render: ${{ steps.find_updated.outputs.rmd_count }}"
+          
+          if [ "${{ steps.find_updated.outputs.rmd_count }}" = "0" ]; then
+            echo "✅ No Rmd files need rendering (folders unchanged since last run)."
+          elif [ "${{ steps.render_rmd.outputs.job_failed }}" = "true" ]; then
+            echo "⚠️ Some Rmd files failed to render."
+          else
+            echo "✅ All updated Rmd files processed successfully."
+          fi
