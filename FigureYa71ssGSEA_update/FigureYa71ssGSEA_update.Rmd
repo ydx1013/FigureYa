@@ -196,7 +196,9 @@ write.csv(gtf_v22, "gtf_v22.csv", quote = F, row.names = F)
 # Read gene expression data matrix with gene IDs as row names
 # Parameter description:
 # "not_easy_input_expr.csv" - Original expression matrix file with gene IDs as row names
-tcga_expr <- read.csv("not_easy_input_expr.csv", header = T, stringsAsFactors = F, row.names = 1)
+#tcga_expr <- read.csv("not_easy_input_expr.csv", header = T, stringsAsFactors = F, row.names = 1)
+tcga_expr <- read.csv(unz("not_easy_input_expr.csv.zip", "not_easy_input_expr.csv"), 
+                      header = TRUE, stringsAsFactors = FALSE, row.names = 1)
 tcga_expr[1:3,1:3]  
 
 # 读取之前生成的基因ID映射表(含ENTREZID和gene_id)
