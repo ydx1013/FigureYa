@@ -1,4 +1,4 @@
 FigureYa211multiCohortImmSubtype
 FigureYa200pairwiseAUC
 FigureYa220repeatedLasso
-FigureYa240CRISPR
+FigureYa249Regulon
