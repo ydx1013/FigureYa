@@ -173,7 +173,6 @@ regulatoryElements <- intersect(tfs$regulon, rownames(tcgaBLCA))
 # we used the R package “RTN” to reconstruct transcriptional regulatory networks (regulons)
 rtni_tcgaBLCA <- tni.constructor(expData = as.matrix(log2(tcgaBLCA + 1)), # 样图计算时候没有取对数,  # There is no logarithm when calculating the sample,
                                  regulatoryElements = regulatoryElements)
-
 # 通过置换以及bootstrap计算reference regulatory network.
 # Reference regulatory network is calculated by substitution and bootstrap.
 # mutual information analysis and Spearman rank-order correlation deduced the possible associations between a regulator and all potential target from the transcriptome expression profile, and permutation analysis was utilized to erase associations with an FDR > 0.00001. Bootstrapping strategy removed unstable associations through one thousand times of resampling with consensus bootstrap greater than 95%. 
@@ -188,7 +187,6 @@ stopCluster(getOption("cluster")) # 关闭并行计算 # Turn off parallel compu
 # Calculate the DPI-filtered regulatory network
 # Data processing inequality filtering eliminated the weakest associations in triangles of two regulators and common targets
 rtni_tcgaBLCA <- tni.dpi.filter(rtni_tcgaBLCA, eps = 0, sizeThreshold = TRUE, minRegulonSize = 15)
-
 # 保存TNI对象以便后续分析
 # Save the TNI object for later analysis
 save(rtni_tcgaBLCA, file="rtni_tcgaBLCA.RData")
