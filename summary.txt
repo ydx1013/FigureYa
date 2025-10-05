@@ -165,7 +165,7 @@ RMD Render Summary
 [SKIPPED] - ./FigureYa21TCGA2table/FigureYa21TCGA2table.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa56immune_inflitrationV3/FigureYa56immune_inflitrationV3.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa5bubbles/FigureYa5bubbles.Rmd (Not listed in auto_Knit_online.txt)
-[SKIPPED] - ./FigureYa220repeatedLasso/FigureYa220repeatedLasso.Rmd (Not listed in auto_Knit_online.txt)
+[SUCCESS] - ./FigureYa220repeatedLasso/FigureYa220repeatedLasso.Rmd
 [SKIPPED] - ./FigureYa90subgroup/FigureYa90subgroup.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa22FPKM2TPM/FigureYa22FPKM2TPM.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa208FPI/FigureYa208FPI.Rmd (Not listed in auto_Knit_online.txt)
@@ -212,7 +212,7 @@ RMD Render Summary
 [SKIPPED] - ./FigureYa76corrgram/FigureYa76corrgram.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa292HCCsubtype/FigureYa292HCCsubtype.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa147interaction/FigureYa147interaction.Rmd (Not listed in auto_Knit_online.txt)
-[SUCCESS] - ./FigureYa249Regulon/FigureYa249Regulon.Rmd
+[SKIPPED] - ./FigureYa249Regulon/FigureYa249Regulon.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa226scRNA_cNMF/FigureYa226scRNA_cNMF.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa226scRNA_cNMF/scripts/s3-vis_cNMF.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa226scRNA_cNMF/scripts/s4-cNMF2Seurat.Rmd (Not listed in auto_Knit_online.txt)
