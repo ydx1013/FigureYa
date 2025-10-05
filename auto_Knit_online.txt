@@ -21,3 +21,7 @@ FigureYa323STpathseq
 FigureYa71ssGSEA_update
 FigureYa37correlationV2_update
 FigureYa74OmicCircos
+FigureYa211multiCohortImmSubtype
+FigureYa200pairwiseAUC
+FigureYa220repeatedLasso
+FigureYa240CRISPR
