@@ -6,6 +6,8 @@ function highlight(text, terms) {
   return text.replace(re, '<span class="highlight">$1</span>');
 }
 
+// THIS FUNCTION IS NO LONGER USED FOR RENDERING, BUT MAY BE USED ELSEWHERE.
+// WE LEAVE IT FOR NOW TO AVOID BREAKING OTHER PARTS.
 function getGalleryBase(folder) {
   // 提取 FigureYa数字 作为图像前缀
   let m = folder.match(/(FigureYa\d+)/);
@@ -15,7 +17,6 @@ function getGalleryBase(folder) {
 function renderToc() {
   let tocGrid = document.getElementById("tocGrid");
   if (!tocGrid) {
-    // 若页面还用ul，可以自动替换成div#tocGrid
     let ul = document.querySelector("ul");
     if (ul) {
       tocGrid = document.createElement("div");
@@ -30,26 +31,27 @@ function renderToc() {
   let folderMap = {};
   chapters.forEach(item => {
     if (!folderMap[item.folder]) {
-      folderMap[item.folder] = { htmls: [], folder: item.folder };
+      // 在分组时，直接把正确的 thumb 路径存进去
+      folderMap[item.folder] = { htmls: [], folder: item.folder, thumb: item.thumb };
     }
     folderMap[item.folder].htmls.push({ name: item.html.split("/").pop(), href: item.html });
   });
 
   // 2. 渲染
   let html = '';
-  Object.values(folderMap).forEach(folder => {
-    // 提取编号，拼gallery路径
-    let galleryBase = getGalleryBase(folder.folder);
-    let thumb = galleryBase ? `gallery_compress/${galleryBase}.webp` : null;
+  Object.values(folderMap).forEach(folderData => {
+    // 关键修复：直接使用从 chapters.json 读到的 thumb 路径
+    const thumb = folderData.thumb; 
+    
     html += `<div class="card">`;
     // 图像
-    html += thumb ? `<img src="${thumb}" alt="${folder.folder}" loading="lazy">`
+    html += thumb ? `<img src="${thumb}" alt="${folderData.folder}" loading="lazy">`
                   : `<div style="width:100%;height:80px;background:#eee;border-radius:6px;margin-bottom:8px;"></div>`;
     // 文件夹名
-    html += `<div class="card-title">${folder.folder}</div>`;
+    html += `<div class="card-title">${folderData.folder}</div>`;
     // html文件链接
     html += `<div class="card-links">`;
-    folder.htmls.forEach(h =>
+    folderData.htmls.forEach(h =>
       html += `<a href="${h.href}" target="_blank" style="display:inline-block;margin:0 3px 2px 0">${h.name}</a>`
     );
     html += `</div></div>`;
@@ -64,7 +66,10 @@ function loadAllChapters(callback) {
       chapters = list;
       let loaded = 0;
       chapterTexts = [];
-      if (!chapters.length) callback();
+      if (!chapters.length) {
+        callback();
+        return;
+      }
       chapters.forEach((chap, i) => {
         fetch(chap.text)
           .then(res => res.text())
@@ -128,6 +133,7 @@ window.onload = function() {
   loadAllChapters(() => {
     buildIndex();
     renderToc();
-    document.getElementById("searchBox").addEventListener("input", doSearch);
+    // 移除旧的 input 事件监听，避免重复搜索
+    // document.getElementById("searchBox").addEventListener("input", doSearch);
   });
 };
