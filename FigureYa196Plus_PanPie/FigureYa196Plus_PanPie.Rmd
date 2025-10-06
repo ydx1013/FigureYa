@@ -1,5 +1,5 @@
 ---
-title: "FigureYa196PanPie_scatterpie.html"
+title: "FigureYa196Plus_PanPie"
 params:
   author: Ying Ge
 output: html_document
@@ -36,15 +36,13 @@ f, g Pie charts showing the Chi-squared test of clinicopathologic factors for PR
 图 4 具有临床相关性的 CNV 驱动的 rRNA 代谢相关基因的鉴定。f、g饼图显示了来自TCGA的CRC（f）和 LUAD（g）肿瘤样本中 PRE 临床病理因素的卡方检验。
 
 # 应用场景
+# Application Scenarios
 
 搞清楚输入数据跟图的对应关系、理解每部分代码所画的内容，就可以套用到更多类型的数据上。
-
-# Application Scenarios
 
 Once you understand the mapping between input data and visual outputs, as well as the role of each code block in generating plots, you can adapt this workflow to broader data types.
 
 # 环境设置
-
 # Environment Configuration
 
 ```{r}
@@ -100,7 +98,6 @@ for (i in vname) {
 ```
 
 # 开始画图
-
 # Start plotting
 
 用base plot画图，如果你要查看某部分代码的效果，请从plot所在的行到当前位置一起，整段运行。
@@ -108,20 +105,12 @@ for (i in vname) {
 If you want to preview the output of a specific code segment, run the entire code block from the line containing the plot() command to the current cursor position.
 
 ```{r}
-# 定义颜色变量
-black  <- "#1E1E1B"
-blue   <- "#3C4E98"
-yellow <- "#E4DB36"
-orange <- "#E19143"
-green  <- "#57A12B"
-cherry <- "#8D3A86"
-
-# 设置颜色透明度
-status.col <- c("grey80", black)
-M.col <- c(yellow, orange)
-stage.col <- c("#EFF3FF", "#BDD7E7", "#6BAED6", "#2171B5")  # 蓝色渐变
-N.col <- c("#E5F5E0", "#A1D99B", "#31A354")  # 绿色渐变
-T.col <- c("#F2F0F7", "#CBC9E2", "#9E9AC8", "#6A51A3")  # 紫色渐变
+# 设置颜色
+status.col <- c("grey80", "#1E1E1B")
+M.col <- c("#E4DB36", "#E19143")
+stage.col <- c("#EFF3FF", "#BDD7E7", "#6BAED6", "#2171B5")
+N.col <- c("#E5F5E0", "#A1D99B", "#31A354") 
+T.col <- c("#F2F0F7", "#CBC9E2", "#9E9AC8", "#6A51A3")  
 
 # 修正的prepare_pie_data函数
 prepare_pie_data <- function(pie.list, group) {
@@ -242,12 +231,12 @@ p <- ggplot() +
   ylim(0, 3.5)
 # 保存图形
 ggsave("pieTable_scatterpie.pdf", p, width = 12, height = 8)
+```
 
+```{r, fig.width=12, fig.height=8}
 # 显示图形
 print(p)
 ```
-
-![](pieTable.pdf)
 
 # Session Info
 
