@@ -9,6 +9,10 @@ def extract_number(s):
     m = re.search(r'(\d+)', s)
     return int(m.group(1)) if m else 999999
 
+def extract_gallery_base(foldername):
+    m = re.match(r'(FigureYa\d+[A-Za-z]*)', foldername)
+    return m.group(1) if m else None
+
 def strip_outputs_and_images(raw_html):
     soup = BeautifulSoup(raw_html, "html.parser")
     for img in soup.find_all("img"):
@@ -36,10 +40,8 @@ def get_html_files(base_path, branch_label, chapters_meta):
         html_files = [f for f in os.listdir(folder_path) if f.endswith('.html')]
         html_files_sorted = sorted(html_files, key=extract_number)
         if html_files_sorted:
-            thumb_base = os.path.splitext(fname)[0]  # 去掉扩展名
-            thumb_path = f"gallery_compress/{thumb_base}.webp"
-            if not os.path.isfile(os.path.join(PUBLISH_DIR, thumb_path)):
-                thumb_path = None
+            gallery_base = extract_gallery_base(folder)
+            thumb_path = f"gallery_compress/{gallery_base}.webp" if gallery_base else None  # 修改为 webp
             if thumb_path and not os.path.isfile(os.path.join(PUBLISH_DIR, thumb_path)):
                 thumb_path = None
             for fname in html_files_sorted:
