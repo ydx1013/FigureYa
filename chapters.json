@@ -392,19 +392,19 @@
     "thumb": null
   },
   {
-    "id": "main_FigureYa55plus_pancancer_boxplot_FigureYa55plus_pancancer_boxplot",
-    "title": "FigureYa55plus_pancancer_boxplot/FigureYa55plus_pancancer_boxplot.html",
-    "html": "FigureYa55plus_pancancer_boxplot/FigureYa55plus_pancancer_boxplot.html",
-    "text": "texts/main_FigureYa55plus_pancancer_boxplot_FigureYa55plus_pancancer_boxplot.txt",
-    "folder": "FigureYa55plus_pancancer_boxplot",
-    "thumb": null
-  },
-  {
     "id": "main_FigureYa55panCancer_violinV2_FigureYa55panCancer_violinV2",
     "title": "FigureYa55panCancer_violinV2/FigureYa55panCancer_violinV2.html",
     "html": "FigureYa55panCancer_violinV2/FigureYa55panCancer_violinV2.html",
     "text": "texts/main_FigureYa55panCancer_violinV2_FigureYa55panCancer_violinV2.txt",
     "folder": "FigureYa55panCancer_violinV2",
+    "thumb": null
+  },
+  {
+    "id": "main_FigureYa55plus_pancancer_boxplot_FigureYa55plus_pancancer_boxplot",
+    "title": "FigureYa55plus_pancancer_boxplot/FigureYa55plus_pancancer_boxplot.html",
+    "html": "FigureYa55plus_pancancer_boxplot/FigureYa55plus_pancancer_boxplot.html",
+    "text": "texts/main_FigureYa55plus_pancancer_boxplot_FigureYa55plus_pancancer_boxplot.txt",
+    "folder": "FigureYa55plus_pancancer_boxplot",
     "thumb": null
   },
   {
@@ -480,18 +480,18 @@
     "thumb": null
   },
   {
-    "id": "main_FigureYa63pubmedMiningV2_output_paper",
-    "title": "FigureYa63pubmedMiningV2/output_paper.html",
-    "html": "FigureYa63pubmedMiningV2/output_paper.html",
-    "text": "texts/main_FigureYa63pubmedMiningV2_output_paper.txt",
-    "folder": "FigureYa63pubmedMiningV2",
-    "thumb": null
-  },
-  {
     "id": "main_FigureYa63pubmedMiningV2_output_friends",
     "title": "FigureYa63pubmedMiningV2/output_friends.html",
     "html": "FigureYa63pubmedMiningV2/output_friends.html",
     "text": "texts/main_FigureYa63pubmedMiningV2_output_friends.txt",
+    "folder": "FigureYa63pubmedMiningV2",
+    "thumb": null
+  },
+  {
+    "id": "main_FigureYa63pubmedMiningV2_output_paper",
+    "title": "FigureYa63pubmedMiningV2/output_paper.html",
+    "html": "FigureYa63pubmedMiningV2/output_paper.html",
+    "text": "texts/main_FigureYa63pubmedMiningV2_output_paper.txt",
     "folder": "FigureYa63pubmedMiningV2",
     "thumb": null
   },
@@ -872,14 +872,6 @@
     "thumb": null
   },
   {
-    "id": "main_FigureYa111markerGene_FigureYa111markerGene_step2_win10",
-    "title": "FigureYa111markerGene/FigureYa111markerGene_step2_win10.html",
-    "html": "FigureYa111markerGene/FigureYa111markerGene_step2_win10.html",
-    "text": "texts/main_FigureYa111markerGene_FigureYa111markerGene_step2_win10.txt",
-    "folder": "FigureYa111markerGene",
-    "thumb": null
-  },
-  {
     "id": "main_FigureYa111markerGene_FigureYa111markerGene_step1",
     "title": "FigureYa111markerGene/FigureYa111markerGene_step1.html",
     "html": "FigureYa111markerGene/FigureYa111markerGene_step1.html",
@@ -892,6 +884,14 @@
     "title": "FigureYa111markerGene/FigureYa111markerGene_step2_linuxMAC.html",
     "html": "FigureYa111markerGene/FigureYa111markerGene_step2_linuxMAC.html",
     "text": "texts/main_FigureYa111markerGene_FigureYa111markerGene_step2_linuxMAC.txt",
+    "folder": "FigureYa111markerGene",
+    "thumb": null
+  },
+  {
+    "id": "main_FigureYa111markerGene_FigureYa111markerGene_step2_win10",
+    "title": "FigureYa111markerGene/FigureYa111markerGene_step2_win10.html",
+    "html": "FigureYa111markerGene/FigureYa111markerGene_step2_win10.html",
+    "text": "texts/main_FigureYa111markerGene_FigureYa111markerGene_step2_win10.txt",
     "folder": "FigureYa111markerGene",
     "thumb": null
   },
@@ -1560,19 +1560,19 @@
     "thumb": null
   },
   {
-    "id": "main_FigureYa196PanPie_scatterpie_FigureYa196PanPie_scatterpie",
-    "title": "FigureYa196PanPie_scatterpie/FigureYa196PanPie_scatterpie.html",
-    "html": "FigureYa196PanPie_scatterpie/FigureYa196PanPie_scatterpie.html",
-    "text": "texts/main_FigureYa196PanPie_scatterpie_FigureYa196PanPie_scatterpie.txt",
-    "folder": "FigureYa196PanPie_scatterpie",
-    "thumb": null
-  },
-  {
     "id": "main_FigureYa196PanPie_FigureYa196PanPie",
     "title": "FigureYa196PanPie/FigureYa196PanPie.html",
     "html": "FigureYa196PanPie/FigureYa196PanPie.html",
     "text": "texts/main_FigureYa196PanPie_FigureYa196PanPie.txt",
     "folder": "FigureYa196PanPie",
+    "thumb": null
+  },
+  {
+    "id": "main_FigureYa196PanPie_scatterpie_FigureYa196PanPie_scatterpie",
+    "title": "FigureYa196PanPie_scatterpie/FigureYa196PanPie_scatterpie.html",
+    "html": "FigureYa196PanPie_scatterpie/FigureYa196PanPie_scatterpie.html",
+    "text": "texts/main_FigureYa196PanPie_scatterpie_FigureYa196PanPie_scatterpie.txt",
+    "folder": "FigureYa196PanPie_scatterpie",
     "thumb": null
   },
   {
