@@ -1,8 +1,14 @@
 import os
+import re
 import json
 from bs4 import BeautifulSoup
 
 PUBLISH_DIR = "."  # 输出到根目录
+
+def extract_number(s):
+    """从 'FigureYa101PCA' 这样的字符串中正确提取数字 101 用于排序"""
+    m = re.search(r'FigureYa(\d+)', s)
+    return int(m.group(1)) if m else 999999
 
 def strip_outputs_and_images(raw_html):
     """从 HTML 中移除图片和输出块，提取纯文本"""
@@ -26,22 +32,28 @@ def strip_outputs_and_images(raw_html):
 
 def get_html_files(base_path, branch_label, chapters_meta):
     """遍历文件夹，提取 HTML 文件信息并生成元数据"""
-    # 获取所有非隐藏的目录
     folders = [f for f in os.listdir(base_path) if os.path.isdir(os.path.join(base_path, f)) and not f.startswith('.')]
     
-    # 直接按字母顺序排序文件夹
-    for folder in sorted(folders):
+    # 使用修正后的 extract_number 函数进行排序
+    folders_sorted = sorted(folders, key=extract_number)
+    
+    for folder in folders_sorted:
         folder_path = os.path.join(base_path, folder)
         html_files = [f for f in os.listdir(folder_path) if f.endswith('.html')]
         
-        # 按字母顺序排序HTML文件
-        for fname in sorted(html_files):
-            # 关键修改：直接使用文件夹名构建缩略图路径
-            thumb_path = f"gallery_compress/{folder}.webp"
-            
-            if not os.path.isfile(os.path.join(PUBLISH_DIR, thumb_path)):
-                thumb_path = None  # 如果文件不存在，则不设置缩略图
+        if not html_files:
+            continue
 
+        # 关键逻辑：对于每个文件夹，只确定一次缩略图路径
+        # 直接使用文件夹名构建缩略图路径
+        thumb_path = f"gallery_compress/{folder}.webp"
+        if not os.path.isfile(os.path.join(PUBLISH_DIR, thumb_path)):
+            thumb_path = None  # 如果文件不存在，则不设置缩略图
+
+        # 对文件夹内的 HTML 文件进行排序
+        html_files_sorted = sorted(html_files)
+        
+        for fname in html_files_sorted:
             rel_path = os.path.relpath(os.path.join(folder_path, fname), PUBLISH_DIR)
             chap_id = f"{branch_label}_{folder}_{fname}".replace(" ", "_").replace(".html", "")
             
@@ -63,7 +75,7 @@ def get_html_files(base_path, branch_label, chapters_meta):
                 "html": rel_path,
                 "text": text_path,
                 "folder": folder,
-                "thumb": thumb_path
+                "thumb": thumb_path  # 为该文件夹下的所有HTML文件使用同一个缩略图
             })
 
 # --- 主逻辑 ---
@@ -182,4 +194,4 @@ html_output = """
 with open(os.path.join(PUBLISH_DIR, "index.html"), "w", encoding="utf-8") as f:
     f.write(html_output)
 
-print("脚本已根据您的最新文件结构更新，请运行此版本。")
+print("脚本已修正并更新。这次应该可以正确生成所有路径了。")
