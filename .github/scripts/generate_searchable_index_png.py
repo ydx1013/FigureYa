@@ -1,14 +1,8 @@
 import os
-import re
 import json
 from bs4 import BeautifulSoup
 
 PUBLISH_DIR = "."  # 输出到根目录
-
-def extract_number(s):
-    """从字符串中提取数字用于排序"""
-    m = re.search(r'(\d+)', s)
-    return int(m.group(1)) if m else 999999
 
 def strip_outputs_and_images(raw_html):
     """从 HTML 中移除图片和输出块，提取纯文本"""
@@ -32,37 +26,45 @@ def strip_outputs_and_images(raw_html):
 
 def get_html_files(base_path, branch_label, chapters_meta):
     """遍历文件夹，提取 HTML 文件信息并生成元数据"""
+    # 获取所有非隐藏的目录
     folders = [f for f in os.listdir(base_path) if os.path.isdir(os.path.join(base_path, f)) and not f.startswith('.')]
-    folders_sorted = sorted(folders, key=extract_number)
-    for folder in folders_sorted:
+    
+    # 直接按字母顺序排序文件夹
+    for folder in sorted(folders):
         folder_path = os.path.join(base_path, folder)
         html_files = [f for f in os.listdir(folder_path) if f.endswith('.html')]
-        html_files_sorted = sorted(html_files, key=extract_number)
-        if html_files_sorted:
-            # 修改：直接使用文件夹名构建缩略图路径
+        
+        # 按字母顺序排序HTML文件
+        for fname in sorted(html_files):
+            # 关键修改：直接使用文件夹名构建缩略图路径
             thumb_path = f"gallery_compress/{folder}.webp"
+            
             if not os.path.isfile(os.path.join(PUBLISH_DIR, thumb_path)):
-                thumb_path = None
-            for fname in html_files_sorted:
-                rel_path = os.path.relpath(os.path.join(folder_path, fname), PUBLISH_DIR)
-                chap_id = f"{branch_label}_{folder}_{fname}".replace(" ", "_").replace(".html", "")
-                with open(os.path.join(folder_path, fname), encoding='utf-8') as f:
-                    raw_html = f.read()
-                    text = strip_outputs_and_images(raw_html)
-                texts_dir = os.path.join(PUBLISH_DIR, "texts")
-                os.makedirs(texts_dir, exist_ok=True)
-                text_path = os.path.join("texts", f"{chap_id}.txt")  # relative to root
-                abs_text_path = os.path.join(PUBLISH_DIR, text_path)
-                with open(abs_text_path, "w", encoding="utf-8") as tf:
-                    tf.write(text)
-                chapters_meta.append({
-                    "id": chap_id,
-                    "title": f"{folder}/{fname}",
-                    "html": rel_path,
-                    "text": text_path,
-                    "folder": folder,
-                    "thumb": thumb_path
-                })
+                thumb_path = None  # 如果文件不存在，则不设置缩略图
+
+            rel_path = os.path.relpath(os.path.join(folder_path, fname), PUBLISH_DIR)
+            chap_id = f"{branch_label}_{folder}_{fname}".replace(" ", "_").replace(".html", "")
+            
+            with open(os.path.join(folder_path, fname), encoding='utf-8') as f:
+                raw_html = f.read()
+                text = strip_outputs_and_images(raw_html)
+            
+            texts_dir = os.path.join(PUBLISH_DIR, "texts")
+            os.makedirs(texts_dir, exist_ok=True)
+            text_path = os.path.join("texts", f"{chap_id}.txt")
+            abs_text_path = os.path.join(PUBLISH_DIR, text_path)
+            
+            with open(abs_text_path, "w", encoding="utf-8") as tf:
+                tf.write(text)
+                
+            chapters_meta.append({
+                "id": chap_id,
+                "title": f"{folder}/{fname}",
+                "html": rel_path,
+                "text": text_path,
+                "folder": folder,
+                "thumb": thumb_path
+            })
 
 # --- 主逻辑 ---
 chapters_meta = []
@@ -72,7 +74,7 @@ get_html_files(".", "main", chapters_meta)
 with open(os.path.join(PUBLISH_DIR, "chapters.json"), "w", encoding="utf-8") as jf:
     json.dump(chapters_meta, jf, ensure_ascii=False, indent=2)
 
-# 写入包含卡片式布局的 index.html
+# 写入 index.html (HTML部分未作修改)
 html_output = """
 <!DOCTYPE html>
 <html>
@@ -180,4 +182,4 @@ html_output = """
 with open(os.path.join(PUBLISH_DIR, "index.html"), "w", encoding="utf-8") as f:
     f.write(html_output)
 
-print("脚本已更新并成功写入 index.html 和 chapters.json。")
+print("脚本已根据您的最新文件结构更新，请运行此版本。")
