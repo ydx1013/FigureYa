@@ -9,9 +9,9 @@ If you use this code in your work or research, we kindly request that you cite o
 Xiaofan Lu, et al. (2025). FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency. iMetaMed.
 https://doi.org/10.1002/imm3.70005
 需求描述
-把分组的数据直接用扇形图来展示不同临床预后分期的分布差异，看起来很漂亮。
 Requirement Description
-It looks beautiful to use the grouped data directly in a fan chart to show the distribution differences of different clinical prognostic stages.
+用scatterpie包画图，展示不同临床预后分期的分布差异。
+Use the scatterpie package to visualize the distribution differences across different clinical prognostic stages.
 出自
 https://www.nature.com/articles/s41388-019-1026-9
 From
@@ -37,9 +37,9 @@ easy_input.txt
 第二列Risk有两类：high和low，对应表格中的两行；
 第三列往后，对应表格中的各列。
 easy_input.txt
--First column (Sample ID): Each row represents one sample. The sector size in visualizations corresponds to the number of samples in each category.
--Second column (Risk): Contains two classes: High and Low, mapped to the two rows in the table.
--Third column onward: Correspond to the columns in the original table.
+First column (Sample ID): Each row represents one sample. The sector size in visualizations corresponds to the number of samples in each category.
+Second column (Risk): Contains two classes: High and Low, mapped to the two rows in the table.
+Third column onward: Correspond to the columns in the original table.
 dat <- read.table("easy_input.txt",row.names = 1,sep = "\t",header = T,check.names = F,stringsAsFactors = F)
 head(dat)
 # 按Risk分成High和Low，计算各列数值。
@@ -64,21 +64,20 @@ for (i in vname) {
 }
 开始画图
 Start plotting
-用base plot画图，如果你要查看某部分代码的效果，请从plot所在的行到当前位置一起，整段运行。
-If you want to preview the output of a specific code segment, run the entire code block from the line containing the plot() command to the current cursor position.
-# 设置颜色
+# 设置颜色 / Set colors
 status.col <- c("grey80", "#1E1E1B")
 M.col <- c("#E4DB36", "#E19143")
 stage.col <- c("#EFF3FF", "#BDD7E7", "#6BAED6", "#2171B5")
 N.col <- c("#E5F5E0", "#A1D99B", "#31A354") 
 T.col <- c("#F2F0F7", "#CBC9E2", "#9E9AC8", "#6A51A3")  
 
-# 修正的prepare_pie_data函数
 prepare_pie_data <- function(pie.list, group) {
   # 获取所有可能的类别水平
+  # Get all possible category levels
   all_levels <- unique(unlist(lapply(pie.list, function(x) as.character(x$Var2))))
   
   # 创建基础数据框
+  # Create base data frame
   pie_data <- data.frame(
     category = names(pie.list),
     x = 1:length(pie.list),
@@ -88,17 +87,19 @@ prepare_pie_data <- function(pie.list, group) {
   )
   
   # 为所有可能的水平添加列，初始化为0
+  # Add columns for all possible levels, initialized to 0
   for (level in all_levels) {
     pie_data[[level]] <- 0
   }
   
   # 填充饼图数据
+  # Fill pie chart data
   for (i in 1:length(pie.list)) {
     category <- names(pie.list)[i]
     pie_df <- pie.list[[i]]
     
     for (j in 1:nrow(pie_df)) {
-      level <- as.character(pie_df$Var2[j])  # 确保转换为字符
+      level <- as.character(pie_df$Var2[j])  # 确保转换为字符 # Ensure conversion to character
       pct <- pie_df$Pct[j]
       pie_data[i, level] <- pct
     }
@@ -108,21 +109,26 @@ prepare_pie_data <- function(pie.list, group) {
 }
 
 # 调整饼图的 x 和 y 坐标
+# Adjust x and y coordinates for pie charts
 pie_data_high <- prepare_pie_data(pie.high, "High")
 pie_data_low <- prepare_pie_data(pie.low, "Low")
 
 # 设置 High 组饼图的坐标
+# Set coordinates for High group pie charts
 pie_data_high$x <- 1:5  # x 坐标从 1 到 5
 pie_data_high$y <- 2    # y 坐标固定为 2
 
 # 设置 Low 组饼图的坐标
+# Set coordinates for Low group pie charts
 pie_data_low$x <- 1:5   # x 坐标从 1 到 5
 pie_data_low$y <- 1     # y 坐标固定为 1
 
 # 合并数据
+# Combine data
 pie_data <- rbind(pie_data_high, pie_data_low)
 
 # 创建颜色映射
+# Create color mapping
 color_mapping <- c(
   "Alive" = status.col[1], "Dead" = status.col[2],
   "I" = stage.col[1], "II" = stage.col[2], "III" = stage.col[3], "IV" = stage.col[4],
@@ -132,9 +138,11 @@ color_mapping <- c(
 )
 
 # 获取饼图数据中实际存在的列
+# Get columns that actually exist in pie chart data
 available_cols <- intersect(names(color_mapping), colnames(pie_data))
 
 # 修正p值标签 - 确保长度匹配
+# Correct p-value labels - Ensure length matches
 p_value_labels <- c(
   paste0("p = ", fisher.p["Status"]),
   paste0("p = ", fisher.p["Stage"]),
@@ -144,9 +152,9 @@ p_value_labels <- c(
 )
 
 print(pie_data)
-# 创建主图
+# 创建主图 # Create main plot
 p <- ggplot() +
-  # 绘制High组饼图
+  # 绘制High组饼图 # Draw High group pie charts
   geom_scatterpie(
     aes(x = x, y = y, r = radius),
     data = pie_data_high,
@@ -154,7 +162,7 @@ p <- ggplot() +
     color = "white",
     alpha = 0.8
   ) +
-  # 绘制Low组饼图
+  # 绘制Low组饼图 # Draw Low group pie charts
   geom_scatterpie(
     aes(x = x, y = y, r = radius),
     data = pie_data_low,
@@ -162,13 +170,13 @@ p <- ggplot() +
     color = "white",
     alpha = 0.8
   ) +
-  # 设置颜色
+  # 设置颜色 # Set colors
   scale_fill_manual(
     name = "Categories",
     values = color_mapping,
     breaks = names(color_mapping)
   ) +
-  # 坐标轴和主题设置
+  # 坐标轴和主题设置 # Coordinate axis and theme settings
   coord_equal() +
   theme_void() +
   theme(
@@ -177,21 +185,20 @@ p <- ggplot() +
     #legend.box = "horizontal",
     legend.text = element_text(size = 10)
   ) +
-  # 添加标题标签 (6个位置)
-  # 添加标题标签
+  # 添加标题标签 # Add title labels
   annotate("text", x = 0:5, y = 2.7, label = c("CRC", "Status", "Stage", "M", "N", "T"), 
           size = 6, fontface = "bold") +
-  # 添加组标签
+  # 添加组标签  # Add group labels
   annotate("text", x = 0, y = 2, label = "High\n(n = 100)", size = 5, hjust = 0.5, vjust = 0.5) +
   annotate("text", x = 0, y = 1, label = "Low\n(n = 200)", size = 5, hjust = 0.5, vjust = 0.5) +
-  # 添加 p 值标签
+  # 添加 p 值标签 # Add p-value labels
   annotate("text", x = 1:5, y = 0.3, label = p_value_labels, size = 5)+  # 设置坐标轴范围
-
+  # Set coordinate axis range
   xlim(0, 6) +
   ylim(0, 3.5)
-# 保存图形
+
+# 保存图形 # Save plot
 ggsave("pieTable_scatterpie.pdf", p, width = 12, height = 8)
-# 显示图形
 print(p)
 Session Info
 sessionInfo()

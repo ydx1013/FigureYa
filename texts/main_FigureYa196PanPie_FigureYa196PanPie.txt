@@ -37,9 +37,9 @@ easy_input.txt
 第二列Risk有两类：high和low，对应表格中的两行；
 第三列往后，对应表格中的各列。
 easy_input.txt
--First column (Sample ID): Each row represents one sample. The sector size in visualizations corresponds to the number of samples in each category.
--Second column (Risk): Contains two classes: High and Low, mapped to the two rows in the table.
--Third column onward: Correspond to the columns in the original table.
+First column (Sample ID): Each row represents one sample. The sector size in visualizations corresponds to the number of samples in each category.
+Second column (Risk): Contains two classes: High and Low, mapped to the two rows in the table.
+Third column onward: Correspond to the columns in the original table.
 dat <- read.table("easy_input.txt",row.names = 1,sep = "\t",header = T,check.names = F,stringsAsFactors = F)
 head(dat)
 # 按Risk分成High和Low，计算各列数值。
