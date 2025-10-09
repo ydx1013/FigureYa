@@ -78,29 +78,7 @@ RMD Render Summary
 [SKIPPED] - ./FigureYa88DAVIDkappa/FigureYa88DAVIDkappa.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa130coxSVM/FigureYa130coxSVM_step12.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa2ggtree+pheatmap+msa/FigureYa2ggtree+pheatmap+msa.Rmd (Not listed in auto_Knit_online.txt)
-[FAILED] - ./FigureYa203ComBat/FigureYa203ComBat.Rmd
---- Error Log for ./FigureYa203ComBat/FigureYa203ComBat.Rmd ---
-gfortran is already the newest version (4:13.2.0-7ubuntu1).
-0 upgraded, 0 newly installed, 0 to remove and 30 not upgraded.
-Error in `open.connection()`:
-! cannot open the connection to 'https://api.gdc.cancer.gov/projects/TCGA-HNSC?expand=summary,summary.data_categories&pretty=true'
-Backtrace:
-     ▆
-  1. └─TCGAbiolinks::GDCquery(...)
-  2.   └─TCGAbiolinks:::getGDCquery(...)
-  3.     ├─base::paste0("size=", getNbFiles(project, data.category))
-  4.     └─TCGAbiolinks:::getNbFiles(project, data.category)
-  5.       └─TCGAbiolinks::getProjectSummary(project)
-  6.         └─jsonlite::fromJSON(url, simplifyDataFrame = TRUE)
-  7.           └─jsonlite:::parse_and_simplify(...)
-  8.             └─jsonlite:::parseJSON(txt, bigint_as_char)
-  9.               └─jsonlite:::parse_con(txt, bigint_as_char)
- 10.                 ├─base::open(con, "rb")
- 11.                 └─base::open.connection(con, "rb")
-
-Quitting from FigureYa203ComBat.Rmd:121-186 [unnamed-chunk-3]
-Execution halted
------------------------------------
+[SKIPPED] - ./FigureYa203ComBat/FigureYa203ComBat.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa304MAGIC/FigureYa304MAGIC_lowMemory.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa304MAGIC/FigureYa304MAGIC.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa48Adonis/FigureYa48Adonis.Rmd (Not listed in auto_Knit_online.txt)
@@ -291,7 +269,18 @@ Execution halted
 [SKIPPED] - ./FigureYa190batchLogistic/FigureYa190batchLogistic.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa280TMEofSTS/FigureYa280TMEofSTS.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa38PCA/FigureYa38PCA.Rmd (Not listed in auto_Knit_online.txt)
-[SKIPPED] - ./FigureYa308IHS/FigureYa308IHS.Rmd (Not listed in auto_Knit_online.txt)
+[FAILED] - ./FigureYa308IHS/FigureYa308IHS.Rmd
+--- Error Log for ./FigureYa308IHS/FigureYa308IHS.Rmd ---
+Error in `gzfile()`:
+! cannot open the connection
+Backtrace:
+    ▆
+ 1. └─base::readRDS(file.path(res.path, "out_unPruned.rds"))
+ 2.   └─base::gzfile(file, "rb")
+
+Quitting from FigureYa308IHS.Rmd:208-221 [unnamed-chunk-5]
+Execution halted
+-----------------------------------
 [SKIPPED] - ./FigureYa199crosslink/FigureYa199crosslink.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa124AssociationHeatmap/FigureYa124AssociationHeatmap.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa37correlationV2_update/FigureYa37correlationV2_update.Rmd (Not listed in auto_Knit_online.txt)
