@@ -1,6 +1,7 @@
 FigureYa1survivalCurve_update
 FigureYa4bestSeparation
 FigureYa5bubbles
+FigureYa6rHRsV2
 FigureYa7PSM
 FigureYa8radarChart
 FigureYa9heatmap
