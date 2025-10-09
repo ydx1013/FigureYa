@@ -1,10 +1,10 @@
 Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
 Hit:2 http://azure.archive.ubuntu.com/ubuntu noble InRelease
-Hit:6 https://packages.microsoft.com/repos/azure-cli noble InRelease
-Hit:7 https://packages.microsoft.com/ubuntu/24.04/prod noble InRelease
 Hit:3 http://azure.archive.ubuntu.com/ubuntu noble-updates InRelease
 Hit:4 http://azure.archive.ubuntu.com/ubuntu noble-backports InRelease
 Hit:5 http://azure.archive.ubuntu.com/ubuntu noble-security InRelease
+Hit:6 https://packages.microsoft.com/repos/azure-cli noble InRelease
+Hit:7 https://packages.microsoft.com/ubuntu/24.04/prod noble InRelease
 Reading package lists...
 Reading package lists...
 Building dependency tree...
@@ -13,12 +13,21 @@ libblas-dev is already the newest version (3.12.0-3build1.1).
 liblapack-dev is already the newest version (3.12.0-3build1.1).
 gfortran is already the newest version (4:13.2.0-7ubuntu1).
 0 upgraded, 0 newly installed, 0 to remove and 30 not upgraded.
-Error in `library()`:
-! there is no package called 'ClassDiscovery'
+Error in `open.connection()`:
+! cannot open the connection to 'https://api.gdc.cancer.gov/projects/TCGA-HNSC?expand=summary,summary.data_categories&pretty=true'
 Backtrace:
-    ▆
- 1. └─global batchPCA(...)
- 2.   └─base::library(ClassDiscovery)
+     ▆
+  1. └─TCGAbiolinks::GDCquery(...)
+  2.   └─TCGAbiolinks:::getGDCquery(...)
+  3.     ├─base::paste0("size=", getNbFiles(project, data.category))
+  4.     └─TCGAbiolinks:::getNbFiles(project, data.category)
+  5.       └─TCGAbiolinks::getProjectSummary(project)
+  6.         └─jsonlite::fromJSON(url, simplifyDataFrame = TRUE)
+  7.           └─jsonlite:::parse_and_simplify(...)
+  8.             └─jsonlite:::parseJSON(txt, bigint_as_char)
+  9.               └─jsonlite:::parse_con(txt, bigint_as_char)
+ 10.                 ├─base::open(con, "rb")
+ 11.                 └─base::open.connection(con, "rb")
 
-Quitting from FigureYa203ComBat.Rmd:266-299 [unnamed-chunk-6]
+Quitting from FigureYa203ComBat.Rmd:121-186 [unnamed-chunk-3]
 Execution halted
