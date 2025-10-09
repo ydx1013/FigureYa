@@ -78,12 +78,33 @@ RMD Render Summary
 [SKIPPED] - ./FigureYa88DAVIDkappa/FigureYa88DAVIDkappa.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa130coxSVM/FigureYa130coxSVM_step12.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa2ggtree+pheatmap+msa/FigureYa2ggtree+pheatmap+msa.Rmd (Not listed in auto_Knit_online.txt)
-[SKIPPED] - ./FigureYa203ComBat/FigureYa203ComBat.Rmd (Not listed in auto_Knit_online.txt)
+[FAILED] - ./FigureYa203ComBat/FigureYa203ComBat.Rmd
+--- Error Log for ./FigureYa203ComBat/FigureYa203ComBat.Rmd ---
+Hit:3 http://azure.archive.ubuntu.com/ubuntu noble-updates InRelease
+Hit:4 http://azure.archive.ubuntu.com/ubuntu noble-backports InRelease
+Hit:5 http://azure.archive.ubuntu.com/ubuntu noble-security InRelease
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+libblas-dev is already the newest version (3.12.0-3build1.1).
+liblapack-dev is already the newest version (3.12.0-3build1.1).
+gfortran is already the newest version (4:13.2.0-7ubuntu1).
+0 upgraded, 0 newly installed, 0 to remove and 30 not upgraded.
+Error in `library()`:
+! there is no package called 'ClassDiscovery'
+Backtrace:
+    ▆
+ 1. └─global batchPCA(...)
+ 2.   └─base::library(ClassDiscovery)
+
+Quitting from FigureYa203ComBat.Rmd:266-299 [unnamed-chunk-6]
+Execution halted
+-----------------------------------
 [SKIPPED] - ./FigureYa304MAGIC/FigureYa304MAGIC_lowMemory.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa304MAGIC/FigureYa304MAGIC.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa48Adonis/FigureYa48Adonis.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa296VIPER/FigureYa296VIPER.Rmd (Not listed in auto_Knit_online.txt)
-[SKIPPED] - ./FigureYa196PanPie_scatterpie/FigureYa196PanPie_scatterpie.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa290BarGraph/FigureYa290BarGraph.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa228linkCor/FigureYa228linkCor.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa297Rbar/FigureYa297Rbar.Rmd (Not listed in auto_Knit_online.txt)
@@ -98,6 +119,7 @@ RMD Render Summary
 [SKIPPED] - ./FigureYa272scBulkCCCI/FigureYa272scBulkCCCI.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa268panCNVexpr/FigureYa268panCNVexpr.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa183condSurv/FigureYa183condSurv.Rmd (Not listed in auto_Knit_online.txt)
+[SKIPPED] - ./FigureYa196Plus_PanPie/FigureYa196Plus_PanPie.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa44profile/FigureYa44profile.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa92immune_gene_update/FigureYa92immune_gene_update.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa87fish/FigureYa87fish.Rmd (Not listed in auto_Knit_online.txt)
@@ -203,6 +225,7 @@ RMD Render Summary
 [SKIPPED] - ./FigureYa217RMR/FigureYa217RMR.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa316RF_XGBoost_Boruta/FigureYa316RF_XGBoost_Boruta.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa152DouleCorPlot/FigureYa152DouleCorPlot.Rmd (Not listed in auto_Knit_online.txt)
+[SKIPPED] - ./FigureYa6rHRsV2/FigureYa6rHRsV2.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa289TILSig/FigureYa289TILSig.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa64triangle/FigureYa64triangle.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa288MutualExclusivity/FigureYa288MutualExclusivity.Rmd (Not listed in auto_Knit_online.txt)
@@ -244,7 +267,7 @@ RMD Render Summary
 [SKIPPED] - ./FigureYa295ClassDiscovery/FigureYa295ClassDiscovery.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa300pancanCor/FigureYa300pancanCor.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa155ATAC/FigureYa155ATAC.Rmd (Not listed in auto_Knit_online.txt)
-[SUCCESS] - ./FigureYa200pairwiseAUC/FigureYa200pairwiseAUC.Rmd
+[SKIPPED] - ./FigureYa200pairwiseAUC/FigureYa200pairwiseAUC.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa42oncoprintV2_update/FigureYa42oncoprintV2_update.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa148SimpleDendrogram/FigureYa148SimpleDendrogram.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa125FishertestV2/FigureYa125FishertestV2.Rmd (Not listed in auto_Knit_online.txt)
@@ -302,7 +325,6 @@ RMD Render Summary
 [SKIPPED] - ./FigureYa117multilinearDE/FigureYa117multilinearDE.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa303panCircos/FigureYa303panCircos.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa66单因素cox/FigureYa66单因素cox.Rmd (Not listed in auto_Knit_online.txt)
-[SKIPPED] - ./FigureYa6rHRs/FigureYa6rHRs.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa89ggplotCirco/FigureYa89ggplotCirco.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa116supervisedCluster/FigureYa116supervisedCluster.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa45V2/FigureYa45iClusterV2.Rmd (Not listed in auto_Knit_online.txt)
