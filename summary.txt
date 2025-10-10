@@ -78,7 +78,7 @@ RMD Render Summary
 [SKIPPED] - ./FigureYa88DAVIDkappa/FigureYa88DAVIDkappa.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa130coxSVM/FigureYa130coxSVM_step12.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa2ggtree+pheatmap+msa/FigureYa2ggtree+pheatmap+msa.Rmd (Not listed in auto_Knit_online.txt)
-[SUCCESS] - ./FigureYa203ComBat/FigureYa203ComBat.Rmd
+[SKIPPED] - ./FigureYa203ComBat/FigureYa203ComBat.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa304MAGIC/FigureYa304MAGIC_lowMemory.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa304MAGIC/FigureYa304MAGIC.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa48Adonis/FigureYa48Adonis.Rmd (Not listed in auto_Knit_online.txt)
@@ -316,7 +316,29 @@ RMD Render Summary
 [SKIPPED] - ./FigureYa284pairwiseLogrank/FigureYa284pairwiseLogrank.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa10chromosomeV2_update/FigureYa10chromosomeV2_update.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa27tSNE_update/FIgureYa27tSNE_update.Rmd (Not listed in auto_Knit_online.txt)
-[SKIPPED] - ./FigureYa212drugTargetV2/FigureYa212drugTargetV2.Rmd (Not listed in auto_Knit_online.txt)
+[FAILED] - ./FigureYa212drugTargetV2/FigureYa212drugTargetV2.Rmd
+--- Error Log for ./FigureYa212drugTargetV2/FigureYa212drugTargetV2.Rmd ---
+libssl-dev is already the newest version (3.0.13-0ubuntu3.6).
+0 upgraded, 0 newly installed, 0 to remove and 32 not upgraded.
+Error in `calcPhenotype()`:
+! 请安装 ridge 包: install.packages('ridge')
+Backtrace:
+     ▆
+  1. ├─SimDesign::quiet(...)
+  2. │ ├─testthat::capture_messages(capts <- testthat::capture_output_lines(ret <- fun(...)))
+  3. │ │ └─base::withCallingHandlers(...)
+  4. │ ├─testthat::capture_output_lines(ret <- fun(...))
+  5. │ │ └─testthat:::eval_with_output(code, print = print, width = width)
+  6. │ │   ├─withr::with_output_sink(path, withVisible(code))
+  7. │ │   │ └─base::force(code)
+  8. │ │   └─base::withVisible(code)
+  9. │ └─SimDesign (local) fun(...)
+ 10. │   └─base::eval(x)
+ 11. └─global calcPhenotype(...)
+
+Quitting from FigureYa212drugTargetV2.Rmd:313-332 [unnamed-chunk-9]
+Execution halted
+-----------------------------------
 [SKIPPED] - ./FigureYa112venn/FigureYa112venn.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa201ClusterCorrelation/FigureYa201ClusterCorrelation.Rmd (Not listed in auto_Knit_online.txt)
 [SKIPPED] - ./FigureYa119Multiclasslimma/FigureYa119Multiclasslimma.Rmd (Not listed in auto_Knit_online.txt)
