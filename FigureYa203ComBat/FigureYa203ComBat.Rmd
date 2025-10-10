@@ -147,13 +147,8 @@ tpmMatrix <- tpmMatrix[, tumorSamples]
 
 tpms <- as.data.frame(round(tpmMatrix, 2))
 
-# 2. 过滤低表达基因（基于原始计数）
-# 2. Filter low-expressed genes (based on raw counts)
-keep <- filterByExpr(countMatrix, min.count = 10, min.prop = 0.25)
-tpms <- tpms[keep, ]
-
-# 3. 基因注释（假设已有overlapTable27.txt文件）
-# 3. Gene annotation (assuming overlapTable27.txt exists)
+# 2. 基因注释（假设已有overlapTable27.txt文件）
+# 2. Gene annotation (assuming overlapTable27.txt exists)
 Ginfo <- read.table("overlapTable27.txt", sep = "\t", row.names = 1, 
                     header = TRUE, check.names = FALSE)
 
