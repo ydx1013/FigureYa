@@ -13,11 +13,3 @@ libblas-dev is already the newest version (3.12.0-3build1.1).
 liblapack-dev is already the newest version (3.12.0-3build1.1).
 gfortran is already the newest version (4:13.2.0-7ubuntu1).
 0 upgraded, 0 newly installed, 0 to remove and 32 not upgraded.
-Error:
-! object 'countMatrix' not found
-Backtrace:
-    ▆
- 1. └─edgeR::filterByExpr(countMatrix, min.count = 10, min.prop = 0.25)
-
-Quitting from FigureYa203ComBat.Rmd:122-177 [unnamed-chunk-3]
-Execution halted

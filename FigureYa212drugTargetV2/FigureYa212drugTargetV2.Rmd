@@ -246,7 +246,7 @@ prism.auc.knn <- prism.auc.knn/ceiling(max(prism.auc.knn))
 
 ```{r}
 # 加载CCLE细胞系的表达谱，作为训练集
-ccl.expr <- read.table("CCLE_RNAseq_rsem_genes_tpm_20180929.txt",sep = "\t",row.names = 1,check.names = F,stringsAsFactors = F,header = T) 
+ccl.expr <- read.table(gzfile("CCLE_RNAseq_rsem_genes_tpm_20180929.txt.gz"), sep = "\t", row.names = 1, check.names = F, stringsAsFactors = F, header = T)
 
 # 加载基因注释文件，用于基因ID转换
 Ginfo <- read.table("overlapTable27.txt",sep = "\t",row.names = 1,check.names = F,stringsAsFactors = F,header = T) # 参考FigureYa34count2FPKMv2制作的基因注释文件
