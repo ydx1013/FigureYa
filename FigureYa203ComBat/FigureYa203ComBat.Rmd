@@ -59,7 +59,6 @@ library(cluster)
 library(oompaBase)
 library(SummarizedExperiment) 
 library(edgeR)     
-library(ClassDiscovery)
 
 # 显示英文报错信息
 # Show English error messages
