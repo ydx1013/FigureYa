@@ -24,7 +24,7 @@ downloaded 580 KB
 * DONE (BiocManager)
 
 The downloaded source packages are in
-	‘/tmp/RtmpHe9AoW/downloaded_packages’
+	‘/tmp/RtmpbO0mxv/downloaded_packages’
 
 Installing Bioconductor packages...
 Installing Bioconductor package: sva 
@@ -2526,7 +2526,7 @@ installing to /home/runner/work/_temp/Library/00LOCK-sva/00new/sva/libs
 * DONE (sva)
 
 The downloaded source packages are in
-	‘/tmp/RtmpHe9AoW/downloaded_packages’
+	‘/tmp/RtmpbO0mxv/downloaded_packages’
 Successfully installed: sva 
 Installing Bioconductor package: SummarizedExperiment 
 'getOption("repos")' replaces Bioconductor standard repositories, see
@@ -2718,7 +2718,7 @@ Creating a generic function for ‘qlogis’ from package ‘stats’ in package
 * DONE (SummarizedExperiment)
 
 The downloaded source packages are in
-	‘/tmp/RtmpHe9AoW/downloaded_packages’
+	‘/tmp/RtmpbO0mxv/downloaded_packages’
 Successfully installed: SummarizedExperiment 
 Installing Bioconductor package: TCGAbiolinks 
 'getOption("repos")' replaces Bioconductor standard repositories, see
@@ -3916,7 +3916,7 @@ installing to /home/runner/work/_temp/Library/00LOCK-tidyr/00new/tidyr/libs
 * DONE (TCGAbiolinks)
 
 The downloaded source packages are in
-	‘/tmp/RtmpHe9AoW/downloaded_packages’
+	‘/tmp/RtmpbO0mxv/downloaded_packages’
 Successfully installed: TCGAbiolinks 
 Package already installed: edgeR 
 Installing Bioconductor package: ClassDiscovery 
@@ -4006,7 +4006,7 @@ installing to /home/runner/work/_temp/Library/00LOCK-mclust/00new/mclust/libs
 * DONE (ClassDiscovery)
 
 The downloaded source packages are in
-	‘/tmp/RtmpHe9AoW/downloaded_packages’
+	‘/tmp/RtmpbO0mxv/downloaded_packages’
 Successfully installed: ClassDiscovery 
 
 Installing CRAN packages...
@@ -4037,20 +4037,17 @@ downloaded 14 KB
 * DONE (pheatmap)
 
 The downloaded source packages are in
-	‘/tmp/RtmpHe9AoW/downloaded_packages’
+	‘/tmp/RtmpbO0mxv/downloaded_packages’
 Successfully installed: pheatmap 
 
 Checking for system dependencies...
 Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
 Hit:2 http://azure.archive.ubuntu.com/ubuntu noble InRelease
-Get:3 http://azure.archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+Hit:3 http://azure.archive.ubuntu.com/ubuntu noble-updates InRelease
 Hit:4 http://azure.archive.ubuntu.com/ubuntu noble-backports InRelease
 Hit:5 http://azure.archive.ubuntu.com/ubuntu noble-security InRelease
 Hit:6 https://packages.microsoft.com/repos/azure-cli noble InRelease
 Hit:7 https://packages.microsoft.com/ubuntu/24.04/prod noble InRelease
-Get:8 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1491 kB]
-Get:9 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [1489 kB]
-Fetched 3106 kB in 0s (7072 kB/s)
 Reading package lists...
 Reading package lists...
 Building dependency tree...
