@@ -80,9 +80,10 @@ RMD Render Summary
 [SKIPPED] - ./FigureYa2ggtree+pheatmap+msa/FigureYa2ggtree+pheatmap+msa.Rmd (Not listed in auto_Knit_online.txt)
 [FAILED] - ./FigureYa203ComBat/FigureYa203ComBat.Rmd
 --- Error Log for ./FigureYa203ComBat/FigureYa203ComBat.Rmd ---
-Hit:5 http://azure.archive.ubuntu.com/ubuntu noble-security InRelease
-Hit:6 https://packages.microsoft.com/repos/azure-cli noble InRelease
 Hit:7 https://packages.microsoft.com/ubuntu/24.04/prod noble InRelease
+Hit:3 http://azure.archive.ubuntu.com/ubuntu noble-updates InRelease
+Hit:4 http://azure.archive.ubuntu.com/ubuntu noble-backports InRelease
+Hit:5 http://azure.archive.ubuntu.com/ubuntu noble-security InRelease
 Reading package lists...
 Reading package lists...
 Building dependency tree...
@@ -91,14 +92,13 @@ libblas-dev is already the newest version (3.12.0-3build1.1).
 liblapack-dev is already the newest version (3.12.0-3build1.1).
 gfortran is already the newest version (4:13.2.0-7ubuntu1).
 0 upgraded, 0 newly installed, 0 to remove and 32 not upgraded.
-Error in `countToTpm()`:
-! nrow(counts) == length(geneLength) is not TRUE
+Error in `if (class(groupi) == "matrix") ...`:
+! the condition has length > 1
 Backtrace:
     ▆
- 1. └─global countToTpm(countMatrix, geneLengths)
- 2.   └─base::stopifnot(nrow(counts) == length(geneLength))
+ 1. └─global batchPCA(...)
 
-Quitting from FigureYa203ComBat.Rmd:122-187 [unnamed-chunk-3]
+Quitting from FigureYa203ComBat.Rmd:267-300 [unnamed-chunk-6]
 Execution halted
 -----------------------------------
 [SKIPPED] - ./FigureYa304MAGIC/FigureYa304MAGIC_lowMemory.Rmd (Not listed in auto_Knit_online.txt)
