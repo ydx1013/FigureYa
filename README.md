@@ -85,7 +85,7 @@ This project is licensed under the **[Creative Commons Attribution-NonCommercial
 
 If you use this project in your research, please cite:
 
-> Xiaofan Lu, et al. (2025). *FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency*. iMetaMed. [https://doi.org/10.1002/imm3.70005](https://doi.org/10.1002/imm3.70005)
+> Xiaofan Lu, et al. (2025). *FigureYa: A Standardized Visualization Framework for Enhancing Biomedical Data Interpretation and Research Efficiency*. iMetaMed. 1(1) [https://doi.org/10.1002/imm3.70005](https://doi.org/10.1002/imm3.70005)
 
 *A pre-formatted BibTeX entry will be added here upon final publication.*
 
