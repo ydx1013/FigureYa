@@ -119,7 +119,7 @@ If your expression matrices have already been formatted as easy_input_TCGA.csv a
 ## TCGA数据下载及预处理
 ## Downloading and Preprocessing TCGA Data
 
-```{r eval=FALSE}
+```{r}
 # --- TCGA数据下载及预处理 ---
 # --- TCGA Data Download and Preprocessing ---
 
@@ -139,22 +139,12 @@ GDCdownload(expquery, directory = "GDCdata")
 # Prepare and load the data into R as SummarizedExperiment object
 expdata <- GDCprepare(expquery, directory = "GDCdata")
 
-# 获取计数矩阵和基因信息
-# Get count matrix and gene information
-countMatrix <- assay(expdata, "unstranded")  
-geneLengths <- rowData(expdata)$gene_length
+# 1. TPM
+# 1. TPM
+tpmMatrix <- assay(expdata, "tpm_unstrand")
+tumorSamples <- colnames(tpmMatrix)[substr(colnames(tpmMatrix), 14, 15) == "01"]
+tpmMatrix <- tpmMatrix[, tumorSamples]
 
-# 筛选肿瘤样本（01表示肿瘤）
-# Filter tumor samples (01 indicates tumor)
-tumorSamples <- colnames(countMatrix)[substr(colnames(countMatrix), 14, 15) == "01"]
-countMatrix <- countMatrix[, tumorSamples]
-
-# --- 数据转换和过滤 ---
-# --- Data Transformation and Filtering ---
-
-# 1. 转换为TPM
-# 1. Convert to TPM
-tpmMatrix <- countToTpm(countMatrix, geneLengths)
 tpms <- as.data.frame(round(tpmMatrix, 2))
 
 # 2. 过滤低表达基因（基于原始计数）
@@ -197,7 +187,7 @@ Here, we use SangerBox to download and preprocess GEO expression data, as detail
 
 (Alternatively, you can use `FigureYa59Plus_GEO2DEG` to download and preprocess GEO microarray data, obtaining the expression matrix file easy_input_expr.csv)
 
-```{r eval=FALSE}
+```{r}
 # GSE41613数据集处理
 # GSE41613 Dataset Processing
 gse41613.expr <- read.delim("gse41613.expr.txt",sep = "\t",row.names = 1,check.names = F,stringsAsFactors = F,header = T)
