@@ -66,9 +66,8 @@ Use the `rPlotter` package recommended by Guangchuang Yu <https://mp.weixin.qq.c
 ```{r}
 source("install_dependencies.R")
 source("extract_colours.R") # from rPlotter package, https://github.com/woobe/rPlotter
-if (!require("BiocManager", quietly = TRUE))
-  install.packages("BiocManager")
-BiocManager::install("EBImage")
+install.packages(c("ggplot2", "stringr", "reshape2", "dichromat"))
+install("EBImage")
 install.packages("reshape2")
 
 library(scales)
