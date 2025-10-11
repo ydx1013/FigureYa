@@ -318,25 +318,25 @@ RMD Render Summary
 [SKIPPED] - ./FigureYa27tSNE_update/FIgureYa27tSNE_update.Rmd (Not listed in auto_Knit_online.txt)
 [FAILED] - ./FigureYa212drugTargetV2/FigureYa212drugTargetV2.Rmd
 --- Error Log for ./FigureYa212drugTargetV2/FigureYa212drugTargetV2.Rmd ---
-Hit:4 http://azure.archive.ubuntu.com/ubuntu noble-backports InRelease
-Hit:5 http://azure.archive.ubuntu.com/ubuntu noble-security InRelease
-Reading package lists...
-Reading package lists...
-Building dependency tree...
-Reading state information...
-libblas-dev is already the newest version (3.12.0-3build1.1).
-liblapack-dev is already the newest version (3.12.0-3build1.1).
-gfortran is already the newest version (4:13.2.0-7ubuntu1).
-libcurl4-openssl-dev is already the newest version (8.5.0-2ubuntu10.6).
-libssl-dev is already the newest version (3.0.13-0ubuntu3.6).
-0 upgraded, 0 newly installed, 0 to remove and 32 not upgraded.
+In file included from ReadInData.h:1,
+                 from ReadInData.c:1:
+depends.h:14:10: fatal error: gsl/gsl_blas.h: No such file or directory
+   14 | #include <gsl/gsl_blas.h>
+      |          ^~~~~~~~~~~~~~~~
+compilation terminated.
+make: *** [/opt/R/4.5.1/lib/R/etc/Makeconf:202: ReadInData.o] Error 1
+ERROR: compilation failed for package ‘ridge’
+* removing ‘/home/runner/work/_temp/Library/ridge’
+
+The downloaded source packages are in
+	'/tmp/RtmpBEFXzp/downloaded_packages'
 Error in `library()`:
 ! there is no package called 'ridge'
 Backtrace:
     ▆
  1. └─base::library(ridge)
 
-Quitting from FigureYa212drugTargetV2.Rmd:76-89 [unnamed-chunk-1]
+Quitting from FigureYa212drugTargetV2.Rmd:76-93 [unnamed-chunk-1]
 Execution halted
 -----------------------------------
 [SKIPPED] - ./FigureYa112venn/FigureYa112venn.Rmd (Not listed in auto_Knit_online.txt)
