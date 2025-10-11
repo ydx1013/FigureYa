@@ -3,7 +3,7 @@ FigureYa196Plus_PanPie_py
 ¶
 Author:
 Ying Ge
-In [102]:
+In [104]:
 from
 datetime
 import
@@ -34,7 +34,7 @@ current_date
 }
 "
 )
-Out[102]:
+Out[104]:
 Date
 : 2025-10-11
 Academic Citation
@@ -47,6 +47,7 @@ https://doi.org/10.1002/imm3.70005
 Requirement Description
 ¶
 绘制多个饼图展示不同临床预后分期的分布差异，用python实现。
+Draw multiple pie charts to show the distribution differences of various clinical prognostic stages using Python.
 出自
 https://www.nature.com/articles/s41388-019-1026-9
 Fig. 4 Identification of CNV-driven rRNA metabolism-related genes with clinical relevance.
@@ -56,16 +57,17 @@ f, g Pie charts showing the Chi-squared test of clinicopathologic factors for PR
 Application Scenarios
 ¶
 搞清楚输入数据跟图的对应关系、理解每部分代码所画的内容，就可以套用到更多类型的数据上。
+Understand the relationship between the input data and the figure, and grasp what each part of the code is plotting, so you can apply the workflow to more types of data.
 环境设置
 ¶
 Environment Configuration
 ¶
-In [ ]:
+In [105]:
 #python --version
 #pip install jupyter ipykernel pandas numpy matplotlib seaborn
 #pip install scipy statsmodels plotly
 #pip install notebook nbconvert
-In [ ]:
+In [106]:
 import
 pandas
 as
@@ -102,7 +104,7 @@ Third column onward: Correspond to the columns in the original table.
 ¶
 Start plotting
 ¶
-In [ ]:
+In [107]:
 # 读取数据 \ Read data
 data
 =
@@ -1191,7 +1193,7 @@ create_figureya196_python
 In [ ]:
 Session Info
 ¶
-In [ ]:
+In [108]:
 import
 IPython
 print
