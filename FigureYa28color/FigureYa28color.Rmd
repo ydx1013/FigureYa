@@ -66,9 +66,15 @@ Use the `rPlotter` package recommended by Guangchuang Yu <https://mp.weixin.qq.c
 ```{r}
 source("install_dependencies.R")
 source("extract_colours.R") # from rPlotter package, https://github.com/woobe/rPlotter
+if (!require("BiocManager", quietly = TRUE))
+  install.packages("BiocManager")
+BiocManager::install("EBImage")
+install.packages("reshape2")
 
 library(scales)
 library(rgl)
+library(EBImage)
+library(reshape2)
 
 Sys.setenv(LANGUAGE = "en") #显示英文报错信息 display English error messages
 options(stringsAsFactors = FALSE) #禁止chr转成factor prohibit the conversion of chr to factor
